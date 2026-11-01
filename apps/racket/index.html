@@ -12,7 +12,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <style>
-/* Layout: uma coluna de leitura (max 980px); identidade SPORT DNA: azul-petróleo, branco e lima (bola de tênis) */
+/* Layout: uma coluna de leitura (max 980px); identidade SPORTS DNA: azul-petróleo, branco e lima (bola de tênis) */
 :root{
   --bg:#EEF4F5; --surface:#FFFFFF; --ink:#0B2530; --muted:#4A6570; --line:#CFDEE2;
   --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#DDF247; --ball-ink:#0B2530; --alt:#5C6B00; --warn:#8F5200; --soft:#DCEBEF;
@@ -492,10 +492,10 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 <div class="wrap">
   <header class="top">
     <div class="brand" id="home" role="button" tabindex="0" style="cursor:pointer" title="Início">
-      <svg width="36" height="36" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="10" fill="#0E4D64"/><ellipse cx="18" cy="26" rx="4" ry="14" fill="#FFFFFF" transform="rotate(-32 18 26)"/><circle cx="29" cy="15" r="7" fill="#DDF247"/></svg>
-      <span>RACKET DNA<small>by SPORT DNA</small></span>
+      <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>
+      <span>RACKET DNA<small>by SPORTS DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORTS DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -614,7 +614,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 
   </main>
   <footer>
-    RACKET DNA é um teste da família SPORT DNA. Protótipo. Especificações medidas encordoadas (swingweight e rigidez) e de fábrica sem corda (peso e balanço), da geração atual de cada modelo; confira modelo a modelo antes da compra. Preços em reais consultados em lojas brasileiras (out/2026); raquete sem loja no Brasil tem estimativa de importada (dólar a R$ 5,20). Confira na loja antes de comprar. Os índices são métricas internas. Equipamento adequado ajuda, mas não substitui a avaliação de um profissional de saúde.
+    RACKET DNA é um teste da família SPORTS DNA. Protótipo. Especificações medidas encordoadas (swingweight e rigidez) e de fábrica sem corda (peso e balanço), da geração atual de cada modelo; confira modelo a modelo antes da compra. Preços em reais consultados em lojas brasileiras (out/2026); raquete sem loja no Brasil tem estimativa de importada (dólar a R$ 5,20). Confira na loja antes de comprar. Os índices são métricas internas. Equipamento adequado ajuda, mas não substitui a avaliação de um profissional de saúde.
   </footer>
 </div>
 <div id="modalRoot"></div>
@@ -1229,7 +1229,7 @@ function pix(t){
   const isCmp=t==='cmp';
   const price=isCmp?4.99:19.99;
   const label=isCmp?'Comparador ilimitado':'Relatório RACKET DNA';
-  const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RACKETDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865406'+price.toFixed(2)+'5802BR5913SPORT DNA6009SAO PAULO6304SIMU';
+  const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RACKETDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865406'+price.toFixed(2)+'5802BR5910SPORTS DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">
     <div class="phead"><div><p class="eyebrow">Pagamento via Pix</p><h3 id="pxT">${label}</h3></div><button class="btn btn-ghost btn-sm" id="pxX" type="button" aria-label="Fechar">Fechar</button></div>
     <div class="phead"><span class="mono" style="font-size:28px;font-weight:700">R$ ${price.toFixed(2).replace('.',',')}</span><span class="muted">expira em <span class="timer" id="pxTm">10:00</span></span></div>
@@ -1642,10 +1642,12 @@ function showCard(cv){$('#cardOut').innerHTML=`<img class="cardimg" alt="Card do
 /* card da raquete: verde do Racket, raquete escolhida e o pódio que levou a ela */
 const racketCardData=()=>({r:RES.ranked[0].r,fit:RES.ranked[0].fit,top:RES.ranked.slice(0,3).map(x=>({m:x.r.model,b:x.r.brand,f:x.fit})),n:RK.length});
 /* logo do RACKET DNA (o mesmo do topo do app) desenhado no canvas */
-function drawLogo(x,X,Y,S){const k=S/44;x.save();x.translate(X,Y);x.scale(k,k);
-  x.fillStyle='#0E4D64';x.beginPath();x.roundRect(0,0,44,44,10);x.fill();
-  x.save();x.translate(18,26);x.rotate(-32*Math.PI/180);x.fillStyle='#FFFFFF';x.beginPath();x.ellipse(0,0,4,14,0,0,Math.PI*2);x.fill();x.restore();
-  x.fillStyle='#DDF247';x.beginPath();x.arc(29,15,7,0,Math.PI*2);x.fill();x.restore()}
+function drawLogo(x,X,Y,S){const k=S/64;x.save();x.translate(X,Y);x.scale(k,k);
+  x.fillStyle='#0E4D64';x.beginPath();x.roundRect(0,0,64,64,15);x.fill();
+  x.strokeStyle='#DDF247';x.fillStyle='#DDF247';x.lineCap='round';x.translate(32,32);x.scale(.84,.84);x.translate(-32,-32);
+  x.lineWidth=2.3;x.beginPath();x.ellipse(42.24,21.71,16.7,12.8,-Math.PI/4,0,Math.PI*2);x.stroke();
+  x.stroke(new Path2D('M22 41.6 C24.4 37.6 25.8 33 27 27'));x.stroke(new Path2D('M23 42.4 C27 39.5 31.5 37.7 37 37.4'));
+  x.lineWidth=4.8;x.beginPath();x.moveTo(7.8,56.2);x.lineTo(21.8,42.2);x.stroke();x.restore()}
 async function drawRacketCard(d=racketCardData()){
   try{await document.fonts.ready}catch(e){}
   const W=1080,H=1920,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');const INK='#0B2530',PET='#0E4D64';
