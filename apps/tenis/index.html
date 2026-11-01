@@ -9,11 +9,11 @@
 /* 2.5.8: área de toque mínima de 24 px sem mudar o desenho */
 .blink{position:relative}.blink::after{content:"";position:absolute;left:0;right:0;top:50%;height:24px;transform:translateY(-50%)}
 </style></head><body>
-<title>Tenis Match</title>
+<title>RUN DNA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* Layout: igual ao Racket Match (coluna de 960px); identidade Match Lab com o laranja do Tenis Match */
+/* Layout: igual ao RACKET DNA (coluna de 960px); identidade SPORT DNA com o laranja do RUN DNA */
 :root{
   --bg:#EEF4F5; --surface:#FFFFFF; --ink:#0B2530; --muted:#4A6570; --line:#CFDEE2;
   --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#FF8A3D; --ball-ink:#0B2530; --clay:#B4472F; --soft:#DCEBEF; --hexa:#F4F8F9; --hexb:#E7F0F2;
@@ -214,7 +214,7 @@ table.t10 tr.pref td{background:var(--soft)}
   .specs{grid-template-columns:repeat(3,minmax(0,1fr))}
   .kpis{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
-/* Pix simulado (mesmo do Board Match) */
+/* Pix simulado (mesmo do SURF DNA) */
 .btn-sm{min-height:40px;padding:8px 14px;font-size:14px;border-radius:10px}
 .modal{position:fixed;inset:0;background:rgba(5,22,29,.62);display:grid;place-items:center;padding:16px;z-index:50}
 .sheet{background:var(--surface);color:var(--ink);border-radius:20px;max-width:440px;width:100%;max-height:calc(100dvh - 32px);overflow:auto;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
@@ -229,7 +229,7 @@ table.t10 tr.pref td{background:var(--soft)}
 .pulse{width:10px;height:10px;border-radius:50%;background:var(--ball);box-shadow:0 0 0 0 var(--ball);animation:pl 1.4s infinite}
 @keyframes pl{to{box-shadow:0 0 0 12px transparent}}
 .okbig{font-size:48px;text-align:center;color:var(--pri);line-height:1}
-/* ---------- relatório em PDF (A4, sempre claro, padrão Match Lab) ---------- */
+/* ---------- relatório em PDF (A4, sempre claro, padrão SPORT DNA) ---------- */
 .pdfbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .pdfdoc{position:fixed;left:-10000px;top:0;width:794px;-webkit-text-size-adjust:100%;text-size-adjust:100%;
   --bg:#EEF4F5;--surface:#FFFFFF;--ink:#0B2530;--muted:#4A6570;--line:#CFDEE2;--pri:#0E4D64;--pri-ink:#FFFFFF;--ball:#FF8A3D;--ball-ink:#0B2530;--clay:#B4472F;--soft:#DCEBEF;--hexa:#F4F8F9;--hexb:#E7F0F2;
@@ -311,9 +311,9 @@ table.t10 tr.pref td{background:var(--soft)}
   <header class="top">
     <div class="brand">
       <svg width="36" height="36" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="10" fill="#0E4D64"/><ellipse cx="22" cy="18" rx="4" ry="13" fill="#FFFFFF" transform="rotate(-32 22 18)"/><path d="M8 35 A14 12 0 0 1 36 35 Z" fill="#FF8A3D"/></svg>
-      <span>Tenis Match<small>by Match Lab</small></span>
+      <span>RUN DNA<small>by SPORT DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← MATCH LAB</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -333,7 +333,7 @@ table.t10 tr.pref td{background:var(--soft)}
         <p class="note">Grátis · 3 minutos · sem cadastro</p>
       </div>
       <div class="herocol">
-      <div id="cardHome" class="homecard" aria-label="Exemplo dos cards: perfil de corredor e tênis com o Match"></div>
+      <div id="cardHome" class="homecard" aria-label="Exemplo dos cards: perfil de corredor e tênis com o DNA"></div>
       <div class="court">
         <p class="eyebrow acc">O motor</p>
         <div class="stats">
@@ -418,7 +418,7 @@ table.t10 tr.pref td{background:var(--soft)}
 
   </main>
   <footer>
-    Tenis Match é um teste da família Match Lab. Protótipo. Preços são de referência e mudam com promoção; os marcados como "aprox." são estimativas. Por enquanto o relatório não tem links para lojas. Nenhuma marca paga para aparecer. Isto não substitui avaliação de médico ou fisioterapeuta em caso de dor ou lesão.
+    RUN DNA é um teste da família SPORT DNA. Protótipo. Preços são de referência e mudam com promoção; os marcados como "aprox." são estimativas. Por enquanto o relatório não tem links para lojas. Nenhuma marca paga para aparecer. Isto não substitui avaliação de médico ou fisioterapeuta em caso de dor ou lesão.
   </footer>
 </div>
 <div id="modalRoot"></div>
@@ -658,7 +658,7 @@ const PODIO_FORA=['Fila'];
 const MARCAS=['adidas','ASICS','Hoka','Mizuno','New Balance','Nike','Olympikus','On','Puma'];
 const FICHA=1.2;
 const LEVE={cal:.4,lon:.4,len:.4,ini:.4,dia:.4,asf:.4};
-// categoria que as respostas apontam: dentro dela o tênis soma ZONA no motor (+4 no Match); na 2ª categoria, ZONA a menos (−4)
+// categoria que as respostas apontam: dentro dela o tênis soma ZONA no motor (+4 no DNA); na 2ª categoria, ZONA a menos (−4)
 const ZONA=2,ZONA_PEQ=0.5;
 const BUD=[[0,400],[400,700],[700,1000],[1000,1500],[1500,99999]];
 const PROF=['Primeiros Quilômetros','Corredor em Construção','Corredor Constante','Corredor de Prova','Corredor de Alta Quilometragem'];
@@ -850,7 +850,7 @@ function map(fins,o){
 return {hex,bars,map};
 })();
 
-/* ---------- app Tenis Match (mesma estrutura do Racket Match) ---------- */
+/* ---------- app RUN DNA (mesma estrutura do RACKET DNA) ---------- */
 const $=s=>document.querySelector(s);
 const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
 const dec1=n=>n.toFixed(1).replace('.',',');
@@ -967,7 +967,7 @@ function renderPreview(){
         <button class="btn btn-go" type="button" data-buy style="width:100%">Revelar meus tênis · R$ 9,99</button>
         <p class="note" style="margin:0">Pagamento único via Pix (simulação). O relatório sai na hora, na tela e em PDF.</p>
       </div>
-      <figure class="rpeek"><img src="../../assets/reports/tenis.webp" alt="Prévia borrada de um relatório completo do Tenis Match" loading="lazy"><figcaption>Relatório completo · ${PDF_PAGES} páginas em PDF</figcaption></figure>
+      <figure class="rpeek"><img src="../../assets/reports/tenis.webp" alt="Prévia borrada de um relatório completo do RUN DNA" loading="lazy"><figcaption>Relatório completo · ${PDF_PAGES} páginas em PDF</figcaption></figure>
     </div>
   </div>
   <div class="panel">
@@ -997,7 +997,7 @@ function renderPreview(){
     <div class="plans">
       <div class="plan best">
         <h3>Relatório completo</h3><span class="price">R$ 9,99</span>
-        <ul><li>Seu tênis ideal com Fit Score e ficha técnica</li><li>Por que combina com você e pontos de atenção</li><li>Tamanho e data de troca</li><li>Comparação com o seu tênis atual</li><li>2º e 3º lugares, com marca e modelo</li><li>Seu top 10 com match, marca e preço</li><li>Top 3 geral ou top 3 da sua marca, lado a lado</li><li>O melhor tênis de cada marca para você</li><li>Segundo par para rodízio</li><li>Dicas para pagar menos</li><li>Relatório em PDF (A4) de 5 páginas para guardar</li></ul>
+        <ul><li>Seu tênis ideal com Fit Score e ficha técnica</li><li>Por que combina com você e pontos de atenção</li><li>Tamanho e data de troca</li><li>Comparação com o seu tênis atual</li><li>2º e 3º lugares, com marca e modelo</li><li>Seu top 10 com DNA, marca e preço</li><li>Top 3 geral ou top 3 da sua marca, lado a lado</li><li>O melhor tênis de cada marca para você</li><li>Segundo par para rodízio</li><li>Dicas para pagar menos</li><li>Relatório em PDF (A4) de 5 páginas para guardar</li></ul>
         <button class="btn btn-go" type="button" id="buy" data-buy>Pagar com Pix (simulação)</button>
       </div>
     </div>
@@ -1092,7 +1092,7 @@ function renderReport(){
   const pdfBtn=id=>`<div class="pdfbar"><button class="btn btn-pri" type="button" id="${id}">Baixar relatório em PDF (A4)</button><span class="note pdfst" aria-live="polite"></span></div>`;
   const cols=['var(--pri)','var(--clay)','var(--muted)'];
   let h=`${pdfBtn('pdfTop')}
-  <div class="panel"><h3>Seus cards</h3><p class="muted">Prontos para story: o seu perfil de corredor e o tênis que mais combina com você, com o Match.</p>
+  <div class="panel"><h3>Seus cards</h3><p class="muted">Prontos para story: o seu perfil de corredor e o tênis que mais combina com você, com o DNA.</p>
     <div id="cardsOut" class="cardpair"></div>
     <div class="row"><button class="btn btn-pri" type="button" id="shareCards">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlRunner">Salvar card do corredor</button><button class="btn btn-ghost" type="button" id="dlShoe">Salvar card do tênis</button></div></div>
   <div class="panel winner">
@@ -1129,8 +1129,8 @@ function renderReport(){
     h+=`<div class="mini">${r.fins.slice(1).map((x,i)=>`<div class="panel"><p class="eyebrow">${i+2}º lugar · ${esc(x.m.b)}</p><div class="whead"><h2>${esc(modelOf(x.m))}</h2><div class="fit" style="font-size:28px">${x.fit}%</div></div><p class="mono" style="font-size:14px">${priceTxt(x.m)} · ${x.m.g} g · drop ${dec1(x.m.dr)} mm · ${x.m.du} km</p><p style="font-size:15px">${esc(x.m.nt)}</p>${brandLink(x.m)}</div>`).join('')}</div>`;
     const t10=r.top10,mk=Math.max(...t10.map(x=>x.m.p/x.m.du));
     h+=`<div class="panel"><div class="vhead"><div><h3>Seus 10 que mais combinam</h3><p class="muted" style="font-size:14px">Fit Score, marca e preço lado a lado, entre os ${M.length} tênis do catálogo.</p></div>
-      <div class="seg" role="group" aria-label="Ordenar o top 10"><button type="button" data-o="fit" aria-pressed="true">Por match</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
-      <div class="tbl"><table class="t10"><thead><tr><th>#</th><th>Tênis</th><th>Marca</th><th>Categoria</th><th>Preço</th><th>Custo/km</th><th style="width:150px">Match</th></tr></thead><tbody id="t10b"></tbody></table></div></div>`;
+      <div class="seg" role="group" aria-label="Ordenar o top 10"><button type="button" data-o="fit" aria-pressed="true">Por DNA</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
+      <div class="tbl"><table class="t10"><thead><tr><th>#</th><th>Tênis</th><th>Marca</th><th>Categoria</th><th>Preço</th><th>Custo/km</th><th style="width:150px">DNA</th></tr></thead><tbody id="t10b"></tbody></table></div></div>`;
     h+=`<div class="panel" id="cmpP"><div class="vhead"><div><h3>Top 3 lado a lado</h3><p class="muted" style="font-size:14px" id="cmpSub">Os três que mais combinam com você, de qualquer marca.</p></div>
       <div class="row" style="gap:8px"><div class="seg" role="group" aria-label="Tipo de top 3"><button type="button" data-t="g" aria-pressed="true">Geral</button><button type="button" data-t="b" aria-pressed="false">Por marca</button></div>
       <select id="cmpBrand" aria-label="Marca" hidden>${BRANDS.map(b=>`<option${r.pref[0]===b?' selected':''}>${esc(b)}</option>`).join('')}</select></div></div>
@@ -1206,11 +1206,11 @@ $('#duelGo').addEventListener('click',()=>openDuel('Nike Pegasus 42','adidas Sup
 $('#duelBack').addEventListener('click',()=>show(duelFrom));
 $('#duelQuiz').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
 
-/* ---------- cards para story: perfil de corredor e o tênis com o Match ---------- */
+/* ---------- cards para story: perfil de corredor e o tênis com o DNA ---------- */
 function wrapText(x,t,maxW){const w=t.split(' ');const L=[];let l='';w.forEach(p=>{const tt=l?l+' '+p:p;if(x.measureText(tt).width>maxW&&l){L.push(l);l=p}else l=tt});if(l)L.push(l);return L}
 const runnerData=r=>({prof:PROF[r.level],sub:OBJ[r.a.obj===undefined?1:r.a.obj]+' · '+Q.find(q=>q.id==='km').o[r.a.km===undefined?1:r.a.km][1]+' por semana',v:runnerVec(r.a).map(x=>x*10),fit:r.fins[0].fit});
 const shoeData=r=>({m:r.fins[0].m,fit:r.fins[0].fit,top:r.fins.map(f=>({m:modelOf(f.m),f:f.fit})),n:M.length});
-/* logo do Tenis Match (o mesmo do topo) desenhado no canvas */
+/* logo do RUN DNA (o mesmo do topo) desenhado no canvas */
 function drawLogo(x,X,Y,S){const k=S/44;x.save();x.translate(X,Y);x.scale(k,k);
   x.fillStyle='#0E4D64';x.beginPath();x.roundRect(0,0,44,44,10);x.fill();
   x.save();x.translate(22,18);x.rotate(-32*Math.PI/180);x.fillStyle='#FFFFFF';x.beginPath();x.ellipse(0,0,4,13,0,0,Math.PI*2);x.fill();x.restore();
@@ -1220,7 +1220,7 @@ async function drawRunnerCard(d){
   const W=1080,H=1920,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');
   const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0E4D64');g.addColorStop(1,'#06222C');x.fillStyle=g;x.fillRect(0,0,W,H);
   x.fillStyle='#FF8A3D';x.beginPath();x.arc(W-120,180,70,0,Math.PI*2);x.fill();
-  x.fillStyle='rgba(255,255,255,.85)';x.font='800 40px Syne, sans-serif';x.fillText('TENIS MATCH',90,190);
+  x.fillStyle='rgba(255,255,255,.85)';x.font='800 40px Syne, sans-serif';x.fillText('RUN DNA',90,190);
   x.font='600 30px "DM Sans", sans-serif';x.fillStyle='rgba(255,255,255,.65)';x.fillText('PERFIL DE CORREDOR',90,236);
   x.fillStyle='#FFFFFF';x.font='700 100px "DM Sans", sans-serif';const lines=wrapText(x,d.prof,W-180);lines.forEach((l,i)=>x.fillText(l,90,360+i*112));
   const ys=360+(lines.length-1)*112+76;x.fillStyle='rgba(255,255,255,.7)';x.font='500 36px "DM Sans", sans-serif';wrapText(x,d.sub,W-180).slice(0,2).forEach((l,i)=>x.fillText(l,90,ys+i*48));
@@ -1234,8 +1234,8 @@ async function drawRunnerCard(d){
   RX.forEach((k,i)=>{const p=pt(i,12.8);x.fillStyle='rgba(255,255,255,.85)';x.fillText(k,p[0],p[1]+12);const q=pt(i,cl(d.v[i],0,10));x.fillStyle='#FF8A3D';x.beginPath();x.arc(q[0],q[1],11,0,7);x.fill()});
   x.textAlign='left';let cxp=90;const cyp=cy+R+170;x.font='700 40px "DM Sans", sans-serif';
   d.v.map((v,i)=>[v,i]).sort((p,q)=>q[0]-p[0]).slice(0,2).forEach(([v,i])=>{const t=`${RX[i]} ${dec1(v)}`;const w=x.measureText(t).width+60;x.fillStyle='#FF8A3D';x.beginPath();x.roundRect(cxp,cyp-52,w,76,38);x.fill();x.fillStyle='#0B2530';x.fillText(t,cxp+30,cyp);cxp+=w+20});
-  x.fillStyle='#FFFFFF';x.font='800 64px Archivo, sans-serif';x.fillText(`Match ${d.fit}%`,90,H-230);
-  x.fillStyle='rgba(255,255,255,.75)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no Tenis Match',90,H-150);
+  x.fillStyle='#FFFFFF';x.font='800 64px Archivo, sans-serif';x.fillText(`DNA ${d.fit}%`,90,H-230);
+  x.fillStyle='rgba(255,255,255,.75)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no RUN DNA',90,H-150);
   return cv;
 }
 async function drawShoeCard(d){
@@ -1244,7 +1244,7 @@ async function drawShoeCard(d){
   const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#FFB98A');g.addColorStop(.55,'#FF8A3D');g.addColorStop(1,'#E9701F');x.fillStyle=g;x.fillRect(0,0,W,H);
   x.fillStyle='rgba(14,77,100,.08)';x.beginPath();x.arc(W-60,560,430,0,Math.PI*2);x.fill();
   drawLogo(x,90,140,96);
-  x.fillStyle=INK;x.font='800 44px Syne, sans-serif';x.fillText('TENIS MATCH',210,190);
+  x.fillStyle=INK;x.font='800 44px Syne, sans-serif';x.fillText('RUN DNA',210,190);
   x.font='600 30px "DM Sans", sans-serif';x.fillStyle='rgba(11,37,48,.7)';x.fillText('O TÊNIS DA MINHA CORRIDA',210,234);
   x.fillStyle='rgba(11,37,48,.75)';x.font='700 36px "DM Sans", sans-serif';x.fillText((m.b+' · '+CAT[m.c].n).toUpperCase(),90,360);
   x.fillStyle=INK;x.font='700 104px "DM Sans", sans-serif';const lines=wrapText(x,modelOf(m),900).slice(0,3);lines.forEach((l,i)=>x.fillText(l,90,470+i*112));
@@ -1254,13 +1254,13 @@ async function drawShoeCard(d){
     x.fillStyle=INK;x.beginPath();x.roundRect(90,y,w,72,36);x.fill();
     x.font='700 36px "DM Sans", sans-serif';x.fillStyle='#FF8A3D';x.fillText(v,118,y+48);
     x.font='500 32px "DM Sans", sans-serif';x.fillStyle='rgba(255,255,255,.7)';x.fillText(l,118+wv+22,y+48);y+=92});
-  /* Match grande à direita das specs, no tamanho que couber */
+  /* DNA grande à direita das specs, no tamanho que couber */
   const room=W-80-(chipR+50),num=String(d.fit),F=f=>`800 ${f}px Syne, sans-serif`;
   let fs=280;x.font=F(fs);let wn=x.measureText(num).width;x.font=F(fs*.42);let wp=x.measureText('%').width;
   if(wn+wp+8>room){fs=Math.floor(fs*room/(wn+wp+8));x.font=F(fs);wn=x.measureText(num).width;x.font=F(fs*.42);wp=x.measureText('%').width}
   const base=y0+215+fs*.3,xr=W-80;x.fillStyle=INK;x.textAlign='right';
   x.font=F(fs*.42);x.fillText('%',xr,base-fs*.33);x.font=F(fs);x.fillText(num,xr-wp-8,base);
-  x.fillStyle='rgba(11,37,48,.75)';x.font='700 34px "DM Sans", sans-serif';x.fillText('MATCH',xr-wp-12,base-fs*.78);x.textAlign='left';
+  x.fillStyle='rgba(11,37,48,.75)';x.font='700 34px "DM Sans", sans-serif';x.fillText('DNA',xr-wp-12,base-fs*.78);x.textAlign='left';
   x.fillStyle=INK;x.font='600 34px "DM Sans", sans-serif';x.fillText(priceTxt(m),90,y+30);
   const by=Math.max(1250,y+150),bh=440;x.fillStyle=PET;x.beginPath();x.roundRect(60,by,W-120,bh,36);x.fill();
   x.fillStyle='#FF8A3D';x.font='700 30px "DM Sans", sans-serif';x.fillText(`ESCOLHIDO ENTRE ${d.n} TÊNIS`,100,by+70);
@@ -1269,23 +1269,23 @@ async function drawShoeCard(d){
     x.fillStyle='rgba(255,255,255,.15)';x.beginPath();x.roundRect(100,yy+22,W-340,16,8);x.fill();
     x.fillStyle=win?'#FF8A3D':'rgba(255,255,255,.55)';x.beginPath();x.roundRect(100,yy+22,(W-340)*t.f/100,16,8);x.fill();
     x.textAlign='right';x.fillStyle=win?'#FF8A3D':'#FFFFFF';x.font='700 44px Archivo, sans-serif';x.fillText(t.f+'%',W-100,yy+40);x.textAlign='left';x.globalAlpha=1});
-  x.fillStyle='rgba(11,37,48,.8)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no Tenis Match',90,Math.min(H-60,by+bh+100));
+  x.fillStyle='rgba(11,37,48,.8)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no RUN DNA',90,Math.min(H-60,by+bh+100));
   return cv;
 }
-const pairHTML=(a,b,ra,rb)=>`<img class="cardimg" alt="Card de corredor: ${esc(ra.prof)}, Match ${ra.fit}%" src="${a.toDataURL('image/png')}"><img class="cardimg" alt="Card do tênis: ${esc(rb.m.n)}, Match ${rb.fit}%" src="${b.toDataURL('image/png')}">`;
+const pairHTML=(a,b,ra,rb)=>`<img class="cardimg" alt="Card de corredor: ${esc(ra.prof)}, DNA ${ra.fit}%" src="${a.toDataURL('image/png')}"><img class="cardimg" alt="Card do tênis: ${esc(rb.m.n)}, DNA ${rb.fit}%" src="${b.toDataURL('image/png')}">`;
 const toBlob=cv=>new Promise(res=>cv.toBlob(res,'image/png'));
 function saveBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
 function showCards(r){
   const ra=runnerData(r),rb=shoeData(r);
   Promise.all([drawRunnerCard(ra),drawShoeCard(rb)]).then(([a,b])=>{
     const o=$('#cardsOut');if(!o)return;o.innerHTML=pairHTML(a,b,ra,rb);
-    $('#dlRunner').onclick=async()=>saveBlob(await toBlob(a),'tenis-match-corredor.png');
-    $('#dlShoe').onclick=async()=>saveBlob(await toBlob(b),'tenis-match-tenis.png');
-    $('#shareCards').onclick=async()=>{const txt=`Meu perfil no Tenis Match: ${ra.prof}. Meu tênis: ${rb.m.n}, Match ${rb.fit}%. E o seu?`;
-      try{const files=[new File([await toBlob(a)],'tenis-match-corredor.png',{type:'image/png'}),new File([await toBlob(b)],'tenis-match-tenis.png',{type:'image/png'})];
+    $('#dlRunner').onclick=async()=>saveBlob(await toBlob(a),'run-dna-corredor.png');
+    $('#dlShoe').onclick=async()=>saveBlob(await toBlob(b),'run-dna-tenis.png');
+    $('#shareCards').onclick=async()=>{const txt=`Meu perfil no RUN DNA: ${ra.prof}. Meu tênis: ${rb.m.n}, DNA ${rb.fit}%. E o seu?`;
+      try{const files=[new File([await toBlob(a)],'run-dna-corredor.png',{type:'image/png'}),new File([await toBlob(b)],'run-dna-tenis.png',{type:'image/png'})];
         if(navigator.canShare&&navigator.canShare({files})){await navigator.share({files,text:txt});return}
         if(navigator.share){await navigator.share({text:txt});return}}catch(e){if(e&&e.name==='AbortError')return}
-      try{await navigator.clipboard.writeText(txt);alert('Texto copiado. Use "Salvar card" para as imagens.')}catch(e){saveBlob(await toBlob(a),'tenis-match-corredor.png')}};
+      try{await navigator.clipboard.writeText(txt);alert('Texto copiado. Use "Salvar card" para as imagens.')}catch(e){saveBlob(await toBlob(a),'run-dna-corredor.png')}};
   }).catch(()=>{const p=$('#cardsOut');if(p)p.closest('.panel').remove()});
 }
 /* cards de exemplo na home, com as respostas do exemplo pronto */
@@ -1307,9 +1307,9 @@ function closeModal(){clearInterval(pixTimer);if(pixKey)document.removeEventList
   if(t){if(t.tagName==='H2')t.setAttribute('tabindex','-1');try{t.focus({preventScroll:!rep.hidden})}catch(e){t.focus()}}pixFrom=null}
 function pix(e){
   pixFrom=e&&e.currentTarget||document.activeElement;
-  const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-TENISMATCH-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5913MATCH LAB6009SAO PAULO6304SIMU';
+  const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RUNDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5913SPORT DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">
-    <div class="phead"><div><p class="eyebrow">Pagamento via Pix</p><h2 id="pxT" style="font-size:19px;font-weight:600">Relatório Tenis Match</h2></div><button class="btn btn-ghost btn-sm" id="pxX" type="button" aria-label="Fechar">Fechar</button></div>
+    <div class="phead"><div><p class="eyebrow">Pagamento via Pix</p><h2 id="pxT" style="font-size:19px;font-weight:600">Relatório RUN DNA</h2></div><button class="btn btn-ghost btn-sm" id="pxX" type="button" aria-label="Fechar">Fechar</button></div>
     <div class="phead"><span style="font-size:28px;font-weight:700;font-variant-numeric:tabular-nums">${PRICE_TXT}</span><span class="muted">expira em <span class="timer" id="pxTm">10:00</span></span></div>
     <div id="pxBody">
       <div class="qr">${qrSVG(Date.now()%100000)}<span class="wm" aria-hidden="true">SIMULAÇÃO</span></div>
@@ -1346,7 +1346,7 @@ function pix(e){
   $('#pxOk').focus();
 }
 
-/* ---------- relatório em PDF (A4, 5 páginas, padrão Match Lab) ---------- */
+/* ---------- relatório em PDF (A4, 5 páginas, padrão SPORT DNA) ---------- */
 /* só dados que o motor já calcula; nada de atleta ou trecho de review sem fonte no catálogo */
 const USO={rod:'rodagem',dia:'dia a dia',lon:'longão',rit:'treino de ritmo',tir:'tiro',p10:'provas de 5 e 10 km',mei:'meia maratona',mar:'maratona',tri:'trilha',aca:'academia'};
 const NAO={lar:'pé largo',rap:'ritmo forte',lon:'distâncias longas',pes:'corredores acima de 85 kg',aqu:'Aquiles sensível',fore:'quem pisa de antepé',cal:'calor forte',lama:'lama',len:'trote leve',pro:'quem prona',hee:'quem pisa de calcanhar',est:'pé estreito',dia:'uso no dia a dia',tir:'tiro',asf:'asfalto',ini:'iniciantes',mar:'maratona',p10:'provas de 5 e 10 km'};
@@ -1397,7 +1397,7 @@ function adaptPlan(r,m){
     ['Semana 4',m.c==='sup'?'Só no que importa':'Ritmo normal',m.c==='sup'?'Guarde para prova e treinos-chave: ele dura de 350 a 450 km.':`Volta ao seu volume (${km} km por semana). Anote os km: a troca vem perto de ${m.du} km.`]];
 }
 function pdfPage(n,title,body){
-  return `<section class="pg"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="10" fill="#0E4D64"/><ellipse cx="22" cy="18" rx="4" ry="13" fill="#FFFFFF" transform="rotate(-32 22 18)"/><path d="M8 35 A14 12 0 0 1 36 35 Z" fill="#FF8A3D"/></svg><span>Tenis Match<small>by Match Lab</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>Tenis Match · by Match Lab · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
+  return `<section class="pg"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" rx="10" fill="#0E4D64"/><ellipse cx="22" cy="18" rx="4" ry="13" fill="#FFFFFF" transform="rotate(-32 22 18)"/><path d="M8 35 A14 12 0 0 1 36 35 Z" fill="#FF8A3D"/></svg><span>RUN DNA<small>by SPORT DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>RUN DNA · by SPORT DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
 }
 function pdfHTML(r){
   const a=r.a,w=r.fins[0],m=w.m,s2=r.fins[1],gap=w.fit-s2.fit,km=KMW[a.km===undefined?1:a.km],mo=Math.max(1,Math.round(m.du/km/4.3));
@@ -1466,7 +1466,7 @@ function pdfHTML(r){
     return `<div><p class="prevh">${i+1}º · ${esc(mm.n)}</p>${L.join('')}</div>`};
   const p4=`<div><p class="pey">Página 4</p><h2>O pódio</h2><p class="muted" style="margin-top:3px">${gap<=3?`Empate técnico: o 1º e o 2º estão a ${gap} ${gap===1?'ponto':'pontos'}. Os dois servem; a escolha fica pelo que cada um lidera.`:`O ${esc(modelOf(m))} ficou ${gap} pontos à frente do 2º lugar.`} Barras: laranja é o que você precisa, escuro é o que o tênis entrega nos 3 índices que mais pesam para você.</p></div>
   <div class="ppod">${pod}</div>
-  <div class="pbox s"><h3>Quem corre com eles</h3><p style="font-size:10.5px">O catálogo do Tenis Match ainda não tem fonte verificada de atletas por modelo. Por isso não listamos ninguém: preferimos não inventar.</p></div>
+  <div class="pbox s"><h3>Quem corre com eles</h3><p style="font-size:10.5px">O catálogo do RUN DNA ainda não tem fonte verificada de atletas por modelo. Por isso não listamos ninguém: preferimos não inventar.</p></div>
   <div class="pbox"><h3>O que dizem as reviews</h3><p class="pnote">Resumo do que as reviews lidas para o catálogo dizem de cada modelo (laboratório, sites especializados e clientes, out/2026). Fontes: RTINGS, RunRepeat, Doctors of Running, Road Trail Run, Believe in the Run, Running Shoes Guru, Solereview, Running Warehouse e blogs brasileiros com teste real.</p>
   <div class="prevs">${F.map(rv).join('')}</div></div>`;
   /* página 5: ranking e método */
@@ -1478,7 +1478,7 @@ function pdfHTML(r){
     behind=`O ${modelOf(c)} ficou ${pos>=0?`em ${pos+1}º lugar`:'fora do ranking da sua categoria'}, com ${at.fit}%, ${w.fit-at.fit} pontos atrás. ${(pc.cat||0)<(pw.cat||0)-0.5?`Ele é de ${CAT[c.c].n.toLowerCase()}, fora da sua categoria ideal (${CAT[r.c1].n.toLowerCase()}). `:''}${ks.length?'Onde mais perde: '+joinE(ks.map(k=>PART[k].toLowerCase()))+'.':''}`}
   const NV=Q.length+8+6+4,NR=M.reduce((s,x)=>s+x.nr,0);
   const p5=`<div><p class="pey">Página 5</p><h2>Ranking e método</h2></div>
-  <div class="pcols" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)"><div class="pbox"><h3>Seus 10 primeiros entre ${M.length} tênis</h3><table class="ptab"><thead><tr><th>#</th><th>Tênis</th><th>Preço</th><th>Match</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.m===m?'hl':c&&x.m===c?'at':''}"><td class="n">${x.pos?x.pos+'º':'—'}</td><td>${esc(x.m.n)}${c&&x.m===c?' · seu atual':''}<br><span class="muted" style="font-size:9px">${CAT[x.m.c].n} · ${kmCost(x.m).replace(' por km','/km')}</span></td><td class="n">${priceTxt(x.m).replace(/ \(.*\)/,'')}</td><td class="n"><span style="display:inline-block;width:${Math.round(x.fit*.4)}px;height:5px;border-radius:9px;background:${x.m===m?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td></tr>`).join('')}</tbody></table></div>
+  <div class="pcols" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)"><div class="pbox"><h3>Seus 10 primeiros entre ${M.length} tênis</h3><table class="ptab"><thead><tr><th>#</th><th>Tênis</th><th>Preço</th><th>DNA</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.m===m?'hl':c&&x.m===c?'at':''}"><td class="n">${x.pos?x.pos+'º':'—'}</td><td>${esc(x.m.n)}${c&&x.m===c?' · seu atual':''}<br><span class="muted" style="font-size:9px">${CAT[x.m.c].n} · ${kmCost(x.m).replace(' por km','/km')}</span></td><td class="n">${priceTxt(x.m).replace(/ \(.*\)/,'')}</td><td class="n"><span style="display:inline-block;width:${Math.round(x.fit*.4)}px;height:5px;border-radius:9px;background:${x.m===m?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>Mapa do catálogo</h3>${mapPDF(r,rows.filter(x=>x.pos&&x.pos<=10),at)}<p class="pnote">Os ${M.length} tênis por peso e espuma, na cor da categoria; o número é a posição no seu top 10. Escuro: o recomendado; laranja: o pódio${c?'; anel vermelho tracejado: o seu atual':''}.</p></div></div>
   ${c?`<div class="pbox s"><h3>Por que o seu atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
   <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, preços de lojas no Brasil</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites e clientes</span></div><div><b>${NV}</b><span>variáveis: ${(NV*M.length).toLocaleString('pt-BR')} cruzamentos por análise</span></div><div><b>85%</b><span>dos 500 perfis de teste com o 1º na categoria ideal</span></div></div>
@@ -1513,7 +1513,7 @@ async function makePDF(r){
     for(let i=0;i<pages.length;i++){say(`Gerando o PDF… página ${i+1} de ${pages.length}`);
       const cv=await html2canvas(pages[i],{scale:2.4,backgroundColor:'#FFFFFF',logging:false,windowWidth:900});
       if(i)pdf.addPage();pdf.addImage(cv.toDataURL('image/jpeg',.86),'JPEG',0,0,210,297)}
-    pdf.save(`tenis-match-${slug(r.fins[0].m.n)}.pdf`);say('PDF baixado.');ok=true;
+    pdf.save(`run-dna-${slug(r.fins[0].m.n)}.pdf`);say('PDF baixado.');ok=true;
   }catch(e){say('Não deu para gerar o PDF agora. Confira a conexão e tente de novo.')}
   finally{if(box)box.remove();pdfBusy=false}
   return ok;

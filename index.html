@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>SportDNA</title>
+<title>SPORT DNA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="SportDNA: testes, relatórios e guias para escolher raquete de tênis, tênis de corrida e prancha de surf.">
+<meta name="description" content="SPORT DNA: testes, relatórios e guias para escolher raquete de tênis, tênis de corrida e prancha de surf.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Syne:wght@800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500;700&family=Sora:wght@600&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
-/* Layout: bancada de laboratório da família Match. Azul-petróleo como base, cada app com sua cor (bola, mar, asfalto); relatório real como prova. */
+/* Layout: bancada de laboratório da família DNA. Azul-petróleo como base, cada app com sua cor (bola, mar, asfalto); relatório real como prova. */
 :root{
   --bg:#F4F4F2; --surface:#FFFFFF; --sunk:#EAEAE7; --ink:#0A0A0A; --muted:#5C5C58; --line:#DCDCD7;
   --petrol:#0A0A0A; --on-petrol:#FFFFFF; --petrol-soft:#BDBDB8; --lime:#FFFFFF; --ink-on-color:#0B2530; --tri:linear-gradient(90deg,#DDF247 0 33.3%,#6CCFF6 33.3% 66.6%,#FF8A3D 66.6%);
@@ -394,7 +394,7 @@ footer .f-base{display:flex;justify-content:space-between;align-items:center;gap
 <a class="skip" href="#app">Pular para o conteúdo</a>
 <header class="top">
   <div class="wrap">
-    <a class="lockup" href="#inicio" data-go="inicio" aria-label="SportDNA, início" id="brandHome"></a>
+    <a class="lockup" href="#inicio" data-go="inicio" aria-label="SPORT DNA, início" id="brandHome"></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Principal"></nav>
   </div>
@@ -407,12 +407,12 @@ footer .f-base{display:flex;justify-content:space-between;align-items:center;gap
   <div class="wrap">
     <div>
       <div class="lockup" id="footBrand"></div>
-      <p class="disc">Find your match. Ache o seu. Nenhuma marca paga para aparecer no resultado. Conteúdo educativo; em caso de dor ou lesão, procure um profissional de saúde.</p>
+      <p class="disc">Find your DNA. Ache o seu. Nenhuma marca paga para aparecer no resultado. Conteúdo educativo; em caso de dor ou lesão, procure um profissional de saúde.</p>
     </div>
     <div class="f-links" id="footLinks"></div>
   </div>
   <div class="wrap f-base">
-    <span>© 2026 SportDNA. Todos os direitos reservados.</span>
+    <span>© 2026 SPORT DNA. Todos os direitos reservados.</span>
     <a class="btw" href="https://claude.ai/artifact/EKxa3Z3Xt4dyGkLkCTQB7z" target="_blank" rel="noopener" aria-label="Um projeto Beyond the Work">
       <svg class="btw-sym" viewBox="0 0 120 120" aria-hidden="true"><line x1="46" y1="34" x2="110" y2="34" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><line x1="28" y1="60" x2="110" y2="60" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><line x1="10" y1="86" x2="110" y2="86" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg>
       <span class="btw-txt"><small>Um projeto</small><b>Beyond the Work</b></span>
@@ -450,10 +450,10 @@ const MARK = {
   board:(s=48)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="32" rx="7" ry="27" fill="#FFFFFF" transform="rotate(-32 32 32)"/><ellipse cx="32" cy="32" rx="7" ry="27" fill="#6CCFF6" transform="rotate(32 32 32)"/></svg>`,
   tenis:(s=48)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="26" rx="7" ry="22" fill="#FFFFFF" transform="rotate(-32 32 26)"/><path d="M8 54 A24 22 0 0 1 56 54 Z" fill="#FF8A3D"/></svg>`
 };
-const labLockup = s => `${ICON.lab(s)}<span class="wm"><span class="wordmark">SPORT<span class="dna">DNA</span></span></span>`;
+const labLockup = s => `${ICON.lab(s)}<span class="wm"><span class="wordmark">SPORT <span class="dna">DNA</span></span></span>`;
 
 const AREAS = {
-  racket:{key:"racket", name:"Racket DNA", w1:"Racket", sport:"Raquete de tênis", cls:"a-racket",
+  racket:{key:"racket", name:"RACKET DNA", w1:"Racket", sport:"Raquete de tênis", cls:"a-racket",
     q:"Qual raquete combina com o seu braço, o seu nível e o jeito que você bate na bola?",
     h1:`A raquete certa para o seu jogo e para o seu <span class="hl">braço</span>.`,
     lede:"Peso, balanço, swingweight, rigidez, cabeça e padrão de cordas. O teste cruza suas respostas com a ficha técnica de cada raquete e mostra a análise inteira antes de você pagar.",
@@ -464,7 +464,7 @@ const AREAS = {
     inside:[["Raquete ideal com Fit Score","Marca, modelo e as seis especificações que importam."],["Índice Braço Seguro","Rigidez e peso avaliados contra o cotovelo de tenista."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
     price:[["R$ 19,90","Raquete ideal"],["R$ 34,90","Setup completo"]],
     gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
-  board:{key:"board", name:"Surf DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
+  board:{key:"board", name:"SURF DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
     q:"Qual prancha faz você remar, entrar na onda e evoluir no mar onde você surfa?",
     h1:`A prancha certa para o seu surf e para o seu <span class="hl">mar</span>.`,
     lede:"Tipo, medidas, litragem, rabeta, fundo, rocker e quilhas, calculados pelo seu peso, pelo que você já faz na onda e pelo seu pico. Recomendamos tudo, menos marca e shaper.",
@@ -475,7 +475,7 @@ const AREAS = {
     inside:[["Tipo de prancha com Fit Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
     price:[["Grátis","Prévia com a litragem"],["R$ 19,99","Relatório completo"]],
     gloss:[["Litragem","Volume da prancha em litros. Define flutuação e remada."],["Rocker","Curvatura do bico à rabeta. Mais rocker, mais manobra e menos velocidade."],["Rabeta","Formato da traseira. Muda soltura e firmeza na parede."],["Quilhas","Single, twin, thruster ou quad. Cada configuração dá outra linha."],["Stringer","Longarina central de madeira que dá rigidez."],["EPS","Bloco de isopor expandido com epóxi. Mais leve e flutuante que o PU."]]},
-  tenis:{key:"tenis", name:"Tenis DNA", w1:"Tenis", sport:"Tênis de corrida", cls:"a-tenis",
+  tenis:{key:"tenis", name:"RUN DNA", w1:"Run", sport:"Tênis de corrida", cls:"a-tenis",
     q:"Qual tênis de corrida acompanha o seu corpo, o seu ritmo e o seu objetivo?",
     h1:`O tênis de corrida certo para o seu corpo e o seu <span class="hl">treino</span>.`,
     lede:"Espuma, drop, altura, forma, durabilidade e custo por km, cruzados com seu peso, seu ritmo e seus km por semana. Sem mito da pisada: neutro por padrão.",
@@ -493,7 +493,7 @@ const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const byArea = k => A.filter(x => DATA2KEY[x.area] === k);
 const ar = x => AREAS[DATA2KEY[x.area]];
-const appLockup = (k,s=34) => `${ICON[k](s)}<span class="wm"><span class="wordmark">${AREAS[k].name}</span><small>by SportDNA</small></span>`;
+const appLockup = (k,s=34) => `${ICON[k](s)}<span class="wm"><span class="wordmark">${AREAS[k].name}</span><small>by SPORT DNA</small></span>`;
 
 /* chrome */
 document.getElementById("brandHome").innerHTML = labLockup(34);
@@ -502,9 +502,9 @@ document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go
 document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
-  racket:"Exemplo de relatório do Racket DNA: raquete recomendada Wilson Clash 100 v3, Match Score de 86%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip L3, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 295 g sem corda, balanço de 310 mm, swingweight 311 e rigidez de 54 RA. Inclui a raquete em 3D, o motivo de cada escolha e a comparação com a raquete atual.",
-  board:"Exemplo de relatório do Surf DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 9 polegadas de comprimento, 19 e 3/4 de largura, 2 e 5/8 de espessura, 37,6 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, força das ondas e comparação com a prancha atual.",
-  tenis:"Exemplo de relatório do Tenis DNA: tênis recomendado Fila Float Maxxi 2, Fit Score de 96%, preço médio de cerca de R$ 550. Categoria máximo amortecimento, 285 g, 36 mm de espuma, drop de 8 mm, durabilidade de 500 km e custo de R$ 1,10 por km. Inclui o tênis em 3D, os motivos da escolha, os pontos de atenção e o mês de troca."};
+  racket:"Exemplo de relatório do RACKET DNA: raquete recomendada ProKennex Black Ace 300, DNA Score de 95%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip L3, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 300 g sem corda, balanço de 321 mm, swingweight 324 e rigidez de 55 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.",
+  board:"Exemplo de relatório do SURF DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 9 polegadas de comprimento, 19 e 3/4 de largura, 2 e 5/8 de espessura, 37,6 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, ondas fracas e comparação com a prancha atual.",
+  tenis:"Exemplo de relatório do RUN DNA: tênis recomendado Mizuno Wave Sky 9, Fit Score de 96%, preço médio de R$ 699,89. Categoria máximo amortecimento, 286 g, 43,2 mm de espuma, drop de 4,4 mm, durabilidade de 750 km e custo de R$ 0,93 por km. Inclui os motivos da escolha, os pontos de atenção, o mês de troca, a ficha de laboratório e a comparação com o tênis atual."};
 function reportFrame(k, h){
   const a = AREAS[k];
   return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"tenis"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
@@ -524,17 +524,17 @@ function vars(a){
 }
 const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/index.html"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
 const CARDS={
-  racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do Racket DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 7,6, Match 93%"],
-          produto:["assets/cards/racket-produto.webp","Card da raquete do Racket DNA: Wilson Clash 100 v3, 295 g, cabeça de 100 pol², 54 RA, padrão 16x19, Match 93%, escolhida entre 58 raquetes"]},
-  board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do Surf DNA: Surfista de linha de onda pequena, nível intermediário, Match 96%"],
-         produto:["assets/cards/board-produto.webp","Card da prancha do Surf DNA: Mid-length egg, 6 pés e 9 polegadas por 19 3/4 polegadas, 37,6 litros, rabeta round, quilhas 2+1, Match 96%, escolhida entre 13 tipos de prancha"]},
-  tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do Tenis DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, Match 96%"],
-         produto:["assets/cards/tenis-produto.webp","Card do tênis do Tenis DNA: Olympikus Corre 5, 235 g, 35 mm de espuma, drop de 8 mm, 650 km de durabilidade, Match 96%, escolhido entre 212 tênis"]}};
+  racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 7,6, DNA 95%"],
+          produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 95%, escolhida entre 58 raquetes"]},
+  board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
+         produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 9 polegadas por 19 3/4 polegadas, 37,6 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
+  tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
+         produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Mizuno Wave Sky 9, 286 g, 43,2 mm de espuma, drop de 4,4 mm, 750 km de durabilidade, DNA 96%, escolhido entre 212 tênis"]}};
 const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="${CARDS[k][t][1]}" width="720" height="1280" loading="lazy" decoding="async">`;
 /* ---------- HOME ---------- */
 let heroK = "racket";
 const MODEL_TXT={
-  racket:"a raquete ideal com Match Score, o setup em seis decisões, a raquete em 3D, o perfil de jogo no hexágono e a comparação com a sua raquete atual.",
+  racket:"a raquete ideal com DNA Score, o setup em seis decisões, a raquete em 3D, o perfil de jogo no hexágono e a comparação com a sua raquete atual.",
   board:"o tipo de prancha com o percentual de combinação, o desenho da prancha, as medidas e a litragem, os motivos em cards e a comparação com a sua prancha atual.",
   tenis:"o tênis ideal com Fit Score e preço médio, a ficha técnica, os prós e contras das reviews e a data de troca pela sua quilometragem."};
 function modelSec(){
@@ -557,7 +557,7 @@ function heroReport(){
 const MOB_Q = matchMedia("(max-width:940px)");
 const MOB_HOME = ()=>MOB_Q.matches;
 const conceitoSec = ()=>`<section class="band" id="conceito"><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">Como funciona</div><h2>Ficha técnica é confusa. A escolha não precisa ser.</h2></div><p>Equipamento caro, erro caro. A maioria compra pela marca, pelo ídolo ou pelo vendedor. O SportDNA traduz especificação em sensação e mostra o que muda no seu jogo.</p></div>
+    <div class="shead"><div><div class="eyebrow">Como funciona</div><h2>Ficha técnica é confusa. A escolha não precisa ser.</h2></div><p>Equipamento caro, erro caro. A maioria compra pela marca, pelo ídolo ou pelo vendedor. O SPORT DNA traduz especificação em sensação e mostra o que muda no seu jogo.</p></div>
     <div class="steps">
       <div class="step"><span class="n">PASSO 1</span><h3>Responda o teste</h3><p>Corpo, nível, frequência, histórico de dor e o que você sente hoje no equipamento atual. Sem cadastro.</p></div>
       <div class="step"><span class="n">PASSO 2</span><h3>Veja a análise grátis</h3><p>Seu perfil, as especificações ideais e o grau de confiança do resultado, antes de pagar qualquer coisa.</p></div>
@@ -573,8 +573,8 @@ const conceitoSec = ()=>`<section class="band" id="conceito"><div class="wrap">
 const areasSec = ()=>`  <section id="areas"><div class="wrap">
     <div class="shead"><div><div class="eyebrow">Três apps, um método</div><h2>Comece pelo seu esporte.</h2></div><p>Cada app tem o próprio teste, um relatório com a análise completa e um blog com guias.</p></div>
     <div class="adots" role="group" aria-label="Escolher app no carrossel">${ORDER.map((k,i)=>`<button type="button" class="adot ${AREAS[k].cls}" data-slide="${i}" aria-pressed="${i===0}" aria-label="${AREAS[k].name}">${ICON[k](20)}<span>${AREAS[k].name}</span></button>`).join("")}</div>
-    <div class="areas" id="areasTrack" role="region" aria-roledescription="carrossel" aria-label="Apps do SportDNA">${ORDER.map(k=>{const a=AREAS[k];return `<article class="area-card ${a.cls}">
-      <a class="banner" href="#${k}" data-go="${k}">${MARK[k]()}<div><span class="wordmark">${a.w1} <em>DNA</em></span><small>${a.sport} · by SportDNA</small></div></a>
+    <div class="areas" id="areasTrack" role="region" aria-roledescription="carrossel" aria-label="Apps do SPORT DNA">${ORDER.map(k=>{const a=AREAS[k];return `<article class="area-card ${a.cls}">
+      <a class="banner" href="#${k}" data-go="${k}">${MARK[k]()}<div><span class="wordmark">${a.w1} <em>DNA</em></span><small>${a.sport} · by SPORT DNA</small></div></a>
       <a class="pair" href="${a.quiz}" aria-label="Fazer o teste do ${a.name}">${cardImg(k,"perfil","p1")}${cardImg(k,"produto","p2")}<span class="pair-cap">${k==="racket"?"Seu DNA de jogo e a sua raquete":k==="board"?"Seu DNA de surf e a sua prancha":"Seu perfil de corredor e o seu tênis"}</span></a>
       <div class="body"><p class="q">${a.q}</p>${vars(a)}
       <span class="meta">${a.facts[0][0]} ${a.facts[0][1]} · ${byArea(k).length} guias</span>
@@ -586,7 +586,7 @@ function home(){
   return `
   <section class="hero"><div class="wrap hero-grid">
     <div class="hero-txt">
-      <div class="eyebrow">SportDNA · Find your match</div>
+      <div class="eyebrow">SPORT DNA · Find your DNA</div>
       <h1>O equipamento certo muda o seu <span class="hl">jogo</span>.</h1>
       <p class="lede">Você responde algumas perguntas sobre seu corpo, seu nível e seu estilo. A gente cruza com a ficha técnica de cada equipamento e entrega um relatório que explica o porquê de cada escolha.</p>
       <div class="chooser">
@@ -745,20 +745,20 @@ function article(id){
 function privacy(){
   return `<article class="article"><div class="wrap">
     <nav class="crumbs" aria-label="Você está em"><a href="#inicio" data-go="inicio">Início</a><span>/</span><span>Privacidade e afiliados</span></nav>
-    <header class="art-head"><h1>Privacidade e afiliados</h1><p class="dek">O que o SportDNA guarda, o que não guarda e como funcionam os links de loja.</p><div class="by"><span>Atualizado em outubro de 2026</span></div></header>
+    <header class="art-head"><h1>Privacidade e afiliados</h1><p class="dek">O que o SPORT DNA guarda, o que não guarda e como funcionam os links de loja.</p><div class="by"><span>Atualizado em outubro de 2026</span></div></header>
     <div class="prose">
       <h2>Quem somos</h2>
-      <p>O SportDNA é um projeto da Beyond the Work com três testes de equipamento: Racket DNA (raquete de tênis), Surf DNA (prancha de surf) e Tenis DNA (tênis de corrida).</p>
+      <p>O SPORT DNA é um projeto da Beyond the Work com três testes de equipamento: RACKET DNA (raquete de tênis), SURF DNA (prancha de surf) e RUN DNA (tênis de corrida).</p>
       <h2>Suas respostas</h2>
       <ul>
         <li>As respostas dos testes são processadas no seu próprio navegador. Não temos conta de usuário nem banco de dados com elas.</li>
-        <li>O Racket DNA guarda no seu navegador o último resultado e o que você liberou, para você voltar depois. Para apagar, limpe os dados do site no navegador.</li>
+        <li>O RACKET DNA guarda no seu navegador o último resultado e o que você liberou, para você voltar depois. Para apagar, limpe os dados do site no navegador.</li>
         <li>Não usamos ferramentas de análise de tráfego nem anúncios.</li>
       </ul>
       <h2>Contato e e-mail</h2>
       <ul>
-        <li>Os campos de e-mail do Racket DNA não enviam nem guardam nada nesta versão.</li>
-        <li>No Surf DNA, o resumo para o coach só sai se você mesmo mandar, pelo WhatsApp ou pelo Instagram, depois de autorizar.</li>
+        <li>Os campos de e-mail do RACKET DNA não enviam nem guardam nada nesta versão.</li>
+        <li>No SURF DNA, o resumo para o coach só sai se você mesmo mandar, pelo WhatsApp ou pelo Instagram, depois de autorizar.</li>
       </ul>
       <h2>Pagamento</h2>
       <p>O pagamento ainda é uma simulação: nenhum valor é cobrado. Quando o pagamento real entrar, esta página vai dizer quem processa os dados.</p>
@@ -813,7 +813,7 @@ function render(view){
   document.getElementById("nav").classList.remove("open");
   document.getElementById("menuBtn").setAttribute("aria-expanded","false");
   const t = view==="privacidade" ? "Privacidade e afiliados" : view.startsWith("a-") ? (A.find(y=>y.id===view.slice(2))||{}).title : view==="blog" ? "Blog" : (AREAS[view]||{}).name;
-  document.title = t ? t + " · SportDNA" : "SportDNA";
+  document.title = t ? t + " · SPORT DNA" : "SPORT DNA";
   if(view==="conceito"){ requestAnimationFrame(()=>document.getElementById("conceito").scrollIntoView()); }
   else window.scrollTo(0,0);
   try{ history.replaceState(null,"","#"+view); }catch(e){}
