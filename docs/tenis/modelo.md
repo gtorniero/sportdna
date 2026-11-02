@@ -15,25 +15,29 @@ Derivados:
 ## 2. Categoria
 Pontos por categoria (entrada, treino diário, máximo amortecimento, estabilidade, treino rápido, supertênis, trilha, conforto) a partir de objetivo, terreno, sensação, treino de ritmo, desconforto com neutro, dor, peso, nível, uso e orçamento. As duas maiores viram categoria 1 e 2. Regras com base científica: estabilidade só com desconforto em neutro; supertênis só com nível ≥ 3, ritmo e orçamento, nunca para iniciante nem para quem pediu estabilidade; quem compete, faz ritmo semanal e monta rodízio pode ter supertênis como par de prova.
 
-## 3. Placar de cada tênis (`PESOS`)
-Soma de fatores, cada um com peso nomeado:
+## 3. Placar de cada tênis (`PESOS`, calibrado em nov/2026)
+Soma de fatores, cada um com peso nomeado (valores atuais em `run/index.html`):
 
 | Fator | Peso atual | Origem |
 |---|---|---|
-| Categoria 1 / 2 / zona (categoria + orçamento) | 10 / 6 (8 se a categoria 1 tem < 10 modelos) / ±2 | regra |
-| Preço × orçamento | +1,5 dentro; −0,5 até 8% acima; −6 e mais acima; até −2 se muito abaixo da faixa | regra |
-| Sensação preferida (macio/firme) | 0,7 × distância | ciência (conforto) |
-| Specs técnicas (falta × sobra do vetor ideal) | falta 0,45; sobra 0,12; leveza 1,8 para quem pede leveza/ritmo, 0,15 para os outros | ciência + **calibrado** |
-| Peso do corredor | 85 kg+: +0,6 maciez, +0,6 base estável, −1 tênis < 215 g; até 65 kg: +0,6 maciez | ciência |
+| Categoria 1 / 2 / vizinha | 10 / 12 (8 se a 1ª tem < 10 modelos; 6 se a pessoa relatou desconforto com neutro) / 6 | **calibrado**: a ordem entre 1ª e 2ª categoria é pouco confiável; a zona desempata |
+| Zona (categoria 1 + até 8% acima do orçamento) | ±1,1 | **calibrado** |
+| Preço × orçamento | +3 dentro; −0,5 até 8% acima; −12 e mais acima; até −2 se muito abaixo | **calibrado** |
+| Sensação preferida (macio/firme) | 1,24 × distância | ciência (conforto) + **calibrado** |
+| Specs técnicas (falta × sobra do vetor ideal) | falta 0,23; sobra 0,05; leveza 7,2 para quem pede leveza/ritmo, 0,2 para os outros | ciência (Franz 2012) + **calibrado** |
+| Peso do corredor | 85 kg+: +0,6 maciez, +0,6 base estável, −1 tênis < 215 g; até 65 kg: +0,6 maciez | ciência (Malisoux 2020, Fuller 2017) |
 | Pé largo | +2 fôrma larga, −0,6 fôrma padrão | regra |
-| Prioridade | durabilidade, leveza, preço ou conforto | regra |
-| Dor e pisada | tornozelo −1,5 em tênis muito macio; drop < 7 mm −1,2 (calcanhar) e −1,5 (Aquiles); drop ≥ 10 −0,8 (antepé) | ciência (fraca) |
-| Estabilidade | +0,8 por ponto de estabilidade se há desconforto com neutro | ciência |
+| Prioridade | durabilidade, leveza, preço; conforto 0,9 | regra + **calibrado** |
+| Dor e pisada | tornozelo −1,5 em tênis muito macio; drop < 7 mm −1,2 (calcanhar) e −1,5 (Aquiles); drop ≥ 10 −0,2 (antepé) | ciência (fraca) + **calibrado** |
+| Desconforto com neutro | +1,06 por ponto de estabilidade; −4 se o tênis não é de estabilidade | ciência (Malisoux 2016) |
 | Usos indicados pelas reviews | 2,4 por uso (teto 2,4); −0,5 sem nenhum | **calibrado** |
-| "Não indicado para" (reviews) | 6 + até 1 por etiqueta (menos com muitas reviews), teto 12; etiquetas de preferência valem 0,4; ritmo fora de tênis rápido 0,35 | **calibrado** + segurança |
+| Contraindicações sérias (encaixe e saúde) | 12 + até 1 por etiqueta, teto 24 | segurança |
+| Ressalvas leves (calor, longão, ritmo fora de tênis rápido, iniciante, uso diário, asfalto) | 1,2 cada; ritmo 1 | regra |
 | Perfil ideal citado pelas reviews | 0,8 por etiqueta, teto 1,6 | regra |
-| Nota das reviews | 1,8 × (nota − 3,8) × n/(n+4), n = profissionais + 0,7 × clientes | **calibrado** |
-| Qualidade do dado | −0,6 preço estimado; −1,2 specs só de ficha; −3 importado; −0,45 por review a menos que 4 | regra |
+| Nota das reviews | 3,18 × (nota − 3,8) × n/(n+4), n = profissionais + 0,7 × clientes | **calibrado** |
+| Qualidade do dado | −0,6 preço estimado; −2,4 specs só de ficha; −3 importado; −0,9 por review a menos que 4 | regra + **calibrado** |
+
+Categorias vizinhas: entrada ↔ treino diário/conforto; treino diário ↔ treino rápido/máximo/entrada/conforto; máximo ↔ treino diário/estabilidade; estabilidade ↔ máximo/treino diário; treino rápido ↔ treino diário/supertênis; supertênis ↔ treino rápido. Quem relatou desconforto com neutro não recebe categoria vizinha.
 
 ## 4. Pódio e relatório
 Top 3 por placar (Fila fora do pódio por decisão editorial); Fit Score = 96 − 2 × (distância para o 1º), entre 70 e 97 no pódio. Segundo par para rodízio da categoria complementar. Quadro por marca (só vendidos no Brasil). Comparação com o tênis atual e comparador livre.

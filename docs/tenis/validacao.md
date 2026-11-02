@@ -23,11 +23,15 @@ Divisão fixa: 1 em cada 3 casos só para teste.
 |---|---|---|---|---|
 | Motor antes desta rodada | 16% | 36% | 0,155 | 14% |
 | Leitura dos casos corrigida (prova = avançado com rodízio; “daily running” ≠ uso casual; guias de US$ 100 = entrada) e regra de par de prova | 21% | 48% | 0,205 | 19% |
-| Pesos calibrados (leveza 1,8; usos 2,4; contraindicação 6 e teto 12; clientes 0,7) | **26%** | 47% | 0,217 | **23%** |
+| Pesos calibrados (leveza 1,8; usos 2,4; contraindicação 6 e teto 12; clientes 0,7) | 26% | 47% | 0,217 | 23% |
+| Auditoria de 63 modelos, contradições resolvidas, categorias vizinhas, ressalvas leves fixas e nova calibração (rodada 6) | **31%** | **54%** | 0,287 | **30%** |
 
 Para comparação, sortear 3 tênis do catálogo acertaria perto de 2%.
 
-## Diagnóstico que fica
+## Marcas depois da rodada 6 (top 3 nos 234 casos: especialistas × nós)
+ASICS 26 × 23 · Nike 21 × 21 · Hoka 11 × 10 · adidas 9 × 9 · New Balance 9 × 9 · Brooks 8 × 6 · Puma 6 × 0,4 · Olympikus 5 × 6 · Mizuno 4 × 10 · On 1 × 4. Puma aparece nos guias quase só como supertênis de prova (Fast-R Elite 3, Deviate Elite 4), onde concorre com outros 29.
+
+## Diagnóstico que ficava antes da rodada 6
 - **Categoria errada** ainda explica cerca de 1 em cada 5 erros, quase todos em velocidade: os guias respondem “qual o melhor tênis de prova”, o questionário pergunta “qual tênis para mim”.
 - **Marcas** (nossas indicações × especialistas, top 3): ASICS 17% × 26%, Nike 12% × 21%, Brooks 3% × 8%, Puma 1% × 6%; Mizuno 14% × 4%, New Balance 17% × 9%. Uma calibração que tentava aproximar as marcas só pelos pesos não mudou quase nada: a diferença está nos dados dos modelos (etiquetas e notas), não nos pesos. Próxima rodada: revisar as etiquetas “não indicado” e as notas de Nike, ASICS, Brooks e Puma com as fontes destes casos.
 - **Catálogo:** Saucony (Hurricane, Ride, Guide, Endorphin, Peregrine), Altra, Topo e La Sportiva são muito citadas pelos especialistas e não estão no catálogo.

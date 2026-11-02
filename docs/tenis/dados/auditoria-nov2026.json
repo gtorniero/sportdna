@@ -1641,6 +1641,290 @@
     "clientes": 0
    },
    "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "ASICS GT-2000 15",
+   "correcoes": {
+    "maciez_1a5": 3.8,
+    "resposta_1a5": 3.4
+   },
+   "motivo": "Aprovação 4,3 se sustenta (RunRepeat 91=4,55; RTINGS treino diário 7,9=3,95; Road Trail Run 8,6=4,3). Mas o motor o subestimava em maciez e retorno: RunRepeat mediu 30,6 AC contra média de 35,5 (bem mais macio que a média, igual ao Glycerin Max 2 que tem 3,9); RTINGS dá retorno de energia 7,4/10 e Doctors of Running diz 'mais macio e mais responsivo'.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/asics-gt-2000-15",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/gt-2000-15",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=12273",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2026/08/asics-gt-2000-15-review-3-comparisons.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Adrenaline GTS 25",
+   "correcoes": {
+    "aprovacao_1a5": 3.8
+   },
+   "motivo": "Notas: RunRepeat 3/5, OutdoorGearLab 66 (3,3), Believe in the Run nota B (~3,75), Runner's Lab 9,3 (4,65), Garage Gym Reviews 4,3; média ~3,8. 'cal' confirmado (OutdoorGearLab respirabilidade 5/10 'roda quente'; Alastair Running diz que piorou). 'rap' confirmado (RTINGS retorno 2,4/10). Resposta 2,1 coerente.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/brooks-adrenaline-gts-25",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-adrenaline-gts-25",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Believe in the Run",
+     "url": "https://believeintherun.com/shoe-reviews/brooks-adrenaline-gts-25-review",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/brooks-adrenaline-gts-25-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/brooks/adrenaline-gts-25",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Alastair Running",
+     "url": "https://www.alastairrunning.com/brooks-adrenaline-gts-25-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Ghost 17",
+   "correcoes": {
+    "aprovacao_1a5": 4.0
+   },
+   "motivo": "Notas: OutdoorGearLab 65 (3,25), Running Shoes Guru 8 (4,0), Road Trail Run 8,75 (4,4), Runner's Lab 9,2 (4,6); média ~4,05. 'lar' confirmado (RunRepeat: bico 69,6 mm afunilado, ruim para pé largo; Marathon Sports: bico raso). 'rap' confirmado (RTINGS responsividade 4,8).",
+   "fontes": [
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-ghost-17",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-ghost-17-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/06/brooks-ghost-17-review.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/brooks-ghost-17-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/es/brooks-ghost-17",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Ghost Max 3",
+   "correcoes": {
+    "aprovacao_1a5": 4.0
+   },
+   "motivo": "Notas: RunRepeat 83 (4,15), Running Shoes Guru 9 (4,5), Road Trail Run 8,34 e 9,2 (~4,4), OutdoorGearLab 65 (3,25), NextGait 7,3 (3,65); média ~4,0. 'hee' confirmado: RunRepeat diz que falta absorção no calcanhar e indica para pisada de médio/antepé.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/uk/brooks-ghost-max-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-ghost-max-3-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/11/brooks-ghost-max-3-multi-tester-review.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-ghost-max-3",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Glycerin 22",
+   "correcoes": {
+    "aprovacao_1a5": 4.2
+   },
+   "motivo": "Notas: Running Shoes Guru 9 (4,5), Runner's Lab 9,3 (4,65), OutdoorGearLab 76 (3,8); Tom's Guide e Women's Running positivos ('maciez suprema'). 3,9 estava abaixo do consenso. Não achei nota da RunRepeat. Etiqueta 'aqu' não confirmada nem desmentida por review profissional (clientes relatam alívio no Aquiles; reclamações de gola são no tornozelo): vale revisar.",
+   "fontes": [
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-glycerin-22-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/brooks-glycerin-22-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-glycerin-22",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Women's Running",
+     "url": "https://www.womensrunning.co.uk/?p=53818",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Glycerin GTS 22",
+   "correcoes": {
+    "maciez_1a5": 3.6
+   },
+   "motivo": "RunRepeat mediu 33,7 AC contra média de 36,2 (mais macio que a média e que o Adrenaline 25 com 34,5 AC = 3,3); Running Shoes Guru: 'o mais macio dos estáveis da Brooks'. Aprovação 4,0 mantida (RunRepeat 82=4,1; RSG 7=3,5; estabilidade RunRepeat 95 confirma 4,9).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/brooks-glycerin-gts-22",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-glycerin-gts-22-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2025/05/brooks-glycerin-gts-22-review-2025.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Mizuno Neo Zen 2",
+   "correcoes": {
+    "resposta_1a5": 2.6,
+    "peso_g": 237
+   },
+   "motivo": "RTINGS dá retorno de energia 3,2/10 ('pouquíssimo rebote'), RunRepeat diz que a espuma 'não tem o rebote esperado' e devolve menos energia que o v1; 3,1 estava generoso. Peso de laboratório RunRepeat 237 g. Aprovação 4,1 NÃO confirmada numericamente: Road Trail Run 9,2, mas RunRepeat critica ('pode decepcionar') e RTINGS dá 5,6 maratona e 3,2 5/10 km; sem nota RunRepeat achada. 'lar' confirmado (RunRepeat bico 68,3 mm, Fueled by Lolz).",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/neo-zen-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/mizuno-neo-zen-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2026/03/mizuno-neo-zen-2-initial-review-notable.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Mizuno Neo Vista 3",
+   "correcoes": {
+    "usos_indicados": "lon mar mei rod",
+    "nao_indicado_para": "aqu dia rap",
+    "aprovacao_1a5": 4.0
+   },
+   "motivo": "Tirei 'rit' e marquei 'rap': RTINGS diz que a propulsão limitada torna esforços rápidos mais difíceis (fraco em 5/10 km) e RunRepeat lista 'falta o rebote esperado' e 'caro para o desempenho'. Aprovação: RunRepeat 83 (4,15) e RTINGS 7,5 longão/7,1 maratona (~3,65-3,75) dão ~4,0. Longão e maratona confirmados.",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/neo-vista-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/mizuno-neo-vista-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=12440",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
   }
  ]
 }
