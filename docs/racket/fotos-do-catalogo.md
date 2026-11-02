@@ -33,7 +33,7 @@ Prazo sugerido: cobrar uma vez depois de 10 dias úteis.
 
 Olá, equipe [MARCA],
 
-Sou [NOME], da Beyond the Work. Mantemos o Racket Match (matchlab…/racket), um teste gratuito em português que indica a raquete de tênis mais adequada ao jogo de cada pessoa, a partir de cerca de 30 perguntas e das especificações medidas de 58 raquetes de 9 marcas.
+Sou [NOME], da Beyond the Work. Mantemos o RACKET DNA (sportdna.com.br/racket/), um teste gratuito em português que indica a raquete de tênis mais adequada ao jogo de cada pessoa, a partir de cerca de 30 perguntas e das especificações medidas de 58 raquetes de 9 marcas.
 
 Hoje mostramos as raquetes como desenho técnico. Gostaríamos de exibir a foto oficial dos modelos [MARCA] que estão no catálogo:
 
