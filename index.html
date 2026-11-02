@@ -3,413 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>SPORT DNA</title>
+<link rel="stylesheet" href="./assets/site.css">
+
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="SPORT DNA: testes, relatórios e guias para escolher raquete de tênis, tênis de corrida e prancha de surf.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Syne:wght@800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500;700&family=Sora:wght@600&family=IBM+Plex+Mono:wght@400&display=swap">
-<style>
-/* Layout: bancada de laboratório da família DNA. Azul-petróleo como base, cada app com sua cor (bola, mar, asfalto); relatório real como prova. */
-:root{
-  --bg:#F4F4F2; --surface:#FFFFFF; --sunk:#EAEAE7; --ink:#0A0A0A; --muted:#5C5C58; --line:#DCDCD7;
-  --petrol:#0A0A0A; --on-petrol:#FFFFFF; --petrol-soft:#BDBDB8; --lime:#FFFFFF; --ink-on-color:#0B2530; --tri:linear-gradient(90deg,#DDF247 0 33.3%,#6CCFF6 33.3% 66.6%,#FF8A3D 66.6%);
-  --racket:#DDF247; --board:#6CCFF6; --tenis:#FF8A3D;
-  --area:#BDBDB8;
-  --f-display:"Archivo","Helvetica Neue",system-ui,sans-serif;
-  --f-brand:"Syne","Arial Black",system-ui,sans-serif;
-  --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  --r:16px; --wrap:1180px;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111111; --surface:#1A1A1A; --sunk:#161616; --ink:#F2F2F0; --muted:#A3A3A0; --line:#2E2E2C;
-  --petrol:#F2F2F0; --on-petrol:#0A0A0A; --petrol-soft:#8A8A86; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#111111; --surface:#1A1A1A; --sunk:#161616; --ink:#F2F2F0; --muted:#A3A3A0; --line:#2E2E2C;
-  --petrol:#F2F2F0; --on-petrol:#0A0A0A; --petrol-soft:#8A8A86; color-scheme:dark}
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:2px;border-radius:6px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
-h1,h2,h3{font-family:var(--f-display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.015em}
-.a-racket{--area:var(--racket)} .a-board{--area:var(--board)} .a-tenis{--area:var(--tenis)}
-
-/* Logos */
-.ico{display:block;flex:none}
-.wordmark{font-family:var(--f-brand);font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1}
-.lockup{display:flex;align-items:center;gap:10px;text-decoration:none}
-.wordmark .dna{color:var(--muted)}
-.lockup .wm{display:flex;flex-direction:column;gap:3px}
-.lockup .wm small{font-family:var(--f-body);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-
-/* Header */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:16px;min-height:66px}
-.top .lockup .wordmark{font-size:19px;letter-spacing:.06em}
-.top{border-bottom:0}.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--tri)}
-.nav{display:flex;gap:2px;margin-left:auto;align-items:center}
-.nav a{text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:500;font-size:.93rem;color:var(--muted);display:flex;align-items:center;gap:8px;white-space:nowrap}
-.nav a:hover{color:var(--ink);background:var(--sunk)}
-.nav a[aria-current="page"]{color:var(--ink);background:var(--sunk);font-weight:700}
-.nav .sep{width:1px;height:22px;background:var(--line);margin:0 6px}
-.menu-btn{display:none;margin-left:auto;background:var(--sunk);border:0;border-radius:999px;padding:9px 16px;font-weight:700;cursor:pointer}
-@media (max-width:980px){
-  .menu-btn{display:block}
-  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px));gap:4px}
-  .nav.open{display:flex}
-  .nav a{padding:12px;font-size:1rem}
-  .nav .sep{width:auto;height:1px;margin:4px 0}
-}
-
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:700;padding:13px 20px;min-height:48px;border-radius:12px;border:0;cursor:pointer;transition:transform .15s ease,filter .15s}
-.btn:hover{transform:translateY(-1px);filter:brightness(.97)}
-.btn-area{background:var(--area);color:var(--ink-on-color)}
-.btn-petrol{background:var(--petrol);color:var(--on-petrol)}
-.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--ink)}
-.btn .arr{font-family:var(--f-mono);font-weight:500}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-
-main{display:block;min-height:60vh}
-section{padding-block:72px}
-@media (max-width:640px){section{padding-block:52px}}
-.shead{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:30px}
-.shead h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;max-width:20em;margin-top:8px}
-.shead p{color:var(--muted);max-width:36em;margin:10px 0 0}
-
-/* Report frame */
-.report{position:relative;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 48px -28px rgba(11,37,48,.45);overflow:hidden;min-width:0}
-.report .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--sunk)}
-.report .bar .dots{display:flex;gap:5px}
-.report .bar .dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
-.report .bar .url{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.report .bar .pill{font-size:.7rem;font-weight:700;background:var(--area);color:var(--ink-on-color);padding:3px 8px;border-radius:99px;white-space:nowrap}
-.report .shot{display:block;width:100%;height:var(--h,460px);overflow:hidden;position:relative;background:#EEF4F5;cursor:zoom-in;border:0;padding:0}
-.report .shot img{display:block;width:100%;height:auto}
-.report .shot::after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,#EEF4F5)}
-.report .zoom{position:absolute;right:14px;bottom:14px;z-index:2;background:#0A0A0A;color:#fff;font-size:.8rem;font-weight:700;padding:8px 12px;border-radius:99px;pointer-events:none}
-@media (max-width:600px){.report .shot{height:min(var(--h,460px),420px)}}
-
-/* HERO */
-.hero{padding-block:56px 64px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
-@media (max-width:940px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:36px}}
-.hero h1{overflow-wrap:anywhere}
-.hero h1{font-size:clamp(2.5rem,5.6vw,4.4rem);font-weight:800;margin-top:14px}
-.hero h1 .hl{background:var(--tri) left bottom/100% .14em no-repeat;padding:0 .02em .04em}
-.hero .lede{font-size:1.15rem;color:var(--muted);max-width:32em;margin:20px 0 28px}
-.pickers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
-@media (max-width:520px){.pickers{grid-template-columns:1fr}}
-.pick{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);text-decoration:none;min-width:0}
-.pick:hover{border-color:var(--ink)}
-.pick b{display:block;font-size:.92rem}
-.pick span{display:block;font-size:.78rem;color:var(--muted)}
-.hero-report .tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
-.hero-report .tabs .lbl{font-size:.8rem;color:var(--muted);margin-right:4px}
-.hero-report .tabs button{display:flex;align-items:center;gap:7px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:5px 12px 5px 5px;font-size:.84rem;font-weight:700;cursor:pointer}
-.hero-report .tabs button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
-.hero-report .cap{font-size:.84rem;color:var(--muted);margin:10px 0 0}
-
-.cta-big{display:flex;align-items:center;gap:18px;width:100%;max-width:560px;background:var(--petrol);color:var(--on-petrol);border:0;border-radius:14px;padding:20px 24px;cursor:pointer;font-family:var(--f-display);font-weight:800;font-size:clamp(1.3rem,2.4vw,1.7rem);letter-spacing:-.01em;text-align:left;position:relative;overflow:hidden;transition:transform .15s}
-.cta-big::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--tri)}
-.cta-big:hover{transform:translateY(-2px)}
-.cta-big .icons{display:flex;gap:6px;margin-left:auto}
-.cta-big .arr{font-family:var(--f-mono);font-weight:500}
-@media (max-width:520px){.cta-big .icons{display:none}.cta-big .arr{margin-left:auto}}
-.vars{display:grid;gap:12px}
-.vars .vl{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-.vars p{margin:0;font-size:.92rem;line-height:1.5}
-.vars ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
-.vars li{font-family:var(--f-mono);font-size:.74rem;background:color-mix(in srgb,var(--area) 30%,var(--surface));padding:5px 9px;border-radius:6px}
-.calc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:14px}
-.calc .soon{margin:0;font-size:.85rem;color:var(--muted);padding-top:12px;border-top:1px solid var(--line)}
-.inside.solo{grid-template-columns:minmax(0,1fr)}.inside.solo > div{max-width:820px}
-.chooser{background:#0A0A0A;color:#F2F2F0;border-radius:20px;padding:28px;display:grid;gap:18px;position:relative;overflow:hidden;border:1px solid var(--line)}
-.chooser::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--tri)}
-.chooser h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;color:#fff}
-.chooser > p{margin:0;font-size:.88rem;color:#A3A3A0}
-.tiles{display:grid;gap:10px}
-.tile{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 14px;border-radius:14px;background:#1A1A1A;border:1.5px solid #2E2E2C;color:#fff;text-decoration:none;transition:border-color .15s,transform .15s}
-.tile:hover{border-color:var(--area);transform:translateX(3px)}
-.tile .tn{display:flex;flex-direction:column;gap:2px;min-width:0}
-.tile .tn b{font-family:var(--f-display);font-size:1.3rem;font-weight:800}
-.tile .tn span{font-size:.88rem;color:#A3A3A0}
-.tile .go i{font-style:normal}.tile .go{margin-left:auto;font-weight:700;font-size:.88rem;background:var(--area);color:#0B2530;padding:9px 14px;border-radius:99px;white-space:nowrap}
-@media (max-width:480px){.hero-txt .chooser{padding:20px 16px}.hero-txt .tile{gap:10px;padding:8px 10px 8px 8px}.tile .tn b{font-size:1rem!important;white-space:nowrap}.tile .tn span{font-size:.8rem}.tile .go{font-size:.78rem;padding:8px 10px}.tile .go i{display:none}.tile svg{width:40px;height:40px;flex:none}}
-.model{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:center}
-@media (max-width:900px){.model{grid-template-columns:minmax(0,1fr)}}
-.muted-p{color:var(--muted);margin:0 0 24px;max-width:34em}
-.mtabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
-.mtabs button{display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:5px 14px 5px 5px;font-weight:700;font-size:.9rem;cursor:pointer}
-.mtabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.toolbox{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:18px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:18px 22px;text-decoration:none;transition:border-color .15s,transform .15s}
-.toolbox:hover{border-color:#6CCFF6;transform:translateY(-2px)}
-.tb-ic{width:52px;height:52px;border-radius:14px;background:#0E4D64;display:grid;place-items:center}
-.tb-ic svg{width:26px;height:26px;fill:none;stroke:#6CCFF6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tb-tx{display:flex;flex-direction:column;gap:2px;min-width:0}
-.tb-tx small{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.tb-tx b{font-family:var(--f-display);font-size:1.25rem}
-.tb-tx span{color:var(--muted);font-size:.93rem}
-.tb-go{background:#6CCFF6;color:#0B2530;font-weight:700;padding:11px 16px;border-radius:12px;white-space:nowrap}
-.toolbox.mini{grid-template-columns:44px minmax(0,1fr);padding:14px 16px;gap:12px}
-.toolbox.mini .tb-ic{width:44px;height:44px}.toolbox.mini .tb-go{display:none}.toolbox.mini .tb-tx b{font-size:1.02rem}
-@media (max-width:620px){.toolbox{grid-template-columns:44px minmax(0,1fr)}.toolbox .tb-go{grid-column:1/-1;text-align:center}.tb-ic{width:44px;height:44px}}
-.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-.skip{position:absolute;left:max(12px,env(safe-area-inset-left,0px));top:-80px;z-index:1000;background:#0A0A0A;color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
-.skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
-main:focus{outline:none}
-[tabindex="-1"]:focus{outline:none}
-.crumbs a{position:relative}.crumbs a::after{content:"";position:absolute;left:0;right:0;top:50%;height:24px;transform:translateY(-50%)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip.area{background:color-mix(in srgb,var(--area) 30%,var(--surface))}}
-:root[data-theme="dark"] .chip.area{background:color-mix(in srgb,var(--area) 30%,var(--surface))}
-/* hero com cards */
-.hero-grid{align-items:center}
-.hero-txt{display:grid;gap:0;min-width:0}
-.hero-txt .chooser{margin-top:6px;padding:22px}
-.hero-txt .chooser h2{font-size:clamp(1.4rem,2.4vw,1.8rem)}
-.hero-txt .tile{padding:10px 14px 10px 10px}
-.hero-txt .tile .tn b{font-size:1.1rem}
-.fan{margin:0;display:grid;gap:14px;min-width:0}
-.fan-stage{position:relative;width:100%;max-width:600px;margin:0 auto;aspect-ratio:1/.92}
-.fcard{position:absolute;top:6%;width:41%;border-radius:18px;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;box-shadow:0 30px 60px -28px rgba(0,0,0,.55)}
-.fcard img{display:block;width:100%;height:auto;border-radius:18px}
-.fcard.f0{left:1%;transform:rotate(-9deg) translateY(4%);z-index:1}
-.fcard.f1{left:29.5%;top:0;transform:rotate(-1deg);z-index:3}
-.fcard.f2{left:59%;transform:rotate(8deg) translateY(5%);z-index:2}
-.fan-stage:hover .fcard.f0{transform:rotate(-12deg) translate(-6%,2%)}
-.fan-stage:hover .fcard.f2{transform:rotate(11deg) translate(6%,3%)}
-.fcard:hover,.fcard:focus-visible{z-index:4;transform:rotate(0) translateY(-3%) scale(1.04)!important}
-.fcard:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
-.fan figcaption{text-align:center;font-size:.86rem;color:var(--muted)}
-@media (max-width:940px){.hero-grid{gap:0}.hero-txt{display:contents}.hero-txt .eyebrow{order:1}.hero-txt h1{order:2}.hero-txt .lede{order:3;margin-bottom:8px}.fan{order:4;margin:4px 0 26px}.hero-txt .chooser{order:5}.fan-stage{max-width:480px}}
-@media (prefers-reduced-motion: reduce){.fcard{transition:none}.fan-stage:hover .fcard.f0,.fan-stage:hover .fcard.f2{transform:none}}
-/* mobile: escolher com botão, racket pré-selecionado, apps em carrossel */
-.tile.sel{border-color:var(--area);background:color-mix(in srgb,var(--area) 12%,#1A1A1A)}
-.adots{display:none}
-@media (max-width:940px){
-  #areas .areas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-16px;padding:4px 16px 8px;scroll-padding-inline:16px;scrollbar-width:none;overscroll-behavior-x:contain}
-  #areas .areas::-webkit-scrollbar{display:none}
-  #areas .areas>.area-card{flex:0 0 86%;scroll-snap-align:center}
-  #areas .areas:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-  .adots{display:flex;justify-content:flex-start;gap:8px;margin:-8px 0 14px;flex-wrap:wrap}
-  .adot{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 12px 6px 6px;border-radius:99px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:700 .82rem var(--f-body);cursor:pointer}
-  .adot svg{border-radius:6px}
-  .adot[aria-pressed="true"]{border-color:var(--ink);background:color-mix(in srgb,var(--area) 35%,var(--surface))}
-  .adot:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-}
-@media (max-width:480px){.adot span{display:none}.adot{padding:6px}}
-/* par de cards nos apps */
-.pair{position:relative;display:flex;justify-content:center;align-items:flex-start;padding:26px 20px 46px;background:color-mix(in srgb,var(--area) 22%,var(--surface));text-decoration:none;overflow:hidden}
-.pair img{width:44%;height:auto;border-radius:14px;box-shadow:0 20px 40px -22px rgba(0,0,0,.6);transition:transform .3s}
-.pair .p1{transform:rotate(-5deg);margin-right:-6%;z-index:1}
-.pair .p2{transform:rotate(4deg) translateY(8px);z-index:2}
-.pair:hover .p1{transform:rotate(-7deg) translateX(-4%)}
-.pair:hover .p2{transform:rotate(6deg) translate(4%,4px)}
-.pair-cap{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:.84rem;font-weight:700;color:var(--ink)}
-.pair:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
-@media (prefers-reduced-motion: reduce){.pair img{transition:none}.pair:hover .p1,.pair:hover .p2{transform:none}}
-/* Area cards */
-.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media (max-width:940px){.areas{grid-template-columns:1fr}}
-.area-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
-.area-card .banner{background:#0E4D64;padding:26px 22px;display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff}
-.area-card .banner .wordmark{font-size:1.5rem;color:#fff}
-.area-card .banner .wordmark em{font-style:normal;color:var(--area)}
-.area-card .banner small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#B9DCE3;margin-top:6px}
-.area-card .body{padding:22px;display:flex;flex-direction:column;gap:14px;flex:1}
-.area-card .q{font-size:1.05rem;margin:0}
-.area-card ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
-.area-card li{font-family:var(--f-mono);font-size:.74rem;background:var(--sunk);padding:5px 9px;border-radius:6px}
-.area-card .meta{font-size:.86rem;color:var(--muted)}
-.area-card .row{margin-top:auto}
-.area-card .btn{flex:1 1 auto;padding:12px 14px}
-
-/* Concept band */
-.band{background:#0A0A0A;color:#F2F2F0;border-block:1px solid var(--line)}
-.band .eyebrow{color:#9E9E9A}
-.band .shead p{color:#BDBDB8}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid transparent;border-image:var(--tri) 1}
-@media (max-width:820px){.steps{grid-template-columns:1fr}}
-.step{padding:24px 24px 24px 0;border-right:1px solid rgba(255,255,255,.2)}
-.step:last-child{border-right:0}
-.step + .step{padding-left:24px}
-@media (max-width:820px){.step,.step + .step{padding:20px 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.2)}}
-.step .n{font-family:var(--f-mono);color:#9E9E9A;font-size:.8rem}
-.step h3{font-size:1.3rem;margin:10px 0 6px;font-weight:700}
-.step p{margin:0;color:#BDBDB8}
-.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:36px}
-@media (max-width:700px){.principles{grid-template-columns:1fr}}
-.principle{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,.07);padding:16px 18px;border-radius:12px}
-.principle .ck{width:24px;height:24px;border-radius:50%;background:#FFFFFF;color:#0A0A0A;display:grid;place-items:center;font-weight:800;font-size:.8rem}
-.principle b{display:block;margin-bottom:2px}
-.principle span{color:#BDBDB8;font-size:.95rem}
-
-/* Roadmap */
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media (max-width:860px){.roadmap{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:440px){.roadmap{grid-template-columns:1fr}}
-.rm{border:1.5px dashed var(--line);border-radius:12px;padding:16px}
-.rm .eyebrow{font-size:11px}
-.rm b{display:block;font-family:var(--f-display);font-size:1.1rem;margin:6px 0 4px}
-.rm p{margin:0;color:var(--muted);font-size:.9rem}
-
-/* Article cards */
-.grid-a{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media (max-width:980px){.grid-a{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:620px){.grid-a{grid-template-columns:1fr}}
-.acard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s;min-width:0}
-.acard:hover{border-color:var(--ink);transform:translateY(-2px)}
-.acard .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.chip{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 8px;border-radius:6px;background:var(--sunk);color:var(--muted)}
-.chip.area{background:color-mix(in srgb,var(--area) 45%,var(--surface));color:var(--ink)}
-.acard h3{font-size:1.18rem;font-weight:700;line-height:1.2}
-.acard p{margin:0;color:var(--muted);font-size:.95rem}
-.acard .foot{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted)}
-
-/* Hub */
-.hub-hero{padding-block:48px 52px;border-bottom:1px solid var(--line)}
-.hub-hero .grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center}
-@media (max-width:900px){.hub-hero .grid{grid-template-columns:1fr;gap:32px}}
-.hub-hero .lockup .wordmark{font-size:1.35rem}
-.hub-hero h1{font-size:clamp(2.3rem,5vw,3.8rem);font-weight:800;margin:22px 0 16px}
-.hub-hero h1 .hl{background:linear-gradient(transparent 60%,var(--area) 60%);padding:0 .06em}
-.hub-hero p.lede{color:var(--muted);font-size:1.1rem;max-width:32em;margin:0 0 24px}
-.facts{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
-.facts div b{display:block;font-family:var(--f-mono);font-size:1.4rem;font-variant-numeric:tabular-nums}
-.facts div span{font-size:.84rem;color:var(--muted)}
-.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 66px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-.subnav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none;align-items:center}
-.subnav button{flex:none;background:transparent;border:0;border-radius:999px;padding:8px 14px;font-weight:600;font-size:.9rem;color:var(--muted);cursor:pointer}
-.subnav button:hover{background:var(--sunk);color:var(--ink)}
-.subnav .go{flex:none;margin-left:auto;background:var(--area);color:var(--ink-on-color);font-weight:700;text-decoration:none;padding:8px 14px;border-radius:999px;font-size:.9rem}
-.inside{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
-@media (max-width:900px){.inside{grid-template-columns:1fr}}
-.inside ol{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
-.inside li{display:grid;grid-template-columns:32px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
-.inside li .k{width:26px;height:26px;border-radius:50%;background:var(--area);color:var(--ink-on-color);display:grid;place-items:center;font-size:.78rem;font-weight:800}
-.inside li b{display:block}
-.inside li span{color:var(--muted);font-size:.95rem}
-.inside .price{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
-.inside .price div{border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;flex:1 1 140px}
-.inside .price b{display:block;font-family:var(--f-mono);font-size:1.3rem}
-.inside .price span{font-size:.85rem;color:var(--muted)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;align-items:center}
-.filters button{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:600;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:7px}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.filters .count{margin-left:auto;font-size:.84rem;color:var(--muted)}
-.search{flex:1 1 260px;min-width:0;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:0 14px}
-.search input{border:0;background:transparent;outline:0;padding:10px 0;width:100%;font:inherit;color:var(--ink)}
-.search:focus-within{border-color:var(--ink)}
-.glossary{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
-@media (max-width:860px){.glossary{grid-template-columns:1fr}}
-.glossary div{padding:18px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.glossary b{font-family:var(--f-display);font-size:1.05rem;display:block;margin-bottom:4px}
-.glossary span{color:var(--muted);font-size:.93rem}
-.empty{padding:40px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:var(--r)}
-
-/* Article */
-.article{padding-block:36px 72px}
-.crumbs{display:flex;gap:8px;flex-wrap:wrap;font-size:.88rem;color:var(--muted);margin-bottom:22px;align-items:center}
-.crumbs a{text-decoration:none}
-.crumbs a:hover{color:var(--ink);text-decoration:underline}
-.art-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start}
-@media (max-width:980px){.art-grid{grid-template-columns:1fr;gap:36px}}
-.art-head .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
-.art-head h1{font-size:clamp(2rem,4.2vw,3rem);font-weight:800;max-width:20em}
-.art-head .dek{font-size:1.2rem;color:var(--muted);margin:16px 0 0;max-width:34em}
-.art-head .by{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
-.prose{max-width:68ch;margin-top:32px;font-size:1.08rem;line-height:1.75}
-.prose p{margin:0 0 1.15em}
-.prose h2{font-size:1.5rem;font-weight:700;margin:1.8em 0 .55em}
-.prose ul{margin:0 0 1.3em;padding-left:1.2em}
-.prose li{margin-bottom:.45em}
-.prose li::marker{color:var(--muted)}
-.prose .tip{background:color-mix(in srgb,var(--area) 28%,var(--surface));border-radius:12px;padding:16px 18px;margin:1.6em 0;font-size:1rem;display:grid;grid-template-columns:auto 1fr;gap:12px}
-.prose .tip b{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;padding-top:4px}
-.prose blockquote{margin:1.8em 0;padding:4px 0 4px 20px;border-left:4px solid var(--area);font-family:var(--f-display);font-size:1.35rem;line-height:1.3;font-weight:700}
-.spec{margin:1.6em 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
-.spec .cap{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:10px 16px;background:var(--sunk);color:var(--muted)}
-.spec .tw{overflow-x:auto}
-.spec table{width:100%;border-collapse:collapse;font-size:.95rem}
-.spec td{padding:10px 16px;border-top:1px solid var(--line);vertical-align:top}
-.spec td:last-child{font-family:var(--f-mono);font-size:.86rem;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 86px);display:grid;gap:16px}
-@media (max-width:980px){.side{position:static}}
-.cta-box{background:#0E4D64;color:#fff;border-radius:var(--r);overflow:hidden}
-.cta-box .in{padding:20px;display:grid;gap:12px}
-.cta-box .wordmark{font-size:1.1rem;color:#fff}
-.cta-box .wordmark em{font-style:normal;color:var(--area)}
-.cta-box p{margin:0;color:#C7E2E7;font-size:.95rem}
-.cta-box .thumb{display:block;height:150px;overflow:hidden;border:0;padding:0;width:100%;cursor:zoom-in;background:#EEF4F5;position:relative}
-.cta-box .thumb img{display:block;width:100%}
-.cta-box .thumb::after{content:"Ver relatório de exemplo";position:absolute;left:10px;bottom:10px;font-size:.75rem;font-weight:700;background:#0E4D64;color:#fff;padding:5px 9px;border-radius:99px}
-.toc{border:1px solid var(--line);border-radius:var(--r);padding:18px;background:var(--surface)}
-.toc ol{margin:8px 0 0;padding-left:1.2em;font-size:.93rem;color:var(--muted)}
-.toc li{margin-bottom:6px}
-.toc button{background:none;border:0;padding:0;text-align:left;cursor:pointer;color:inherit}
-.toc button:hover{color:var(--ink);text-decoration:underline}
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;max-width:68ch}
-@media (max-width:560px){.pn{grid-template-columns:1fr}}
-.pn a{border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;background:var(--surface);min-width:0}
-.pn a:hover{border-color:var(--ink)}
-.pn small{color:var(--muted);display:block;margin-bottom:4px;font-size:.8rem}
-.pn b{font-weight:600}
-.pn a.next{text-align:right}
-
-/* Lightbox */
-[hidden]{display:none!important}
-.lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.86);display:flex;justify-content:center;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 60px) max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
-.lb img{width:100%;max-width:860px;height:auto;border-radius:14px;align-self:flex-start;background:#EEF4F5}
-.lb .close{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(16px,env(safe-area-inset-right,0px));background:#fff;color:#0B2530;border:0;border-radius:99px;padding:10px 16px;font-weight:700;cursor:pointer}
-.lb .lbcap{position:fixed;top:calc(env(safe-area-inset-top,0px) + 20px);left:max(16px,env(safe-area-inset-left,0px));color:#fff;font-weight:700;font-size:.9rem}
-
-/* Footer */
-footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:.92rem}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
-footer .lockup{color:var(--ink)}
-footer .f-links{display:flex;gap:18px;flex-wrap:wrap}
-footer a{text-decoration:none}
-footer a:hover{color:var(--ink)}
-.disc{font-size:.84rem;max-width:44em;margin-top:12px}
-footer .f-base{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.75rem}
-.btw{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
-.btw:hover{color:var(--ink)}
-.btw-sym{width:30px;height:30px;flex:none}
-.btw-txt{display:flex;flex-direction:column;gap:2px;line-height:1.1}
-.btw-txt small{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.btw-txt b{font-family:"Sora",system-ui,sans-serif;font-weight:600;font-size:15px;letter-spacing:-.0375em}
-</style>
+<title>SPORT DNA | Escolha seu equipamento esportivo</title>
+<meta name="description" content="Testes e guias para escolher prancha de surf, raquete de tênis e tênis de corrida conforme seu corpo, nível e estilo. Relatórios de R$ 9,99 a R$ 19,99.">
+<link rel="canonical" href="https://sportdna.com.br/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="SPORT DNA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SPORT DNA | Escolha seu equipamento esportivo">
+<meta property="og:description" content="Testes e guias para escolher prancha de surf, raquete de tênis e tênis de corrida conforme seu corpo, nível e estilo. Relatórios de R$ 9,99 a R$ 19,99.">
+<meta property="og:url" content="https://sportdna.com.br/">
+<meta property="og:image" content="https://sportdna.com.br/assets/reports/board.webp">
+<meta property="og:image:alt" content="Exemplo de relatório SPORT DNA">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sportdna.com.br/#organization","name":"SPORT DNA","url":"https://sportdna.com.br/"},{"@type":"WebSite","@id":"https://sportdna.com.br/#website","name":"SPORT DNA","url":"https://sportdna.com.br/","inLanguage":"pt-BR"},{"@type":"WebPage","@id":"https://sportdna.com.br/#webpage","url":"https://sportdna.com.br/","name":"SPORT DNA | Escolha seu equipamento esportivo","description":"Testes e guias para escolher prancha de surf, raquete de tênis e tênis de corrida conforme seu corpo, nível e estilo. Relatórios de R$ 9,99 a R$ 19,99.","inLanguage":"pt-BR","isPartOf":{"@id":"https://sportdna.com.br/#website"}}]}</script>
 </head>
 <body>
 <a class="skip" href="#app">Pular para o conteúdo</a>
 <header class="top">
   <div class="wrap">
-    <a class="lockup" href="#inicio" data-go="inicio" aria-label="SPORT DNA, início" id="brandHome"></a>
+    <a class="lockup" href="./" data-go="inicio" aria-label="SPORT DNA, início" id="brandHome"><svg class="ico" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0A0A0A"/><circle cx="32" cy="32" r="21" fill="none" stroke="#DDF247" stroke-width="4.5" stroke-dasharray="40.7822971502571 131.94689145077132" stroke-dashoffset="0" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="21" fill="none" stroke="#6CCFF6" stroke-width="4.5" stroke-dasharray="40.7822971502571 131.94689145077132" stroke-dashoffset="-43.982297150257104" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="21" fill="none" stroke="#FF8A3D" stroke-width="4.5" stroke-dasharray="40.7822971502571 131.94689145077132" stroke-dashoffset="-87.96459430051421" transform="rotate(-90 32 32)"/><text x="32" y="43" text-anchor="middle" font-family="Syne, Archivo, sans-serif" font-weight="800" font-size="29" fill="#FFFFFF">S</text></svg><span class="wm"><span class="wordmark">SPORT<span class="dna">DNA</span></span></span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Principal"></nav>
+    <nav class="nav" id="nav" aria-label="Principal"><a href="./guias/racket/" data-go="racket"><svg class="ico" width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>RACKET DNA</a><a href="./guias/surf/" data-go="board"><svg class="ico" width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg>SURF DNA</a><a href="./guias/run/" data-go="tenis"><svg class="ico" width="24" height="24" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg>RUN DNA</a><span class="sep" aria-hidden="true"></span><a href="./blog/" data-go="blog">Blog</a><a href="./#conceito" data-go="conceito">Como funciona</a></nav>
   </div>
 </header>
 
-<main id="app" tabindex="-1"></main>
+<main id="app" tabindex="-1">
+  <section class="hero"><div class="wrap hero-grid">
+    <div class="hero-txt">
+      <div class="eyebrow">SPORT DNA · Find your DNA</div>
+      <h1>O equipamento certo muda o seu <span class="hl">jogo</span>.</h1>
+      <p class="lede">Você responde algumas perguntas sobre seu corpo, seu nível e seu estilo. A gente cruza com a ficha técnica de cada equipamento e entrega um relatório que explica o porquê de cada escolha.</p>
+      <div class="chooser">
+        <h2>Escolher meu esporte</h2>
+        <div class="tiles"><a class="tile a-racket sel" href="./racket/"><svg class="ico" width="52" height="52" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg><span class="tn"><b>Racket DNA</b><span>Raquete de tênis</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a><a class="tile a-board" href="./surf/"><svg class="ico" width="52" height="52" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><span class="tn"><b>Surf DNA</b><span>Prancha de surf</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a><a class="tile a-tenis" href="./run/"><svg class="ico" width="52" height="52" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span class="tn"><b>Run DNA</b><span>Tênis de corrida</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a></div>
+        <p>Teste grátis e sem cadastro.</p>
+      </div>
+    </div>
+    <figure class="fan">
+      <div class="fan-stage"><a class="fcard f0 a-racket" href="./racket/" aria-label="Fazer o teste do RACKET DNA"><img class="" src="./assets/cards/racket-produto.webp" alt="Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 95%, escolhida entre 58 raquetes" width="720" height="1280" loading="lazy" decoding="async"></a><a class="fcard f1 a-board" href="./surf/" aria-label="Fazer o teste do SURF DNA"><img class="" src="./assets/cards/board-produto.webp" alt="Card da prancha do SURF DNA: Mid-length egg, 6 pés e 9 polegadas por 19 3/4 polegadas, 37,6 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha" width="720" height="1280" loading="lazy" decoding="async"></a><a class="fcard f2 a-tenis" href="./run/" aria-label="Fazer o teste do RUN DNA"><img class="" src="./assets/cards/tenis-produto.webp" alt="Card do tênis do RUN DNA: Mizuno Wave Sky 9, 286 g, 43,2 mm de espuma, drop de 4,4 mm, 750 km de durabilidade, DNA 96%, escolhido entre 212 tênis" width="720" height="1280" loading="lazy" decoding="async"></a></div>
+      <figcaption>Exemplos de resultado. O seu sai do teste, pronto para compartilhar.</figcaption>
+    </figure>
+  </div></section>
+
+  <section class="band" id="conceito"><div class="wrap">
+    <div class="shead"><div><div class="eyebrow">Como funciona</div><h2>Ficha técnica é confusa. A escolha não precisa ser.</h2></div><p>Equipamento caro, erro caro. A maioria compra pela marca, pelo ídolo ou pelo vendedor. O SPORT DNA traduz especificação em sensação e mostra o que muda no seu jogo.</p></div>
+    <div class="steps">
+      <div class="step"><span class="n">PASSO 1</span><h3>Responda o teste</h3><p>Corpo, nível, frequência, histórico de dor e o que você sente hoje no equipamento atual. Sem cadastro.</p></div>
+      <div class="step"><span class="n">PASSO 2</span><h3>Veja a análise grátis</h3><p>Seu perfil, as especificações ideais e o grau de confiança do resultado, antes de pagar qualquer coisa.</p></div>
+      <div class="step"><span class="n">PASSO 3</span><h3>Desbloqueie o relatório</h3><p>Os finalistas com marca e modelo, comparados com o que você já tem, num relatório como o exemplo abaixo.</p></div>
+    </div>
+    <div class="principles">
+      <div class="principle"><span class="ck">✓</span><div><b>Análise antes de pagar</b><span>Você vê o raciocínio inteiro. Só os finalistas ficam ocultos.</span></div></div>
+      <div class="principle"><span class="ck">✓</span><div><b>Nenhuma marca no comando</b><span>Ninguém paga para aparecer no resultado. Mesmas respostas, mesmo resultado.</span></div></div>
+      <div class="principle"><span class="ck">✓</span><div><b>Afiliado só depois, e declarado</b><span>Links de compra entram após a recomendação e não alteram a conta.</span></div></div>
+      <div class="principle"><span class="ck">✓</span><div><b>Critérios explicados</b><span>Mostramos os motivos e os limites de cada recomendação.</span></div></div>
+    </div>
+  </div></section>  <section id="areas"><div class="wrap">
+    <div class="shead"><div><div class="eyebrow">Três apps, um método</div><h2>Comece pelo seu esporte.</h2></div><p>Cada app tem o próprio teste, um relatório com a análise completa e um blog com guias.</p></div>
+    <div class="adots" role="group" aria-label="Escolher app no carrossel"><button type="button" class="adot a-racket" data-slide="0" aria-pressed="true" aria-label="RACKET DNA"><svg class="ico" width="20" height="20" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg><span>RACKET DNA</span></button><button type="button" class="adot a-board" data-slide="1" aria-pressed="false" aria-label="SURF DNA"><svg class="ico" width="20" height="20" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><span>SURF DNA</span></button><button type="button" class="adot a-tenis" data-slide="2" aria-pressed="false" aria-label="RUN DNA"><svg class="ico" width="20" height="20" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span>RUN DNA</span></button></div>
+    <div class="areas" id="areasTrack" role="region" aria-roledescription="carrossel" aria-label="Apps do SPORT DNA"><article class="area-card a-racket">
+      <a class="banner" href="./guias/racket/" data-go="racket"><svg class="ico" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg><div><span class="wordmark">Racket <em>DNA</em></span><small>Raquete de tênis · by SPORT DNA</small></div></a>
+      <a class="pair" href="./racket/" aria-label="Fazer o teste do RACKET DNA"><img class="p1" src="./assets/cards/racket-perfil.webp" alt="Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 7,6, DNA 95%" width="720" height="1280" loading="lazy" decoding="async"><img class="p2" src="./assets/cards/racket-produto.webp" alt="Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 95%, escolhida entre 58 raquetes" width="720" height="1280" loading="lazy" decoding="async"><span class="pair-cap">Seu DNA de jogo e a sua raquete</span></a>
+      <div class="body"><p class="q">Qual raquete combina com o seu braço, o seu nível e o jeito que você bate na bola?</p><div class="vars"><div><span class="vl">Você informa</span><p>Idade e força · Dor no braço · Medida da mão · Nível e frequência · Estilo, topspin e swing · Onde você erra · Raquete atual e sensação · Orçamento e corda</p></div><div><span class="vl">A gente calcula</span><ul><li>Peso</li><li>Balanço</li><li>Swingweight</li><li>Rigidez (RA)</li><li>Cabeça</li><li>Padrão</li><li>Corda e tensão</li><li>Grip</li></ul></div></div>
+      <span class="meta">58 raquetes no catálogo · 15 guias</span>
+      <div class="row"><a class="btn btn-area" href="./racket/">Fazer o teste <span class="arr">→</span></a><a class="btn btn-ghost" href="./guias/racket/" data-go="racket">Ver o app</a></div></div>
+    </article><article class="area-card a-board">
+      <a class="banner" href="./guias/surf/" data-go="board"><svg class="ico" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><div><span class="wordmark">Surf <em>DNA</em></span><small>Prancha de surf · by SPORT DNA</small></div></a>
+      <a class="pair" href="./surf/" aria-label="Fazer o teste do SURF DNA"><img class="p1" src="./assets/cards/board-perfil.webp" alt="Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%" width="720" height="1280" loading="lazy" decoding="async"><img class="p2" src="./assets/cards/board-produto.webp" alt="Card da prancha do SURF DNA: Mid-length egg, 6 pés e 9 polegadas por 19 3/4 polegadas, 37,6 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha" width="720" height="1280" loading="lazy" decoding="async"><span class="pair-cap">Seu DNA de surf e a sua prancha</span></a>
+      <div class="body"><p class="q">Qual prancha faz você remar, entrar na onda e evoluir no mar onde você surfa?</p><div class="vars"><div><span class="vl">Você informa</span><p>Peso, altura e idade · Tempo e frequência de surf · O que já faz na onda · Estilo · Flutuação preferida · Tamanho e força da onda · Papel no quiver · Prancha atual</p></div><div><span class="vl">A gente calcula</span><ul><li>Tipo de shape</li><li>Comprimento</li><li>Largura e espessura</li><li>Litragem</li><li>Rabeta e bordas</li><li>Fundo e rocker</li><li>Quilhas</li><li>Construção</li></ul></div></div>
+      <span class="meta">13 tipos de prancha · 17 guias</span>
+      <div class="row"><a class="btn btn-area" href="./surf/">Fazer o teste <span class="arr">→</span></a><a class="btn btn-ghost" href="./guias/surf/" data-go="board">Ver o app</a></div></div>
+    </article><article class="area-card a-tenis">
+      <a class="banner" href="./guias/run/" data-go="tenis"><svg class="ico" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><div><span class="wordmark">Run <em>DNA</em></span><small>Tênis de corrida · by SPORT DNA</small></div></a>
+      <a class="pair" href="./run/" aria-label="Fazer o teste do RUN DNA"><img class="p1" src="./assets/cards/tenis-perfil.webp" alt="Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%" width="720" height="1280" loading="lazy" decoding="async"><img class="p2" src="./assets/cards/tenis-produto.webp" alt="Card do tênis do RUN DNA: Mizuno Wave Sky 9, 286 g, 43,2 mm de espuma, drop de 4,4 mm, 750 km de durabilidade, DNA 96%, escolhido entre 212 tênis" width="720" height="1280" loading="lazy" decoding="async"><span class="pair-cap">Seu perfil de corredor e o seu tênis</span></a>
+      <div class="body"><p class="q">Qual tênis de corrida acompanha o seu corpo, o seu ritmo e o seu objetivo?</p><div class="vars"><div><span class="vl">Você informa</span><p>Peso e largura do pé · Dor ao correr · Km por semana e ritmo · Terreno · Objetivo e prova · Treino de tiro · Sensação preferida · Orçamento</p></div><div><span class="vl">A gente calcula</span><ul><li>Categoria</li><li>Altura de espuma</li><li>Drop</li><li>Peso</li><li>Durabilidade</li><li>Custo por km</li><li>Quando trocar</li><li>Segundo par</li></ul></div></div>
+      <span class="meta">212 tênis de 13 marcas · 15 guias</span>
+      <div class="row"><a class="btn btn-area" href="./run/">Fazer o teste <span class="arr">→</span></a><a class="btn btn-ghost" href="./guias/run/" data-go="tenis">Ver o app</a></div></div>
+    </article></div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap a-board"><a class="toolbox" href="./ferramentas/litragem/index.html"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a></div></section>
+  <section id="modelo" style="padding-top:0"><div class="wrap" id="modelBox"><div class="model a-racket">
+    <div>
+      <div class="eyebrow">Modelo de relatório</div>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem);margin:8px 0 16px">O que você recebe no final.</h2>
+      <div class="mtabs" role="group" aria-label="Escolha o app"><button type="button" data-hero="racket" aria-pressed="true"><svg class="ico" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>Racket</button><button type="button" data-hero="board" aria-pressed="false"><svg class="ico" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg>Surf</button><button type="button" data-hero="tenis" aria-pressed="false"><svg class="ico" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg>Run</button></div>
+      <p class="muted-p">Relatório real do RACKET DNA, gerado com um perfil de exemplo: a raquete ideal com DNA Score, o setup em seis decisões, a raquete em 3D, o perfil de jogo no hexágono e a comparação com a sua raquete atual.</p>
+      <a class="btn btn-area" href="./racket/">Fazer o teste do RACKET DNA <span class="arr">→</span></a>
+    </div>
+    <div class="report a-racket"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/racket/relatorio</span><span class="pill">RACKET DNA</span></div>
+  <button type="button" class="shot" data-zoom="racket" style="--h:560px" aria-label="Ampliar relatório de exemplo do RACKET DNA" aria-describedby="rd-racket-560"><img src="./assets/reports/racket.webp" alt="" width="1000" height="1943" loading="lazy" decoding="async"></button>
+  <span class="zoom" aria-hidden="true">Ampliar ↗</span><p class="sr-only" id="rd-racket-560">Exemplo de relatório do RACKET DNA: raquete recomendada ProKennex Black Ace 300, DNA Score de 95%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip L3, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 300 g sem corda, balanço de 321 mm, swingweight 324 e rigidez de 55 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.</p></div>
+  </div></div></section>
+
+  <section><div class="wrap">
+    <div class="shead"><div><div class="eyebrow">Blog · 47 guias</div><h2>Antes de comprar, entenda.</h2></div><a class="btn btn-ghost" href="./blog/" data-go="blog">Ver todos os guias <span class="arr">→</span></a></div>
+    <div class="grid-a"><a class="acard a-racket" href="./blog/como-escolher-sua-primeira-raquete-de-tenis/" data-go="a-raquete-01">
+    <div class="meta"><svg class="ico" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg><span class="chip area">Racket</span><span class="chip">Como escolher</span></div>
+    <h3>Como escolher sua primeira raquete de tênis</h3><p>Os quatro números que importam na primeira compra e como encontrar uma raquete que perdoa erros enquanto você aprende o golpe.</p>
+    <div class="foot"><span>Iniciante</span><span>3 min de leitura</span></div></a><a class="acard a-racket" href="./blog/peso-e-balanco-o-que-significa-head-light-head-heavy-e-swingweight/" data-go="a-raquete-02">
+    <div class="meta"><svg class="ico" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg><span class="chip area">Racket</span><span class="chip">Como escolher</span></div>
+    <h3>Peso e balanço: o que significa head light, head heavy e swingweight</h3><p>Entenda como a distribuição de massa muda a sensação da raquete e escolha a combinação que combina com o seu golpe.</p>
+    <div class="foot"><span>Intermediário</span><span>3 min de leitura</span></div></a><a class="acard a-board" href="./blog/como-escolher-sua-primeira-prancha-de-surf/" data-go="a-prancha-01">
+    <div class="meta"><svg class="ico" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><span class="chip area">Surf</span><span class="chip">Como escolher</span></div>
+    <h3>Como escolher sua primeira prancha de surf</h3><p>Soft, funboard, longboard ou evolution: entenda qual prancha ajuda você a remar, ficar de pé e pegar mais ondas desde o começo.</p>
+    <div class="foot"><span>Iniciante</span><span>3 min de leitura</span></div></a><a class="acard a-board" href="./blog/litragem-como-entender-o-volume-da-prancha/" data-go="a-prancha-02">
+    <div class="meta"><svg class="ico" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><span class="chip area">Surf</span><span class="chip">Como escolher</span></div>
+    <h3>Litragem: como entender o volume da prancha</h3><p>O volume em litros resume quanto a prancha flutua. Entenda a relação entre litragem, peso e nível, os limites das tabelas e como testar uma faixa de referência.</p>
+    <div class="foot"><span>Todos</span><span>3 min de leitura</span></div></a><a class="acard a-tenis" href="./blog/como-escolher-seu-primeiro-tenis-de-corrida/" data-go="a-tenis-01">
+    <div class="meta"><svg class="ico" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span class="chip area">Run</span><span class="chip">Como escolher</span></div>
+    <h3>Como escolher seu primeiro tênis de corrida</h3><p>Os critérios que realmente importam na primeira compra: conforto, encaixe, amortecimento adequado e um modelo versátil para treinar sem complicação.</p>
+    <div class="foot"><span>Iniciante</span><span>3 min de leitura</span></div></a><a class="acard a-tenis" href="./blog/amortecimento-ou-estabilidade-o-que-a-pisada-diz-e-o-que-nao-diz/" data-go="a-tenis-02">
+    <div class="meta"><svg class="ico" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span class="chip area">Run</span><span class="chip">Como escolher</span></div>
+    <h3>Amortecimento ou estabilidade: o que a pisada diz e o que não diz</h3><p>Por que a velha divisão entre pisada pronada, neutra e supinada perdeu força e como conforto e histórico pessoal guiam melhor a escolha.</p>
+    <div class="foot"><span>Todos</span><span>3 min de leitura</span></div></a></div>
+  </div></section>
+</main>
 <div id="a11yLive" class="sr-only" role="status" aria-live="polite"></div>
 
 <footer>
   <div class="wrap">
     <div>
-      <div class="lockup" id="footBrand"></div>
+      <div class="lockup" id="footBrand"><svg class="ico" width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0A0A0A"/><circle cx="32" cy="32" r="21" fill="none" stroke="#DDF247" stroke-width="4.5" stroke-dasharray="40.7822971502571 131.94689145077132" stroke-dashoffset="0" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="21" fill="none" stroke="#6CCFF6" stroke-width="4.5" stroke-dasharray="40.7822971502571 131.94689145077132" stroke-dashoffset="-43.982297150257104" transform="rotate(-90 32 32)"/><circle cx="32" cy="32" r="21" fill="none" stroke="#FF8A3D" stroke-width="4.5" stroke-dasharray="40.7822971502571 131.94689145077132" stroke-dashoffset="-87.96459430051421" transform="rotate(-90 32 32)"/><text x="32" y="43" text-anchor="middle" font-family="Syne, Archivo, sans-serif" font-weight="800" font-size="29" fill="#FFFFFF">S</text></svg><span class="wm"><span class="wordmark">SPORT<span class="dna">DNA</span></span></span></div>
       <p class="disc">Find your DNA. Ache o seu. Nenhuma marca paga para aparecer no resultado. Conteúdo educativo; em caso de dor ou lesão, procure um profissional de saúde.</p>
     </div>
-    <div class="f-links" id="footLinks"></div>
+    <div class="f-links" id="footLinks"><a href="./guias/racket/" data-go="racket">RACKET DNA</a><a href="./guias/surf/" data-go="board">SURF DNA</a><a href="./guias/run/" data-go="tenis">RUN DNA</a><a href="./blog/" data-go="blog">Blog</a><a href="./ferramentas/litragem/index.html">Calculadora de litragem</a><a href="./privacidade/" data-go="privacidade">Privacidade e afiliados</a></div>
   </div>
   <div class="wrap f-base">
     <span>© 2026 SPORT DNA. Todos os direitos reservados.</span>
@@ -426,431 +152,10 @@ footer .f-base{display:flex;justify-content:space-between;align-items:center;gap
   <img id="lbImg" alt="">
 </div>
 
-<script src="content/raquete.js"></script>
-<script src="content/tenis.js"></script>
-<script src="content/prancha.js"></script>
-<script>
-window.ML_SHOTS = {racket:"assets/reports/racket.webp", board:"assets/reports/board.webp", tenis:"assets/reports/tenis.webp"};
-</script>
-<script>
-(function(){
-const A = (window.ML_ARTICLES||[]).slice();
-const SHOTS = window.ML_SHOTS||{};
-const CATS = {escolher:"Como escolher", importancia:"Por que importa", evolucao:"Evolução", tecnologia:"Tecnologia"};
-
-/* ---------- Logos (identidades oficiais) ---------- */
-/* SPORT DNA: S dentro do D; apps com o equipamento no azul-petróleo */
-const SD = {
-  D:"M6 12 H38 A20 20 0 0 1 58 32 A20 20 0 0 1 38 52 H6 Z",
-  S:`<text x="31" y="46" text-anchor="middle" font-family="Syne, Archivo, sans-serif" font-weight="800" font-size="40" fill="#FFFFFF">S</text>`,
-  racket:c=>`<g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="${c}" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="${c}" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="${c}" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="${c}" stroke-width="4.8" stroke-linecap="round"/></g>`,
-  board:(c,bg)=>`<g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="${c}"/>${bg?`<line x1="32" y1="11" x2="32" y2="48" stroke="${bg}" stroke-width="1.5" stroke-linecap="round"/>`:""}</g>`,
-  tenis:c=>`<g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="${c}"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="${c}"/></g>`
-};
-const ICON = {
-  lab:(s=36)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0A0A0A"/>${["#DDF247","#6CCFF6","#FF8A3D"].map((c,i)=>{const r=21,C=2*Math.PI*r,g=C/3;return `<circle cx="32" cy="32" r="${r}" fill="none" stroke="${c}" stroke-width="4.5" stroke-dasharray="${g-3.2} ${C}" stroke-dashoffset="${-i*g}" transform="rotate(-90 32 32)"/>`}).join("")}<text x="32" y="43" text-anchor="middle" font-family="Syne, Archivo, sans-serif" font-weight="800" font-size="29" fill="#FFFFFF">S</text></svg>`,
-  racket:(s=36)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/>${SD.racket("#DDF247")}</svg>`,
-  board:(s=36)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/>${SD.board("#6CCFF6","#0E4D64")}</svg>`,
-  tenis:(s=36)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/>${SD.tenis("#FF8A3D")}</svg>`
-};
-const MARK = {
-  racket:(s=48)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true">${SD.racket("#DDF247")}</svg>`,
-  board:(s=48)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true">${SD.board("#6CCFF6","#0E4D64")}</svg>`,
-  tenis:(s=48)=>`<svg class="ico" width="${s}" height="${s}" viewBox="0 0 64 64" aria-hidden="true">${SD.tenis("#FF8A3D")}</svg>`
-};
-const labLockup = s => `${ICON.lab(s)}<span class="wm"><span class="wordmark">SPORT<span class="dna">DNA</span></span></span>`;
-
-const AREAS = {
-  racket:{key:"racket", name:"RACKET DNA", w1:"Racket", sport:"Raquete de tênis", cls:"a-racket",
-    q:"Qual raquete combina com o seu braço, o seu nível e o jeito que você bate na bola?",
-    h1:`A raquete certa para o seu jogo e para o seu <span class="hl">braço</span>.`,
-    lede:"Peso, balanço, swingweight, rigidez, cabeça e padrão de cordas. O teste cruza suas respostas com a ficha técnica de cada raquete e mostra a análise inteira antes de você pagar.",
-    quiz:"racket/",
-    facts:[["58","raquetes no catálogo"],["28 a 33","perguntas"],["R$ 19,99","relatório"]],
-    vin:["Idade e força","Dor no braço","Medida da mão","Nível e frequência","Estilo, topspin e swing","Onde você erra","Raquete atual e sensação","Orçamento e corda"],
-    vout:["Peso","Balanço","Swingweight","Rigidez (RA)","Cabeça","Padrão","Corda e tensão","Grip"],
-    inside:[["Raquete ideal com Fit Score","Marca, modelo e as seis especificações que importam."],["Índice Braço Seguro","Rigidez e peso avaliados contra o cotovelo de tenista."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
-    price:[["R$ 19,90","Raquete ideal"],["R$ 34,90","Setup completo"]],
-    gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
-  board:{key:"board", name:"SURF DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
-    q:"Qual prancha faz você remar, entrar na onda e evoluir no mar onde você surfa?",
-    h1:`A prancha certa para o seu surf e para o seu <span class="hl">mar</span>.`,
-    lede:"Tipo, medidas, litragem, rabeta, fundo, rocker e quilhas, calculados pelo seu peso, pelo que você já faz na onda e pelo seu pico. Recomendamos tudo, menos marca e shaper.",
-    quiz:"surf/",
-    facts:[["13","tipos de prancha"],["18 a 23","perguntas"],["R$ 19,99","relatório"]],
-    vin:["Peso, altura e idade","Tempo e frequência de surf","O que já faz na onda","Estilo","Flutuação preferida","Tamanho e força da onda","Papel no quiver","Prancha atual"],
-    vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
-    inside:[["Tipo de prancha com Fit Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
-    price:[["Grátis","Prévia com a litragem"],["R$ 19,99","Relatório completo"]],
-    gloss:[["Litragem","Volume da prancha em litros. Define flutuação e remada."],["Rocker","Curvatura do bico à rabeta. Mais rocker, mais manobra e menos velocidade."],["Rabeta","Formato da traseira. Muda soltura e firmeza na parede."],["Quilhas","Single, twin, thruster ou quad. Cada configuração dá outra linha."],["Stringer","Longarina central de madeira que dá rigidez."],["EPS","Bloco de isopor expandido com epóxi. Mais leve e flutuante que o PU."]]},
-  tenis:{key:"tenis", name:"RUN DNA", w1:"Run", sport:"Tênis de corrida", cls:"a-tenis",
-    q:"Qual tênis de corrida acompanha o seu corpo, o seu ritmo e o seu objetivo?",
-    h1:`O tênis de corrida certo para o seu corpo e o seu <span class="hl">treino</span>.`,
-    lede:"Espuma, drop, altura, forma, durabilidade e custo por km, cruzados com seu peso, seu ritmo e seus km por semana. Sem mito da pisada: neutro por padrão.",
-    quiz:"run/",
-    facts:[["212","tênis de 13 marcas"],["19","perguntas"],["R$ 9,99","relatório"]],
-    vin:["Peso e largura do pé","Dor ao correr","Km por semana e ritmo","Terreno","Objetivo e prova","Treino de tiro","Sensação preferida","Orçamento"],
-    vout:["Categoria","Altura de espuma","Drop","Peso","Durabilidade","Custo por km","Quando trocar","Segundo par"],
-    inside:[["Tênis ideal com Fit Score","Modelo, preço médio no Brasil e ficha técnica."],["Ficha de laboratório","Peso, espuma e drop medidos, e seis índices contra a média do catálogo."],["Quando trocar","A data de troca pela sua quilometragem semanal."],["Segundo par e custo por km","Rodízio e os finalistas lado a lado."]],
-    price:[["R$ 9,99","Relatório completo"]],
-    gloss:[["Drop","Diferença de altura entre calcanhar e antepé, em mm."],["Stack","Altura total de espuma sob o pé."],["PEBA","Espuma leve e muito responsiva, comum em tênis de prova."],["Placa de carbono","Lâmina rígida na entressola que muda a mecânica da passada."],["Rocker","Curvatura da sola que ajuda a rolar do apoio à impulsão."],["Cabedal","A parte de cima do tênis, que segura o pé."]]}
-};
-const ORDER = ["racket","board","tenis"];
-const DATA2KEY = {raquete:"racket", prancha:"board", tenis:"tenis"};
-const app = document.getElementById("app");
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const byArea = k => A.filter(x => DATA2KEY[x.area] === k);
-const ar = x => AREAS[DATA2KEY[x.area]];
-const appLockup = (k,s=34) => `${ICON[k](s)}<span class="wm"><span class="wordmark">${AREAS[k].name}</span><small>by SPORT DNA</small></span>`;
-
-/* chrome */
-document.getElementById("brandHome").innerHTML = labLockup(34);
-document.getElementById("footBrand").innerHTML = labLockup(28);
-document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${ICON[k](24)}${AREAS[k].w1} DNA</a>`).join("") + `<span class="sep" aria-hidden="true"></span><a href="#blog" data-go="blog">Blog</a><a href="#conceito" data-go="conceito">Como funciona</a>`;
-document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
-
-const REPORT_DESC={
-  racket:"Exemplo de relatório do RACKET DNA: raquete recomendada ProKennex Black Ace 300, DNA Score de 95%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip L3, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 300 g sem corda, balanço de 321 mm, swingweight 324 e rigidez de 55 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.",
-  board:"Exemplo de relatório do SURF DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 9 polegadas de comprimento, 19 e 3/4 de largura, 2 e 5/8 de espessura, 37,6 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, ondas fracas e comparação com a prancha atual.",
-  tenis:"Exemplo de relatório do RUN DNA: tênis recomendado Mizuno Wave Sky 9, Fit Score de 96%, preço médio de R$ 699,89. Categoria máximo amortecimento, 286 g, 43,2 mm de espuma, drop de 4,4 mm, durabilidade de 750 km e custo de R$ 0,93 por km. Inclui os motivos da escolha, os pontos de atenção, o mês de troca, a ficha de laboratório e a comparação com o tênis atual."};
-function reportFrame(k, h){
-  const a = AREAS[k];
-  return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"tenis"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
-  <button type="button" class="shot" data-zoom="${k}" style="--h:${h||460}px" aria-label="Ampliar relatório de exemplo do ${a.name}" aria-describedby="rd-${k}-${h||460}"><img src="${SHOTS[k]||""}" alt=""></button>
-  <span class="zoom" aria-hidden="true">Ampliar ↗</span><p class="sr-only" id="rd-${k}-${h||460}">${REPORT_DESC[k]}</p></div>`;
-}
-function acard(x){
-  const a = ar(x);
-  return `<a class="acard ${a.cls}" href="#a-${x.id}" data-go="a-${x.id}">
-    <div class="meta">${ICON[a.key](22)}<span class="chip area">${a.w1}</span><span class="chip">${CATS[x.cat]||x.cat}</span></div>
-    <h3>${esc(x.title)}</h3><p>${esc(x.dek)}</p>
-    <div class="foot"><span>${esc(x.level)}</span><span>${x.minutes} min de leitura</span></div></a>`;
-}
-
-function vars(a){
-  return `<div class="vars"><div><span class="vl">Você informa</span><p>${a.vin.join(" · ")}</p></div><div><span class="vl">A gente calcula</span><ul>${a.vout.map(c=>`<li>${c}</li>`).join("")}</ul></div></div>`;
-}
-const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/index.html"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
-const CARDS={
-  racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 7,6, DNA 95%"],
-          produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 95%, escolhida entre 58 raquetes"]},
-  board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
-         produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 9 polegadas por 19 3/4 polegadas, 37,6 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
-  tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
-         produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Mizuno Wave Sky 9, 286 g, 43,2 mm de espuma, drop de 4,4 mm, 750 km de durabilidade, DNA 96%, escolhido entre 212 tênis"]}};
-const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="${CARDS[k][t][1]}" width="720" height="1280" loading="lazy" decoding="async">`;
-/* ---------- HOME ---------- */
-let heroK = "racket";
-const MODEL_TXT={
-  racket:"a raquete ideal com DNA Score, o setup em seis decisões, a raquete em 3D, o perfil de jogo no hexágono e a comparação com a sua raquete atual.",
-  board:"o tipo de prancha com o percentual de combinação, o desenho da prancha, as medidas e a litragem, os motivos em cards e a comparação com a sua prancha atual.",
-  tenis:"o tênis ideal com Fit Score e preço médio, a ficha técnica, os prós e contras das reviews e a data de troca pela sua quilometragem."};
-function modelSec(){
-  const a=AREAS[heroK];
-  return `<div class="model ${a.cls}">
-    <div>
-      <div class="eyebrow">Modelo de relatório</div>
-      <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem);margin:8px 0 16px">O que você recebe no final.</h2>
-      <div class="mtabs" role="group" aria-label="Escolha o app">${ORDER.map(k=>`<button type="button" data-hero="${k}" aria-pressed="${k===heroK}">${ICON[k](26)}${AREAS[k].w1}</button>`).join("")}</div>
-      <p class="muted-p">Relatório real do ${a.name}, gerado com um perfil de exemplo: ${MODEL_TXT[heroK]}</p>
-      <a class="btn btn-area" href="${a.quiz}">Fazer o teste do ${a.name} <span class="arr">→</span></a>
-    </div>
-    ${reportFrame(heroK, 560)}
-  </div>`;
-}
-function heroReport(){
-  return `${reportFrame("racket", 500)}
-  `;
-}
-const MOB_Q = matchMedia("(max-width:940px)");
-const MOB_HOME = ()=>MOB_Q.matches;
-const conceitoSec = ()=>`<section class="band" id="conceito"><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">Como funciona</div><h2>Ficha técnica é confusa. A escolha não precisa ser.</h2></div><p>Equipamento caro, erro caro. A maioria compra pela marca, pelo ídolo ou pelo vendedor. O SPORT DNA traduz especificação em sensação e mostra o que muda no seu jogo.</p></div>
-    <div class="steps">
-      <div class="step"><span class="n">PASSO 1</span><h3>Responda o teste</h3><p>Corpo, nível, frequência, histórico de dor e o que você sente hoje no equipamento atual. Sem cadastro.</p></div>
-      <div class="step"><span class="n">PASSO 2</span><h3>Veja a análise grátis</h3><p>Seu perfil, as especificações ideais e o grau de confiança do resultado, antes de pagar qualquer coisa.</p></div>
-      <div class="step"><span class="n">PASSO 3</span><h3>Desbloqueie o relatório</h3><p>Os finalistas com marca e modelo, comparados com o que você já tem, num relatório como o exemplo abaixo.</p></div>
-    </div>
-    <div class="principles">
-      <div class="principle"><span class="ck">✓</span><div><b>Análise antes de pagar</b><span>Você vê o raciocínio inteiro. Só os finalistas ficam ocultos.</span></div></div>
-      <div class="principle"><span class="ck">✓</span><div><b>Nenhuma marca no comando</b><span>Ninguém paga para aparecer no resultado. Mesmas respostas, mesmo resultado.</span></div></div>
-      <div class="principle"><span class="ck">✓</span><div><b>Afiliado só depois, e declarado</b><span>Links de compra entram após a recomendação e não alteram a conta.</span></div></div>
-      <div class="principle"><span class="ck">✓</span><div><b>Regras revisadas por quem ensina</b><span>Professores de cada esporte validam os critérios de recomendação.</span></div></div>
-    </div>
-  </div></section>`;
-const areasSec = ()=>`  <section id="areas"><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">Três apps, um método</div><h2>Comece pelo seu esporte.</h2></div><p>Cada app tem o próprio teste, um relatório com a análise completa e um blog com guias.</p></div>
-    <div class="adots" role="group" aria-label="Escolher app no carrossel">${ORDER.map((k,i)=>`<button type="button" class="adot ${AREAS[k].cls}" data-slide="${i}" aria-pressed="${i===0}" aria-label="${AREAS[k].name}">${ICON[k](20)}<span>${AREAS[k].name}</span></button>`).join("")}</div>
-    <div class="areas" id="areasTrack" role="region" aria-roledescription="carrossel" aria-label="Apps do SPORT DNA">${ORDER.map(k=>{const a=AREAS[k];return `<article class="area-card ${a.cls}">
-      <a class="banner" href="#${k}" data-go="${k}">${MARK[k]()}<div><span class="wordmark">${a.w1} <em>DNA</em></span><small>${a.sport} · by SPORT DNA</small></div></a>
-      <a class="pair" href="${a.quiz}" aria-label="Fazer o teste do ${a.name}">${cardImg(k,"perfil","p1")}${cardImg(k,"produto","p2")}<span class="pair-cap">${k==="racket"?"Seu DNA de jogo e a sua raquete":k==="board"?"Seu DNA de surf e a sua prancha":"Seu perfil de corredor e o seu tênis"}</span></a>
-      <div class="body"><p class="q">${a.q}</p>${vars(a)}
-      <span class="meta">${a.facts[0][0]} ${a.facts[0][1]} · ${byArea(k).length} guias</span>
-      <div class="row"><a class="btn btn-area" href="${a.quiz}">Fazer o teste <span class="arr">→</span></a><a class="btn btn-ghost" href="#${k}" data-go="${k}">Ver o app</a></div></div>
-    </article>`}).join("")}</div>
-  </div></section>`;
-function home(){
-  const feat = ORDER.flatMap(k => byArea(k).filter(x=>x.cat==="escolher").slice(0,2));
-  return `
-  <section class="hero"><div class="wrap hero-grid">
-    <div class="hero-txt">
-      <div class="eyebrow">SPORT DNA · Find your DNA</div>
-      <h1>O equipamento certo muda o seu <span class="hl">jogo</span>.</h1>
-      <p class="lede">Você responde algumas perguntas sobre seu corpo, seu nível e seu estilo. A gente cruza com a ficha técnica de cada equipamento e entrega um relatório que explica o porquê de cada escolha.</p>
-      <div class="chooser">
-        <h2>Escolher meu esporte</h2>
-        <div class="tiles">${ORDER.map((k,i)=>{const a=AREAS[k];return `<a class="tile ${a.cls}${i===0?" sel":""}" href="${a.quiz}">${ICON[k](52)}<span class="tn"><b>${a.w1} DNA</b><span>${a.sport}</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a>`}).join("")}</div>
-        <p>Teste grátis e sem cadastro.</p>
-      </div>
-    </div>
-    <figure class="fan">
-      <div class="fan-stage">${ORDER.map((k,i)=>`<a class="fcard f${i} ${AREAS[k].cls}" href="${AREAS[k].quiz}" aria-label="Fazer o teste do ${AREAS[k].name}">${cardImg(k,"produto")}</a>`).join("")}</div>
-      <figcaption>Exemplos de resultado. O seu sai do teste, pronto para compartilhar.</figcaption>
-    </figure>
-  </div></section>
-
-  ${MOB_HOME()?areasSec()+conceitoSec():conceitoSec()+areasSec()}
-
-  <section style="padding-top:0"><div class="wrap a-board">${TOOLBOX}</div></section>
-  <section id="modelo" style="padding-top:0"><div class="wrap" id="modelBox">${modelSec()}</div></section>
-
-  <section><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">Blog · ${A.length} guias</div><h2>Antes de comprar, entenda.</h2></div><a class="btn btn-ghost" href="#blog" data-go="blog">Ver todos os guias <span class="arr">→</span></a></div>
-    <div class="grid-a">${feat.map(acard).join("")}</div>
-  </div></section>
-`;
-}
-
-/* ---------- HUB ---------- */
-let hubFilter = "todos", curHub = null;
-function hub(k){
-  const a = AREAS[k];
-  return `<div class="${a.cls}">
-  <section class="hub-hero"><div class="wrap grid">
-    <div>
-      <div class="lockup">${appLockup(k,44)}</div>
-      <h1>${a.h1}</h1>
-      <p class="lede">${a.lede}</p>
-      <div class="row"><a class="btn btn-area" href="${a.quiz}">Fazer o teste grátis <span class="arr">→</span></a><button class="btn btn-ghost" type="button" data-scroll="relatorio">Ver o relatório</button></div>
-      <div class="facts">${a.facts.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")}</div>
-    </div>
-    ${true ? reportFrame(k, 440) : `<div class="calc ${a.cls}"><div class="eyebrow">Variáveis do teste</div>${vars(a)}<p class="soon">Relatório de exemplo em breve.</p></div>`}
-  </div></section>
-  ${k==="board"?`<section style="padding-block:28px 0"><div class="wrap">${TOOLBOX}</div></section>`:""}
-  <nav class="subnav" aria-label="Nesta página"><div class="wrap">
-    <button type="button" data-scroll="relatorio">O relatório</button>
-    <button type="button" data-scroll="guias">Guias (${byArea(k).length})</button>
-    <button type="button" data-scroll="glossario">Glossário</button>
-    <a class="go" href="${a.quiz}">Fazer o teste →</a>
-  </div></nav>
-  <section id="relatorio"><div class="wrap inside">
-    <div>
-      <div class="eyebrow">O que vem no relatório</div>
-      <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem);margin:8px 0 22px">Tudo explicado, nada empurrado.</h2>
-      <ol>${a.inside.map(([t,d],i)=>`<li><span class="k">${i+1}</span><div><b>${t}</b><span>${d}</span></div></li>`).join("")}</ol>
-      <div class="price">${a.price.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")}</div>
-    </div>
-    ${reportFrame(k, 640)}
-  </div></section>
-  <section id="guias" style="padding-top:0"><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">${byArea(k).length} guias</div><h2>Guias ${a.name}</h2></div></div>
-    <div class="filters" role="group" aria-label="Filtrar por categoria">
-      ${["todos",...Object.keys(CATS)].map(c=>`<button type="button" data-filter="${c}" aria-pressed="${c===hubFilter}">${c==="todos"?"Todos":CATS[c]}</button>`).join("")}
-      <span class="count" id="hubCount" aria-live="polite"></span>
-    </div>
-    <div class="grid-a" id="hubGrid"></div>
-  </div></section>
-  <section id="glossario" style="padding-top:0"><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">Glossário rápido</div><h2>Os termos que mais confundem.</h2></div></div>
-    <div class="glossary">${a.gloss.map(([t,d])=>`<div><b>${t}</b><span>${d}</span></div>`).join("")}</div>
-  </div></section></div>`;
-}
-function fillHub(k){
-  const list = byArea(k).filter(x => hubFilter==="todos" || x.cat===hubFilter);
-  document.getElementById("hubGrid").innerHTML = list.map(acard).join("") || `<div class="empty">Nenhum guia nesta categoria ainda.</div>`;
-  document.getElementById("hubCount").textContent = list.length + (list.length===1?" guia":" guias");
-}
-
-/* ---------- LIBRARY ---------- */
-let libArea = "todas", libQ = "";
-function library(){
-  return `<section class="hub-hero" style="padding-bottom:40px"><div class="wrap">
-    <div class="lockup">${labLockup(44)}</div>
-    <h1 style="max-width:16em">Tudo o que a ficha técnica não explica.</h1>
-    <p class="lede">${A.length} guias sobre como escolher, por que escolher certo importa, a evolução de cada esporte e as tecnologias por trás do equipamento.</p>
-  </div></section>
-  <section style="padding-top:36px"><div class="wrap">
-    <div class="filters" role="group" aria-label="Filtrar blog">
-      <button type="button" data-lib="todas" aria-pressed="${libArea==="todas"}">Todos</button>
-      ${ORDER.map(k=>`<button type="button" data-lib="${k}" aria-pressed="${k===libArea}">${ICON[k](20)}${AREAS[k].name}</button>`).join("")}
-      <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" aria-label="Buscar no blog" placeholder="Buscar: drop, litragem, RA…" value="${esc(libQ)}"></label>
-      <span class="count" id="libCount" aria-live="polite"></span>
-    </div>
-    <div id="libBody"></div>
-  </div></section>`;
-}
-function fillLib(){
-  const q = libQ.trim().toLowerCase();
-  const list = A.filter(x => (libArea==="todas"||DATA2KEY[x.area]===libArea) && (!q || (x.title+" "+x.dek+" "+x.tags.join(" ")).toLowerCase().includes(q)));
-  const body = document.getElementById("libBody");
-  document.getElementById("libCount").textContent = list.length + (list.length===1?" guia":" guias");
-  if(!list.length){ body.innerHTML = `<div class="empty">Nada encontrado para “${esc(libQ)}”. Tente outro termo.</div>`; return; }
-  body.innerHTML = Object.keys(CATS).map(c=>{
-    const g = list.filter(x=>x.cat===c); if(!g.length) return "";
-    return `<div style="margin-bottom:44px"><h2 style="font-size:1.5rem;margin-bottom:16px">${CATS[c]}</h2><div class="grid-a">${g.map(acard).join("")}</div></div>`;
-  }).join("");
-}
-
-/* ---------- ARTICLE ---------- */
-function article(id){
-  const x = A.find(y=>y.id===id); if(!x) return null;
-  const a = ar(x); const list = byArea(a.key); const i = list.indexOf(x);
-  const prev = list[i-1], next = list[i+1];
-  let hn = 0; const heads = [];
-  const body = x.body.map(b=>{
-    if(b.t==="p") return `<p>${esc(b.x)}</p>`;
-    if(b.t==="h"){ hn++; heads.push(b.x); return `<h2 id="${x.id}-s${hn}">${esc(b.x)}</h2>`; }
-    if(b.t==="ul") return `<ul>${b.items.map(it=>`<li>${esc(it)}</li>`).join("")}</ul>`;
-    if(b.t==="tip") return `<div class="tip"><b>Dica</b><div>${esc(b.x)}</div></div>`;
-    if(b.t==="quote") return `<blockquote>${esc(b.x)}</blockquote>`;
-    if(b.t==="spec") return `<div class="spec"><div class="cap">${esc(b.caption||"Referência")}</div><div class="tw"><table>${b.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</table></div></div>`;
-    return "";
-  }).join("");
-  const related = list.filter(y=>y!==x && y.cat===x.cat).concat(list.filter(y=>y!==x && y.cat!==x.cat)).slice(0,3);
-  return `<div class="${a.cls}"><article class="article"><div class="wrap">
-    <nav class="crumbs" aria-label="Você está em"><a href="#inicio" data-go="inicio">Início</a><span>/</span><a href="#${a.key}" data-go="${a.key}">${a.name}</a><span>/</span><span>${CATS[x.cat]}</span></nav>
-    <div class="art-grid">
-      <div style="min-width:0">
-        <header class="art-head">
-          <div class="meta">${ICON[a.key](24)}<span class="chip area">${a.sport}</span><span class="chip">${CATS[x.cat]}</span></div>
-          <h1>${esc(x.title)}</h1><p class="dek">${esc(x.dek)}</p>
-          <div class="by"><span>Nível: ${esc(x.level)}</span><span>${x.minutes} min de leitura</span><span>${x.tags.map(t=>"#"+esc(t)).join(" ")}</span></div>
-        </header>
-        <div class="prose">${body}</div>
-        <div class="pn">
-          ${prev?`<a href="#a-${prev.id}" data-go="a-${prev.id}"><small>← Anterior</small><b>${esc(prev.title)}</b></a>`:"<span></span>"}
-          ${next?`<a class="next" href="#a-${next.id}" data-go="a-${next.id}"><small>Próximo →</small><b>${esc(next.title)}</b></a>`:""}
-        </div>
-      </div>
-      <div class="side">
-        ${a.key==="board"?TOOLBOX.replace('class="toolbox"','class="toolbox mini"'):""}
-        <div class="cta-box">
-          ${true?`<button type="button" class="thumb" data-zoom="${a.key}" aria-label="Ampliar relatório de exemplo do ${a.name}"><img src="${SHOTS[a.key]||""}" alt=""></button>`:""}
-          <div class="in">
-            <div class="lockup">${MARK[a.key](32)}<span class="wordmark">${a.w1} <em>DNA</em></span></div>
-            <p>${a.q}</p>
-            <a class="btn btn-area" href="${a.quiz}">Fazer o teste grátis <span class="arr">→</span></a>
-          </div>
-        </div>
-        ${heads.length?`<div class="toc"><div class="eyebrow">Neste guia</div><ol>${heads.map((h,j)=>`<li><button type="button" data-anchor="${x.id}-s${j+1}">${esc(h)}</button></li>`).join("")}</ol></div>`:""}
-      </div>
-    </div>
-    <div style="margin-top:64px"><h2 style="font-size:1.5rem;margin-bottom:16px">Continue lendo</h2><div class="grid-a">${related.map(acard).join("")}</div></div>
-  </div></article></div>`;
-}
-
-/* ---------- ROUTER ---------- */
-function privacy(){
-  return `<article class="article"><div class="wrap">
-    <nav class="crumbs" aria-label="Você está em"><a href="#inicio" data-go="inicio">Início</a><span>/</span><span>Privacidade e afiliados</span></nav>
-    <header class="art-head"><h1>Privacidade e afiliados</h1><p class="dek">O que o SPORT DNA guarda, o que não guarda e como funcionam os links de loja.</p><div class="by"><span>Atualizado em outubro de 2026</span></div></header>
-    <div class="prose">
-      <h2>Quem somos</h2>
-      <p>O SPORT DNA é um projeto da Beyond the Work com três testes de equipamento: RACKET DNA (raquete de tênis), SURF DNA (prancha de surf) e RUN DNA (tênis de corrida).</p>
-      <h2>Suas respostas</h2>
-      <ul>
-        <li>As respostas dos testes são processadas no seu próprio navegador. Não temos conta de usuário nem banco de dados com elas.</li>
-        <li>O RACKET DNA guarda no seu navegador o último resultado e o que você liberou, para você voltar depois. Para apagar, limpe os dados do site no navegador.</li>
-        <li>Não usamos ferramentas de análise de tráfego nem anúncios.</li>
-      </ul>
-      <h2>Contato e e-mail</h2>
-      <ul>
-        <li>Os campos de e-mail do RACKET DNA não enviam nem guardam nada nesta versão.</li>
-        <li>No SURF DNA, o resumo para o coach só sai se você mesmo mandar, pelo WhatsApp ou pelo Instagram, depois de autorizar.</li>
-      </ul>
-      <h2>Pagamento</h2>
-      <p>O pagamento ainda é uma simulação: nenhum valor é cobrado. Quando o pagamento real entrar, esta página vai dizer quem processa os dados.</p>
-      <h2>Serviços de terceiros</h2>
-      <p>Para carregar fontes e algumas bibliotecas, o navegador acessa o Google Fonts e o cdnjs (Cloudflare). Esses serviços podem registrar o endereço IP de quem acessa, como qualquer site.</p>
-      <h2>Links de afiliado</h2>
-      <ul>
-        <li>Nenhuma marca ou loja paga para aparecer no resultado. O ranking é calculado antes e sem olhar para comissão.</li>
-        <li>Alguns links de compra podem ser de afiliado, por exemplo pela rede Awin. Se você comprar por eles, a loja pode nos pagar uma comissão, sem custo extra para você.</li>
-        <li>Links de afiliado aparecem só depois da recomendação e são marcados como tal.</li>
-        <li>Fotos de produto, quando houver, têm crédito da marca ou da loja.</li>
-      </ul>
-      <h2>Saúde</h2>
-      <p>O conteúdo é educativo. Em caso de dor ou lesão, procure um profissional de saúde.</p>
-      <h2>Fale com a gente</h2>
-      <p>Dúvidas ou pedidos sobre seus dados: <a href="https://github.com/gtorniero/matchlab/issues" target="_blank" rel="noopener">abra uma mensagem aqui</a>.</p>
-    </div>
-  </div></article>`;
-}
-const LEGACY = {raquete:"racket", prancha:"board", biblioteca:"blog"};
-function setNav(view){
-  const k = view.startsWith("a-") ? DATA2KEY[view.slice(2).split("-")[0]] : view;
-  document.querySelectorAll(".nav a").forEach(a=>{ a.removeAttribute("aria-current"); if(a.dataset.go===k) a.setAttribute("aria-current","page"); });
-}
-let firstRender=true;
-function say(t){const l=document.getElementById("a11yLive");l.textContent="";setTimeout(()=>{l.textContent=t},80)}
-function initAreas(){
-  const tr=document.getElementById("areasTrack"); if(!tr) return;
-  const dots=[...document.querySelectorAll(".adot")];
-  const cards=[...tr.children];
-  const mark=i=>dots.forEach((d,j)=>d.setAttribute("aria-pressed",String(i===j)));
-  let raf=0;
-  tr.addEventListener("scroll",()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(()=>{
-    const r=tr.getBoundingClientRect(), x=r.left+r.width/2; let best=0,bd=1e9;
-    cards.forEach((c,i)=>{const b=c.getBoundingClientRect(),d=Math.abs(b.left+b.width/2-x); if(d<bd){bd=d;best=i}}); mark(best); }); },{passive:true});
-  dots.forEach((d,i)=>d.addEventListener("click",()=>{ const c=cards[i];
-    const r=tr.getBoundingClientRect(),b=c.getBoundingClientRect();
-    tr.scrollTo({left:tr.scrollLeft+(b.left+b.width/2)-(r.left+r.width/2),behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); mark(i); }));
-}
-MOB_Q.addEventListener("change",()=>{ const h=(location.hash||"#inicio").slice(1); if(h==="inicio"||h===""){ const y=scrollY; app.innerHTML=home(); initAreas(); scrollTo(0,y); } });
-function render(view){
-  view = LEGACY[view] || view || "inicio";
-  let html, after;
-  if(view==="inicio"||view==="conceito"){ html = home(); after=initAreas; }
-  else if(AREAS[view]){ hubFilter="todos"; curHub=view; html = hub(view); after=()=>fillHub(view); }
-  else if(view==="blog"){ html = library(); after=fillLib; }
-  else if(view.startsWith("a-")){ html = article(view.slice(2)); }
-  else if(view==="privacidade"){ html = privacy(); }
-  if(!html){ view="inicio"; html=home(); }
-  app.innerHTML = html; if(after) after();
-  setNav(view);
-  document.getElementById("nav").classList.remove("open");
-  document.getElementById("menuBtn").setAttribute("aria-expanded","false");
-  const t = view==="privacidade" ? "Privacidade e afiliados" : view.startsWith("a-") ? (A.find(y=>y.id===view.slice(2))||{}).title : view==="blog" ? "Blog" : (AREAS[view]||{}).name;
-  document.title = t ? t + " · SPORT DNA" : "SPORT DNA";
-  if(view==="conceito"){ requestAnimationFrame(()=>document.getElementById("conceito").scrollIntoView()); }
-  else window.scrollTo(0,0);
-  try{ history.replaceState(null,"","#"+view); }catch(e){}
-  if(!firstRender && view!=="conceito"){ const h=app.querySelector("h1"); if(h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); } say("Página: "+(t||"Início")); }
-  firstRender=false;
-}
-const lb = document.getElementById("lb");
-let lbOpener=null;
-function openLB(k){ lbOpener=document.activeElement; const im=document.getElementById("lbImg"); im.src = SHOTS[k]||""; im.alt = REPORT_DESC[k]; document.getElementById("lbCap").textContent = AREAS[k].name+" · relatório de exemplo"; lb.hidden=false; lb.scrollTop=0; document.getElementById("lbClose").focus(); }
-function closeLB(){ lb.hidden=true; if(lbOpener&&lbOpener.isConnected) lbOpener.focus(); }
-document.addEventListener("click", e=>{
-  if(!lb.hidden){ if(e.target.id==="lbClose"||e.target===lb) closeLB(); return; }
-  if(e.target.closest(".skip")){ e.preventDefault(); const h=app.querySelector("h1")||app; h.setAttribute("tabindex","-1"); h.focus(); return; }
-  const z = e.target.closest("[data-zoom]"); if(z){ openLB(z.dataset.zoom); return; }
-  const go = e.target.closest("[data-go]"); if(go){ e.preventDefault(); render(go.dataset.go); return; }
-  const sc = e.target.closest("[data-scroll]"); if(sc){ e.preventDefault(); const el=document.getElementById(sc.dataset.scroll); if(el){ el.scrollIntoView(); const h=el.querySelector("h2,h1")||el; h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); } return; }
-  const an = e.target.closest("[data-anchor]"); if(an){ const el=document.getElementById(an.dataset.anchor); if(el){ el.scrollIntoView(); el.setAttribute("tabindex","-1"); el.focus({preventScroll:true}); } return; }
-  const hr = e.target.closest("[data-hero]"); if(hr){ heroK=hr.dataset.hero; document.getElementById("modelBox").innerHTML=modelSec(); const nb=document.querySelector(`[data-hero="${heroK}"]`); if(nb) nb.focus(); say("Relatório de exemplo do "+AREAS[heroK].name); return; }
-  const f = e.target.closest("[data-filter]"); if(f){ hubFilter=f.dataset.filter; document.querySelectorAll("[data-filter]").forEach(b=>b.setAttribute("aria-pressed", b===f)); fillHub(curHub); return; }
-  const l = e.target.closest("[data-lib]"); if(l){ libArea=l.dataset.lib; document.querySelectorAll("[data-lib]").forEach(b=>b.setAttribute("aria-pressed", b===l)); fillLib(); return; }
-});
-document.addEventListener("keydown", e=>{ if(lb.hidden) return; if(e.key==="Escape") closeLB(); if(e.key==="Tab"){ e.preventDefault(); document.getElementById("lbClose").focus(); } });
-document.addEventListener("input", e=>{ if(e.target.id==="q"){ libQ=e.target.value; fillLib(); } });
-document.getElementById("menuBtn").addEventListener("click", function(){
-  const n=document.getElementById("nav"); const o=n.classList.toggle("open"); this.setAttribute("aria-expanded", o);
-});
-window.addEventListener("hashchange", ()=>render(location.hash.slice(1)));
-render(location.hash.slice(1));
-})();
-</script>
+<script>window.ML_ROOT="./";window.ML_VIEW="inicio";window.ML_ROUTES={"inicio":"","conceito":"#conceito","board":"guias/surf/","racket":"guias/racket/","tenis":"guias/run/","blog":"blog/","privacidade":"privacidade/","a-raquete-01":"blog/como-escolher-sua-primeira-raquete-de-tenis/","a-raquete-02":"blog/peso-e-balanco-o-que-significa-head-light-head-heavy-e-swingweight/","a-raquete-03":"blog/tamanho-de-cabeca-95-98-100-ou-105-polegadas-quadradas/","a-raquete-04":"blog/padrao-de-cordas-e-tensao-16x19-18x20-e-quantas-libras-usar/","a-raquete-05":"blog/tamanho-de-grip-como-medir-a-mao-e-acertar-a-espessura-do-cabo/","a-raquete-06":"blog/raquete-errada-e-lesoes-o-que-o-equipamento-tem-a-ver-com-o-cotovelo-de-tenista/","a-raquete-07":"blog/como-a-raquete-certa-acelera-a-sua-evolucao-tecnica/","a-raquete-08":"blog/o-erro-caro-de-comprar-a-raquete-do-seu-idolo/","a-raquete-09":"blog/da-madeira-ao-grafite-como-a-raquete-de-tenis-mudou-em-um-seculo/","a-raquete-10":"blog/do-iniciante-ao-avancado-como-a-raquete-acompanha-a-sua-evolucao/","a-raquete-11":"blog/topspin-e-poliester-como-o-jogo-moderno-mudou-raquete-e-corda/","a-raquete-12":"blog/rigidez-ra-e-materiais-compositos-do-que-a-raquete-e-feita/","a-raquete-13":"blog/swingweight-twistweight-e-estabilidade-a-fisica-da-raquete/","a-raquete-14":"blog/tipos-de-corda-tripa-natural-multifilamento-poliester-e-hibridos/","a-raquete-15":"blog/feixe-e-perfil-aerodinamico-a-espessura-do-aro-importa/","a-tenis-01":"blog/como-escolher-seu-primeiro-tenis-de-corrida/","a-tenis-02":"blog/amortecimento-ou-estabilidade-o-que-a-pisada-diz-e-o-que-nao-diz/","a-tenis-03":"blog/drop-e-stack-entenda-a-altura-do-seu-tenis/","a-tenis-04":"blog/tamanho-e-forma-como-acertar-o-encaixe-do-tenis-de-corrida/","a-tenis-05":"blog/um-tenis-para-cada-objetivo-rodagem-ritmo-prova-e-trilha/","a-tenis-06":"blog/tenis-errado-e-lesoes-o-que-o-calcado-influencia/","a-tenis-07":"blog/vida-util-do-tenis-de-corrida-quando-trocar/","a-tenis-08":"blog/rotacao-de-pares-por-que-ter-mais-de-um-tenis-ajuda-a-evoluir/","a-tenis-09":"blog/do-cortez-ao-supertenis-meio-seculo-de-tenis-de-corrida/","a-tenis-10":"blog/do-primeiro-5-km-a-maratona-como-o-tenis-acompanha-o-corredor/","a-tenis-11":"blog/a-regra-dos-40-mm-como-a-world-athletics-redesenhou-os-supertenis/","a-tenis-12":"blog/espumas-de-entressola-de-eva-a-peba-e-supercriticas/","a-tenis-13":"blog/placas-de-carbono-e-geometria-rocker-como-funcionam/","a-tenis-14":"blog/cabedal-e-encaixe-mesh-knit-e-a-arte-de-segurar-o-pe/","a-tenis-15":"blog/solado-e-borracha-tracao-no-asfalto-e-cravos-na-trilha/","a-prancha-01":"blog/como-escolher-sua-primeira-prancha-de-surf/","a-prancha-02":"blog/litragem-como-entender-o-volume-da-prancha/","a-prancha-03":"blog/comprimento-largura-e-espessura-como-ler-as-medidas/","a-prancha-04":"blog/rabeta-e-bordas-o-que-cada-formato-faz-na-onda/","a-prancha-05":"blog/quilhas-como-escolher-a-configuracao-para-a-onda-do-seu-pico/","a-prancha-06":"blog/prancha-pequena-demais-o-erro-que-trava-a-evolucao/","a-prancha-07":"blog/prancha-usada-como-avaliar-antes-de-comprar/","a-prancha-08":"blog/seguranca-e-confianca-o-papel-da-prancha-na-remada/","a-prancha-09":"blog/da-madeira-ao-thruster-uma-breve-historia-da-prancha/","a-prancha-10":"blog/do-iniciante-ao-avancado-a-escada-de-pranchas-e-o-quiver/","a-prancha-11":"blog/shaper-e-consultor-quem-ajuda-voce-a-acertar-a-prancha/","a-prancha-12":"blog/pu-ou-eps-com-epoxi-entenda-as-duas-construcoes/","a-prancha-13":"blog/rocker-e-fundo-as-curvas-que-voce-nao-ve-de-cima/","a-prancha-14":"blog/construcao-fibra-stringer-carbono-e-o-soft-top-moderno/","a-prancha-15":"blog/fish-mid-length-e-groveler-os-shapes-alternativos/","a-prancha-16":"blog/ficha-para-shaper-o-que-informar-ao-encomendar-uma-prancha/","a-prancha-17":"blog/tipos-de-prancha-de-surf-escolha-pela-sessao-nao-so-pelo-nivel/"};window.ML_SHOTS={"racket":"assets/reports/racket.webp","board":"assets/reports/board.webp","tenis":"assets/reports/tenis.webp"};</script>
+<script defer src="./content/raquete.js"></script>
+<script defer src="./content/tenis.js"></script>
+<script defer src="./content/prancha.js"></script>
+<script defer src="./assets/site.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@ window.ML_ARTICLES = window.ML_ARTICLES || [];
 window.ML_ARTICLES.push(
 {
   id: "prancha-01",
+  seoTitle: "Como escolher a primeira prancha de surf | SURF DNA",
   area: "prancha",
   cat: "escolher",
   title: "Como escolher sua primeira prancha de surf",
@@ -9,9 +10,11 @@ window.ML_ARTICLES.push(
   level: "Iniciante",
   minutes: 3,
   tags: ["iniciante", "soft", "funboard", "longboard"],
+  sources: [{title:"Pró-Ilha: limites das tabelas de volume",url:"https://www.pro-ilha.com.br/tabela-em-litros"},{title:"Udo Bastos: diferentes propostas de modelos híbridos",url:"https://www.udobastos.com.br/modelos-hibridas"}],
+  related: ["prancha-02", "prancha-17", "prancha-16"],
   body: [
     { t: "p", x: "A primeira prancha tem uma missão simples: fazer você pegar ondas. Quem começa passa a maior parte do tempo remando, tentando se posicionar e caindo na hora de levantar. Uma prancha com bastante flutuação e estabilidade multiplica o número de tentativas por sessão, e é a repetição que ensina." },
-    { t: "p", x: "Por isso a escolha certa costuma parecer grande demais para quem olha de fora. Ela é grande de propósito. Comprimento, largura e espessura somam volume, e volume vira estabilidade na remada e na hora de ficar de pé." },
+    { t: "p", x: "Por isso a escolha certa costuma parecer grande demais para quem olha de fora. Ela é grande de propósito. Comprimento, largura, espessura e desenho determinam o volume. A área de apoio e a distribuição desse volume também influenciam a estabilidade na remada e na subida." },
     { t: "h", x: "Os quatro caminhos mais comuns" },
     { t: "ul", items: [
       "Soft (softboard ou soft top): prancha com deck de espuma macia e fundo liso de plástico. É a mais segura para aprender, porque machuca menos numa pancada. Costuma ter de 7'0\" a 9'0\".",
@@ -33,20 +36,23 @@ window.ML_ARTICLES.push(
     { t: "p", x: "Pense também no transporte e no espaço em casa. Um longboard de 9'2\" exige rack no carro e lugar para guardar. Se isso for um obstáculo, um funboard de 7'6\" pode ser o meio-termo que faz você ir mais vezes ao mar." },
     { t: "h", x: "O que evitar" },
     { t: "p", x: "O erro mais comum é comprar a prancha que o surfista experiente usa. Pranchas curtas e finas exigem remada forte, leitura de onda e subida rápida. Para quem está começando, elas afundam, viram de lado e transformam cada sessão em frustração." },
-    { t: "p", x: "Também vale desconfiar de pranchas muito estreitas no bico ou com muita curvatura. Elas enterram com facilidade na hora de entrar na onda. Na primeira prancha, procure bico largo, linhas paralelas e bastante espessura." },
+    { t: "p", x: "Na primeira prancha, avalie área de apoio, remada e controle com seu professor. Bico largo e volume generoso podem ajudar, mas a combinação de rocker, distribuição do volume e técnica define o comportamento na entrada da onda." },
     { t: "tip", x: "Se puder, alugue ou peça emprestadas duas ou três pranchas diferentes antes de comprar. Algumas sessões com cada uma mostram mais do que qualquer tabela." },
     { t: "quote", x: "A primeira prancha deve servir ao surfista que você é hoje, e não ao que você quer ser daqui a dois anos." }
   ]
 },
 {
   id: "prancha-02",
+  seoTitle: "Volume da prancha de surf: peso, nível e litragem | SURF DNA",
   area: "prancha",
   cat: "escolher",
   title: "Litragem: como entender o volume da prancha",
-  dek: "O volume em litros resume quanto a prancha flutua. Veja como relacionar litragem, peso corporal e nível para chegar a uma faixa segura.",
+  dek: "O volume em litros resume quanto a prancha flutua. Entenda a relação entre litragem, peso e nível, os limites das tabelas e como testar uma faixa de referência.",
   level: "Todos",
   minutes: 3,
   tags: ["litragem", "volume", "peso"],
+  sources: [{title:"Pró-Ilha: limites das tabelas de volume",url:"https://www.pro-ilha.com.br/tabela-em-litros"},{title:"Udo Bastos: diferentes propostas de modelos híbridos",url:"https://www.udobastos.com.br/modelos-hibridas"}],
+  related: ["prancha-01", "prancha-15", "prancha-16"],
   body: [
     { t: "p", x: "Durante décadas, as pranchas foram descritas só por comprimento, largura e espessura. O problema é que duas pranchas com medidas parecidas podem flutuar de forma bem diferente, dependendo de como a espuma foi distribuída. A litragem resolve isso em um número: quantos litros de volume a prancha ocupa." },
     { t: "p", x: "Mais litros significam mais flutuação. Mais flutuação significa remada mais fácil, mais estabilidade parado e entrada antecipada na onda. Menos litros deixam a prancha mais sensível e fácil de afundar a borda nas curvas, o que só ajuda quem já tem técnica para aproveitar." },
@@ -68,7 +74,7 @@ window.ML_ARTICLES.push(
       "Frequência: quem surfa uma vez por mês perde ritmo de remada e se beneficia de alguns litros a mais.",
       "Idade e condicionamento: mais volume compensa menos força e menos fôlego.",
       "Ondas pequenas e fracas: litragem maior ajuda a manter velocidade em ondas sem força.",
-      "Ondas grandes e cavadas: prancha um pouco menor e mais fina segura melhor a borda e entra mais fácil na parede.",
+      "Ondas fortes ou cavadas: não reduza medidas por regra. Comprimento, rocker, bordas e controle precisam ser avaliados para a condição e para sua experiência.",
       "Roupa de borracha: no inverno, o peso extra e a perda de mobilidade pedem um pouco mais de volume."
     ] },
     { t: "h", x: "Onde o volume está" },
@@ -385,6 +391,7 @@ window.ML_ARTICLES.push(
   level: "Intermediário",
   minutes: 3,
   tags: ["shaper", "sob medida", "professor"],
+  related: ["prancha-16", "prancha-02", "prancha-17"],
   body: [
     { t: "p", x: "Shaper é o profissional que desenha e esculpe a prancha. Por muito tempo, todo o trabalho era feito à mão, a partir de um bloco de espuma, com plainas, lixas e muita experiência. Hoje a maioria dos shapers usa máquinas CNC para o corte inicial e faz o acabamento à mão, mas o conhecimento sobre como cada curva se comporta na água continua sendo o centro do ofício." },
     { t: "p", x: "Para o surfista, o shaper pode ser bem mais do que um fabricante. Quando existe conversa, ele traduz o que você sente na água em medidas e curvas, e ajusta a prancha seguinte com base no que funcionou na anterior." },
@@ -526,13 +533,16 @@ window.ML_ARTICLES.push(
 },
 {
   id: "prancha-15",
+  seoTitle: "Fish ou mid-length: como escolher sua prancha | SURF DNA",
   area: "prancha",
   cat: "tecnologia",
-  title: "Fish, mid-length e groveler: os shapes alternativos",
+  title: "Fish ou mid-length? Compare também a proposta do groveler",
   dek: "Conheça os shapes híbridos e alternativos, de onde vieram e em que tipo de onda cada um rende mais do que uma pranchinha comum.",
   level: "Intermediário",
-  minutes: 3,
+  minutes: 4,
   tags: ["fish", "mid-length", "groveler", "híbridas"],
+  sources: [{title:"Pró-Ilha: limites das tabelas de volume",url:"https://www.pro-ilha.com.br/tabela-em-litros"},{title:"Udo Bastos: diferentes propostas de modelos híbridos",url:"https://www.udobastos.com.br/modelos-hibridas"}],
+  related: ["prancha-17", "prancha-02", "prancha-16"],
   body: [
     { t: "p", x: "A pranchinha thruster domina as competições, mas boa parte das ondas surfadas no dia a dia está longe das condições de campeonato. Ondas pequenas, fracas ou cheias pedem outras soluções. É aí que entram os shapes alternativos e híbridos, que misturam características de diferentes famílias de prancha." },
     { t: "p", x: "Esses modelos ajudam a surfar mais dias e trazem sensações diferentes da pranchinha. Para muitos surfistas, são o equipamento principal." },
@@ -549,12 +559,216 @@ window.ML_ARTICLES.push(
       ["Fish", "5'2\" a 6'0\", largura 20\" a 22\", twin ou quad"],
       ["Groveler", "5'4\" a 6'0\", largura 19 1/2\" a 21\", thruster ou quad"],
       ["Mid-length", "7'0\" a 8'0\", largura 20\" a 22\", single, 2+1 ou thruster"]
-    ] },
+  ] },
     { t: "h", x: "Qual combina com o seu mar" },
     { t: "p", x: "Em beach breaks pequenos e fracos, comuns em muitos picos brasileiros boa parte do ano, um fish ou um groveler costuma render mais que a pranchinha. Em dias de ondulação longa e ondas cheias, o mid-length aproveita melhor a energia. Para muitos surfistas intermediários, uma dessas pranchas faz mais sessões do que qualquer outra do quiver." },
     { t: "p", x: "Esses shapes também ensinam. O fish obriga a surfar mais aberto, usando a borda inteira. O mid-length exige posicionamento e leitura de onda, porque as curvas são mais longas. O groveler treina geração de velocidade em ondas sem força. Passar por eles costuma deixar o surfista mais completo quando volta à pranchinha. Muitos acabam descobrindo que se divertem mais com um shape alternativo do que com a prancha de performance que imaginavam precisar, e isso também é uma boa escolha." },
-    { t: "tip", x: "Ao trocar de pranchinha para fish ou groveler, use uma prancha mais curta, mas com volume igual ou maior. Comprimento e volume deixam de andar juntos nesses shapes." },
-    { t: "quote", x: "A melhor prancha do quiver muitas vezes é a que mais sai do carro." }
+    { t: "tip", x: "Ao comparar fish, groveler e pranchinha, confirme com o shaper como o modelo deve ser dimensionado. Comprimento e litragem isolados não definem o encaixe." },
+    { t: "quote", x: "A melhor prancha do quiver muitas vezes é a que mais sai do carro." },
+      {t:"h",x:"Como comparar duas opções na prática"},
+    {t:"p",x:"Comece anotando o que você quer melhorar na prancha atual. Se a dificuldade é entrar na onda, compare o esforço de remada e o momento em que cada opção começa a deslizar. Se você já entra bem e quer variar as curvas, observe o controle da borda e a sensação das quilhas. Faça as comparações em condições parecidas: uma sessão melhor por causa do mar pode esconder uma escolha que não funciona no seu dia a dia."},
+    {t:"p",x:"Pergunte ao shaper qual é a proposta do modelo específico. Uma mid-length pode ser voltada a linhas clássicas ou ter desenho mais próximo de performance. Uma fish com quilhas de base larga pode responder de forma diferente de outra com quilhas mais verticais. Volume igual não torna essas opções equivalentes. Confira ainda o sistema de encaixe e se você já tem as quilhas adequadas para o conjunto."},
+    {t:"h",x:"Quando a troca pode esperar"},
+    {t:"p",x:"Se você ainda não consegue repetir entradas sem ajuda e seguir para os dois lados, talvez seja mais útil consolidar essas tarefas numa prancha de iniciação bem dimensionada. O nome fish ou mid-length não garante facilidade para aprender. Peça ao professor que observe suas tentativas e, se possível, experimente antes de encomendar. Uma escolha acertada preserva a quantidade de ondas enquanto abre espaço para a habilidade que você quer treinar."}
+  ]
+},
+{
+  "id": "prancha-16",
+  seoTitle: "Ficha para shaper: como encomendar sua prancha | SURF DNA",
+  "area": "prancha",
+  "cat": "escolher",
+  "title": "Ficha para shaper: o que informar ao encomendar uma prancha",
+  "dek": "Organize nível, ondas, medidas da prancha atual e objetivos para conversar com o shaper e revisar sua encomenda antes da fabricação.",
+  "level": "Todos",
+  "minutes": 4,
+  "tags": [
+    "shaper",
+    "ficha",
+    "encomenda"
+  ],
+  related: ["prancha-02", "prancha-03", "prancha-17"],
+  "body": [
+    {
+      "t": "p",
+      "x": "Uma boa ficha para shaper começa pela descrição do que acontece nas suas sessões. Peso e altura ajudam a dimensionar a prancha, mas deixam perguntas abertas: você entra atrasado nas ondas? Perde velocidade na parede? Tem dificuldade para trocar de borda? Registre situações concretas. Isso permite ao profissional distinguir uma limitação do equipamento de uma habilidade que ainda precisa de prática."
+    },
+    {
+      "t": "h",
+      "x": "Descreva o surf que você faz hoje"
+    },
+    {
+      "t": "p",
+      "x": "Informe seu peso atual, altura, frequência no mar e há quanto tempo surfa. Em vez de escrever apenas “intermediário”, conte o que consegue repetir: entrar em ondas sem ajuda, seguir para os dois lados, fazer a primeira curva ou completar uma rasgada. Se possível, leve um vídeo recente de uma sessão comum. Uma onda excepcional mostra menos sobre suas necessidades do que várias tentativas normais."
+    },
+    {
+      "t": "p",
+      "x": "Explique também restrições práticas. Transporte, espaço em casa, orçamento e disponibilidade de quilhas podem mudar a escolha. Caso uma limitação física interfira na remada ou na subida, descreva a dificuldade funcional e procure orientação profissional adequada. O shaper precisa entender o uso; não cabe à ficha diagnosticar uma dor ou prometer que um shape vai resolvê-la."
+    },
+    {
+      "t": "h",
+      "x": "Registre a prancha atual e o que ela entrega"
+    },
+    {
+      "t": "ul",
+      "items": [
+        "Modelo e tipo de prancha, construção e estado de conservação.",
+        "Comprimento, largura, espessura e volume informados pelo fabricante, sem estimar litros pela aparência.",
+        "Configuração e modelo das quilhas usadas nas sessões de referência.",
+        "O que funciona: entrada na onda, velocidade, estabilidade ou confiança na descida.",
+        "O que incomoda, em qual onda e com que frequência isso acontece."
+      ]
+    },
+    {
+      "t": "p",
+      "x": "Se a litragem não estiver escrita, fotografe as medidas e pergunte ao fabricante. Comprimento, largura e espessura não permitem recuperar o volume exato: o desenho das bordas, do fundo e das extremidades também ocupa espaço. Evite preencher um número só para completar o formulário. Uma informação ausente, claramente indicada, é mais útil que uma medida inventada."
+    },
+    {
+      "t": "h",
+      "x": "Conte como são suas ondas habituais"
+    },
+    {
+      "t": "p",
+      "x": "Descreva o pico em que você realmente surfa: onda cheia ou cavada, parede longa ou curta, força e dificuldade de entrada. Diga se costuma pegar espuma, ondas ainda abertas ou seções rápidas. Informe as condições mais frequentes e se busca uma prancha para o cotidiano ou para uma viagem específica. A mesma pessoa pode precisar de propostas diferentes para essas duas tarefas."
+    },
+    {
+      "t": "h",
+      "x": "Use este roteiro na conversa"
+    },
+    {
+      "t": "ul",
+      "items": [
+        "Meu nível hoje: consigo repetir __ e tenho dificuldade em __.",
+        "Minha frequência e meus picos habituais são __.",
+        "Minha prancha atual tem estas medidas confirmadas: __.",
+        "Quero manter __ e melhorar __.",
+        "As condições em que mais preciso de ajuda são __.",
+        "Minhas restrições de transporte, orçamento e quilhas são __."
+      ]
+    },
+    {
+      "t": "p",
+      "x": "Escolha uma prioridade principal. Pedir ao mesmo tempo a remada de um longboard, a facilidade de mergulho de uma pranchinha e curvas muito fechadas cria compromissos que precisam ser discutidos. Peça ao shaper que explique o que você ganha e o que pode perder com a proposta. Se ele sugerir mudar comprimento ou volume, pergunte como isso responde à dificuldade relatada."
+    },
+    {
+      "t": "h",
+      "x": "Revise a encomenda antes da fabricação"
+    },
+    {
+      "t": "p",
+      "x": "Confirme por escrito modelo, medidas, faixa de volume quando aplicável, construção, reforços, sistema de quilhas, acabamento, prazo e itens incluídos. Verifique se as quilhas fazem parte da encomenda ou serão compradas à parte. Pergunte como funciona o acompanhamento depois das primeiras sessões e quais diferenças de fabricação são esperadas. Guarde a ficha aprovada para comparar com a prancha entregue."
+    },
+    {
+      "t": "tip",
+      "x": "O resultado do SURF DNA pode organizar suas preferências para a conversa. Trate a ficha como ponto de partida: a avaliação do shaper e, quando possível, testes na água ajudam a fechar as decisões."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Pró-Ilha: tabela de volume como referência inicial",
+      "url": "https://www.pro-ilha.com.br/tabela-em-litros"
+    },
+    {
+      "title": "Udo Bastos: modelos híbridos e diferenças de proposta",
+      "url": "https://www.udobastos.com.br/modelos-hibridas"
+    }
+  ]
+},
+{
+  "id": "prancha-17",
+  seoTitle: "Tipos de prancha de surf: qual escolher? | SURF DNA",
+  "area": "prancha",
+  "cat": "escolher",
+  "title": "Tipos de prancha de surf: escolha pela sessão, não só pelo nível",
+  "dek": "Compare softboard, longboard, evolution, mid-length, fish e shortboard pelas tarefas que você precisa resolver nas ondas do dia a dia.",
+  "level": "Todos",
+  "minutes": 4,
+  "tags": [
+    "tipos",
+    "arquétipos",
+    "nível",
+    "ondas"
+  ],
+  related: ["prancha-01", "prancha-15", "prancha-16"],
+  "body": [
+    {
+      "t": "p",
+      "x": "Os tipos de prancha de surf organizam propostas de uso. Softboard, longboard, evolution, mid-length, fish e shortboard são famílias amplas, com variações de desenho dentro de cada uma. Reconhecer a família ajuda a começar a pesquisa. Para decidir, você ainda precisa cruzar peso, habilidade, frequência no mar e tipo de onda com as medidas e a construção do modelo específico."
+    },
+    {
+      "t": "h",
+      "x": "Aprender a entrar na onda e ficar de pé"
+    },
+    {
+      "t": "p",
+      "x": "Quem ainda treina a subida e o posicionamento costuma aproveitar uma prancha com boa área de apoio e remada confortável. Softboards de iniciação são um caminho comum, desde que dimensionadas para a pessoa e para o local da aula. A cobertura macia pode reduzir o impacto de algumas pancadas, mas não elimina riscos. Professor, condições adequadas e distância entre praticantes continuam essenciais."
+    },
+    {
+      "t": "p",
+      "x": "Longboards e funboards também podem facilitar a entrada na onda, porém comprimento e peso mudam o transporte, o controle no mar e a passagem da arrebentação. Um longboard voltado a manobras não equivale automaticamente a uma prancha de escola. Pergunte qual é a proposta do modelo e experimente com orientação antes de comprar apenas porque ele parece grande e estável."
+    },
+    {
+      "t": "h",
+      "x": "Ganhar autonomia sem reduzir cedo demais"
+    },
+    {
+      "t": "p",
+      "x": "Evolution e funboard são nomes usados para propostas de transição, mas as fronteiras variam entre fabricantes. Procure entender o que mudou em relação à prancha atual: apoio sob o peito, largura, desenho do bico, bordas e curvatura. Diminuir o comprimento só vale a pena quando a perda de facilidade de remada não reduz demais o número de ondas que você consegue aproveitar."
+    },
+    {
+      "t": "p",
+      "x": "Não existe obrigação de seguir uma escada até a shortboard. Melhorar no longboard, aprender linhas diferentes numa mid-length ou manter uma softboard para dias leves são escolhas legítimas. A progressão útil é a que amplia seu controle e sua leitura do mar. Trocar de família de prancha sem saber qual tarefa você quer melhorar pode dificultar a identificação do que funcionou."
+    },
+    {
+      "t": "h",
+      "x": "Mid-length e fish para propostas diferentes"
+    },
+    {
+      "t": "p",
+      "x": "Mid-length costuma combinar mais comprimento com curvas fluidas e entrada confortável, mas há modelos bastante distintos. Fish costuma concentrar área em menos comprimento e pode favorecer velocidade em determinadas ondas. Uma fish curta continua exigindo posicionamento e controle; não vira prancha de iniciante só por ter bastante volume. Nem toda rabeta swallow representa a mesma proposta de fish."
+    },
+    {
+      "t": "p",
+      "x": "Se você procura mais facilidade para pegar a onda, avalie primeiro a remada e a antecipação de entrada. Se já entra com consistência e quer mudar a sensação das curvas, desenho de bordas, quilhas e distribuição da área ganham peso. Uma comparação na mesma condição, com orientação e tempo de adaptação, ajuda a separar novidade de uma melhora que se repete."
+    },
+    {
+      "t": "h",
+      "x": "Shortboard e propostas para condições específicas"
+    },
+    {
+      "t": "p",
+      "x": "Shortboards de performance costumam exigir mais precisão para entrar na onda e gerar velocidade. Há versões com maior área para ondas fracas, muitas vezes chamadas de groveler, e desenhos para condições mais fortes. Esses nomes não substituem a leitura da ficha técnica. Uma prancha feita para uma situação específica pode funcionar mal como única opção para quem surfa em condições variadas."
+    },
+    {
+      "t": "ul",
+      "items": [
+        "Se falta pegar ondas, priorize remada, posicionamento e apoio.",
+        "Se falta manter velocidade, observe a onda e a linha escolhida antes de culpar o volume.",
+        "Se falta trocar de borda, compare técnica, largura, bordas e quilhas com um profissional.",
+        "Se a prancha funciona só em dias raros, reavalie a condição de uso que guiou a compra."
+      ]
+    },
+    {
+      "t": "h",
+      "x": "Como transformar o tipo em uma escolha concreta"
+    },
+    {
+      "t": "p",
+      "x": "Defina uma tarefa principal e compare dois ou três modelos dentro da família mais promissora. Leve ao shaper ou professor as medidas da prancha atual, seus acertos e dificuldades. Use a calculadora de litragem para explorar uma referência, sem tratar o número como garantia de encaixe. Duas pranchas com os mesmos litros podem pedir técnicas diferentes e oferecer sensações muito distintas."
+    },
+    {
+      "t": "tip",
+      "x": "No SURF DNA, o tipo recomendado resume uma proposta. Leia também os motivos e os compromissos da escolha antes de transformar o resultado em uma compra."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Pró-Ilha: tabela de volume como referência inicial",
+      "url": "https://www.pro-ilha.com.br/tabela-em-litros"
+    },
+    {
+      "title": "Udo Bastos: modelos híbridos e diferenças de proposta",
+      "url": "https://www.udobastos.com.br/modelos-hibridas"
+    }
   ]
 }
 );
