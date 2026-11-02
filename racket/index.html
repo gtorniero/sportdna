@@ -754,8 +754,6 @@ const Q=[
  {s:3,id:'miss',t:'Onde você mais erra?',o:[['short','Bola curta, sem peso'],['long','Bola longa, para fora'],['net','Na rede'],['frame','Pego fora do centro','A raquete torce na mão']]},
  {s:4,id:'cur',type:'select',t:'Qual a sua raquete atual?',h:'Se não estiver na lista, escolha "Outra". Com ela, fazemos o diagnóstico da sua raquete.'},
  {s:4,id:'curAge',if:()=>A.cur&&A.cur!=='none',t:'Há quanto tempo você usa essa raquete?',o:[['0','Menos de 1 ano'],['1','1 a 3 anos'],['3','Mais de 3 anos']]},
- {s:4,id:'hand',type:'number',t:'Medida da mão (opcional)',h:'Se souber: em cm, da linha do meio da palma até a ponta do dedo anelar. Usamos para indicar o '+'<button type="button" class="gl" data-g="grip">grip</button>. Se não souber, pule.',min:9,max:13,step:.1,opt:true},
- {s:4,id:'grip',t:'Qual o grip (cabo) da sua raquete?',h:'Vem escrito na base do cabo: L1 a L5 ou 4 1/8 a 4 5/8.',o:[['1','L1','4 1/8'],['2','L2','4 1/4'],['3','L3','4 3/8'],['4','L4','4 1/2'],['5','L5','4 5/8'],['0','Não sei']],opt:true},
  {s:4,id:'feel',if:()=>A.cur!=='none',t:'Como você sente sua raquete hoje?',o:[['light','Leve demais','Treme contra bola pesada'],['ok','No ponto'],['heavy','Pesada demais','Cansa ou chega atrasado']]},
  {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é proteger o braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
  {s:4,id:'want',multi:2,t:'O que você quer ganhar com a troca?',h:'Escolha até 2.',o:[['power','Mais potência','A bola sai mais forte com o mesmo esforço'],['control','Mais controle','A bola vai mais onde você mira'],['comfort','Mais conforto','Menos vibração chegando ao braço'],['spin','Mais spin','Mais efeito: a bola gira mais e cai dentro'],['maneuver','Mais leveza na mão','Raquete mais rápida de mexer, na rede e na defesa'],['stability','Mais estabilidade','Não treme contra bola forte']]},
@@ -769,7 +767,7 @@ const Q=[
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',dom:'R',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',hand:'11.1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',bh:'two',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',grip:'3',feel:'heavy',why:'pain',headp:'100',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2200'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',dom:'R',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',bh:'two',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',headp:'100',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2200'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
 $('#nRk').textContent=RK.length;
 $('#nQ').textContent=Q.filter(q=>!q.if).length+' a '+Q.length;
@@ -1131,24 +1129,26 @@ function specBars(main,cur,Z,alt){
     <div class="legend"><span><i style="background:var(--pri);height:10px;width:10px;border-radius:50%"></i>${alt?esc(main.model):'Recomendada'}</span>${alt?`<span><i style="background:var(--alt);height:10px;width:10px;border-radius:50%"></i>${esc(alt.model)}</span>`:''}${cur&&!alt?'<span><i class="ring"></i>Sua atual</span>':''}${Z?'<span><i style="background:var(--ball);height:10px;width:16px"></i>Sua faixa ideal</span>':''}</div>`;
 }
 /* mapa peso × swingweight */
-function scatter(hi,cur,Z,top3){
+/* mapa do catálogo: cada raquete é uma bolinha; o top 10 aparece numerado, na ordem do ranking */
+function scatter(hi,cur,Z,top){
   const W=620,H=360,L=52,Rm=16,T0=16,B=44;const [x0,x1]=RANGE('wt'),[y0,y1]=RANGE('sw');
   const X=v=>L+(v-(x0-5))/((x1+5)-(x0-5))*(W-L-Rm), Y=v=>H-B-(v-(y0-4))/((y1+4)-(y0-4))*(H-T0-B);
   let g='';
   for(let v=Math.ceil((x0-5)/20)*20;v<=x1+5;v+=20)g+=`<line x1="${X(v)}" x2="${X(v)}" y1="${T0}" y2="${H-B}" stroke="var(--line)"/><text x="${X(v)}" y="${H-B+18}" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="DM Sans, sans-serif">${v}</text>`;
   for(let v=Math.ceil((y0-4)/10)*10;v<=y1+4;v+=10)g+=`<line x1="${L}" x2="${W-Rm}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${L-8}" y="${Y(v)+4}" text-anchor="end" font-size="12" fill="var(--muted)" font-family="DM Sans, sans-serif">${v}</text>`;
   g+=`<text x="${(L+W)/2}" y="${H-6}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">Peso sem corda (g) →</text><text transform="translate(14 ${(T0+H-B)/2}) rotate(-90)" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">Swingweight →</text>`;
-  const mx=X((x0+x1)/2),my=Y((y0+y1)/2);
-  g+=`<line x1="${mx}" x2="${mx}" y1="${T0}" y2="${H-B}" stroke="var(--muted)" stroke-opacity=".5" stroke-dasharray="2 4"/><line x1="${L}" x2="${W-Rm}" y1="${my}" y2="${my}" stroke="var(--muted)" stroke-opacity=".5" stroke-dasharray="2 4"/>`;
-  [['Leve e solta · manobra',L+8,T0+40,'start'],['Pesada e estável · ataque',W-Rm-8,T0+16,'end'],['Leve e macia na mão · conforto',L+8,H-B-10,'start'],['Pesada, cabeça leve · controle',W-Rm-8,H-B-10,'end']].forEach(q=>g+=`<text x="${q[1]}" y="${q[2]}" text-anchor="${q[3]}" font-size="11" font-weight="700" fill="var(--muted)" opacity=".8">${q[0]}</text>`);
-  if(Z){const zx=X(Z.wt[0]),zw=X(Z.wt[1])-zx,zy=Y(Z.sw[1]),zh=Y(Z.sw[0])-zy;g+=`<rect x="${zx}" y="${zy}" width="${zw}" height="${zh}" rx="${Math.min(zw,zh)/2}" fill="var(--ball)" fill-opacity=".45" stroke="var(--ink)" stroke-opacity=".35" stroke-dasharray="4 3"/><text x="${zx+zw/2}" y="${zy-6}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">sua zona</text>`}
-  const ids=new Set((top3||[]).map(x=>x.r.id));
-  RK.forEach(r=>{if(r.id===hi.id||(cur&&r.id===cur.id))return;g+=`<circle cx="${X(r.wt)}" cy="${Y(r.sw)}" r="${ids.has(r.id)?6:4}" fill="var(--pri)" fill-opacity="${ids.has(r.id)?.75:.28}"><title>${esc(r.name)} · ${r.wt} g · SW ${r.sw}</title></circle>`});
-  if(cur)g+=`<circle cx="${X(cur.wt)}" cy="${Y(cur.sw)}" r="8" fill="var(--surface)" stroke="var(--cur)" stroke-width="3"/><text x="${X(cur.wt)+12}" y="${Y(cur.sw)+4}" font-size="12" font-weight="700" fill="var(--muted)">sua atual</text>`;
-  const hx=X(hi.wt),hy=Y(hi.sw);
-  if(cur){const cx2=X(cur.wt),cy2=Y(cur.sw),dx=hx-cx2,dy=hy-cy2,dl=Math.hypot(dx,dy)||1;if(dl>24)g+=`<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--ink)"/></marker></defs><line x1="${cx2+dx/dl*10}" y1="${cy2+dy/dl*10}" x2="${hx-dx/dl*14}" y2="${hy-dy/dl*14}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar)"/>`}
-  g+=`<circle cx="${hx}" cy="${hy+3}" r="11" fill="#000" opacity=".18"/><circle cx="${hx}" cy="${hy}" r="11" fill="var(--ball)" stroke="var(--ink)" stroke-width="2.5"/><text x="${hx+(hx>W-160?-16:16)}" y="${hy+28}" text-anchor="${hx>W-160?'end':'start'}" font-size="13" font-weight="800" fill="var(--ink)">${esc(hi.model)}</text>`;
-  return `<svg class="scatter" viewBox="0 0 ${W} ${H}" role="img" aria-label="Mapa de peso contra swingweight das ${RK.length} raquetes">${g}</svg>`;
+  [['Leve e solta',L+8,T0+14,'start'],['Pesada e estável',W-Rm-8,T0+14,'end'],['Leve e macia',L+8,H-B-10,'start'],['Pesada, cabeça leve',W-Rm-8,H-B-10,'end']].forEach(q=>g+=`<text x="${q[1]}" y="${q[2]}" text-anchor="${q[3]}" font-size="11" fill="var(--muted)">${q[0]}</text>`);
+  const list=(top||[]).map(x=>x.r||x);const rank=new Map(list.map((r,i)=>[r.id,i]));
+  RK.forEach(r=>{if(rank.has(r.id)||(cur&&r.id===cur.id))return;g+=`<circle cx="${X(r.wt)}" cy="${Y(r.sw)}" r="3.6" fill="var(--muted)" fill-opacity=".38"><title>${esc(r.name)} · ${r.wt} g · SW ${r.sw}</title></circle>`});
+  if(cur&&!rank.has(cur.id))g+=`<circle cx="${X(cur.wt)}" cy="${Y(cur.sw)}" r="8" fill="var(--surface)" stroke="var(--cur)" stroke-width="3"><title>Sua ${esc(cur.name)}</title></circle><text x="${X(cur.wt)+12}" y="${Y(cur.sw)+4}" font-size="12" font-weight="700" fill="var(--muted)">sua atual</text>`;
+  /* raquetes com o mesmo peso e swingweight não se escondem: cada uma sai um pouco para o lado */
+  const pos=[];const place=(x,y)=>{let k=0,px=x,py=y;while(pos.some(p=>Math.hypot(p[0]-px,p[1]-py)<17)&&k<12){k++;const a=k*2.4;px=x+Math.cos(a)*9*Math.ceil(k/3);py=y+Math.sin(a)*9*Math.ceil(k/3)}pos.push([px,py]);return [px,py]};
+  const P=list.map(r=>place(X(r.wt),Y(r.sw)));
+  for(let i=list.length-1;i>=0;i--){const r=list[i],[px,py]=P[i],big=i===0;
+    g+=`<g><title>${i+1}º ${esc(r.name)} · ${r.wt} g · SW ${r.sw}</title><circle cx="${px}" cy="${py}" r="${big?13:10}" fill="var(--ball)" stroke="${big?'var(--ink)':'var(--surface)'}" stroke-width="${big?2.5:2}"/><text x="${px}" y="${py+4}" text-anchor="middle" font-size="${big?12:11}" font-weight="800" fill="#0B2530" font-family="DM Sans, sans-serif">${i+1}</text></g>`}
+  if(list[0]){const [hx,hy]=P[0],up=hy>T0+34,tx=Math.min(Math.max(hx,L+70),W-Rm-70);g+=`<text x="${tx}" y="${up?hy-21:hy+30}" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)" stroke="var(--surface)" stroke-width="4" stroke-linejoin="round" paint-order="stroke">${esc(list[0].model)}</text>`}
+  const al=`Mapa de peso contra swingweight das ${RK.length} raquetes. Seu top ${list.length}: `+list.map((r,i)=>`${i+1}º ${r.name}, ${r.wt} g, swingweight ${r.sw}`).join('; ')+(cur?`. Sua atual: ${cur.name}, ${cur.wt} g, swingweight ${cur.sw}`:'')+'.';
+  return `<svg class="scatter" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(al)}">${g}</svg>`;
 }
 function gauge(v){
   const a=Math.PI*(1-v/10),x=42+34*Math.cos(a),y=44-34*Math.sin(a);
@@ -1315,7 +1315,7 @@ function why(r,c,T){
   const out=[];const ranked=KEYS.map(k=>({k,d:Math.abs(r.ix[k]-T[k]),t:T[k]})).filter(x=>x.t>=6).sort((a,b)=>a.d-b.d);
   ranked.slice(0,2).forEach(x=>out.push(`${LBL[x.k]} ${dec(r.ix[x.k])} para um alvo de ${dec(x.t)}: o índice que o seu jogo mais pede.`));
   if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, menos vibração chegando ao '+(J('elbow')?'cotovelo':'braço'):': dentro do limite para quem já teve dor'}.${r.tech?` Tem tecnologia de conforto (${r.tech}).`:''}`);
-  if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: dentro da sua zona no mapa do catálogo.`);
+  if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: na faixa ideal de peso e swingweight para você.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para sua força e seu nível.`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
   if(A.bh==='one'&&r.sw>=315)out.push(`Swingweight ${r.sw}: massa suficiente para o backhand de uma mão atravessar a bola.`);
@@ -1325,9 +1325,9 @@ function why(r,c,T){
 }
 function attention(r){
   const out=[];
-  if(!inZone(r)){const z=ZZ,fora=[r.wt<z.wt[0]||r.wt>z.wt[1]?`peso ${r.wt} g (zona ${z.wt[0]}–${z.wt[1]})`:'',r.sw<z.sw[0]||r.sw>z.sw[1]?`swingweight ${r.sw} (zona ${z.sw[0]}–${z.sw[1]})`:''].filter(Boolean).join(' e ');
+  if(!inZone(r)){const z=ZZ,fora=[r.wt<z.wt[0]||r.wt>z.wt[1]?`peso ${r.wt} g (ideal ${z.wt[0]}–${z.wt[1]})`:'',r.sw<z.sw[0]||r.sw>z.sw[1]?`swingweight ${r.sw} (ideal ${z.sw[0]}–${z.sw[1]})`:''].filter(Boolean).join(' e ');
     const b=RES.ranked.find(x=>inZone(x.r)&&x.r.id!==r.id);
-    out.push(`Fica fora da sua zona no mapa: ${fora}. ${b?`A melhor dentro da zona, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás${b.pen&&b.pen[0]?` (${b.pen[0][1].charAt(0).toLowerCase()+b.pen[0][1].slice(1)})`:''}.`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
+    out.push(`Fica fora da faixa ideal de peso e swingweight: ${fora}. ${b?`A melhor dentro dela, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás${b.pen&&b.pen[0]?` (${b.pen[0][1].charAt(0).toLowerCase()+b.pen[0][1].slice(1)})`:''}.`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
   {const d=r.wt-RES.tw;if(Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
   if(r.br==='d')out.push('Difícil de achar no Brasil: em geral, só importando ou em loja especializada. Confira antes de se apegar.');
   if(r.br==='p')out.push('Pouca oferta no Brasil: vale ligar para a loja antes de ir.');
@@ -1410,8 +1410,8 @@ function renderReport(){
   </div>
   ${c?`<div class="panel"><h3>Sua ${esc(c.name)} × a ${esc(r.model)}</h3>${curFit?`<p class="muted">A sua ficou com DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}<div class="tbl"><table><thead><tr><th>Item</th><th>Atual</th><th>Nova</th><th>O que você vai sentir</th></tr></thead><tbody>${feel(r,c).map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td><td class="n">${x[2]}</td><td>${x[3]}</td></tr>`).join('')}</tbody></table></div></div>`:''}`;
   if(tier>=2){
-    h+=`<div class="panel"><div class="phead"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,3))}
-      <p class="note">Cada ponto é uma raquete. A zona lima é onde peso e swingweight batem com o seu perfil; os pontos mais fortes são o seu top 3.</p></div>
+    h+=`<div class="panel"><div class="phead"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
+      <p class="note">Cada ponto é uma das ${RK.length} raquetes do catálogo. Os números são o seu top 10, na ordem do ranking.${c?' O anel laranja é a sua atual.':''}</p></div>
     <div class="panel"><h3>Ranking dos 10 melhores</h3><div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div></div>
     <details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Comparar duas raquetes</b><span>A recomendada contra a sua ou contra qualquer outra das ${RK.length}, atributo por atributo, com o DNA Score de cada uma.</span></span><span class="cmpgo" aria-hidden="true">Comparar</span></summary>
       <div class="cmpsel"><select id="cmpA" aria-label="Raquete A">${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Raquete B">${optList(c?c.id:ranked[1].r.id)}</select></div>
@@ -1426,6 +1426,11 @@ function renderReport(){
       <p class="note">Comece pelo meio da faixa. Bola indo longa: suba 2 lb no próximo encordoamento. Sem profundidade ou com dor: desça 2 lb.${A.string==='poly'&&A.arm!=='no'?' Poliéster perde tensão rápido e endurece; com histórico de dor, não passe do prazo de troca.':''}</p>
     </div>
 `;
+    h+=`<div class="panel"><h3>Grip: como medir e escolher</h3>
+      <p>Com a mão aberta, meça em centímetros da linha do meio da palma até a ponta do dedo anelar.</p>
+      <div class="tbl"><table style="min-width:0"><thead><tr><th>Medida da mão</th><th>Grip</th></tr></thead><tbody>
+      ${[['até 10,6 cm','L1 · 4 1/8'],['10,7 a 10,9 cm','L2 · 4 1/4'],['11,0 a 11,2 cm','L3 · 4 3/8'],['11,3 a 11,5 cm','L4 · 4 1/2'],['11,6 cm ou mais','L5 · 4 5/8']].map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td></tr>`).join('')}</tbody></table></div>
+      <ul class="why"><li>Na loja: segurando a raquete, o dedo indicador da outra mão deve caber entre a ponta dos seus dedos e a base da palma.</li><li>Entre dois tamanhos, escolha o menor e complete com overgrip: cada overgrip engrossa cerca de meio número.</li>${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário.</li>':''}</ul></div>`;
   }else{
     h+=`<div class="lock"><h3>2º e 3º lugares, mapa, ranking, comparador e corda</h3><p class="muted">As alternativas, o mapa peso × swingweight do catálogo, o ranking dos 10, o comparador livre e a corda e tensão para a nova e para a sua fazem parte do relatório completo, que também sai em PDF A4.</p><button class="btn btn-go" type="button" id="up">Liberar por R$ 19,99</button></div>`;
   }
@@ -1560,7 +1565,7 @@ function pdfPages(){
   const list=ranked.slice(0,10);if(curFit)list.push(curFit);list.sort((a,b)=>b.fit-a.fit);
   const p5=`<section class="pg">${head(5,'Ranking completo e como chegamos aqui')}
    <div class="cols c2"><div><h2 class="st">Top 10 para o seu perfil</h2><div class="rk5">${list.map(x=>{const isC=curFit&&x===curFit;return `<div class="r5${x===w?' w':''}${isC?' c':''}"><span>${isC?'—':ranked.indexOf(x)+1}</span><div><i style="width:${x.fit}%"></i><em>${esc(x.r.name)}${isC?' (sua)':''}</em></div><b>${x.fit}%</b></div>`}).join('')}</div></div>
-   <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,top))}</div><p class="small">Cada ponto é uma raquete; a área lima é a sua zona.</p></div></div>
+   <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,ranked.slice(0,10)))}</div><p class="small">Cada ponto é uma raquete; os números são o seu top 10.</p></div></div>
    ${curFit?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
    <h2 class="st">Como chegamos aqui</h2>
    <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>34</b><span>respostas sobre corpo, braço e jogo</span></div><div><b>815</b><span>avaliações públicas usadas na calibração</span></div><div><b>2×</b><span>o acaso em acertar a favorita de testadores reais</span></div></div>
