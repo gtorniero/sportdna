@@ -12,7 +12,8 @@ const casos=JSON.parse(fs.readFileSync(arqCasos,'utf8')).casos;
 const html=fs.readFileSync(path.join(raiz,'run/index.html'),'utf8');
 const i=html.indexOf('const KMW=');const j=html.indexOf('\n',i)+1;
 const tmp=path.join(raiz,'run/tools/.motor.html');
-fs.writeFileSync(tmp,html.slice(0,j)+'window.__T={engine,M,PESOS};\n'+html.slice(j));
+const h2=html.slice(0,j)+'window.__T={engine,M,PESOS,get sm(){return window.__sm}};\n'+html.slice(j);
+fs.writeFileSync(tmp,h2.replace('  let ranked=M.map(m=>({m,s:sm(m)}))','  window.__sm=sm;\n  let ranked=M.map(m=>({m,s:sm(m)}))'));
 const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+tmp);fs.unlinkSync(tmp);
 const r=await p.evaluate(({casos,ajustar})=>{
   const {engine,M,PESOS}=window.__T;
@@ -62,11 +63,25 @@ const r=await p.evaluate(({casos,ajustar})=>{
   const mE={},mM={};usar.forEach(({c,picks})=>{picks.slice(0,3).forEach(n=>{const b=M.find(m=>m.n===n).b;mE[b]=(mE[b]||0)+1});engine(resp(c),true).top10.slice(0,3).forEach(x=>{mM[x.m.b]=(mM[x.m.b]||0)+1})});
   const tE=Object.values(mE).reduce((a,b)=>a+b,0),tM=Object.values(mM).reduce((a,b)=>a+b,0);
   diag.marcas=Object.keys({...mE,...mM}).map(b=>[b,+(100*(mE[b]||0)/tE).toFixed(1),+(100*(mM[b]||0)/tM).toFixed(1)]).sort((x,y)=>y[1]-x[1]);
+  // fatores: no caso que erra, quanto cada fator dá a mais para o nosso 1º do que para o melhor indicado pelos especialistas
+  const F={};let nf=0;usar.forEach(({c,picks})=>{const e=engine(resp(c),true);const top=e.top10.slice(0,3).map(x=>x.m.n);if(picks.some(n=>top.includes(n)))return;
+    const rk=e.ranked.map(x=>x.m.n);const pk=picks.filter(n=>rk.includes(n)).sort((x,y)=>rk.indexOf(x)-rk.indexOf(y))[0];if(!pk)return;
+    const sm=window.__T.sm,Cw={},Cp={};sm(e.fins[0].m,0,Cw);sm(M.find(m=>m.n===pk),0,Cp);nf++;
+    new Set([...Object.keys(Cw),...Object.keys(Cp)]).forEach(k=>F[k]=(F[k]||0)+(Cw[k]||0)-(Cp[k]||0))});
+  diag.fatores=Object.entries(F).map(([k,v])=>[k,+(v/nf).toFixed(2)]).sort((a,b)=>b[1]-a[1]);diag.nf=nf;
+  // modelos: indicações dos especialistas × nossas (top 3) nos mesmos casos
+  const qE={},qM={};usar.forEach(({c,picks})=>{picks.slice(0,3).forEach(n=>qE[n]=(qE[n]||0)+1);engine(resp(c),true).top10.slice(0,3).forEach(x=>qM[x.m.n]=(qM[x.m.n]||0)+1)});
+  diag.modelos=Object.keys({...qE,...qM}).map(n=>[n,qE[n]||0,qM[n]||0]).sort((x,y)=>(y[2]-y[1])-(x[2]-x[1]));
+  // por modelo sub-indicado: nos casos em que os especialistas o indicam, o que o separa do nosso 1º
+  diag.porModelo={};['Puma Fast-R Nitro Elite 3','Puma Deviate Nitro 4','Puma Velocity Nitro 5','Brooks Ghost 17','Brooks Adrenaline GTS 25','Brooks Glycerin 22'].forEach(alvo=>{
+    const F={};let n=0,pos=[];usar.forEach(({c,picks})=>{if(!picks.includes(alvo))return;const e=engine(resp(c),true);const sm=window.__T.sm;const Cw={},Cp={};sm(e.fins[0].m,0,Cw);const m=M.find(x=>x.n===alvo);sm(m,0,Cp);n++;
+      pos.push(e.ranked.findIndex(x=>x.m===m)+1+' ('+e.c1+'/'+e.c2+', 1º '+e.fins[0].m.n+')');new Set([...Object.keys(Cw),...Object.keys(Cp)]).forEach(k=>F[k]=(F[k]||0)+(Cw[k]||0)-(Cp[k]||0))});
+    diag.porModelo[alvo]={n,pos:pos.slice(0,4),fatores:Object.entries(F).map(([k,v])=>[k,+(v/n).toFixed(1)]).filter(x=>Math.abs(x[1])>=0.4).sort((a,b)=>b[1]-a[1])}});
   if(!ajustar)return {antes,diag,n:usar.length,descartados:casos.length-usar.length};
   // validação cruzada em 3 partes: uma mudança só entra se melhorar o total e pelo menos 2 das 3 partes, sem piorar nenhuma em mais de 0,01.
   // Pesos de saúde e encaixe não caem abaixo da metade do valor atual (não trocamos segurança por acerto).
   const SAUDE=['naoBase','naoExtra','naoMax','pesadoLeve','dropAqu','torcMacio','estNeutro','dropCalc','largoBom','largoRuim'];
-  const chaves=Object.keys(PESOS).filter(k=>!['cat1','cat2','cat2Peq','orcPor150','orcAbaixoPor','evidAlvo','notaN'].includes(k));
+  const chaves=Object.keys(PESOS).filter(k=>!['cat1','orcPor150','orcAbaixoPor','evidAlvo','notaN'].includes(k));
   const partes=[0,1,2].map(q=>usar.filter((_,k)=>k%3===q));
   // além do acerto, aproxima a distribuição de marcas da dos especialistas (distância L1 entre as duas), sem regra por marca
   const desvio=L=>{const mE={},mM={};L.forEach(({c,picks})=>{picks.slice(0,3).forEach(n=>{const b=M.find(m=>m.n===n).b;mE[b]=(mE[b]||0)+1});engine(resp(c),true).top10.slice(0,3).forEach(x=>{mM[x.m.b]=(mM[x.m.b]||0)+1})});
