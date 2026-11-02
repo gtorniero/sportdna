@@ -71,7 +71,7 @@ p{margin:0}
 .steps{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
 .steps li{flex:1 1 120px;font-size:13px;font-weight:700;color:var(--muted);border-top:4px solid var(--line);padding-top:8px}
 .steps li.on{color:var(--ink);border-color:var(--pri)}
-.steps li.done{border-color:var(--pri);opacity:.7}
+.steps li.done{border-color:var(--pri);color:var(--muted)}
 .q{display:flex;flex-direction:column;gap:10px;border:0;margin:0;padding:0;min-width:0}
 .q legend,.q label.ql{font-weight:700;font-size:17px;padding:0;margin-bottom:2px}
 .q .help{font-size:14px;color:var(--muted);margin-top:-4px}
@@ -328,8 +328,8 @@ table.t10 tr.pref td{background:var(--soft)}
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir meu tênis</button>
           <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
-          <button class="btn btn-ghost" id="duelGo" type="button">Comparar dois tênis</button>
         </div>
+        <div class="row"><button class="btn btn-ghost" id="duelGo" type="button">Comparar dois tênis</button><span class="note">Escolha dois modelos e veja specs, preço e diferenças lado a lado.</span></div>
         <p class="note">Grátis · 3 minutos · sem cadastro</p>
       </div>
       <div class="herocol">
@@ -660,7 +660,9 @@ const FICHA=1.2;
 const LEVE={cal:.4,lon:.4,len:.4,ini:.4,dia:.4,asf:.4};
 // categoria que as respostas apontam: dentro dela o tênis soma ZONA no motor (+4 no DNA); na 2ª categoria, ZONA a menos (−4)
 const ZONA=2,ZONA_PEQ=0.5;
-const BUD=[[0,400],[400,700],[700,1000],[1000,1500],[1500,99999]];
+// a última faixa é "sem limite de preço": o preço não pesa contra nenhum tênis
+const BUD=[[0,400],[400,700],[700,1000],[1000,1500],[1500,99999],[0,99999]];
+const SEM_LIMITE=5;
 const PROF=['Primeiros Quilômetros','Corredor em Construção','Corredor Constante','Corredor de Prova','Corredor de Alta Quilometragem'];
 /* traços do corredor e usos pedidos, no mesmo vocabulário das reviews */
 function traits(a,level){const g=(k,d)=>a[k]===undefined?d:a[k];const T=new Set();
@@ -780,18 +782,18 @@ const cl10=x=>Math.max(1,Math.min(10,Math.round(x*10)/10));
 function idx(m){return [cl10(m.mz*2*.65+(m.hs-28)/(46-28)*10*.35),cl10(m.rs*2+(m.pl==='carbono'?.4:0)),cl10((320-m.g)/14),cl10(m.es*2),cl10(m.du/80),cl10(10-(m.p/m.du-0.5)*4)]}
 const SX=['Amortecimento','Resposta','Leveza','Estabilidade','Durabilidade','Custo por km'];
 const RX=['Volume','Ritmo','Regularidade','Foco em prova','Conforto','Orçamento'];
-function runnerVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];return [(g('km',1)+1)/5,(g('pace',2)+1)/5,(Math.min(4,g('tempo',2))+1)/5,Math.min(1,([1,2,3].includes(g('obj',1))?.5:.1)+g('treino',0)*.25),[1,.6,.3][g('sens',1)],(g('orc',1)+1)/5]}
+function runnerVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];return [(g('km',1)+1)/5,(g('pace',2)+1)/5,(Math.min(4,g('tempo',2))+1)/5,Math.min(1,([1,2,3].includes(g('obj',1))?.5:.1)+g('treino',0)*.25),[1,.6,.3][g('sens',1)],Math.min(1,(g('orc',1)+1)/5)]}
 function idealVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];const pz=+(g('peso',75));
   const amort=cl10(5+(g('sens',1)===0?2.5:g('sens',1)===2?-2:0)+(pz>=85?1.5:0)+([0,0,1,2,0,1][g('obj',1)]||0));
   const resp=cl10(4+g('treino',0)*1.5+(g('pace',2)>=3?1.5:0)+(g('prior',0)===2?2:0)+(g('sens',1)===2?1.5:0));
   const leve=cl10(4+(g('prior',0)===2?3:0)+(g('obj',1)===1?1.5:0)+(pz>=85?-1:0));
   const est=cl10(5+(g('neutro',0)===1?3:0)+(g('dor',0)===4?2:0)+(pz>=85?1:0));
   const dur=cl10(4+g('km',1)*1.2+(g('prior',0)===1?2:0));
-  const cus=cl10(4+(4-g('orc',1))*1.1+(g('prior',0)===3?2:0));
+  const cus=cl10(4+Math.max(0,4-g('orc',1))*1.1+(g('prior',0)===3?2:0));
   return [amort,resp,leve,est,dur,cus]}
 function factors(r){const a=r.a,m=r.fins[0].m,out=[];const iv=idx(m),id=r.ID;
   SX.forEach((k,i)=>{const d=iv[i]-id[i];if(id[i]>=6.5&&d>=-0.5)out.push(['+',k+' alto, como você precisa']);else if(id[i]>=6.5&&d<-1.5)out.push(['−',k+' um pouco abaixo do ideal'])});
-  const B=BUD[a.orc===undefined?1:a.orc];out.push(m.p<=B[1]?['+','Dentro do orçamento']:['−','Acima do orçamento']);
+  const B=BUD[a.orc===undefined?1:a.orc];if(a.orc!==SEM_LIMITE)out.push(m.p<=B[1]?['+','Dentro do orçamento']:['−','Acima do orçamento']);
   if(a.largura===2)out.push(m.lg?['+','Fôrma larga']:['−','Fôrma padrão; prove antes']);
   if(r.peso>=85&&stackOf(m)>=36)out.push(['+','Espuma alta para '+r.peso+' kg']);
   return out.slice(0,6)}
@@ -872,7 +874,7 @@ const Q=[
  {s:3,id:'sens',t:'Que sensação você prefere no pé?',o:O([['Macio','Tipo nuvem'],['Equilíbrio'],['Firme e responsivo']])},
  {s:3,id:'prior',t:'O que pesa mais na escolha?',o:O(['Conforto','Durabilidade','Leveza e velocidade','Preço'])},
  {s:3,id:'neutro',t:'Já sentiu desconforto recorrente com tênis neutro?',h:'Neutro é o tênis sem apoio extra no arco. A maioria dos corredores se dá bem com ele.',o:O(['Não','Sim','Não sei'])},
- {s:3,id:'orc',t:'Quanto pretende investir?',o:O(['Até R$ 400','R$ 400 a 700','R$ 700 a 1.000','R$ 1.000 a 1.500','Acima de R$ 1.500'])},
+ {s:3,id:'orc',t:'Quanto pretende investir?',o:O(['Até R$ 400','R$ 400 a 700','R$ 700 a 1.000','R$ 1.000 a 1.500','Acima de R$ 1.500',['Sem limite de preço','Mostramos o melhor, custe o que custar']])},
  {s:3,id:'marca',multi:3,opt:1,t:'Tem marca preferida?',h:'Opcional. Escolha até 3. Não muda o ranking geral: mostramos o melhor tênis de cada marca para você.',o:O(['Sem preferência',...BRANDS])},
  {s:3,id:'uso',t:'Vai usar o tênis fora da corrida?',o:O(['Não, só para correr','Também na academia','Também no dia a dia'])},
  {s:3,id:'atual',type:'select',opt:1,t:'Qual tênis você usa hoje?',h:'Opcional. No relatório você compara o seu tênis com o recomendado.'},
@@ -1046,7 +1048,7 @@ function whyT(r){
   else out.push('Sem desconforto relatado, ficamos no neutro: os estudos não mostram ganho em escolher tênis pelo tipo de pisada.');
   if(a.largura===2&&f.lg)out.push('O modelo tem fôrma mais larga, como o seu pé.');
   if(f.nr>=3)out.push(`Nas ${f.nr} reviews que lemos${f.nc?` (${f.np} profissionais e ${f.nc} de clientes)`:''}, a aprovação média é ${dec1(f.sc)} de 5.`);
-  out.push(`${priceTxt(f)}, ${f.p<=BUD[a.orc===undefined?1:a.orc][1]?'dentro':'um pouco acima'} do seu orçamento.`);
+  if(a.orc!==SEM_LIMITE)out.push(`${priceTxt(f)}, ${f.p<=BUD[a.orc===undefined?1:a.orc][1]?'dentro':'um pouco acima'} do seu orçamento.`);
   return out;
 }
 // quando o 1º fica fora da zona (categoria ideal dentro do orçamento), diz por quê e qual o melhor dentro dela
@@ -1191,7 +1193,7 @@ function duelHTML(a,b){
   const fa=fitFor(a),fb=fitFor(b);
   const row=(l,f)=>`<tr><td>${l}</td><td class="n">${f(a)}</td><td class="n">${f(b)}</td></tr>`;
   return `<div class="two" style="margin-top:6px"><div>${VZ.hex(SX,[{name:na,v:ia,c:'var(--clay)',dash:1},{name:nb,v:ib,c:'var(--pri)',fill:'var(--pri)',fo:.16,dots:1}])}</div>
-  <div style="display:flex;flex-direction:column;gap:14px;min-width:0"><div class="tbl"><table class="duelt" style="min-width:0"><thead><tr><th></th><th>${esc(na)}</th><th>${esc(nb)}</th></tr></thead><tbody>
+  <div style="display:flex;flex-direction:column;gap:14px;min-width:0"><div class="tbl"><table class="duelt" style="min-width:0"><thead><tr><th><span class="a11y-sr">Medida</span></th><th>${esc(na)}</th><th>${esc(nb)}</th></tr></thead><tbody>
   ${RES?row('Seu Fit Score',x=>{const v=x===a?fa:fb;return v===null?'fora da sua categoria':v+'%'}):''}
   ${row('Marca',x=>esc(x.b))}${row('Categoria',x=>CAT[x.c].n)}${row('Preço',x=>priceTxt(x).replace(' (aprox.)',''))}${row('Peso',x=>x.g+' g')}${row('Espuma',x=>stackOf(x)+' / '+foreOf(x)+' mm')}${row('Drop',x=>dec1(x.dr)+' mm')}${row('Durabilidade',x=>x.du+' km')}${row('Custo por km',x=>kmCost(x).replace(' por km',''))}${row('Reviews',x=>`${dec1(x.sc)} de 5 · ${x.np+x.nc}`)}${row('Specs',x=>x.fi?'da ficha':'de laboratório')}
   </tbody></table></div>
@@ -1530,7 +1532,7 @@ async function makePDF(r){
   var live=d.createElement('div');live.className='a11y-sr';live.setAttribute('role','status');live.setAttribute('aria-live','polite');d.body.appendChild(live);
   function say(t){live.textContent='';setTimeout(function(){live.textContent=t},80)}
   var srh=d.getElementById('a11y-h1');
-  var NAMES={landing:'Início',duelSec:'Comparar duas raquetes',quiz:'Questionário',analysis:'Análise',preview:'Prévia do resultado',report:'Relatório'};
+  var NAMES={landing:'Início',duelSec:'Comparar dois tênis',quiz:'Questionário',analysis:'Análise',preview:'Prévia do resultado',report:'Relatório'};
   var secs=Object.keys(NAMES).map(function(id){return d.getElementById(id)}).filter(Boolean);
   function visible(){for(var i=0;i<secs.length;i++)if(!secs[i].hidden)return secs[i];return null}
   function firstHeading(s){if(!s)return null;var hs=s.querySelectorAll('h1,h2,legend');for(var i=0;i<hs.length;i++){var r=hs[i].getBoundingClientRect();if(r.width>0&&r.height>0)return hs[i]}return null}
