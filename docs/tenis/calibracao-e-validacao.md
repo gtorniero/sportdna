@@ -1,5 +1,11 @@
 # Tenis Match — calibração e validação com reviews (out/2026)
 
+## Rodada 5: ciência e calibração com especialistas (nov/2026)
+- **Ciência:** cada regra do motor revisada contra a literatura (`ciencia.md`). Mudanças: menos maciez “de presente” para 85 kg+ (Malisoux 2020: maciez protegeu os leves), base estável para pesados, maciez para até 65 kg, supertênis fora para quem pediu estabilidade, textos sem promessa de prevenção.
+- **Pergunta nova:** “Onde o seu tênis gasta mais?” (8 opções) no lugar de “Que parte do pé toca o chão primeiro?”.
+- **Pesos numa tabela (`PESOS`)** e calibração contra 304 casos de especialistas (`validacao.md`, `run/tools/calibrar.mjs`). Top 3: 16% → 26%; top 10: 36% → 47%. Pódios com 2+ contraindicações sérias: 130 → 61 em 15.000.
+- **Fica para a próxima:** reviews dos 48 modelos fracos (busca esgotou), revisão das etiquetas e notas de Nike, ASICS, Brooks e Puma, e validação com corredores reais.
+
 ## Rodada 4: gráficos e ranking coerentes (28/out/2026)
 Mesma checagem feita no Racket Match (PR #20): o relatório mostra uma meta e o 1º lugar a contradiz?
 

@@ -681,17 +681,17 @@ const PESOS={
   cat1:10,cat2:6,cat2Peq:8,zona:2,zonaPeq:0.5,            // categoria indicada, 2ª categoria e zona (categoria + orçamento)
   orcTeto:6,orcPor150:1,orcLeve:0.5,orcDentro:1.5,orcAbaixoMax:2,orcAbaixoPor:200, // preço × orçamento
   sens:0.7,                                                 // distância da sensação preferida (macio/firme)
-  falta:0.45,sobra:0.12,faltaLev:0.45,faltaLevSem:0.15,     // specs técnicas: falta do que o perfil pede × sobra
+  falta:0.45,sobra:0.12,faltaLev:1.8,faltaLevSem:0.15,     // specs técnicas: falta do que o perfil pede × sobra
   pesadoMacio:0.6,pesadoLeve:1,pesadoBase:0.6,leveMacio:0.6, // peso do corredor: 85 kg+ (base estável, nada de tênis muito leve) e até 65 kg (maciez)
   giroEst:1,                                                // sola gasta por dentro: estabilidade pedida sobe 1 ponto
   largoBom:2,largoRuim:0.6,                                 // pé largo
   priorDur:1/120,priorLev:1/25,priorPreco:1/350,priorConf:0.6, // o que pesa mais na escolha
   torcMacio:1.5,dropCalc:1.2,dropAnte:0.8,dropAqu:1.5,estNeutro:0.8, // tornozelo, drop × pisada e Aquiles, estabilidade
-  usoTag:1.2,usoMax:2.4,usoSem:0.5,                         // usos indicados pelas reviews
-  naoBase:3,naoExtra:1,naoMax:7,naoRitmo:0.35,leve:0.4,     // "não indicado para" (leve = etiquetas de preferência)
+  usoTag:2.4,usoMax:2.4,usoSem:0.5,                         // usos indicados pelas reviews
+  naoBase:6,naoExtra:1,naoMax:12,naoRitmo:0.35,leve:0.4,     // "não indicado para" (leve = etiquetas de preferência)
   perfilTag:0.8,perfilMax:1.6,                              // perfil ideal citado pelas reviews
   nota:1.8,notaN:4,                                         // nota das reviews, puxada para a média com pouca evidência
-  aprox:0.6,ficha:1.2,importado:3,evid:0.45,evidAlvo:4,clientes:0.35 // qualidade do dado
+  aprox:0.6,ficha:1.2,importado:3,evid:0.45,evidAlvo:4,clientes:0.7 // qualidade do dado
 };
 // a última faixa é "sem limite de preço": o preço não pesa contra nenhum tênis
 const BUD=[[0,400],[400,700],[700,1000],[1000,1500],[1500,99999],[0,99999]];
@@ -727,6 +727,8 @@ function engine(a,long){
   if(sens===2){add('rap',2);add('sup',1);add('max',-1)}
   if(g('treino',0)===2&&level>=2)add('rap',2);
   if(g('neutro',0)===1){add('est',9);add('sup',-6)}
+  // quem compete, faz ritmo toda semana e monta rodízio: o par de prova pode ser supertênis (teste de fogo; Hoogkamer 2018)
+  if(level>=3&&g('treino',0)===2&&g('pares',0)===1&&!heavy&&orc>=2&&[1,2,3].includes(obj))add('sup',6);
   if(dor===1||dor===5)add('max',1);
   if(dor===4){add('est',2);add('max',-2)}
   if(heavy){add('max',3);add('rap',-2);add('sup',-3)}
