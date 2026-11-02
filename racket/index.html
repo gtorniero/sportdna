@@ -773,9 +773,14 @@ function progress(){
   $('#pfill').style.width=pct+'%';$('#pbarW').setAttribute('aria-valuenow',pct);
   const left=Math.max(1,Math.round((V.length-done)*8/60));
   $('#psec').textContent=`${step+1}/${STEPS.length} · ${STEPS[step]}`;$('#pcount').textContent=`${pct}% · ~${left} min`;
-  $('#steps').innerHTML=STEPS.map((s,i)=>`<span class="${i===step?'on':i<step?'done':''}">${i<step?'✓ ':''}${s}</span>`).join('');
+  const sh=STEPS.map((s,i)=>`<span class="${i===step?'on':i<step?'done':''}">${i<step?'✓ ':''}${s}</span>`).join('');
+  if($('#steps').dataset.h!==sh){$('#steps').dataset.h=sh;$('#steps').innerHTML=sh}
 }
 function renderSteps(){progress()}
+/* depois de terminar um campo digitado: leva à próxima pergunta da etapa (foco no campo, se for de digitar) */
+function nextField(q){const L=VQ().filter(x=>x.s===step);const i=L.findIndex(x=>x.id===q.id);const nx=L.slice(i+1).find(x=>!answered(x));
+  const el=nx&&$(`#qs [data-q="${nx.id}"]`);if(!el)return;const t=el.querySelector('input[type=number],input[type=text]');
+  el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});if(t)setTimeout(()=>{const ae=document.activeElement;if(!ae||ae===document.body||ae.closest('[data-q="'+q.id+'"]'))t.focus({preventScroll:true})},250)}
 function field(q){
   const fs=document.createElement('fieldset');fs.className='q';fs.dataset.q=q.id;
   const help=q.h?`<p class="help">${q.h}</p>`:'';
@@ -785,10 +790,12 @@ function field(q){
     const r=fs.querySelector('input[type=range]'),n=fs.querySelector('input[type=number]');
     r.addEventListener('input',()=>{A[q.id]=r.value;n.value=r.value;r.classList.remove('unset');progress()});
     n.addEventListener('input',()=>{const x=+n.value;if(x>=q.min&&x<=q.max){A[q.id]=String(x);r.value=x;r.classList.remove('unset')}else delete A[q.id];progress()});
+    n.addEventListener('change',()=>{if(A[q.id])nextField(q)});n.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();n.blur()}});
   }else if(q.type==='number'){
 
     fs.innerHTML=`<label class="ql" for="q_${q.id}">${q.t}</label>${help}<div class="stepper"><input id="q_${q.id}" type="number" inputmode="decimal" min="${q.min}" max="${q.max}" step="${q.step}" placeholder="11,1"><small>cm</small></div>`;
     const inp=fs.querySelector('input');inp.value=A[q.id]||'';inp.addEventListener('input',()=>{A[q.id]=inp.value});
+    inp.addEventListener('change',()=>{if(inp.value)nextField(q)});inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();inp.blur()}});
   }else if(q.type==='select'&&q.id==='cur'){
     const norm=t=>t.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
     const IDX=RK.map(r=>({r,k:norm(r.name),m:norm(r.model)}));
@@ -1272,7 +1279,7 @@ function pix(t){
       $('#pxBody').innerHTML=`<div class="okbig">✓</div><h3 style="text-align:center">Pagamento confirmado</h3><p class="muted" style="text-align:center">Seu relatório está liberado.</p>
         <button class="btn btn-go" type="button" id="pxPdf" style="width:100%;margin-top:14px">Baixar relatório em PDF (A4)</button>
         <button class="btn btn-ghost" type="button" id="pxSee" style="width:100%;margin-top:8px">Ver relatório na tela</button>`;
-      $('#pxPdf').onclick=async()=>{await downloadPDF($('#pxPdf'));closeModal()};$('#pxSee').onclick=closeModal;$('#pxPdf').focus();
+      $('#pxPdf').onclick=async()=>{const r=await downloadPDF($('#pxPdf'));if(r&&r.ok&&!r.ios)closeModal()};$('#pxSee').onclick=closeModal;$('#pxPdf').focus();
     },1100);
   };
   $('#pxOk').focus();
@@ -1589,11 +1596,18 @@ async function downloadPDF(btn){
     host.remove();
     const blob=doc.output('blob');const fn=`racket-dna-${RES.ranked[0].r.model.toLowerCase().replace(/[^a-z0-9]+/g,'-')}.pdf`;
     let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
+    /* iPhone e iPad bloqueiam download que começa depois de alguns segundos: lá o PDF abre com um toque novo no link */
+    const ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
     if(dl){try{await dl.save({filename:fn,data:blob});toast('PDF salvo')}catch(e){if(e&&e.code!=='declined')doc.save(fn)}}
-    else doc.save(fn);
-  }catch(e){toast('Não foi possível gerar o PDF agora')}
+    else if(!ios){doc.save(fn);toast('PDF baixado')}
+    pdfLink(btn,URL.createObjectURL(blob),fn,ios);
+    return {ok:true,ios};
+  }catch(e){toast('Não foi possível gerar o PDF agora. Confira a conexão e tente de novo.');return {ok:false}}
   finally{if(btn)btn.disabled=false}
 }
+function pdfLink(btn,url,fn,ios){document.querySelectorAll('.pdflink').forEach(x=>x.remove());if(!btn)return;
+  btn.insertAdjacentHTML('afterend',ios?`<a class="btn btn-go pdflink" href="${url}" download="${fn}" target="_blank" rel="noopener" style="width:100%;margin-top:8px">PDF pronto: toque para abrir</a>`:`<a class="note pdflink" href="${url}" download="${fn}" style="display:inline-block;margin-top:6px">Se o download não começou, clique aqui</a>`);
+  const a=document.querySelector('.pdflink');if(a&&ios)a.focus()}
 window.__pdfPages=()=>pdfPages();
 
 /* ---------- Card PNG ---------- */
@@ -1740,7 +1754,8 @@ async function drawRacketCard(d=racketCardData()){
   syncH1();
   /* etapas do questionário */
   var steps=d.getElementById('steps');
-  if(steps)new MutationObserver(function(){var on=steps.querySelector('.on');if(!on)return;var all=steps.children.length,idx=[].indexOf.call(steps.children,on)+1;
+  var lastIdx=0;
+  if(steps)new MutationObserver(function(){var on=steps.querySelector('.on');if(!on)return;var all=steps.children.length,idx=[].indexOf.call(steps.children,on)+1;if(idx===lastIdx)return;lastIdx=idx;
     steps.setAttribute('aria-label','Etapa '+idx+' de '+all);
     say('Etapa '+idx+' de '+all+': '+on.textContent.replace(/^\s*\d+\.\s*/,'').trim());
     setTimeout(function(){var q=d.querySelector('#qs fieldset, #qs .q');if(q&&started){focusEl(q)}},100);
