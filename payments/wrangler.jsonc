@@ -1,0 +1,13 @@
+{
+  "name": "sportdna-payments-test",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-11-02",
+  "vars": {
+    "PAYMENTS_MODE": "off",
+    "SITE_ORIGIN": "https://sportdna.com.br",
+    "MP_TEST_CREDENTIALS_CONFIRMED": "false"
+  },
+  // Bind a NEW SPORT DNA database before deployment. Never reuse another brand's database.
+  "d1_databases": [],
+  "observability": { "enabled": false }
+}

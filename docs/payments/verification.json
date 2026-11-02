@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-02",
+  "environment": "local QA with synthetic provider responses; not a provider end-to-end test",
+  "automatedSecurityTests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "browser": {
+    "run": {
+      "pendingDoesNotUnlock": true,
+      "approvedOpensReport": true,
+      "reloadResumesPaidReport": true,
+      "axeCheckoutViolations": 0,
+      "axePixViolations": 0,
+      "axeReportViolations": 0
+    },
+    "surf": {
+      "pendingDoesNotUnlock": true,
+      "approvedOpensReport": true,
+      "axeCheckoutViolations": 0,
+      "axeReportViolations": 0
+    },
+    "racket": {
+      "pendingDoesNotUnlock": true,
+      "approvedOpensReport": true,
+      "axeCheckoutViolations": 0,
+      "axeReportViolations": 0
+    }
+  },
+  "productionPaymentsEnabled": false,
+  "secretsCommitted": false,
+  "providerWebhookDeliveryTested": false,
+  "seoStaticChecks": {
+    "passed": 4,
+    "failed": 0
+  }
+}
