@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Casa um feed de produtos de afiliado (CSV da Awin, .csv ou .csv.gz) com o CATALOG do Racket Match.
+/* Casa um feed de produtos de afiliado (CSV da Awin, .csv ou .csv.gz) com o CATALOG do RACKET DNA.
    Uso: node apps/racket/tools/casar-feed.mjs feed.csv[.gz] [feed2.csv ...]
    Saída (na pasta atual): feed-casado.json (proposta por raquete) e feed-casado.md (tabela para conferir à mão).
    Nada é gravado no app: a conferência é humana, e só depois a foto e o link entram no CATALOG. */
