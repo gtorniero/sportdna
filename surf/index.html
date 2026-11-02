@@ -107,7 +107,7 @@ b,strong{font-weight:600}
 .steps{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
 .steps li{flex:1 1 120px;font-size:13px;font-weight:700;color:var(--muted);border-top:4px solid var(--line);padding-top:8px}
 .steps li.on{color:var(--ink);border-color:var(--pri)}
-.steps li.done{border-color:var(--pri);opacity:.7}
+.steps li.done{border-color:var(--pri)}
 .q{display:flex;flex-direction:column;gap:10px;border:0;margin:0;padding:0;min-width:0}
 .q legend,.q label.ql{font-weight:700;font-size:17px;padding:0;margin-bottom:2px}
 .q .help{font-size:14px;color:var(--muted);margin-top:-4px}
@@ -548,7 +548,7 @@ const MAN_AX=[1,1,2,2,3,4,5,5,0];
 const AX=['Linha','Carve','Vertical','Tubo','Aéreo','Clássico'];
 // 13 modelos: afinidades (estilo 6, nível 5, tamanho 5, força 3, objetivo 5), classe de volume, referência e decisões-base
 const ARCH={
- soft:{n:'Softboard de aprendizado',st:[3,1,0,0,0,2],lv:[5,3,1,0,0],tm:[5,4,2,0,0],fo:[5,3,1],ob:[5,2,2,0,1],vc:5,ref:[78,96,23,3.5],L:[84,108],nf:.45,tail:'square',tailN:'Square larga',nose:'Redondo largo',rail:'Cheia e macia (50/50)',foil:'50/50',rk:[4,2],bottom:'Plano com vee leve',setup:'tri',constr:'soft',fixedVol:1,d:'Flutua muito, perdoa erro e não machuca. É a forma mais rápida de ficar de pé.'},
+ soft:{n:'Softboard de aprendizado',st:[3,1,0,0,0,2],lv:[5,3,1,0,0],tm:[5,4,2,0,0],fo:[5,3,1],ob:[5,2,2,0,1],vc:5,ref:[78,96,23,3.5],L:[84,108],nf:.45,tail:'square',tailN:'Square larga',nose:'Redondo largo',rail:'Cheia e macia (50/50)',foil:'50/50',rk:[4,2],bottom:'Plano com vee leve',setup:'tri',constr:'soft',fixedVol:1,d:'Flutua muito, perdoa erro e é macia. É a forma mais rápida de ficar de pé.'},
  long:{n:'Longboard clássico',st:[4,1,0,0,0,5],lv:[4,3,3,3,3],tm:[5,5,3,1,0],fo:[5,4,1],ob:[2,2,4,0,5],vc:5,ref:[72,110,22.75,3],L:[108,116],nf:.4,tail:'square',tailN:'Square ou round',nose:'Redondo, com côncavo no bico',rail:'Macia 50/50',foil:'50/50',rk:[5,2.5],bottom:'Côncavo no bico, vee na rabeta',setup:'single',constr:'puPesada',fixedVol:1,d:'Para andar na prancha, trocar o pé e dar hang five em onda pequena.'},
  longp:{n:'Longboard performance',st:[4,3,1,0,0,4],lv:[1,3,4,4,4],tm:[5,5,4,2,0],fo:[5,4,2],ob:[0,2,3,2,5],vc:5,ref:[64,108,22.5,2.875],L:[104,112],nf:.32,tail:'squash',tailN:'Squash ou pin',nose:'Redondo mais fino',rail:'Macia na frente, firme na rabeta',foil:'60/40',rk:[4.5,2.25],bottom:'Single concave para vee',setup:'2+1',constr:'pu',fixedVol:1,d:'Rema como longboard e aceita curvas fortes na parede.'},
  minimal:{n:'Mini-malibu / funboard',st:[4,2,1,0,0,2],lv:[5,5,2,1,0],tm:[5,5,3,1,0],fo:[5,4,2],ob:[4,4,3,0,1],vc:5,ref:[56,90,22,3],L:[84,98],nf:.35,tail:'round',tailN:'Round ou squash',nose:'Redondo',rail:'Macia, 60/40',foil:'60/40',rk:[4.25,2],bottom:'Single concave suave',setup:'tri',constr:'puEpoxi',d:'A ponte entre a escolinha e a parede: rema fácil e permite as primeiras curvas.'},
@@ -567,84 +567,155 @@ const MODF={soft:1,long:1,longp:1,minimal:1.8,mid:1.25,evo:1.1,fish:1.06,grov:1.
 const LV=[{n:'Primeiras Ondas',gf:[1.0,0.8],min:0,max:20,rng:1},{n:'Já Fica de Pé',gf:[0.58,0.47],min:20,max:40,rng:2},{n:'Intermediário',gf:[0.45,0.41],min:40,max:60,rng:2},{n:'Intermediário Avançado',gf:[0.41,0.385],min:60,max:80,rng:1.5},{n:'Avançado',gf:[0.40,0.37],min:80,max:101,rng:1}];
 const FINSET={single:'Monoquilha',tri:'Triquilha (thruster)',quad:'Quadriquilha','2+1':'2+1 (central e laterais)',twin:'Biquilha',twint:'Biquilha com trailer'};
 const CONSTR={soft:['Soft (EVA) com núcleo EPS','Deck macio, fundo liso, longarina dupla.'],softLong:['Soft com longarina','Deck macio e fundo rígido. Resiste a batidas.'],pu:['PU com poliéster','Sensação conectada na onda.'],puLeve:['PU leve','Mais viva e sensível a pressão.'],puPesada:['PU','Peso ajuda a deslizar e a fazer noseride.'],puRef:['PU reforçada','Longarina mais grossa para onda grande.'],epoxi:['Epóxi (EPS)','Leve, flutua mais, rema melhor.'],puEpoxi:['PU','Sensação clássica; epóxi também funciona.']};
+/* ---------- pesos do motor ----------
+   Todos os números do placar e da litragem ficam aqui. Origem de cada grupo:
+   regra = decisão de produto; shaper = prática de shapers e tabelas de volume (guild factor, Firewire, Surf Simply);
+   calibração = ajustado contra os 422 casos de out/2026 (docs/board/calibracao-reviews.md, rodada 1);
+   teste de fogo = correção das rodadas 2 e 3 (docs/teste-de-fogo.md). */
+const PESOS={
+  // nível: pontos de habilidade (SKP é a tabela por habilidade) · regra
+  habil:{tempo:2,tempoMax:4,auto:[0,3,7],pass:[0,0,2,4,2],tetoSemAuto:15,tetoSemPass:22,tetoSemTempo:10,contra:5},
+  // afinidade do tipo (ARCH.lv/st/tm/fo/ob) · calibração
+  afin:{nivel:3,estilo:4,onda:2,objetivo:3,flut:1.5},
+  // papel da prancha · regra + calibração
+  quiver:{unica:2,pequenos:4,grandes:4,viagem:3,grandesShort:-8,grandesStep:4},
+  // onda · shaper + teste de fogo
+  onda:{grovPequena:3,grovGrande:-6,gunGrande:14,shortGrande:-4,gunSemOnda:-40,stepSemOnda:-12},
+  // corpo e dor: puxam para tipos de mais volume (vc) · regra (a validar com o Gustavo)
+  dor:{forte:0.8,leve:0.5},
+  // nível × tipo · shaper + teste de fogo
+  nivelTipo:{softComCavada:-15,inicianteSemPerf:-30,avancadoSoft:-20,inicianteSoft:8,inicianteSoftSemAuto:4,softPoucoTempo:12},
+  // prancha atual e motivo · regra
+  atual:{incomodaRema:0.8,incomodaTravada:0.8,addMesmo:-10,addMesmaClasse:-3,evoluirPasso:4,evoluirLonge:-2,evoluirMaior:-4,voltar:0.8,mesmoEstilo:14,trocaAtual:-8,trocaNovo:26},
+  // prioridades (notas de 1 a 10) contra os índices do tipo · regra
+  prior:0.09,
+  // objetivo · calibração
+  objv:{evoluir:0.5,autonomia:0.3},
+  // arrebentação, soft e piscina · regra + calibração
+  outros:{patoGrande:-2,softSim:10,softPSim:4,softNao:-40,softSemResp:-6,poolGun:-30,poolLonga:-6,poolCurta:3},
+  // rodada 5 (nov/2026): travas de pódio e de nível · regra + shaper
+  //   ondaGrande: onda > 2,5 m, avançado, no mar (fora "dias pequenos"): gun e step-up garantidos; no 1º só gun, step-up ou pranchinha
+  //   diasGrandes: prancha para dias grandes com onda ≥ 1,5 m, nível ≥ 2: penaliza tipos de onda pequena
+  //   iniciantePerf: nível ≤ 1 perde pontos em pranchinha, step-up e gun depois de todas as outras regras (inclusive "quero mudar de estilo")
+  //   pranchinha: no máximo 6'4"; se a litragem não cabe, perde pontos por % de litros que faltam
+  //   podio.margem: distância mínima de placar ao subir um tipo garantido no pódio
+  regras:{diasGrandes:-14,iniciantePerf:-30,pranchinha:{Lmax:76,sMax:1.25,porPct:-0.5},podio:{margem:0.5}},
+  // ranking → porcentagens · regra
+  fit:{base:96,passo:3,porPonto:1.2,min:70,max:97},conf:{curto:79,longo:86,porGap:0.8,min:70,max:96},
+  // litragem: fator por nível em LV (guild factor) e por tipo em MODF · shaper + calibração
+  vol:{voltar:1.03,idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],dor:[2.5,1.5,1,1.5],
+    // condicionamento multiplica a litragem, como nas calculadoras de volume (Firewire, guild factor) · shaper
+    fis:[1.08,1.03,1,0.97],
+    incomodaRema:1.5,incomodaGrande:-1.5,pesoModelo:[0.15,0.5,1,1,1],ondaStep:[0,0,0,1,2],ondaOutros:[0.5,0,0,0,0],epoxi:-1,
+    refExp:0.9,refMin:0.75,refMax:1.3,softpIniciante:0.6,piscina:0.97}
+};
+function habil(a){
+  const g=(k,d)=>a[k]===undefined?d:a[k],P=PESOS.habil,skills=g('skills',[]);
+  let H=skills.reduce((s,k)=>s+SKP[k],0)+Math.min(P.tempoMax,g('tempo',2))*P.tempo+P.auto[g('auto',2)]+P.pass[g('pass',2)];
+  if(g('auto',2)===0)H=Math.min(H,P.tetoSemAuto);if(g('pass',2)===0)H=Math.min(H,P.tetoSemPass);
+  if(g('tempo',2)===0)H=Math.min(H,P.tetoSemTempo);
+  H=clamp(H,0,100);
+  let lvl=LV.findIndex(l=>H>=l.min&&H<l.max);if(lvl<0)lvl=4;
+  return {H,lvl};
+}
+// litragem máxima de uma pranchinha de 6'4" (Lmax) com largura e espessura até sMax da referência
+function pranchinhaVmax(){const Pr=PESOS.regras.pranchinha,[V0,L0]=ARCH.short.ref;return V0*Pr.Lmax/L0*Pr.sMax}
+// garante tipos no pódio (must) e tira tipos do 1º lugar (notFirst) subindo o placar só de quem entra; o resto do ranking não muda
+function ajustaPodio(sc,must,notFirst,mg){
+  if(!must.length&&!notFirst.length)return;
+  const rank=KEYS.slice().sort((p,q)=>sc[q]-sc[p]);
+  let pod=must.filter((k,i)=>must.indexOf(k)===i).slice(0,3);
+  for(const k of rank){if(pod.length>=3)break;if(!pod.includes(k))pod.push(k)}
+  pod.sort((p,q)=>sc[q]-sc[p]);
+  if(notFirst.includes(pod[0])){const i=pod.findIndex(k=>!notFirst.includes(k));if(i>0)pod.unshift(pod.splice(i,1)[0])}
+  const fora=Math.max(...KEYS.filter(k=>!pod.includes(k)).map(k=>sc[k]));
+  let prox=fora;
+  for(let i=pod.length-1;i>=0;i--){const k=pod[i];sc[k]=Math.max(sc[k],prox+mg);if(i<pod.length-1&&sc[k]<=sc[pod[i+1]])sc[k]=sc[pod[i+1]]+mg;prox=sc[k]}
+}
 /* ---------- motor ---------- */
 function engine(a,long,over){
   a=Object.assign({},a,over||{});
   const g=(k,d)=>a[k]===undefined?d:a[k];
   const peso=g('peso',75),alt=g('altura',175),skills=g('skills',[]),man=g('manobras',[]);
+  const P=PESOS;
   // 1. habilidade
-  let H=skills.reduce((s,k)=>s+SKP[k],0)+Math.min(4,g('tempo',2))*2+[0,3,7][g('auto',2)]+[0,0,2,4,2][g('pass',2)];
-  if(g('auto',2)===0)H=Math.min(H,15);if(g('pass',2)===0)H=Math.min(H,22);
-  if(g('tempo',2)===0)H=Math.min(H,10);
-  H=clamp(H,0,100);
-  let lvl=LV.findIndex(l=>H>=l.min&&H<l.max);if(lvl<0)lvl=4;
+  const {H,lvl}=habil(a);
   let contra=0;if(skills.includes(8)&&!skills.includes(3))contra++;if(skills.includes(7)&&!skills.includes(4))contra++;if(skills.includes(9)&&lvl<2)contra++;
   // 2. estilo
   const S=[0,0,0,0,0,0];S[g('estilo',0)]+=.6;
   const mx=man.filter(k=>k<9);if(mx.length)mx.forEach(k=>S[MAN_AX[k]]+=.4/mx.length);else S[g('estilo',0)]+=.4;
-  // 3. modelo
-  const tam=g('tam',1),fo=g('forca',1),obj=g('obj',1),flut=g('flut',1),quiver=g('quiver',0),ritmo=g('ritmo',1);
+  const tam=g('tam',1),fo=g('forca',1),obj=g('obj',1),flut=g('flut',1),quiver=g('quiver',0);
+  // 3. litragem de cada tipo (antes do placar: a pranchinha perde pontos quando a litragem não cabe em 6'4")
+  a._lvl=lvl;
+  const V=P.vol;
+  const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1),GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
+  const body=(g('motivo',1)===4?V.voltar:1)*V.idade[g('idade',1)]*V.freq[g('freq',1)]*V.fis[g('fis',1)];
+  const flutM=V.flut[flut];
+  const dor=g('dor',[]);
+  let add=(dor.includes(0)?V.dor[0]:0)+(dor.includes(1)?V.dor[1]:0)+(dor.includes(2)?V.dor[2]:0)+(dor.includes(3)?V.dor[3]:0)+(g('incomoda',6)===0?V.incomodaRema:g('incomoda',6)===2?V.incomodaGrande:0);
+  const mw=V.pesoModelo[lvl];
+  const volOf=k=>{const A=ARCH[k];let v=peso*GF*(1+(MODF[k]-1)*mw)*flutM*body+add;
+    v+= (k==='step'||k==='gun')?V.ondaStep[tam]:V.ondaOutros[tam];
+    if(constrOf(k,a)[0].startsWith('Epóxi'))v+=V.epoxi;
+    if(A.fixedVol){const d=dimsFixed(k,peso,alt);v=d.V}
+    if(!A.fixedVol){const rv=A.ref[0]*Math.pow(peso/75,V.refExp);v=clamp(v,rv*V.refMin,rv*V.refMax)}
+    if(k==='softp'&&lvl<=1)v=Math.max(v,peso*V.softpIniciante);
+    if(g('onde',0)===1&&lvl>=2&&!A.fixedVol)v*=V.piscina;
+    return v};
+  const vols=Object.fromEntries(KEYS.map(k=>[k,volOf(k)]));
+  // 4. modelo
   const sc={};
   const IMPK=['rem','est','vel','man','ctl','tol'],im=a.imp||null,imM=im?IMPK.reduce((t,x)=>t+im[x],0)/6:0;
+  const Af=P.afin,Qv=P.quiver,On=P.onda,Nt=P.nivelTipo,Ou=P.outros;
   KEYS.forEach(k=>{const A=ARCH[k];
-    let s=3*A.lv[lvl]+4*A.st.reduce((t,v,j)=>t+v*S[j],0)+2*(A.tm[tam]+A.fo[fo])/2+3*A.ob[obj];
-    s+=1.5*(flut===0?A.vc-2.5:flut===2?2.5-A.vc:0);
-    if(quiver===1&&['fish','grov','twin','mid','softp','minimal'].includes(k))s+=2*2;
-    if(quiver===2&&['step','gun','short'].includes(k))s+=2*2;
-    if(quiver===3&&['grov','fish','short','softp','twin'].includes(k))s+=2*1.5;
-    if(quiver===0&&['evo','mid','fish','minimal','grov'].includes(k))s+=2;
-    if(k==='grov'&&lvl>=2&&tam<=1)s+=3;
-    if(k==='grov'&&tam>=3)s-=6;
+    let s=Af.nivel*A.lv[lvl]+Af.estilo*A.st.reduce((t,v,j)=>t+v*S[j],0)+Af.onda*(A.tm[tam]+A.fo[fo])/2+Af.objetivo*A.ob[obj];
+    s+=Af.flut*(flut===0?A.vc-2.5:flut===2?2.5-A.vc:0);
+    if(quiver===1&&['fish','grov','twin','mid','softp','minimal'].includes(k))s+=Qv.pequenos;
+    if(quiver===2&&['step','gun','short'].includes(k))s+=Qv.grandes;
+    if(quiver===3&&['grov','fish','short','softp','twin'].includes(k))s+=Qv.viagem;
+    if(quiver===0&&['evo','mid','fish','minimal','grov'].includes(k))s+=Qv.unica;
+    if(k==='grov'&&lvl>=2&&tam<=1)s+=On.grovPequena;
+    if(k==='grov'&&tam>=3)s+=On.grovGrande;
     // prancha para dias grandes: step-up e gun na frente da pranchinha do dia a dia
-    if(quiver===2){if(k==='short')s-=8;if(k==='step')s+=4}
-    if(tam===4&&lvl>=3){if(k==='gun')s+=14;if(k==='short')s-=4}
-    if(ritmo===0&&['mid','minimal','long','longp','fish'].includes(k))s+=1.5;if(ritmo===2&&['short','step','twin','grov'].includes(k))s+=1.5;
-    {const dr=g('dor',[]);if(dr.includes(1)||dr.includes(3))s+=(A.vc-2.5)*0.8;else if(dr.includes(0)||dr.includes(2))s+=(A.vc-2.5)*0.5}
-    if(g('sens',1)===0)s+=(A.vc-2.5)*0.8;if(g('sens',1)===2)s+=(2.5-A.vc)*0.8;
-    if(k==='gun'&&tam<4)s-=40;if(k==='step'&&tam<3)s-=12;
-    if(k==='short'&&g('remada',1)===0)s-=8;
-    if((k==='soft')&&skills.includes(6))s-=15;
-    if(lvl===0&&['short','step','gun','twin','grov','fish'].includes(k))s-=30;
-    if(lvl>=3&&k==='soft')s-=20;
-    if(lvl===0&&k==='soft')s+=8+(g('auto',1)===0?4:0);
+    if(quiver===2){if(k==='short')s+=Qv.grandesShort;if(k==='step')s+=Qv.grandesStep}
+    if(tam===4&&lvl>=3){if(k==='gun')s+=On.gunGrande;if(k==='short')s+=On.shortGrande}
+    {const dr=g('dor',[]);if(dr.includes(1)||dr.includes(3))s+=(A.vc-2.5)*P.dor.forte;else if(dr.includes(0)||dr.includes(2))s+=(A.vc-2.5)*P.dor.leve}
+    if(k==='gun'&&tam<4)s+=On.gunSemOnda;if(k==='step'&&tam<3)s+=On.stepSemOnda;
+    if((k==='soft')&&skills.includes(6))s+=Nt.softComCavada;
+    if(lvl===0&&['short','step','gun','twin','grov','fish'].includes(k))s+=Nt.inicianteSemPerf;
+    if(lvl>=3&&k==='soft')s+=Nt.avancadoSoft;
+    if(lvl===0&&k==='soft')s+=Nt.inicianteSoft+(g('auto',1)===0?Nt.inicianteSoftSemAuto:0);
     // teste de fogo (out/2026): pouco tempo de surf e até 2 habilidades marcadas
-    if(k==='soft'&&g('tempo',2)<=1&&skills.filter(x=>x!==0).length<=2)s+=12;
-    if(g('limit',0)===1||g('limit',0)===3)s+=(A.vc-2.5)*0.6;
-    s+=(g('incomoda',6)===0?(A.vc-2.5)*0.8:0)+(g('incomoda',6)===3?(2.5-A.vc)*0.8:0);
-    if(im){const ix=idxRef(k);s+=0.09*IMPK.reduce((t,x,i)=>t+(im[x]-imM)*(ix[i]-5.5),0)}
-    if(g('objv',-1)===2)s+=(2.5-A.vc)*0.5;if(g('objv',-1)===1)s+=(A.vc-2.5)*0.3;
-    if(g('pass',2)===3&&A.vc>=5)s-=2;if(g('pico',0)===2&&['soft','softp','long'].includes(k))s-=3;
-    const fm=g('foam',-1);if(fm===1){if(k==='soft')s+=10;if(k==='softp')s+=4}if(fm===0&&(k==='soft'||k==='softp'))s-=40;if(fm===-1&&lvl>=1&&(k==='soft'||k==='softp'))s-=6;
-    const pool=g('onde',0);if(pool===1){if(['gun'].includes(k))s-=30;if(['step','long','longp'].includes(k)&&tam<3)s-=6;if(['grov','twin','fish','short'].includes(k)&&lvl>=2)s+=3}
+    if(k==='soft'&&g('tempo',2)<=1&&skills.filter(x=>x!==0).length<=2)s+=Nt.softPoucoTempo;
+    s+=(g('incomoda',6)===0?(A.vc-2.5)*P.atual.incomodaRema:0)+(g('incomoda',6)===3?(2.5-A.vc)*P.atual.incomodaTravada:0);
+    if(im){const ix=idxRef(k);s+=P.prior*IMPK.reduce((t,x,i)=>t+(im[x]-imM)*(ix[i]-5.5),0)}
+    if(g('objv',-1)===2)s+=(2.5-A.vc)*P.objv.evoluir;if(g('objv',-1)===1)s+=(A.vc-2.5)*P.objv.autonomia;
+    if(g('pass',2)===3&&A.vc>=5)s+=Ou.patoGrande;
+    const fm=g('foam',-1);if(fm===1){if(k==='soft')s+=Ou.softSim;if(k==='softp')s+=Ou.softPSim}if(fm===0&&(k==='soft'||k==='softp'))s+=Ou.softNao;if(fm===-1&&lvl>=1&&(k==='soft'||k==='softp'))s+=Ou.softSemResp;
+    const pool=g('onde',0);if(pool===1){if(['gun'].includes(k))s+=Ou.poolGun;if(['step','long','longp'].includes(k)&&tam<3)s+=Ou.poolLonga;if(['grov','twin','fish','short'].includes(k)&&lvl>=2)s+=Ou.poolCurta}
     sc[k]=s;});
-  const ak0=g('atual_k',null)||ATUAL_K[g('atual_mod',0)],mot=g('motivo',1);
-  if(ak0&&mot===2){sc[ak0]-=10;KEYS.forEach(k=>{if(Math.abs(ARCH[k].vc-ARCH[ak0].vc)<=0)sc[k]-=3})}
-  if(ak0&&mot===3)KEYS.forEach(k=>{const dv=ARCH[ak0].vc-ARCH[k].vc;sc[k]+=dv>=1&&dv<=2?4:dv>2?-2:dv<0?-4:0});
-  if(mot===4)KEYS.forEach(k=>{sc[k]+=(ARCH[k].vc-2.5)*0.8});
+  const ak0=g('atual_k',null)||ATUAL_K[g('atual_mod',0)],mot=g('motivo',1),At=P.atual;
+  if(ak0&&mot===2){sc[ak0]+=At.addMesmo;KEYS.forEach(k=>{if(Math.abs(ARCH[k].vc-ARCH[ak0].vc)<=0)sc[k]+=At.addMesmaClasse})}
+  if(ak0&&mot===3)KEYS.forEach(k=>{const dv=ARCH[ak0].vc-ARCH[k].vc;sc[k]+=dv>=1&&dv<=2?At.evoluirPasso:dv>2?At.evoluirLonge:dv<0?At.evoluirMaior:0});
+  if(mot===4)KEYS.forEach(k=>{sc[k]+=(ARCH[k].vc-2.5)*At.voltar});
   const mu=g('muda',-1),en=g('estilo_novo',-1);
-  if(ak0&&mu===0)sc[ak0]+=14;
-  if(mu===1){if(ak0)sc[ak0]-=8;if(en>=0)sc[NOVO_K[en]]+=26}
+  if(ak0&&mu===0)sc[ak0]+=At.mesmoEstilo;
+  if(mu===1){if(ak0)sc[ak0]+=At.trocaAtual;if(en>=0)sc[NOVO_K[en]]+=At.trocaNovo}
+  // 5. travas (rodada 5)
+  const Rg=P.regras;
+  if(lvl<=1)['short','step','gun'].forEach(k=>{sc[k]+=Rg.iniciantePerf});
+  if(quiver===2&&tam>=3&&lvl>=2)['long','longp','minimal','mid','fish','grov'].forEach(k=>{sc[k]+=Rg.diasGrandes});
+  {const Pr=Rg.pranchinha,vmax=pranchinhaVmax(),ex=vols.short/vmax-1;if(ex>0)sc.short+=Pr.porPct*ex*100}
+  const must=[],notFirst=[];
+  if(tam===4&&lvl>=3&&g('onde',0)!==1&&quiver!==1){must.push('gun','step');notFirst.push(...KEYS.filter(k=>!['gun','step','short'].includes(k)))}
+  if(g('foam',-1)===1)must.push(sc.soft>=sc.softp?'soft':'softp');
+  ajustaPodio(sc,must,notFirst,Rg.podio.margem);
   const rank=KEYS.slice().sort((p,q)=>sc[q]-sc[p]);
   const top=rank.slice(0,3),gap=sc[top[0]]-sc[top[1]];
-  // 4. litragem
-  a._lvl=lvl;
-  const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1),GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
-  const body=(g('motivo',1)===4?1.03:1)*[1,1,1.01,1.03,1.05][g('idade',1)]*[1.03,1.01,1,1][g('freq',1)];
-  const flutM=[1.08,1,0.95][flut];
-  const dor=g('dor',[]);
-  let add=(dor.includes(0)?2.5:0)+(dor.includes(1)?1.5:0)+(dor.includes(2)?1:0)+(dor.includes(3)?1.5:0)+[1.5,0,0,0][g('fis',1)]+(g('remada',1)===0?1:0)+(g('incomoda',6)===0?1.5:g('incomoda',6)===2?-1.5:0);
-  const mw=[0.15,0.5,1,1,1][lvl];
-  const volOf=k=>{const A=ARCH[k];let v=peso*GF*(1+(MODF[k]-1)*mw)*flutM*body+add;
-    v+= (k==='step'||k==='gun')?[0,0,0,1,2][tam]:[0.5,0,0,0,0][tam];
-    if(constrOf(k,a)[0].startsWith('Epóxi'))v-=1;
-    if(A.fixedVol){const d=dimsFixed(k,peso,alt);v=d.V}
-    if(!A.fixedVol){const rv=A.ref[0]*Math.pow(peso/75,0.9);v=clamp(v,rv*0.75,rv*1.3)}
-    if(k==='softp'&&lvl<=1)v=Math.max(v,peso*0.6);
-    if(g('onde',0)===1&&lvl>=2&&!A.fixedVol)v*=0.97;
-    return v};
-  const fins=top.map((k,idx)=>({k,fit:Math.round(clamp(96-idx*3-(sc[top[0]]-sc[k])*1.2,70,97)),vol:volOf(k)}));
-  const conf=Math.round(clamp((long?86:79)+gap*0.8-contra*5,70,96));
-  return {H,lvl,S,sc,fins,conf,long,a,peso,alt,GF,rng:L0.rng,contra,volAll:Object.fromEntries(KEYS.map(k=>[k,volOf(k)]))};
+  const F=P.fit,C=P.conf;
+  const fins=top.map((k,idx)=>({k,fit:Math.round(clamp(F.base-idx*F.passo-(sc[top[0]]-sc[k])*F.porPonto,F.min,F.max)),vol:vols[k]}));
+  const conf=Math.round(clamp((long?C.longo:C.curto)+gap*C.porGap-contra*P.habil.contra,C.min,C.max));
+  return {H,lvl,S,sc,fins,conf,long,a,peso,alt,GF,rng:L0.rng,contra,volAll:vols};
 }
 const IXR={};function idxRef(k){if(!IXR[k]){const A=ARCH[k];IXR[k]=boardIdx(k,{V:A.ref[0],L:A.ref[1],W:A.ref[2],T:A.ref[3]},{rocker:A.rk,bottom:A.bottom,setup:A.setup,tail:A.tailN},75)}return IXR[k]}
 function constrOf(k,a){
@@ -671,7 +742,8 @@ function dims(k,V,peso,alt){
   let L=lenFor(k,peso,alt);
   let s=V/(kk*L*W0*T0);
   // se o ajuste ficar extremo, o comprimento absorve parte
-  if(s>1.18){L=Math.min(A.L[1]+4,L*Math.pow(s/1.18,0.6));s=V/(kk*L*W0*T0)}
+  if(s>1.18&&k!=='short'){L=Math.min(A.L[1]+4,L*Math.pow(s/1.18,0.6));s=V/(kk*L*W0*T0)}
+  if(k==='short')L=Math.min(L,PESOS.regras.pranchinha.Lmax);
   if(s<0.85){L=Math.max(A.L[0]-3,L*Math.pow(s/0.85,0.6));s=V/(kk*L*W0*T0)}
   return {L,W:W0*Math.pow(s,0.45),T:T0*Math.pow(s,0.55),V};
 }
@@ -699,19 +771,17 @@ function decide(R,k){
   if(S[5]>.35&&['mid','longp','minimal'].includes(k))setup='single';
   if(S[1]>.3&&fo===0&&['fish','twin','grov'].includes(k))setup='twint';
   if(S[2]>.35&&['grov','evo','minimal'].includes(k))setup='tri';
-  if((S[3]>.3||a.pico===1)&&['short','step','grov'].includes(k))setup='quad';
+  if(S[3]>.3&&['short','step','grov'].includes(k))setup='quad';
   out.setup=setup;
   const wc=peso<65?0:peso<=80?1:2,wv=tam<=1?0:tam<=2?1:2;
   out.finSize=setup==='single'?(peso>85?'10"':'9"')+' central':['XS','S','M','L','XL'][wc+wv];
-  out.template=S[1]+S[0]>.55||a.pico===1?'Carve: mais rake e base larga, curvas longas':S[2]+S[3]+S[4]>.5?'Pivot: mais reta, gira no pocket':'Neutra: meio-termo';
-  out.boxes=a.quilhas===1?'FCS II':a.quilhas===2?'Futures':'FCS II ou Futures';
+  out.template=S[1]+S[0]>.55?'Carve: mais rake e base larga, curvas longas':S[2]+S[3]+S[4]>.5?'Pivot: mais reta, gira no pocket':'Neutra: meio-termo';
+  out.boxes='FCS II ou Futures';
   if(setup==='tri'&&(S[3]>.2||S[1]>.3))out.boxes+=', 5 caixas (permite quadriquilha)';
   const c=constrOf(k,a);out.constr=c;
   const heavyFoot=peso>85||S[2]+S[4]>.4;
-  out.lam=/soft/i.test(c[0])?'Não se aplica (soft)':k==='long'?'6+6 oz no deck, 6 oz no fundo':a.fundo===2||a.pico===2?'6+4 oz no deck, 6 oz no fundo (laje)':heavyFoot?'4+4 oz no deck com patch de 4 oz sob os pés, 4 oz no fundo':'4+4 oz no deck, 4 oz no fundo';
-  out.finish=a.acab===1?'Hot coat lixado':a.acab===2?'Gloss polido':['short','step','grov','twin','evo'].includes(k)?'Hot coat lixado (mais leve)':'Gloss polido (mais proteção)';
-  out.color=['Branca, sem cor','Tint translúcido','Cor opaca','Airbrush'][a.cor===undefined?0:a.cor];
-  if(out.color.startsWith('Tint')&&c[0].startsWith('Epóxi'))out.colorNote='Tint não é recomendado em EPS: use opaco ou airbrush.';
+  out.lam=/soft/i.test(c[0])?'Não se aplica (soft)':k==='long'?'6+6 oz no deck, 6 oz no fundo':heavyFoot?'4+4 oz no deck com patch de 4 oz sob os pés, 4 oz no fundo':'4+4 oz no deck, 4 oz no fundo';
+  out.finish=['short','step','grov','twin','evo'].includes(k)?'Hot coat lixado (mais leve)':'Gloss polido (mais proteção)';
   out.leash=Math.max(6,Math.ceil((R.d?R.d.L:72)/12))+' pés'+(tam>=3?', 7 mm':', 6 mm')+(k==='long'||k==='longp'?', de panturrilha':'');
   out.deck=k==='long'||k==='longp'||/soft/i.test(c[0])?'Sem deck: parafina':'Deck traseiro com kick';
   return out;
@@ -840,12 +910,12 @@ const Q=[
  {s:1,id:'auto',t:'Como você pega onda hoje?',o:O([['Com empurrão do professor','Ainda preciso de ajuda'],['Sozinho, na espuma','Já remo e entro na onda quebrada'],['Sozinho, na onda verde','Entro na parede antes de quebrar']])},
  {s:1,id:'pass',t:'Como você passa a arrebentação?',h:'Define o quanto de espuma e comprimento você consegue levar para o fundo.',o:O([['Ainda não passo','Fico na espuma, perto da areia'],['Vou por cima ou empurro','Seguro a prancha e passo por cima das ondas'],['Joelhinho','Afundo o bico com o joelho e passo'],['Pato (duck dive)','Afundo a prancha inteira por baixo da onda'],['Uso o canal','Remo por onde não quebra; com prancha grande, viro de cabeça para baixo (tartaruga)']])},
  {s:1,id:'skills',multi:9,opt:true,t:'O que você já faz na onda?',h:'Marque o que faz com frequência. Se está começando, deixe em branco.',o:O(SK).slice(1)},
- {s:2,id:'objv',t:'Qual é o seu principal objetivo no surf agora?',o:O([['Aprender a ficar de pé','Começar do jeito certo'],['Ganhar autonomia','Pegar ondas sozinho, ler o mar, surfar sem professor'],['Evoluir e aprender manobras','Cavada, batida, rasgada'],['Curtir mais, sem pressão','Pegar mais ondas e deslizar'],['Ondas maiores e mais fortes','Encarar dias mais pesados com segurança'],['Surf clássico','Andar sobre a prancha, noseride']])},
+ {s:2,id:'objv',t:'Qual é o seu principal objetivo no surf agora?',o:O([['Aprender a ficar de pé','Começar do jeito certo'],['Ganhar autonomia','Pegar ondas sozinho, ler o mar, surfar sem professor'],['Evoluir e aprender manobras','Cavada, batida, rasgada'],['Curtir mais, sem pressão','Pegar mais ondas e deslizar'],['Ondas maiores e mais fortes','Encarar dias mais pesados'],['Surf clássico','Andar sobre a prancha, noseride']])},
  {s:2,id:'estilo',t:'Que tipo de surf você mais curte?',h:'Se está começando, escolha a primeira.',o:[['0','Pegar onda e deslizar','Ficar de pé e curtir a onda'],['1','Fazer curvas na parede','Descer e subir a onda'],['2','Manobras fortes','Batidas e rasgadas'],['5','Estilo clássico','Andar sobre a prancha, como no longboard']]},
  {s:2,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 10 (essencial) para cada característica. Nenhuma prancha é 10 em tudo: o equilíbrio entre elas decide o tipo.'},
  {s:3,id:'tam',t:'Qual o tamanho de onda mais comum onde você surfa?',h:'Se for usar em piscina, pense no tamanho da sessão que você reserva.',o:O(['Até meio metro','Meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','Acima de 2,5 m'])},
  {s:3,id:'forca',t:'Como são essas ondas?',o:O([['Cheias e fracas','Demoram a quebrar, pouca força'],['Mistas','Depende do dia'],['Cavadas e rápidas','Quebram de uma vez, com força']])},
- {s:4,id:'foam',cond:()=>['0','1'].includes(A.auto)||['0','1'].includes(A.tempo),t:'Você quer começar numa prancha de espuma (soft)?',h:'Soft é macia, quase não machuca e aguenta batida. É a mais segura para quem está começando.',o:O([['Não, quero prancha de fibra'],['Sim, quero soft']])},
+ {s:4,id:'foam',cond:()=>nivelResp()<=1,t:'Você quer começar numa prancha de espuma (soft)?',h:'Soft é macia e aguenta batida. É a mais indicada para quem está começando.',o:O([['Não, quero prancha de fibra'],['Sim, quero soft']])},
  {s:4,id:'motivo',t:'Por que você quer uma nova prancha?',o:O(['É a minha primeira','Substituir a atual','Adicionar ao quiver','Evoluir para algo mais performance','Voltar a surfar depois de um tempo'])},
  {s:4,id:'uso',t:'Para que vai usar essa prancha?',h:'Piscina de onda tem onda limpa, sem vento e igual em toda série: muda o tipo de prancha e o material.',o:O(['Prancha única, para todo dia','Para dias pequenos','Para dias grandes','Para viagem','Piscina de ondas','Mar e piscina'])},
  {s:4,id:'atual_mod',t:'Qual é a sua prancha atual?',h:'Escolha pelo formato, não pela marca. Se ficar em dúvida entre dois, marque o mais parecido.',o:O([['Não tenho'],['Softboard de escolinha','Espuma macia, 7\' a 9\''],['Softboard curta','Espuma, abaixo de 7\''],['Longboard clássico','Acima de 9\', para andar na prancha'],['Longboard performance','Acima de 9\', mais manobrável'],['Funboard ou mini-malibu','7\' a 8\', larga e grossa'],['Mid-length','6\'8" a 7\'8", bico arredondado'],['Evolution','6\'2" a 7\', pranchinha com volume'],['Fish','Curta, larga, rabeta em V'],['Biquilha moderna','Curta, duas quilhas, de performance'],['Groveler','Pranchinha larga para onda pequena'],['Pranchinha','Abaixo de 6\'4", fina'],['Step-up','Pranchinha maior, para onda grande'],['Gun','Longa e fina, para onda gigante']])},
@@ -855,6 +925,8 @@ const Q=[
  {s:4,id:'incomoda',cond:()=>!!A.atual_mod&&A.atual_mod!=='0',t:'O que mais incomoda na prancha atual?',o:O(['Rema pouco, perco ondas','Instável, caio muito','Grande demais, difícil de levar para o fundo','Travada nas manobras','Enterra o bico','Não pega velocidade','Nada, está tudo bem'])}
 ];
 const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5,tol:5};
+// nível a partir das respostas cruas, com a mesma conversão de conv() (passar de joelhinho ou pato conta a habilidade 0)
+function nivelResp(){const o={};['tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
 const A={};let step=0;
 const NVAR=Q.length+BX.length+17;
 (function(){document.getElementById('nQ').textContent=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nCross').textContent=(NVAR*KEYS.length).toLocaleString('pt-BR');const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
@@ -958,7 +1030,7 @@ let GID=0;
 const BXP=['Rema fácil','Estável','Rápida','Vira fácil','Onda grande','Perdoa erro'];
 const PN=Object.fromEntries(KEYS.map(k=>[k,ARCH[k].n]));
 const PL={soft:'Prancha de espuma para aprender',long:'Prancha longa',longp:'Prancha longa esportiva',minimal:'Prancha média-grande',mid:'Prancha média e arredondada',evo:'Pranchinha com mais volume',fish:'Prancha curta e larga',grov:'Pranchinha larga para onda pequena',twin:'Prancha curta de duas quilhas',softp:'Prancha de espuma curta',short:'Pranchinha',step:'Pranchinha para onda grande',gun:'Prancha para onda gigante'};
-const PD={soft:'Macia, grande e larga. Não machuca, boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Entre a prancha de escolinha e a pranchinha. Rema fácil, entra cedo na onda e desliza bem.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha curta e fina dos surfistas experientes. Responde rápido, mas exige remada e técnica.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
+const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Entre a prancha de escolinha e a pranchinha. Rema fácil, entra cedo na onda e desliza bem.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha curta e fina dos surfistas experientes. Responde rápido, mas exige remada e técnica.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
 /* ilustrações dos tipos (geradas por IA, sem marca) em img/tipos/<tipo>.webp; tipo sem imagem cai no desenho */
 const TIMG=new Set(['mid','short','soft','long','longp','minimal','evo','fish','twin','softp','step','gun','grov','short-round','short-roundpin','evo-round','evo-roundpin','mid-round','longp-round']);
 /* variante pela rabeta escolhida pelo motor (ex.: short-roundpin.webp); sem variante, usa a do tipo */
@@ -1038,6 +1110,7 @@ function renderPreview(){
   <div class="panel">
     <div><p class="eyebrow">Seu nível</p><h3>${LV[r.lvl].n}</h3></div>
     ${levelTrack(r)}
+    ${ondaAtt(r)}
     <p class="muted" style="font-size:15px">Calculado pelo que você já faz na água: como pega onda, como passa a arrebentação e o que faz na parede, não só pelo tempo de surf. É ele que define quanto a prancha precisa boiar.</p>
   </div>
   <div class="panel"><div class="two" style="align-items:center"><div id="cardPrev" class="cardwrap herocard" aria-label="Seu DNA de surf em card"></div><div style="display:flex;flex-direction:column;gap:10px"><p class="eyebrow">Seu DNA de surf</p><h3>${esc(archetype(r))}</h3><p class="muted">O card com o seu perfil já está pronto. A prancha, as medidas e o card dela aparecem no relatório.</p></div></div></div>
@@ -1104,11 +1177,17 @@ function pix(){
 }
 
 /* ---------- relatório ---------- */
+// onda acima do que o nível costuma aguentar: Primeiras Ondas a partir de 1 m, Já Fica de Pé a partir de 1,5 m, Intermediário acima de 2,5 m
+const ONDA_MAX=[1,2,3];
+function ondaAcima(r){const t=r.a.tam;return t!==undefined&&r.lvl<ONDA_MAX.length&&t>ONDA_MAX[r.lvl]}
+function ondaAviso(r){return `Você marcou ondas de ${WAVE[r.a.tam]}, acima do recomendado para o seu nível (${LV[r.lvl].n}). A prancha foi escolhida pelo seu nível, não por essas ondas. Nos dias grandes, fique na parte de dentro ou espere ondas menores, de preferência com um professor por perto.`}
+const ondaAtt=r=>ondaAcima(r)?`<div class="att">${ICO.warn}<p>${esc(ondaAviso(r))}</p></div>`:'';
 function attB(r){
   const out=[],k=r.k,a=r.a;
+  if(ondaAcima(r))out.push(ondaAviso(r));
   if(r.atual&&r.d.V<r.atual.d.V-4)out.push(`Ela tem ${Math.round(r.atual.d.V-r.d.V)} L a menos que a sua atual: nas primeiras sessões você vai remar mais. Reserve dias de onda boa para a adaptação.`);
   if(['short','step','gun'].includes(k)&&r.lvl<3)out.push('É um shape exigente para o seu nível: só funciona com remada forte e técnica de cavada.');
-  if(a.tam!==undefined&&a.tam>=3&&!['step','gun','short','mid'].includes(k))out.push('Em dias acima de 1,5 m ela perde controle; vale ter uma prancha maior e mais fina para esses dias.');
+  if(a.tam!==undefined&&a.tam>=3&&!ondaAcima(r)&&!['step','gun','short','mid'].includes(k))out.push('Em dias acima de 1,5 m ela perde controle; vale ter uma prancha maior e mais fina para esses dias.');
   if(/Epóxi/.test(r.dc.constr[0])&&a.onde!==1)out.push('Epóxi é leve e flutua mais, mas trepida com vento e mar mexido.');
   if(!out.length)out.push('Nenhum ponto crítico para o seu perfil. Se puder, teste uma parecida antes de comprar.');
   return out;
@@ -1321,6 +1400,7 @@ function renderReport(){
     <div class="whead"><div style="display:flex;flex-direction:column;gap:8px;min-width:0"><h2>${PN[k]}</h2><span class="tech">Em palavras simples: <b>${PL[k]}</b></span><p class="muted" style="font-size:16px;max-width:56ch">${PD[k]}</p></div>
       <div class="fitbox"><div class="fitring" style="--p:${w.fit}"><b>${w.fit}%</b></div><span class="muted" style="font-size:13px">combina com você</span></div></div>
     <div class="alts"><span class="altl">Também combinam</span>${r.fins.slice(1,3).map((x,i)=>`<div class="alt"><span class="altr" style="--p:${x.fit}"><b>${x.fit}%</b></span><span><small>${i+2}º lugar</small><b>${PN[x.k]}</b></span></div>`).join('')}</div>
+    ${ondaAtt(r)}
     ${TIMG.has(k)?timg(k,'',dc.tail):`<div class="hboard">${boardSVG(k,d,dc,{h:true})}</div>`}
     ${heroTiles(r)}
     <div class="w-sec"><h3>Por que ela combina com você</h3><div class="why-cards">${whyV(r)}</div></div>
@@ -1477,7 +1557,7 @@ async function wireCards(r){
 
 /* ---------- relatório em PDF (A4, 5 páginas, padrão SPORT DNA) ---------- */
 /* trechos de review resumidos e traduzidos, conferidos na busca (out/2026); fontes em docs/board/reviews.md. [tipo, modelo, resumo, fonte, url, quem, nível, nota, geração] */
-const REVIEWS=[["soft","Wavestorm Classic 8'0","Barata, fácil de usar e com muita flutuação; o ponto fraco é que custa a virar.","The Inertia","https://www.theinertia.com/gear/wavestorm-classic-foam-soft-top-surfboard-review/","editor de equipamentos","—","prós e contras","8'0\""],["soft","Catch Surf Odysea Log","Surfistas de todos os níveis se divertem nela; resistente para uma soft, com núcleo forte e bem vedada.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/catch-surf-odysea-log-review/","equipe da loja","todos os níveis","sem nota","review de 2023"],["softp","Catch Surf x Lost Crowd Killer","Testada em 16 sessões e 65 ondas; aprovada como um brinquedo bem desenhado para se divertir.","Empire Ave","https://empireave.com/product-reviews/surf-hardware/catch-surf-x-lost-crowd-killer-softboard-review/","redação da Empire Ave","—","sem nota","6'8\", cerca de 47 L"],["softp","Catch Surf Skipper Pro","Versátil: dá para aprender e evoluir nela; o deck poderia ser mais forte e o preço é alto, mas revende bem.","Tradewind Surf (loja)","https://tradewindsurf.com.au/?p=65194","equipe da loja","—","sem nota","review de 2023"],["long","Takayama In The Pink","Equilibra desempenho e versatilidade, de onda pequena e fraca a acima da cabeça; o epóxi ajuda na durabilidade.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/takayama-in-the-pink-review/","equipe da loja","—","sem nota","Tuflite, review de 2022"],["long","McTavish Cruiser 10'0","Rema rápido e, pelo contorno estreito, vira com muita facilidade; prefere onda do ombro para cima.","Seabreeze (fórum)","https://www.seabreeze.com.au/forums/Surfing/Longboarding/10-foot-boards","dono da prancha","—","sem nota","10'0\""],["longp","Harley Ingleby HI4","Surpreendeu por ser leve e assentar bem na água; usa mais em onda pequena, mas aguenta dia acima da cabeça.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/harley-ingleby-hi4-surfboard-review","Derek, cliente da loja","—","sem nota","9'3\""],["longp","Harley Ingleby HI4","Instável como quadriquilha; ao trocar para biquilha ficou bem mais rápida, em onda pequena e acima da cabeça.","Hawaiian South Shore (loja)","https://hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/harley-ingleby-hi4-surfboard-review-by-charlie","Charlie, cliente da loja","—","sem nota","—"],["minimal","Torq Mod Fun (TET)","Divertida para iniciante e intermediário, resistente e fácil de carregar, segundo um surfista de pranchinha.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/torq-mod-fun-review/","equipe da loja","—","sem nota","TET, review de 2022"],["minimal","Torq Mod Fun 7'2\"","Clientes acham muito leve e fácil de carregar; manobra bem, e um diz que vira mais fácil que a anterior.","Boardshop (loja)","https://www.boardshop.co.uk/torq-mod-fun-surfboard-7ft-2-white-pinline","clientes da loja","iniciante","4,9/5 (loja)","7'2\", 47,2 L"],["minimal","7S Super Fish 3 CV","Boa flutuação e forma bonita, mas vários donos relatam acabamento fraco e prancha quebrada em poucos meses.","ProductReview.com.au","https://www.productreview.com.au/listings/7s-super-fish-3-cv","donos da prancha","—","maioria negativa","Super Fish 3 CV"],["mid","JS Big Baron","Entra rápido na onda e desliza bem, melhor em onda pequena; segura e responde menos na batida que a prancha anterior.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/js-industries-big-baron-surfboard-review-by-jacob","Jacob, cliente da loja","—","sem nota","7'6\""],["mid","Firewire Seaside & Beyond","Comprada usada, remou e respondeu melhor que o esperado; serve de iniciante avançado para cima.","Stoked for Travel","https://www.stokedfortravel.com/?p=9317","autor do site","—","sem nota","6'8\", 40,9 L"],["evo","Channel Islands Average Joe","Rema fácil para entrar na onda; serve à maioria dos surfistas em mar médio ou fraco. Não é a melhor para ficar no pocket.","Boardshop (loja)","https://www.boardshop.co.uk/blog/ci-average-joe-review/","Ian, da loja","—","sem nota","5'9\""],["evo","Firewire Dominator 2.0","Para intermediário a profissional, não para iniciante; a rabeta squash solta mais nas curvas e ganha velocidade nos trechos planos.","Stoked for Travel","https://www.stokedfortravel.com/?p=8927","autor do site","—","sem nota","Dominator 2, Helium 2"],["evo","Haydenshapes Hypto Krypto","Muito volume para remar e velocidade na parede; a rabeta segura quando a onda cresce.","Tradewind Surf (loja)","https://tradewindsurf.com.au/?p=52933","equipe da loja","—","sem nota","review de 2014"],["fish","Christenson Fish","Anda em onda no joelho e em tubo acima da cabeça; bordas retas seguram no mar grande. Ponto fraco: espera de 6 meses.","Outside","https://www.outsideonline.com/outdoor-gear/water-sports-gear/christenson-fish-surfboards-reviews?scope=anon","redação da Outside","intermediário para cima","sem nota","—"],["fish","Christenson Fish","Rápida e rema muito bem; combina com quem surfa com calma, não com quem faz manobra curta e nervosa.","Empire Ave","https://empireave.com/product-reviews/surfboards/christenson-fish-surfboard-review/","comprador da prancha","—","sem nota","—"],["fish","Channel Islands Fishbeard","Muito rápida, desenha bem as curvas e, para uma biquilha, vai bem de costas para a onda.","Empire Ave","https://empireave.com/product-reviews/surfboards/channel-islands-fishbeard-review/","redação da Empire Ave","—","sem nota","5'9\", 32 L"],["grov","Lost Puddle Jumper","Virou bem em onda de uns 30 cm; a partir de uns 60 cm, melhor voltar para a prancha normal.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/lost-puddle-jumper-review/","equipe da loja","—","sem nota","original, review de 2015"],["grov","Lost Puddle Jumper Pro","Um testador gostou de 30 cm a quase 2 m; outro achou fácil e rápida, tanto de quadri quanto de triquilha.","Surf n Show (loja)","https://surfstationstore.com/blogs/surfboard-reviews/surf-n-show-lost-puddle-jumper-pro-review","dois testadores da loja","—","sem nota","Pro, review de 2023"],["grov","Firewire Sweet Potato","Duvidou que tão larga virasse bem; com as quilhas indicadas, vira muito bem e não perde velocidade, até onda na cabeça.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/firewire-sweet-potato-surfboard-review-by-scott","Scott, cliente da loja","—","sem nota","5'6\", 56 L, Volcanic"],["twin","Haydenshapes Hypto Krypto Twin","Cético: vê mais evolução de marketing que de desenho; a facilidade de remar vem do formato de fish.","Stoked for Travel","https://www.stokedfortravel.com/?p=9964","autor do site","—","sem nota","—"],["twin","DHD MF Twin","Previsível e confiável na borda; uma das poucas biquilhas em que conseguiu boa cavada de costas.","Down the Line Surf (loja)","https://downthelinesurf.co.uk/blogs/product-reviews/dhd-mf-twin-review","equipe da loja","—","sem nota","—"],["short","Lost Driver 2.0","Testada em 2 a 6 pés: a pranchinha de performance mais rápida e fácil que o testador já surfou nesse tamanho.","Surf n Show (loja)","https://surfstationstore.com/blogs/surfboard-reviews/lost-driver-2-0-surfboard-review","testador da loja","—","sem nota","5'9\" e 5'7\", review de 2020"],["short","Lost Sub Driver 2.0","Elogia velocidade, flexão e impulso na cavada; trepida um pouco em algumas condições.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/lost-sub-driver-2-0-surfboard-review-by-chad","Chad, cliente da loja","—","sem nota","—"],["step","Firewire Hydronaut","Rema como uma prancha bem maior e responde como uma menor; a faixa de 3 a 6 pés indicada pela marca pareceu limitada.","Boardshop (vídeo)","https://vimeo.com/285306507","equipe da Boardshop","—","sem nota","LFT"],["step","Pyzel Ghost Pro (como step-up)","Comprada para onda de 5 a 8 pés: rema incrivelmente bem; dá para usar menos volume do que se imagina.","ProductReview.com.au","https://www.productreview.com.au/c/surfboards","dono da prancha","—","sem nota","Ghost Pro"]];
+const REVIEWS=[["soft","Wavestorm Classic 8'0","Barata, fácil de usar e com muita flutuação; o ponto fraco é que custa a virar.","The Inertia","https://www.theinertia.com/gear/wavestorm-classic-foam-soft-top-surfboard-review/","editor de equipamentos","—","prós e contras","8'0\""],["soft","Catch Surf Odysea Log","Surfistas de todos os níveis se divertem nela; resistente para uma soft, com núcleo forte e bem vedada.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/catch-surf-odysea-log-review/","equipe da loja","todos os níveis","sem nota","review de 2023"],["softp","Catch Surf x Lost Crowd Killer","Testada em 16 sessões e 65 ondas; aprovada como um brinquedo bem desenhado para se divertir.","Empire Ave","https://empireave.com/product-reviews/surf-hardware/catch-surf-x-lost-crowd-killer-softboard-review/","redação da Empire Ave","—","sem nota","6'8\", cerca de 47 L"],["softp","Catch Surf Skipper Pro","Versátil: dá para aprender e evoluir nela; o deck poderia ser mais forte e o preço é alto, mas revende bem.","Tradewind Surf (loja)","https://tradewindsurf.com.au/?p=65194","equipe da loja","—","sem nota","review de 2023"],["long","Takayama In The Pink","Equilibra desempenho e versatilidade, de onda pequena e fraca a acima da cabeça; o epóxi ajuda na durabilidade.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/takayama-in-the-pink-review/","equipe da loja","—","sem nota","Tuflite, review de 2022"],["long","McTavish Cruiser 10'0","Rema rápido e, pelo contorno estreito, vira com muita facilidade; prefere onda do ombro para cima.","Seabreeze (fórum)","https://www.seabreeze.com.au/forums/Surfing/Longboarding/10-foot-boards","dono da prancha","—","sem nota","10'0\""],["longp","Harley Ingleby HI4","Surpreendeu por ser leve e assentar bem na água; usa mais em onda pequena, mas aguenta dia acima da cabeça.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/harley-ingleby-hi4-surfboard-review","Derek, cliente da loja","—","sem nota","9'3\""],["minimal","Torq Mod Fun (TET)","Divertida para iniciante e intermediário, resistente e fácil de carregar, segundo um surfista de pranchinha.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/torq-mod-fun-review/","equipe da loja","—","sem nota","TET, review de 2022"],["minimal","Torq Mod Fun 7'2\"","Clientes acham muito leve e fácil de carregar; manobra bem, e um diz que vira mais fácil que a anterior.","Boardshop (loja)","https://www.boardshop.co.uk/torq-mod-fun-surfboard-7ft-2-white-pinline","clientes da loja","iniciante","4,9/5 (loja)","7'2\", 47,2 L"],["fish","7S Super Fish 3 CV","Boa flutuação e forma bonita, mas vários donos relatam acabamento fraco e prancha quebrada em poucos meses.","ProductReview.com.au","https://www.productreview.com.au/listings/7s-super-fish-3-cv","donos da prancha","—","maioria negativa","Super Fish 3 CV"],["mid","JS Big Baron","Entra rápido na onda e desliza bem, melhor em onda pequena; segura e responde menos na batida que a prancha anterior.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/js-industries-big-baron-surfboard-review-by-jacob","Jacob, cliente da loja","—","sem nota","7'6\""],["mid","Firewire Seaside & Beyond","Comprada usada, remou e respondeu melhor que o esperado; serve de iniciante avançado para cima.","Stoked for Travel","https://www.stokedfortravel.com/?p=9317","autor do site","—","sem nota","6'8\", 40,9 L"],["evo","Channel Islands Average Joe","Rema fácil para entrar na onda; serve à maioria dos surfistas em mar médio ou fraco. Não é a melhor para ficar no pocket.","Boardshop (loja)","https://www.boardshop.co.uk/blog/ci-average-joe-review/","Ian, da loja","—","sem nota","5'9\""],["evo","Firewire Dominator 2.0","Para intermediário a profissional, não para iniciante; a rabeta squash solta mais nas curvas e ganha velocidade nos trechos planos.","Stoked for Travel","https://www.stokedfortravel.com/?p=8927","autor do site","—","sem nota","Dominator 2, Helium 2"],["evo","Haydenshapes Hypto Krypto","Muito volume para remar e velocidade na parede; a rabeta segura quando a onda cresce.","Tradewind Surf (loja)","https://tradewindsurf.com.au/?p=52933","equipe da loja","—","sem nota","review de 2014"],["fish","Christenson Fish","Anda em onda no joelho e em tubo acima da cabeça; bordas retas seguram no mar grande. Ponto fraco: espera de 6 meses.","Outside","https://www.outsideonline.com/outdoor-gear/water-sports-gear/christenson-fish-surfboards-reviews?scope=anon","redação da Outside","intermediário para cima","sem nota","—"],["fish","Channel Islands Fishbeard","Muito rápida, desenha bem as curvas e, para uma biquilha, vai bem de costas para a onda.","Empire Ave","https://empireave.com/product-reviews/surfboards/channel-islands-fishbeard-review/","redação da Empire Ave","—","sem nota","5'9\", 32 L"],["grov","Lost Puddle Jumper","Virou bem em onda de uns 30 cm; a partir de uns 60 cm, melhor voltar para a prancha normal.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/lost-puddle-jumper-review/","equipe da loja","—","sem nota","original, review de 2015"],["grov","Lost Puddle Jumper Pro","Um testador gostou de 30 cm a quase 2 m; outro achou fácil e rápida, tanto de quadri quanto de triquilha.","Surf n Show (loja)","https://surfstationstore.com/blogs/surfboard-reviews/surf-n-show-lost-puddle-jumper-pro-review","dois testadores da loja","—","sem nota","Pro, review de 2023"],["grov","Firewire Sweet Potato","Duvidou que tão larga virasse bem; com as quilhas indicadas, vira muito bem e não perde velocidade, até onda na cabeça.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/firewire-sweet-potato-surfboard-review-by-scott","Scott, cliente da loja","—","sem nota","5'6\", 56 L, Volcanic"],["twin","Haydenshapes Hypto Krypto Twin","Cético: vê mais evolução de marketing que de desenho; a facilidade de remar vem do formato de fish.","Stoked for Travel","https://www.stokedfortravel.com/?p=9964","autor do site","—","sem nota","—"],["twin","DHD MF Twin","Previsível e confiável na borda; uma das poucas biquilhas em que conseguiu boa cavada de costas.","Down the Line Surf (loja)","https://downthelinesurf.co.uk/blogs/product-reviews/dhd-mf-twin-review","equipe da loja","—","sem nota","—"],["short","Lost Driver 2.0","Testada em 2 a 6 pés: a pranchinha de performance mais rápida e fácil que o testador já surfou nesse tamanho.","Surf n Show (loja)","https://surfstationstore.com/blogs/surfboard-reviews/lost-driver-2-0-surfboard-review","testador da loja","—","sem nota","5'9\" e 5'7\", review de 2020"],["short","Lost Sub Driver 2.0","Elogia velocidade, flexão e impulso na cavada; trepida um pouco em algumas condições.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/lost-sub-driver-2-0-surfboard-review-by-chad","Chad, cliente da loja","—","sem nota","—"],["step","Firewire Hydronaut","Rema como uma prancha bem maior e responde como uma menor; a faixa de 3 a 6 pés indicada pela marca pareceu limitada.","Boardshop (vídeo)","https://vimeo.com/285306507","equipe da Boardshop","—","sem nota","LFT"],["step","Pyzel Ghost Pro (como step-up)","Comprada para onda de 5 a 8 pés: rema incrivelmente bem; dá para usar menos volume do que se imagina.","ProductReview.com.au","https://www.productreview.com.au/c/surfboards","dono da prancha","—","sem nota","Ghost Pro"]];
 const WAVE=['até meio metro','meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','acima de 2,5 m'],FORCA=['cheias e fracas','mistas','cavadas e rápidas'];
 function rankAll(r){
   const rk=KEYS.slice().sort((p,q)=>r.sc[q]-r.sc[p]);let prev=99;
