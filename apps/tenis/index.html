@@ -13,7 +13,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* Layout: igual ao RACKET DNA (coluna de 960px); identidade SPORTS DNA com o laranja do RUN DNA */
+/* Layout: igual ao RACKET DNA (coluna de 960px); identidade SPORT DNA com o laranja do RUN DNA */
 :root{
   --bg:#EEF4F5; --surface:#FFFFFF; --ink:#0B2530; --muted:#4A6570; --line:#CFDEE2;
   --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#FF8A3D; --ball-ink:#0B2530; --clay:#B4472F; --soft:#DCEBEF; --hexa:#F4F8F9; --hexb:#E7F0F2;
@@ -229,7 +229,7 @@ table.t10 tr.pref td{background:var(--soft)}
 .pulse{width:10px;height:10px;border-radius:50%;background:var(--ball);box-shadow:0 0 0 0 var(--ball);animation:pl 1.4s infinite}
 @keyframes pl{to{box-shadow:0 0 0 12px transparent}}
 .okbig{font-size:48px;text-align:center;color:var(--pri);line-height:1}
-/* ---------- relatório em PDF (A4, sempre claro, padrão SPORTS DNA) ---------- */
+/* ---------- relatório em PDF (A4, sempre claro, padrão SPORT DNA) ---------- */
 .pdfbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .pdfdoc{position:fixed;left:-10000px;top:0;width:794px;-webkit-text-size-adjust:100%;text-size-adjust:100%;
   --bg:#EEF4F5;--surface:#FFFFFF;--ink:#0B2530;--muted:#4A6570;--line:#CFDEE2;--pri:#0E4D64;--pri-ink:#FFFFFF;--ball:#FF8A3D;--ball-ink:#0B2530;--clay:#B4472F;--soft:#DCEBEF;--hexa:#F4F8F9;--hexb:#E7F0F2;
@@ -311,9 +311,9 @@ table.t10 tr.pref td{background:var(--soft)}
   <header class="top">
     <div class="brand">
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg>
-      <span>RUN DNA<small>by SPORTS DNA</small></span>
+      <span>RUN DNA<small>by SPORT DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORTS DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -418,7 +418,7 @@ table.t10 tr.pref td{background:var(--soft)}
 
   </main>
   <footer>
-    RUN DNA é um teste da família SPORTS DNA. Protótipo. Preços são de referência e mudam com promoção; os marcados como "aprox." são estimativas. Por enquanto o relatório não tem links para lojas. Nenhuma marca paga para aparecer. Isto não substitui avaliação de médico ou fisioterapeuta em caso de dor ou lesão.
+    RUN DNA é um teste da família SPORT DNA. Protótipo. Preços são de referência e mudam com promoção; os marcados como "aprox." são estimativas. Por enquanto o relatório não tem links para lojas. Nenhuma marca paga para aparecer. Isto não substitui avaliação de médico ou fisioterapeuta em caso de dor ou lesão.
   </footer>
 </div>
 <div id="modalRoot"></div>
@@ -1306,7 +1306,7 @@ function closeModal(){clearInterval(pixTimer);if(pixKey)document.removeEventList
   if(t){if(t.tagName==='H2')t.setAttribute('tabindex','-1');try{t.focus({preventScroll:!rep.hidden})}catch(e){t.focus()}}pixFrom=null}
 function pix(e){
   pixFrom=e&&e.currentTarget||document.activeElement;
-  const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RUNDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5910SPORTS DNA6009SAO PAULO6304SIMU';
+  const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RUNDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5909SPORT DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">
     <div class="phead"><div><p class="eyebrow">Pagamento via Pix</p><h2 id="pxT" style="font-size:19px;font-weight:600">Relatório RUN DNA</h2></div><button class="btn btn-ghost btn-sm" id="pxX" type="button" aria-label="Fechar">Fechar</button></div>
     <div class="phead"><span style="font-size:28px;font-weight:700;font-variant-numeric:tabular-nums">${PRICE_TXT}</span><span class="muted">expira em <span class="timer" id="pxTm">10:00</span></span></div>
@@ -1345,7 +1345,7 @@ function pix(e){
   $('#pxOk').focus();
 }
 
-/* ---------- relatório em PDF (A4, 5 páginas, padrão SPORTS DNA) ---------- */
+/* ---------- relatório em PDF (A4, 5 páginas, padrão SPORT DNA) ---------- */
 /* só dados que o motor já calcula; nada de atleta ou trecho de review sem fonte no catálogo */
 const USO={rod:'rodagem',dia:'dia a dia',lon:'longão',rit:'treino de ritmo',tir:'tiro',p10:'provas de 5 e 10 km',mei:'meia maratona',mar:'maratona',tri:'trilha',aca:'academia'};
 const NAO={lar:'pé largo',rap:'ritmo forte',lon:'distâncias longas',pes:'corredores acima de 85 kg',aqu:'Aquiles sensível',fore:'quem pisa de antepé',cal:'calor forte',lama:'lama',len:'trote leve',pro:'quem prona',hee:'quem pisa de calcanhar',est:'pé estreito',dia:'uso no dia a dia',tir:'tiro',asf:'asfalto',ini:'iniciantes',mar:'maratona',p10:'provas de 5 e 10 km'};
@@ -1396,7 +1396,7 @@ function adaptPlan(r,m){
     ['Semana 4',m.c==='sup'?'Só no que importa':'Ritmo normal',m.c==='sup'?'Guarde para prova e treinos-chave: ele dura de 350 a 450 km.':`Volta ao seu volume (${km} km por semana). Anote os km: a troca vem perto de ${m.du} km.`]];
 }
 function pdfPage(n,title,body){
-  return `<section class="pg"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span>RUN DNA<small>by SPORTS DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>RUN DNA · by SPORTS DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
+  return `<section class="pg"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span>RUN DNA<small>by SPORT DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>RUN DNA · by SPORT DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
 }
 function pdfHTML(r){
   const a=r.a,w=r.fins[0],m=w.m,s2=r.fins[1],gap=w.fit-s2.fit,km=KMW[a.km===undefined?1:a.km],mo=Math.max(1,Math.round(m.du/km/4.3));
