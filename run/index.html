@@ -368,7 +368,7 @@ table.t10 tr.pref td{background:var(--soft)}
       <div class="diff"><h3>Quando trocar</h3><p>A data de troca pela sua quilometragem e um segundo par para rodízio, se fizer sentido.</p></div>
     </div>
     <div class="erra">
-      <div><p class="eyebrow">Por que é fácil errar</p><h2>Tênis de corrida não é uma escolha. São quatro.</h2><p class="muted" style="margin-top:8px;max-width:62ch">Modelo, numeração, forma e segundo par. Cada uma muda conforto, risco de lesão e quanto você paga por quilômetro, e uma decisão errada anula as outras certas.</p></div>
+      <div><p class="eyebrow">Por que é fácil errar</p><h2>Tênis de corrida não é uma escolha. São quatro.</h2><p class="muted" style="margin-top:8px;max-width:62ch">Modelo, numeração, forma e segundo par. Cada uma muda conforto, adaptação e quanto você paga por quilômetro, e uma decisão errada anula as outras certas.</p></div>
       <div class="bignums">
         <div class="bn hl"><b id="nVar">35</b><span>variáveis cruzadas no ranking: <span id="nVarQ">17</span> respostas suas, 8 especificações medidas, 6 índices e 4 sinais das reviews por tênis</span></div>
         <div class="bn"><b id="nCross">1.120</b><span>cruzamentos entre o seu perfil e o catálogo em cada análise</span></div>
@@ -672,6 +672,8 @@ const PODIO_FORA=['Fila'];
 // marcas do quadro "o melhor de cada marca" (as preferidas da pessoa entram também)
 const MARCAS=['adidas','ASICS','Hoka','Mizuno','New Balance','Nike','Olympikus','On','Puma'];
 const LEVE=['cal','lon','len','ini','dia','asf'];
+// desgaste da sola → onde o pé toca primeiro (0 calcanhar, 1 meio, 2 ponta, 3 não dá para saber) e giro (1 para dentro, 2 para fora)
+const PISADA=[0,0,1,2,3,3,3,3],GIRO=[0,1,0,0,1,2,0,0];
 // categoria que as respostas apontam: dentro dela o tênis soma ZONA no motor (+4 no DNA); na 2ª categoria, ZONA a menos (−4)
 /* PESOS do placar de cada tênis. Origem e evidência de cada um em docs/tenis/ciencia.md;
    os valores são calibrados contra os casos de especialistas (docs/tenis/validacao.md). */
@@ -680,7 +682,8 @@ const PESOS={
   orcTeto:6,orcPor150:1,orcLeve:0.5,orcDentro:1.5,orcAbaixoMax:2,orcAbaixoPor:200, // preço × orçamento
   sens:0.7,                                                 // distância da sensação preferida (macio/firme)
   falta:0.45,sobra:0.12,faltaLev:0.45,faltaLevSem:0.15,     // specs técnicas: falta do que o perfil pede × sobra
-  pesadoMacio:1.2,pesadoLeve:1,                             // corredor 85 kg+
+  pesadoMacio:0.6,pesadoLeve:1,pesadoBase:0.6,leveMacio:0.6, // peso do corredor: 85 kg+ (base estável, nada de tênis muito leve) e até 65 kg (maciez)
+  giroEst:1,                                                // sola gasta por dentro: estabilidade pedida sobe 1 ponto
   largoBom:2,largoRuim:0.6,                                 // pé largo
   priorDur:1/120,priorLev:1/25,priorPreco:1/350,priorConf:0.6, // o que pesa mais na escolha
   torcMacio:1.5,dropCalc:1.2,dropAnte:0.8,dropAqu:1.5,estNeutro:0.8, // tornozelo, drop × pisada e Aquiles, estabilidade
@@ -701,7 +704,7 @@ function traits(a,level){const g=(k,d)=>a[k]===undefined?d:a[k];const T=new Set(
   const obj=g('obj',1);if(g('treino',0)===2||(obj===1&&level>=2)||g('prior',0)===2)T.add('rap');
   if(obj===0||obj===5||level<=1)T.add('len');if(obj===2||obj===3||g('km',1)>=3)T.add('lon');
   if(g('calor',1)===0)T.add('cal');if(g('dor',0)===6)T.add('aqu');
-  const pi=g('pisada',3);if(pi===0)T.add('hee');if(pi===1||pi===2)T.add('fore');
+  const pi=PISADA[g('pisada',7)];if(pi===0)T.add('hee');if(pi===1||pi===2)T.add('fore');
   if(g('terreno',0)<=1)T.add('asf');if(g('terreno',0)===3)T.add('lama');if(obj===5||g('uso',0)===2)T.add('dia');
   return T}
 function wants(a){const g=(k,d)=>a[k]===undefined?d:a[k];const W={0:['rod','dia'],1:['p10','rit'],2:['mei','lon'],3:['mar','lon'],4:['tri'],5:['dia','rod']}[g('obj',1)].slice();
@@ -723,7 +726,7 @@ function engine(a,long){
   if(sens===0){add('max',2);add('con',1);add('rap',-1)}
   if(sens===2){add('rap',2);add('sup',1);add('max',-1)}
   if(g('treino',0)===2&&level>=2)add('rap',2);
-  if(g('neutro',0)===1)add('est',9);
+  if(g('neutro',0)===1){add('est',9);add('sup',-6)}
   if(dor===1||dor===5)add('max',1);
   if(dor===4){add('est',2);add('max',-2)}
   if(heavy){add('max',3);add('rap',-2);add('sup',-3)}
@@ -740,7 +743,9 @@ function engine(a,long){
   const fast=c1==='rap'||c1==='sup',lw=prior===2||obj===1||g('treino',0)===2?P.faltaLev:P.faltaLevSem;
   if(!fast)ID[1]=Math.min(ID[1],6);
   const [bmin,bmax]=BUD[orc];
-  const pi=g('pisada',3);
+  const pi=PISADA[g('pisada',7)],giro=GIRO[g('pisada',7)];
+  // sola gasta por dentro: um pouco mais de estabilidade no que o perfil pede, sem trocar a categoria (pisada não decide; ver ciência)
+  if(giro===1&&g('neutro',0)!==1)ID[3]=Math.min(10,ID[3]+P.giroEst);
   // zona: a categoria ideal dentro do orçamento; em categoria com poucos modelos o bônus cai pela metade (não vira monopólio)
   const inZ=m=>m.c===c1&&m.p<=bmax*1.08,zc=w2===P.cat2Peq?P.zona*P.zonaPeq:P.zona;
   // C (opcional) guarda quanto cada fator somou ou tirou, para o relatório explicar diferenças
@@ -752,7 +757,7 @@ function engine(a,long){
     ad('sens',-Math.abs(m.mz-[4.5,3.5,2.3][sens])*P.sens);
     // specs técnicas: falta do que você precisa pesa mais que sobra
     const iv=idx(m);for(let i=0;i<4;i++){const d=iv[i]-ID[i];ad('s'+i,d<0?d*(i===2?lw:P.falta):-d*P.sobra)}
-    if(heavy&&m.mz>=4)ad('peso',P.pesadoMacio);if(heavy&&m.g<215)ad('peso',-P.pesadoLeve);
+    if(heavy&&m.mz>=4)ad('peso',P.pesadoMacio);if(heavy&&m.g<215)ad('peso',-P.pesadoLeve);if(heavy&&m.es>=3.5)ad('peso',P.pesadoBase);if(peso<=65&&m.mz>=3.5)ad('peso',P.leveMacio);
     if(g('largura',1)===2&&m.lg)ad('larg',P.largoBom);if(g('largura',1)===2&&!m.lg)ad('larg',-P.largoRuim);
     if(prior===1)ad('prior',(m.du-550)*P.priorDur);if(prior===2)ad('prior',(260-m.g)*P.priorLev);if(prior===3)ad('prior',(700-m.p)*P.priorPreco);if(prior===0&&sens!==2)ad('prior',(m.mz-3)*P.priorConf);
     if(dor===4&&m.mz>=5)ad('dor',-P.torcMacio);
@@ -893,7 +898,7 @@ const Q=[
  {s:0,id:'peso',type:'number',t:'Quanto você pesa?',h:'Muda a espuma e a base que você precisa.',min:35,max:150,ph:'ex.: 75',u:'kg'},
  {s:0,id:'largura',t:'Como é a largura do seu pé?',h:'Se tênis comum costuma apertar dos lados, seu pé é largo.',o:O(['Estreito','Normal','Largo','Não sei'])},
  {s:0,id:'dor',t:'Sente alguma dor ao correr?',o:O(['Nenhuma','Joelho','Canela','Sola do pé ou calcanhar','Torço o tornozelo com facilidade','Quadril ou lombar','Tendão de Aquiles'])},
- {s:0,id:'pisada',t:'Que parte do pé toca o chão primeiro?',h:'Repare na sola do tênis que você usa: onde gasta mais. Muda o drop indicado.',o:O(['Calcanhar','Meio do pé','Ponta do pé','Não sei'])},
+ {s:0,id:'pisada',t:'Onde o seu tênis gasta mais?',h:'Vire o tênis que você usa e olhe a sola. Mostra onde o pé toca o chão primeiro e se ele gira para dentro.',o:O(['Calcanhar, mais por fora','Calcanhar, mais por dentro','Meio do pé','Ponta do pé','Lado de dentro, ao longo da sola','Lado de fora, ao longo da sola','Por igual','Não sei'])},
  {s:1,id:'tempo',t:'Há quanto tempo você corre?',o:O(['Ainda não corro','Menos de 6 meses','6 meses a 2 anos','2 a 5 anos','Mais de 5 anos'])},
  {s:1,id:'km',t:'Quantos km corre por semana?',o:O(['Até 10 km','10 a 20 km','20 a 40 km','40 a 60 km','Mais de 60 km'])},
  {s:1,id:'pace',t:'Qual o seu ritmo em treino leve?',o:O(['Alterno caminhada e corrida','Acima de 7:00 /km','6:00 a 7:00 /km','5:00 a 6:00 /km','Abaixo de 5:00 /km'])},
@@ -1075,7 +1080,7 @@ function whyT(r){
   out.push(`Seu perfil (${PROF[r.level].toLowerCase()}) e o objetivo de ${OBJ[a.obj===undefined?1:a.obj].toLowerCase()} apontam para a categoria ${CAT[r.c1].n.toLowerCase()}.`);
   if(r.peso>=85)out.push(`Com ${r.peso} kg, priorizamos espuma mais alta e base estável.`);
   if(a.neutro===1)out.push('Você relatou desconforto com tênis neutro, por isso estabilidade entrou na conta.');
-  else out.push('Sem desconforto relatado, ficamos no neutro: os estudos não mostram ganho em escolher tênis pelo tipo de pisada.');
+  else out.push(GIRO[a.pisada===undefined?7:a.pisada]===1?'Sua sola gasta mais por dentro: demos um pouco mais de peso à estabilidade, mas ficamos no neutro, porque os estudos não mostram ganho em escolher o tênis pela pisada.':'Sem desconforto relatado, ficamos no neutro: os estudos não mostram ganho em escolher tênis pelo tipo de pisada.');
   if(a.largura===2&&f.lg)out.push('O modelo tem fôrma mais larga, como o seu pé.');
   if(f.nr>=3)out.push(`Nas ${f.nr} reviews que lemos${f.nc?` (${f.np} profissionais e ${f.nc} de clientes)`:''}, a aprovação média é ${dec1(f.sc)} de 5.`);
   if(a.orc!==SEM_LIMITE)out.push(`${priceTxt(f)}, ${f.p<=BUD[a.orc===undefined?1:a.orc][1]?'dentro':'um pouco acima'} do seu orçamento.`);
@@ -1117,6 +1122,8 @@ function attT(r){
   if(f.dv)out.push(`As reviews profissionais discordam sobre ${f.dv.split(', ').map(x=>'a '+x).join(' e ')} deste modelo. Vale provar antes de comprar.`);
   if(f.ap)out.push('Preço aproximado: confira na loja antes de comprar.');
   out.push('Prove no fim do dia, com a meia de corrida, deixando um dedo entre o dedão e a ponta.');
+  // nenhum tênis previne lesão sozinho (Cochrane 2022): o que mais pesa é a carga de treino
+  out.push('Nenhum tênis previne lesão sozinho: o que mais pesa é aumentar o volume de treino aos poucos.');
   return out;
 }
 function renderReport(){
@@ -1171,7 +1178,7 @@ function renderReport(){
       ${r.pref.length?`<div class="chips">${r.brands.filter(x=>x.pref).map(x=>`<span class="fx up">Seu melhor ${esc(x.m.b)}: ${esc(modelOf(x.m))} · ${x.fit}%</span>`).join('')}</div>`:''}
       <div class="brk">${r.brands.filter(x=>x.pref||MARCAS.includes(x.m.b)).sort((p,q)=>q.pref-p.pref||p.m.b.localeCompare(q.m.b,'pt',{sensitivity:'base'})).map(x=>`<div class="brow${x.pref?' pref':''}"><div style="min-width:0"><p class="eyebrow">${esc(x.m.b)}${x.pref?' · sua preferida':''}</p><b>${esc(modelOf(x.m))}</b><small class="muted mono">${priceTxt(x.m).replace(' (aprox.)','')} · ${CAT[x.m.c].n}</small>${brandLink(x.m)}</div><div class="bfit"><span class="mono">${x.fit}%</span><div class="meter"><i style="width:${x.fit}%"></i></div></div></div>`).join('')}</div>
       <p class="note">Marcas com menos modelos no catálogo têm menos chance de ter um tênis da categoria ideal; por isso o Fit Score delas pode ser mais baixo.</p></div>`;
-    if(r.second)h+=`<div class="panel"><h3>Segundo par para rodízio</h3><p class="muted">Quem alterna dois tênis teve 39% menos risco de lesão num estudo com 264 corredores. Use este ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}.</p><div class="whead"><div><p class="eyebrow">${esc(r.second.b)}</p><h2>${esc(modelOf(r.second))}</h2><p class="muted mono" style="font-size:14px">${priceTxt(r.second)} · ${CAT[r.second.c].n}</p>${brandLink(r.second)}</div></div><p class="note">Os dois pares juntos: ${brl(m.p+r.second.p)}. Custo por km do rodízio: ${('R$ '+((m.p+r.second.p)/(m.du+r.second.du)).toFixed(2)).replace('.',',')}.</p><div style="max-width:460px;width:100%;margin:0 auto">${VZ.hex(SX,[{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.14},{name:modelOf(r.second),v:idx(r.second),c:'var(--ball)',fill:'var(--ball)',fo:.14}])}</div><p class="muted" style="font-size:14px;text-align:center">Juntos, os dois cobrem mais área do hexágono do que qualquer um sozinho.</p></div>`;
+    if(r.second)h+=`<div class="panel"><h3>Segundo par para rodízio</h3><p class="muted">Alternar dois pares pode ajudar: num estudo com 264 corredores, quem alternava teve 39% menos lesões. É um indício, não garantia. Use este ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}.</p><div class="whead"><div><p class="eyebrow">${esc(r.second.b)}</p><h2>${esc(modelOf(r.second))}</h2><p class="muted mono" style="font-size:14px">${priceTxt(r.second)} · ${CAT[r.second.c].n}</p>${brandLink(r.second)}</div></div><p class="note">Os dois pares juntos: ${brl(m.p+r.second.p)}. Custo por km do rodízio: ${('R$ '+((m.p+r.second.p)/(m.du+r.second.du)).toFixed(2)).replace('.',',')}.</p><div style="max-width:460px;width:100%;margin:0 auto">${VZ.hex(SX,[{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.14},{name:modelOf(r.second),v:idx(r.second),c:'var(--ball)',fill:'var(--ball)',fo:.14}])}</div><p class="muted" style="font-size:14px;text-align:center">Juntos, os dois cobrem mais área do hexágono do que qualquer um sozinho.</p></div>`;
     h+=`<div class="panel"><h3>Para pagar menos</h3><ul class="why"><li>A versão da coleção anterior costuma sair 30% a 50% mais barata, com quase o mesmo desempenho.</li><li>Lançamentos raramente entram em promoção nos primeiros meses.</li><li>Compare o preço por km, não só o preço: um tênis mais caro que dura mais pode sair mais barato.</li></ul></div>`;
   }
   h+=`${pdfBtn('pdfBot')}
@@ -1514,7 +1521,7 @@ function pdfHTML(r){
   ${c?`<div class="pbox s"><h3>Por que o seu atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
   <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, preços de lojas no Brasil</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites e clientes</span></div><div><b>${NV}</b><span>variáveis: ${(NV*M.length).toLocaleString('pt-BR')} cruzamentos por análise</span></div><div><b>85%</b><span>dos 500 perfis de teste com o 1º na categoria ideal</span></div></div>
   <p class="pnote">Especificações aproximadas, em revisão. Nenhuma marca paga para aparecer no resultado; links de loja só depois da recomendação.</p></div>
-  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['Fit Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Reduziu o risco de lesão num estudo com 264 corredores.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
+  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['Fit Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Num estudo com 264 corredores, quem alternava teve menos lesões; é indício, não garantia.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Sua corrida × o tênis',p2)}${pdfPage(3,'Ajuste e adaptação',p3)}${pdfPage(4,'Pódio',p4)}${pdfPage(5,'Ranking e método',p5)}</div>`;
 }
 const LIBS=['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js','https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'];
