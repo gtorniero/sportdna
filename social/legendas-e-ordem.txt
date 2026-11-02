@@ -1,5 +1,12 @@
 SPORT DNA · INSTAGRAM
 
+ORDEM (tudo no mesmo dia)
+1. Foto de perfil e bio
+2. Feed: post 1, 2, 3, 4, 5, 6 nesta ordem (o último fica no topo da grade)
+3. Reels: escolha a capa (capa-reel-*.png) e marque "Mostrar no feed"
+4. Destaques: 15 stories (3 por tema) e as 5 capas, na ordem Como funciona, Racket, Surf, Run, Relatório
+5. Stories de lançamento por último (enquete no 2, link no 4)
+
 BIO
 SPORT DNA
 O equipamento certo para o seu jeito de jogar, surfar e correr.
