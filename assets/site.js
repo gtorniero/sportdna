@@ -351,7 +351,7 @@ function privacy(){
       <h2>Saúde</h2>
       <p>O conteúdo é educativo. Em caso de dor ou lesão, procure um profissional de saúde.</p>
       <h2>Fale com a gente</h2>
-      <p>Dúvidas ou pedidos sobre seus dados: <a href="https://github.com/gtorniero/matchlab/issues" target="_blank" rel="noopener">abra uma mensagem aqui</a>.</p>
+      <p>Dúvidas ou pedidos sobre seus dados: <a href="https://github.com/gtorniero/sportdna/issues" target="_blank" rel="noopener">abra uma mensagem aqui</a>.</p>
     </div>
   </div></article>`;
 }

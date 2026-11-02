@@ -8,7 +8,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
   const ctx=await b.newContext({viewport:{width:390,height:900},colorScheme:theme});const p=await ctx.newPage();
   for(const route of ['', 'guias/surf/','guias/racket/','guias/run/','blog/',config.routes['a-prancha-16'],config.routes['a-prancha-17'],config.routes['a-prancha-15'],'surf/','racket/','run/','ferramentas/litragem/']){
    await p.goto((process.env.TEST_BASE_URL||'http://127.0.0.1:8000/sportdna-release/')+route,{waitUntil:'networkidle'});
-   await p.addScriptTag({path:process.env.AXE_PATH||'/tmp/matchlab-axe.min.js'});
+   await p.addScriptTag({path:process.env.AXE_PATH||'/tmp/sportdna-axe.min.js'});
    const r=await p.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa','best-practice']}});return {violations:r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))})),incomplete:r.incomplete.map(v=>({id:v.id,nodes:v.nodes.length}))}});
    results.push({route,theme,...r});
   }await ctx.close();
