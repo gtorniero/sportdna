@@ -18,17 +18,17 @@ O app só mostra a ilustração dos tipos listados em `TIMG`; tipo sem imagem ca
 | Groveler | grov | refazer (saiu em pé e com fundo dividido) |
 | Biquilha moderna | twin | ok (refazer deitada, como as outras) |
 | Softboard performance | softp | ok |
-| Step-up | step | falta |
-| Gun | gun | falta |
+| Step-up | step | ok (vista de cima mostra as quilhas; aprovada assim) |
+| Gun | gun | ok (plug do leash retocado: tinha um desenho que parecia logo) |
 
 ## Backup
 Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, inclusive o groveler rejeitado.
 
 ## Histórico
-- 2/nov/2026: step-up v1 rejeitada, com as quilhas desenhadas em cima do deck na vista de cima (`imagens-originais/step-v1-rejeitada-quilhas-no-deck.jpg`). O texto-base agora diz que as quilhas só aparecem na vista de lado.
+- 2/nov/2026: step-up com as quilhas aparecendo na vista de cima; aprovada assim pelo dono do projeto. O texto-base passou a pedir quilhas só na vista de lado, para as próximas.
+- 2/nov/2026: gun com o plug do leash retocado (original em `imagens-originais/gun.jpg`).
 
 ## Próxima sessão (pendente)
-1. Gerar step-up e gun.
 2. Refazer groveler (saiu em pé e com fundo dividido) e, se quiser, fish e biquilha deitadas.
 3. Gerar as 6 variantes de rabeta: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.
 4. Opcional: refazer a mini-malibu mais larga (ficou parecida com a mid-length).
