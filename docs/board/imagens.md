@@ -30,12 +30,12 @@ Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, incl
 
 ## Próxima sessão (pendente)
 2. Se quiser, refazer fish e biquilha deitadas.
-3. Gerar as 4 variantes de rabeta que faltam: evo-roundpin, evo-round, mid-round, longp-round.
+3. Gerar as 3 variantes de rabeta que faltam: evo-roundpin, mid-round, longp-round.
 4. Opcional: refazer a mini-malibu mais larga (ficou parecida com a mid-length).
 5. Salvar em `surf/img/tipos/`, incluir a chave em `TIMG` e mandar para revisão do Gustavo.
 
 ## Variantes de rabeta
-O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Prontas: short-roundpin, short-round. Faltam: evo-roundpin, evo-round, mid-round, longp-round.
+O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Prontas: short-roundpin, short-round, evo-round. Faltam: evo-roundpin, mid-round, longp-round.
 
 ## Conferir antes de aceitar
 Número e posição das quilhas, formato da rabeta, nenhum logo ou texto, mesmo fundo. Pedir revisão do Gustavo.
