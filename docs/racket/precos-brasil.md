@@ -8,7 +8,7 @@ Desde 25/out/2026 o app mostra preço de loja brasileira em R$, não mais conver
 - Vale o preço cheio no cartão. Importado com taxa (Amazon) só entra se não houver oferta nacional.
 - Faixa = menor e maior oferta, arredondadas para dezenas. "Pouca oferta" = uma loja; "difícil de achar" = nenhuma.
 - Sem loja no Brasil: estimativa de importada, preço de referência nos EUA × R$ 5,20, marcada como "importada" no app.
-- Para atualizar: refazer a busca e trocar o objeto `PRECO` em `apps/racket/index.html`.
+- Para atualizar: refazer a busca e trocar o objeto `PRECO` em `racket/index.html`.
 
 ## Tabela
 

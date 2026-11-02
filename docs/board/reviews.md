@@ -1,6 +1,6 @@
 # Board Match — trechos de review do PDF (out/2026)
 
-Usados na página 4 do relatório em PDF (`REVIEWS` em `apps/board/index.html`). Cada trecho é um resumo traduzido, nunca citação literal longa, e foi conferido no texto que aparece na busca da fonte. Não foi possível abrir as páginas neste ambiente, então vale reabrir os links na próxima rodada.
+Usados na página 4 do relatório em PDF (`REVIEWS` em `surf/index.html`). Cada trecho é um resumo traduzido, nunca citação literal longa, e foi conferido no texto que aparece na busca da fonte. Não foi possível abrir as páginas neste ambiente, então vale reabrir os links na próxima rodada.
 
 Regra: só entra trecho com fonte e link que bateram na conferência. Trechos que a pesquisa trouxe mas não confirmaram ficaram de fora: CI Mid (Empire Ave), Skipper com Mark Mathews (Stab), Bing Elevator e Silver Spoon (Swaylocks), Album Twinsman (Empire Ave), Pyzel Wildcat (The Inertia), CI Happy, Pyzel Ghost no Havaí e DHD Stab in the Dark (Stab, sem o veredito no texto), Lost SDII, CI Black Beauty, CI K Step-Up e Rusty Gun (SurfScience).
 

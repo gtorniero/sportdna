@@ -1,6 +1,6 @@
 # Board Match — ilustrações dos 13 tipos
 
-Geradas no app do Gemini (conta pessoal, sem custo de API), sem marca, fundo #EEF4F5, vista de cima e de lado. Ficam em `apps/board/img/tipos/<tipo>.webp` (1400 px, webp). Na página aparecem como "Ilustração do tipo, gerada por IA e sem marca"; as medidas exatas da pessoa continuam no desenho do Passo 1 e no PDF.
+Geradas no app do Gemini (conta pessoal, sem custo de API), sem marca, fundo #EEF4F5, vista de cima e de lado. Ficam em `surf/img/tipos/<tipo>.webp` (1400 px, webp). Na página aparecem como "Ilustração do tipo, gerada por IA e sem marca"; as medidas exatas da pessoa continuam no desenho do Passo 1 e no PDF.
 
 O app só mostra a ilustração dos tipos listados em `TIMG`; tipo sem imagem cai no desenho.
 
@@ -29,7 +29,7 @@ Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, incl
 2. Refazer groveler (saiu em pé e com fundo dividido) e, se quiser, fish e biquilha deitadas.
 3. Gerar as 6 variantes de rabeta: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.
 4. Opcional: refazer a mini-malibu mais larga (ficou parecida com a mid-length).
-5. Salvar em `apps/board/img/tipos/`, incluir a chave em `TIMG` e mandar para revisão do Gustavo.
+5. Salvar em `surf/img/tipos/`, incluir a chave em `TIMG` e mandar para revisão do Gustavo.
 
 ## Variantes de rabeta
 O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Faltam: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.

@@ -465,7 +465,7 @@ const AREAS = {
     q:"Qual raquete combina com o seu braço, o seu nível e o jeito que você bate na bola?",
     h1:`A raquete certa para o seu jogo e para o seu <span class="hl">braço</span>.`,
     lede:"Peso, balanço, swingweight, rigidez, cabeça e padrão de cordas. O teste cruza suas respostas com a ficha técnica de cada raquete e mostra a análise inteira antes de você pagar.",
-    quiz:"apps/racket/index.html",
+    quiz:"racket/",
     facts:[["58","raquetes no catálogo"],["28 a 33","perguntas"],["R$ 19,99","relatório"]],
     vin:["Idade e força","Dor no braço","Medida da mão","Nível e frequência","Estilo, topspin e swing","Onde você erra","Raquete atual e sensação","Orçamento e corda"],
     vout:["Peso","Balanço","Swingweight","Rigidez (RA)","Cabeça","Padrão","Corda e tensão","Grip"],
@@ -476,7 +476,7 @@ const AREAS = {
     q:"Qual prancha faz você remar, entrar na onda e evoluir no mar onde você surfa?",
     h1:`A prancha certa para o seu surf e para o seu <span class="hl">mar</span>.`,
     lede:"Tipo, medidas, litragem, rabeta, fundo, rocker e quilhas, calculados pelo seu peso, pelo que você já faz na onda e pelo seu pico. Recomendamos tudo, menos marca e shaper.",
-    quiz:"apps/board/index.html",
+    quiz:"surf/",
     facts:[["13","tipos de prancha"],["18 a 23","perguntas"],["R$ 19,99","relatório"]],
     vin:["Peso, altura e idade","Tempo e frequência de surf","O que já faz na onda","Estilo","Flutuação preferida","Tamanho e força da onda","Papel no quiver","Prancha atual"],
     vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
@@ -487,7 +487,7 @@ const AREAS = {
     q:"Qual tênis de corrida acompanha o seu corpo, o seu ritmo e o seu objetivo?",
     h1:`O tênis de corrida certo para o seu corpo e o seu <span class="hl">treino</span>.`,
     lede:"Espuma, drop, altura, forma, durabilidade e custo por km, cruzados com seu peso, seu ritmo e seus km por semana. Sem mito da pisada: neutro por padrão.",
-    quiz:"apps/tenis/index.html",
+    quiz:"run/",
     facts:[["212","tênis de 13 marcas"],["19","perguntas"],["R$ 9,99","relatório"]],
     vin:["Peso e largura do pé","Dor ao correr","Km por semana e ritmo","Terreno","Objetivo e prova","Treino de tiro","Sensação preferida","Orçamento"],
     vout:["Categoria","Altura de espuma","Drop","Peso","Durabilidade","Custo por km","Quando trocar","Segundo par"],
@@ -506,7 +506,7 @@ const appLockup = (k,s=34) => `${ICON[k](s)}<span class="wm"><span class="wordma
 /* chrome */
 document.getElementById("brandHome").innerHTML = labLockup(34);
 document.getElementById("footBrand").innerHTML = labLockup(28);
-document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${ICON[k](24)}${AREAS[k].name}</a>`).join("") + `<span class="sep" aria-hidden="true"></span><a href="#blog" data-go="blog">Blog</a><a href="#conceito" data-go="conceito">Como funciona</a>`;
+document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${ICON[k](24)}${AREAS[k].w1} DNA</a>`).join("") + `<span class="sep" aria-hidden="true"></span><a href="#blog" data-go="blog">Blog</a><a href="#conceito" data-go="conceito">Como funciona</a>`;
 document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={

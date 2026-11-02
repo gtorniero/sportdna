@@ -7,7 +7,7 @@
 - Logos: https://claude.ai/artifact/675ZoyJqS6pLmQUekYYuXF
 - Guia técnico de pranchas: https://claude.ai/artifact/SGnvL42ZVoV8f5BujDS1oy
 - Modelo técnico (motor): https://claude.ai/artifact/EksaGBVicCuyi9AG6PCErZ
-- Protótipo antigo (congelado; a versão viva é `apps/board/`): https://claude.ai/artifact/MLoBRFUZMuymcx9MVxsy2V
+- Protótipo antigo (congelado; a versão viva é `surf/`): https://claude.ai/artifact/MLoBRFUZMuymcx9MVxsy2V
 
 ## Decisões já tomadas
 - Nome: Board Match, by Match Lab.

@@ -33,7 +33,7 @@ Prazo sugerido: cobrar uma vez depois de 10 dias úteis.
 
 Olá, equipe [MARCA],
 
-Sou [NOME], da Beyond the Work. Mantemos o Racket Match (matchlab…/apps/racket), um teste gratuito em português que indica a raquete de tênis mais adequada ao jogo de cada pessoa, a partir de cerca de 30 perguntas e das especificações medidas de 58 raquetes de 9 marcas.
+Sou [NOME], da Beyond the Work. Mantemos o Racket Match (matchlab…/racket), um teste gratuito em português que indica a raquete de tênis mais adequada ao jogo de cada pessoa, a partir de cerca de 30 perguntas e das especificações medidas de 58 raquetes de 9 marcas.
 
 Hoje mostramos as raquetes como desenho técnico. Gostaríamos de exibir a foto oficial dos modelos [MARCA] que estão no catálogo:
 
@@ -102,7 +102,7 @@ Texto para o campo "descrição do site" (adaptar):
 - [ ] 6. Na aprovação, em Toolbox > My Product Feeds (Ferramentas > Feeds de produto), gerar o feed em CSV com as colunas `product_name`, `brand_name`, `merchant_category`, `merchant_image_url`, `aw_deep_link`, `search_price`, `merchant_name`, `in_stock`. A imagem gerada pela própria Awin (`aw_image_url`) só existe em Reino Unido, Irlanda, Canadá e EUA; no Brasil a foto vem de `merchant_image_url`.
 
 **Fase C: casar o feed (sessão do Racket)**
-- [ ] 7. Rodar `node apps/racket/tools/casar-feed.mjs feed.csv.gz` (aceita várias lojas de uma vez). Ele gera `feed-casado.md` e `feed-casado.json`.
+- [ ] 7. Rodar `node racket/tools/casar-feed.mjs feed.csv.gz` (aceita várias lojas de uma vez). Ele gera `feed-casado.md` e `feed-casado.json`.
   - Descarta: infantil, corda, bolsa, acessórios, padel, outra versão (Team, Lite, L, Pro, Tour, 98 × 100), outra geração (ano ou v diferente) e outro peso.
   - Marca "conferir foto" quando a geração bate no nome, e "conferir geração" quando a loja não informa.
 - [ ] 8. Conferir à mão cada foto marcada (a loja pode usar foto de outra geração).
