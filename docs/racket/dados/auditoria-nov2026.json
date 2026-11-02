@@ -1,0 +1,289 @@
+{
+ "gerado": "2026-11-02",
+ "descricao": "Auditoria das fichas do RACKET DNA (rodada 8): correções aplicadas em racket/index.html (depois != null) e conferências sem mudança (depois = null). 30 buscas.",
+ "correcoes": [
+  {
+   "modelo": "Babolat Pure Aero Team 2026",
+   "campo": "preco",
+   "antes": {
+    "min": 2300,
+    "max": 2350,
+    "n": 3
+   },
+   "depois": {
+    "min": 1800,
+    "max": 2230,
+    "n": 3
+   },
+   "fonte": [
+    "https://www.amazon.com.br/babolat-pure-aero/s?k=babolat+pure+aero",
+    "https://www.magazineluiza.com.br/raquete-de-tenis-pure-aero-team-16x19-285g-babolat/p/df8jc26022/es/rqtn/",
+    "https://lista.mercadolivre.com.br/babolat-pure-aero-team"
+   ],
+   "nota": "Amazon Gen9 2026 R$ 1.899,90; Magazine Luiza R$ 2.232,50; Mercado Livre R$ 1.799 a 2.099. A faixa antiga estava acima da Pure Aero."
+  },
+  {
+   "modelo": "Babolat Pure Aero Lite 2026",
+   "campo": "preco",
+   "antes": {
+    "min": 2140,
+    "max": 2300,
+    "n": 3
+   },
+   "depois": {
+    "min": 1970,
+    "max": 2300,
+    "n": 4
+   },
+   "fonte": [
+    "https://www.amazon.com.br/RAQUETE-TENIS-BABOLAT-PURE-GEN9-2026/dp/B0GL9VJ46P",
+    "https://lista.mercadolivre.com.br/raquete-de-tenis-babolat-pure-aero-lite",
+    "https://www.casadotenista.com.br/raquetes/raquetes-de-tenis/babolat?map=category-1%2Ccategory-2%2Cbrand"
+   ],
+   "nota": "Amazon R$ 1.974,56 a 2.135; Magazine Luiza R$ 2.184,91 (cheio); Mercado Livre R$ 1.969 a 2.299; Casa do Tenista R$ 2.099. Anúncio da 7ª geração a R$ 1.329 ignorado."
+  },
+  {
+   "modelo": "Babolat Pure Drive Team 2025",
+   "campo": "preco",
+   "antes": {
+    "min": 2000,
+    "max": 2100,
+    "n": 2
+   },
+   "depois": {
+    "min": 1800,
+    "max": 2100,
+    "n": 2
+   },
+   "fonte": [
+    "https://www.mercadolivre.com.br/raquete-de-tnis-babolat-pure-drive-team-16x19-285-g-cor-azul-tamanho-da-empunhadura-l3/p/MLB38280121",
+    "https://www.casadotenista.com.br/raquetes/raquetes-de-tenis/babolat?map=category-1%2Ccategory-2%2Cbrand"
+   ],
+   "nota": "Mercado Livre R$ 1.800 a 2.099 (Gen11 a R$ 1.899); Casa do Tenista R$ 2.099,90."
+  },
+  {
+   "modelo": "Babolat Pure Drive Lite 2025",
+   "campo": "preco",
+   "antes": {
+    "min": 2100,
+    "max": 2100,
+    "n": 2
+   },
+   "depois": {
+    "min": 1850,
+    "max": 2200,
+    "n": 2
+   },
+   "fonte": [
+    "https://www.mercadolivre.com.br/raquete-de-tnis-pure-drive-lite-gen11-l2-sem-cordas-2025-babolat/p/MLB45893597",
+    "https://www.casadotenista.com.br/raquetes/raquetes-de-tenis/babolat?map=category-1%2Ccategory-2%2Cbrand"
+   ],
+   "nota": "Mercado Livre R$ 1.847 a 2.199,90; Casa do Tenista R$ 2.099. A Netshoes tem uma Pure Drive Lite a R$ 1.399,90 sem geração clara: não usada."
+  },
+  {
+   "modelo": "Babolat Pure Aero 2026",
+   "campo": "preco",
+   "antes": {
+    "min": 1800,
+    "max": 2230,
+    "n": 3
+   },
+   "depois": {
+    "min": 1600,
+    "max": 2230,
+    "n": 3
+   },
+   "fonte": [
+    "https://www.amazon.com.br/babolat-pure-aero/s?k=babolat+pure+aero",
+    "https://lista.mercadolivre.com.br/raquete-babolat-pure-aero-300g"
+   ],
+   "nota": "Amazon Gen9 2026 R$ 1.600 a 1.830; Magazine Luiza R$ 2.232,41; Mercado Livre R$ 1.750 a 2.200. Pure Aero+ (cabo longo) excluída."
+  },
+  {
+   "modelo": "Babolat Pure Drive 2025",
+   "campo": "preco",
+   "antes": {
+    "min": 1930,
+    "max": 2090,
+    "n": 3
+   },
+   "depois": {
+    "min": 1930,
+    "max": 2200,
+    "n": 3
+   },
+   "fonte": [
+    "https://lista.mercadolivre.com.br/raquete-babolat-pure-drive-300g"
+   ],
+   "nota": "Mercado Livre Gen11 R$ 1.926 a 2.199. Edição Wimbledon excluída."
+  },
+  {
+   "modelo": "Babolat Pure Aero 98 2026",
+   "campo": "preco",
+   "antes": {
+    "min": 2050,
+    "max": 2450,
+    "n": 2
+   },
+   "depois": {
+    "min": 2050,
+    "max": 2320,
+    "n": 3
+   },
+   "fonte": [
+    "https://www.amazon.com.br/RAQUETE-TENIS-BABOLAT-PURE-GEN9-2026/dp/B0GL9RDVX9",
+    "https://www.decathlon.com.br/raquete-de-tenis-pure-aero-98-preta-9038642-babolat/p"
+   ],
+   "nota": "Amazon R$ 2.049,90 a 2.299; Magazine Luiza R$ 2.161 a 2.324; Decathlon R$ 2.279,99."
+  },
+  {
+   "modelo": "Wilson Clash 100 v3",
+   "campo": "preco",
+   "antes": {
+    "min": 1620,
+    "max": 1800,
+    "n": 3
+   },
+   "depois": {
+    "min": 1800,
+    "max": 2200,
+    "n": 3
+   },
+   "fonte": [
+    "https://www.decathlon.com.br/raquete-de-tenis-clash-100-v3-preta-8961109-wilson/p",
+    "https://produto.mercadolivre.com.br/MLB-5257597630-raquete-de-tnis-wilson-clash-100-v3-295g-_JM"
+   ],
+   "nota": "Regra de preço cheio: Decathlon R$ 1.799,99 (R$ 1.619,99 era o Pix); Mercado Livre R$ 2.099 a 2.199 na maioria dos anúncios."
+  },
+  {
+   "modelo": "Prince Phantom 100X 290 g",
+   "campo": "bal",
+   "antes": 321,
+   "depois": 320,
+   "fonte": [
+    "https://www.tenniswarehouse-europe.com/Prince_Phantom_100X_290g_2024_Racket/descpage-PHNX9.html?img=1",
+    "https://www.centauro.com.br/raquete-de-tenis-prince-phantom-100x-290g-performance-m18jir-mktp.html"
+   ],
+   "nota": "Balanço sem corda 32 cm / 7 pts HL (TW Europe); Centauro informa 320 mm."
+  },
+  {
+   "modelo": "Head Gravity MP 2025",
+   "campo": "bal",
+   "antes": 326,
+   "depois": 325,
+   "fonte": [
+    "https://www.tenniswarehouse-europe.com/Head_Gravity_MP_2025_Racket/descpageRCHEAD-HRMPG-EN.html"
+   ],
+   "nota": "Balanço sem corda 32,5 cm / 6 pts HL (TW Europe)."
+  },
+  {
+   "modelo": "Babolat Pure Drive 2025",
+   "campo": "ra",
+   "antes": 69,
+   "depois": null,
+   "fonte": [
+    "https://www.tenniswarehouse-europe.com/Babolat_Pure_Drive_2025_Racket_/descpage-BPD25R.html?img=1"
+   ],
+   "nota": "Sem correção: uma página da TW Europe diz RA 72 ('atualizado em 2/4/25 com mais amostras') junto de SW 290, que não bate com nenhuma outra fonte; outra diz SW 317 e RA 69. Conferir na página."
+  },
+  {
+   "modelo": "Head Extreme Team 2026",
+   "campo": "preco",
+   "antes": {
+    "min": 2050,
+    "max": 2050,
+    "n": 2
+   },
+   "depois": null,
+   "fonte": [
+    "https://www.magazineluiza.com.br/busca/raquete+head+extreme/",
+    "https://www.netshoes.com.br/busca/raquete-head-extreme-team"
+   ],
+   "nota": "Sem correção: o preço de R$ 2.049,90 foi confirmado na Magazine Luiza e na Netshoes (antes marcado como duvidoso); a geração 2026 não aparece no anúncio."
+  },
+  {
+   "modelo": "Head Speed MP L 2026",
+   "campo": "preco",
+   "antes": {
+    "min": 2150,
+    "max": 2150,
+    "n": 2
+   },
+   "depois": null,
+   "fonte": [
+    "https://www.mercadolivre.com.br/raquete-de-tenis-head-speed-mp-l-2026-sinner-285g/up/MLBU3758749065"
+   ],
+   "nota": "Sem correção: Netshoes R$ 2.149,90 confirmado."
+  },
+  {
+   "modelo": "Head Speed Team 2026 · Head Boom Team 2026 · Wilson Clash 108 v3 · ProKennex Black Ace 105 · ProKennex Ki Q+ Tour",
+   "campo": "br",
+   "antes": "d",
+   "depois": null,
+   "fonte": [
+    "https://www.netshoes.com.br/busca/raquete-head-2026-tenis",
+    "https://lista.mercadolivre.com.br/raquete-wilson-clash",
+    "https://lista.mercadolivre.com.br/raquete-prokennex"
+   ],
+   "nota": "Sem correção: continuam sem oferta nova no Brasil (só Clash 108 v2, Ki Q+15 e Ki Q+5, que são outros modelos)."
+  },
+  {
+   "modelo": "Wilson Ultra 100L v5",
+   "campo": "preco",
+   "antes": {
+    "min": 1800,
+    "max": 2200,
+    "n": 5
+   },
+   "depois": null,
+   "fonte": [
+    "https://lista.mercadolivre.com.br/raquete-wilson-ultra"
+   ],
+   "nota": "Sem correção: Mercado Livre R$ 1.869 a 2.235 (cheio); Amazon importada a R$ 3.079 excluída."
+  },
+  {
+   "modelo": "Babolat Pure Strike 100 16x19",
+   "campo": "preco",
+   "antes": {
+    "min": 1660,
+    "max": 1850,
+    "n": 3
+   },
+   "depois": null,
+   "fonte": [
+    "https://www.amazon.com.br/Babolat-Raquete-t%C3%AAnis-Strike-gera%C3%A7%C3%A3o/dp/B0D2YJQJVZ",
+    "https://www.centauro.com.br/raquete-de-tenis-babolat-pure-strike-100-16x19-300g-m14ow5-mktp.html"
+   ],
+   "nota": "Sem correção: Amazon R$ 1.659,33; Centauro R$ 1.799,90 cheio; Mercado Livre R$ 1.749."
+  },
+  {
+   "modelo": "Prince Phantom 100X 290 g",
+   "campo": "preco/ra",
+   "antes": {
+    "min": 1670,
+    "max": 2000,
+    "n": 2
+   },
+   "depois": null,
+   "fonte": [
+    "https://www.netshoes.com.br/p/raquete-de-tenis-prince-phantom-100x-290g-verde-LER-013T-060",
+    "https://www.tennis-warehouse.com/Prince_Phantom_100X_290g/descpage-PHNX9.html?img=1"
+   ],
+   "nota": "Sem correção: Netshoes R$ 1.999,90 e Mercado Livre R$ 1.666. RA 57 na demo da TW EUA contra 59 na TW Europe; mantido 59."
+  },
+  {
+   "modelo": "Specs conferidas sem diferença",
+   "campo": "specs",
+   "antes": null,
+   "depois": null,
+   "fonte": [
+    "https://www.tenniswarehouse-europe.com/Babolat_Pure_Aero_2026_Racket/descpageRCQBA-BPAR26-EN.html",
+    "https://www.tenniswarehouse-europe.com/Head_Speed_MP_2026_Racket/descpageRCHEAD-HSPMP6-EN.html",
+    "https://www.tenniswarehouse-europe.com/Wilson_Clash_100_V30_Racket/descpageRCWILSON-WC10V3-EN.html",
+    "https://www.tenniswarehouse-europe.com/Head_Boom_MP_2026_Racket/descpage-HBOMP6.html?img=4",
+    "https://www.tennisnerd.net/?p=36621"
+   ],
+   "nota": "Pure Aero 2026 (300 g, 320 mm, SW 320, RA 66), Pure Aero Team 2026 (SW 306, RA 66), Pure Aero 98 (SW 322, RA 66), Pure Drive Team/Lite (SW 308/295, RA 69), Speed MP 2026 (SW 329, RA 60), Clash 100 v3 (310 mm, SW 311, RA 54), Boom MP 2026 (315 mm, SW 316, RA 61), Blade 98 v9 (305 g, 320 mm, SW 324; RA sem fonte nesta busca) batem com o catálogo."
+  }
+ ]
+}

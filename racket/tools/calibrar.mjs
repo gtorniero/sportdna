@@ -8,6 +8,7 @@
               Objetivo = MRR + 0,5 × top 3 − 0,1 × desvio de marcas (L1 entre as marcas do nosso top 3 e as do 1º indicado).
               Pesos de saúde e segurança têm piso de 0,5× o valor atual; orçamento e "difícil de achar" ficam fora.
    --saida    grava os pesos alterados (formato de --pesos)
+   --json     grava o resultado de cada caso (posição do 1º indicado, nosso top 3)
    --trava    roda vies.mjs --realista com os pesos finais; se os pódios com 2+ contraindicações sérias ou a faixa até
               R$ 1.400 acima do orçamento piorarem em relação ao app atual, desfaz passos até não piorarem.
    Sem arquivos, lê docs/racket/dados/casos.json, casos-pt.json e casos-es.json.
@@ -20,7 +21,7 @@ import fs from 'fs';import path from 'path';import url from 'url';import http fr
 const {chromium}=createRequire(import.meta.url)('playwright');
 const raiz=path.resolve(path.dirname(url.fileURLToPath(import.meta.url)),'../..');
 const args=process.argv.slice(2);const flag=k=>args.includes(k);const opt=k=>{const i=args.indexOf(k);return i>=0?args[i+1]:null};
-const arquivos=args.filter((a,i)=>!a.startsWith('--')&&!['--pesos','--html','--saida'].includes(args[i-1]));
+const arquivos=args.filter((a,i)=>!a.startsWith('--')&&!['--pesos','--html','--saida','--json'].includes(args[i-1]));
 const HTML=opt('--html');
 const lista=arquivos.length?arquivos:['casos.json','casos-pt.json','casos-es.json'].map(f=>path.join(raiz,'docs/racket/dados',f));
 const casos=lista.flatMap(f=>{const d=JSON.parse(fs.readFileSync(f,'utf8'));return Array.isArray(d)?d:d.casos});
@@ -120,7 +121,8 @@ const out=await pg.evaluate(({entradas,PES,AJ})=>{
 },{entradas,PES,AJ:flag('--ajustar')});
 await b.close();srv.close();
 
-const {res,cat}=out;const pct=x=>(100*x).toFixed(1).replace('.',',')+'%';
+const {res,cat}=out;
+if(opt('--json'))fs.writeFileSync(opt('--json'),JSON.stringify({res,cat}));const pct=x=>(100*x).toFixed(1).replace('.',',')+'%';
 const uteis=res.filter(x=>x.ids.length);
 const semNome=[...new Set(res.flatMap(x=>x.sem))];
 const med=g=>{const n=g.length||1;return {n:g.length,t1:g.filter(x=>x.pos===1).length/n,t3:g.filter(x=>x.pos>=1&&x.pos<=3).length/n,t10:g.filter(x=>x.pos>=1&&x.pos<=10).length/n,mrr:g.reduce((s,x)=>s+1/x.pos,0)/n,alg3:g.filter(x=>x.melhor<=3).length/n}};

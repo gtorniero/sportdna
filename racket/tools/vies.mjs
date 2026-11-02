@@ -56,7 +56,7 @@ const out=await pg.evaluate(({N,SEED,REAL,EXP,PES})=>{
     return JSON.parse(JSON.stringify(A));
   };
   const res=[];
-  for(let n=0;n<N;n++){const a=perfil();const r=compute();res.push({a,top:r.ranked.slice(0,3).map(x=>x.r.id),fit:r.ranked.slice(0,3).map(x=>x.fit)})}
+  for(let n=0;n<N;n++){const a=perfil();const r=compute();res.push({a,top:r.ranked.slice(0,3).map(x=>x.r.id),fit:r.ranked.slice(0,3).map(x=>x.fit),zona:!!r.ranked[0].inZ})}
   let ex=null;if(E.EXAMPLE){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(E.EXAMPLE)));const r=compute();ex=r.ranked.slice(0,3).map(x=>`${x.r.name} ${x.fit}%`)}
   const cat=RK.map(r=>({id:r.id,brand:r.brand,name:r.name,head:r.head,wt:r.wt,bal:r.bal,sw:r.sw,ra:r.ra,price:r.price,br:r.br}));
   return {res,cat,ex};
@@ -107,5 +107,6 @@ const ac=res.filter(x=>acima(x,x.top[0])).length;
 console.log(`\nOrçamento: 1ª acima em ${ac} (${pct(ac/N)}); pódio todo acima em ${res.filter(x=>x.top.every(i=>acima(x,i))).length}`);
 ['1400','1800','2200','99999'].forEach(o=>{const g=res.filter(x=>x.a.budget===o);if(!g.length)return;const a1=g.filter(x=>acima(x,x.top[0])).length,a8=g.filter(x=>cat[x.top[0]].price[0]>+o*1.08).length;console.log(`  até ${o==='99999'?'sem limite':'R$ '+o}: ${g.length} perfis, 1ª acima ${pct(a1/g.length)} (mais de 8% acima ${pct(a8/g.length)}), Match médio da 1ª ${(g.reduce((s,x)=>s+x.fit[0],0)/g.length).toFixed(1)}`)});
 const imp=res.filter(x=>x.a.imp==='no');console.log(`Prefere comprar no Brasil: ${imp.length}; 1ª difícil de achar: ${imp.filter(x=>cat[x.top[0]].br==='d').length}`);
+console.log(`1ª dentro da zona do mapa (peso × swingweight): ${pct(res.filter(x=>x.zona).length/N)}`);
 const f1=res.map(x=>x.fit[0]).sort((a,b)=>a-b);console.log(`Match da 1ª: mín ${f1[0]} · p10 ${f1[Math.floor(N*.1)]} · mediana ${f1[N>>1]} · máx ${f1[N-1]}`);
 if(ex)console.log('\nExemplo pronto: '+ex.join(' · '));
