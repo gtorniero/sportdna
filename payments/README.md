@@ -40,3 +40,6 @@ Além dos testes acima: revisar cobrança real e taxas na conta, recuperação/e
 - Fluxo de navegador validado com um servidor QA local e dados fictícios; não há controles QA no site nem neste pacote.
 
 Documentação: [Stripe Checkout](https://docs.stripe.com/payments/accept-a-payment?payment-ui=checkout&ui=stripe-hosted), [fulfillment e webhooks](https://docs.stripe.com/checkout/fulfillment), [Pix Orders](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/payment-integration/websites/pix), [teste Pix](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/integration-test/pix), [assinatura de notificações](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/optional-notifications).
+
+
+Update 2026-11-02: D1 sportdna-payments-test created (936d7152-4ddd-4764-9cd5-a6cd8e966582). Migration applied; orders and rate_limits tables verified. Worker binding remains pending. Automatic GitHub deployment abandoned; no build token created. Manual Worker publication and test-only Secrets storage await explicit confirmation.

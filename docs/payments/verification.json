@@ -33,5 +33,14 @@
   "seoStaticChecks": {
     "passed": 4,
     "failed": 0
+  },
+  "d1": {
+    "id": "936d7152-4ddd-4764-9cd5-a6cd8e966582",
+    "schemaApplied": true,
+    "tablesVerified": [
+      "orders",
+      "rate_limits"
+    ],
+    "workerBound": false
   }
 }
