@@ -934,7 +934,7 @@ const CT=CB.reduce((p,x)=>p*x[1],1);
 const big=n=>n>=1e12?Math.round(n/1e12)+' tri':n>=1e9?Math.round(n/1e9)+' bi':Math.round(n/1e6)+' mi';
 document.getElementById('nCombS').textContent=big(CT);document.getElementById('nCombS').title=CT.toLocaleString('pt-BR')+' combinações de 17 variáveis';
 })();
-const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'2',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:'2',imp:{rem:8,est:6,vel:7,man:6,ctl:3,tol:6},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
+const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:'2',imp:{rem:8,est:6,vel:7,man:6,ctl:3,tol:6},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
 
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
 function renderQs(){

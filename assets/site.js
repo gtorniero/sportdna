@@ -76,7 +76,7 @@ document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" d
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: raquete recomendada ProKennex Black Ace 300, DNA Score de 95%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip L3, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 300 g sem corda, balanço de 321 mm, swingweight 324 e rigidez de 55 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.",
-  board:"Exemplo de relatório do SURF DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 9 polegadas de comprimento, 19 e 3/4 de largura, 2 e 5/8 de espessura, 37,6 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, ondas fracas e comparação com a prancha atual.",
+  board:"Exemplo de relatório do SURF DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 11 polegadas de comprimento, 19 e 7/8 de largura, 2 e 5/8 de espessura, 38,7 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, ondas fracas e comparação com a prancha atual.",
   tenis:"Exemplo de relatório do RUN DNA: tênis recomendado Mizuno Wave Sky 9, Fit Score de 96%, preço médio de R$ 699,89. Categoria máximo amortecimento, 286 g, 43,2 mm de espuma, drop de 4,4 mm, durabilidade de 750 km e custo de R$ 0,93 por km. Inclui os motivos da escolha, os pontos de atenção, o mês de troca, a ficha de laboratório e a comparação com o tênis atual."};
 function reportFrame(k, h){
   const a = AREAS[k];
@@ -100,7 +100,7 @@ const CARDS={
   racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 7,6, DNA 95%"],
           produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 95%, escolhida entre 58 raquetes"]},
   board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
-         produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 9 polegadas por 19 3/4 polegadas, 37,6 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
+         produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 11 polegadas por 19 7/8 polegadas, 38,7 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
   tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
          produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Mizuno Wave Sky 9, 286 g, 43,2 mm de espuma, drop de 4,4 mm, 750 km de durabilidade, DNA 96%, escolhido entre 212 tênis"]}};
 const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="${CARDS[k][t][1]}" width="720" height="1280" loading="lazy" decoding="async">`;
