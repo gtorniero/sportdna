@@ -24,6 +24,9 @@ O app só mostra a ilustração dos tipos listados em `TIMG`; tipo sem imagem ca
 ## Backup
 Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, inclusive o groveler rejeitado.
 
+## Histórico
+- 2/nov/2026: step-up v1 rejeitada, com as quilhas desenhadas em cima do deck na vista de cima (`imagens-originais/step-v1-rejeitada-quilhas-no-deck.jpg`). O texto-base agora diz que as quilhas só aparecem na vista de lado.
+
 ## Próxima sessão (pendente)
 1. Gerar step-up e gun.
 2. Refazer groveler (saiu em pé e com fundo dividido) e, se quiser, fish e biquilha deitadas.
@@ -39,7 +42,7 @@ Número e posição das quilhas, formato da rabeta, nenhum logo ou texto, mesmo 
 
 ## Prompt base
 ```
-Studio catalog photo of ONE surfboard lying flat, shown twice on the same image. Layout exactly like a technical sheet: on the left, top-down view of the deck, nose pointing up; on the right, side profile lying horizontally, nose pointing left, fins hanging below. Same uniform pale blue-grey (#EEF4F5) background across the whole image, no split, no floor line, soft contact shadow, no props. Board: plain white glassed finish with a thin natural wood stringer (unless stated otherwise). No logos, no brand names, no text, no stickers, no people, no hands. Soft even lighting, realistic proportions, accurate surfboard shape, centered with generous empty margin around it. Wide 16:9 framing.
+Studio catalog photo of ONE surfboard lying flat, shown twice on the same image. Layout exactly like a technical sheet: on the left, top-down view of the deck, nose pointing up; on the right, side profile lying horizontally, nose pointing left, fins hanging below. Same uniform pale blue-grey (#EEF4F5) background across the whole image, no split, no floor line, soft contact shadow, no props. Fins are mounted on the BOTTOM of the board: they appear ONLY in the side profile, never in the top-down deck view (the deck is clean, with no fins on it). Board: plain white glassed finish with a thin natural wood stringer (unless stated otherwise). No logos, no brand names, no text, no stickers, no people, no hands. Soft even lighting, realistic proportions, accurate surfboard shape, centered with generous empty margin around it. Wide 16:9 framing.
 ```
 
 ## Linha de cada tipo
