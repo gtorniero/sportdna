@@ -1,0 +1,7386 @@
+{
+ "gerado": "2026-11",
+ "idioma": "en",
+ "descricao": "Casos de recomendação de especialistas (fontes em inglês) para calibrar o motor do RACKET DNA. Cada caso é um título \"melhor para X\" de um guia; recomendados na ordem do guia (1º = destaque). recomendados_catalogo traz só os modelos que existem no catálogo (nome exato), ignorando diferença de geração quando linha, cabeça e peso são os mesmos (marcado em recomendados_detalhe.geracao_diferente). Perfil: null = o guia não diz. Coletado por busca na web em nov/2026; a maioria dos guias foi lida por trechos de resultado de busca, não pela página inteira, então listas longas podem estar incompletas.",
+ "catalogo_referencia": "racket/index.html (CATALOG, 58 modelos)",
+ "casos": [
+  {
+   "id": "en-001",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_beginners.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for beginners: all-around value",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Quadro grande, leve e barato, vem encordoado."
+  },
+  {
+   "id": "en-002",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_beginners.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for beginners: maximum vibration dampening / comfort and power",
+   "recomendados": [
+    "Prince O3 Legacy 120"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "conforto",
+   "texto_curto": "Cabeça 120 com amortecimento máximo de vibração e potência fácil."
+  },
+  {
+   "id": "en-003",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_beginners.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for beginners: lightweight",
+   "recomendados": [
+    "Head Graphene XT Radical S"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Graphene XT Radical S",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "iniciante",
+   "texto_curto": "Opção leve, vem encordoada."
+  },
+  {
+   "id": "en-004",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_beginners.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for beginners: easy to hit with spin",
+   "recomendados": [
+    "Babolat Boost Aero"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Boost Aero",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "spin",
+   "texto_curto": "Linha Boost encordoada, fácil de gerar spin."
+  },
+  {
+   "id": "en-005",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_beginners.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for beginners: easy power",
+   "recomendados": [
+    "Prince Ripcord 100 280g"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Ripcord 100 280g",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "potencia",
+   "texto_curto": "Potência fácil em quadro leve."
+  },
+  {
+   "id": "en-006",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_beginners.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for beginners: comfortable feel",
+   "recomendados": [
+    "Dunlop LX 1000"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Dunlop LX 1000",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "conforto",
+   "texto_curto": "Sensação confortável."
+  },
+  {
+   "id": "en-007",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Beginner: comfort & power",
+   "recomendados": [
+    "Babolat Evo Drive"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Evo Drive",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "conforto",
+   "texto_curto": "Conforto e potência para quem começa."
+  },
+  {
+   "id": "en-008",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets of 2025: beginner picks",
+   "recomendados": [
+    "Prince Warrior 100 285g",
+    "Wilson Blade Feel 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Warrior 100 285g",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Blade Feel 100",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "iniciante",
+   "texto_curto": "Outras indicações para iniciante."
+  },
+  {
+   "id": "en-009",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_comfort_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best comfort racquets: beginner to intermediate",
+   "recomendados": [
+    "Wilson Clash 108 v3",
+    "Prince O3 Legacy 120"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 108 v3",
+     "no_catalogo": "Clash 108 v3",
+     "posicao": 1
+    },
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 108 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash 108 v3 ficou ainda mais macia que a anterior."
+  },
+  {
+   "id": "en-010",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_comfort_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best comfort racquets: intermediate",
+   "recomendados": [
+    "Wilson Clash 100 v3",
+    "Head Gravity MP",
+    "Yonex EZONE 100",
+    "Dunlop CX 400 Tour",
+    "ProKennex Ki 5"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    },
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 2
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 3
+    },
+    {
+     "original": "Dunlop CX 400 Tour",
+     "no_catalogo": null,
+     "posicao": 4
+    },
+    {
+     "original": "ProKennex Ki 5",
+     "no_catalogo": null,
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "Gravity MP",
+    "EZONE 100"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Quadros flexíveis e confortáveis para intermediário."
+  },
+  {
+   "id": "en-011",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_comfort_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best comfort racquets: advanced",
+   "recomendados": [
+    "Head Speed Pro 2026",
+    "Prince Phantom 100X",
+    "Volkl C10 Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Speed Pro 2026",
+     "no_catalogo": "Speed Pro",
+     "posicao": 1
+    },
+    {
+     "original": "Prince Phantom 100X",
+     "no_catalogo": "Phantom 100X 290 g",
+     "posicao": 2
+    },
+    {
+     "original": "Volkl C10 Pro",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Speed Pro",
+    "Phantom 100X 290 g"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Conforto com controle para jogador avançado."
+  },
+  {
+   "id": "en-012",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: spin",
+   "recomendados": [
+    "Babolat Pure Aero 98 2026",
+    "Yonex VCORE 98 8th Gen"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98 2026",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 98 8th Gen",
+     "no_catalogo": "VCORE 98 8ª geração",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98",
+    "VCORE 98 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Spin para avançado."
+  },
+  {
+   "id": "en-013",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: control",
+   "recomendados": [
+    "Head Speed Pro 2026",
+    "Wilson Blade 98 18x20 v10"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Speed Pro 2026",
+     "no_catalogo": "Speed Pro",
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Blade 98 18x20 v10",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Speed Pro"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle para avançado."
+  },
+  {
+   "id": "en-014",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: control & feel",
+   "recomendados": [
+    "Prince Tour 100 290g",
+    "Tecnifibre TF40 290"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Tour 100 290g",
+     "no_catalogo": "Tour 100 290 g",
+     "posicao": 1
+    },
+    {
+     "original": "Tecnifibre TF40 290",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Tour 100 290 g"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle e sensação para intermediário."
+  },
+  {
+   "id": "en-015",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: power & spin",
+   "recomendados": [
+    "Babolat Pure Aero 2026",
+    "Head Extreme MP 2026",
+    "Wilson Defyer 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    },
+    {
+     "original": "Head Extreme MP 2026",
+     "no_catalogo": "Extreme MP",
+     "posicao": 2
+    },
+    {
+     "original": "Wilson Defyer 100",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "Extreme MP"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência e spin para intermediário."
+  },
+  {
+   "id": "en-016",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: beginner",
+   "recomendados": [
+    "Head Ti.S6",
+    "Prince O3 Legacy 120",
+    "Babolat Boost Aero"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    },
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Babolat Boost Aero",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Valor, conforto e potência, controle."
+  },
+  {
+   "id": "en-017",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_control_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best control racquets: intermediate",
+   "recomendados": [
+    "Head Gravity MP",
+    "Tecnifibre TF40 290",
+    "Prince Tour 100 290g"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 1
+    },
+    {
+     "original": "Tecnifibre TF40 290",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Prince Tour 100 290g",
+     "no_catalogo": "Tour 100 290 g",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP",
+    "Tour 100 290 g"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle para intermediário."
+  },
+  {
+   "id": "en-018",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_control_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best control racquets: advanced",
+   "recomendados": [
+    "Tecnifibre TFight 305S",
+    "Dunlop CX 200 Tour 18x20",
+    "Babolat Pure Strike 97"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Tecnifibre TFight 305S",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Dunlop CX 200 Tour 18x20",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Babolat Pure Strike 97",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle para avançado."
+  },
+  {
+   "id": "en-019",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_power.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for power: beginner",
+   "recomendados": [
+    "Babolat Pure Drive 107",
+    "Prince O3 Legacy 120",
+    "Head Boom MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 107",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boom MP"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência leve, conforto e valor para iniciante."
+  },
+  {
+   "id": "en-020",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_power.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for power: intermediate",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Yonex EZONE 100",
+    "Tecnifibre TFight 300",
+    "Solinco Blackout 300 v2"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 2
+    },
+    {
+     "original": "Tecnifibre TFight 300",
+     "no_catalogo": "TFight 300",
+     "posicao": 3
+    },
+    {
+     "original": "Solinco Blackout 300 v2",
+     "no_catalogo": null,
+     "posicao": 4
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "EZONE 100",
+    "TFight 300"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência com spin para intermediário."
+  },
+  {
+   "id": "en-021",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for power",
+   "recomendados": [
+    "Babolat Pure Drive 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 2025",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Pure Drive para potência."
+  },
+  {
+   "id": "en-022",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for control",
+   "recomendados": [
+    "Wilson Pro Staff 97 v14"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff 97 v14",
+     "no_catalogo": "Pro Staff 97 v14",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Pro Staff v14 para controle."
+  },
+  {
+   "id": "en-023",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for spin",
+   "recomendados": [
+    "Babolat Pure Aero 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Pure Aero 2026 para spin."
+  },
+  {
+   "id": "en-024",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for beginners",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Ti S6 como primeira raquete."
+  },
+  {
+   "id": "en-025",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for women",
+   "recomendados": [
+    "Prince Ripstick 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Ripstick 100",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ripstick 100 300 g"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Ripstick 100 para mulheres."
+  },
+  {
+   "id": "en-026",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-beginners/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best beginner racquet for seniors",
+   "recomendados": [
+    "Prince O3 Legacy 120"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "senior",
+   "texto_curto": "Leve, cabeça grande, potência fácil."
+  },
+  {
+   "id": "en-027",
+   "idioma": "en",
+   "fonte": "Expert Reviews",
+   "url": "https://www.expertreviews.co.uk/beauty-wellness/best-tennis-racquets-for-beginners",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best lightweight beginner racquet",
+   "recomendados": [
+    "Artengo TR500 Lite"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Artengo TR500 Lite",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "iniciante",
+   "texto_curto": "Leve e barata (Decathlon)."
+  },
+  {
+   "id": "en-028",
+   "idioma": "en",
+   "fonte": "Expert Reviews",
+   "url": "https://www.expertreviews.co.uk/beauty-wellness/best-tennis-racquets-for-beginners",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 80
+   },
+   "categoria_original": "Best budget beginner racquet",
+   "recomendados": [
+    "Head Radical Ti 27"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Radical Ti 27",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Opção barata."
+  },
+  {
+   "id": "en-029",
+   "idioma": "en",
+   "fonte": "Tennis Majors",
+   "url": "https://www.tennismajors.com/?p=626837",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for players suffering from tennis elbow",
+   "recomendados": [
+    "Head Gravity MP",
+    "Wilson Clash 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Clash 100",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP",
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Quadros mais flexíveis."
+  },
+  {
+   "id": "en-030",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_intermediates.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for intermediate players",
+   "recomendados": [
+    "Babolat Pure Aero",
+    "Yonex EZONE 100",
+    "Wilson Clash 100 v3",
+    "Head Gravity MP",
+    "Tecnifibre TFight 300",
+    "Dunlop CX 400 Tour",
+    "Prince Ripstick 100 300g",
+    "ProKennex Ki 5"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 2
+    },
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 3
+    },
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 4
+    },
+    {
+     "original": "Tecnifibre TFight 300",
+     "no_catalogo": "TFight 300",
+     "posicao": 5
+    },
+    {
+     "original": "Dunlop CX 400 Tour",
+     "no_catalogo": null,
+     "posicao": 6
+    },
+    {
+     "original": "Prince Ripstick 100 300g",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 7
+    },
+    {
+     "original": "ProKennex Ki 5",
+     "no_catalogo": null,
+     "posicao": 8
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "EZONE 100",
+    "Clash 100 v3",
+    "Gravity MP",
+    "TFight 300",
+    "Ripstick 100 300 g"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Lista geral para intermediário."
+  },
+  {
+   "id": "en-031",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: all-around",
+   "recomendados": [
+    "Yonex EZONE 100",
+    "Babolat Pure Drive 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    },
+    {
+     "original": "Babolat Pure Drive 2025",
+     "no_catalogo": "Pure Drive",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100",
+    "Pure Drive"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Equilíbrio geral."
+  },
+  {
+   "id": "en-032",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: easy to use",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Fácil de usar."
+  },
+  {
+   "id": "en-033",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: arm-friendly",
+   "recomendados": [
+    "ProKennex Ki 5",
+    "Dunlop CX 400 Tour"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "ProKennex Ki 5",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Dunlop CX 400 Tour",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Amigas do braço."
+  },
+  {
+   "id": "en-034",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 150
+   },
+   "categoria_original": "Best tennis racquets of 2026: value",
+   "recomendados": [
+    "Head Graphene XT Radical MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Graphene XT Radical MP",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Melhor custo."
+  },
+  {
+   "id": "en-035",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_spin_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for spin: intermediate",
+   "recomendados": [
+    "Babolat Pure Aero",
+    "Prince Ripstick 100 300g",
+    "Yonex VCORE 100",
+    "Wilson Burn 100S"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    },
+    {
+     "original": "Prince Ripstick 100 300g",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 2
+    },
+    {
+     "original": "Yonex VCORE 100",
+     "no_catalogo": "VCORE 100 8ª geração",
+     "posicao": 3
+    },
+    {
+     "original": "Wilson Burn 100S",
+     "no_catalogo": null,
+     "posicao": 4
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "Ripstick 100 300 g",
+    "VCORE 100 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Spin para intermediário."
+  },
+  {
+   "id": "en-036",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_spin_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for spin: advanced",
+   "recomendados": [
+    "Babolat Pure Aero 98 2026",
+    "Yonex VCORE 98",
+    "Head Boom Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98 2026",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 98",
+     "no_catalogo": "VCORE 98 8ª geração",
+     "posicao": 2
+    },
+    {
+     "original": "Head Boom Pro",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98",
+    "VCORE 98 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Spin para avançado; Pure Aero 98 com um pouco mais de controle."
+  },
+  {
+   "id": "en-037",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Spin_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for spin: beginner",
+   "recomendados": [
+    "Head Extreme Elite"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Extreme Elite",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "spin",
+   "texto_curto": "Spin para iniciante."
+  },
+  {
+   "id": "en-038",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-for-intermediate-players-2026/69394",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for intermediate players 2026: control",
+   "recomendados": [
+    "Wilson Blade 100 v10"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 100 v10",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle para intermediário."
+  },
+  {
+   "id": "en-039",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-for-intermediate-players-2026/69394",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for intermediate players 2026: spin",
+   "recomendados": [
+    "Head Extreme MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Extreme MP",
+     "no_catalogo": "Extreme MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Extreme MP"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Spin para intermediário."
+  },
+  {
+   "id": "en-040",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-for-intermediate-players-2026/69394",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for intermediate players 2026: power",
+   "recomendados": [
+    "Mizuno Acrospeed",
+    "Yonex EZONE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Mizuno Acrospeed",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência para intermediário."
+  },
+  {
+   "id": "en-041",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-tennis-racquets-of-2026-so-far/65679",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2026 so far: control",
+   "recomendados": [
+    "Head Radical MP",
+    "Functional Tennis FT 99"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Radical MP",
+     "no_catalogo": "Radical MP",
+     "posicao": 1
+    },
+    {
+     "original": "Functional Tennis FT 99",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Radical MP"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Radical MP segue confiável; FT 99 mais tolerante."
+  },
+  {
+   "id": "en-042",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-tennis-racquets-of-2026-so-far/65679",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2026 so far: spin",
+   "recomendados": [
+    "Babolat Pure Aero 100 2026",
+    "Yonex VCORE 98 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 100 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 98 2026",
+     "no_catalogo": "VCORE 98 8ª geração",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "VCORE 98 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Atualizações de spin decepcionaram um pouco."
+  },
+  {
+   "id": "en-043",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-tennis-racquets-of-2026-so-far/65679",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2026 so far: power and versatility",
+   "recomendados": [
+    "Head Speed MP",
+    "Prince Tour 100P"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Speed MP",
+     "no_catalogo": "Speed MP",
+     "posicao": 1
+    },
+    {
+     "original": "Prince Tour 100P",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Speed MP"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Versáteis."
+  },
+  {
+   "id": "en-044",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-tennis-racquets-of-2026-so-far/65679",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2026 so far: fun and easy to use",
+   "recomendados": [
+    "Head Extreme One"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Extreme One",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "geral",
+   "texto_curto": "Uma das mais divertidas do ano."
+  },
+  {
+   "id": "en-045",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/top-5-best-tennis-racquets-for-power-spin-2026/64874",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top 5 racquets for power & spin: best overall",
+   "recomendados": [
+    "Babolat Pure Aero 100 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 100 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Melhor geral para potência e spin."
+  },
+  {
+   "id": "en-046",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/top-5-best-tennis-racquets-for-power-spin-2026/64874",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top 5 racquets for power & spin: power",
+   "recomendados": [
+    "Yonex EZONE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Melhor para potência."
+  },
+  {
+   "id": "en-047",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-100-sq-in-racquets-for-all-court-players/70330",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best 100 sq in racquets for all-court players: #1",
+   "recomendados": [
+    "Head Speed MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Speed MP",
+     "no_catalogo": "Speed MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Speed MP"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Primeira da lista all-court."
+  },
+  {
+   "id": "en-048",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-tennis-racquets-for-women/63586",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for women: beginner",
+   "recomendados": [
+    "Wilson Clash 108"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 108",
+     "no_catalogo": "Clash 108 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 108 v3"
+   ],
+   "grupo": "conforto",
+   "texto_curto": "Provavelmente a raquete mais indicada para iniciante; 108 pol² e RA baixo."
+  },
+  {
+   "id": "en-049",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-budget-tennis-racquets-for-2026-tips-for-juniors-and-recreational-players/63739",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 100
+   },
+   "categoria_original": "Best budget racquets 2026: best overall budget",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "orcamento",
+   "texto_curto": "Muito leve e barata."
+  },
+  {
+   "id": "en-050",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-budget-tennis-racquets-for-2026-tips-for-juniors-and-recreational-players/63739",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": 100
+   },
+   "categoria_original": "Best budget racquets 2026: pre-strung easy power",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Boost Drive",
+     "no_catalogo": "Boost Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boost Drive"
+   ],
+   "grupo": "orcamento",
+   "texto_curto": "Encordoada, cabeça 105, potência fácil, abaixo de US$ 100."
+  },
+  {
+   "id": "en-051",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-budget-tennis-racquets-for-2026-tips-for-juniors-and-recreational-players/63739",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 40
+   },
+   "categoria_original": "Best budget racquets 2026: ultra-budget",
+   "recomendados": [
+    "Wilson Tour Slam"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Tour Slam",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Opção ultrabarata."
+  },
+  {
+   "id": "en-052",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/the-tennisnerd-guide-to-racquets-and-strings/beginner-racquets",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "alta",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Beginner racquets: athletic beginner taking lessons",
+   "recomendados": [
+    "Prince Ripstick 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Ripstick 100",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ripstick 100 300 g"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Para iniciante atlético que vai chegar ao intermediário em um ano; menos tolerante."
+  },
+  {
+   "id": "en-053",
+   "idioma": "en",
+   "fonte": "Aceify",
+   "url": "https://aceify.me/the-ace/best-tennis-rackets-2026-buying-guide-all-levels/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best beginner racquet",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Primeira indicação para iniciante."
+  },
+  {
+   "id": "en-054",
+   "idioma": "en",
+   "fonte": "The Tennis Garage",
+   "url": "https://thetennisgarage.com/blogs/news/the-best-racket-and-string-combination-for-tennis-elbow",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racket and string combination for tennis elbow",
+   "recomendados": [
+    "Wilson Clash 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash com tripa natural."
+  },
+  {
+   "id": "en-055",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/5-best-power-tennis-racquets-my-top-tested-picks/66255",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "5 best power racquets: #1 most complete user-friendly power",
+   "recomendados": [
+    "Yonex EZONE 100",
+    "Babolat Pure Drive 100",
+    "Dunlop FX 500",
+    "Head Boom MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    },
+    {
+     "original": "Babolat Pure Drive 100",
+     "no_catalogo": "Pure Drive",
+     "posicao": 2
+    },
+    {
+     "original": "Dunlop FX 500",
+     "no_catalogo": "FX 500",
+     "posicao": 3
+    },
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 4
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100",
+    "Pure Drive",
+    "FX 500",
+    "Boom MP"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Ezone 100 junta potência fácil, conforto e uso geral."
+  },
+  {
+   "id": "en-056",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/5-best-power-tennis-racquets-my-top-tested-picks/66255",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "5 best power racquets: aggressive baseliners and big servers",
+   "recomendados": [
+    "Babolat Pure Drive 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 100",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Referência em potência e spin com resposta viva."
+  },
+  {
+   "id": "en-057",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/5-best-power-tennis-racquets-my-top-tested-picks/66255",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "5 best power racquets: comfort and easy power",
+   "recomendados": [
+    "Head Boom MP",
+    "Dunlop FX 500"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 1
+    },
+    {
+     "original": "Dunlop FX 500",
+     "no_catalogo": "FX 500",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boom MP",
+    "FX 500"
+   ],
+   "grupo": "conforto",
+   "texto_curto": "Viva, tolerante e simples de usar."
+  },
+  {
+   "id": "en-058",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-comfort-racquets/49201",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best comfort racquets",
+   "recomendados": [
+    "Wilson Clash 100",
+    "ProKennex Black Ace Pro",
+    "Head Gravity MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    },
+    {
+     "original": "ProKennex Black Ace Pro",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "Gravity MP"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash 100 é a referência de conforto."
+  },
+  {
+   "id": "en-059",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-comfort-racquets/49201",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best comfort racquets: more control",
+   "recomendados": [
+    "Wilson Clash 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 98",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Para mais controle, Clash 98."
+  },
+  {
+   "id": "en-060",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-5-rackets-for-a-one-handed-backhand-right-now/65799",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": 1,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best 5 rackets for a one-handed backhand: best all-around",
+   "recomendados": [
+    "Yonex Percept 97D",
+    "Wilson Blade 98 v10",
+    "Babolat Pure Strike 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex Percept 97D",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Blade 98 v10",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 2,
+     "geracao_diferente": true
+    },
+    {
+     "original": "Babolat Pure Strike 98",
+     "no_catalogo": "Pure Strike 98 16x19",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9",
+    "Pure Strike 98 16x19"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Percept 97D: controle, peso e sensação para o backhand de uma mão."
+  },
+  {
+   "id": "en-061",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-5-rackets-for-a-one-handed-backhand-right-now/65799",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": 1,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best 5 rackets for a one-handed backhand: flatter aggressive swings",
+   "recomendados": [
+    "Babolat Pure Strike 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Strike 98",
+     "no_catalogo": "Pure Strike 98 16x19",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Strike 98 16x19"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Para batidas mais retas e agressivas."
+  },
+  {
+   "id": "en-062",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-of-2025/61057",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best racquets of 2025: top favorites",
+   "recomendados": [
+    "Head Radical MP",
+    "Nordicdots Model 98 Pro",
+    "ProKennex Black Ace Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Radical MP",
+     "no_catalogo": "Radical MP",
+     "posicao": 1
+    },
+    {
+     "original": "Nordicdots Model 98 Pro",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "ProKennex Black Ace Pro",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Radical MP"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Favoritas do ano."
+  },
+  {
+   "id": "en-063",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-one-handed-backhands/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": 1,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for one-handed backhands",
+   "recomendados": [
+    "Wilson Blade 98",
+    "Wilson Pro Staff RF97",
+    "Yonex Percept 97H",
+    "Babolat Pure Strike 18x20",
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Pro Staff RF97",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Yonex Percept 97H",
+     "no_catalogo": null,
+     "posicao": 3
+    },
+    {
+     "original": "Babolat Pure Strike 18x20",
+     "no_catalogo": null,
+     "posicao": 4
+    },
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9",
+    "Clash 100 v3"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Lista para backhand de uma mão."
+  },
+  {
+   "id": "en-064",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-one-handed-backhands/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": 1,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "One-handed backhand with arm/elbow issues",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash para quem tem problema no braço."
+  },
+  {
+   "id": "en-065",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-5-racquets-for-slice-backhands-and-net-play/68556",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "saque-voleio",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best 5 racquets for slice backhands and net play: top pick",
+   "recomendados": [
+    "Yonex Percept 97D"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex Percept 97D",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Trajetória de slice mais consistente nos testes."
+  },
+  {
+   "id": "en-066",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-for-advanced-players-spin-control-and-power-setups-explained/69206",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for advanced players: spin",
+   "recomendados": [
+    "Babolat Pure Aero 98",
+    "Yonex VCORE 98",
+    "Head Extreme MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 98",
+     "no_catalogo": "VCORE 98 8ª geração",
+     "posicao": 2
+    },
+    {
+     "original": "Head Extreme MP",
+     "no_catalogo": "Extreme MP",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98",
+    "VCORE 98 8ª geração",
+    "Extreme MP"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Pure Aero 98 é a referência de spin; VCORE 98 sem excesso de potência."
+  },
+  {
+   "id": "en-067",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-for-advanced-players-spin-control-and-power-setups-explained/69206",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for advanced players: control",
+   "recomendados": [
+    "Wilson Pro Staff 97",
+    "Wilson Pro Staff 97D"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff 97",
+     "no_catalogo": "Pro Staff 97 v14",
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Pro Staff 97D",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Pro Staff 97; 97D 18x20 para precisão."
+  },
+  {
+   "id": "en-068",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-for-advanced-players-spin-control-and-power-setups-explained/69206",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for advanced players: power",
+   "recomendados": [
+    "Babolat Pure Drive 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 100",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Destaque em potência."
+  },
+  {
+   "id": "en-069",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/top-5-best-tennis-racquets-for-power-spin-2026/64874",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top 5 for power & spin: best raw power (flat hitters)",
+   "recomendados": [
+    "Dunlop FX 500"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Dunlop FX 500",
+     "no_catalogo": "FX 500",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "FX 500"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência bruta para quem bate reto."
+  },
+  {
+   "id": "en-070",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-tennis-racquets-of-2026-so-far/65679",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "alta",
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2026 so far: control (heavy, solid technique)",
+   "recomendados": [
+    "Nordicdots Model 98 Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Nordicdots Model 98 Pro",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "310 g, para avançado com técnica e preparo."
+  },
+  {
+   "id": "en-071",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-arm-friendly-tennis-racquets-2026-head-squared-wilson-clash-yonex-muse",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best arm-friendly racquets 2026: softness without losing control",
+   "recomendados": [
+    "Yonex Muse 100",
+    "Wilson Clash 100 v3",
+    "Head Squared"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex Muse 100",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 2
+    },
+    {
+     "original": "Head Squared",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Muse 100 é a resposta mais convincente para maciez com controle."
+  },
+  {
+   "id": "en-072",
+   "idioma": "en",
+   "fonte": "Racqix",
+   "url": "https://www.racqix.com/en/blog/best-and-worst-tennis-racquets-for-tennis-elbow-racqix-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for tennis elbow 2026",
+   "recomendados": [
+    "Wilson Clash 108 v3",
+    "Head Squared",
+    "Yonex Muse 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 108 v3",
+     "no_catalogo": "Clash 108 v3",
+     "posicao": 1
+    },
+    {
+     "original": "Head Squared",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Yonex Muse 100",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 108 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash 108 primeiro; Squared e Muse as novidades favoritas. Evitar Pure Aero, Pure Drive e Ultra se o cotovelo já dói."
+  },
+  {
+   "id": "en-073",
+   "idioma": "en",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/en/best-arm-friendly-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for sensitive arms: 18x20 control",
+   "recomendados": [
+    "Prince Phantom 100X 18x20"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Phantom 100X 18x20",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Controle 18x20 sem a rigidez."
+  },
+  {
+   "id": "en-074",
+   "idioma": "en",
+   "fonte": "Heavy Topspin",
+   "url": "https://heavytopspin.com/best-tennis-racket-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racket for tennis elbow 2026",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Um dos quadros mais flexíveis."
+  },
+  {
+   "id": "en-075",
+   "idioma": "en",
+   "fonte": "Heavy Topspin",
+   "url": "https://heavytopspin.com/best-tennis-racket-for-tennis-elbow/",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best tennis racket for tennis elbow: top 5",
+   "recomendados": [
+    "Wilson Clash 100 v2",
+    "Prince Phantom 100G",
+    "Yonex VCORE Pro 97",
+    "ProKennex Ki Black Ace",
+    "Volkl V-Cell 1"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v2",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1,
+     "geracao_diferente": true
+    },
+    {
+     "original": "Prince Phantom 100G",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Yonex VCORE Pro 97",
+     "no_catalogo": null,
+     "posicao": 3
+    },
+    {
+     "original": "ProKennex Ki Black Ace",
+     "no_catalogo": "Black Ace 300",
+     "posicao": 4
+    },
+    {
+     "original": "Volkl V-Cell 1",
+     "no_catalogo": null,
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "Black Ace 300"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Critério: RA 65 ou menos."
+  },
+  {
+   "id": "en-076",
+   "idioma": "en",
+   "fonte": "Racket Edge",
+   "url": "https://racketedge.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow: best overall",
+   "recomendados": [
+    "Wilson Clash 100 Pro v2"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 Pro v2",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Melhor geral para cotovelo."
+  },
+  {
+   "id": "en-077",
+   "idioma": "en",
+   "fonte": "Racket Edge",
+   "url": "https://racketedge.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow: severe pain",
+   "recomendados": [
+    "ProKennex Ki Q+ 5 Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "ProKennex Ki Q+ 5 Pro",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Para dor forte."
+  },
+  {
+   "id": "en-078",
+   "idioma": "en",
+   "fonte": "Racket Edge",
+   "url": "https://racketedge.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow: modern feel",
+   "recomendados": [
+    "Head Gravity MP 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity MP 2025",
+     "no_catalogo": "Gravity MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Sensação moderna."
+  },
+  {
+   "id": "en-079",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-arm-friendly-racquets-and-strings-beating-tennis-elbow-without-sacrificing-performance/68856",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best arm-friendly racquets: ranking",
+   "recomendados": [
+    "Wilson Clash 100",
+    "Yonex Muse",
+    "ProKennex Ki Black Ace"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex Muse",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "ProKennex Ki Black Ace",
+     "no_catalogo": "Black Ace 300",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "Black Ace 300"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash 100 em 1º; Black Ace em 3º para histórico crônico de cotovelo."
+  },
+  {
+   "id": "en-080",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for intermediate players: overall",
+   "recomendados": [
+    "Yonex EZONE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Serve do iniciante ao avançado."
+  },
+  {
+   "id": "en-081",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: power",
+   "recomendados": [
+    "Solinco Blackout 300"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Solinco Blackout 300",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "potencia",
+   "texto_curto": "Potência."
+  },
+  {
+   "id": "en-082",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: control",
+   "recomendados": [
+    "Prince Tour 100P"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Tour 100P",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle."
+  },
+  {
+   "id": "en-083",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: spin",
+   "recomendados": [
+    "Yonex VCORE 100 2026",
+    "Head Extreme MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex VCORE 100 2026",
+     "no_catalogo": "VCORE 100 8ª geração",
+     "posicao": 1
+    },
+    {
+     "original": "Head Extreme MP",
+     "no_catalogo": "Extreme MP",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "VCORE 100 8ª geração",
+    "Extreme MP"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Spin."
+  },
+  {
+   "id": "en-084",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: groundstrokes",
+   "recomendados": [
+    "Babolat Pure Aero"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Fundo de quadra."
+  },
+  {
+   "id": "en-085",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "saque-voleio",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: volleys",
+   "recomendados": [
+    "Yonex Percept 100D"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex Percept 100D",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Voleios."
+  },
+  {
+   "id": "en-086",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: extended length",
+   "recomendados": [
+    "Wilson Blade 104"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 104",
+     "no_catalogo": "Blade 104 v9",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 104 v9"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Comprimento estendido."
+  },
+  {
+   "id": "en-087",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-intermediate-players/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for intermediate: lightweight",
+   "recomendados": [
+    "Head Extreme Team"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Extreme Team",
+     "no_catalogo": "Extreme Team",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Extreme Team"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Leve."
+  },
+  {
+   "id": "en-088",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-beginners/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best beginner racquet: overall",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Cabeça grande e preço baixo."
+  },
+  {
+   "id": "en-089",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-beginners/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "alta",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best beginner racquet: serious beginners",
+   "recomendados": [
+    "Prince Ripstick 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Ripstick 100",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ripstick 100 300 g"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Para iniciante dedicado."
+  },
+  {
+   "id": "en-090",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-beginners/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 40
+   },
+   "categoria_original": "Best beginner racquet: cheap",
+   "recomendados": [
+    "Wilson Tour Slam"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Tour Slam",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Mais barata."
+  },
+  {
+   "id": "en-091",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-beginners/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best beginner racquet: teens",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Boost Drive",
+     "no_catalogo": "Boost Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boost Drive"
+   ],
+   "grupo": "junior",
+   "texto_curto": "Para adolescentes."
+  },
+  {
+   "id": "en-092",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-beginners/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best beginner racquet: seniors / oversize",
+   "recomendados": [
+    "Solinco Prizm 115"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Solinco Prizm 115",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "senior",
+   "texto_curto": "Oversize para sênior."
+  },
+  {
+   "id": "en-093",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-advanced-players/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for advanced players: overall",
+   "recomendados": [
+    "Wilson Blade 98 v10"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98 v10",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1,
+     "geracao_diferente": true
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Boa potência, swingweight sólido, 16x19 relativamente denso."
+  },
+  {
+   "id": "en-094",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-advanced-players/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for advanced: control and handling",
+   "recomendados": [
+    "Functional Tennis FT 99",
+    "Tecnifibre TFight 305S",
+    "Prince Tour 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Functional Tennis FT 99",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Tecnifibre TFight 305S",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Prince Tour 98",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle."
+  },
+  {
+   "id": "en-095",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquet-advanced-players/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for advanced: power and spin",
+   "recomendados": [
+    "Babolat Pure Aero 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Potência e spin."
+  },
+  {
+   "id": "en-096",
+   "idioma": "en",
+   "fonte": "Aceify",
+   "url": "https://aceify.me/the-ace/best-tennis-rackets-2026-buying-guide-all-levels/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for advanced amateurs",
+   "recomendados": [
+    "Wilson Pro Staff 97 v14"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff 97 v14",
+     "no_catalogo": "Pro Staff 97 v14",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Desempenho de profissional com usabilidade."
+  },
+  {
+   "id": "en-097",
+   "idioma": "en",
+   "fonte": "Tennis with Hany",
+   "url": "https://tenniswithhany.com/blog/best-tennis-racquets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 100
+   },
+   "categoria_original": "Coach's picks: budget",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Boost Drive",
+     "no_catalogo": "Boost Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boost Drive"
+   ],
+   "grupo": "orcamento",
+   "texto_curto": "A que o treinador compraria com pouco dinheiro."
+  },
+  {
+   "id": "en-098",
+   "idioma": "en",
+   "fonte": "Tennis with Hany",
+   "url": "https://tenniswithhany.com/blog/best-tennis-racquets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "alta",
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Coach's picks: athletic beginners",
+   "recomendados": [
+    "Babolat Pure Drive Lite"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive Lite",
+     "no_catalogo": "Pure Drive Lite",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive Lite"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Iniciante atlético que joga muito."
+  },
+  {
+   "id": "en-099",
+   "idioma": "en",
+   "fonte": "Tennis with Hany",
+   "url": "https://tenniswithhany.com/blog/best-tennis-racquets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Coach's picks: racquet to grow with",
+   "recomendados": [
+    "Yonex EZONE 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100L",
+     "no_catalogo": "EZONE 100L",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100L"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "A 100 mais tolerante."
+  },
+  {
+   "id": "en-100",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "First ball sport is tennis",
+   "recomendados": [
+    "Head Squared"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Squared",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "iniciante",
+   "texto_curto": "Melhor escolha em 2026 para quem nunca praticou esporte de bola."
+  },
+  {
+   "id": "en-101",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for beginners: top pick",
+   "recomendados": [
+    "Babolat Pure Drive Lite",
+    "Head Ti.S6",
+    "Head Graphene XT Radical S",
+    "Wilson Clash 108",
+    "Yonex EZONE 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive Lite",
+     "no_catalogo": "Pure Drive Lite",
+     "posicao": 1
+    },
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 2
+    },
+    {
+     "original": "Head Graphene XT Radical S",
+     "no_catalogo": null,
+     "posicao": 3
+    },
+    {
+     "original": "Wilson Clash 108",
+     "no_catalogo": "Clash 108 v3",
+     "posicao": 4
+    },
+    {
+     "original": "Yonex EZONE 100L",
+     "no_catalogo": "EZONE 100L",
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive Lite",
+    "Ti S6",
+    "Clash 108 v3",
+    "EZONE 100L"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Pure Drive Lite equilibra potência e controle."
+  },
+  {
+   "id": "en-102",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for absolute beginners",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Tolerante e amiga do braço."
+  },
+  {
+   "id": "en-103",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 80
+   },
+   "categoria_original": "Best budget beginner",
+   "recomendados": [
+    "Head Graphene XT Radical S"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Graphene XT Radical S",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Opção barata."
+  },
+  {
+   "id": "en-104",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-oversized-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best oversized tennis rackets: best for beginners",
+   "recomendados": [
+    "Babolat Pure Drive 107"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 107",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "potencia",
+   "texto_curto": "Melhor oversized para iniciante."
+  },
+  {
+   "id": "en-105",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-oversized-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best oversized: power, control and arm comfort",
+   "recomendados": [
+    "Wilson Clash 108"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 108",
+     "no_catalogo": "Clash 108 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 108 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Melhor oversized geral."
+  },
+  {
+   "id": "en-106",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow: beginners",
+   "recomendados": [
+    "Wilson Clash 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100L",
+     "no_catalogo": "Clash 100L v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100L v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Pelo menos 290 g encordoada e rigidez abaixo de 60."
+  },
+  {
+   "id": "en-107",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow: intermediate",
+   "recomendados": [
+    "Wilson Clash 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash 100 para intermediário com cotovelo."
+  },
+  {
+   "id": "en-108",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow: advanced",
+   "recomendados": [
+    "Wilson Blade 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Blade 98 para avançado com cotovelo."
+  },
+  {
+   "id": "en-109",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for 2026: best overall",
+   "recomendados": [
+    "Babolat Pure Aero"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Serve a vários níveis e estilos."
+  },
+  {
+   "id": "en-110",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets 2026: intermediate control and spin",
+   "recomendados": [
+    "Head Boom MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boom MP"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle e spin para intermediário."
+  },
+  {
+   "id": "en-111",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets 2026: advanced control and spin",
+   "recomendados": [
+    "Wilson Blade 98 18x20",
+    "Wilson Blade 98 16x19"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98 18x20",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Blade 98 16x19",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "grupo": "controle",
+   "texto_curto": "18x20 mais controle, 16x19 mais spin."
+  },
+  {
+   "id": "en-112",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-spin-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best spin rackets 2026: overall",
+   "recomendados": [
+    "Babolat Pure Aero 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Melhor raquete de spin do mercado."
+  },
+  {
+   "id": "en-113",
+   "idioma": "en",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/en/best-spin-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best spin tennis rackets 2026: most spin",
+   "recomendados": [
+    "Babolat Pure Aero"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Gera mais spin em 2026."
+  },
+  {
+   "id": "en-114",
+   "idioma": "en",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/en/best-spin-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best spin rackets: spin with more control",
+   "recomendados": [
+    "Head Gravity MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Spin com mais controle."
+  },
+  {
+   "id": "en-115",
+   "idioma": "en",
+   "fonte": "Tennis Pursuits",
+   "url": "https://tennispursuits.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow 2025",
+   "recomendados": [
+    "Yonex EZONE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Projetada para ser amiga do braço."
+  },
+  {
+   "id": "en-116",
+   "idioma": "en",
+   "fonte": "Racket Doctor",
+   "url": "https://www.racketdoctor.com/post/best-rackets-and-strings-for-tennis-elbow",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets and strings for tennis elbow",
+   "recomendados": [
+    "Head Gravity MP",
+    "Head Boom MP",
+    "Head Speed Pro",
+    "Wilson Clash 100 v2",
+    "Wilson Clash 108 v2",
+    "Yonex EZONE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity MP",
+     "no_catalogo": "Gravity MP",
+     "posicao": 1
+    },
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 2
+    },
+    {
+     "original": "Head Speed Pro",
+     "no_catalogo": "Speed Pro",
+     "posicao": 3
+    },
+    {
+     "original": "Wilson Clash 100 v2",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 4,
+     "geracao_diferente": true
+    },
+    {
+     "original": "Wilson Clash 108 v2",
+     "no_catalogo": "Clash 108 v3",
+     "posicao": 5,
+     "geracao_diferente": true
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 6
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP",
+    "Boom MP",
+    "Speed Pro",
+    "Clash 100 v3",
+    "Clash 108 v3",
+    "EZONE 100"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Lista sem ordem; evitar poliéster duro em tensão alta."
+  },
+  {
+   "id": "en-117",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for seniors",
+   "recomendados": [
+    "Prince O3 Legacy 120"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "senior",
+   "texto_curto": "Melhor para sênior; pouco controle para sênior avançado."
+  },
+  {
+   "id": "en-118",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for advanced seniors",
+   "recomendados": [
+    "Prince Phantom 107G"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Phantom 107G",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Muito flexível (62 RA), amiga do braço."
+  },
+  {
+   "id": "en-119",
+   "idioma": "en",
+   "fonte": "Tennisask",
+   "url": "https://tennisask.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for seniors: best overall",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "senior",
+   "texto_curto": "Comprimento 27,7 pol e várias empunhaduras."
+  },
+  {
+   "id": "en-120",
+   "idioma": "en",
+   "fonte": "Tennisask",
+   "url": "https://tennisask.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for seniors: forgiving hits",
+   "recomendados": [
+    "Wilson Intrigue SE 105"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Intrigue SE 105",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "senior",
+   "texto_curto": "Cabeça 105 perdoa erros de centro."
+  },
+  {
+   "id": "en-121",
+   "idioma": "en",
+   "fonte": "Tennis Crown",
+   "url": "https://tenniscrown.com/tennis-rackets-for-seniors/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for seniors: comfort and easy handling",
+   "recomendados": [
+    "Wilson Clash 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100L",
+     "no_catalogo": "Clash 100L v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100L v3"
+   ],
+   "grupo": "senior",
+   "texto_curto": "Conforto e manejo fácil."
+  },
+  {
+   "id": "en-122",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: all-around",
+   "recomendados": [
+    "Wilson Blade 98 v10"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98 v10",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1,
+     "geracao_diferente": true
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Entre as all-around."
+  },
+  {
+   "id": "en-123",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets 2026: beginner control and feel",
+   "recomendados": [
+    "Babolat Evo Drive Gen 2"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Evo Drive Gen 2",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle e sensação para iniciante."
+  },
+  {
+   "id": "en-124",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets 2026: beginner power and spin",
+   "recomendados": [
+    "Wilson Ultra 100L v5"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Ultra 100L v5",
+     "no_catalogo": "Ultra 100L v5",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ultra 100L v5"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência e spin para iniciante."
+  },
+  {
+   "id": "en-125",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets 2026: intermediate control and feel",
+   "recomendados": [
+    "Wilson Clash 100 v3",
+    "Head Squared"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    },
+    {
+     "original": "Head Squared",
+     "no_catalogo": null,
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle e sensação para intermediário."
+  },
+  {
+   "id": "en-126",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets 2026: intermediate power and spin",
+   "recomendados": [
+    "Wilson Ultra 100 v4",
+    "Head Boom MP 2024",
+    "Babolat Pure Drive Gen11"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Ultra 100 v4",
+     "no_catalogo": "Ultra 100 v5",
+     "posicao": 1,
+     "geracao_diferente": true
+    },
+    {
+     "original": "Head Boom MP 2024",
+     "no_catalogo": "Boom MP",
+     "posicao": 2,
+     "geracao_diferente": true
+    },
+    {
+     "original": "Babolat Pure Drive Gen11",
+     "no_catalogo": "Pure Drive",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ultra 100 v5",
+    "Boom MP",
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência e spin para intermediário."
+  },
+  {
+   "id": "en-127",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets 2026: advanced power and spin",
+   "recomendados": [
+    "Head Gravity Tour 2025",
+    "Wilson Ultra 99 Pro v5",
+    "Yonex VCORE"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity Tour 2025",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Wilson Ultra 99 Pro v5",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Yonex VCORE",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "potencia",
+   "texto_curto": "Potência e spin para avançado."
+  },
+  {
+   "id": "en-128",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets-for-spin-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for spin 2026: #1",
+   "recomendados": [
+    "Babolat Pure Aero 98 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98 2026",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Para fundistas agressivos que querem spin sem perder precisão."
+  },
+  {
+   "id": "en-129",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets-for-power",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for power: #1",
+   "recomendados": [
+    "Babolat Pure Drive Gen11"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive Gen11",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Ilhoses que ampliam o ponto doce."
+  },
+  {
+   "id": "en-130",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-arm-friendly-tennis-racquets-2026-head-squared-wilson-clash-yonex-muse",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Competitive club player multiple times a week managing tennis elbow",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash v3 para jogador de clube competitivo com cotovelo."
+  },
+  {
+   "id": "en-131",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets of 2026: power",
+   "recomendados": [
+    "Solinco Blackout 300 XTD v2",
+    "Yonex EZONE 98 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Solinco Blackout 300 XTD v2",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 98 2025",
+     "no_catalogo": "EZONE 98",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 98"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência para avançado."
+  },
+  {
+   "id": "en-132",
+   "idioma": "en",
+   "fonte": "Padelspeed",
+   "url": "https://padelspeed.com/blogs/news/top-tennis-rackets-reviews-and-detailed",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top tennis rackets 2026: best for comfort",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Mais seguro para conforto."
+  },
+  {
+   "id": "en-133",
+   "idioma": "en",
+   "fonte": "Padelspeed",
+   "url": "https://padelspeed.com/blogs/news/top-tennis-rackets-reviews-and-detailed",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top tennis rackets 2026: best for control",
+   "recomendados": [
+    "Wilson Blade 98 16x19 v9"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98 16x19 v9",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Mais seguro para controle."
+  },
+  {
+   "id": "en-134",
+   "idioma": "en",
+   "fonte": "My Tennis Expert",
+   "url": "https://mytennisexpert.com/gear/junior-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best junior rackets: competitive aggressive baseliners 11+",
+   "recomendados": [
+    "Babolat Pure Aero Junior 26"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero Junior 26",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "junior",
+   "texto_curto": "Mesma tecnologia da adulta, uma polegada menor."
+  },
+  {
+   "id": "en-135",
+   "idioma": "en",
+   "fonte": "My Tennis Expert",
+   "url": "https://mytennisexpert.com/gear/junior-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best junior rackets: versatile all-round",
+   "recomendados": [
+    "Babolat Pure Drive Junior 26"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive Junior 26",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "junior",
+   "texto_curto": "Versátil."
+  },
+  {
+   "id": "en-136",
+   "idioma": "en",
+   "fonte": "My Tennis Expert",
+   "url": "https://mytennisexpert.com/gear/junior-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best junior rackets: control for transitioning players",
+   "recomendados": [
+    "Head Speed Jr 26"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Speed Jr 26",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "junior",
+   "texto_curto": "Controle e estabilidade para quem está crescendo."
+  },
+  {
+   "id": "en-137",
+   "idioma": "en",
+   "fonte": "Racqix",
+   "url": "https://www.racqix.com/en/tennis-racquets/junior-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best junior racquets: spin",
+   "recomendados": [
+    "Yonex EZONE 26"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 26",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "junior",
+   "texto_curto": "Spin e potência."
+  },
+  {
+   "id": "en-138",
+   "idioma": "en",
+   "fonte": "Racqix",
+   "url": "https://www.racqix.com/en/tennis-racquets/junior-racquets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best junior racquets: control",
+   "recomendados": [
+    "Head Boom Jr 26"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Boom Jr 26",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "junior",
+   "texto_curto": "Controle."
+  },
+  {
+   "id": "en-139",
+   "idioma": "en",
+   "fonte": "Tennis Only (AU)",
+   "url": "https://www.tennisonly.com.au/Learning_Center/Best_Tennis_Racquets_of_2025.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2025: beginner control",
+   "recomendados": [
+    "Babolat Boost Rafa"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Boost Rafa",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle para iniciante."
+  },
+  {
+   "id": "en-140",
+   "idioma": "en",
+   "fonte": "Tennis Only (AU)",
+   "url": "https://www.tennisonly.com.au/Learning_Center/Best_Tennis_Racquets_of_2025.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2025: beginner comfort and power",
+   "recomendados": [
+    "Prince O3 Legacy 120"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "conforto",
+   "texto_curto": "Conforto e potência."
+  },
+  {
+   "id": "en-141",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-of-2025/61057",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2025: 100 sq in power",
+   "recomendados": [
+    "Babolat Pure Drive 2025",
+    "Dunlop FX 500",
+    "Yonex EZONE 100",
+    "Wilson Ultra 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 2025",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    },
+    {
+     "original": "Dunlop FX 500",
+     "no_catalogo": "FX 500",
+     "posicao": 2
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 3
+    },
+    {
+     "original": "Wilson Ultra 100",
+     "no_catalogo": "Ultra 100 v5",
+     "posicao": 4
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "FX 500",
+    "EZONE 100",
+    "Ultra 100 v5"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Pure Drive 2025 favorita do ano."
+  },
+  {
+   "id": "en-142",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-of-2025/61057",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2025: control",
+   "recomendados": [
+    "Head Radical MP",
+    "Nordicdots Model 98 Pro",
+    "ProKennex Black Ace Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Radical MP",
+     "no_catalogo": "Radical MP",
+     "posicao": 1
+    },
+    {
+     "original": "Nordicdots Model 98 Pro",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "ProKennex Black Ace Pro",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Radical MP"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Radical MP é a favorita de controle."
+  },
+  {
+   "id": "en-143",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-racquets-of-2025/61057",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets of 2025: spin",
+   "recomendados": [
+    "Dunlop SX 300",
+    "Prince Ripstick 100",
+    "Solinco Blackout 300"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Dunlop SX 300",
+     "no_catalogo": "SX 300",
+     "posicao": 1
+    },
+    {
+     "original": "Prince Ripstick 100",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 2
+    },
+    {
+     "original": "Solinco Blackout 300",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "SX 300",
+    "Ripstick 100 300 g"
+   ],
+   "grupo": "spin",
+   "texto_curto": "SX em primeiro para spin."
+  },
+  {
+   "id": "en-144",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-power/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "7 best tennis racquets for power: best overall",
+   "recomendados": [
+    "Solinco Blackout 300",
+    "Yonex EZONE 100",
+    "Tecnifibre TF-X1 300"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Solinco Blackout 300",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 2
+    },
+    {
+     "original": "Tecnifibre TF-X1 300",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Blackout em primeiro para potência."
+  },
+  {
+   "id": "en-145",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-spin/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "9 best tennis racquets for spin: best overall",
+   "recomendados": [
+    "Babolat Pure Aero"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Melhor geral para spin."
+  },
+  {
+   "id": "en-146",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-women/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for women: best overall",
+   "recomendados": [
+    "Babolat Pure Drive"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Melhor geral para mulheres."
+  },
+  {
+   "id": "en-147",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-women/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for women: advanced",
+   "recomendados": [
+    "Yonex EZONE 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 98",
+     "no_catalogo": "EZONE 98",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 98"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Para avançadas."
+  },
+  {
+   "id": "en-148",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-women/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for women: extended length",
+   "recomendados": [
+    "Wilson Blade 104"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 104",
+     "no_catalogo": "Blade 104 v9",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 104 v9"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Comprimento estendido."
+  },
+  {
+   "id": "en-149",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-women/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for women: lightweight",
+   "recomendados": [
+    "Prince Ripstick 100 280g"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Ripstick 100 280g",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "geral",
+   "texto_curto": "Leve."
+  },
+  {
+   "id": "en-150",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-women/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best for female beginners",
+   "recomendados": [
+    "Babolat Pure Drive 107",
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive 107",
+     "no_catalogo": null,
+     "posicao": 1
+    },
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Acima de 105 pol² e abaixo de 10 oz."
+  },
+  {
+   "id": "en-151",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquet for comfort",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Melhor para conforto."
+  },
+  {
+   "id": "en-152",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-tennis-racquets-for-women/63586",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for women 2026: spin",
+   "recomendados": [
+    "Babolat Pure Aero 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 2026",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Spin."
+  },
+  {
+   "id": "en-153",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-tennis-racquets-for-women/63586",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for women 2026: power",
+   "recomendados": [
+    "Yonex EZONE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência."
+  },
+  {
+   "id": "en-154",
+   "idioma": "en",
+   "fonte": "Rackets & Runners",
+   "url": "https://racketsandrunners.ca/blogs/tennis/the-best-tennis-rackets-for-every-type-of-player-updated-for-2025",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for every type of player: control and feel",
+   "recomendados": [
+    "Head Gravity MP 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity MP 2025",
+     "no_catalogo": "Gravity MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Sensação macia com potência quando precisa."
+  },
+  {
+   "id": "en-155",
+   "idioma": "en",
+   "fonte": "Rackets & Runners",
+   "url": "https://racketsandrunners.ca/blogs/tennis/the-best-tennis-rackets-for-every-type-of-player-updated-for-2025",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for every type of player: spin",
+   "recomendados": [
+    "Babolat Pure Aero",
+    "Yonex VCORE 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 100",
+     "no_catalogo": "VCORE 100 8ª geração",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "VCORE 100 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Topo da categoria spin."
+  },
+  {
+   "id": "en-156",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets-for-control/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "9 best tennis racquets for control: best overall",
+   "recomendados": [
+    "Wilson Pro Staff 97"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff 97",
+     "no_catalogo": "Pro Staff 97 v14",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Pro Staff como melhor raquete de controle."
+  },
+  {
+   "id": "en-157",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-spin-racquets-of-2025-98-and-100-sq-inches/48628",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best spin racquets of 2025: 100 sq in",
+   "recomendados": [
+    "Babolat Pure Aero 100",
+    "Yonex VCORE 100",
+    "Head Extreme MP",
+    "Diadem Axis 100",
+    "Wilson Shift 99",
+    "Dunlop SX 300"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 100",
+     "no_catalogo": "Pure Aero",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 100",
+     "no_catalogo": "VCORE 100 8ª geração",
+     "posicao": 2
+    },
+    {
+     "original": "Head Extreme MP",
+     "no_catalogo": "Extreme MP",
+     "posicao": 3
+    },
+    {
+     "original": "Diadem Axis 100",
+     "no_catalogo": null,
+     "posicao": 4
+    },
+    {
+     "original": "Wilson Shift 99",
+     "no_catalogo": "Shift 99 v1 300 g",
+     "posicao": 5
+    },
+    {
+     "original": "Dunlop SX 300",
+     "no_catalogo": "SX 300",
+     "posicao": 6
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "VCORE 100 8ª geração",
+    "Extreme MP",
+    "Shift 99 v1 300 g",
+    "SX 300"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Lista 100 pol² para spin."
+  },
+  {
+   "id": "en-158",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-spin-racquets-of-2025-98-and-100-sq-inches/48628",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best spin racquets of 2025: 98 sq in",
+   "recomendados": [
+    "Babolat Pure Aero 98",
+    "Yonex VCORE 98",
+    "Head Extreme Pro",
+    "Diadem Axis 98",
+    "Wilson Shift 99 Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex VCORE 98",
+     "no_catalogo": "VCORE 98 8ª geração",
+     "posicao": 2
+    },
+    {
+     "original": "Head Extreme Pro",
+     "no_catalogo": null,
+     "posicao": 3
+    },
+    {
+     "original": "Diadem Axis 98",
+     "no_catalogo": null,
+     "posicao": 4
+    },
+    {
+     "original": "Wilson Shift 99 Pro",
+     "no_catalogo": null,
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98",
+    "VCORE 98 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Pure Aero 98 é a mais viciante em spin."
+  },
+  {
+   "id": "en-159",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-power-rackets-of-2025/48421",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best power rackets of 2025",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Yonex EZONE 100",
+    "Dunlop FX 500",
+    "Head Boom MP",
+    "Solinco Blackout 300"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 2
+    },
+    {
+     "original": "Dunlop FX 500",
+     "no_catalogo": "FX 500",
+     "posicao": 3
+    },
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 4
+    },
+    {
+     "original": "Solinco Blackout 300",
+     "no_catalogo": null,
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "EZONE 100",
+    "FX 500",
+    "Boom MP"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Pure Drive é a referência; Boom mais macia."
+  },
+  {
+   "id": "en-160",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-power-rackets-of-2025/48421",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best power rackets of 2025: softer, more arm-friendly power",
+   "recomendados": [
+    "Head Boom MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boom MP"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Híbrida controle-potência, mais macia."
+  },
+  {
+   "id": "en-161",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-control-racquets-for-2025/47982",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best control racquets for 2025",
+   "recomendados": [
+    "Head Radical MP",
+    "Head Prestige Tour 95",
+    "Head Gravity Tour",
+    "Wilson Blade 98",
+    "Tecnifibre TFight 305",
+    "Tecnifibre TF40 305",
+    "Yonex Percept 100D"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Radical MP",
+     "no_catalogo": "Radical MP",
+     "posicao": 1
+    },
+    {
+     "original": "Head Prestige Tour 95",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Head Gravity Tour",
+     "no_catalogo": null,
+     "posicao": 3
+    },
+    {
+     "original": "Wilson Blade 98",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 4
+    },
+    {
+     "original": "Tecnifibre TFight 305",
+     "no_catalogo": null,
+     "posicao": 5
+    },
+    {
+     "original": "Tecnifibre TF40 305",
+     "no_catalogo": "TF40 305 16x19",
+     "posicao": 6
+    },
+    {
+     "original": "Yonex Percept 100D",
+     "no_catalogo": null,
+     "posicao": 7
+    }
+   ],
+   "recomendados_catalogo": [
+    "Radical MP",
+    "Blade 98 16x19 v9",
+    "TF40 305 16x19"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Radical MP a grande vencedora em controle."
+  },
+  {
+   "id": "en-162",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-best-control-racquets-for-2025/47982",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best control racquets 2025: control with spin-friendly",
+   "recomendados": [
+    "Head Gravity Tour"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity Tour",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "spin",
+   "texto_curto": "Mais amiga do spin mantendo controle."
+  },
+  {
+   "id": "en-163",
+   "idioma": "en",
+   "fonte": "Pro Sports Guide",
+   "url": "https://prosportsguide.org/best-tennis-racquet-beginner-intermediate/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquet for beginner to intermediate: overall",
+   "recomendados": [
+    "Prince Ripstick 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Ripstick 100",
+     "no_catalogo": "Ripstick 100 300 g",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ripstick 100 300 g"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Melhor geral na transição."
+  },
+  {
+   "id": "en-164",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-advanced-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best advanced rackets: aggressive baseliners relying on heavy topspin",
+   "recomendados": [
+    "Babolat Pure Aero 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Para fundistas agressivos com topspin pesado."
+  },
+  {
+   "id": "en-165",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets-for-spin-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for spin 2026: competitive baseliners",
+   "recomendados": [
+    "Wilson Defyer 98 Pro v1"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Defyer 98 Pro v1",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "spin",
+   "texto_curto": "Máquina de spin com direção."
+  },
+  {
+   "id": "en-166",
+   "idioma": "en",
+   "fonte": "Tennis Express",
+   "url": "https://tennisexpress.com/blogs/news/best-tennis-racquets-for-spin-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for spin 2026: stable controlled topspin",
+   "recomendados": [
+    "Head Extreme MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Extreme MP",
+     "no_catalogo": "Extreme MP",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Extreme MP"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Para muito topspin com estabilidade."
+  },
+  {
+   "id": "en-167",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-advanced-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best advanced rackets 2026: best overall",
+   "recomendados": [
+    "Wilson Blade 98 v10"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98 v10",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1,
+     "geracao_diferente": true
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle, sensação e versatilidade."
+  },
+  {
+   "id": "en-168",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-advanced-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best advanced rackets 2026: best all-rounder",
+   "recomendados": [
+    "Head Speed Pro 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Speed Pro 2026",
+     "no_catalogo": "Speed Pro",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Speed Pro"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Controle excepcional."
+  },
+  {
+   "id": "en-169",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-advanced-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best advanced rackets 2026: power and spin",
+   "recomendados": [
+    "Yonex VCORE 98 2026"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex VCORE 98 2026",
+     "no_catalogo": "VCORE 98 8ª geração",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "VCORE 98 8ª geração"
+   ],
+   "grupo": "spin",
+   "texto_curto": "Mais potente que a de 2023."
+  },
+  {
+   "id": "en-170",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-advanced-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": 150
+   },
+   "categoria_original": "Best advanced rackets 2026: control value",
+   "recomendados": [
+    "Artengo TR960 Control Tour"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Artengo TR960 Control Tour",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Controle de nível tour por fração do preço."
+  },
+  {
+   "id": "en-171",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide UK",
+   "url": "https://tennisgearguide.co.uk/best-advanced-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": 150
+   },
+   "categoria_original": "Best advanced rackets 2026: budget power",
+   "recomendados": [
+    "Artengo TR990 Power Pro 300g"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Artengo TR990 Power Pro 300g",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Potência barata."
+  },
+  {
+   "id": "en-172",
+   "idioma": "en",
+   "fonte": "The Tested Hub",
+   "url": "https://thetestedhub.com/guides/best-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets: advanced control",
+   "recomendados": [
+    "Wilson Pro Staff RF97 v14"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff RF97 v14",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Controle para avançado."
+  },
+  {
+   "id": "en-173",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Rackets_For_Tennis_Elbow.html",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for tennis elbow",
+   "recomendados": [
+    "Wilson Clash 100",
+    "Head Gravity Tour",
+    "Prince Phantom 100X 305"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    },
+    {
+     "original": "Head Gravity Tour",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Prince Phantom 100X 305",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Clash 100 uma das mais amigas do braço; Gravity Tour para quem quer precisão."
+  },
+  {
+   "id": "en-174",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Rackets_For_Tennis_Elbow.html",
+   "ano": 2024,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "agressivo",
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Tennis elbow: aggressive players who want precision",
+   "recomendados": [
+    "Head Gravity Tour"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity Tour",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "18x20 com janela de spin grande."
+  },
+  {
+   "id": "en-175",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets 2025: intermediate power",
+   "recomendados": [
+    "Yonex EZONE 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100L",
+     "no_catalogo": "EZONE 100L",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100L"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência para intermediário."
+  },
+  {
+   "id": "en-176",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets 2025: intermediate spin",
+   "recomendados": [
+    "Head Extreme MP L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Extreme MP L",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "spin",
+   "texto_curto": "Spin para intermediário."
+  },
+  {
+   "id": "en-177",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets 2025: intermediate control and feel",
+   "recomendados": [
+    "Babolat Pure Strike Team 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Strike Team 2025",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Perfil fino e variável para colocar a bola."
+  },
+  {
+   "id": "en-178",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets 2025: intermediate arm-friendly",
+   "recomendados": [
+    "ProKennex Ki 15 280g"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "ProKennex Ki 15 280g",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Amiga do braço."
+  },
+  {
+   "id": "en-179",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 150
+   },
+   "categoria_original": "Best rackets 2025: intermediate value",
+   "recomendados": [
+    "Head Instinct Team 2025"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Instinct Team 2025",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Grafite, fácil de manejar."
+  },
+  {
+   "id": "en-180",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/2025-top-reviews.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top Tennis Warehouse reviews of 2025: highest playtest score",
+   "recomendados": [
+    "Tecnifibre TFight 305S"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Tecnifibre TFight 305S",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Uma das maiores notas já dadas pela equipe."
+  },
+  {
+   "id": "en-181",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/2025-top-reviews.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top Tennis Warehouse reviews of 2025: playtester favorites",
+   "recomendados": [
+    "Yonex EZONE 100",
+    "Head Radical MP"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 1
+    },
+    {
+     "original": "Head Radical MP",
+     "no_catalogo": "Radical MP",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100",
+    "Radical MP"
+   ],
+   "grupo": "geral",
+   "texto_curto": "Favoritas dos testadores."
+  },
+  {
+   "id": "en-182",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 150
+   },
+   "categoria_original": "Best tennis rackets under $150: intermediate overall",
+   "recomendados": [
+    "Wilson Clash 100 v2"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v2",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1,
+     "geracao_diferente": true
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "orcamento",
+   "texto_curto": "Melhor geral até US$ 150."
+  },
+  {
+   "id": "en-183",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": 90
+   },
+   "categoria_original": "Best tennis rackets under $150: best value",
+   "recomendados": [
+    "Head MXG 5"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head MXG 5",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "orcamento",
+   "texto_curto": "Valor para intermediário com pouco orçamento."
+  },
+  {
+   "id": "en-184",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-first-real-frame-5-best-racquets-for-developing-junior-players/69440",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "First \"real\" frame: best racquets for developing juniors, top pick",
+   "recomendados": [
+    "Wilson Clash 100L v3",
+    "Babolat Boost Drive",
+    "Yonex EZONE 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100L v3",
+     "no_catalogo": "Clash 100L v3",
+     "posicao": 1
+    },
+    {
+     "original": "Babolat Boost Drive",
+     "no_catalogo": "Boost Drive",
+     "posicao": 2
+    },
+    {
+     "original": "Yonex EZONE 100L",
+     "no_catalogo": "EZONE 100L",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100L v3",
+    "Boost Drive",
+    "EZONE 100L"
+   ],
+   "grupo": "junior",
+   "texto_curto": "Clash 100L: conforto e flexibilidade para articulações em crescimento na passagem para 27 pol."
+  },
+  {
+   "id": "en-185",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/the-first-real-frame-5-best-racquets-for-developing-junior-players/69440",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "First real frame: lighter alternative",
+   "recomendados": [
+    "Wilson Blade 100L"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 100L",
+     "no_catalogo": "Blade 100L v9",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 100L v9"
+   ],
+   "grupo": "junior",
+   "texto_curto": "Mesma tecnologia, mais leve."
+  },
+  {
+   "id": "en-186",
+   "idioma": "en",
+   "fonte": "Tennis Racquet Central",
+   "url": "https://tennisracquetcentral.com/best-tennis-racquets-for-seniors/",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis racquets for seniors: best for older players",
+   "recomendados": [
+    "Wilson Burn 100LS"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Burn 100LS",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Amortece vibração e poupa as articulações."
+  },
+  {
+   "id": "en-187",
+   "idioma": "en",
+   "fonte": "The Tennis Tribe",
+   "url": "https://thetennistribe.com/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Seniors: best pick for comfort",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Clash 100 v3",
+     "no_catalogo": "Clash 100 v3",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "texto_curto": "Melhor escolha de conforto para sênior."
+  },
+  {
+   "id": "en-188",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/Junior_Tennis_Ages_11__Up/catpage-USTAQST910.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Juniors 11+: control",
+   "recomendados": [
+    "Prince Tour 26"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Tour 26",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "junior",
+   "texto_curto": "Para juniores de 11+ que valorizam controle."
+  },
+  {
+   "id": "en-189",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_racquets_for_power.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best racquets for power: advanced",
+   "recomendados": [
+    "Babolat Pure Aero 98",
+    "Yonex EZONE 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Aero 98",
+     "no_catalogo": "Pure Aero 98",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex EZONE 98",
+     "no_catalogo": "EZONE 98",
+     "posicao": 2
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98",
+    "EZONE 98"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência para avançado."
+  },
+  {
+   "id": "en-190",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Tennis_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets 2025: advanced power",
+   "recomendados": [
+    "Wilson Ultra 99 Pro v5"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Ultra 99 Pro v5",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "potencia",
+   "texto_curto": "Potência explosiva com sensação moderna."
+  },
+  {
+   "id": "en-191",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Power_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for power: intermediate to advanced",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Solinco Blackout 300",
+    "Yonex EZONE 100",
+    "Head Instinct MP",
+    "Prince Beast 100"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    },
+    {
+     "original": "Solinco Blackout 300",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Yonex EZONE 100",
+     "no_catalogo": "EZONE 100",
+     "posicao": 3
+    },
+    {
+     "original": "Head Instinct MP",
+     "no_catalogo": "Instinct MP",
+     "posicao": 4
+    },
+    {
+     "original": "Prince Beast 100",
+     "no_catalogo": null,
+     "posicao": 5
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "EZONE 100",
+    "Instinct MP"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência."
+  },
+  {
+   "id": "en-192",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse Europe",
+   "url": "https://www.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/Best_Power_Rackets.html",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for power: beginner",
+   "recomendados": [
+    "Head Boom MP",
+    "Tecnifibre TF-X1 285",
+    "Babolat Pure Drive 107",
+    "Prince O3 Legacy 120"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Boom MP",
+     "no_catalogo": "Boom MP",
+     "posicao": 1
+    },
+    {
+     "original": "Tecnifibre TF-X1 285",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Babolat Pure Drive 107",
+     "no_catalogo": null,
+     "posicao": 3
+    },
+    {
+     "original": "Prince O3 Legacy 120",
+     "no_catalogo": null,
+     "posicao": 4
+    }
+   ],
+   "recomendados_catalogo": [
+    "Boom MP"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência para quem começa."
+  },
+  {
+   "id": "en-193",
+   "idioma": "en",
+   "fonte": "Racqix",
+   "url": "https://www.racqix.com/en/blog/top-13-best-tennis-racquets-for-beginners-in-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top beginner racquets 2026: absolute beginners",
+   "recomendados": [
+    "Head Ti.S6"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Ti.S6",
+     "no_catalogo": "Ti S6",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "grupo": "iniciante",
+   "texto_curto": "Barata, simples e eficaz."
+  },
+  {
+   "id": "en-194",
+   "idioma": "en",
+   "fonte": "Rackets & Runners",
+   "url": "https://racketsandrunners.ca/blogs/tennis/the-top-5-control-rackets-of-2025-finding-the-right-balance-between-precision-and-modern-playability",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "contra-ataque",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Top 5 control rackets of 2025: best control (counterpunchers)",
+   "recomendados": [
+    "Head Gravity Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Head Gravity Pro",
+     "no_catalogo": "Gravity Pro",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Gravity Pro"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Estável e precisa para contra-atacadores."
+  },
+  {
+   "id": "en-195",
+   "idioma": "en",
+   "fonte": "Too Many Rackets",
+   "url": "https://toomanyrackets.com/best-tennis-rackets-for-counter-punchers/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "contra-ataque",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for counter punchers & defensive players",
+   "recomendados": [
+    "Wilson Blade 98",
+    "Tecnifibre TFight 305S",
+    "Yonex EZONE 98"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Blade 98",
+     "no_catalogo": "Blade 98 16x19 v9",
+     "posicao": 1
+    },
+    {
+     "original": "Tecnifibre TFight 305S",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Yonex EZONE 98",
+     "no_catalogo": "EZONE 98",
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9",
+    "EZONE 98"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Perfil fino e padrão denso; Ezone 98 mais macia e manobrável."
+  },
+  {
+   "id": "en-196",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-100-sq-in-racquets-for-all-court-players/70330",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "saque-voleio",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best 100 sq in for all-court: classic all-court and serve-and-volley",
+   "recomendados": [
+    "Prince Tour 100P"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Prince Tour 100P",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "controle",
+   "texto_curto": "Melhor sensação de voleio, bola mais reta."
+  },
+  {
+   "id": "en-197",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-100-sq-in-racquets-for-all-court-players/70330",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best 100 sq in for all-court: first-strike power and big serve",
+   "recomendados": [
+    "Babolat Pure Drive"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Babolat Pure Drive",
+     "no_catalogo": "Pure Drive",
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "grupo": "potencia",
+   "texto_curto": "Potência de primeira bola e saque."
+  },
+  {
+   "id": "en-198",
+   "idioma": "en",
+   "fonte": "Racquet Point",
+   "url": "https://www.racquetpoint.com/blogs/racquet-point-news/best-tennis-rackets-for-volleys-2024-expert-picks",
+   "ano": 2024,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "saque-voleio",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best tennis rackets for volleys 2024",
+   "recomendados": [
+    "Wilson Pro Staff 97",
+    "Tecnifibre TF40 305",
+    "Dunlop SX 300 Tour"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff 97",
+     "no_catalogo": "Pro Staff 97 v14",
+     "posicao": 1
+    },
+    {
+     "original": "Tecnifibre TF40 305",
+     "no_catalogo": "TF40 305 16x19",
+     "posicao": 2
+    },
+    {
+     "original": "Dunlop SX 300 Tour",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14",
+    "TF40 305 16x19"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Precisão no voleio."
+  },
+  {
+   "id": "en-199",
+   "idioma": "en",
+   "fonte": "Rackets & Runners",
+   "url": "https://racketsandrunners.ca/blogs/tennis/the-best-tennis-rackets-for-every-type-of-player-updated-for-2025",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "saque-voleio",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": 1,
+    "prioridade": "controle",
+    "orcamento_usd": null
+   },
+   "categoria_original": "Best rackets for every type of player: serve-and-volley and one-handers",
+   "recomendados": [
+    "Wilson Pro Staff 97",
+    "Yonex Percept 97H",
+    "Wilson RF 01 Pro"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "Wilson Pro Staff 97",
+     "no_catalogo": "Pro Staff 97 v14",
+     "posicao": 1
+    },
+    {
+     "original": "Yonex Percept 97H",
+     "no_catalogo": null,
+     "posicao": 2
+    },
+    {
+     "original": "Wilson RF 01 Pro",
+     "no_catalogo": null,
+     "posicao": 3
+    }
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "grupo": "controle",
+   "texto_curto": "Para quem sobe à rede e usa uma mão."
+  },
+  {
+   "id": "en-200",
+   "idioma": "en",
+   "fonte": "Perfect Tennis",
+   "url": "https://www.perfect-tennis.com/best-tennis-racquet-for-senior-players/",
+   "ano": 2023,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_usd": null
+   },
+   "categoria_original": "The best tennis racquet for senior players",
+   "recomendados": [
+    "ProKennex Ki Q+ 5"
+   ],
+   "recomendados_detalhe": [
+    {
+     "original": "ProKennex Ki Q+ 5",
+     "no_catalogo": null,
+     "posicao": 1
+    }
+   ],
+   "recomendados_catalogo": [],
+   "grupo": "cotovelo",
+   "texto_curto": "Muito usada por sêniores segundo reviews da TW."
+  }
+ ]
+}
