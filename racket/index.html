@@ -168,6 +168,8 @@ select,input[type=number],input[type=text],input[type=email]{font:inherit;backgr
 .finrow:last-child{border-bottom:0}
 .pos{font-family:var(--f-mono);font-weight:700;font-size:18px;color:var(--muted)}
 .blur{filter:blur(7px);user-select:none;font-weight:700}
+.mk{filter:blur(6px);user-select:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .pct{font-family:var(--f-mono);font-weight:700;font-size:20px;text-align:right}
 .meter{height:6px;background:var(--line);border-radius:99px;margin-top:6px}
 .meter i{display:block;height:100%;border-radius:99px;background:var(--pri)}
@@ -1272,7 +1274,9 @@ function painNote(){
   if(!(A.pain==='3'||A.lim==='3'))return `<div class="panel"><p><strong>Sobre a dor no braço.</strong> A raquete é só uma parte: idade, tempo e volume de jogo e a técnica pesam mais do que qualquer especificação. Se a dor persistir, procure um médico ou fisioterapeuta.</p></div>`;
   return `<div class="panel" style="border-color:var(--warn)"><p><strong>Dor forte ou em tratamento.</strong> Nenhuma raquete previne ou trata lesão. Idade, volume de jogo e técnica pesam mais do que qualquer especificação. Antes de voltar a jogar forte, fale com o seu médico ou fisioterapeuta. O motor deu preferência a raquetes mais flexíveis, que os especialistas costumam indicar para quem sente o braço, e a corda indicada é multifilamento.</p></div>`;
 }
-function diagnosis(){
+/* oculta texto no grátis: o conteúdo real não vai para a página, só um molde do mesmo tamanho */
+const mask=t=>`<span class="sr-only">Disponível no relatório.</span><span class="mk" aria-hidden="true">${String(t).replace(/<[^>]+>/g,' ').replace(/[^\s.,:]/g,'x')}</span>`;
+function diagnosis(free=true){
   const {c,curFit,T,ranked}=RES;if(!c)return '';
   const good=KEYS.filter(k=>T[k]>=5.5&&Math.abs(c.ix[k]-T[k])<=1).map(k=>LBL[k].toLowerCase());
   const bad=curFit.pen.slice(0,3).map(p=>p[1]);
@@ -1285,10 +1289,13 @@ function diagnosis(){
   if(A.why==='broken'&&curFit.fit>=ranked[0].fit-6)extra.push('Ela ainda combina bem com você. Uma nova do mesmo modelo seria uma troca segura; a recomendação mostra se há algo melhor.');
   if(A.why==='level'&&c.ix.control<T.control-1)extra.push('Para o seu nível atual, ela entrega menos controle do que o seu jogo pede.');
   const jn=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
-  return `<div class="panel"><div class="phead"><div><p class="eyebrow">Grátis · diagnóstico</p><h3>A sua ${esc(c.name)}</h3></div><div style="text-align:right"><div class="fit" style="font-size:34px">${curFit.fit}%</div><span class="note">${gl('fit')} para você</span></div></div>
-  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Onde ela acerta</p><p>${good.length?'Entrega o que você pede em '+jn(good)+'.':'Nenhum dos atributos que o seu jogo mais pede está no ponto.'}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">O que falta</p><p>${gaps.map(x=>`${gl(x.k,LBL[x.k])}: ${dec(c.ix[x.k])} para um alvo de ${dec(T[x.k])}`).join('<br>')}</p>`:''}</div>
-  <div><p class="eyebrow" style="margin-bottom:6px">O que pesa contra</p><ul class="why">${(bad.length?bad:['Nada crítico: a troca é ajuste fino.']).map(x=>`<li>${x}.</li>`).join('')}</ul></div></div>
-  ${extra.length?`<p class="muted">${extra.join(' ')}</p>`:''}</div>`;
+  const fitHTML=free?mask(curFit.fit+'%'):curFit.fit+'%';
+  const gapTxt=gaps.map(x=>`${gl(x.k,LBL[x.k])}: ${dec(c.ix[x.k])} para um alvo de ${dec(T[x.k])}`);
+  const contra=(bad.length?bad:['Nada crítico: a troca é ajuste fino.']);
+  return `<div class="panel"><div class="phead"><div><p class="eyebrow">${free?'Grátis · metade do diagnóstico':'Diagnóstico'}</p><h3>A sua ${esc(c.name)}</h3></div><div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} para você</span></div></div>
+  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Onde ela acerta</p><p>${good.length?'Entrega o que você pede em '+jn(good)+'.':'Nenhum dos atributos que o seu jogo mais pede está no ponto.'}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">O que falta</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
+  <div><p class="eyebrow" style="margin-bottom:6px">O que pesa contra</p><ul class="why">${contra.map((x,i)=>`<li>${free&&i>0?mask(x+'.'):x+'.'}</li>`).join('')}</ul></div></div>
+  ${extra.length?`<p class="muted">${extra.join(' ')}</p>`:''}${free?'<p class="note" style="margin:0">A nota da sua raquete e a outra metade do diagnóstico estão no relatório, junto com a comparação lado a lado.</p>':''}</div>`;
 }
 function renderPreview(){
   const {ranked,conf,T,curFit,c}=RES;const top=ranked.slice(0,3);
@@ -1316,22 +1323,13 @@ function renderPreview(){
       <div class="kpi"><b>${fmt(NVAR*RK.length)}</b><span>cruzamentos: ${NVAR} variáveis × ${RK.length} raquetes</span></div>
       <div class="kpi"><b>${top[0].r.nrev||'—'}</b><span>avaliações de testadores por trás da 1ª</span></div>
       <div class="kpi"><b>${RES.tw} g</b><span>peso ideal sem corda</span></div>
-      <div class="kpi"><b>${curFit?curFit.fit+'%':'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
-    </div>
-  </div>
-  <div class="two">
-    <div class="panel">
-      <h3>A 1ª colocada e o seu braço</h3>
-      <div class="arm">${gauge(top[0].r.ix.arm)}<div><strong>Conforto no braço do 1º lugar: ${dec(top[0].r.ix.arm)}</strong><p class="muted" style="font-size:14px">${armTxt(top[0].r.ix.arm)}, numa escala de 0 a 10.</p></div></div>
-    </div>
-    <div class="panel">
-      ${viz('pv',[{name:'Seu perfil ideal',v:T,c:'var(--pri)',solid:true}],T,T,c?c.ix:null)}
+      <div class="kpi"><b>${curFit?mask(curFit.fit+'%'):'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
     </div>
   </div>
   <div class="panel">
     <div class="two" style="align-items:center">
       <div id="cardPrev" class="cardwrap herocard" aria-label="Seu DNA de jogo em card"></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><p class="eyebrow">Seu DNA de jogo</p><h3>${esc(archetype())}</h3><p class="muted">O card com o seu perfil já está pronto. A raquete, a marca e a ficha técnica aparecem no desbloqueio.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><p class="eyebrow">Seu DNA de jogo</p><h3>${esc(archetype())}</h3><p class="muted">Seu perfil de jogo em seis atributos, pronto para compartilhar. A raquete, a marca e a ficha técnica aparecem no relatório.</p><div class="row"><button class="btn btn-go" type="button" id="pvShare">Compartilhar</button><button class="btn btn-ghost" type="button" id="pvDl">Salvar card</button></div><div id="pvOut"></div></div>
     </div>
   </div>
   ${diagnosis()}
@@ -1353,7 +1351,7 @@ function renderPreview(){
     <p class="note">O cálculo já foi feito: o pagamento só revela o resultado. Se houver link de compra, ele aparece depois, e a recomendação não muda por isso. Não gostou? Devolvemos em até 7 dias.</p>
     <div class="row"><button class="btn btn-ghost" type="button" id="redo">Refazer respostas</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>
   </div>`;
-  wireSeg($('#preview'));previewCard('#cardPrev');
+  wireSeg($('#preview'));previewCard('#cardPrev');$('#pvShare').onclick=shareCard;$('#pvDl').onclick=async()=>{const cv=await drawCard();const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const l=document.createElement('a');l.href=URL.createObjectURL(blob);l.download='racket-dna-dna.png';document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(l.href),4000);toast('Card salvo')};
   $('#preview').querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>pix(+b.dataset.buy));
   $('#redo').onclick=()=>{step=0;show('quiz');renderQs()};
   $('#preview').querySelector('[data-save]').onclick=saveBox;
@@ -1560,7 +1558,7 @@ function renderReport(){
   $('#again').onclick=()=>{step=0;show('quiz');renderQs()};
   $('#report').querySelector('[data-save]').onclick=saveBox;
   $('#report').querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>downloadPDF(b));
-  $('#dlCard').onclick=downloadCard;if($('#dlRacket'))$('#dlRacket').onclick=downloadRacketCard;$('#shareCard').onclick=shareCard;previewCard();
+  $('#dlCard').onclick=()=>downloadCard();if($('#dlRacket'))$('#dlRacket').onclick=downloadRacketCard;$('#shareCard').onclick=shareCard;previewCard();
   if(tier>=2){const f=()=>renderCmp();$('#cmpA').onchange=f;$('#cmpB').onchange=f;$('#cmp').addEventListener('toggle',()=>{if($('#cmp').open&&!$('#cmpOut').innerHTML)f()})}
 }
 const topKeys=()=>KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,2);
@@ -1740,13 +1738,13 @@ async function drawCard(d=cardData()){
   x.fillStyle='rgba(255,255,255,.75)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no RACKET DNA',90,H-150);
   return cv;
 }
-async function downloadCard(){
-  const btn=$('#dlCard');btn.disabled=true;
+async function downloadCard(id='#dlCard',out='#cardOut'){
+  const btn=$(id)||{};if(!$(out))out='#pvOut';btn.disabled=true;
   try{
     const cv=await drawCard();const blob=await new Promise(r=>cv.toBlob(r,'image/png'));
     let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
-    if(dl){try{await dl.save({filename:'racket-dna-dna.png',data:blob});toast('Card salvo')}catch(e){if(e&&e.code!=='declined')showCard(cv)}}
-    else showCard(cv);
+    if(dl){try{await dl.save({filename:'racket-dna-dna.png',data:blob});toast('Card salvo')}catch(e){if(e&&e.code!=='declined')showCard(cv,out)}}
+    else showCard(cv,out);
   }finally{btn.disabled=false}
 }
 async function downloadRacketCard(){
@@ -1767,7 +1765,7 @@ async function shareCard(){
   }catch(e){if(e&&e.name==='AbortError')return}
   try{await navigator.clipboard.writeText(txt);toast('Texto copiado. Use "Salvar imagem" para o card.')}catch(e){downloadCard()}
 }
-function showCard(cv){$('#cardOut').innerHTML=`<img class="cardimg" alt="Card do DNA de jogo" src="${cv.toDataURL('image/png')}"><p class="note">Toque e segure (ou clique com o botão direito) para salvar a imagem.</p>`}
+function showCard(cv,out='#cardOut'){$(out).innerHTML=`<img class="cardimg" alt="Card do DNA de jogo" src="${cv.toDataURL('image/png')}"><p class="note">Toque e segure (ou clique com o botão direito) para salvar a imagem.</p>`}
 
 
 /* card da raquete: verde do Racket, raquete escolhida e o pódio que levou a ela */

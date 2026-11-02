@@ -1113,7 +1113,7 @@ function renderPreview(){
     ${ondaAtt(r)}
     <p class="muted" style="font-size:15px">Calculado pelo que você já faz na água: como pega onda, como passa a arrebentação e o que faz na parede, não só pelo tempo de surf. É ele que define quanto a prancha precisa boiar.</p>
   </div>
-  <div class="panel"><div class="two" style="align-items:center"><div id="cardPrev" class="cardwrap herocard" aria-label="Seu DNA de surf em card"></div><div style="display:flex;flex-direction:column;gap:10px"><p class="eyebrow">Seu DNA de surf</p><h3>${esc(archetype(r))}</h3><p class="muted">O card com o seu perfil já está pronto. A prancha, as medidas e o card dela aparecem no relatório.</p></div></div></div>
+  <div class="panel"><div class="two" style="align-items:center"><div id="cardPrev" class="cardwrap herocard" aria-label="Seu DNA de surf em card"></div><div style="display:flex;flex-direction:column;gap:10px"><p class="eyebrow">Seu DNA de surf</p><h3>${esc(archetype(r))}</h3><p class="muted">Seu jeito de surfar num card, pronto para compartilhar. A prancha, as medidas e o card dela aparecem no relatório.</p><div class="row"><button class="btn btn-go" type="button" id="pvShare">Compartilhar</button><button class="btn btn-ghost" type="button" id="pvDl">Salvar card</button></div></div></div></div>
   <div class="panel">
     <div><p class="eyebrow">Grátis</p><h3>Quanto a sua prancha precisa boiar</h3></div>
     ${floatBar(r)}
@@ -1129,6 +1129,8 @@ function renderPreview(){
     <div class="row"><button class="btn btn-ghost" type="button" id="redo">Refazer respostas</button></div>
   </div>`;
   drawDNA(cardData(r)).then(cv=>{const o=$('#cardPrev');if(o)o.innerHTML=cardImg(cv,'Card do DNA de surf: '+archetype(r))}).catch(()=>{});
+  $('#pvShare').onclick=async()=>shareCanvas(await drawDNA(cardData(r)),'surf-dna-dna.png',`Meu DNA de surf no SURF DNA: ${archetype(r)}. E o seu?`);
+  $('#pvDl').onclick=async()=>saveCanvas(await drawDNA(cardData(r)),'surf-dna-dna.png');
   $('#preview').querySelectorAll('[data-buy]').forEach(b=>b.onclick=pix);
   $('#redo').onclick=()=>{step=0;show('quiz');renderQs()};
 }
