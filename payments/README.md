@@ -16,7 +16,7 @@ Preços pertencem ao catálogo do servidor, nunca ao navegador. A sessão não l
 
 Respostas e token do pedido ficam em `sessionStorage` no navegador. **Ainda falta recuperação de compra por e-mail e acesso em outro dispositivo**. A interface continua calculando o relatório em JavaScript público; esta mudança protege o fluxo normal de compra, mas não torna o conteúdo impossível de extrair por inspeção do código. Cobrança de produção exige decidir sobre geração/entrega do relatório no servidor, além dos demais itens abaixo.
 
-## Implantação de teste pendente
+## Implantação de teste e próximas etapas
 
 1. Publicar o código desta pasta como Worker `sportdna-payments-test`, sem alterar os outros Workers.
 2. Criar D1 exclusivo `sportdna-payments-test`, executar `migrations/0001.sql` e vincular como `DB`. Registrar o ID real em `wrangler.jsonc`.
@@ -26,7 +26,15 @@ Respostas e token do pedido ficam em `sessionStorage` no navegador. **Ainda falt
 6. Habilitar `PAYMENTS_MODE=test` somente depois de conferir credenciais, D1 e assinaturas. Para a prévia de teste do frontend, configurar `assets/payments/config.js` com `mode:'test'` e a origem HTTPS exata da API. O arquivo público permanece `mode:'off'`.
 7. Executar compras de teste de cada produto/provedor, confirmar notificações reais, duplicidade, expiração, reembolso, cancelamento, retorno do Checkout e retomada. **Os testes locais com mocks não substituem esses testes nos provedores.**
 
-O cadastro do Cloudflare foi preparado para `gtorniero/sportdna`, pasta `payments`, build `pnpm install --frozen-lockfile`, deploy `pnpm exec wrangler deploy`, sem previews automáticos. Não foi publicado: o token automático proposto inclui diversos serviços da conta além do necessário. Não usar tokens de Quiddo/Retrozap.
+## Estado verificado em 02/11/2026
+
+Worker publicado manualmente em `https://sportdna-payments-test.guitorniero.workers.dev`, com o backend deste PR. D1 `936d7152-4ddd-4764-9cd5-a6cd8e966582`, migração aplicada e binding DB confirmado. Runtime: `PAYMENTS_MODE=test`, `SITE_ORIGIN=https://sportdna.com.br`, `MP_TEST_CREDENTIALS_CONFIRMED=false`. Secrets Stripe e RATE_SECRET guardados criptografados; nenhum token amplo de CI criado.
+
+Stripe webhook TESTE `we_1UXR6a134hMOoEZVXxfAkVto` cadastrado. Uma compra real no sandbox do RACKET, R$19,99, foi concluída com cartão de teste. O pedido `f1cb29fa-626d-429b-b78c-9b4c60c097a7` ficou `paid` no D1 pelo webhook, antes de qualquer consulta de status posterior. Isso valida backend, Stripe e notificação assinada desse produto. O retorno ao domínio falhou neste computador com aviso de certificado; não foi contornado. A interface pública ainda está em simulação, portanto o fluxo completo público não foi validado.
+
+Mercado Pago: aplicação criada, mas a tela de Credenciais Teste não ficou disponível na navegação atual. MP_TOKEN e MP_WEBHOOK_SECRET não foram configurados; Pix e webhook reais de teste permanecem pendentes. Não usar credenciais da Retrozap.
+
+Os passos acima são o roteiro de implantação; Worker, D1 e etapa Stripe já foram executados. Restam MP, demais produtos/provedores e retorno do navegador, recuperação da compra e publicação da interface somente quando validada.
 
 ## Antes de produção
 
@@ -41,5 +49,3 @@ Além dos testes acima: revisar cobrança real e taxas na conta, recuperação/e
 
 Documentação: [Stripe Checkout](https://docs.stripe.com/payments/accept-a-payment?payment-ui=checkout&ui=stripe-hosted), [fulfillment e webhooks](https://docs.stripe.com/checkout/fulfillment), [Pix Orders](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/payment-integration/websites/pix), [teste Pix](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/integration-test/pix), [assinatura de notificações](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/optional-notifications).
 
-
-Update 2026-11-02: D1 sportdna-payments-test created (936d7152-4ddd-4764-9cd5-a6cd8e966582). Migration applied; orders and rate_limits tables verified. Worker binding remains pending. Automatic GitHub deployment abandoned; no build token created. Manual Worker publication and test-only Secrets storage await explicit confirmation.
