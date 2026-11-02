@@ -671,10 +671,25 @@ const M=[
 const PODIO_FORA=['Fila'];
 // marcas do quadro "o melhor de cada marca" (as preferidas da pessoa entram também)
 const MARCAS=['adidas','ASICS','Hoka','Mizuno','New Balance','Nike','Olympikus','On','Puma'];
-const FICHA=1.2;
-const LEVE={cal:.4,lon:.4,len:.4,ini:.4,dia:.4,asf:.4};
+const LEVE=['cal','lon','len','ini','dia','asf'];
 // categoria que as respostas apontam: dentro dela o tênis soma ZONA no motor (+4 no DNA); na 2ª categoria, ZONA a menos (−4)
-const ZONA=2,ZONA_PEQ=0.5;
+/* PESOS do placar de cada tênis. Origem e evidência de cada um em docs/tenis/ciencia.md;
+   os valores são calibrados contra os casos de especialistas (docs/tenis/validacao.md). */
+const PESOS={
+  cat1:10,cat2:6,cat2Peq:8,zona:2,zonaPeq:0.5,            // categoria indicada, 2ª categoria e zona (categoria + orçamento)
+  orcTeto:6,orcPor150:1,orcLeve:0.5,orcDentro:1.5,orcAbaixoMax:2,orcAbaixoPor:200, // preço × orçamento
+  sens:0.7,                                                 // distância da sensação preferida (macio/firme)
+  falta:0.45,sobra:0.12,faltaLev:0.45,faltaLevSem:0.15,     // specs técnicas: falta do que o perfil pede × sobra
+  pesadoMacio:1.2,pesadoLeve:1,                             // corredor 85 kg+
+  largoBom:2,largoRuim:0.6,                                 // pé largo
+  priorDur:1/120,priorLev:1/25,priorPreco:1/350,priorConf:0.6, // o que pesa mais na escolha
+  torcMacio:1.5,dropCalc:1.2,dropAnte:0.8,dropAqu:1.5,estNeutro:0.8, // tornozelo, drop × pisada e Aquiles, estabilidade
+  usoTag:1.2,usoMax:2.4,usoSem:0.5,                         // usos indicados pelas reviews
+  naoBase:3,naoExtra:1,naoMax:7,naoRitmo:0.35,leve:0.4,     // "não indicado para" (leve = etiquetas de preferência)
+  perfilTag:0.8,perfilMax:1.6,                              // perfil ideal citado pelas reviews
+  nota:1.8,notaN:4,                                         // nota das reviews, puxada para a média com pouca evidência
+  aprox:0.6,ficha:1.2,importado:3,evid:0.45,evidAlvo:4,clientes:0.35 // qualidade do dado
+};
 // a última faixa é "sem limite de preço": o preço não pesa contra nenhum tênis
 const BUD=[[0,400],[400,700],[700,1000],[1000,1500],[1500,99999],[0,99999]];
 const SEM_LIMITE=5;
@@ -718,46 +733,46 @@ function engine(a,long){
   const cats=Object.entries(sc).filter(x=>x[1]>0).sort((p,q)=>q[1]-p[1]);
   const c1=cats[0][0],c2=cats[1]?cats[1][0]:c1;
   // categoria com poucos modelos não monopoliza: a 2ª categoria chega mais perto
-  const w2=M.filter(m=>m.c===c1).length<10?8:6;
+  const P=PESOS,w2=M.filter(m=>m.c===c1).length<10?P.cat2Peq:P.cat2;
   // o que o perfil pede em amortecimento, resposta, leveza e estabilidade (mesmos índices do hexágono)
   const ID=idealVec(a);
   // leveza só pesa para quem pediu leveza ou faz ritmo; "não indicado para ritmo" só pesa quando o tênis é para velocidade
-  const fast=c1==='rap'||c1==='sup',lw=prior===2||obj===1||g('treino',0)===2?0.45:0.15;
+  const fast=c1==='rap'||c1==='sup',lw=prior===2||obj===1||g('treino',0)===2?P.faltaLev:P.faltaLevSem;
   if(!fast)ID[1]=Math.min(ID[1],6);
   const [bmin,bmax]=BUD[orc];
   const pi=g('pisada',3);
   // zona: a categoria ideal dentro do orçamento; em categoria com poucos modelos o bônus cai pela metade (não vira monopólio)
-  const inZ=m=>m.c===c1&&m.p<=bmax*1.08,zc=w2===8?ZONA*ZONA_PEQ:ZONA;
+  const inZ=m=>m.c===c1&&m.p<=bmax*1.08,zc=w2===P.cat2Peq?P.zona*P.zonaPeq:P.zona;
   // C (opcional) guarda quanto cada fator somou ou tirou, para o relatório explicar diferenças
   const sm=(m,relax,C)=>{
     let s=0;const ad=(k,v)=>{s+=v;if(C)C[k]=(C[k]||0)+v};
     // categoria: dentro da zona (categoria que suas respostas apontam e preço até 8% acima do orçamento) soma ZONA; fora, tira ZONA
-    ad('cat',(m.c===c1?10:m.c===c2?w2:relax?2:-99)+(inZ(m)?zc:-zc));
-    if(m.p>bmax*1.08)ad('orc',-(6+(m.p-bmax)/150));else if(m.p>bmax)ad('orc',-0.5);else ad('orc',1.5-(prior===3?0:Math.min(2,Math.max(0,bmin-m.p)/200)));
-    ad('sens',-Math.abs(m.mz-[4.5,3.5,2.3][sens])*0.7);
+    ad('cat',(m.c===c1?P.cat1:m.c===c2?w2:relax?2:-99)+(inZ(m)?zc:-zc));
+    if(m.p>bmax*1.08)ad('orc',-(P.orcTeto+(m.p-bmax)/150*P.orcPor150));else if(m.p>bmax)ad('orc',-P.orcLeve);else ad('orc',P.orcDentro-(prior===3?0:Math.min(P.orcAbaixoMax,Math.max(0,bmin-m.p)/P.orcAbaixoPor)));
+    ad('sens',-Math.abs(m.mz-[4.5,3.5,2.3][sens])*P.sens);
     // specs técnicas: falta do que você precisa pesa mais que sobra
-    const iv=idx(m);for(let i=0;i<4;i++){const d=iv[i]-ID[i];ad('s'+i,d<0?d*(i===2?lw:0.45):-d*0.12)}
-    if(heavy&&m.mz>=4)ad('peso',1.2);if(heavy&&m.g<215)ad('peso',-1);
-    if(g('largura',1)===2&&m.lg)ad('larg',2);if(g('largura',1)===2&&!m.lg)ad('larg',-0.6);
-    if(prior===1)ad('prior',(m.du-550)/120);if(prior===2)ad('prior',(260-m.g)/25);if(prior===3)ad('prior',(700-m.p)/350);if(prior===0&&sens!==2)ad('prior',(m.mz-3)*0.6);
-    if(dor===4&&m.mz>=5)ad('dor',-1.5);
-    if(pi===0&&m.dr<7)ad('drop',-1.2);if(pi===2&&m.dr>=10)ad('drop',-0.8);
-    if(dor===6&&m.dr<7)ad('dor',-1.5);
-    if(g('neutro',0)===1)ad('est',(m.es-3)*0.8);
+    const iv=idx(m);for(let i=0;i<4;i++){const d=iv[i]-ID[i];ad('s'+i,d<0?d*(i===2?lw:P.falta):-d*P.sobra)}
+    if(heavy&&m.mz>=4)ad('peso',P.pesadoMacio);if(heavy&&m.g<215)ad('peso',-P.pesadoLeve);
+    if(g('largura',1)===2&&m.lg)ad('larg',P.largoBom);if(g('largura',1)===2&&!m.lg)ad('larg',-P.largoRuim);
+    if(prior===1)ad('prior',(m.du-550)*P.priorDur);if(prior===2)ad('prior',(260-m.g)*P.priorLev);if(prior===3)ad('prior',(700-m.p)*P.priorPreco);if(prior===0&&sens!==2)ad('prior',(m.mz-3)*P.priorConf);
+    if(dor===4&&m.mz>=5)ad('dor',-P.torcMacio);
+    if(pi===0&&m.dr<7)ad('drop',-P.dropCalc);if(pi===2&&m.dr>=10)ad('drop',-P.dropAnte);
+    if(dor===6&&m.dr<7)ad('dor',-P.dropAqu);
+    if(g('neutro',0)===1)ad('est',(m.es-3)*P.estNeutro);
     // consenso das reviews
-    const uh=W.filter(w=>m.u.includes(w)).length;ad('uso',Math.min(2.4,uh*1.2)-(uh?0:0.5));
+    const uh=W.filter(w=>m.u.includes(w)).length;ad('uso',Math.min(P.usoMax,uh*P.usoTag)-(uh?0:P.usoSem));
     // "não indicado" vem de 2+ reviews: com muitas reviews, 2 citações pesam um pouco menos.
     // Etiquetas de preferência (calor, longão, ritmo fora de tênis rápido, uso diário, iniciante) pesam menos que as de encaixe e saúde
-    const nr=m.np+m.nc,bad=m.nn.filter(t=>T.has(t)).reduce((q,t)=>q+(t==='rap'?(fast?1:0.35):LEVE[t]||1),0);ad('nao',-Math.min(7,bad*(3+Math.min(1,3/Math.max(1,nr)))));
-    ad('perfil',Math.min(1.6,m.o.filter(t=>T.has(t)).length*0.8));
+    const nr=m.np+m.nc,bad=m.nn.filter(t=>T.has(t)).reduce((q,t)=>q+(t==='rap'?(fast?1:P.naoRitmo):LEVE.includes(t)?P.leve:1),0);ad('nao',-Math.min(P.naoMax,bad*(P.naoBase+P.naoExtra*Math.min(1,3/Math.max(1,nr)))));
+    ad('perfil',Math.min(P.perfilMax,m.o.filter(t=>T.has(t)).length*P.perfilTag));
     // nota das reviews puxada para a média quando há pouca evidência
-    const ne=m.np+m.nc*.35;ad('nota',(m.sc-3.8)*1.8*ne/(ne+4));
-    if(m.ap)ad('ap',-0.6);
+    const ne=m.np+m.nc*P.clientes;ad('nota',(m.sc-3.8)*P.nota*ne/(ne+P.notaN));
+    if(m.ap)ad('ap',-P.aprox);
     // specs só de ficha são menos confiáveis que as medidas em laboratório
-    if(m.fi)ad('fi',-FICHA);
-    if(!m.br)ad('br',-3);
+    if(m.fi)ad('fi',-P.ficha);
+    if(!m.br)ad('br',-P.importado);
     // pouca evidência: reviews de clientes também contam, com peso menor
-    ad('np',-0.45*(4-Math.min(4,m.np+m.nc*.35)));
+    ad('np',-P.evid*(P.evidAlvo-Math.min(P.evidAlvo,m.np+m.nc*P.clientes)));
     return s;
   };
   let ranked=M.map(m=>({m,s:sm(m)})).filter(x=>x.s>-50).sort((p,q)=>q.s-p.s);
