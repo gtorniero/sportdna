@@ -66,3 +66,41 @@ Mesma checagem feita no Racket Match (lá, só 27% dos 1º lugares caíam dentro
 - **Resultado:** o 1º lugar fica dentro de todas as zonas em 500 de 500 perfis (100%), e o 1º do ranking de 13 tipos é sempre a prancha recomendada. As zonas são calculadas a partir da própria recomendada (litragem do motor para o tipo vencedor ± a margem do nível), então não há como o 1º contradizer o gráfico. **Motor sem mudança.**
 - **Para acompanhar (sem mudança agora):** o 2º e o 3º lugar caem dentro da faixa de litros do 1º em só 9% dos perfis (46 e 45 de 500), porque cada tipo tem a sua litragem; o relatório já mostra os litros de cada finalista. E o 1º lidera a prioridade nº 1 da pessoa (entre as 3 finalistas) em 48% dos perfis (242 de 500): o tipo pesa nível, estilo e onda antes das notas de prioridade, e a página 4 do PDF explica o que cada uma lidera e cede.
 - Distribuição do 1º nos 500 perfis: mini-malibu 127, soft 78, mid 77, groveler 46, longboard 45, fish 22, twin 23, longboard performance 22, pranchinha 28, evolution 20, softp 6, step-up 5, gun 1.
+
+## Rodada 5: pesos nomeados e travas de segurança (nov/2026)
+Feita a partir da auditoria do motor contra o guia `docs/modelo-recomendacao.md` (nível do RUN DNA). Sem casos novos.
+
+**Pesos nomeados (sem mudar resultado).** Todos os números do placar e da litragem saíram do `engine` para a tabela `PESOS` em `surf/index.html`, com a origem de cada grupo (regra, shaper, calibração dos 422 casos, teste de fogo). O cálculo do nível virou a função `habil()`. Saíram leituras de respostas que não existem mais no questionário (`ritmo`, `sens`, `remada`, `limit`, `pico`, `fundo`, `quilhas`, `acab`, `cor`). Prova: 3.000 perfis sorteados (semente 12345) deram pódio, porcentagens, litragem, medidas e ranking dos 13 tipos idênticos antes e depois.
+
+**Regras novas** (todas em `PESOS.regras`):
+- **Onda acima de 2,5 m, avançado, no mar** (fora "para dias pequenos"): gun e step-up sempre no pódio; no 1º lugar só gun, step-up ou pranchinha. A garantia sobe só o placar de quem entra no pódio (`ajustaPodio`).
+- **Prancha para dias grandes com onda de 1,5 m ou mais**, nível intermediário para cima: −14 para longboard, longboard performance, mini-malibu, mid, fish e groveler.
+- **Nível 0 ou 1** (Primeiras Ondas, Já Fica de Pé): −30 para pranchinha, step-up e gun depois de todas as outras regras, inclusive "quero mudar de estilo".
+- **"Sim, quero soft"**: soft ou softboard performance garantida no pódio. A pergunta agora só aparece para quem está no nível 0 ou 1 (o nível é calculado pelas respostas da etapa 2); antes aparecia para intermediários que surfam há pouco tempo e era ignorada.
+- **Aviso de onda acima do nível** na prévia, no relatório e no PDF: Primeiras Ondas a partir de 1 m, Já Fica de Pé a partir de 1,5 m, Intermediário acima de 2,5 m. Sem promessa de segurança.
+- **Condicionamento multiplica a litragem**: 1,08 (canso rápido), 1,03 (razoável), 1,0 (bom), 0,97 (muito bom), no lugar de +1,5 L só para quem cansa rápido. O "Ver um exemplo pronto" passou a ter condicionamento "bom" para manter o resultado publicado nas imagens e textos do site (Mid-length 96%, 37,6 L).
+- **Pranchinha até 6'4"**: não é mais esticada para caber a litragem; se a litragem pedida passa de 6'4" com até 25% a mais de largura e espessura (37 L), ela perde 0,5 ponto por % que falta.
+- **Textos**: saíram "não machuca", "a mais segura" e "com segurança".
+- **Reviews**: saíram as segundas reviews da Harley Ingleby HI4 e da Christenson Fish (mesmo modelo); a 7S Super Fish 3 passou de mini-malibu para fish (é uma fish de muito volume com rabeta swallow, segundo as fichas das lojas).
+
+**Antes × depois** (`node surf/tools/vies.mjs`, 3.000 perfis, semente 12345):
+
+| Pódios incoerentes | Antes | Depois |
+|---|---|---|
+| Nível ≤ 1 com pranchinha, step-up ou gun em 1º | 50 | 1 |
+| Nível ≤ 1 com pranchinha, step-up ou gun no pódio | 103 | 2 |
+| Onda > 2,5 m, avançado, mar: 1º não é gun nem step-up | 50 | 2 (pranchinha) |
+| Onda > 2,5 m, avançado, mar: sem gun e step-up no pódio | 53 | 0 |
+| Onda > 2,5 m, avançado, mar: fish ou longboard em 1º | 17 | 0 |
+| Dias grandes, onda ≥ 1,5 m: tipo de onda pequena em 1º | 39 | 11 |
+| Onda acima do nível sem aviso | 1.157 | 0 |
+| Pediu soft e o pódio não tem soft | 394 | 0 |
+| Pranchinha em 1º acima de 6'4" | 57 | 0 |
+| Primeiras Ondas com 1º abaixo de 0,7 L/kg | 34 | 32 |
+
+Os casos que sobram vêm de quem escolheu o estilo na pergunta "Para qual estilo você quer mudar?" (10 dos 11 de dias grandes, o único nível 1 com pranchinha em 1º, as evolution de 0,67–0,70 L/kg em Primeiras Ondas). Gun em 1º: 17 → 56; step-up: 25 → 36; pranchinha: 131 → 68. Os 13 tipos continuam aparecendo no top 3. Litros por kg do 1º (mediana) quase não mudaram: 0,96 · 0,69 · 0,53 · 0,49 · 0,49 do nível 0 ao 4.
+
+**Pendências**
+- **Recuperar a base dos 422 casos** (não está no repositório) e guardar em `docs/board/dados/casos.json`, com uma ferramenta de medição como a do RUN DNA (`run/tools/calibrar.mjs`): tipo certo em 1º e no top 3, MRR, erro de litragem, validação cruzada. As rodadas 2 a 5 ainda não foram medidas contra esses casos.
+- Validar com o Gustavo os pesos das travas, os limites de onda por nível e os multiplicadores de condicionamento.
+- Reviews: ainda nenhuma marca brasileira; Lost e DHD, parceiras do consultor, somam 5 das 26.
