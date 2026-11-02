@@ -1,4 +1,5 @@
 import StripeClient from 'stripe';
+import {sendReport} from './email.mjs';
 import {catalog,digest,verifyMP,stripeState,mpState} from './security.mjs';
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const tokenFormat=/^[0-9a-f]{64}$/;
@@ -18,9 +19,9 @@ async function mp(env,path,body,id) {
  if(!r.ok) fail(502,'O Mercado Pago não confirmou a operação. Tente consultar novamente.');
  return r.json();
 }
-async function readJson(request) {
- if(Number(request.headers.get('content-length')||0)>4096) fail(413,'Solicitação muito grande.');
- const body=await request.text();if(body.length>4096) fail(413,'Solicitação muito grande.');
+async function readJson(request,limit=4096) {
+ if(Number(request.headers.get('content-length')||0)>limit) fail(413,'Solicitação muito grande.');
+ const body=await request.text();if(body.length>limit) fail(413,'Solicitação muito grande.');
  try{return JSON.parse(body)}catch{fail(400,'Solicitação inválida.')}
 }
 async function rate(request,env) {
@@ -42,7 +43,7 @@ async function refresh(o,env,force=false) {
  const state=o.provider==='stripe'?stripeState(value,o):mpState(value,o);
  // Always fail closed; a stale paid flag must not survive a mismatched provider response.
  await env.DB.prepare('UPDATE orders SET state=?,checked_at=? WHERE id=?').bind(state,Date.now(),o.id).run();
- return {...o,state};
+ return {...o,state,recipientEmail:o.provider==='stripe'?value.customer_details?.email:value.payer?.email};
 }
 async function create(request,env) {
  const b=await readJson(request);
@@ -86,6 +87,17 @@ async function status(request,env,id) {
  if(!o||o.token_hash!==await digest(t)) fail(404,'Pedido não encontrado.');
  ready(env,o.provider);return publicOrder(await refresh(o,env));
 }
+async function emailReport(request,env,id) {
+ if(!uuid.test(id))fail(404,'Pedido não encontrado.');
+ const token=(request.headers.get('Authorization')||'').replace(/^Bearer /,'');
+ if(!tokenFormat.test(token))fail(401,'Acesso inválido.');
+ const o=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(id).first();
+ if(!o||o.token_hash!==await digest(token))fail(404,'Pedido não encontrado.');
+ ready(env,o.provider);
+ const confirmed=await refresh(o,env,true);
+ const body=await readJson(request,80000);
+ return sendReport(env,confirmed,body.report);
+}
 async function webhook(request,env,provider) {
  ready(env,provider);
  let id;
@@ -121,6 +133,7 @@ export default {async fetch(request,env) {
   if(request.method==='OPTIONS') return new Response(null,{status:204,headers:{...headers,'Access-Control-Allow-Methods':'POST, GET, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Authorization'}});
   let value;
   if(request.method==='POST'&&url.pathname==='/orders') value=await create(request,env);
+  else if(request.method==='POST'&&/^\/orders\/[^/]+\/email$/.test(url.pathname)) value=await emailReport(request,env,url.pathname.split('/')[2]);
   else if(request.method==='GET'&&url.pathname.startsWith('/orders/')) value=await status(request,env,url.pathname.slice(8));
   else if(request.method==='POST'&&url.pathname==='/webhooks/stripe') value=await webhook(request,env,'stripe');
   else if(request.method==='POST'&&url.pathname==='/webhooks/mercadopago') value=await webhook(request,env,'mercadopago');

@@ -24,12 +24,31 @@
    const order=await api('/orders/'+pending.id,{headers:{Authorization:'Bearer '+pending.token}});
    if(order.product!==pending.product||order.mode!=='test')throw new Error('Pedido incompatível com este relatório.');
    if(order.state==='paid'){
-    app.restore(pending.answers);app.unlock(pending.product);close();return true;
+    app.restore(pending.answers);app.unlock(pending.product);close();emailButton(pending);return true;
    }
    if(['invalid','revoked','expired'].includes(order.state)){message('O pagamento não foi aprovado. Nenhum acesso foi liberado.');return false}
    message('Aguardando confirmação do pagamento de teste…');
    if(dialog?.open)timer=setTimeout(check,6000);return false;
   }catch(e){message(e.message);return false}
+ }
+ function emailButton(pending){
+  if(!pending.product.endsWith('-report'))return;
+  const report=document.querySelector('#report');if(!report||report.hidden||document.querySelector('#sportdna-email-report'))return;
+  const button=document.createElement('button');button.id='sportdna-email-report';button.type='button';button.className='btn btn-go';button.textContent='Enviar relatório ao e-mail da compra';
+  const status=document.createElement('p');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+  // O botão fica fora do relatório para preservar o PDF e seu conteúdo original.
+  const actions=document.createElement('aside');actions.hidden=report.hidden;actions.append(button,status);report.after(actions);
+  new MutationObserver(()=>{actions.hidden=report.hidden}).observe(report,{attributes:true,attributeFilter:['hidden']});
+  button.onclick=()=>{
+   const body=panel('Enviar relatório por e-mail');
+   const notice=document.createElement('p');notice.textContent='Enviaremos o conteúdo deste relatório ao e-mail informado no pagamento.';body.append(notice);
+   const send=document.createElement('button');send.type='button';send.className='btn btn-go';send.textContent='Confirmar envio';body.append(send);
+   send.onclick=async()=>{
+    send.disabled=true;message('Enviando relatório…');
+    try{await api('/orders/'+pending.id+'/email',{method:'POST',headers:{Authorization:'Bearer '+pending.token},body:JSON.stringify({report:report.innerText})});status.textContent='Relatório enviado ao e-mail da compra. Confira também o spam.';}
+    catch(e){status.textContent=e.message}finally{message(status.textContent);send.disabled=false}
+   };
+  };
  }
  function pendingPanel(order){
   const body=panel('Confirmar pagamento de teste');
