@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Casa um feed de produtos de afiliado (CSV da Awin, .csv ou .csv.gz) com o CATALOG do RACKET DNA.
-   Uso: node apps/racket/tools/casar-feed.mjs feed.csv[.gz] [feed2.csv ...]
+   Uso: node racket/tools/casar-feed.mjs feed.csv[.gz] [feed2.csv ...]
    Saída (na pasta atual): feed-casado.json (proposta por raquete) e feed-casado.md (tabela para conferir à mão).
    Nada é gravado no app: a conferência é humana, e só depois a foto e o link entram no CATALOG. */
 import fs from 'node:fs';
@@ -81,7 +81,7 @@ function match(p, r, k) {
 }
 
 const files = process.argv.slice(2);
-if (!files.length) { console.error('Uso: node apps/racket/tools/casar-feed.mjs feed.csv[.gz] [...]'); process.exit(1) }
+if (!files.length) { console.error('Uso: node racket/tools/casar-feed.mjs feed.csv[.gz] [...]'); process.exit(1) }
 const products = files.flatMap(readFeed);
 const out = {}, lines = ['| # | Raquete | Status | Loja | Produto no feed | Preço | Foto |', '|---|---|---|---|---|---|---|'];
 for (const r of CATALOG) {

@@ -2,9 +2,9 @@
 
 Find your DNA. Testes que cruzam seu corpo, nível e estilo com a ficha técnica do equipamento e explicam o porquê de cada escolha.
 
-- **RACKET DNA** · raquete de tênis · `apps/racket/`
-- **SURF DNA** · prancha de surf · `apps/board/`
-- **RUN DNA** · tênis de corrida · `apps/tenis/`
+- **RACKET DNA** · raquete de tênis · `racket/`
+- **SURF DNA** · prancha de surf · `surf/`
+- **RUN DNA** · tênis de corrida · `run/`
 
 Mais 45 guias em `content/`, lidos pela home (`index.html`).
 
