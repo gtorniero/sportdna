@@ -289,8 +289,12 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 .specline{font-size:14px;color:var(--muted);margin:0}
 details.panel>summary.cmpsum{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px}
 details.panel>summary.cmpsum::-webkit-details-marker{display:none}
-details.panel>summary.cmpsum::after{content:'+';font-size:26px;font-weight:600;color:var(--pri)}details.panel[open]>summary.cmpsum::after{content:'−'}
-summary.cmpsum>span{display:flex;flex-direction:column;gap:4px}
+.cmpbox{border:2px solid var(--pri);background:color-mix(in srgb,var(--ball) 16%,var(--surface))}
+.vsbadge{flex:none;width:52px;height:52px;border-radius:50%;background:var(--pri);color:var(--pri-ink);display:grid;place-items:center;font-weight:800;font-size:17px;letter-spacing:.02em}
+.cmptxt{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}.cmptxt b{font-family:var(--f-display);font-size:20px}.cmptxt span{font-size:14px;color:var(--ink)}
+.cmpgo{flex:none;background:var(--ball);color:var(--ball-ink);font-weight:700;border-radius:999px;padding:10px 18px}
+details.cmpbox[open] .cmpgo{background:transparent;color:var(--muted);border:1px solid var(--line)}details.cmpbox[open] .cmpgo::before{content:'Fechar';}details.cmpbox[open] .cmpgo{font-size:0}details.cmpbox[open] .cmpgo::before{font-size:14px}
+@media (max-width:520px){summary.cmpsum{flex-wrap:wrap}.cmpgo{width:100%;text-align:center}.cmptxt b{font-size:18px}}
 details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:24px;padding:4px 0}
 .whypara{font-size:17px;line-height:1.55;margin:0;max-width:70ch}
 .herocol{display:flex;flex-direction:column;gap:18px;min-width:0}.homecard{min-height:0}
@@ -1409,7 +1413,7 @@ function renderReport(){
     h+=`<div class="panel"><div class="phead"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,3))}
       <p class="note">Cada ponto é uma raquete. A zona lima é onde peso e swingweight batem com o seu perfil; os pontos mais fortes são o seu top 3.</p></div>
     <div class="panel"><h3>Ranking dos 10 melhores</h3><div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div></div>
-    <details class="panel" id="cmp"><summary class="cmpsum"><span><b>Comparar duas raquetes</b><span class="note">Qualquer raquete do catálogo contra qualquer outra, com o DNA Score de cada uma para o seu perfil.</span></span></summary>
+    <details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Comparar duas raquetes</b><span>A recomendada contra a sua ou contra qualquer outra das ${RK.length}, atributo por atributo, com o DNA Score de cada uma.</span></span><span class="cmpgo" aria-hidden="true">Comparar</span></summary>
       <div class="cmpsel"><select id="cmpA" aria-label="Raquete A">${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Raquete B">${optList(c?c.id:ranked[1].r.id)}</select></div>
       <div id="cmpOut"></div></details>
     <div class="panel"><h3>Sugestão de corda e tensão</h3><p class="note" style="margin-top:-10px">Ponto de partida, não regra: corda é gosto pessoal. Use a sugestão no primeiro encordoamento e ajuste pela sensação.</p>
