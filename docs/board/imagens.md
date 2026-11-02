@@ -16,7 +16,7 @@ O app só mostra a ilustração dos tipos listados em `TIMG`; tipo sem imagem ca
 | Evolution / allround | evo | ok |
 | Fish | fish | ok (deitada; a v1 em pé está no backup) |
 | Groveler | grov | ok |
-| Biquilha moderna | twin | ok (refazer deitada, como as outras) |
+| Biquilha moderna | twin | ok (deitada; a v1 em pé está no backup) |
 | Softboard performance | softp | ok |
 | Step-up | step | ok (vista de cima mostra as quilhas; aprovada assim) |
 | Gun | gun | ok (plug do leash retocado: tinha um desenho que parecia logo) |
@@ -29,7 +29,7 @@ Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, incl
 - 2/nov/2026: gun com o plug do leash retocado (original em `imagens-originais/gun.jpg`).
 
 ## Próxima sessão (pendente)
-2. Se quiser, refazer a biquilha deitada.
+2. Ilustrações completas. Opcional: longp-round com quilhas claras.
 3. Variantes de rabeta completas. Opcional: refazer longp-round com quilhas claras (vieram pretas).
 4. Opcional: refazer a mini-malibu mais larga (ficou parecida com a mid-length).
 5. Salvar em `surf/img/tipos/`, incluir a chave em `TIMG` e mandar para revisão do Gustavo.
