@@ -30,4 +30,4 @@
 1. Revisar as regras do motor com o Gustavo (litragem por nível, tipo de prancha por estilo e onda).
 2. Catálogo com fotos: feed de Google Shopping das lojas de surf (Board's Point, Sea Club, Ukelele, Silver Surf, FM Surf) e API do Mercado Livre; mostrar "à venda dentro das suas faixas".
 3. Ferramenta grátis de litragem para SEO.
-4. Pix, login, banco de dados e domínio (matchlab.com.br/surf).
+4. Pix, login, banco de dados e domínio (sportdna.com.br/surf).
