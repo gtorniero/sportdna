@@ -564,7 +564,7 @@ details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:
       </div>
     </div>
     <div class="diffs">
-      <div class="diff"><h3>Índice Braço Seguro</h3><p>Rigidez, peso, balanço e a articulação que dói, avaliados antes de pagar.</p></div>
+      <div class="diff"><h3>Índice Conforto no braço</h3><p>Rigidez, peso, balanço e a articulação que dói, avaliados antes de pagar.</p></div>
       <div class="diff"><h3>Specs na régua</h3><p>Cada especificação contra o catálogo inteiro e a sua faixa ideal.</p></div>
       <div class="diff"><h3>Comparação com a sua</h3><p>A diferença traduzida em sensação: mais solta, mais macia, mais estável.</p></div>
       <div class="diff"><h3>Libragem na conta</h3><p>A tensão sai de uma conta que você vê, ajuste por ajuste, e compara com a que você usa hoje.</p></div>
@@ -587,9 +587,9 @@ details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:
       <h3 style="margin-bottom:-8px">Erros comuns na hora de escolher</h3>
       <div class="mists">
         <div class="mist"><h4>Comprar a raquete do ídolo</h4><p>Modelos de profissional têm mais peso e swingweight. Para quem joga duas vezes por semana, o golpe atrasa e o braço cansa.</p></div>
-        <div class="mist"><h4>Achar que mais leve poupa o braço</h4><p>Raquete leve demais passa mais choque para o cotovelo. O que protege é rigidez baixa com massa suficiente.</p></div>
-        <div class="mist"><h4>Errar o grip</h4><p>Cabo fino faz você apertar mais e sobrecarrega antebraço e cotovelo. Cabo grosso trava o punho.</p></div>
-        <div class="mist"><h4>Poliéster duro, tensão alta, troca atrasada</h4><p>A combinação mais comum por trás da dor no cotovelo. A corda perde elasticidade muito antes de arrebentar.</p></div>
+        <div class="mist"><h4>Achar que mais leve é mais confortável</h4><p>Raquete leve demais tende a passar mais choque para o cotovelo. Rigidez baixa com massa suficiente costuma ser mais confortável. Nenhuma raquete previne ou trata lesão.</p></div>
+        <div class="mist"><h4>Errar o grip</h4><p>Um cabo do tamanho da sua mão deixa você segurar sem apertar demais, o que costuma ser mais confortável. Cabo grosso demais trava o punho.</p></div>
+        <div class="mist"><h4>Poliéster duro, tensão alta, troca atrasada</h4><p>Combinação que costuma deixar o jogo mais desconfortável para o cotovelo. A corda perde elasticidade muito antes de arrebentar.</p></div>
         <div class="mist"><h4>Cabeça grande para “perdoar”</h4><p>Mais ponto doce também é mais saída de bola. Para quem já tem swing longo, a bola vai longa.</p></div>
         <div class="mist"><h4>Confiar na ficha da caixa</h4><p>A mesma raquete varia até 7 g e o swingweight nem aparece na embalagem. Aqui usamos specs medidas.</p></div>
       </div>
@@ -657,7 +657,7 @@ function toast(t){const d=document.createElement('div');d.className='toast';d.te
 /* ---------- Catálogo ----------
    wt = peso sem corda (g) · bal = balanço sem corda (mm) · sw = swingweight encordoado · ra = rigidez encordoada
    preço: ver PRECO, consultado em lojas brasileiras */
-const CATALOG=/*CATALOG*/[{"brand":"Babolat","model":"Pure Aero 98","year":2026,"head":98,"wt":305,"bal":315,"sw":322,"ra":66,"pat":"16x20","len":686,"tech":null},{"brand":"Babolat","model":"Pure Aero","year":2026,"head":100,"wt":300,"bal":320,"sw":320,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Aero Team","year":2026,"head":100,"wt":285,"bal":320,"sw":306,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Aero Lite","year":2026,"head":100,"wt":270,"bal":330,"sw":302,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive","year":2025,"head":100,"wt":300,"bal":320,"sw":317,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive Team","year":2025,"head":100,"wt":285,"bal":320,"sw":308,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive Lite","year":2025,"head":100,"wt":270,"bal":330,"sw":295,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Strike 100 16x19","year":2025,"head":100,"wt":300,"bal":321,"sw":324,"ra":63,"pat":"16x19","len":686,"tech":"SWX Pure Feel"},{"brand":"Babolat","model":"Pure Strike 98 16x19","year":2025,"head":98,"wt":305,"bal":321,"sw":330,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Boost Drive","year":2025,"head":105,"wt":260,"bal":343,"sw":312,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Speed MP","year":2026,"head":100,"wt":300,"bal":320,"sw":329,"ra":60,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Speed MP L","year":2026,"head":100,"wt":285,"bal":325,"sw":316,"ra":61,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Speed Pro","year":2026,"head":100,"wt":310,"bal":310,"sw":328,"ra":61,"pat":"18x20","len":686,"tech":null},{"brand":"Head","model":"Speed Team","year":2026,"head":105,"wt":270,"bal":325,"sw":303,"ra":62,"pat":"16x19","len":696,"tech":null},{"brand":"Head","model":"Gravity MP","year":2025,"head":100,"wt":295,"bal":326,"sw":323,"ra":57,"pat":"16x20","len":686,"tech":null},{"brand":"Head","model":"Gravity Pro","year":2025,"head":100,"wt":315,"bal":310,"sw":329,"ra":59,"pat":"18x20","len":686,"tech":null},{"brand":"Head","model":"Boom MP","year":2026,"head":100,"wt":295,"bal":315,"sw":316,"ra":61,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Boom Team","year":2026,"head":107,"wt":260,"bal":340,"sw":313,"ra":62,"pat":"16x19","len":696,"tech":null},{"brand":"Head","model":"Radical MP","year":2025,"head":98,"wt":300,"bal":320,"sw":323,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Extreme MP","year":2026,"head":100,"wt":300,"bal":321,"sw":318,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Extreme Team","year":2026,"head":105,"wt":265,"bal":336,"sw":305,"ra":62,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Prestige MP","year":2023,"head":99,"wt":310,"bal":320,"sw":327,"ra":62,"pat":"18x19","len":686,"tech":null},{"brand":"Head","model":"Instinct MP","year":2025,"head":100,"wt":300,"bal":320,"sw":317,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Ti S6","year":2004,"head":115,"wt":225,"bal":367,"sw":309,"ra":71,"pat":"16x19","len":705,"tech":null},{"brand":"ProKennex","model":"Ki Q+ Tour 300 g","year":2026,"head":98,"wt":300,"bal":315,"sw":329,"ra":63,"pat":"16x19","len":686,"tech":"Kinetic"},{"brand":"ProKennex","model":"Black Ace 300","year":2025,"head":100,"wt":300,"bal":321,"sw":324,"ra":55,"pat":"16x19","len":686,"tech":"Kinetic"},{"brand":"ProKennex","model":"Black Ace 105","year":2025,"head":105,"wt":300,"bal":320,"sw":322,"ra":62,"pat":"16x19","len":692,"tech":"Kinetic"},{"brand":"Volkl","model":"Vostra V1 Pro","year":2025,"head":99,"wt":302,"bal":325,"sw":321,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Volkl","model":"Vostra V8 300 g","year":2024,"head":100,"wt":300,"bal":320,"sw":323,"ra":67,"pat":"16x18","len":686,"tech":null},{"brand":"Volkl","model":"Vostra V1 MP","year":2024,"head":102,"wt":285,"bal":321,"sw":301,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Wilson","model":"Blade 98 16x19 v9","year":2024,"head":98,"wt":305,"bal":320,"sw":324,"ra":62,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Blade 100L v9","year":2024,"head":100,"wt":284,"bal":330,"sw":308,"ra":69,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Blade 104 v9","year":2024,"head":104,"wt":290,"bal":320,"sw":311,"ra":64,"pat":"16x19","len":699,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Clash 100 v3","year":2025,"head":100,"wt":295,"bal":310,"sw":311,"ra":54,"pat":"16x19","len":686,"tech":"FreeFlex"},{"brand":"Wilson","model":"Clash 100L v3","year":2025,"head":100,"wt":280,"bal":315,"sw":301,"ra":54,"pat":"16x19","len":686,"tech":"FreeFlex"},{"brand":"Wilson","model":"Clash 108 v3","year":2025,"head":108,"wt":280,"bal":334,"sw":312,"ra":58,"pat":"16x19","len":692,"tech":"FreeFlex"},{"brand":"Wilson","model":"Ultra 100 v5","year":2025,"head":100,"wt":300,"bal":321,"sw":322,"ra":67,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Ultra 100L v5","year":2025,"head":100,"wt":280,"bal":321,"sw":310,"ra":64,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Pro Staff 97 v14","year":2023,"head":97,"wt":315,"bal":310,"sw":325,"ra":66,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Shift 99 v1 300 g","year":2023,"head":99,"wt":300,"bal":315,"sw":317,"ra":67,"pat":"16x20","len":686,"tech":null},{"brand":"Wilson","model":"Burn 100 v5","year":2023,"head":100,"wt":300,"bal":321,"sw":320,"ra":72,"pat":"16x19","len":686,"tech":null},{"brand":"Yonex","model":"EZONE 98","year":2025,"head":98,"wt":305,"bal":315,"sw":320,"ra":63,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"EZONE 100","year":2025,"head":100,"wt":300,"bal":320,"sw":315,"ra":68,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"EZONE 100L","year":2025,"head":100,"wt":285,"bal":325,"sw":310,"ra":67,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"VCORE 98 8ª geração","year":2026,"head":98,"wt":305,"bal":316,"sw":321,"ra":63,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"VCORE 100 8ª geração","year":2026,"head":100,"wt":300,"bal":321,"sw":325,"ra":65,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"VCORE 100L 8ª geração","year":2026,"head":100,"wt":280,"bal":330,"sw":312,"ra":67,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"Percept 97","year":2023,"head":97,"wt":310,"bal":311,"sw":315,"ra":60,"pat":"16x19","len":686,"tech":"Servo Filter"},{"brand":"Yonex","model":"Percept 100","year":2023,"head":100,"wt":300,"bal":321,"sw":318,"ra":66,"pat":"16x19","len":686,"tech":"Servo Filter"},{"brand":"Prince","model":"Phantom 100X 290 g","year":2024,"head":100,"wt":290,"bal":321,"sw":317,"ra":59,"pat":"16x18","len":686,"tech":null},{"brand":"Prince","model":"Tour 100 290 g","year":2026,"head":100,"wt":290,"bal":321,"sw":316,"ra":64,"pat":"16x18","len":686,"tech":null},{"brand":"Prince","model":"Ripstick 100 300 g","year":2025,"head":100,"wt":300,"bal":321,"sw":326,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Tecnifibre","model":"TF40 305 16x19","year":2024,"head":98,"wt":305,"bal":321,"sw":321,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Tecnifibre","model":"TFight 300","year":2025,"head":100,"wt":300,"bal":321,"sw":318,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Dunlop","model":"CX 200","year":2024,"head":98,"wt":305,"bal":312,"sw":314,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Dunlop","model":"SX 300","year":2025,"head":100,"wt":300,"bal":321,"sw":318,"ra":69,"pat":"16x19","len":686,"tech":"Vibroshield"},{"brand":"Dunlop","model":"FX 500","year":2025,"head":100,"wt":300,"bal":321,"sw":320,"ra":68,"pat":"16x19","len":686,"tech":null},{"brand":"Dunlop","model":"CX 200 Tour 16x19","year":2024,"head":95,"wt":310,"bal":311,"sw":314,"ra":66,"pat":"16x19","len":686,"tech":null}];
+const CATALOG=/*CATALOG*/[{"brand":"Babolat","model":"Pure Aero 98","year":2026,"head":98,"wt":305,"bal":315,"sw":322,"ra":66,"pat":"16x20","len":686,"tech":null},{"brand":"Babolat","model":"Pure Aero","year":2026,"head":100,"wt":300,"bal":320,"sw":320,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Aero Team","year":2026,"head":100,"wt":285,"bal":320,"sw":306,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Aero Lite","year":2026,"head":100,"wt":270,"bal":330,"sw":302,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive","year":2025,"head":100,"wt":300,"bal":320,"sw":317,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive Team","year":2025,"head":100,"wt":285,"bal":320,"sw":308,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive Lite","year":2025,"head":100,"wt":270,"bal":330,"sw":295,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Strike 100 16x19","year":2025,"head":100,"wt":300,"bal":321,"sw":324,"ra":63,"pat":"16x19","len":686,"tech":"SWX Pure Feel"},{"brand":"Babolat","model":"Pure Strike 98 16x19","year":2025,"head":98,"wt":305,"bal":321,"sw":330,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Boost Drive","year":2025,"head":105,"wt":260,"bal":343,"sw":312,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Speed MP","year":2026,"head":100,"wt":300,"bal":320,"sw":329,"ra":60,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Speed MP L","year":2026,"head":100,"wt":285,"bal":325,"sw":316,"ra":61,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Speed Pro","year":2026,"head":100,"wt":310,"bal":310,"sw":328,"ra":61,"pat":"18x20","len":686,"tech":null},{"brand":"Head","model":"Speed Team","year":2026,"head":105,"wt":270,"bal":325,"sw":303,"ra":62,"pat":"16x19","len":696,"tech":null},{"brand":"Head","model":"Gravity MP","year":2025,"head":100,"wt":295,"bal":326,"sw":323,"ra":57,"pat":"16x20","len":686,"tech":null},{"brand":"Head","model":"Gravity Pro","year":2025,"head":100,"wt":315,"bal":310,"sw":329,"ra":59,"pat":"18x20","len":686,"tech":null},{"brand":"Head","model":"Boom MP","year":2026,"head":100,"wt":295,"bal":315,"sw":316,"ra":61,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Boom Team","year":2026,"head":107,"wt":260,"bal":340,"sw":313,"ra":62,"pat":"16x19","len":696,"tech":null},{"brand":"Head","model":"Radical MP","year":2025,"head":98,"wt":300,"bal":320,"sw":323,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Extreme MP","year":2026,"head":100,"wt":300,"bal":321,"sw":318,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Extreme Team","year":2026,"head":105,"wt":265,"bal":336,"sw":305,"ra":62,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Prestige MP","year":2023,"head":99,"wt":310,"bal":320,"sw":327,"ra":62,"pat":"18x19","len":686,"tech":null},{"brand":"Head","model":"Instinct MP","year":2025,"head":100,"wt":300,"bal":320,"sw":317,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Head","model":"Ti S6","year":2004,"head":115,"wt":225,"bal":367,"sw":309,"ra":71,"pat":"16x19","len":705,"tech":null},{"brand":"ProKennex","model":"Ki Q+ Tour 300 g","year":2026,"head":98,"wt":300,"bal":315,"sw":329,"ra":63,"pat":"16x19","len":686,"tech":"Kinetic"},{"brand":"ProKennex","model":"Black Ace 300","year":2025,"head":100,"wt":300,"bal":321,"sw":324,"ra":55,"pat":"16x19","len":686,"tech":"Kinetic"},{"brand":"ProKennex","model":"Black Ace 105","year":2025,"head":105,"wt":300,"bal":320,"sw":322,"ra":62,"pat":"16x19","len":692,"tech":"Kinetic"},{"brand":"Volkl","model":"Vostra V1 Pro","year":2025,"head":99,"wt":302,"bal":325,"sw":321,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Volkl","model":"Vostra V8 300 g","year":2024,"head":100,"wt":300,"bal":320,"sw":323,"ra":67,"pat":"16x18","len":686,"tech":null},{"brand":"Volkl","model":"Vostra V1 MP","year":2024,"head":102,"wt":285,"bal":321,"sw":301,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Wilson","model":"Blade 98 16x19 v9","year":2024,"head":98,"wt":305,"bal":320,"sw":324,"ra":62,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Blade 100L v9","year":2024,"head":100,"wt":284,"bal":330,"sw":308,"ra":69,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Blade 104 v9","year":2024,"head":104,"wt":290,"bal":320,"sw":311,"ra":64,"pat":"16x19","len":699,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Clash 100 v3","year":2025,"head":100,"wt":295,"bal":310,"sw":311,"ra":54,"pat":"16x19","len":686,"tech":"FreeFlex"},{"brand":"Wilson","model":"Clash 100L v3","year":2025,"head":100,"wt":280,"bal":315,"sw":301,"ra":54,"pat":"16x19","len":686,"tech":"FreeFlex"},{"brand":"Wilson","model":"Clash 108 v3","year":2025,"head":108,"wt":280,"bal":334,"sw":312,"ra":58,"pat":"16x19","len":692,"tech":"FreeFlex"},{"brand":"Wilson","model":"Ultra 100 v5","year":2025,"head":100,"wt":300,"bal":321,"sw":322,"ra":67,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Ultra 100L v5","year":2025,"head":100,"wt":280,"bal":321,"sw":310,"ra":64,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Pro Staff 97 v14","year":2023,"head":97,"wt":315,"bal":310,"sw":325,"ra":66,"pat":"16x19","len":686,"tech":"FORTYFIVE"},{"brand":"Wilson","model":"Shift 99 v1 300 g","year":2023,"head":99,"wt":300,"bal":315,"sw":317,"ra":67,"pat":"16x20","len":686,"tech":null},{"brand":"Wilson","model":"Burn 100 v5","year":2023,"head":100,"wt":300,"bal":321,"sw":320,"ra":72,"pat":"16x19","len":686,"tech":null},{"brand":"Yonex","model":"EZONE 98","year":2025,"head":98,"wt":305,"bal":315,"sw":320,"ra":63,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"EZONE 100","year":2025,"head":100,"wt":300,"bal":320,"sw":315,"ra":68,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"EZONE 100L","year":2025,"head":100,"wt":285,"bal":325,"sw":310,"ra":67,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"VCORE 98 8ª geração","year":2026,"head":98,"wt":305,"bal":316,"sw":321,"ra":63,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"VCORE 100 8ª geração","year":2026,"head":100,"wt":300,"bal":321,"sw":325,"ra":65,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"VCORE 100L 8ª geração","year":2026,"head":100,"wt":280,"bal":330,"sw":312,"ra":67,"pat":"16x19","len":686,"tech":"VDM"},{"brand":"Yonex","model":"Percept 97","year":2023,"head":97,"wt":310,"bal":311,"sw":315,"ra":60,"pat":"16x19","len":686,"tech":"Servo Filter"},{"brand":"Yonex","model":"Percept 100","year":2023,"head":100,"wt":300,"bal":321,"sw":318,"ra":66,"pat":"16x19","len":686,"tech":"Servo Filter"},{"brand":"Prince","model":"Phantom 100X 290 g","year":2024,"head":100,"wt":290,"bal":321,"sw":317,"ra":59,"pat":"16x18","len":686,"tech":null},{"brand":"Prince","model":"Tour 100 290 g","year":2026,"head":100,"wt":290,"bal":321,"sw":316,"ra":64,"pat":"16x18","len":686,"tech":null},{"brand":"Prince","model":"Ripstick 100 300 g","year":2025,"head":100,"wt":300,"bal":321,"sw":326,"ra":67,"pat":"16x19","len":686,"tech":null},{"brand":"Tecnifibre","model":"TF40 305 16x19","year":2024,"head":98,"wt":305,"bal":321,"sw":321,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Tecnifibre","model":"TFight 300","year":2025,"head":100,"wt":300,"bal":321,"sw":318,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Dunlop","model":"CX 200","year":2024,"head":98,"wt":305,"bal":312,"sw":314,"ra":64,"pat":"16x19","len":686,"tech":null},{"brand":"Dunlop","model":"SX 300","year":2025,"head":100,"wt":300,"bal":321,"sw":318,"ra":69,"pat":"16x19","len":686,"tech":"Vibroshield"},{"brand":"Dunlop","model":"FX 500","year":2025,"head":100,"wt":300,"bal":321,"sw":320,"ra":68,"pat":"16x19","len":686,"tech":null},{"brand":"Dunlop","model":"CX 200 Tour 16x19","year":2024,"head":95,"wt":310,"bal":311,"sw":314,"ra":66,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Evo Drive","year":2025,"head":104,"wt":270,"bal":320,"sw":302,"ra":68,"pat":"16x17","len":686,"tech":null},{"brand":"Babolat","model":"Boost Aero","year":2026,"head":102,"wt":260,"bal":340,"sw":312,"ra":65,"pat":"16x19","len":686,"tech":null},{"brand":"Babolat","model":"Pure Drive 107","year":2025,"head":107,"wt":285,"bal":320,"sw":307,"ra":69,"pat":"16x19","len":686,"tech":null},{"brand":"Wilson","model":"Ultra Power 100","year":null,"head":100,"wt":268,"bal":330,"sw":295,"ra":69,"pat":"16x20","len":686,"tech":null}];
 /* consenso de reviews (sem efeito halo): d = força relativa de cada atributo no perfil da raquete, o = aprovação geral, n = nº de reviews */
 const RV={"0":{"d":{"power":-0.383,"control":0.019,"spin":0.656,"comfort":-0.199,"maneuver":0.215,"stability":-0.308},"o":0.885,"n":3},"1":{"d":{"power":-0.006,"control":-0.518,"spin":1.108,"comfort":-1.214,"maneuver":0.788,"stability":-0.158},"o":0.547,"n":3},"2":{"d":{"power":0.601,"control":-0.735,"spin":1.365,"comfort":-1.248,"maneuver":1.987,"stability":-1.97},"o":-0.631,"n":1},"4":{"d":{"power":1.546,"control":-0.876,"spin":0.368,"comfort":-0.879,"maneuver":0.127,"stability":-0.285},"o":0.09,"n":4},"7":{"d":{"power":-0.16,"control":0.429,"spin":-0.121,"comfort":-0.204,"maneuver":-0.029,"stability":0.084},"o":-0.042,"n":2},"8":{"d":{"power":-0.118,"control":0.415,"spin":-0.309,"comfort":-0.296,"maneuver":-0.584,"stability":0.893},"o":0.175,"n":4},"10":{"d":{"power":-0.101,"control":-0.183,"spin":-0.566,"comfort":0.914,"maneuver":-0.828,"stability":0.765},"o":-0.194,"n":3},"12":{"d":{"power":-0.793,"control":1.76,"spin":-1.942,"comfort":0.567,"maneuver":-1.197,"stability":1.606},"o":0.064,"n":3},"14":{"d":{"power":-0.837,"control":0.469,"spin":-0.008,"comfort":0.427,"maneuver":-0.215,"stability":0.163},"o":0.144,"n":1},"15":{"d":{"power":-1.828,"control":1.824,"spin":-0.871,"comfort":0.657,"maneuver":-1.328,"stability":1.546},"o":-0.245,"n":3},"16":{"d":{"power":0.134,"control":-0.525,"spin":0.053,"comfort":0.864,"maneuver":1.151,"stability":-1.677},"o":0.139,"n":3},"17":{"d":{"power":-0.281,"control":0.554,"spin":-1.119,"comfort":0.015,"maneuver":0.832},"o":-0.015,"n":1},"18":{"d":{"power":-0.601,"control":0.763,"spin":-0.832,"comfort":0.116,"maneuver":-0.132,"stability":0.685},"o":-0.556,"n":3},"19":{"d":{"power":0.478,"control":-0.067,"spin":0.561,"comfort":-1.313,"maneuver":0.693,"stability":-0.352},"o":0.092,"n":4},"20":{"d":{"power":-0.137,"control":-1.693,"spin":0.526,"maneuver":0.512,"stability":0.792},"o":0.305,"n":2},"21":{"d":{"power":-0.384,"control":1.45,"spin":-1.277,"comfort":0.577,"maneuver":-1.207,"stability":0.841},"o":-0.006,"n":3},"22":{"d":{"power":0.743,"control":-0.367,"spin":0.094,"comfort":-0.297,"maneuver":0.787,"stability":-0.96},"o":-0.257,"n":2},"23":{"d":{"power":0.523,"control":-0.145,"spin":-0.729,"comfort":0.362,"maneuver":0.185,"stability":-0.195},"o":0.895,"n":3},"24":{"d":{"power":-1.37,"control":0.394,"spin":0.234,"comfort":1.066,"maneuver":-0.225,"stability":-0.1},"o":0.632,"n":3},"25":{"d":{"power":-0.882,"control":-0.247,"spin":-0.358,"comfort":1.539,"maneuver":0.182,"stability":-0.233},"o":-0.253,"n":2},"26":{"d":{"power":0.915,"control":-0.562,"spin":-0.998,"comfort":1.449,"maneuver":-1.437,"stability":0.632},"o":-0.062,"n":1},"27":{"d":{"power":0.214,"control":-0.106,"spin":-0.438,"comfort":0.799,"maneuver":0.523,"stability":-0.992},"o":-0.023,"n":1},"28":{"d":{"power":0.856,"control":-0.582,"spin":0.264,"comfort":-0.453,"maneuver":0.559,"stability":-0.643},"o":0.047,"n":3},"29":{"d":{"power":0.308,"control":-0.586,"spin":0.02,"comfort":-0.078,"maneuver":2.421,"stability":-2.085},"o":-0.78,"n":1},"30":{"d":{"power":-0.641,"control":0.843,"spin":-0.771,"comfort":0.811,"maneuver":-1.23,"stability":0.987},"o":-0.152,"n":5},"32":{"d":{"power":0.29,"control":-0.781,"spin":0.576,"comfort":-0.049,"maneuver":0.342,"stability":-0.379},"o":0.157,"n":2},"33":{"d":{"power":0.16,"control":-0.539,"spin":0.097,"comfort":0.937,"maneuver":0.401,"stability":-1.056},"o":-0.031,"n":3},"35":{"d":{"power":0.875,"control":-1.415,"spin":0.277,"comfort":1.07,"maneuver":0.997,"stability":-1.805},"o":-0.044,"n":2},"36":{"d":{"power":0.934,"control":-0.3,"spin":-0.615,"comfort":-0.642,"maneuver":0.101,"stability":0.521},"o":-0.743,"n":2},"38":{"d":{"power":-0.731,"control":1.334,"spin":-0.235,"comfort":-0.143,"maneuver":-1.682,"stability":1.457},"o":-0.03,"n":3},"39":{"d":{"power":-0.051,"control":-0.505,"spin":0.902,"comfort":-0.345,"maneuver":0.282,"stability":-0.283},"o":-0.065,"n":3},"40":{"d":{"power":1.128,"control":-0.693,"spin":-0.281,"comfort":-0.867,"maneuver":0.566,"stability":0.147},"o":-0.417,"n":4},"41":{"d":{"power":-0.164,"control":0.559,"spin":-0.362,"comfort":-0.021,"maneuver":-0.012,"stability":-0.0},"o":0.796,"n":2},"42":{"d":{"power":0.607,"control":-0.734,"spin":0.243,"comfort":-0.446,"maneuver":0.106,"stability":0.224},"o":0.12,"n":3},"44":{"d":{"power":1.011,"control":-0.888,"spin":0.792,"comfort":-0.718,"maneuver":-0.705,"stability":0.507},"o":0.063,"n":3},"45":{"d":{"power":1.183,"control":-1.531,"spin":0.849,"comfort":0.015,"maneuver":-0.736,"stability":0.219},"o":0.093,"n":3},"47":{"d":{"power":-0.383,"control":0.479,"spin":-0.431,"comfort":0.983,"maneuver":0.08,"stability":-0.729},"o":-0.312,"n":2},"48":{"d":{"power":-0.336,"control":-0.112,"spin":0.093,"comfort":-0.493,"maneuver":0.946,"stability":-0.099},"o":-0.162,"n":2},"49":{"d":{"power":-1.227,"control":0.316,"spin":0.041,"comfort":1.184,"maneuver":0.924,"stability":-1.239},"o":-0.204,"n":2},"50":{"d":{"power":-0.105,"control":-0.031,"spin":0.078,"comfort":0.243,"maneuver":0.348,"stability":-0.533},"o":0.49,"n":3},"51":{"d":{"power":1.038,"control":-1.217,"spin":0.284,"comfort":-0.02,"maneuver":-0.069,"stability":-0.015},"o":0.283,"n":2},"52":{"d":{"power":-0.778,"control":0.939,"spin":-0.054,"comfort":0.1,"maneuver":-0.584,"stability":0.377},"o":-0.109,"n":3},"53":{"d":{"power":-0.049,"control":-0.232,"spin":0.201,"comfort":-0.739,"maneuver":1.067,"stability":-0.248},"o":0.289,"n":2},"54":{"d":{"power":-1.075,"control":1.061,"spin":0.106,"comfort":-0.383,"maneuver":1.048,"stability":-0.758},"o":-0.358,"n":3},"55":{"d":{"power":0.097,"control":-0.568,"spin":0.938,"comfort":-1.173,"maneuver":0.185,"stability":0.52},"o":0.315,"n":2},"56":{"d":{"power":1.213,"control":-0.983,"spin":0.422,"comfort":-0.366,"maneuver":-0.233,"stability":-0.053},"o":0.424,"n":3},"57":{"d":{"power":-1.572,"control":0.865,"spin":-0.158,"comfort":0.576,"maneuver":0.505,"stability":-0.217},"o":-0.005,"n":1}};
 /* Tennis Warehouse: perfil médio dos testadores (d), nº de avaliações (n) e aprovação corrigida pela régua de cada testador (a) */
@@ -669,10 +669,107 @@ const proLine=(r,n=4)=>{const x=PROS[r.id];if(!x)return '';return `<p class="pro
 /* preço novo em lojas brasileiras (R$, preço cheio no cartão, out/2026): menor e maior oferta e nº de lojas.
    Sem loja no Brasil (n:0): estimativa de importada, preço de referência nos EUA (usd) × 5,20 */
 const DOLAR=5.2;
-const PRECO=/*PRECO*/{"0":{"min":2050,"max":2450,"n":2},"1":{"min":1800,"max":2230,"n":3},"2":{"min":2300,"max":2350,"n":3},"3":{"min":2140,"max":2300,"n":3},"4":{"min":1930,"max":2090,"n":3},"5":{"min":2000,"max":2100,"n":2},"6":{"min":2100,"max":2100,"n":2},"7":{"min":1660,"max":1850,"n":3},"8":{"min":1700,"max":1900,"n":3},"9":{"min":940,"max":1000,"n":2},"10":{"min":1860,"max":2200,"n":4},"11":{"min":2150,"max":2150,"n":2},"12":{"min":1900,"max":2300,"n":2},"13":{"min":1240,"max":1240,"n":0,"usd":239},"14":{"min":1740,"max":2200,"n":4},"15":{"min":1990,"max":2300,"n":2},"16":{"min":1670,"max":1990,"n":3},"17":{"min":1240,"max":1240,"n":0,"usd":239},"18":{"min":2100,"max":2200,"n":3},"19":{"min":2200,"max":2200,"n":2},"20":{"min":2050,"max":2050,"n":2},"21":{"min":1890,"max":2340,"n":3},"22":{"min":1700,"max":1700,"n":2},"23":{"min":920,"max":1330,"n":2},"24":{"min":1290,"max":1290,"n":0,"usd":249},"25":{"min":1950,"max":2200,"n":2},"26":{"min":1290,"max":1290,"n":0,"usd":249},"27":{"min":1400,"max":1400,"n":0,"usd":270},"28":{"min":1920,"max":2130,"n":1},"29":{"min":1050,"max":1050,"n":0,"usd":202},"30":{"min":1730,"max":1800,"n":3},"31":{"min":1700,"max":1800,"n":2},"32":{"min":1400,"max":1700,"n":3},"33":{"min":1620,"max":1800,"n":3},"34":{"min":1680,"max":1830,"n":2},"35":{"min":1160,"max":1160,"n":0,"usd":224},"36":{"min":1670,"max":2100,"n":5},"37":{"min":1800,"max":2200,"n":4},"38":{"min":1550,"max":2100,"n":5},"39":{"min":1490,"max":1800,"n":1},"40":{"min":1770,"max":1770,"n":1},"41":{"min":2200,"max":2500,"n":4},"42":{"min":2200,"max":2500,"n":4},"43":{"min":2400,"max":2400,"n":1},"44":{"min":2250,"max":2680,"n":2},"45":{"min":2490,"max":2500,"n":2},"46":{"min":2670,"max":2670,"n":1},"47":{"min":2000,"max":2300,"n":3},"48":{"min":1600,"max":2350,"n":3},"49":{"min":1670,"max":2000,"n":2},"50":{"min":1890,"max":1890,"n":1},"51":{"min":1790,"max":1790,"n":1},"52":{"min":1700,"max":1880,"n":2},"53":{"min":2000,"max":2300,"n":2},"54":{"min":2030,"max":2030,"n":1},"55":{"min":1890,"max":2200,"n":3},"56":{"min":1900,"max":2100,"n":3},"57":{"min":1890,"max":1900,"n":2}};
+const PRECO=/*PRECO*/{"0":{"min":2050,"max":2450,"n":2},"1":{"min":1800,"max":2230,"n":3},"2":{"min":2300,"max":2350,"n":3},"3":{"min":2140,"max":2300,"n":3},"4":{"min":1930,"max":2090,"n":3},"5":{"min":2000,"max":2100,"n":2},"6":{"min":2100,"max":2100,"n":2},"7":{"min":1660,"max":1850,"n":3},"8":{"min":1700,"max":1900,"n":3},"9":{"min":940,"max":1000,"n":2},"10":{"min":1860,"max":2200,"n":4},"11":{"min":2150,"max":2150,"n":2},"12":{"min":1900,"max":2300,"n":2},"13":{"min":1240,"max":1240,"n":0,"usd":239},"14":{"min":1740,"max":2200,"n":4},"15":{"min":1990,"max":2300,"n":2},"16":{"min":1670,"max":1990,"n":3},"17":{"min":1240,"max":1240,"n":0,"usd":239},"18":{"min":2100,"max":2200,"n":3},"19":{"min":2200,"max":2200,"n":2},"20":{"min":2050,"max":2050,"n":2},"21":{"min":1890,"max":2340,"n":3},"22":{"min":1700,"max":1700,"n":2},"23":{"min":920,"max":1330,"n":2},"24":{"min":1290,"max":1290,"n":0,"usd":249},"25":{"min":1950,"max":2200,"n":2},"26":{"min":1290,"max":1290,"n":0,"usd":249},"27":{"min":1400,"max":1400,"n":0,"usd":270},"28":{"min":1920,"max":2130,"n":1},"29":{"min":1050,"max":1050,"n":0,"usd":202},"30":{"min":1730,"max":1800,"n":3},"31":{"min":1700,"max":1800,"n":2},"32":{"min":1400,"max":1700,"n":3},"33":{"min":1620,"max":1800,"n":3},"34":{"min":1680,"max":1830,"n":2},"35":{"min":1160,"max":1160,"n":0,"usd":224},"36":{"min":1670,"max":2100,"n":5},"37":{"min":1800,"max":2200,"n":4},"38":{"min":1550,"max":2100,"n":5},"39":{"min":1490,"max":1800,"n":1},"40":{"min":1770,"max":1770,"n":1},"41":{"min":2200,"max":2500,"n":4},"42":{"min":2200,"max":2500,"n":4},"43":{"min":2400,"max":2400,"n":1},"44":{"min":2250,"max":2680,"n":2},"45":{"min":2490,"max":2500,"n":2},"46":{"min":2670,"max":2670,"n":1},"47":{"min":2000,"max":2300,"n":3},"48":{"min":1600,"max":2350,"n":3},"49":{"min":1670,"max":2000,"n":2},"50":{"min":1890,"max":1890,"n":1},"51":{"min":1790,"max":1790,"n":1},"52":{"min":1700,"max":1880,"n":2},"53":{"min":2000,"max":2300,"n":2},"54":{"min":2030,"max":2030,"n":1},"55":{"min":1890,"max":2200,"n":3},"56":{"min":1900,"max":2100,"n":3},"57":{"min":1890,"max":1900,"n":2},"58":{"min":1200,"max":1350,"n":2},"59":{"min":1170,"max":1300,"n":2},"60":{"min":1530,"max":2200,"n":3},"61":{"min":900,"max":900,"n":1}};
+/* ---------- Pesos do motor ----------
+   Todos os pesos de target, targetWeight, zones, penalties, score e compute. Origem por grupo:
+   regra = regra de produto; reviews = calibrado contra reviews/testadores TW (docs/racket/calibracao-reviews.md);
+   ciência = com base em literatura (fraca, ver o doc); segurança = contraindicação. Ver rodadas no doc. */
+const PESOS={
+  /* Alvo dos 6 índices (target). Origem: regra (rodadas 1 a 3); a compressão é da rodada 2.
+     Calibrado na rodada 7 (calibrar.mjs --ajustar): nivel.adv.control, idade.seniorAlvo, estilo.agg.power, saque.mix.spin, quer.control, quer.comfort */
+  alvo:{
+    base:5,
+    nivel:{beg:{power:2},adv:{control:1.125,stability:2}, /* rodada 7: adv.control 1,5 → 1,125 */
+    adv_int:{control:.8,stability:1}},
+    forca:{low:{power:1.5,maneuver:2},high:{stability:1.5},vhigh:{stability:2.5,control:.5}},
+    folego:{'0':{maneuver:1.5,power:.5},'3':{stability:.5}},
+    swing:{short:{power:1.5},long:{power:-1.5,control:1.5}},
+    erro:{short:{power:1.5},long:{power:-1.5,control:2},frame:{stability:2.5},net:{spin:1}},
+    spin:{low:3,mid:5.5,high:8.5,semResposta:5,erroNaRede:1},
+    dor:{past:{comfort:2},now:{comfort:4}},
+    articulacao:{elbow:{comfort:1},shoulder:{maneuver:1.5,power:1},wrist:{comfort:.5,maneuver:1}},
+    idade:{padrao:35,maduro:45,maduroAlvo:{comfort:1.5},senior:55,seniorAlvo:{maneuver:2.25},jovem:16,jovemAlvo:{maneuver:1}},
+    estilo:{doisEstilos:.7,keep:{power:1,comfort:.5,maneuver:.5},cnt:{control:1},agg:{power:1.125,spin:.5},all:{maneuver:1.5},netc:{maneuver:1,stability:.3},net:{maneuver:1.5,stability:.5}},
+    umaMao:{stability:.8,control:.4},
+    sensacao:{heavy:{maneuver:2.5},light:{stability:2}},
+    dorForte:{comfort:1.5},emTratamento:{comfort:1},
+    anos:{'0':{power:1},'10':{control:.5}},
+    saque:{flat:{stability:1,power:.5},kick:{spin:1},weak:{power:1,maneuver:.5},push:{power:1,maneuver:.5},mix:{spin:1,stability:.5}},
+    adversario:{heavy:{stability:1.5},soft:{power:1}},
+    motivo:{pain:{comfort:1.5},level:{control:.5,stability:.5}},
+    quer:{power:2,control:3.125,comfort:5,spin:1.5,maneuver:2.5,stability:2.5}, /* rodada 7: control 2,5 → 3,125; comfort 2,5 → 5 */
+    querControleTiraPotencia:1.5,querPotenciaTiraControle:1,
+    /* comprime para a faixa que as raquetes alcançam: evita alvos 10/1 que deixam todas igualmente longe */
+    compressao:.6,min:1.5,max:9.2
+  },
+  /* Peso ideal sem corda, em gramas (targetWeight). Origem: regra; piso adulto da rodada 5 */
+  peso:{
+    nivel:{beg:270,int:292,adv_int:300,adv:310},padrao:292,
+    forca:{low:-12,high:8,vhigh:12},senior:-10,jovem:-15,
+    folego:{'0':-8,'1':-4,'3':3},
+    altura:{ref:175,porCm:.25,min:-8,max:6},corpo:{ref:75,porKg:.15,min:-6,max:5},
+    ombro:-8,umaMaoAvancado:3,
+    sensacaoPesada:-10,sensacaoLeve:8,
+    dorHojeMin:280,adultoMin:258,idadeAdulto:14
+  },
+  /* Faixas ideais do mapa e das barras (zones e alargamento em compute). Origem: regra (rodadas 3 e 4) */
+  zona:{
+    swBase:305,swFaixa:30,swUmaMao:5,swTeto:{beg:312,int:320,adv_int:326},swTetoPadrao:336,swOmbro:318,swAtual:4,
+    raMax:{forte:60,hojeCotovelo:62,hoje:63,passado:66,nenhuma:72},raMin:54,raLargura:9,
+    cabecaPref:{'98':[95,98],'100':[99,101],'104':[102,107]},cabecaNivel:{beg:[100,107],adv:[97,100],padrao:[98,102]},
+    balMax:{punho:325,rede:325,padrao:335},balLargura:14,
+    peso:8,sw:6,
+    alargar:{vezes:20,minimo:3,peso:2,sw:1}
+  },
+  /* Penalidades (penalties). Origem: regra + segurança; rigidez da rodada 3; borda da zona da rodada 4 */
+  pen:{
+    pesoTolerancia:8,pesoLonge:15,pesoAcimaLonge:.7,pesoDivisor:3,pesoDivisorBraco:6,pesoBorda:1.2,
+    bracoIndiceMin:8,
+    swBorda:1.2,
+    raHoje:{limCotovelo:62,limOutras:65,cotovelo:3,semArticulacao:2.5,outras:1.8}, /* rodada 6: 2,2/1,8/1,2 → 3/2,5/1,8, para o orçamento não empurrar quadro rígido */
+    raPassado:{lim:66,peso:1.6},
+    raForte:{lim:60,peso:1.5}, /* penalidade suave: a evidência que liga RA a cotovelo é fraca (docs/racket/ciencia.md, tema 1); sem bloqueio */
+    bolaPesada:{sw:315,peso:.3},
+    punho:{bal:330,peso:.8}, /* mantido: ciencia.md, tema 8 */
+    ombro:{sw:320,peso:.6}, /* mantido: evidência fraca, ciencia.md tema 8 */
+    cabecaPreferida:{fora98:5,tolerancia100:2,desconto100:1,peso100:1.5,fora104:5},
+    cabecaIniciante:6,cabecaAvancado:6,cabeca107:4,cabeca110:15,
+    umaMao:{sw:312,peso:.25,cotoveloPeso:295,cotovelo:.3,bal:325,balPeso:.15},
+    atualPesada:{margem:8,peso:.7,pesoBraco:.35},atualLeve:.6,
+    /* orçamento progressivo, no modelo do RUN DNA (rodada 6): até 8% acima é leve; daí em diante 18 + 10 a cada 10% */
+    orcamento:{tolerancia:.08,leve:1.5,acima:18,porFaixa:10,faixa:.1},
+    /* rodada 6, segurança: braço com dor e raquete muito leve; força baixa ou 60+ com raquete pesada */
+    bracoLeve:{g:275,base:6,porG:.6},
+    pesadaFraco:{g:310,idade:60,base:8,porG:1},
+    dificilAchar:12,poucaOferta:2, /* rodada 6: era 6 */
+    salto:{g:35,peso:.2},
+    naoGanha:3
+  },
+  /* Distância ao alvo e bônus (score). Origem: reviews (rodadas 2 e 3); aprovacaoNivel.int calibrado na rodada 7 (1 → 1,25) */
+  placar:{
+    pedido:1.5,alvoAlto:5.5,alvoAltoDiv:2,
+    /* bônus de Match para quem cabe no orçamento (rodada 6) */
+    dentroOrcamento:3,
+    aprovacaoNivel:{adv:2.5,adv_int:2,int:1.25,beg:.6},aprovacaoPadrao:1,aprovacaoTeto:8,
+    braco:{centro:6,hojeCotovelo:.8,hoje:.4,hojeMin:-2.5,hojeMaxCotovelo:2.5,hojeMax:1.5,passado:.4,passadoMin:-1,passadoMax:1.5}
+  },
+  /* Match Score (compute). Origem: rodadas 3 a 5 */
+  match:{
+    base:93,porDist:11,distRuim:1.3,distRuimPeso:3,pen:.8,aprovacaoAlcance:1.2,zona:4,min:30,max:98,
+    promoverZona:10,
+    escalaTopo:96,escalaPasso:.8,escalaRef:92,escalaRefPeso:.3,escalaMax:97,
+    confBase:68,confPorResposta:1,confGap:.8,confMin:70,confMax:97
+  },
+  /* Aprovação dos testadores (r.q). Origem: reviews (rodada 2); versão leve sem TW herda parte da do modelo-pai (rodada 6) */
+  aprovacao:{tw:15,twTeto:6,twN:12,sites:2.5,sitesTeto:3,herdaPai:.7},
+  /* Índices: tecnologia de amortecimento vale pouco (rodada 6: conforto .08 → .03, braço .12 → .04; a diferença do braço foi para a massa, .24 → .32). Ciência: ciencia.md, temas 2 e 4 */
+  indice:{tecConforto:.03,tecBraco:.04,massaBraco:.32},
+  /* Menores de 14 anos: o catálogo é adulto (rodada 6) */
+  juvenil:{idade:14}
+};
 const RK=CATALOG.map((a,i)=>{const p=PRECO[i];return {...a,id:i,name:a.brand+' '+a.model,len:a.len||685,price:p?[p.min,p.max]:null,lojas:p?p.n:0,usd:p&&p.usd||0}});
 const precoTxt=(r,sep=' a ')=>!r.price?'sem preço':r.usd?`cerca de R$ ${fmt(r.price[0])} importada (US$ ${r.usd} × ${DOLAR.toFixed(2).replace('.',',')})`:`R$ ${fmt(r.price[0])}${r.price[1]>r.price[0]?sep+fmt(r.price[1]):''}`;
-const OPEN={'16x19':1,'16x18':1.05,'16x20':.8,'18x20':.3,'18x19':.45,'16x16':1.1,'14x18':1.15};
+const OPEN={'16x19':1,'16x17':1.1,'16x18':1.05,'16x20':.8,'18x20':.3,'18x19':.45,'16x16':1.1,'14x18':1.15};
 const SPINY=/aero|extreme|vcore|shift|sx ?300|ripstick|phantom 100x/i;
 const KEYS=['power','control','spin','comfort','maneuver','stability'];
 const LBL={power:'Potência',control:'Controle',spin:'Spin',comfort:'Conforto',maneuver:'Manobra',stability:'Estabilidade'};
@@ -684,10 +781,10 @@ function idx(r){
     power:t(.46*h+.24*s+.22*w+.08*Math.min(op,1)+(r.len>690?.06:0)),
     control:t(.36*(1-h)+.1*(1-s)+.26*m+.28*(1-op*.75)),
     spin:t(.5*op+.1*h+.12*w+.22*sp+.06*hl),
-    comfort:t(.5*(1-s)+.18*w+.12*m+.12*hl+.08*tech),
+    comfort:t(.5*(1-s)+.18*w+.12*m+.12*hl+PESOS.indice.tecConforto*tech),
     maneuver:t(.6*(1-w)+.25*(1-m)+.15*hl),
     stability:t(.68*w+.32*m),
-    arm:t(.56*(1-s)+.24*cl((r.wt-255)/55,0,1)+.08*hl+.12*tech)
+    arm:t(.56*(1-s)+PESOS.indice.massaBraco*cl((r.wt-255)/55,0,1)+.08*hl+PESOS.indice.tecBraco*tech)
   };
   const tw=TWD[r.id],rv=RV[r.id];
   if(tw){const lam=Math.min(.7,.25+.03*tw.n);const mu=KEYS.reduce((a,k)=>a+ix[k],0)/6;
@@ -697,7 +794,10 @@ function idx(r){
   return ix;
 }
 const brTag=r=>r.br==='d'?'<span class="brtag d">Difícil de achar no Brasil</span>':r.br==='p'?'<span class="brtag p">Pouca oferta no Brasil</span>':'';
-RK.forEach(r=>{r.br=r.lojas===0?'d':r.lojas===1?'p':'';r.ix=idx(r);const v=RV[r.id],t=TWD[r.id];r.ntw=t?t.n:0;r.nrev=(v?v.n:0)+r.ntw;r.q=t&&t.a!=null?cl(t.a*15,-6,6)*Math.min(1,t.n/12):v&&v.o!=null?cl(v.o*2.5,-3,3):0});
+RK.forEach(r=>{r.br=r.lojas===0?'d':r.lojas===1?'p':'';r.ix=idx(r);const v=RV[r.id],t=TWD[r.id];r.ntw=t?t.n:0;r.nrev=(v?v.n:0)+r.ntw;const G=PESOS.aprovacao;r.q=t&&t.a!=null?cl(t.a*G.tw,-G.twTeto,G.twTeto)*Math.min(1,t.n/G.twN):v&&v.o!=null?cl(v.o*G.sites,-G.sitesTeto,G.sitesTeto):0});
+/* versões leves sem review da TW herdam parte da aprovação do modelo-pai (mesma marca) */
+const PAI={'Pure Aero Lite':'Pure Aero','Pure Drive Team':'Pure Drive','Pure Drive Lite':'Pure Drive','Speed MP L':'Speed MP','Speed Team':'Speed MP','Boom Team':'Boom MP','Extreme Team':'Extreme MP','Blade 100L v9':'Blade 98 16x19 v9','Clash 100L v3':'Clash 100 v3','Clash 108 v3':'Clash 100 v3','Ultra 100L v5':'Ultra 100 v5','EZONE 100L':'EZONE 100','VCORE 100L 8ª geração':'VCORE 100 8ª geração','Pure Drive 107':'Pure Drive'};
+RK.forEach(r=>{const v=RV[r.id];if(TWD[r.id]||(v&&v.o!=null))return;const pai=RK.find(x=>x.brand===r.brand&&x.model===PAI[r.model]);if(pai&&TWD[pai.id]){r.q=Math.round(pai.q*PESOS.aprovacao.herdaPai*100)/100;r.qPai=pai.id}});
 const RANGE=k=>{const v=RK.map(r=>r[k]);return [Math.min(...v),Math.max(...v)]};
 
 document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if(!b)return;const t=b.dataset.back;if(t==='quiz'){step=STEPS.length-1;show('quiz');renderQs()}else{if(t==='preview')renderPreview();show(t)}});
@@ -706,23 +806,23 @@ const GLOS={
  wt:['Peso sem corda','Quanto a raquete pesa de fábrica, sem corda e sem overgrip. A corda soma cerca de 15 a 18 g. Mais peso dá estabilidade e bola mais pesada; menos peso facilita manusear, mas passa mais choque para o braço.'],
  sw:['Swingweight','O quanto a raquete “pesa” quando você balança. É medido em laboratório e é o que você sente no golpe, mais do que o peso na balança. Até 310: solta e rápida. 315 a 325: equilíbrio. Acima de 325: bola mais pesada e estável, mas cansa e pode chegar atrasado.'],
  bal:['Balanço','Ponto de equilíbrio medido a partir do fim do cabo, em mm. Abaixo de uns 320 mm (sem corda) a raquete é leve na cabeça: rápida na rede e mais controle. Acima, pesada na cabeça: potência fácil, mas exige mais do punho.'],
- ra:['Rigidez (RA)','O quanto o quadro dobra no impacto, numa escala de cerca de 55 a 72. Mais rígida devolve mais energia, logo mais potência, e também mais vibração ao braço. Até 63 costuma ser considerada amigável ao braço.'],
+ ra:['Rigidez (RA)','O quanto o quadro dobra no impacto, numa escala de cerca de 55 a 72. Mais rígida devolve mais energia, logo mais potência. Até 63 costuma ser descrita como mais confortável para quem sente o braço; a ligação com lesão não é comprovada.'],
  head:['Cabeça','Área do aro em polegadas quadradas (pol²). 97 a 98: mais precisão. 100: o equilíbrio da maioria. 102 ou mais: ponto doce maior e mais saída de bola.'],
  pat:['Padrão de cordas','Verticais × horizontais. Aberto (16×19, 16×18) morde mais a bola: mais spin e saída de bola. Fechado (18×20) dá mais controle e a corda dura mais.'],
  power:['Potência','Facilidade de a bola sair com profundidade sem você acelerar mais. Vem de cabeça maior, quadro mais rígido e swingweight mais alto.'],
  control:['Controle','Previsibilidade da bola: ela vai onde você mira. Vem de cabeça menor, padrão mais fechado, quadro mais flexível e mais massa.'],
  spin:['Spin','Facilidade de gerar efeito. Vem de padrão aberto, cabeça maior e swingweight suficiente para acelerar a bola.'],
- comfort:['Conforto','O quanto de vibração e choque chega à mão. Vem de quadro flexível, massa suficiente, cabeça leve e tecnologias de amortecimento.'],
+ comfort:['Conforto','O quanto a raquete tende a ser confortável na batida. Vem sobretudo de quadro flexível, massa suficiente e cabeça leve; tecnologias de amortecimento contam pouco.'],
  maneuver:['Manobra','Facilidade de mover a raquete rápido: na rede, na devolução e no fim do jogo. Vem de swingweight e peso mais baixos.'],
  stability:['Estabilidade','O quanto a raquete segura contra bola pesada e batida fora do centro sem torcer. Vem de mais massa e swingweight.'],
- arm:['Braço Seguro','Índice nosso, de 0 a 10, que combina rigidez, peso, balanço e tecnologia de amortecimento. Quanto maior, menos vibração e choque chegam a cotovelo, ombro e punho.'],
+ arm:['Conforto no braço','Índice nosso, de 0 a 10, que combina rigidez, peso e balanço (tecnologia de amortecimento conta pouco). Quanto maior, mais confortável a raquete tende a ser para cotovelo, ombro e punho. Nenhuma raquete previne ou trata lesão; se a dor persistir, procure um médico ou fisioterapeuta.'],
  fit:['DNA Score','Nota de 0 a 100% que mede o encaixe da raquete no seu jogo, de 0 a 100%. Mede a distância entre os índices da raquete e o seu perfil ideal e desconta penalidades: peso fora da faixa, rigidez para quem tem dor, cabeça, orçamento e o que você quer ganhar na troca.'],
  tension:['Tensão (libragem)','Força com que a corda é esticada, em libras (lb). Mais baixa: mais potência e conforto, menos controle. Mais alta: mais controle, bola mais curta e mais vibração. Poliéster costuma ir 2 a 4 lb abaixo do multifilamento.'],
  ntrp:['NTRP','Escala americana de nível, de 1.0 a 7.0, usada no mundo todo. 2.5: troca bola devagar. 3.0: consistência em ritmo médio. 3.5: direciona a bola e começa a subir à rede. 4.0: golpes confiáveis e variação de spin. 4.5 ou mais: potência e spin como arma, saque forte. Na dúvida, escolha o nível de baixo.'],
  swing:['Swing','O tamanho e a velocidade do movimento até a bola. Curto e compacto: a raquete anda pouco antes de bater, comum em quem bloqueia ou joga na rede. Longo e rápido: preparação ampla e aceleração forte, como nos profissionais.'],
  rev:['Base em reviews','Além das specs medidas, cada raquete com reviews publicadas em sites globais (Tennis Warehouse, Tennisnerd, Tennis Companion e outros) tem o perfil ajustado pelo consenso dos testadores. Usamos o formato do perfil, onde ela é forte ou fraca, e não a nota absoluta, porque testador que gosta de uma raquete tende a dar nota alta em tudo. Na Tennis Warehouse usamos a nota individual de cada testador (até 20 por raquete, somando gerações) e corrigimos pela régua de cada um: tem testador que dá 9 para tudo. A aprovação geral entra no DNA Score com no máximo 6 pontos, porque, nos nossos testes, ela ajuda a prever se a raquete vai agradar.'],
  pro:['Raquete de profissional','Os profissionais assinam uma linha, mas quase sempre jogam com versões customizadas: mais pesadas, com chumbo, às vezes um molde antigo pintado como o modelo atual. O modelo da loja é o mais próximo, não o mesmo. Use como referência de estilo, não como prova de que serve para você.'],
- grip:['Grip','A espessura do cabo, de L1 a L5 (4 1/8 a 4 5/8 polegadas). Cabo fino demais faz você apertar mais e sobrecarrega antebraço e cotovelo; grosso demais trava o punho.']
+ grip:['Grip','A espessura do cabo, de L1 a L5 (4 1/8 a 4 5/8 polegadas). Um cabo do tamanho da mão deixa você segurar sem apertar demais, o que costuma ser mais confortável; grosso demais trava o punho.']
 };
 const gl=(k,t)=>`<button type="button" class="gl" data-g="${k}">${t||GLOS[k][0]}</button>`;
 document.addEventListener('click',e=>{const b=e.target.closest('[data-g]');if(!b)return;const g=GLOS[b.dataset.g];if(!g)return;
@@ -755,7 +855,7 @@ const Q=[
  {s:4,id:'cur',type:'select',t:'Qual a sua raquete atual?',h:'Se não estiver na lista, escolha "Outra". Com ela, fazemos o diagnóstico da sua raquete.'},
  {s:4,id:'curAge',if:()=>A.cur&&A.cur!=='none',t:'Há quanto tempo você usa essa raquete?',o:[['0','Menos de 1 ano'],['1','1 a 3 anos'],['3','Mais de 3 anos']]},
  {s:4,id:'feel',if:()=>A.cur!=='none',t:'Como você sente sua raquete hoje?',o:[['light','Leve demais','Treme contra bola pesada'],['ok','No ponto'],['heavy','Pesada demais','Cansa ou chega atrasado']]},
- {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é proteger o braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
+ {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é o conforto do braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
  {s:4,id:'want',multi:2,t:'O que você quer ganhar com a troca?',h:'Escolha até 2.',o:[['power','Mais potência','A bola sai mais forte com o mesmo esforço'],['control','Mais controle','A bola vai mais onde você mira'],['comfort','Mais conforto','Menos vibração chegando ao braço'],['spin','Mais spin','Mais efeito: a bola gira mais e cai dentro'],['maneuver','Mais leveza na mão','Raquete mais rápida de mexer, na rede e na defesa'],['stability','Mais estabilidade','Não treme contra bola forte']]},
  {s:4,id:'headp',t:'Tamanho de cabeça que você prefere',h:'Em polegadas quadradas. '+'<button type="button" class="gl" data-g="head">Entenda</button>',o:[['any','Tanto faz'],['98','Até 98 pol²','Mais precisão'],['100','100 pol²','O equilíbrio'],['104','102 ou mais','Mais perdão e saída de bola']]},
  {s:5,id:'string',t:'Qual corda você usa hoje?',o:[['?','Não sei / a que veio'],['poly','Poliéster','Dura, a mais comum entre quem tem topspin'],['multi','Multifilamento ou sintético','Mais macia'],['gut','Tripa natural','A mais macia e mais cara'],['hyb','Híbrido','Duas cordas diferentes, uma em cada direção']]},
@@ -822,7 +922,7 @@ function field(q){
       if(toks.length&&!res.length){const bg=w=>{const o=new Set();for(let i=0;i<w.length-1;i++)o.add(w.slice(i,i+2));return o};const qb=bg(t.replace(/ /g,''));
         res=IDX.map(x=>{const kb=bg(x.k.replace(/ /g,''));let c=0;qb.forEach(g=>{if(kb.has(g))c++});return {r:x.r,sc:2*c/(qb.size+Math.min(kb.size,qb.size+6))}}).filter(x=>x.sc>.35).sort((a,b)=>b.sc-a.sc).slice(0,6).map(x=>x.r);}
       hi=Math.min(hi,Math.max(0,res.length-1));
-      list.innerHTML=(s0&&!toks.length?`<div class="ropt sel" aria-selected="true"><span>✓ <b>${esc(s0.name)}</b></span>${brTag(s0)}</div><p class="note" style="padding:6px 8px">Para trocar, digite outro modelo acima.</p>`:!toks.length?'<p class="bh">Mais comuns</p>':'')+
+      list.innerHTML=(s0&&!toks.length?`<div class="ropt sel" role="option" aria-selected="true"><span>✓ <b>${esc(s0.name)}</b></span>${brTag(s0)}</div><p class="note" style="padding:6px 8px">Para trocar, digite outro modelo acima.</p>`:!toks.length?'<p class="bh">Mais comuns</p>':'')+
         (s0&&!toks.length?'':res.length?res.map((r,i)=>`<div class="ropt${i===hi&&toks.length?' hi':''}" role="option" data-v="${r.id}" aria-selected="${A.cur===String(r.id)}"><span><span class="muted">${esc(r.brand)}</span> ${mark(r.model,t.replace(norm(r.brand),'').trim()||t)}</span>${brTag(r)}</div>`).join(''):`<p class="muted" style="padding:10px 4px">Nada com “${esc(find.value)}”. Tente só o modelo (ex.: <i>speed</i>) ou escolha “Minha raquete não está na lista”.</p>`);
       list.querySelectorAll('[data-v]').forEach(el=>el.onclick=()=>pick(el.dataset.v));
     };
@@ -944,124 +1044,130 @@ function persist(){LS.set('rm_last',encode({a:A,t:tier}))}
 
 /* ---------- Motor ---------- */
 const J=k=>(A.joint||[]).includes(k)&&A.arm!=='no';
-const ST=k=>[].concat(A.style||[]).includes(k);const stW=()=>[].concat(A.style||[]).length>1?.7:1;
+const ST=k=>[].concat(A.style||[]).includes(k);const stW=()=>[].concat(A.style||[]).length>1?PESOS.alvo.estilo.doisEstilos:1;
+const addT=(T,m,s=1)=>{if(m)Object.keys(m).forEach(k=>T[k]+=m[k]*s)};
 function target(){
-  const T={power:5,control:5,spin:5,comfort:5,maneuver:5,stability:5};
+  const P=PESOS.alvo;const T={};KEYS.forEach(k=>T[k]=P.base);
   const want=A.want||[];
-  if(A.lvl==='beg')T.power+=2; if(A.lvl==='adv'){T.control+=1.5;T.stability+=2} if(A.lvl==='adv_int'){T.control+=.8;T.stability+=1}
-  if(A.str==='low'){T.power+=1.5;T.maneuver+=2} if(A.str==='high')T.stability+=1.5; if(A.str==='vhigh'){T.stability+=2.5;T.control+=.5}
-  if(A.cond==='0'){T.maneuver+=1.5;T.power+=.5} if(A.cond==='3')T.stability+=.5;
-  if(A.swing==='short')T.power+=1.5; if(A.swing==='long'){T.power-=1.5;T.control+=1.5}
-  if(A.miss==='short')T.power+=1.5; if(A.miss==='long'){T.power-=1.5;T.control+=2} if(A.miss==='frame')T.stability+=2.5; if(A.miss==='net')T.spin+=1;
-  T.spin=({low:3,mid:5.5,high:8.5}[A.spin]||5)+(A.miss==='net'?1:0);
-  if(A.arm==='past')T.comfort+=2; if(A.arm==='now')T.comfort+=4;
-  if(J('elbow'))T.comfort+=1; if(J('shoulder')){T.maneuver+=1.5;T.power+=1} if(J('wrist')){T.comfort+=.5;T.maneuver+=1}
-  const AG=+A.age||35; if(AG>=45)T.comfort+=1.5; if(AG>=55)T.maneuver+=1.5; if(AG<16)T.maneuver+=1;
-  {const w=stW();if(ST('keep')){T.power+=1*w;T.comfort+=.5*w;T.maneuver+=.5*w} if(ST('cnt'))T.control+=1*w; if(ST('agg')){T.power+=.5*w;T.spin+=.5*w} if(ST('all'))T.maneuver+=1.5*w; if(ST('netc')){T.maneuver+=1*w;T.stability+=.3*w} if(ST('net')){T.maneuver+=1.5*w;T.stability+=.5*w}}
-  if(A.bh==='one'&&A.lvl!=='beg'){T.stability+=.8;T.control+=.4}
-  if(A.feel==='heavy')T.maneuver+=2.5; if(A.feel==='light')T.stability+=2;
-  if(A.arm!=='no'&&A.pain==='3')T.comfort+=1.5; if(A.arm!=='no'&&A.lim==='3')T.comfort+=1;
-  if(A.years==='0')T.power+=1; if(A.years==='10')T.control+=.5;
-  if(A.serve==='flat'){T.stability+=1;T.power+=.5} if(A.serve==='kick')T.spin+=1; if(A.serve==='weak'||A.serve==='push'){T.power+=1;T.maneuver+=.5} if(A.serve==='mix'){T.spin+=.5;T.stability+=.5}
-  if(A.opp==='heavy')T.stability+=1.5; if(A.opp==='soft')T.power+=1;
-  if(A.why==='pain')T.comfort+=1.5; if(A.why==='level'){T.control+=.5;T.stability+=.5}
-  const add={power:2,control:2.5,comfort:2.5,spin:1.5,maneuver:2.5,stability:2.5};
-  want.forEach(k=>T[k]+=add[k]); if(want.includes('control'))T.power-=1.5; if(want.includes('power'))T.control-=1;
+  addT(T,P.nivel[A.lvl]);addT(T,P.forca[A.str]);addT(T,P.folego[A.cond]);addT(T,P.swing[A.swing]);addT(T,P.erro[A.miss]);
+  T.spin=(P.spin[A.spin]||P.spin.semResposta)+(A.miss==='net'?P.spin.erroNaRede:0);
+  addT(T,P.dor[A.arm]);
+  Object.keys(P.articulacao).forEach(j=>{if(J(j))addT(T,P.articulacao[j])});
+  const AG=+A.age||P.idade.padrao; if(AG>=P.idade.maduro)addT(T,P.idade.maduroAlvo); if(AG>=P.idade.senior)addT(T,P.idade.seniorAlvo); if(AG<P.idade.jovem)addT(T,P.idade.jovemAlvo);
+  {const w=stW();['keep','cnt','agg','all','netc','net'].forEach(s=>{if(ST(s))addT(T,P.estilo[s],w)})}
+  if(A.bh==='one'&&A.lvl!=='beg')addT(T,P.umaMao);
+  addT(T,P.sensacao[A.feel]);
+  if(A.arm!=='no'&&A.pain==='3')addT(T,P.dorForte); if(A.arm!=='no'&&A.lim==='3')addT(T,P.emTratamento);
+  addT(T,P.anos[A.years]);addT(T,P.saque[A.serve]);addT(T,P.adversario[A.opp]);addT(T,P.motivo[A.why]);
+  want.forEach(k=>T[k]+=P.quer[k]); if(want.includes('control'))T.power-=P.querControleTiraPotencia; if(want.includes('power'))T.control-=P.querPotenciaTiraControle;
   /* comprime para a faixa que as raquetes alcançam: evita alvos 10/1 que deixam todas igualmente longe */
-  KEYS.forEach(k=>T[k]=Math.round(cl(5+(T[k]-5)*.6,1.5,9.2)*10)/10);
+  KEYS.forEach(k=>T[k]=Math.round(cl(P.base+(T[k]-P.base)*P.compressao,P.min,P.max)*10)/10);
   return T;
 }
 function curRacket(){return A.cur&&A.cur!=='other'&&A.cur!=='none'?RK[+A.cur]:null}
 function targetWeight(){
-  let w={beg:270,int:292,adv_int:300,adv:310}[A.lvl]||292;
-  const AG=+A.age||35,HT=+A.height||175,WT=+A.weight||75;
-  if(A.str==='low')w-=12; if(A.str==='high')w+=8; if(A.str==='vhigh')w+=12; if(AG>=55)w-=10; if(AG<16)w-=15;
-  if(A.cond==='0')w-=8; if(A.cond==='1')w-=4; if(A.cond==='3')w+=3;
-  w+=cl((HT-175)*.25,-8,6)+cl((WT-75)*.15,-6,5); if(J('shoulder'))w-=8; if(A.bh==='one'&&(A.lvl==='adv'||A.lvl==='adv_int'))w+=3;
+  const P=PESOS.peso;
+  let w=P.nivel[A.lvl]||P.padrao;
+  const AG=+A.age||PESOS.alvo.idade.padrao,HT=+A.height||P.altura.ref,WT=+A.weight||P.corpo.ref;
+  w+=P.forca[A.str]||0; if(AG>=PESOS.alvo.idade.senior)w+=P.senior; if(AG<PESOS.alvo.idade.jovem)w+=P.jovem;
+  w+=P.folego[A.cond]||0;
+  w+=cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max); if(J('shoulder'))w+=P.ombro; if(A.bh==='one'&&(A.lvl==='adv'||A.lvl==='adv_int'))w+=P.umaMaoAvancado;
   const c=curRacket();
-  if(A.feel==='heavy')w=Math.min(w,(c?c.wt:w)-10); if(A.feel==='light')w=Math.max(w,(c?c.wt:w)+8);
-  if(A.arm==='now')w=Math.max(w,280);
+  if(A.feel==='heavy')w=Math.min(w,(c?c.wt:w)+P.sensacaoPesada); if(A.feel==='light')w=Math.max(w,(c?c.wt:w)+P.sensacaoLeve);
+  if(A.arm==='now')w=Math.max(w,P.dorHojeMin);
   /* raquete adulta mais leve do catálogo tem 260 g: abaixo disso a zona ficaria vazia */
-  if(AG>=14)w=Math.max(w,258);
+  if(AG>=P.idadeAdulto)w=Math.max(w,P.adultoMin);
   return Math.round(w);
 }
 /* faixas ideais por especificação, usadas nas barras e no mapa */
+const dorForte=()=>A.arm!=='no'&&(A.pain==='3'||A.lim==='3');
 function zones(T,tw){
-  const [s0,s1]=RANGE('sw');const k=T.stability/(T.stability+T.maneuver);
-  let sw=Math.round(305+k*30); if(A.bh==='one'&&A.lvl!=='beg')sw+=5; sw=Math.min(sw,{beg:312,int:320,adv_int:326}[A.lvl]||336); if(J('shoulder'))sw=Math.min(sw,318); const c=curRacket(); if(c&&A.feel==='heavy')sw=Math.min(sw,c.sw-4); if(c&&A.feel==='light')sw=Math.max(sw,c.sw+4);
-  const sev=A.arm!=='no'&&(A.pain==='3'||A.lim==='3');
-  const raMax=sev?60:A.arm==='now'?(J('elbow')?62:63):A.arm==='past'?66:72;
-  const raMin=Math.max(54,raMax-9);
-  const hd=A.headp==='98'?[95,98]:A.headp==='100'?[99,101]:A.headp==='104'?[102,107]:A.lvl==='beg'?[100,107]:A.lvl==='adv'?[97,100]:[98,102];
-  const balMax=J('wrist')?325:ST('net')||ST('netc')?325:335;
-  return {wt:[tw-8,tw+8],sw:[sw-6,sw+6],ra:[raMin,raMax],head:hd,bal:[balMax-14,balMax]};
+  const P=PESOS.zona;const k=T.stability/(T.stability+T.maneuver);
+  let sw=Math.round(P.swBase+k*P.swFaixa); if(A.bh==='one'&&A.lvl!=='beg')sw+=P.swUmaMao; sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao); if(J('shoulder'))sw=Math.min(sw,P.swOmbro); const c=curRacket(); if(c&&A.feel==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&A.feel==='light')sw=Math.max(sw,c.sw+P.swAtual);
+  const sev=dorForte();
+  const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):A.arm==='past'?P.raMax.passado:P.raMax.nenhuma;
+  const raMin=Math.max(P.raMin,raMax-P.raLargura);
+  const hd=(P.cabecaPref[A.headp]||(A.lvl==='beg'?P.cabecaNivel.beg:A.lvl==='adv'?P.cabecaNivel.adv:P.cabecaNivel.padrao)).slice();
+  const balMax=J('wrist')?P.balMax.punho:ST('net')||ST('netc')?P.balMax.rede:P.balMax.padrao;
+  return {wt:[tw-P.peso,tw+P.peso],sw:[sw-P.sw,sw+P.sw],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
 }
 function penalties(r,c,tw){
-  const want=A.want||[];const out=[];let p=0;const add=(v,why)=>{if(v>0){p+=v;out.push([v,why])}};
-  const armOk=A.arm!=='no'&&r.ix.arm>=8&&r.wt>tw;
-  const dd=Math.abs(r.wt-tw),hv=r.wt>tw;
-  if(dd>8)add(Math.max(hv&&dd>15?(dd-8)*.7:(dd-8)/(armOk&&dd<=15?6:3),(dd-8)*1.2),dd>15?`Peso de ${r.wt} g, longe do ideal para você (${tw} g): ${dd} g ${hv?'acima':'abaixo'}`:`${hv?'Mais pesada':'Mais leve'} que o ideal: ${r.wt} g para ${tw} g`);
-  if(ZZ&&r.sw>ZZ.sw[1])add((r.sw-ZZ.sw[1])*1.2,`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`);
-  if(ZZ&&r.sw<ZZ.sw[0])add((ZZ.sw[0]-r.sw)*1.2,`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`);
-  {const el=J('elbow')||!(A.joint||[]).length,lim=el?62:65;if(A.arm==='now'&&r.ra>lim)add((r.ra-lim)*(J('elbow')?2.2:el?1.8:1.2),`Rigidez ${r.ra} RA alta para quem tem dor hoje`)}
-  if(A.arm==='past'&&r.ra>66)add((r.ra-66)*1.6,`Rigidez ${r.ra} RA acima do limite para quem já teve dor`);
-  if(A.arm!=='no'&&(A.pain==='3'||A.lim==='3')&&r.ra>60)add((r.ra-60)*1.5,`Rigidez ${r.ra} RA alta para dor forte`);
-  if(A.opp==='heavy'&&r.sw<315)add((315-r.sw)*.3,'Pouca massa para bola pesada');
-  if(J('wrist')&&r.bal>330)add((r.bal-330)*.8,`Balanço ${r.bal} mm pesado na cabeça para o punho`);
-  if(J('shoulder')&&r.sw>320)add((r.sw-320)*.6,`Swingweight ${r.sw} pesado para o ombro`);
-  if(A.headp==='98'&&r.head>100)add(5,`Cabeça ${r.head} pol² maior que a preferida`);
-  if(A.headp==='100'&&Math.abs(r.head-100)>2)add((Math.abs(r.head-100)-1)*1.5,`Cabeça ${r.head} pol² fora dos 100 preferidos`);
-  if(A.headp==='104'&&r.head<101)add(5,`Cabeça ${r.head} pol² menor que a preferida`);
-  if(A.lvl==='beg'&&r.head<100)add(6,'Cabeça pequena para iniciante');
-  if(A.lvl==='adv'&&r.head>104)add(6,'Cabeça grande para o seu nível');
-  if(r.head>=107&&r.head<110&&(A.lvl==='adv'||A.lvl==='adv_int'||A.headp!=='104'))add(4,'Cabeça de 107 pol² ou mais, pensada para mais saída de bola');
-  if(r.head>=110&&A.lvl!=='beg')add(15,'Raquete de cabeça muito grande, feita para iniciantes');
-  if(A.bh==='one'&&A.lvl!=='beg'&&r.sw<312)add((312-r.sw)*.25,'Pouca massa para backhand de uma mão');
-  if(A.bh==='one'&&J('elbow')&&r.wt<295)add((295-r.wt)*.3,'Leve demais para backhand de uma mão com cotovelo sensível: a vibração sobra para o braço');
-  if(A.bh==='one'&&A.lvl!=='beg'&&r.bal>325)add((r.bal-325)*.15,`Balanço ${r.bal} mm: pesada na cabeça para backhand de uma mão`);
-  if(c&&A.feel==='heavy'&&r.sw>c.sw-8)add((r.sw-(c.sw-8))*(armOk?.35:.7),r.sw>=c.sw?`Swingweight igual ou acima da sua atual, que já pesa`:`Swingweight só ${c.sw-r.sw} abaixo da sua atual, pouco para quem sente a raquete pesada`);
-  if(c&&A.feel==='light'&&r.sw<c.sw)add((c.sw-r.sw)*.6,`Swingweight abaixo da sua atual, que já é leve`);
-  if(r.price&&r.price[0]>+A.budget)add(8,`Preço acima do seu orçamento`);
-  if(A.imp==='no'&&r.br==='d')add(6,'Difícil de achar no Brasil');
-  if(A.imp==='no'&&r.br==='p')add(2,'Pouca oferta no Brasil');
-  if(c&&r.wt-c.wt>35)add((r.wt-c.wt-35)*.2,`Salto de ${r.wt-c.wt} g em relação à sua atual: troque em etapas para poupar o braço`);
-  if(c)want.forEach(k=>{if(r.ix[k]<=c.ix[k])add(3,`Não ganha ${LBL[k].toLowerCase()} em relação à sua atual`)});
+  const P=PESOS.pen;const want=A.want||[];const out=[];let p=0;const add=(v,why)=>{if(v>0){p+=v;out.push([v,why])}};
+  const armOk=A.arm!=='no'&&r.ix.arm>=P.bracoIndiceMin&&r.wt>tw;
+  const dd=Math.abs(r.wt-tw),hv=r.wt>tw,tol=P.pesoTolerancia;
+  if(dd>tol)add(Math.max(hv&&dd>P.pesoLonge?(dd-tol)*P.pesoAcimaLonge:(dd-tol)/(armOk&&dd<=P.pesoLonge?P.pesoDivisorBraco:P.pesoDivisor),(dd-tol)*P.pesoBorda),dd>P.pesoLonge?`Peso de ${r.wt} g, longe do ideal para você (${tw} g): ${dd} g ${hv?'acima':'abaixo'}`:`${hv?'Mais pesada':'Mais leve'} que o ideal: ${r.wt} g para ${tw} g`);
+  if(ZZ&&r.sw>ZZ.sw[1])add((r.sw-ZZ.sw[1])*P.swBorda,`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`);
+  if(ZZ&&r.sw<ZZ.sw[0])add((ZZ.sw[0]-r.sw)*P.swBorda,`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`);
+  {const el=J('elbow')||!(A.joint||[]).length,lim=el?P.raHoje.limCotovelo:P.raHoje.limOutras;if(A.arm==='now'&&r.ra>lim)add((r.ra-lim)*(J('elbow')?P.raHoje.cotovelo:el?P.raHoje.semArticulacao:P.raHoje.outras),`Rigidez ${r.ra} RA alta para quem tem dor hoje`)}
+  if(A.arm==='past'&&r.ra>P.raPassado.lim)add((r.ra-P.raPassado.lim)*P.raPassado.peso,`Rigidez ${r.ra} RA acima do limite para quem já teve dor`);
+  if(dorForte()&&r.ra>P.raForte.lim)add((r.ra-P.raForte.lim)*P.raForte.peso,`Rigidez ${r.ra} RA alta para dor forte`);
+  if(A.opp==='heavy'&&r.sw<P.bolaPesada.sw)add((P.bolaPesada.sw-r.sw)*P.bolaPesada.peso,'Pouca massa para bola pesada');
+  if(J('wrist')&&r.bal>P.punho.bal)add((r.bal-P.punho.bal)*P.punho.peso,`Balanço ${r.bal} mm pesado na cabeça para o punho`);
+  if(J('shoulder')&&r.sw>P.ombro.sw)add((r.sw-P.ombro.sw)*P.ombro.peso,`Swingweight ${r.sw} pesado para o ombro`);
+  {const H=P.cabecaPreferida;
+  if(A.headp==='98'&&r.head>100)add(H.fora98,`Cabeça ${r.head} pol² maior que a preferida`);
+  if(A.headp==='100'&&Math.abs(r.head-100)>H.tolerancia100)add((Math.abs(r.head-100)-H.desconto100)*H.peso100,`Cabeça ${r.head} pol² fora dos 100 preferidos`);
+  if(A.headp==='104'&&r.head<101)add(H.fora104,`Cabeça ${r.head} pol² menor que a preferida`);}
+  if(A.lvl==='beg'&&r.head<100)add(P.cabecaIniciante,'Cabeça pequena para iniciante');
+  if(A.lvl==='adv'&&r.head>104)add(P.cabecaAvancado,'Cabeça grande para o seu nível');
+  if(r.head>=107&&r.head<110&&(A.lvl==='adv'||A.lvl==='adv_int'||A.headp!=='104'))add(P.cabeca107,'Cabeça de 107 pol² ou mais, pensada para mais saída de bola');
+  if(r.head>=110&&A.lvl!=='beg')add(P.cabeca110,'Raquete de cabeça muito grande, feita para iniciantes');
+  {const U=P.umaMao;
+  if(A.bh==='one'&&A.lvl!=='beg'&&r.sw<U.sw)add((U.sw-r.sw)*U.peso,'Pouca massa para backhand de uma mão');
+  if(A.bh==='one'&&J('elbow')&&r.wt<U.cotoveloPeso)add((U.cotoveloPeso-r.wt)*U.cotovelo,'Leve demais para backhand de uma mão com cotovelo sensível: a vibração sobra para o braço');
+  if(A.bh==='one'&&A.lvl!=='beg'&&r.bal>U.bal)add((r.bal-U.bal)*U.balPeso,`Balanço ${r.bal} mm: pesada na cabeça para backhand de uma mão`);}
+  if(c&&A.feel==='heavy'&&r.sw>c.sw-P.atualPesada.margem)add((r.sw-(c.sw-P.atualPesada.margem))*(armOk?P.atualPesada.pesoBraco:P.atualPesada.peso),r.sw>=c.sw?`Swingweight igual ou acima da sua atual, que já pesa`:`Swingweight só ${c.sw-r.sw} abaixo da sua atual, pouco para quem sente a raquete pesada`);
+  if(c&&A.feel==='light'&&r.sw<c.sw)add((c.sw-r.sw)*P.atualLeve,`Swingweight abaixo da sua atual, que já é leve`);
+  {const O=P.orcamento,ac=r.price?r.price[0]/+A.budget-1:0;
+  if(ac>0&&ac<=O.tolerancia)add(O.leve,`Preço um pouco acima do seu orçamento`);
+  if(ac>O.tolerancia)add(O.acima+O.porFaixa*(ac-O.tolerancia)/O.faixa,`Preço ${Math.round(ac*100)}% acima do seu orçamento`);}
+  if(A.arm&&A.arm!=='no'&&r.wt<P.bracoLeve.g)add(P.bracoLeve.base+(P.bracoLeve.g-r.wt)*P.bracoLeve.porG,`Leve demais (${r.wt} g) para quem tem ou teve dor no braço: raquete leve tende a passar mais choque`);
+  {const F=P.pesadaFraco;if((A.str==='low'||+A.age>=F.idade)&&r.wt>=F.g)add(F.base+(r.wt-F.g)*F.porG,`Pesada (${r.wt} g) para a sua força ou idade`);}
+  if(A.imp==='no'&&r.br==='d')add(P.dificilAchar,'Difícil de achar no Brasil');
+  if(A.imp==='no'&&r.br==='p')add(P.poucaOferta,'Pouca oferta no Brasil');
+  if(c&&r.wt-c.wt>P.salto.g)add((r.wt-c.wt-P.salto.g)*P.salto.peso,`Salto de ${r.wt-c.wt} g em relação à sua atual: troque em etapas para o braço se adaptar`);
+  if(c)want.forEach(k=>{if(r.ix[k]<=c.ix[k])add(P.naoGanha,`Não ganha ${LBL[k].toLowerCase()} em relação à sua atual`)});
   return {p,out:out.sort((a,b)=>b[0]-a[0])};
 }
 function score(r,T,tw,c){
-  const want=A.want||[];
+  const P=PESOS.placar,B=P.braco;const want=A.want||[];
   /* o que o jogador mais pede pesa mais */
-  let d=0,ws=0;KEYS.forEach(k=>{const wt=(want.includes(k)?1.5:1)*(1+Math.max(0,T[k]-5.5)/2);d+=wt*Math.pow(r.ix[k]-T[k],2);ws+=wt});
+  let d=0,ws=0;KEYS.forEach(k=>{const wt=(want.includes(k)?P.pedido:1)*(1+Math.max(0,T[k]-P.alvoAlto)/P.alvoAltoDiv);d+=wt*Math.pow(r.ix[k]-T[k],2);ws+=wt});
   d=Math.sqrt(d/ws);
   const pen=penalties(r,c,tw);
-  const lw={adv:2.5,adv_int:2,int:1,beg:.6}[A.lvl]||1,el=J('elbow')||!(A.joint||[]).length;
-  const qa=cl(r.q*lw,-8,8),q=(A.arm==='now'?cl((r.ix.arm-6)*(el?.8:.4),-2.5,el?2.5:1.5):A.arm==='past'?cl((r.ix.arm-6)*.4,-1,1.5):0);
-  return {pen:pen.out,dist:d,p:pen.p,qb:q,qa};
+  const lw=P.aprovacaoNivel[A.lvl]||P.aprovacaoPadrao,el=J('elbow')||!(A.joint||[]).length;
+  const qa=cl(r.q*lw,-P.aprovacaoTeto,P.aprovacaoTeto),q=(A.arm==='now'?cl((r.ix.arm-B.centro)*(el?B.hojeCotovelo:B.hoje),B.hojeMin,el?B.hojeMaxCotovelo:B.hojeMax):A.arm==='past'?cl((r.ix.arm-B.centro)*B.passado,B.passadoMin,B.passadoMax):0);
+  const ob=r.price&&+A.budget<99999&&r.price[0]<=+A.budget?P.dentroOrcamento:0;
+  const caro=!!r.price&&r.price[0]>+A.budget*(1+PESOS.pen.orcamento.tolerancia);
+  return {pen:pen.out,dist:d,p:pen.p,qb:q,qa,ob,caro};
 }
 let RES=null,tier=0,ZZ=null;
 const inZone=r=>!!ZZ&&r.wt>=ZZ.wt[0]&&r.wt<=ZZ.wt[1]&&r.sw>=ZZ.sw[0]&&r.sw<=ZZ.sw[1];
 function compute(){
+  const M=PESOS.match,L=PESOS.zona.alargar;
   const T=target(),tw=targetWeight(),c=curRacket();ZZ=zones(T,tw);
   /* a zona do mapa precisa ter raquete de verdade: alarga aos poucos até caber pelo menos 3 do catálogo */
-  for(let n=0;n<20&&RK.filter(r=>(!c||r.id!==c.id)&&inZone(r)).length<3;n++){ZZ.wt=[ZZ.wt[0]-2,ZZ.wt[1]+2];ZZ.sw=[ZZ.sw[0]-1,ZZ.sw[1]+1]}
+  for(let n=0;n<L.vezes&&RK.filter(r=>(!c||r.id!==c.id)&&inZone(r)).length<L.minimo;n++){ZZ.wt=[ZZ.wt[0]-L.peso,ZZ.wt[1]+L.peso];ZZ.sw=[ZZ.sw[0]-L.sw,ZZ.sw[1]+L.sw]}
   const all=RK.map(r=>({r,...score(r,T,tw,c)}));
   /* escala relativa: a mais próxima do seu perfil fica perto de 95; cada décimo de distância a mais custa ~1 ponto */
   const dbest=Math.min(...all.filter(x=>!c||x.r.id!==c.id).map(x=>x.dist));
   /* aprovação dos testadores desempata entre as que já encaixam no seu perfil; não puxa raquete distante para o topo */
   /* peso e swingweight dentro da zona do mapa contam a favor; fora dela, contra (o mapa e o ranking dizem a mesma coisa) */
-  all.forEach(x=>{const g=cl(1-(x.dist-dbest)/1.2,0,1);x.inZ=inZone(x.r);x.fit=cl(Math.round(93-11*(x.dist-dbest)-3*Math.max(0,dbest-1.3)-x.p*.8+x.qb+x.qa*g+(x.inZ?4:-4)),30,98)});
-  const ranked=all.filter(x=>!c||x.r.id!==c.id).sort((a,b)=>b.fit-a.fit);
+  all.forEach(x=>{const g=cl(1-(x.dist-dbest)/M.aprovacaoAlcance,0,1);x.inZ=inZone(x.r);x.fit=cl(Math.round(M.base-M.porDist*(x.dist-dbest)-M.distRuimPeso*Math.max(0,dbest-M.distRuim)-x.p*M.pen+x.qb+x.qa*g+x.ob+(x.inZ?M.zona:-M.zona)),M.min,M.max)});
+  let ranked=all.filter(x=>!c||x.r.id!==c.id).sort((a,b)=>b.fit-a.fit);
   /* a recomendação fica sempre dentro da zona do mapa: a melhor da zona sobe para 1º se estiver até 10 pontos atrás */
-  if(!ranked[0].inZ){const j=ranked.findIndex(x=>x.inZ);if(j>0&&ranked[0].fit-ranked[j].fit<=10){const z=ranked.splice(j,1)[0];z.fit=ranked[0].fit;z.promo=true;ranked.unshift(z)}}
+  /* não promove raquete bem acima do orçamento se a 1ª cabe nele (rodada 6) */
+  if(!ranked[0].inZ){const j=ranked.findIndex(x=>x.inZ&&(!x.caro||ranked[0].caro));if(j>0&&ranked[0].fit-ranked[j].fit<=M.promoverZona){const z=ranked.splice(j,1)[0];z.fit=ranked[0].fit;z.promo=true;ranked.unshift(z)}}
   /* escala do DNA: a melhor para o seu perfil fica entre 90 e 96; as demais caem 0,8 ponto por ponto de diferença */
-  {const R0=ranked[0].fit,lift=v=>cl(Math.round(96-(R0-v)*.8-Math.max(0,92-R0)*.3),30,97);all.forEach(x=>{x.raw=x.fit;x.fit=lift(x.fit)})}
+  {const R0=ranked[0].fit,lift=v=>cl(Math.round(M.escalaTopo-(R0-v)*M.escalaPasso-Math.max(0,M.escalaRef-R0)*M.escalaRefPeso),M.min,M.escalaMax);all.forEach(x=>{x.raw=x.fit;x.fit=lift(x.fit)})}
   const curFit=c?all.find(x=>x.r.id===c.id):null;
   if(curFit){const seen=new Set();curFit.pen=curFit.pen.filter(p=>{if(/sua atual|à sua atual|no Brasil/.test(p[1])||p[0]<1)return false;const k=p[1].split(' ')[0];if(seen.has(k))return false;seen.add(k);return true})}
   const answered=Q.filter(q=>vis(q)&&A[q.id]&&(!q.multi||A[q.id].length)).length;
   const gap=ranked[0].fit-ranked[4].fit;
-  const conf=cl(Math.round(68+answered*1+gap*.8),70,97);
+  const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
+if(/[?&]teste\b/.test(location.search))window.__RK={A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1157,9 +1263,14 @@ function gauge(v){
 
 /* ---------- Prévia ---------- */
 const armTxt=v=>v>=7.5?'Muito amigável ao braço':v>=6?'Amigável ao braço':v>=4.5?'Neutra':'Exige cuidado';
+function juniorNote(){
+  if(!A.age||+A.age>=PESOS.juvenil.idade)return '';
+  return `<div class="panel" style="border-color:var(--warn)"><p><strong>Menos de ${PESOS.juvenil.idade} anos.</strong> O nosso catálogo só tem raquetes adultas (27 polegadas). Para quem ainda está crescendo, vale procurar uma raquete juvenil de 25 ou 26 polegadas, mais leve e mais curta, e pedir ajuda ao professor na escolha. Use o resultado abaixo como referência de estilo, não como compra.</p></div>`;
+}
 function painNote(){
-  if(A.arm==='no'||!(A.pain==='3'||A.lim==='3'))return '';
-  return `<div class="panel" style="border-color:var(--warn)"><p><strong>Dor forte ou em tratamento.</strong> A raquete certa reduz a carga no braço, mas não trata a lesão. Antes de voltar a jogar forte, fale com o seu médico ou fisioterapeuta. Por isso o motor limitou a rigidez a 60 RA e a corda a multifilamento.</p></div>`;
+  if(!A.arm||A.arm==='no')return '';
+  if(!(A.pain==='3'||A.lim==='3'))return `<div class="panel"><p><strong>Sobre a dor no braço.</strong> A raquete é só uma parte: idade, tempo e volume de jogo e a técnica pesam mais do que qualquer especificação. Se a dor persistir, procure um médico ou fisioterapeuta.</p></div>`;
+  return `<div class="panel" style="border-color:var(--warn)"><p><strong>Dor forte ou em tratamento.</strong> Nenhuma raquete previne ou trata lesão. Idade, volume de jogo e técnica pesam mais do que qualquer especificação. Antes de voltar a jogar forte, fale com o seu médico ou fisioterapeuta. O motor deu preferência a raquetes mais flexíveis, que os especialistas costumam indicar para quem sente o braço, e a corda indicada é multifilamento.</p></div>`;
 }
 function diagnosis(){
   const {c,curFit,T,ranked}=RES;if(!c)return '';
@@ -1182,7 +1293,7 @@ function diagnosis(){
 function renderPreview(){
   const {ranked,conf,T,curFit,c}=RES;const top=ranked.slice(0,3);
   const BB=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="quiz">← Voltar às respostas</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button></div>`;
-  $('#preview').innerHTML=BB+painNote()+`
+  $('#preview').innerHTML=BB+juniorNote()+painNote()+`
   <div class="panel">
     <div class="hook">
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
@@ -1211,7 +1322,7 @@ function renderPreview(){
   <div class="two">
     <div class="panel">
       <h3>A 1ª colocada e o seu braço</h3>
-      <div class="arm">${gauge(top[0].r.ix.arm)}<div><strong>Braço Seguro do 1º lugar: ${dec(top[0].r.ix.arm)}</strong><p class="muted" style="font-size:14px">${armTxt(top[0].r.ix.arm)}, numa escala de 0 a 10.</p></div></div>
+      <div class="arm">${gauge(top[0].r.ix.arm)}<div><strong>Conforto no braço do 1º lugar: ${dec(top[0].r.ix.arm)}</strong><p class="muted" style="font-size:14px">${armTxt(top[0].r.ix.arm)}, numa escala de 0 a 10.</p></div></div>
     </div>
     <div class="panel">
       ${viz('pv',[{name:'Seu perfil ideal',v:T,c:'var(--pri)',solid:true}],T,T,c?c.ix:null)}
@@ -1231,7 +1342,7 @@ function renderPreview(){
       <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="muted">pagamento único, via Pix</span></div>
       <ul>
         <li>As 3 raquetes que mais encaixam, reveladas, com o ranking dos 10</li>
-        <li>Régua de specs, mapa peso × swingweight e Braço Seguro antes e depois</li>
+        <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>
         <li>Diagnóstico completo da sua raquete atual</li>
         <li>Sugestão de corda, espessura e tensão, com a conta à vista</li>
         <li>Comparador ilimitado (sozinho sai R$ 4,99) e card para story</li>
@@ -1308,13 +1419,13 @@ function whyPara(x,T){const r=x.r;const lv={beg:'iniciante',int:'intermediário'
   out.push(`Entre as ${RK.length} raquetes do catálogo, a ${esc(r.model)} é a que mais combina com o seu jogo: ${esc(archetype().toLowerCase())}${lv?', nível '+lv:''}.`);
   if(top.length)out.push(`O que o seu jogo mais pede é ${top.map(k=>LBL[k].toLowerCase()).join(' e ')}, e ela ${top.every(k=>r.ix[k]>=T[k]-.5)?'entrega isso':'chega perto disso'} sem abrir mão do resto.`);
   if(inZone(r))out.push(`Com ${r.wt} g, fica dentro do peso que calculamos para a sua força e o seu nível.`);
-  if(A.arm!=='no')out.push(`A rigidez de ${r.ra} RA ${r.ra<=63?'manda menos vibração para o braço':'está dentro do limite para quem já teve dor'}.`);
+  if(A.arm!=='no')out.push(r.ra<=63?`Os ${r.ra} RA fazem dela um quadro flexível, do tipo que costuma ser descrito como mais confortável por quem sente o braço.`:`A rigidez de ${r.ra} RA está dentro do limite para quem já teve dor.`);
   if(r.price&&r.price[0]<=+A.budget)out.push('E cabe no orçamento que você indicou.');
   return out.join(' ')}
 function why(r,c,T){
   const out=[];const ranked=KEYS.map(k=>({k,d:Math.abs(r.ix[k]-T[k]),t:T[k]})).filter(x=>x.t>=6).sort((a,b)=>a.d-b.d);
   ranked.slice(0,2).forEach(x=>out.push(`${LBL[x.k]} ${dec(r.ix[x.k])} para um alvo de ${dec(x.t)}: o índice que o seu jogo mais pede.`));
-  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, menos vibração chegando ao '+(J('elbow')?'cotovelo':'braço'):': dentro do limite para quem já teve dor'}.${r.tech?` Tem tecnologia de conforto (${r.tech}).`:''}`);
+  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':': dentro do limite para quem já teve dor'}.${r.tech?` Tem tecnologia de conforto (${r.tech}).`:''}`);
   if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: na faixa ideal de peso e swingweight para você.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para sua força e seu nível.`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
@@ -1345,7 +1456,7 @@ function feel(r,c){
   const w=d(r.wt,c.wt);rows.push(['Peso',`${c.wt} g`,`${r.wt} g`,w===0?'Igual na mão':w<0?`${-w} g mais leve: menos cansaço no fim do jogo`:`${w} g mais pesada: mais estável, cansa um pouco mais`]);
   const s=d(r.sw,c.sw);rows.push(['Swingweight',c.sw,r.sw,Math.abs(s)<4?'Mesma sensação ao acelerar':s<0?'Mais solta no braço, chega antes na bola':'Mais massa no golpe, bola sai mais pesada']);
   const b=d(r.bal,c.bal);rows.push(['Balanço',`${c.bal} mm`,`${r.bal} mm`,Math.abs(b)<4?'Equilíbrio parecido':b<0?'Mais leve na cabeça, mais rápida na rede':'Mais peso na cabeça, mais potência no fundo']);
-  const ra=d(r.ra,c.ra);rows.push(['Rigidez',`${c.ra} RA`,`${r.ra} RA`,Math.abs(ra)<3?'Impacto parecido':ra<0?'Mais macia no impacto, menos vibração':'Mais firme, mais saída de bola']);
+  const ra=d(r.ra,c.ra);rows.push(['Rigidez',`${c.ra} RA`,`${r.ra} RA`,Math.abs(ra)<3?'Impacto parecido':ra<0?'Mais macia no impacto':'Mais firme, mais saída de bola']);
   const h=d(r.head,c.head);rows.push(['Cabeça',`${c.head} pol²`,`${r.head} pol²`,h===0?'Mesmo ponto doce':h>0?'Ponto doce maior, perdoa mais':'Ponto doce menor, mais precisão']);
   rows.push(['Padrão',c.pat.replace('x','×'),r.pat.replace('x','×'),c.pat===r.pat?'Mesmo padrão':OPEN[r.pat]>OPEN[c.pat]?'Mais aberto: mais spin':'Mais fechado: mais controle']);
   return rows;
@@ -1395,7 +1506,7 @@ function renderReport(){
   const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
-  let h=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${tier>=2?'<button class="btn btn-go btn-sm" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}</div>`+painNote()+`
+  let h=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${tier>=2?'<button class="btn btn-go btn-sm" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}</div>`+juniorNote()+painNote()+`
   <div class="panel winner">
     <p class="eyebrow">A raquete que mais encaixa no seu jogo</p>
     ${racketHead(w)}
@@ -1483,7 +1594,7 @@ function tradeChips(x,top){
   const ks=KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,4);
   const best=ks.filter(k=>top.every(y=>x.r.ix[k]>=y.r.ix[k])).map(k=>LBL[k]);
   const worst=ks.filter(k=>top.every(y=>x.r.ix[k]<=y.r.ix[k])).map(k=>LBL[k]);
-  return `${best.length?`<span class="pc up">Lidera: ${best.slice(0,2).join(', ')}</span>`:''}${worst.length?`<span class="pc dn">Cede: ${worst.slice(0,2).join(', ')}</span>`:''}${x.r.ix.arm>=7?'<span class="pc ok">Braço Seguro '+dec(x.r.ix.arm)+'</span>':''}`;
+  return `${best.length?`<span class="pc up">Lidera: ${best.slice(0,2).join(', ')}</span>`:''}${worst.length?`<span class="pc dn">Cede: ${worst.slice(0,2).join(', ')}</span>`:''}${x.r.ix.arm>=7?'<span class="pc ok">Conforto no braço '+dec(x.r.ix.arm)+'</span>':''}`;
 }
 function pBar(v,T,c){return `<div class="pb"><i style="width:${v*10}%"></i>${T!=null?`<s style="left:${T*10}%"></s>`:''}${c!=null?`<u style="left:${c*10}%"></u>`:''}</div>`}
 function transition(r,c){
@@ -1525,7 +1636,7 @@ function pdfPages(){
   const p2=`<section class="pg">${head(2,'Seu jogo × a raquete')}
    <div class="cols c2 radc"><div><h2 class="st">Hexágono de jogo</h2><div class="rad">${radarSVG}</div>
      <div class="lg"><span><i class="li"></i>Seu ideal</span><span><i style="background:#0E4D64"></i>${esc(r.model)}</span>${c?'<span><i style="background:#E07A1F"></i>Sua atual</span>':''}</div></div>
-   <div><h2 class="st">Índice a índice</h2><div class="ig"><div class="igr igh"><span></span><span>Alvo</span><span>Nova</span>${c?'<span>Atual</span>':''}</div>${KEYS.map(k=>`<div class="igr${c?'':' n3'}"><span>${LBL[k]}${pBar(r.ix[k],T[k],c?c.ix[k]:null)}</span><span>${dec(T[k])}</span><b>${dec(r.ix[k])}</b>${c?`<span>${dec(c.ix[k])}</span>`:''}</div>`).join('')}<div class="igr${c?'':' n3'}"><span>Braço Seguro${pBar(r.ix.arm,null,c?c.ix.arm:null)}</span><span>—</span><b>${dec(r.ix.arm)}</b>${c?`<span>${dec(c.ix.arm)}</span>`:''}</div></div>
+   <div><h2 class="st">Índice a índice</h2><div class="ig"><div class="igr igh"><span></span><span>Alvo</span><span>Nova</span>${c?'<span>Atual</span>':''}</div>${KEYS.map(k=>`<div class="igr${c?'':' n3'}"><span>${LBL[k]}${pBar(r.ix[k],T[k],c?c.ix[k]:null)}</span><span>${dec(T[k])}</span><b>${dec(r.ix[k])}</b>${c?`<span>${dec(c.ix[k])}</span>`:''}</div>`).join('')}<div class="igr${c?'':' n3'}"><span>Conforto no braço${pBar(r.ix.arm,null,c?c.ix.arm:null)}</span><span>—</span><b>${dec(r.ix.arm)}</b>${c?`<span>${dec(c.ix.arm)}</span>`:''}</div></div>
      <p class="small">Escala de 0 a 10 dentro do catálogo de ${RK.length} raquetes. Barra = nova · traço lima = seu alvo${c?' · círculo laranja = sua atual':''}.</p></div></div>
    <h2 class="st">Especificações na régua do catálogo</h2><p class="small" style="margin-top:-6px">Faixa lima = zona ideal para o seu corpo e o seu jogo. Ponto azul = recomendada${c?'; anel laranja = sua atual':''}.</p>
    <div class="specs2">${specRows}</div>
@@ -1544,7 +1655,7 @@ function pdfPages(){
    ${st.vs?`<p class="note2"><b>${st.vs}</b></p>`:''}${st.rs?`<p class="note2">${st.rs}</p>`:''}
    <h2 class="st">Plano de adaptação: 4 semanas</h2><div class="tl">${tr.map(x=>`<div class="tli"><b>${x[0]}</b><span>${x[1]}</span><p>${x[2]}</p></div>`).join('')}</div>
    <div class="cols c2"><div><h2 class="st">Ajustes finos possíveis</h2><ul class="why">${attention(r).slice(0,4).map(x=>`<li>${x}</li>`).join('')}</ul></div>
-   <div><h2 class="st">Sinal vermelho</h2><ul class="why"><li>Dor no cotovelo, punho ou ombro que dura até o dia seguinte: baixe 2 lb ou passe para multifilamento.</li><li>Dor que piora jogo após jogo: pare e procure um médico ou fisioterapeuta. Equipamento ajuda, mas não trata lesão.</li>${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário (puxando para a esquerda).</li>':''}</ul></div></div>
+   <div><h2 class="st">Sinal vermelho</h2><ul class="why"><li>Dor no cotovelo, punho ou ombro que dura até o dia seguinte: baixe 2 lb ou passe para multifilamento.</li><li>Dor que piora jogo após jogo: pare e procure um médico ou fisioterapeuta. Equipamento ajuda, mas não trata lesão.</li>${A.age&&+A.age<PESOS.juvenil.idade?'<li>Menos de '+PESOS.juvenil.idade+' anos: o catálogo é adulto. Procure uma raquete juvenil de 25 ou 26 polegadas com o seu professor.</li>':''}${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário (puxando para a esquerda).</li>':''}</ul></div></div>
    <h2 class="st">Antes de comprar</h2><div class="chk">${['Peça para pesar na loja: a mesma raquete varia até 7 g.','Confirme o grip '+(gs?'L'+gs.g:'pela medida da mão')+'; grip errado não tem conserto barato.','Saia com a corda nova na tensão indicada: a de fábrica é genérica.','Se a loja tiver demonstração, teste a 1ª e a 2ª colocadas.'].map(x=>`<div><i></i><span>${x}</span></div>`).join('')}</div>
    ${foot}</section>`;
   /* página 4: prova social */
@@ -1570,7 +1681,7 @@ function pdfPages(){
    <h2 class="st">Como chegamos aqui</h2>
    <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>34</b><span>respostas sobre corpo, braço e jogo</span></div><div><b>815</b><span>avaliações públicas usadas na calibração</span></div><div><b>2×</b><span>o acaso em acertar a favorita de testadores reais</span></div></div>
    <p class="small">O DNA Score combina a distância entre o seu perfil ideal e os índices de cada raquete, filtros de segurança para o braço, peso e swingweight para o seu físico, e a aprovação de testadores. Sem patrocínio de marca. Canhoto ou destro não muda a recomendação: as raquetes são simétricas.</p>
-   <div class="gls">${[['Swingweight','Quanto a raquete “pesa” ao acelerar. Alto: bola pesada e estabilidade; baixo: rapidez.'],['Balanço','Ponto de equilíbrio a partir do cabo. Abaixo de 320 mm, cabeça leve; acima, cabeça pesada.'],['Rigidez (RA)','Quanto o quadro flexiona. Abaixo de 63 é macio e poupa o braço; acima de 68 é firme e potente.'],['Padrão','Cordas verticais × horizontais. Aberto (16×19) dá spin; fechado (18×20) dá controle.'],['Braço Seguro','Nossa nota de 0 a 10 para o quanto a raquete poupa cotovelo, punho e ombro.'],['Tensão','Mais alta: mais controle e menos potência. Mais baixa: mais saída de bola e conforto.']].map(g=>`<div><b>${g[0]}</b><span>${g[1]}</span></div>`).join('')}</div>
+   <div class="gls">${[['Swingweight','Quanto a raquete “pesa” ao acelerar. Alto: bola pesada e estabilidade; baixo: rapidez.'],['Balanço','Ponto de equilíbrio a partir do cabo. Abaixo de 320 mm, cabeça leve; acima, cabeça pesada.'],['Rigidez (RA)','Quanto o quadro flexiona. Abaixo de 63 é macio e tende a ser mais confortável; acima de 68 é firme e potente.'],['Padrão','Cordas verticais × horizontais. Aberto (16×19) dá spin; fechado (18×20) dá controle.'],['Conforto no braço','Nossa nota de 0 a 10 para o quanto a raquete tende a ser confortável para cotovelo, punho e ombro. Não previne nem trata lesão.'],['Tensão','Mais alta: mais controle e menos potência. Mais baixa: mais saída de bola e conforto.']].map(g=>`<div><b>${g[0]}</b><span>${g[1]}</span></div>`).join('')}</div>
    ${foot}</section>`;
   return p1+p2+p3+p4+p5;
 }

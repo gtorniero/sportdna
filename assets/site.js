@@ -31,10 +31,10 @@ const AREAS = {
     h1:`A raquete certa para o seu jogo e para o seu <span class="hl">braço</span>.`,
     lede:"Peso, balanço, swingweight, rigidez, cabeça e padrão de cordas. O teste cruza suas respostas com a ficha técnica de cada raquete e mostra a análise inteira antes de você pagar.",
     quiz:"racket/",
-    facts:[["58","raquetes no catálogo"],["26 a 31","perguntas"],["R$ 19,99","relatório"]],
+    facts:[["62","raquetes no catálogo"],["26 a 31","perguntas"],["R$ 19,99","relatório"]],
     vin:["Idade e força","Dor no braço","Medida da mão","Nível e frequência","Estilo, topspin e swing","Onde você erra","Raquete atual e sensação","Orçamento e corda"],
     vout:["Peso","Balanço","Swingweight","Rigidez (RA)","Cabeça","Padrão","Corda e tensão","Grip"],
-    inside:[["Raquete ideal com Fit Score","Marca, modelo e as seis especificações que importam."],["Índice Braço Seguro","Rigidez e peso avaliados contra o cotovelo de tenista."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
+    inside:[["Raquete ideal com Fit Score","Marca, modelo e as seis especificações que importam."],["Índice Conforto no braço","Rigidez, peso e balanço avaliados para quem sente o braço."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
     price:[["R$ 19,99","Relatório completo"]],
     gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
   board:{key:"board", name:"SURF DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
@@ -75,7 +75,7 @@ document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go
 document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
-  racket:"Exemplo de relatório do RACKET DNA: raquete recomendada ProKennex Black Ace 300, DNA Score de 95%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip L3, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 300 g sem corda, balanço de 321 mm, swingweight 324 e rigidez de 55 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.",
+  racket:"Exemplo de relatório do RACKET DNA: raquete recomendada Prince Phantom 100X 290 g, DNA Score de 96%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x18, grip pela medida da mão, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 290 g sem corda, balanço de 321 mm, swingweight 317 e rigidez de 59 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.",
   board:"Exemplo de relatório do SURF DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 11 polegadas de comprimento, 19 e 7/8 de largura, 2 e 5/8 de espessura, 38,7 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, ondas fracas e comparação com a prancha atual.",
   tenis:"Exemplo de relatório do RUN DNA: tênis recomendado Mizuno Wave Sky 9, Fit Score de 96%, preço médio de R$ 699,89. Categoria máximo amortecimento, 286 g, 43,2 mm de espuma, drop de 4,4 mm, durabilidade de 750 km e custo de R$ 0,93 por km. Inclui os motivos da escolha, os pontos de atenção, o mês de troca, a ficha de laboratório e a comparação com o tênis atual."};
 function reportFrame(k, h){
@@ -98,7 +98,7 @@ function vars(a){
 const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/index.html"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
 const CARDS={
   racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 7,6, DNA 95%"],
-          produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 95%, escolhida entre 58 raquetes"]},
+          produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: Prince Phantom 100X, 290 g, cabeça de 100 pol², 59 RA, padrão 16x18, DNA 96%, escolhida entre 62 raquetes"]},
   board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
          produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 11 polegadas por 19 7/8 polegadas, 38,7 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
   tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
