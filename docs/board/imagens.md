@@ -14,32 +14,35 @@ O app só mostra a ilustração dos tipos listados em `TIMG`; tipo sem imagem ca
 | Longboard performance | longp | ok |
 | Mini-malibu / funboard | minimal | ok (refazer mais larga, se der) |
 | Evolution / allround | evo | ok |
-| Fish | fish | ok (refazer deitada, como as outras) |
-| Groveler | grov | refazer (saiu em pé e com fundo dividido) |
-| Biquilha moderna | twin | ok (refazer deitada, como as outras) |
+| Fish | fish | ok (deitada; a v1 em pé está no backup) |
+| Groveler | grov | ok |
+| Biquilha moderna | twin | ok (deitada; a v1 em pé está no backup) |
 | Softboard performance | softp | ok |
-| Step-up | step | falta |
-| Gun | gun | falta |
+| Step-up | step | ok (vista de cima mostra as quilhas; aprovada assim) |
+| Gun | gun | ok (plug do leash retocado: tinha um desenho que parecia logo) |
 
 ## Backup
 Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, inclusive o groveler rejeitado.
 
+## Histórico
+- 2/nov/2026: step-up com as quilhas aparecendo na vista de cima; aprovada assim pelo dono do projeto. O texto-base passou a pedir quilhas só na vista de lado, para as próximas.
+- 2/nov/2026: gun com o plug do leash retocado (original em `imagens-originais/gun.jpg`).
+
 ## Próxima sessão (pendente)
-1. Gerar step-up e gun.
-2. Refazer groveler (saiu em pé e com fundo dividido) e, se quiser, fish e biquilha deitadas.
-3. Gerar as 6 variantes de rabeta: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.
+2. Ilustrações completas. Opcional: longp-round com quilhas claras.
+3. Variantes de rabeta completas. Opcional: refazer longp-round com quilhas claras (vieram pretas).
 4. Opcional: refazer a mini-malibu mais larga (ficou parecida com a mid-length).
 5. Salvar em `surf/img/tipos/`, incluir a chave em `TIMG` e mandar para revisão do Gustavo.
 
 ## Variantes de rabeta
-O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Faltam: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.
+O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Prontas: short-roundpin, short-round, evo-round, evo-roundpin, mid-round, longp-round.
 
 ## Conferir antes de aceitar
 Número e posição das quilhas, formato da rabeta, nenhum logo ou texto, mesmo fundo. Pedir revisão do Gustavo.
 
 ## Prompt base
 ```
-Studio catalog photo of ONE surfboard lying flat, shown twice on the same image. Layout exactly like a technical sheet: on the left, top-down view of the deck, nose pointing up; on the right, side profile lying horizontally, nose pointing left, fins hanging below. Same uniform pale blue-grey (#EEF4F5) background across the whole image, no split, no floor line, soft contact shadow, no props. Board: plain white glassed finish with a thin natural wood stringer (unless stated otherwise). No logos, no brand names, no text, no stickers, no people, no hands. Soft even lighting, realistic proportions, accurate surfboard shape, centered with generous empty margin around it. Wide 16:9 framing.
+Studio catalog photo of ONE surfboard lying flat, shown twice on the same image. Layout exactly like a technical sheet: on the left, top-down view of the deck, nose pointing up; on the right, side profile lying horizontally, nose pointing left, fins hanging below. Same uniform pale blue-grey (#EEF4F5) background across the whole image, no split, no floor line, soft contact shadow, no props. Fins are mounted on the BOTTOM of the board: they appear ONLY in the side profile, never in the top-down deck view (the deck is clean, with no fins on it). Board: plain white glassed finish with a thin natural wood stringer (unless stated otherwise). No logos, no brand names, no text, no stickers, no people, no hands. Soft even lighting, realistic proportions, accurate surfboard shape, centered with generous empty margin around it. Wide 16:9 framing.
 ```
 
 ## Linha de cada tipo
