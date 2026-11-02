@@ -1,0 +1,629 @@
+{
+  "perguntas": [
+    {
+      "id": 1,
+      "pergunta": "Escolher o tênis pelo tipo de pisada/pronação reduz lesão?",
+      "conclusao_curta_pt": "Não. Coortes grandes, ensaios militares e a revisão Cochrane mostram que escolher o tênis pela pisada ou pelo arco do pé praticamente não muda o risco de lesão. Pronação moderada em tênis neutro não aumentou lesão em iniciantes.",
+      "forca": "forte",
+      "implicacao_para_o_motor": "Não usar tipo de pisada/arco como critério principal. Neutro como padrão é coerente com a evidência. Pisada pode, no máximo, entrar como dado secundário (ver pergunta 11).",
+      "estudos": [
+        {
+          "autores": "Nielsen et al.",
+          "ano": 2014,
+          "titulo": "Foot pronation is not associated with increased injury risk in novice runners wearing a neutral shoe: a 1-year prospective cohort study",
+          "revista": "British Journal of Sports Medicine 48(6):440-447",
+          "tipo": "coorte",
+          "amostra": "927 iniciantes (1.854 pés), todos com o mesmo tênis neutro, 1 ano",
+          "achado": "Pronação moderada não aumentou o risco; pronadores tiveram até um pouco menos lesão por 1.000 km. Pé muito pronado não foi bem estudado.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/48/6/440",
+          "confirmado": true
+        },
+        {
+          "autores": "Ryan et al.",
+          "ano": 2011,
+          "titulo": "The effect of three different levels of footwear stability on pain outcomes in women runners: a randomised control trial",
+          "revista": "British Journal of Sports Medicine 45(9):715-721",
+          "tipo": "RCT",
+          "amostra": "81 corredoras, por tipo de pé, sorteadas para neutro, estabilidade ou controle de movimento",
+          "achado": "O controle de movimento deu mais dor em todos os tipos de pé; prescrever por tipo de pé foi chamado de simplista e potencialmente lesivo. Financiado pela Nike; PEDro 4/10.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/45/9/715",
+          "confirmado": true
+        },
+        {
+          "autores": "Knapik et al.",
+          "ano": 2009,
+          "titulo": "Injury reduction effectiveness of selecting running shoes based on plantar shape",
+          "revista": "Journal of Strength and Conditioning Research",
+          "tipo": "RCT",
+          "amostra": "Recrutas do treinamento básico do Exército dos EUA (milhares)",
+          "achado": "Escolher por formato da planta do pé não reduziu lesão (RR 1,07; IC95% 0,91-1,25). Achado repetido na Força Aérea e Fuzileiros.",
+          "doi_ou_url": "https://pubmed.ncbi.nlm.nih.gov/19387413/",
+          "confirmado": true
+        },
+        {
+          "autores": "Richards, Magin, Callister",
+          "ano": 2009,
+          "titulo": "Is your prescription of distance running shoes evidence-based?",
+          "revista": "British Journal of Sports Medicine 43(3):159-162",
+          "tipo": "revisao_sistematica",
+          "amostra": "Busca por ensaios e revisões; nenhum estudo elegível",
+          "achado": "Não havia evidência para prescrever tênis com salto amortecido e controle de pronação conforme o tipo de pé. Autor principal sócio de empresa de calçado.",
+          "doi_ou_url": "https://pubmed.ncbi.nlm.nih.gov/18424485/",
+          "confirmado": true
+        },
+        {
+          "autores": "Relph et al.",
+          "ano": 2022,
+          "titulo": "Running shoes for preventing lower limb running injuries in adults",
+          "revista": "Cochrane Database of Systematic Reviews",
+          "tipo": "revisao_sistematica",
+          "amostra": "Ensaios randomizados até junho de 2021",
+          "achado": "Prescrever tênis pela postura do pé provavelmente faz pouca ou nenhuma diferença na lesão (certeza moderada).",
+          "doi_ou_url": "10.1002/14651858.CD013368.pub2",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pergunta": "Conforto percebido como critério de escolha (comfort filter)",
+      "conclusao_curta_pt": "A ideia de escolher pelo conforto é a proposta mais aceita hoje, mas a evidência direta ainda é modesta: palmilhas mais confortáveis tiveram menos lesão em militares, e uma análise secundária de 2025 associou maior conforto e sensação de amortecimento a menos lesão. Faltam ensaios que testem diretamente 'escolher pelo conforto'.",
+      "forca": "moderada",
+      "implicacao_para_o_motor": "Dar peso real à sensação preferida e ao conforto relatado; tratar como o filtro final (provar o tênis), não como garantia de prevenção.",
+      "estudos": [
+        {
+          "autores": "Nigg, Baltich, Hoerzer, Enders",
+          "ano": 2015,
+          "titulo": "Running shoes and running injuries: mythbusting and a proposal for two new paradigms: 'preferred movement path' and 'comfort filter'",
+          "revista": "British Journal of Sports Medicine 49(20):1290-1294",
+          "tipo": "outro",
+          "amostra": "Revisão narrativa/opinião",
+          "achado": "Pronação e força de impacto não explicam lesão; propõe que o corredor escolha pelo conforto, o que o manteria no seu padrão de movimento preferido.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/49/20/1290.abstract",
+          "confirmado": true
+        },
+        {
+          "autores": "Mündermann, Stefanyshyn, Nigg",
+          "ano": 2001,
+          "titulo": "Relationship between footwear comfort of shoe inserts and anthropometric and sensory factors",
+          "revista": "Medicine & Science in Sports & Exercise 33(11):1939-1945",
+          "tipo": "RCT",
+          "amostra": "206 militares",
+          "achado": "Palmilhas avaliadas como mais confortáveis; o trabalho é a base do argumento de que conforto reduz lesão. O ano correto é 2001 (não 2002); o resultado exato de lesão não foi conferido no resumo.",
+          "doi_ou_url": "https://pubmed.ncbi.nlm.nih.gov/11689747/",
+          "confirmado": true
+        },
+        {
+          "autores": "Malisoux et al.",
+          "ano": 2025,
+          "titulo": "Association of shoe cushioning perception and comfort with injury risk (análise secundária de ensaio randomizado)",
+          "revista": "European Journal of Sport Science",
+          "tipo": "coorte",
+          "amostra": "527 corredores recreativos, 6 meses, 60 lesionados",
+          "achado": "Quem percebia amortecimento moderado/alto (HR 0,35 e 0,24) e quem mais gostou do tênis (HR 0,47) teve menos lesão. É associação, não causa.",
+          "doi_ou_url": "10.1002/ejsc.70063",
+          "confirmado": true
+        },
+        {
+          "autores": "Napier, Willy",
+          "ano": 2018,
+          "titulo": "Logical fallacies in the running shoe debate: let the evidence guide prescription",
+          "revista": "British Journal of Sports Medicine 52(24):1552-1553",
+          "tipo": "outro",
+          "amostra": "Editorial",
+          "achado": "Falta evidência conclusiva para qualquer critério de prescrição, inclusive o conforto.",
+          "doi_ou_url": "10.1136/bjsports-2018-100117",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "pergunta": "Massa corporal × amortecimento/rigidez da espuma × lesão",
+      "conclusao_curta_pt": "O maior ensaio (848 corredores) achou que espuma mais dura aumentou a lesão, mas o efeito apareceu nos corredores mais leves, não nos mais pesados. Nos pesados, macio ou duro não fez diferença clara. Outro ensaio não achou efeito da dureza da entressola.",
+      "forca": "moderada",
+      "implicacao_para_o_motor": "A regra 'mais espuma para 85 kg+' é neutra a levemente sem apoio: a evidência não mostra benefício específico para pesados, mas também não mostra dano. Mais amortecimento parece razoável para todos (sobretudo leves). Manter a regra como preferência de conforto, sem prometer prevenção; não usar como razão para tirar amortecimento de quem é leve.",
+      "estudos": [
+        {
+          "autores": "Malisoux, Delattre, Urhausen, Theisen",
+          "ano": 2020,
+          "titulo": "Shoe Cushioning Influences the Running Injury Risk According to Body Mass: A Randomized Controlled Trial Involving 848 Recreational Runners",
+          "revista": "American Journal of Sports Medicine 48(2):473-480",
+          "tipo": "RCT",
+          "amostra": "848 corredores recreativos, 6 meses, tênis mole (61 N/mm) ou duro (95 N/mm)",
+          "achado": "Duro aumentou lesão no geral (HR 1,52); nos leves HR 1,80; nos pesados sem diferença (HR 1,23; IC 0,75-2,03). A hipótese de que pesados se beneficiariam do duro não se confirmou.",
+          "doi_ou_url": "https://clinicaltrials.gov/study/NCT03115437",
+          "confirmado": true
+        },
+        {
+          "autores": "Theisen et al.",
+          "ano": 2014,
+          "titulo": "Influence of midsole hardness of standard cushioned shoes on running-related injury risk",
+          "revista": "British Journal of Sports Medicine 48(5):371-376",
+          "tipo": "RCT",
+          "amostra": "247 corredores, duplo-cego, 5 meses",
+          "achado": "Dureza da entressola não mudou o risco. IMC alto, lesão prévia e intensidade das sessões aumentaram o risco.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/48/5/371",
+          "confirmado": true
+        },
+        {
+          "autores": "Fuller et al.",
+          "ano": 2017,
+          "titulo": "Body mass and weekly training distance influence the pain and injuries experienced by runners using minimalist shoes: a randomized controlled trial",
+          "revista": "American Journal of Sports Medicine 45(5):1162-1170",
+          "tipo": "RCT",
+          "amostra": "61 corredores de calcanhar treinados",
+          "achado": "Em tênis minimalista, o risco subiu com peso acima de ~71 kg (HR ~2). Sugere que pouca proteção é pior para pesados, o que apoia evitar sola mínima para eles (não necessariamente 'muito mais espuma').",
+          "doi_ou_url": "",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "pergunta": "Drop (calcanhar-antepé) × lesão, × pisada e × Aquiles/panturrilha",
+      "conclusao_curta_pt": "No geral o drop não mudou o risco de lesão. Em corredores regulares, drop baixo (0-6 mm) teve mais lesão; em ocasionais, menos (análise de subgrupo). Trocar para minimalista/drop zero aumenta dor em canela e panturrilha, e drop baixo carrega mais tornozelo e Aquiles.",
+      "forca": "fraca",
+      "implicacao_para_o_motor": "Evitar drop baixo para quem tem dor no Aquiles/panturrilha é biomecanicamente coerente (fraca a moderada). Evitar drop baixo só por pisar de calcanhar tem apoio indireto (transições minimalistas com mais lesão), mas não há ensaio que cruze drop × tipo de pisada. Para quem já usa drop baixo sem queixa, não há motivo para mudar. Recomendar transição gradual.",
+      "estudos": [
+        {
+          "autores": "Malisoux et al.",
+          "ano": 2016,
+          "titulo": "Influence of the Heel-to-Toe Drop of Standard Cushioned Running Shoes on Injury Risk in Leisure-Time Runners: A Randomized Controlled Trial With 6-Month Follow-up",
+          "revista": "American Journal of Sports Medicine 44(11):2933-2940",
+          "tipo": "RCT",
+          "amostra": "553 corredores amadores, drop 10, 6 ou 0 mm",
+          "achado": "Sem efeito geral. Drop baixo: menos lesão em ocasionais (HR 0,48) e mais em regulares (HR 1,67). Subgrupo, exploratório.",
+          "doi_ou_url": "https://researchportal.lih.lu/en/publications/influence-of-the-heel-to-toe-drop-of-standard-cushioned-running-s/",
+          "confirmado": true
+        },
+        {
+          "autores": "Ryan et al.",
+          "ano": 2014,
+          "titulo": "Examining injury risk and pain perception in runners using minimalist footwear",
+          "revista": "British Journal of Sports Medicine 48(16):1257-1262",
+          "tipo": "RCT",
+          "amostra": "103 corredores (neutros/pronação leve), 12 semanas até 10 km",
+          "achado": "Neutro teve menos lesões (4) que minimalista parcial (12); minimalista total deu mais dor em canela e panturrilha.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/48/16/1257",
+          "confirmado": true
+        },
+        {
+          "autores": "Fuller et al.",
+          "ano": 2017,
+          "titulo": "Body mass and weekly training distance influence the pain and injuries experienced by runners using minimalist shoes: a randomized controlled trial",
+          "revista": "American Journal of Sports Medicine 45(5):1162-1170",
+          "tipo": "RCT",
+          "amostra": "61 corredores de calcanhar",
+          "achado": "Sem diferença geral (HR 1,64, IC 0,63-4,27), mas mais risco em quem pesa mais de ~71 kg e mais dor acima de 35 km/semana no minimalista.",
+          "doi_ou_url": "",
+          "confirmado": true
+        },
+        {
+          "autores": "Sobhani et al.",
+          "ano": 2013,
+          "titulo": "Biomechanics of slow running and walking with a rocker shoe",
+          "revista": "Gait & Posture",
+          "tipo": "laboratorio",
+          "amostra": "16 corredores saudáveis",
+          "achado": "Tênis com rocker reduziu o momento de flexão plantar do tornozelo (carga no Aquiles) na corrida lenta. Estudo de 2015 do mesmo grupo repetiu em pacientes com tendinopatia (revista não confirmada).",
+          "doi_ou_url": "https://read.qxmd.com/read/23770233/biomechanics-of-slow-running-and-walking-with-a-rocker-shoe",
+          "confirmado": true
+        },
+        {
+          "autores": "Richert et al.",
+          "ano": 2019,
+          "titulo": "Drop baixo (4 mm) × médio × alto: taxa de carga e momento no tornozelo",
+          "revista": "nao_confirmado",
+          "tipo": "laboratorio",
+          "amostra": "nao_confirmado",
+          "achado": "Citado por fonte secundária: drop 4 mm deu mais taxa de carga e momento no tornozelo e menos momento no joelho.",
+          "doi_ou_url": "",
+          "confirmado": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "pergunta": "Tênis maximalista / espuma muito alta × carga de impacto e estabilidade",
+      "conclusao_curta_pt": "Espuma muito alta não reduz o impacto medido: em laboratório, o maximalista aumentou o pico e a taxa de carga (perna fica mais rígida), e o efeito não sumiu após 6 semanas de adaptação. Há sinais fracos de mais eversão (menos estabilidade). Não há ensaio de lesão com maximalistas.",
+      "forca": "fraca",
+      "implicacao_para_o_motor": "Não vender 'mais espuma = menos impacto/lesão'. Para quem pede estabilidade ou é pesado, preferir base larga a altura extrema. Espuma alta pode ser oferecida por conforto, não por proteção.",
+      "estudos": [
+        {
+          "autores": "Kulmala, Kosonen, Nurminen, Avela",
+          "ano": 2018,
+          "titulo": "Running in highly cushioned shoes increases leg stiffness and amplifies impact loading",
+          "revista": "Scientific Reports",
+          "tipo": "laboratorio",
+          "amostra": "12 homens saudáveis, 10 e 14,5 km/h",
+          "achado": "Maximalista aumentou pico de impacto (+10,7%) e taxa de carga (+12,3%) a 14,5 km/h; perna mais rígida.",
+          "doi_ou_url": "https://jyx.jyu.fi/handle/123456789/60630",
+          "confirmado": true
+        },
+        {
+          "autores": "Hannigan, Pollard",
+          "ano": 2019,
+          "titulo": "A 6-Week Transition to Maximal Running Shoes Does Not Change Running Biomechanics",
+          "revista": "American Journal of Sports Medicine",
+          "tipo": "laboratorio",
+          "amostra": "Corredores recreativos em transição de 6 semanas",
+          "achado": "O aumento de força de impacto e taxa de carga do maximalista persistiu após a adaptação.",
+          "doi_ou_url": "https://www.sciencedaily.com/releases/2019/04/190416132105.htm",
+          "confirmado": true
+        },
+        {
+          "autores": "Chambon et al.",
+          "ano": 2014,
+          "titulo": "Is midsole thickness a key parameter for the running pattern?",
+          "revista": "Gait & Posture 40(1):58-63",
+          "tipo": "laboratorio",
+          "amostra": "15 corredores, solas de 0 a 16 mm sem drop",
+          "achado": "Espessura não mudou força de reação nem aceleração tibial; tempo de contato aumentou.",
+          "doi_ou_url": "https://hal.archives-ouvertes.fr/hal-01440208",
+          "confirmado": true
+        },
+        {
+          "autores": "Dean, Hannigan, Newcomb, Krevitz, Pollard",
+          "ano": 2019,
+          "titulo": "Biomechanical factors associated with injury during a 6-week transition to maximal shoes: a case series",
+          "revista": "International Journal of Exercise Science (resumo de congresso)",
+          "tipo": "outro",
+          "amostra": "2 corredoras lesionadas",
+          "achado": "Ambas tinham eversão prolongada no maximalista; uma desenvolveu tendinopatia do Aquiles.",
+          "doi_ou_url": "https://digitalcommons.wku.edu/ijesab/vol8/iss7/59",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "pergunta": "Peso do tênis × economia de corrida",
+      "conclusao_curta_pt": "Cada 100 g a mais por pé custa cerca de 1% de energia, e isso se traduz em tempo de prova mais lento na mesma proporção. Mas tirar peso à custa de amortecimento não deixa mais rápido.",
+      "forca": "forte",
+      "implicacao_para_o_motor": "Peso importa para quem busca desempenho (prova/ritmo rápido); para iniciantes e treino leve é critério secundário diante de conforto e amortecimento.",
+      "estudos": [
+        {
+          "autores": "Franz, Wierzbinski, Kram",
+          "ano": 2012,
+          "titulo": "Metabolic cost of running barefoot versus shod: is lighter better?",
+          "revista": "Medicine & Science in Sports & Exercise",
+          "tipo": "laboratorio",
+          "amostra": "12 corredores experientes descalços",
+          "achado": "~1% mais consumo de O2 a cada 100 g por pé; com massa igual, tênis leve foi 3-4% mais econômico que descalço.",
+          "doi_ou_url": "https://scholar.colorado.edu/downloads/nz806005t",
+          "confirmado": true
+        },
+        {
+          "autores": "Hoogkamer, Kipp, Spiering, Kram",
+          "ano": 2016,
+          "titulo": "Altered Running Economy Directly Translates to Altered Distance-Running Performance",
+          "revista": "Medicine & Science in Sports & Exercise 48:2175-2180",
+          "tipo": "laboratorio",
+          "amostra": "Corredores em 3.000 m com massa adicionada",
+          "achado": "Massa extra piora a economia e o tempo de 3.000 m de forma proporcional.",
+          "doi_ou_url": "https://thepeninsulaqatar.com/article/29/10/2016/Treadmill-running-with-heavier-shoes-may-slow-you-down",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "pergunta": "Supertênis/placa de carbono: economia, velocidade do corredor, estabilidade e lesão óssea",
+      "conclusao_curta_pt": "Supertênis economizam ~2,5-4% de energia em corredores rápidos; em ritmos lentos o ganho tende a ser menor e muito variável, embora alguns estudos achem ganho mesmo devagar. Há sinais de mais eversão e relatos de fratura por estresse no navicular, só em série de casos.",
+      "forca": "moderada",
+      "implicacao_para_o_motor": "Restringir supertênis a quem tem ritmo e orçamento é coerente. Alertar sobre menor estabilidade e não indicar para iniciantes, quem tem histórico de fratura por estresse no pé ou quem pediu estabilidade. Usar em prova/treino rápido, não no dia a dia.",
+      "estudos": [
+        {
+          "autores": "Hoogkamer et al.",
+          "ano": 2018,
+          "titulo": "A comparison of the energetic cost of running in marathon racing shoes",
+          "revista": "Sports Medicine 48(4):1009-1019",
+          "tipo": "laboratorio",
+          "amostra": "18 corredores homens rápidos",
+          "achado": "Protótipo do Vaporfly 4% foi ~4% mais econômico; todos melhoraram. Financiado pela Nike.",
+          "doi_ou_url": "https://www.springermedicine.com/a-comparison-of-the-energetic-cost-of-running-in-marathon-racing/22255274",
+          "confirmado": true
+        },
+        {
+          "autores": "Meta-análise de AFT (autores nao_confirmados)",
+          "ano": 2025,
+          "titulo": "Effects of advanced footwear technology on running economy and endurance performance: a meta-analysis",
+          "revista": "nao_confirmado",
+          "tipo": "meta_analise",
+          "amostra": "17 ensaios cruzados, 281 participantes",
+          "achado": "AFT reduziu consumo de O2; tendência (não significativa) de mais ganho em velocidades mais altas.",
+          "doi_ou_url": "https://lida.sport-iat.de/ta/Record/4094672?lng=en",
+          "confirmado": false
+        },
+        {
+          "autores": "Knopp et al.",
+          "ano": 2023,
+          "titulo": "Meta-análise de AFT × economia de corrida",
+          "revista": "nao_confirmado",
+          "tipo": "meta_analise",
+          "amostra": "nao_confirmado",
+          "achado": "Benefício médio, mas grande variação individual (de +9,7% a -1,1% em amadores).",
+          "doi_ou_url": "",
+          "confirmado": false
+        },
+        {
+          "autores": "Joubert et al.",
+          "ano": 2022,
+          "titulo": "Vaporfly em velocidade mais lenta (preprint)",
+          "revista": "SportRxiv",
+          "tipo": "laboratorio",
+          "amostra": "Corredores recreativos",
+          "achado": "Ganho de ~1% em ritmo lento, sem significância estatística.",
+          "doi_ou_url": "https://sportrxiv.org/index.php/server/preprint/view/141",
+          "confirmado": false
+        },
+        {
+          "autores": "Tenforde, Hoenig, Saxena, Hollander",
+          "ano": 2023,
+          "titulo": "Bone Stress Injuries in Runners Using Carbon Fiber Plate Footwear",
+          "revista": "Sports Medicine 53:1499-1505",
+          "tipo": "outro",
+          "amostra": "Série de 5 casos de fratura por estresse no navicular",
+          "achado": "Associação clínica com placa de carbono; não prova causa. Sugere investigar dor no meio do pé em quem usa.",
+          "doi_ou_url": "10.1007/s40279-023-01818-z",
+          "confirmado": true
+        },
+        {
+          "autores": "Estudo Footwear Science (autores nao_confirmados)",
+          "ano": 2024,
+          "titulo": "Eversão do retropé com Nike Vaporfly NEXT%",
+          "revista": "Footwear Science",
+          "tipo": "laboratorio",
+          "amostra": "12 corredores competitivos",
+          "achado": "Mais eversão no supertênis, padrão visto em quem teve fratura de navicular.",
+          "doi_ou_url": "https://health.oregonstate.edu/research/publications/1010801942428020242327317",
+          "confirmado": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "pergunta": "Rodízio de pares × lesão",
+      "conclusao_curta_pt": "Uma coorte de 264 corredores achou ~39% menos lesão em quem alternava mais de um par. É estudo único e observacional; os próprios autores não afirmam causa.",
+      "forca": "fraca",
+      "implicacao_para_o_motor": "Pode sugerir rodízio como dica opcional ('pode ajudar'), sem prometer redução de lesão e sem empurrar compra de segundo par a quem tem orçamento curto.",
+      "estudos": [
+        {
+          "autores": "Malisoux et al.",
+          "ano": 2015,
+          "titulo": "Can parallel use of different running shoes decrease running-related injury risk?",
+          "revista": "Scandinavian Journal of Medicine & Science in Sports 25(1):110-115",
+          "tipo": "coorte",
+          "amostra": "264 corredores, 22 semanas, 87 lesionados",
+          "achado": "Usar mais de um par foi protetor (HR 0,614; IC 0,389-0,969). Sem causalidade estabelecida.",
+          "doi_ou_url": "10.1111/sms.12154",
+          "confirmado": true
+        },
+        {
+          "autores": "Taunton et al.",
+          "ano": 2003,
+          "titulo": "A prospective study of running injuries: the Vancouver Sun Run 'In Training' clinics",
+          "revista": "British Journal of Sports Medicine 37:239",
+          "tipo": "coorte",
+          "amostra": "Participantes de clínicas de treino para prova de 10 km",
+          "achado": "Idade do tênis entrou no modelo de risco; sem medida adequada de exposição. Não testa rodízio diretamente.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/37/3/239",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "pergunta": "Vida útil: perda de amortecimento com a quilometragem e quando trocar",
+      "conclusao_curta_pt": "A espuma perde amortecimento com o uso (em corredores reais, ~70% retido a ~800 km no estudo clássico), mas não há prova de que tênis gasto cause lesão. Supertênis de PEBA perdem a vantagem de economia por volta de 450 km. A faixa de 500-800 km é regra prática, não número científico.",
+      "forca": "fraca",
+      "implicacao_para_o_motor": "Informar a faixa 500-800 km como referência prática ('troque quando sentir que perdeu o amortecimento ou aparecer desconforto'); para supertênis, avisar que o ganho cai antes (~400-450 km).",
+      "estudos": [
+        {
+          "autores": "Cook, Kester, Brunet",
+          "ano": 1985,
+          "titulo": "Shock absorption characteristics of running shoes",
+          "revista": "American Journal of Sports Medicine 13(4):248-253",
+          "tipo": "laboratorio",
+          "amostra": "Tênis testados em máquina e por corredores voluntários",
+          "achado": "Em máquina: <60% do amortecimento entre 250 e 500 milhas (400-800 km). Em uso real: ~70% retido a 500 milhas (~800 km). Preço e marca não fizeram diferença.",
+          "doi_ou_url": "https://pubmed.ncbi.nlm.nih.gov/4025676/",
+          "confirmado": true
+        },
+        {
+          "autores": "Wang, Li, Hong, Zhou",
+          "ano": 2010,
+          "titulo": "Changes in heel cushioning characteristics of running shoes with running mileage",
+          "revista": "Footwear Science 2(3):141-147",
+          "tipo": "laboratorio",
+          "amostra": "Corredores rodando até 500 km (detalhes nao_confirmados)",
+          "achado": "Perda de amortecimento do calcanhar com a quilometragem; dados exatos não conferidos.",
+          "doi_ou_url": "",
+          "confirmado": true
+        },
+        {
+          "autores": "Rodrigo-Carranza et al.",
+          "ano": 2023,
+          "titulo": "Economia de corrida com tênis PEBA e EVA novos e com 450 km",
+          "revista": "Scandinavian Journal of Medicine & Science in Sports",
+          "tipo": "laboratorio",
+          "amostra": "22 corredores treinados",
+          "achado": "PEBA novo foi mais econômico que EVA novo; com 450 km os dois ficaram iguais.",
+          "doi_ou_url": "https://the5krunner.com/2023/10/20/supershoes-peba-vs-eva-after-300-miles-which-deteriorates/",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "pergunta": "Iniciantes, corredores mais velhos ou mais pesados: algum calçado específico reduz lesão?",
+      "conclusao_curta_pt": "Não há calçado comprovado para esses grupos. O risco deles vem mais de carga de treino, IMC alto, idade 45-65 e lesão prévia. Iniciantes se lesionam bem mais por hora corrida. O único sinal de calçado é negativo: minimalista é pior para quem pesa mais.",
+      "forca": "moderada",
+      "implicacao_para_o_motor": "Para iniciantes, pesados e mais velhos: tênis amortecido e convencional, sem minimalista nem supertênis, e mensagem forte sobre progressão gradual de volume (o que mais pesa no risco).",
+      "estudos": [
+        {
+          "autores": "Videbæk et al.",
+          "ano": 2015,
+          "titulo": "Incidence of Running-Related Injuries Per 1000 h of Running in Different Types of Runners: A Systematic Review and Meta-Analysis",
+          "revista": "Sports Medicine 45(7):1017-1026",
+          "tipo": "meta_analise",
+          "amostra": "13 estudos",
+          "achado": "Iniciantes: 17,8 lesões/1.000 h; recreativos: 7,7/1.000 h.",
+          "doi_ou_url": "10.1007/s40279-015-0333-8",
+          "confirmado": true
+        },
+        {
+          "autores": "Buist/Nielsen et al. (coorte dinamarquesa DANO-RUN)",
+          "ano": 2013,
+          "titulo": "Predictors of running-related injuries in novice runners (coorte de iniciantes com tênis neutro)",
+          "revista": "Orthopaedic Journal of Sports Medicine",
+          "tipo": "coorte",
+          "amostra": "~930 iniciantes com tênis neutro",
+          "achado": "IMC >30, idade 45-65 e lesão prévia não relacionada à corrida associados a mais risco; IMC <20 protetor. Autoria exata nao_confirmada.",
+          "doi_ou_url": "https://journals.sagepub.com/doi/reader/10.1177/2325967113487316",
+          "confirmado": false
+        },
+        {
+          "autores": "van der Worp et al.",
+          "ano": 2015,
+          "titulo": "Injuries in runners; a systematic review on risk factors and sex differences",
+          "revista": "PLoS One",
+          "tipo": "revisao_sistematica",
+          "amostra": "15 estudos longitudinais",
+          "achado": "Lesão prévia e uso de palmilhas associados a mais risco; mulheres com risco geral um pouco menor.",
+          "doi_ou_url": "10.1371/journal.pone.0114937",
+          "confirmado": true
+        },
+        {
+          "autores": "Fuller et al.",
+          "ano": 2017,
+          "titulo": "Body mass and weekly training distance influence the pain and injuries experienced by runners using minimalist shoes",
+          "revista": "American Journal of Sports Medicine 45(5):1162-1170",
+          "tipo": "RCT",
+          "amostra": "61 corredores",
+          "achado": "Minimalista aumentou risco acima de ~71 kg.",
+          "doi_ou_url": "",
+          "confirmado": true
+        },
+        {
+          "autores": "Malisoux et al.",
+          "ano": 2020,
+          "titulo": "Shoe Cushioning Influences the Running Injury Risk According to Body Mass",
+          "revista": "American Journal of Sports Medicine 48(2):473-480",
+          "tipo": "RCT",
+          "amostra": "848 corredores",
+          "achado": "Peso não foi fator de risco no geral; amortecimento macio protegeu os leves, não os pesados.",
+          "doi_ou_url": "https://clinicaltrials.gov/study/NCT03115437",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "pergunta": "Estabilidade/apoio medial para quem já sente desconforto com neutro ou tem histórico de lesão",
+      "conclusao_curta_pt": "Um ensaio cego (372 corredores) mostrou menos lesão com controle de movimento, concentrada nos pés pronados (HR 0,34) e em lesões ligadas à pronação. Por outro lado, outro ensaio achou mais dor com controle de movimento. Ou seja: pode ajudar um subgrupo, não todo mundo.",
+      "forca": "controversa",
+      "implicacao_para_o_motor": "Indicar estabilidade só para quem sente desconforto com neutro, tem pé bem pronado ou lesão ligada à pronação é coerente com a evidência. Preferir estabilidade leve a controle de movimento rígido; nunca como padrão.",
+      "estudos": [
+        {
+          "autores": "Malisoux et al.",
+          "ano": 2016,
+          "titulo": "Injury risk in runners using standard or motion control shoes: a randomised controlled trial with participant and assessor blinding",
+          "revista": "British Journal of Sports Medicine 50(8):481-487",
+          "tipo": "RCT",
+          "amostra": "372 corredores recreativos, 6 meses",
+          "achado": "Controle de movimento reduziu lesão (HR 0,55); efeito só nos pronados (n=94; HR 0,34). Parceria com Decathlon.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/50/8/481",
+          "confirmado": true
+        },
+        {
+          "autores": "Willems et al.",
+          "ano": 2021,
+          "titulo": "Motion-control shoes reduce the risk of pronation-related pathologies in recreational runners (análise secundária)",
+          "revista": "Journal of Orthopaedic & Sports Physical Therapy",
+          "tipo": "RCT",
+          "amostra": "Mesmo ensaio de 2016",
+          "achado": "Menos lesões ligadas à pronação (HR 0,41), sem efeito nas outras lesões (HR 0,68; IC 0,41-1,10).",
+          "doi_ou_url": "https://researchportal.lih.lu/en/publications/motion-control-shoes-reduce-the-risk-of-pronation-related-patholo/",
+          "confirmado": true
+        },
+        {
+          "autores": "Ryan et al.",
+          "ano": 2011,
+          "titulo": "The effect of three different levels of footwear stability on pain outcomes in women runners",
+          "revista": "British Journal of Sports Medicine 45(9):715-721",
+          "tipo": "RCT",
+          "amostra": "81 corredoras",
+          "achado": "Controle de movimento deu mais dor em todos os tipos de pé.",
+          "doi_ou_url": "https://bjsm.bmj.com/content/45/9/715",
+          "confirmado": true
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "pergunta": "Revisões sistemáticas recentes sobre calçado de corrida e lesão (quadro geral)",
+      "conclusao_curta_pt": "O quadro geral é de incerteza: a Cochrane 2022 conclui que prescrever pela pisada não ajuda e que a evidência sobre tipos de tênis e lesão é de certeza baixa a muito baixa. Revisões biomecânicas mostram efeitos de espuma, espessura e drop na carga, mas sem ligação clara com lesão. Treino e lesão prévia pesam mais que o tênis.",
+      "forca": "forte",
+      "implicacao_para_o_motor": "Comunicar que o tênis é sobre conforto e adequação ao uso, não um 'remédio' contra lesão. Evitar promessas de prevenção nos textos do resultado.",
+      "estudos": [
+        {
+          "autores": "Relph et al.",
+          "ano": 2022,
+          "titulo": "Running shoes for preventing lower limb running injuries in adults",
+          "revista": "Cochrane Database of Systematic Reviews",
+          "tipo": "revisao_sistematica",
+          "amostra": "Ensaios randomizados até 2021",
+          "achado": "Prescrição por postura do pé: pouca ou nenhuma diferença (certeza moderada); comparações entre tipos de tênis: certeza baixa a muito baixa.",
+          "doi_ou_url": "10.1002/14651858.CD013368.pub2",
+          "confirmado": true
+        },
+        {
+          "autores": "Sun et al.",
+          "ano": 2020,
+          "titulo": "Effects of running shoe constructions on running biomechanics: a systematic review (título aproximado)",
+          "revista": "Journal of Sports Science and Medicine 19:20-37",
+          "tipo": "revisao_sistematica",
+          "amostra": "Estudos de 1994 a 2018",
+          "achado": "Entressola mais macia/espessa pode reduzir impacto; drop e outras características ainda sem conclusão; evidência de lesão é indireta.",
+          "doi_ou_url": "https://jssm.org/19-1-20.p_d_f",
+          "confirmado": true
+        },
+        {
+          "autores": "Napier, Willy",
+          "ano": 2018,
+          "titulo": "Logical fallacies in the running shoe debate: let the evidence guide prescription",
+          "revista": "British Journal of Sports Medicine 52(24):1552-1553",
+          "tipo": "outro",
+          "amostra": "Editorial",
+          "achado": "Nenhum desenho de tênis comprovadamente previne lesão em corredores saudáveis.",
+          "doi_ou_url": "10.1136/bjsports-2018-100117",
+          "confirmado": true
+        },
+        {
+          "autores": "Kettner, Krapp, Stein",
+          "ano": 2026,
+          "titulo": "Revisão sistemática sobre espessura da sola na biomecânica e economia",
+          "revista": "nao_confirmado",
+          "tipo": "revisao_sistematica",
+          "amostra": "nao_confirmado",
+          "achado": "Sola mais espessa: mais tempo de contato e menor taxa de carga; outros efeitos inconsistentes.",
+          "doi_ou_url": "https://link.springer.com/article/10.1186/s40798-026-01020-1",
+          "confirmado": false
+        },
+        {
+          "autores": "Hannigan, Pollard",
+          "ano": null,
+          "titulo": "Revisão citada no pedido",
+          "revista": "nao_confirmado",
+          "tipo": "revisao_sistematica",
+          "amostra": "",
+          "achado": "Não encontrei revisão sistemática de Hannigan & Pollard; só o estudo AJSM 2019 de transição para maximalista (pergunta 5).",
+          "doi_ou_url": "",
+          "confirmado": false
+        }
+      ]
+    }
+  ]
+}

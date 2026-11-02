@@ -1,0 +1,1930 @@
+{
+ "data": "2026-11",
+ "correcoes": [
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Gel-Nimbus 28",
+   "correcoes": {
+    "aprovacao_1a5": 4.2
+   },
+   "motivo": "Notas profissionais acima de 3,9: RunnersLab 9,4; Road Trail Run 8,6; Running Shoes Guru 7; RunRepeat cerca de 92 (citado por terceiro). Média de cerca de 4,3, arredondada para 4,2 por cautela. Maciez mantida: RunRepeat mediu 38,8 AC, um pouco mais firme que a média.",
+   "fontes": [
+    {
+     "fonte": "RunnersLab",
+     "url": "https://runnerslab.com/asics-gel-nimbus-28-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2026/01/ryans-asics-gel-nimbus-28-review-6.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/asics-gel-nimbus-28-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/asics-gel-nimbus-28",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Novablast 6",
+   "correcoes": {
+    "aprovacao_1a5": 4.5,
+    "nao_indicado_para": "hee lar pro"
+   },
+   "motivo": "Notas: RunRepeat 93 (ritmo 86); RunnersLab 9,5; Road Trail Run 9,0 a 9,2. Média perto de 4,6 e o Doctors of Running mais crítico. Tirei 'rap', que contradizia o uso 'rit' (RunRepeat dá 86 em ritmo). Mantive 'hee' e 'pro': RTINGS e Doctors of Running apontam calcanhar mole e pouco estável.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/asics-novablast-6",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunnersLab",
+     "url": "https://runnerslab.com/asics-novablast-6-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2026/05/asics-novablast-6-multi-tester-review.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/novablast-6",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Gel-Kayano 33",
+   "correcoes": {
+    "aprovacao_1a5": 3.9
+   },
+   "motivo": "RunRepeat dá 86 (4,3). RTINGS dá 7,7 para treino diário e 7,3 para longão (cerca de 3,75). Doctors of Running critica o retorno. A média fica perto de 4,0, acima dos 3,6 do catálogo. Maciez mantida: RunRepeat mediu 32,8 AC, mais macio.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/asics-gel-kayano-33",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/gel-kayano-33",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2026/05/asics-gel-kayano-33-review-2026.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS GT-2000 15",
+   "correcoes": {
+    "nao_indicado_para": "lar rap"
+   },
+   "motivo": "Tirei 'aqu': o Doctors of Running diz que a versão 15 abriu mais a lingueta do calcanhar e resolveu o problema de Aquiles da versão 14. Nenhuma outra review cita esse problema.",
+   "fontes": [
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=12273",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/asics-gt-2000-15",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Superblast 3",
+   "correcoes": {
+    "aprovacao_1a5": 4.6,
+    "maciez_1a5": 4.5
+   },
+   "motivo": "RunRepeat dá 93 e mediu a espuma em 22,8 AC, muito mais macia que a média de 35,9 AC, com amortecimento de impacto de nível 'world-class' (154/153 SA). RTINGS também confirma a espuma mais macia.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/asics-superblast-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/superblast-3",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Megablast",
+   "correcoes": {
+    "aprovacao_1a5": 4.7
+   },
+   "motivo": "RunRepeat dá 95 (estabilidade 89) e o chama de 'o novo rei dos super trainers'; RunnersLab e RTINGS são positivos. Estabilidade mantida em 3,0 porque RTINGS diz que ele fica difícil de controlar com o cansaço.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/asics-megablast",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/megablast",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Metaspeed Sky Tokyo",
+   "correcoes": {
+    "aprovacao_1a5": 4.1
+   },
+   "motivo": "Correção para baixo: Running Shoes Guru 7, Solereview 6/10, OutdoorGearLab 71 e WearTesters 9,5 dão média perto de 3,7. Os dados de corrida rápida de Road Trail Run e Doctors of Running não vieram com nota. Por isso o corte é moderado.",
+   "fontes": [
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/asics-metaspeed-sky-tokyo-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Solereview",
+     "url": "https://www.solereview.com/?p=22475",
+     "tipo": "review"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/asics-metaspeed-sky-tokyo",
+     "tipo": "review"
+    },
+    {
+     "fonte": "WearTesters",
+     "url": "https://weartesters.com/asics-metaspeed-sky-tokyo-performance-review",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "ASICS Trabuco 14",
+   "correcoes": {
+    "perfil_ideal": "lar"
+   },
+   "motivo": "Tirei 'lama' do perfil ideal, que contradizia o 'lama' em 'não indicado'. OutdoorGearLab diz que a tração é fraca em lama e grama molhada, e RunnersLab diz que o tênis tem limite em terreno muito técnico. Mantive 'lama' em 'não indicado'.",
+   "fontes": [
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/trail-running-shoes-men/asics-trabuco-14",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RunnersLab",
+     "url": "https://runnerslab.com/asics-gel-trabuco-14-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "Brooks Adrenaline GTS 25",
+   "correcoes": {
+    "maciez_1a5": 3.3,
+    "nao_indicado_para": "cal rap"
+   },
+   "motivo": "RunRepeat mediu 34,5 AC, mais macio que a média de 36,0 e 27% mais macio que o 24. Tirei 'aqu': nenhuma review cita irritação no Aquiles, e o Road Trail Run diz que a gola acolchoada evita irritação (drop de 10 mm).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/brooks-adrenaline-gts-25",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/08/brooks-adrenaline-gts-25-review.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2025/09/brooks-adrenaline-gts-25-review-2025.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "Brooks Ghost 17",
+   "correcoes": {
+    "maciez_1a5": 3.5
+   },
+   "motivo": "RunRepeat mediu a espuma em 17,0 HA, mais macia que a média de 20,5 HA. Resposta mantida: RTINGS dá 4,8/10. Aprovação mantida: Road Trail Run 8,75, RunnersLab 9,2, Running Shoes Guru 7 a 8 e OutdoorGearLab 65 dão média perto de 4,0.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/es/brooks-ghost-17",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/brooks/ghost-17",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "Brooks Glycerin Max 2",
+   "correcoes": {
+    "maciez_1a5": 3.9,
+    "nao_indicado_para": "aqu cal lar rap"
+   },
+   "motivo": "RunRepeat mediu 30,9 AC, mais macio que a média, e chama a espuma de 'plush'; Road Trail Run também diz que é macio. Tirei 'pro' de 'não indicado', que contradizia o perfil ideal 'pro': RunRepeat fala em 'estabilidade guiada' e Doctors of Running o põe perto da categoria de estabilidade.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/brooks-glycerin-max-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=624",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/11/brooks-glycerin-max-2-multi-tester.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "Brooks Caldera 8",
+   "correcoes": {
+    "perfil_ideal": "dia ini lon"
+   },
+   "motivo": "Tirei 'lar' do perfil ideal, que contradizia o 'lar' em 'não indicado'. RunRepeat diz que falta espaço no bico e o modelo só sai na largura D. Aprovação de 4,2 confirmada: RunRepeat 79, Switchback 4,6.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/brooks-caldera-8",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Switchback Travel",
+     "url": "https://www.switchbacktravel.com/reviews/brooks-caldera-8",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_asics_brooks",
+   "modelo": "Brooks Cascadia 19",
+   "correcoes": {
+    "nao_indicado_para": "rap",
+    "aprovacao_1a5": 4.4
+   },
+   "motivo": "Tirei 'lon' (OutdoorGearLab: 'longos dias em trilha', além de contradizer o uso e o perfil 'lon') e 'lar' (Road Trail Run: forma mais generosa no bico; existe versão 2E). Notas: OutdoorGearLab 80, Running Shoes Guru 10, RunToTheFinish 90%, CleverHiker 4,3, média de cerca de 4,45.",
+   "fontes": [
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/trail-running-shoes-men/brooks-cascadia-19",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/06/brooks-cascadia-19-and-cascadia-19-gtx.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/trail/brooks-cascadia-19-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Warehouse",
+     "url": "https://www.runningwarehouse.com/Brooks_Cascadia_19/descpage-B19CAM1.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Pegasus 42",
+   "correcoes": {
+    "maciez_1a5": 3.0,
+    "aprovacao_1a5": 4.1,
+    "nao_indicado_para": "cal fore rap",
+    "usos_indicados": "aca dia lon rod"
+   },
+   "motivo": "RTINGS dá 6,0 de amortecimento (=3,0) e RunRepeat mede maciez perto da média ('Goldilocks' na Fleet Feet); antepé largo medido (96,5 mm vs 95,2 média; iRunFar e Run Testers: roomy), então 'lar' sai; Runner's Lab e Fleet Feet indicam para longão, então 'lon' sai e entra em usos. Aprovação: RunRepeat diário 90, Runner's Lab 9,1, RSG 7/10. Mantidos 'fore' (RTINGS antepé duro; RunRepeat pouca absorção no antepé) e 'rap' (RTINGS 5K/10K 6,2, retorno fraco). 'cal' não foi verificado.",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/nike/pegasus-42",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/es/nike-pegasus-42",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "iRunFar",
+     "url": "https://www.irunfar.com/nike-pegasus-42-review",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Fleet Feet",
+     "url": "https://www.fleetfeet.com/blog/nike-pegasus-42-review-a-versatile-workhorse",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/nike-pegasus-42-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/nike-pegasus-42-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 3,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Pegasus Plus 2",
+   "correcoes": {
+    "maciez_1a5": 3.8,
+    "aprovacao_1a5": 4.3
+   },
+   "motivo": "RunRepeat mede entressola mais macia que a média (29,8 AC vs 35,5) e dá nota 85; Tom's Guide: mais macio e com mais retorno que o Pegasus 42; Runtothefinish 95%. 'lar' mantido com ressalva (RunRepeat: biqueira estreita; Marathon Sports diz o contrário).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/nike-pegasus-plus-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/nike/pegasus-plus-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Tom's Guide",
+     "url": "https://www.tomsguide.com/wellness/running/nike-pegasus-plus-2-review",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 2,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Vomero 18",
+   "correcoes": {
+    "aprovacao_1a5": 4.5
+   },
+   "motivo": "RunRepeat dá nota 90 (Superb); maciez e resposta baixas no catálogo batem com as reviews (retorno menor que o do v17). RunRepeat mede biqueira estreita (69,6 mm), mas só uma fonte cita, então 'lar' não foi adicionado.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/uk/nike-vomero-18",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 1,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Vomero Plus",
+   "correcoes": {
+    "resposta_1a5": 4.2
+   },
+   "motivo": "RunRepeat mede 67-69% de retorno de energia (média 58,6%); RTINGS dá 8,5 de retorno; Running Shoes Guru diz que tem o maior retorno do comparativo.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/nike-vomero-plus",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/nike/vomero-plus",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/nike-vomero-plus-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Structure 26",
+   "correcoes": {
+    "maciez_1a5": 3.1,
+    "estabilidade_1a5": 4.5,
+    "aprovacao_1a5": 4.2
+   },
+   "motivo": "RunRepeat: entressola um pouco mais macia que a média, estabilidade 90 e nota 85; RTINGS dá 8,1 de estabilidade lateral; Flawless Shoe Reviews e Doctors of Running dizem que ficou mais macio que o 25.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/nike-structure-26",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/nike/structure-26-running-shoe",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2025/07/nike-structure-26-review-2025.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Winflo 12",
+   "correcoes": {
+    "maciez_1a5": 3.8,
+    "aprovacao_1a5": 4.3
+   },
+   "motivo": "RunRepeat (nota 85): pisada macia, muita absorção de impacto e stack de 40,9 mm (perfil de amortecimento máximo); TrainingPlan também acha macio. Aprovação ajustada para baixo de 4,4 para bater com o 85 do RunRepeat.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/nike-winflo-12",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "TrainingPlan",
+     "url": "https://www.trainingplan.dev/blog/posts/nike-winflo-12-review",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 2,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Zoom Fly 6",
+   "correcoes": {
+    "aprovacao_1a5": 4.4
+   },
+   "motivo": "RunRepeat dá nota 88 (Superb). Maciez e peso do catálogo batem (RTINGS 247 g; RunRepeat mede maciez perto da média).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/nike-zoom-fly-6",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/tools/compare/nike-zoom-fly-6-vs-nike-vomero-plus/81109/102909",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Vaporfly 4",
+   "correcoes": {
+    "aprovacao_1a5": 4.6
+   },
+   "motivo": "RunRepeat dá nota 92-93 (Superb). Estabilidade baixa e as restrições do catálogo batem com RunRepeat (estabilidade 59), RTINGS, Solereview e OutdoorGearLab (6/10).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/nike-vaporfly-4",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Solereview",
+     "url": "https://www.solereview.com/nike-vaporfly-4-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Alphafly 3",
+   "correcoes": {
+    "aprovacao_1a5": 4.6
+   },
+   "motivo": "RunRepeat dá nota 93 (Superb), com 95 para prova. 'hee' mantido (Solereview, WearTesters e RunRepeat recomendam para quem pisa de mediopé).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/nike-alphafly-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Solereview",
+     "url": "https://www.solereview.com/?p=22867",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike Invincible 3",
+   "correcoes": {
+    "peso_g": 310,
+    "nao_indicado_para": "pes pro rap"
+   },
+   "motivo": "RunRepeat pesa 310 g; Coachweb pesa 316 g no UK 9. Tom's Guide e Men's Fitness chamam a biqueira de larga e espaçosa, então 'lar' sai. Live Science e Coachweb dizem que não é estável, então 'pro' entra.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/uk/nike-zoom-x-invincible-run-flyknit-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Tom's Guide",
+     "url": "https://www.tomsguide.com/reviews/nike-invincible-3",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Men's Fitness",
+     "url": "https://mensfitness.co.uk/gear/nike-invincible-run-3-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Coachweb",
+     "url": "https://www.coachweb.com/gear/running-gear/nike-invincible-3-review",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Live Science",
+     "url": "https://www.livescience.com/health/exercise/nike-invincible-3-review",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 2,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Nike ACG Pegasus Trail",
+   "correcoes": {
+    "aprovacao_1a5": 4.3
+   },
+   "motivo": "iRunFar dá 9,3/10, Gear Up To Fit dá 8,6/10 e BITR dá B/A/B. A RunRepeat do Pegasus Trail 5 (geração anterior) não foi usada.",
+   "fontes": [
+    {
+     "fonte": "iRunFar",
+     "url": "https://irunfar.com/category/gear/shoes",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Gear Up To Fit",
+     "url": "https://gearuptofit.com/?p=91258",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Believe in the Run",
+     "url": "https://believeintherun.com/shoe-reviews/nike-acg-pegasus-trail-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 3,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Puma Deviate Nitro 4",
+   "correcoes": {
+    "maciez_1a5": 3.4
+   },
+   "motivo": "RunRepeat mede entressola mais macia que a média (33,2 AC vs 35,9) e espuma secundária muito macia (19,9 AC); nota 84 bate com a aprovação de 4,2. Não achei fonte para confirmar nem derrubar 'dia' em nao_indicado_para.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/puma-deviate-nitro-4",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/puma/deviate-nitro-4",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Puma MagMax Nitro 2",
+   "correcoes": {
+    "maciez_1a5": 3.0,
+    "estabilidade_1a5": 4.3
+   },
+   "motivo": "Correção para menos na maciez: RunRepeat mede entressola um pouco mais firme que a média (38,1 AC vs 35,7); RTINGS: amortecido mas não fofo; RSG: firme demais para quem quer pisada fofa. Estabilidade para mais: RunRepeat 88 e RTINGS 'decente' com base larga. Peso de 268 g confere (RunRepeat 269 g).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/puma-mag-max-nitro-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/puma/magmax-nitro-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/puma-magmax-nitro-2-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_nike_puma",
+   "modelo": "Puma Magnify Nitro 3",
+   "correcoes": {
+    "aprovacao_1a5": 4.5,
+    "estabilidade_1a5": 3.3
+   },
+   "motivo": "RunRepeat dá nota 91 (Superb) e 60 de estabilidade; RTINGS dá 7,8 de estabilidade ('muito boa para um tênis diário'); a média das duas fica em ~3,3. 'pro' mantido (Tom's Guide, RSG e Run Testers: só para pisada neutra).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/puma-magnify-nitro-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/puma/magnify-nitro-3",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "Mizuno Wave Sky 9",
+   "correcoes": {
+    "peso_g": 295,
+    "salto_mm": 44.3,
+    "antepe_mm": 38.1,
+    "drop_mm": 6.2
+   },
+   "motivo": "Medidas de laboratório RunRepeat: 295 g, 44,3/38,1 mm, drop 6,2 (catálogo tinha 286 g e drop 4,4). Maciez/aprovação mantidas: RunRepeat 'soft ride' (14,5 HA) x DoR 'firme'; RSG 8/10 = 4,0.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/mizuno-wave-sky-9",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2025/12/mizuno-wave-sky-9-review-2025.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/mizuno-wave-sky-9-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "Mizuno Wave Rider 30",
+   "correcoes": {
+    "resposta_1a5": 2.6,
+    "usos_indicados": "dia lon rod"
+   },
+   "motivo": "RunRepeat mede retorno de energia 'simplesmente decepcionante'; o próprio catálogo marca rap em nao_indicado e diz 'pesado para tiro', então 'rit' em usos era contraditório. Stack 42,8/33,7 e drop 9,1 conferem.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/mizuno-wave-rider-30",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Warehouse",
+     "url": "https://www.runningwarehouse.com/reviews/mizuno-shoe-reviews/mizuno-wave-rider-30.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "Mizuno Neo Vista 3",
+   "correcoes": {
+    "aprovacao_1a5": 4.1,
+    "resposta_1a5": 3.2
+   },
+   "motivo": "RunRepeat 83/100 (=4,15) e cita 'falta o rebote esperado'; RTINGS 6,8-7,5 nos usos. 4,3 estava acima do consenso. Peso 266 g e stack conferem (RTINGS/RTR).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/mizuno-neo-vista-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/neo-vista-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=12440",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 1,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "Mizuno Hyperwarp Elite",
+   "correcoes": {
+    "nao_indicado_para": "hee ini len pro lar"
+   },
+   "motivo": "RTINGS (arco notavelmente estreito, forma curta) e Run To The Finish (forma estreita, sem versão larga): 2 reviews citam pé largo.",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/hyperwarp-elite",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Run To The Finish",
+     "url": "https://runtothefinish.com/mizuno-hyperwarp-elite-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance 1080 v15",
+   "correcoes": {
+    "maciez_1a5": 4.5,
+    "salto_mm": 37.0,
+    "antepe_mm": 30.6,
+    "drop_mm": 6.4
+   },
+   "motivo": "RunRepeat mede entressola Infinion a 8,5 HA (média 20,4) e 21,5 Asker C (média 35,8): das mais macias do teste, acima de 4,2. Stack de laboratório 37,0/30,6, drop 6,4. Peso 255 g confere.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/new-balance-1080-v-15",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance Fresh Foam X 880 v15",
+   "correcoes": {
+    "peso_g": 286,
+    "salto_mm": 39.7,
+    "antepe_mm": 35.4,
+    "drop_mm": 4.3
+   },
+   "motivo": "Laboratório RunRepeat: 286 g, salto 39,7 mm, drop real 4,3 mm (catálogo 290 g, drop 6). Maciez 2,9 confere ('não mais macio, equilibrado').",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/new-balance-fresh-foam-x-880-v-15",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance Fresh Foam X More v6",
+   "correcoes": {
+    "salto_mm": 41.8,
+    "antepe_mm": 38.5,
+    "drop_mm": 3.3,
+    "peso_g": 312
+   },
+   "motivo": "Stack/drop de laboratório RunRepeat (41,8/38,5, drop 3,3); peso Running Warehouse 11,0 oz US9 = 312 g. Maciez 4,9 confirmada ('cloud-soft'). Forma estreita citada pelo RunRepeat, mas RW/Fleet Feet discordam: 'lar' não adicionado.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/new-balance-fresh-foam-x-more-v-6",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Warehouse",
+     "url": "https://www.runningwarehouse.com/reviews/new-balance-shoe-reviews/fresh-foam-X-more-v6.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance Fresh Foam 680 v9",
+   "correcoes": {
+    "salto_mm": 33.2,
+    "antepe_mm": 24.9,
+    "drop_mm": 8.3
+   },
+   "motivo": "Stack de laboratório RunRepeat 33,2/24,9; peso 258 g e espuma mais macia (29,5 Asker C) conferem com o catálogo.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/new-balance-fresh-foam-680-v9",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance Fresh Foam X Kaiha Road v2",
+   "correcoes": {
+    "salto_mm": 32.0,
+    "antepe_mm": 28.0,
+    "peso_g": 300
+   },
+   "motivo": "Sem review especializada do v2; especificação de loja dá 32/28 mm e 300 g (masc.). Aprovação 4,0 e estabilidade 4,0 não têm fonte profissional (n_reviews_pro=1); cliente relata v2 mais duro que o v1. Revisar aprovação.",
+   "fontes": [
+    {
+     "fonte": "Varejo (Running Shoes spec)",
+     "url": "https://www.sourceforsports.ca/products/new-balance-fresh-foam-x-kaiha-road-v2-mens-running-shoes-black-white-grey",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "DSW (avaliação cliente)",
+     "url": "https://www.dsw.com/product/new-balance-fresh-foam-x-kaiha-road-v2-running-shoe---womens/614656",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 1
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance Fresh Foam Arishi v4",
+   "correcoes": {
+    "aprovacao_1a5": 3.3,
+    "salto_mm": 28.1,
+    "drop_mm": 7.7,
+    "antepe_mm": 20.4
+   },
+   "motivo": "OutdoorGearLab: tênis de estilo, antepé afunda, pesado para a corrida que entrega; RunRepeat: versátil e confortável. Consenso dividido, 3,5 levemente alto. Stack de laboratório RunRepeat 28,1 mm, drop 7,7.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/new-balance-fresh-foam-arishi-v4",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/new-balance-fresh-foam-arishi-v4",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 1,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance FuelCell Rebel v5",
+   "correcoes": {
+    "nao_indicado_para": "cal pes pro",
+    "peso_g": 220
+   },
+   "motivo": "'rap' estava ao mesmo tempo em nao_indicado e perfil_ideal, com usos rit/tir/p10: erro. Reviews (RTR, RTINGS) o tratam como tênis de ritmo. Peso de laboratório RunRepeat 220 g. Estabilidade 3,0 mantida (RTINGS 9,4 x OutdoorGearLab 'pouca estabilidade').",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/new-balance-fuel-cell-rebel-v-5",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/new-balance/fuelcell-rebel-v5",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/new-balance-fuelcell-rebel-v5",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 1,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance FuelCell SuperComp Trainer v3",
+   "correcoes": {
+    "resposta_1a5": 3.3,
+    "peso_g": 278
+   },
+   "motivo": "RTINGS dá 5,0 em retorno de energia e o chama de fator limitante; peso de laboratório RunRepeat 278 g. Estabilidade 3,8 confirmada (RSG, RW, RTINGS).",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/new-balance/fuelcell-supercomp-trainer-v3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/es/new-balance-fuel-cell-super-comp-trainer-v-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/new-balance-fuelcell-supercomp-trainer-v3-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_mizuno_nb",
+   "modelo": "New Balance SuperComp Elite v6",
+   "correcoes": {
+    "aprovacao_1a5": 4.2
+   },
+   "motivo": "RunRepeat 87/100 (4,35), RTINGS 8,1-8,3 nas provas (≈4,1), Correr una Maratón 7,7/10 (3,85): média ≈4,1-4,2, abaixo dos 4,5 do catálogo. RunRepeat estabilidade 45/100 confirma estabilidade baixa.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/new-balance-super-comp-elite-v-6",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/new-balance/supercomp-elite-v6",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Correr una Maratón",
+     "url": "https://www.correrunamaraton.com/new-balance-supercomp-elite-v6-review-opinion/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 1,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "New Balance SuperComp Elite v6",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 2199.9,
+    "preco_aprox": 0
+   },
+   "motivo": "Velocità (revenda oficial) tem página do masculino (MRCEL8DM) a 10x R$ 219,99 = R$ 2.199,90.",
+   "fontes": [
+    {
+     "fonte": "Velocità",
+     "url": "https://www.velocita.com.br/produto/tenis-new-balance-supercomp-elite-v6-masculino-24373",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "New Balance SuperComp Rebel v1",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 1499.9,
+    "preco_aprox": 0
+   },
+   "motivo": "Velocità vende masculino e feminino; preço cheio R$ 1.499,90 (R$ 1.424,91 no Pix).",
+   "fontes": [
+    {
+     "fonte": "Velocità",
+     "url": "https://www.velocita.com.br/produto/tenis-new-balance-supercomp-rebel-masculino-24549",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Velocità",
+     "url": "https://www.velocita.com.br/new-balance-supercomp-rebel",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "New Balance FuelCell Propel v5",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 799.9,
+    "preco_aprox": 0
+   },
+   "motivo": "Velocità (de R$ 799,90), Centauro (R$ 899,99) e Dafiti vendem o masculino; usado o preço cheio da Velocità.",
+   "fontes": [
+    {
+     "fonte": "Velocità",
+     "url": "https://www.velocita.com.br/produto/tenis-new-balance-fuelcell-propel-v5-masculino-20345",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Centauro",
+     "url": "https://www.centauro.com.br/nav/linha/propel/marca/newbalance",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Dafiti",
+     "url": "https://www.dafiti.com.br/Tenis-New-Balance-Fuelcell-Propel-V5-Masculino-Azul-14986343.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "New Balance Fresh Foam X Vongo v6",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 1199.9,
+    "preco_aprox": 0
+   },
+   "motivo": "Velocità tem página do Vongo v6 masculino, preço cheio R$ 1.199,90 (promo R$ 899,89); estoque pode ser antigo.",
+   "fontes": [
+    {
+     "fonte": "Velocità",
+     "url": "https://www.velocita.com.br/produto/tenis-new-balance-vongo-v6-masculino-8372",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "New Balance Fresh Foam X Garoé v2",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 699.9,
+    "preco_aprox": 0
+   },
+   "motivo": "Ofertas do Garoé V2 masculino na Centauro (R$ 699,90), Netshoes (R$ 629,99) e Dafiti (R$ 749,90) via agregador; datas incertas.",
+   "fontes": [
+    {
+     "fonte": "Escorrega o Preço (agregador Centauro/Netshoes/Dafiti)",
+     "url": "https://escorregaopreco.com.br/ofertas/dafiti/7539955",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "New Balance DynaSoft Nitrel v6",
+   "correcoes": {
+    "vendido_no_brasil": 1
+   },
+   "motivo": "Centauro e Netshoes listam o Nitrel V6 masculino, mas sem preço visível; preço estimado mantido (preco_aprox continua 1).",
+   "fontes": [
+    {
+     "fonte": "Centauro",
+     "url": "https://www.centauro.com.br/nav/linha/newbalance/modalidade/corridadetrilha",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "On Cloudsoma",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 1399.0,
+    "preco_aprox": 0
+   },
+   "motivo": "Loja oficial On Brasil (on.com/pt-br) lista o Cloudsoma masculino a R$ 1.399,00.",
+   "fontes": [
+    {
+     "fonte": "On Brasil",
+     "url": "https://www.on.com/pt-br/shop/mens/shoes/running",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "alta"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "adidas Adizero Prime X3 Strung",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 2399.99,
+    "preco_aprox": 0
+   },
+   "motivo": "Netshoes vende a R$ 2.399,99 (oferta R$ 2.232,49); o catálogo já aponta página no adidas.com.br.",
+   "fontes": [
+    {
+     "fonte": "Promobit (oferta Netshoes)",
+     "url": "https://www.promobit.com.br/oferta/tenis-adidas-adizero-prime-x3-strung-3093513/",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "adidas Brasil",
+     "url": "https://www.adidas.com.br/tenis-adizero-prime-x3-strung/KI3248.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_importados",
+   "modelo": "adidas Adizero Takumi Sen 11",
+   "correcoes": {
+    "vendido_no_brasil": 1,
+    "preco_brl": 1699.99,
+    "preco_aprox": 0
+   },
+   "motivo": "Agregador mostra o modelo vendido pela adidas Brasil a R$ 1.699,99 (preço igual ao de outros Adizero na mesma página, conferir); o catálogo já aponta página no adidas.com.br.",
+   "fontes": [
+    {
+     "fonte": "Escorrega o Preço (adidas BR)",
+     "url": "https://www.escorregaopreco.com.br/ofertas/adidas/8773248",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "adidas Brasil",
+     "url": "https://www.adidas.com.br/tenis-de-corrida-adizero-takumi-sen-11/KI5713.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "adidas Duramo SL 2",
+   "correcoes": {
+    "aprovacao_1a5": 3.7,
+    "n_reviews_clientes": 4
+   },
+   "motivo": "Sem review profissional; nota de clientes 4,4-4,6/5 em milhares de avaliações (DSW ~1.000 com 4,6; Sport Chek ~2.000 com 4,6; Mark's 4,4 com 88% recomendando; Hibbett 4,4). Convertido com desconto de 0,8 (nota de cliente é inflada; mesmo critério do Wave Falcon 4). Elogios: conforto e leveza; queixa recorrente: durabilidade.",
+   "fontes": [
+    {
+     "fonte": "DSW",
+     "url": "https://www.dsw.com/product/adidas-duramo-sl-2.0-running-shoe---mens/605860",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Sport Chek",
+     "url": "https://www.sportchek.ca/en/pdp/adidas-men-s-duramo-sl-2-running-shoes-83118015f.html",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Mark's",
+     "url": "https://www.marks.com/en/pdp/adidas-men-s-duramo-sl2-running-shoes-85597710f.html",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Hibbett",
+     "url": "https://www.hibbett.com/adidas-duramo-sl-2-core-black-ftwr-white-grey-five-mens-running-shoe/2860L.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 4
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "adidas Supernova Stride 2",
+   "correcoes": {
+    "aprovacao_1a5": 3.8,
+    "n_reviews_clientes": 2
+   },
+   "motivo": "Sem review profissional do Stride 2 (BITR só testou o Stride 1). Tradeinn 4,84/5 em 32 avaliações e notas individuais 4,5-4,6 na adidas; convertido com desconto de 0,8. Um relato de trinca no cabedal em 6 meses (isolado).",
+   "fontes": [
+    {
+     "fonte": "Tradeinn/Runnerinn",
+     "url": "https://www.tradeinn.com/runnerinn/en/adidas-supernova-stride-2-running-shoes/141604985/p",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "adidas Vietnã",
+     "url": "https://www.adidas.com.vn/en/supernova-stride-2-running-shoes/IH8647.html",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 2
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "Puma Electrify Nitro 4",
+   "correcoes": {
+    "aprovacao_1a5": 3.8,
+    "n_reviews_clientes": 2
+   },
+   "motivo": "Sem review profissional em inglês. Clientes: wald.de 4,9/5 (21 notas), Sportmaster 92% recomendam (12 reviews; citam Nitro só no calcanhar). Convertido com desconto. Ficha: Puma 275 g (UK 8) bate com o catálogo; correrunamaraton diz 35/25 mm e drop 10, Galaxus diz drop 8: não alterei stack por conflito.",
+   "fontes": [
+    {
+     "fonte": "wald.de",
+     "url": "https://www.wald.de/products/puma-mens-road-running-shoe/224573095/",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Sportmaster",
+     "url": "https://www.sportmaster.ru/product/36413140299/reviews/",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Correr una Maratón",
+     "url": "https://www.correrunamaraton.com/comparar/zapatillas-running/puma-electrify-nitro-4/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Puma EU",
+     "url": "https://eu.puma.com/de/en/pd/electrify-nitro-4-running-shoes-men/310789",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 2
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "Olympikus Veloz 4",
+   "correcoes": {
+    "aprovacao_1a5": 3.8,
+    "n_reviews_clientes": 1
+   },
+   "motivo": "Zoom/Amazon: 4,6/5 em 330 avaliações, elogiam maciez, conforto e custo-benefício. Atenção: a página é da linha Veloz e não garante que seja só a versão 4. Convertido com desconto de 0,8. Centauro: ~550 g o par (feminino), coerente com o catálogo.",
+   "fontes": [
+    {
+     "fonte": "Zoom (agrega Amazon)",
+     "url": "https://www.zoom.com.br/tenis/tenis-olympikus-masculino-veloz-corrida",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Centauro",
+     "url": "https://www.centauro.com.br/nav/linha/veloz/modalidade/corrida",
+     "tipo": "loja"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 1
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "ASICS Dynablast 6",
+   "correcoes": {
+    "resposta_1a5": 2.4,
+    "aprovacao_1a5": 3.8,
+    "n_reviews_pro": 4
+   },
+   "motivo": "RTINGS (teste de laboratório, set/2026): 269,9 g (bate com o catálogo), bounciness 4,8/10 (=2,4), nota 7,7 para treino diário e 7,2 para longão. RunDreamAchieve elogia a pisada viva e o preço; ponta espaçosa.",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/dynablast-6",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunDreamAchieve",
+     "url": "https://rundreamachieve.com/asics-dynablast-6/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 2,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "Mizuno Hyperwarp Pro",
+   "correcoes": {
+    "salto_mm": 46.0,
+    "antepe_mm": 40.5,
+    "drop_mm": 5.5,
+    "estabilidade_1a5": 4.0,
+    "n_reviews_pro": 6
+   },
+   "motivo": "Running Warehouse: 7,0 oz (US 9, bate com 199 g) e stack 46/40,5 mm, bem acima dos 39/33 do catálogo. RTINGS: lateralmente estável para um supertênis alto, melhor nota em maratona; Meta Endurance: o mais estável e versátil da linha Hyperwarp. Fueled by Lolz: escorrega no molhado.",
+   "fontes": [
+    {
+     "fonte": "Running Warehouse",
+     "url": "https://www.runningwarehouse.com/reviews/mizuno-shoe-reviews/mizuno-hyperwarp-pro.html",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/hyperwarp-pro",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2025/12/mizuno-hyperwarp-pro-review-2026.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Meta Endurance",
+     "url": "https://meta-endurance.com/mizuno-hyperwarp-pro-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Fueled by Lolz",
+     "url": "https://fueledbylolz.com/2026/01/09/mizuno-hyperwarp-pro-shoe-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 2,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "New Balance Fresh Foam X Kaiha Road v2",
+   "correcoes": {
+    "maciez_1a5": 3.5,
+    "aprovacao_1a5": 3.9,
+    "n_reviews_clientes": 2
+   },
+   "motivo": "Sem review profissional da v2. Dois clientes na DSW dizem que a v2 é bem mais firme que a v1 (a NB respondeu aos dois). Decathlon 4,7/5 em 66 avaliações (convertido com desconto). RunRepeat só testou a v1 (281 g, salto 35,8 mm).",
+   "fontes": [
+    {
+     "fonte": "DSW",
+     "url": "https://www.dsw.com/product/new-balance-fresh-foam-x-kaiha-road-v2-running-shoe---womens/614656",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "Decathlon UK",
+     "url": "https://www.decathlon.co.uk/p/new-balance-fresh-foam-x-kaiha-v2-men-s-running-shoes-blue-aw26/380864/m9030757",
+     "tipo": "loja"
+    },
+    {
+     "fonte": "RunRepeat (v1)",
+     "url": "https://runrepeat.com/new-balance-fresh-foam-x-kaiha-road",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 2
+   },
+   "confianca": "baixa"
+  },
+  {
+   "lote": "res_fracos_orfaos",
+   "modelo": "On Cloudmonster 3 Hyper",
+   "correcoes": {
+    "resposta_1a5": 4.0
+   },
+   "motivo": "RTINGS dá 8,8/10 em retorno de energia (=4,4); RunRepeat mede retorno no calcanhar de 66,1% contra média de 58,6%; Running Warehouse/Heeluxe 63-66%. Fiz uma média conservadora. A categoria 'rap' está certa: RunRepeat (nota 90) chama de 'melhor super trainer', e o RTR alemão também. A falta de pódio vem do preço (R$ 1.699) e da concorrência no grupo, não de dado errado.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/on-cloudmonster-3-hyper",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/on/cloudmonster-3-hyper",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Warehouse",
+     "url": "https://www.runningwarehouse.com/On_Cloudmonster_3_Hyper/descpage-O3CMHM8.html",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RoadTrailRun (DE)",
+     "url": "https://www.roadtrailrun.com/2026/09/testbericht-on-cloudmonster-3-hyper.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "ASICS GT-2000 15",
+   "correcoes": {
+    "maciez_1a5": 3.8,
+    "resposta_1a5": 3.4
+   },
+   "motivo": "Aprovação 4,3 se sustenta (RunRepeat 91=4,55; RTINGS treino diário 7,9=3,95; Road Trail Run 8,6=4,3). Mas o motor o subestimava em maciez e retorno: RunRepeat mediu 30,6 AC contra média de 35,5 (bem mais macio que a média, igual ao Glycerin Max 2 que tem 3,9); RTINGS dá retorno de energia 7,4/10 e Doctors of Running diz 'mais macio e mais responsivo'.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/asics-gt-2000-15",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/asics/gt-2000-15",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=12273",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2026/08/asics-gt-2000-15-review-3-comparisons.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Adrenaline GTS 25",
+   "correcoes": {
+    "aprovacao_1a5": 3.8
+   },
+   "motivo": "Notas: RunRepeat 3/5, OutdoorGearLab 66 (3,3), Believe in the Run nota B (~3,75), Runner's Lab 9,3 (4,65), Garage Gym Reviews 4,3; média ~3,8. 'cal' confirmado (OutdoorGearLab respirabilidade 5/10 'roda quente'; Alastair Running diz que piorou). 'rap' confirmado (RTINGS retorno 2,4/10). Resposta 2,1 coerente.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/brooks-adrenaline-gts-25",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-adrenaline-gts-25",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Believe in the Run",
+     "url": "https://believeintherun.com/shoe-reviews/brooks-adrenaline-gts-25-review",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/brooks-adrenaline-gts-25-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/brooks/adrenaline-gts-25",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Alastair Running",
+     "url": "https://www.alastairrunning.com/brooks-adrenaline-gts-25-review/",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Ghost 17",
+   "correcoes": {
+    "aprovacao_1a5": 4.0
+   },
+   "motivo": "Notas: OutdoorGearLab 65 (3,25), Running Shoes Guru 8 (4,0), Road Trail Run 8,75 (4,4), Runner's Lab 9,2 (4,6); média ~4,05. 'lar' confirmado (RunRepeat: bico 69,6 mm afunilado, ruim para pé largo; Marathon Sports: bico raso). 'rap' confirmado (RTINGS responsividade 4,8).",
+   "fontes": [
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-ghost-17",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-ghost-17-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/06/brooks-ghost-17-review.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/brooks-ghost-17-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/es/brooks-ghost-17",
+     "tipo": "laboratorio"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Ghost Max 3",
+   "correcoes": {
+    "aprovacao_1a5": 4.0
+   },
+   "motivo": "Notas: RunRepeat 83 (4,15), Running Shoes Guru 9 (4,5), Road Trail Run 8,34 e 9,2 (~4,4), OutdoorGearLab 65 (3,25), NextGait 7,3 (3,65); média ~4,0. 'hee' confirmado: RunRepeat diz que falta absorção no calcanhar e indica para pisada de médio/antepé.",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/uk/brooks-ghost-max-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-ghost-max-3-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2025/11/brooks-ghost-max-3-multi-tester-review.html",
+     "tipo": "review"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-ghost-max-3",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Glycerin 22",
+   "correcoes": {
+    "aprovacao_1a5": 4.2
+   },
+   "motivo": "Notas: Running Shoes Guru 9 (4,5), Runner's Lab 9,3 (4,65), OutdoorGearLab 76 (3,8); Tom's Guide e Women's Running positivos ('maciez suprema'). 3,9 estava abaixo do consenso. Não achei nota da RunRepeat. Etiqueta 'aqu' não confirmada nem desmentida por review profissional (clientes relatam alívio no Aquiles; reclamações de gola são no tornozelo): vale revisar.",
+   "fontes": [
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-glycerin-22-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Runner's Lab",
+     "url": "https://runnerslab.com/brooks-glycerin-22-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "OutdoorGearLab",
+     "url": "https://www.outdoorgearlab.com/reviews/shoes-and-boots/running-shoes-men/brooks-glycerin-22",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Women's Running",
+     "url": "https://www.womensrunning.co.uk/?p=53818",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Brooks Glycerin GTS 22",
+   "correcoes": {
+    "maciez_1a5": 3.6
+   },
+   "motivo": "RunRepeat mediu 33,7 AC contra média de 36,2 (mais macio que a média e que o Adrenaline 25 com 34,5 AC = 3,3); Running Shoes Guru: 'o mais macio dos estáveis da Brooks'. Aprovação 4,0 mantida (RunRepeat 82=4,1; RSG 7=3,5; estabilidade RunRepeat 95 confirma 4,9).",
+   "fontes": [
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/brooks-glycerin-gts-22",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Running Shoes Guru",
+     "url": "https://www.runningshoesguru.com/reviews/road/brooks-glycerin-gts-22-review/",
+     "tipo": "review"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/2025/05/brooks-glycerin-gts-22-review-2025.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Mizuno Neo Zen 2",
+   "correcoes": {
+    "resposta_1a5": 2.6,
+    "peso_g": 237
+   },
+   "motivo": "RTINGS dá retorno de energia 3,2/10 ('pouquíssimo rebote'), RunRepeat diz que a espuma 'não tem o rebote esperado' e devolve menos energia que o v1; 3,1 estava generoso. Peso de laboratório RunRepeat 237 g. Aprovação 4,1 NÃO confirmada numericamente: Road Trail Run 9,2, mas RunRepeat critica ('pode decepcionar') e RTINGS dá 5,6 maratona e 3,2 5/10 km; sem nota RunRepeat achada. 'lar' confirmado (RunRepeat bico 68,3 mm, Fueled by Lolz).",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/neo-zen-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://www.runrepeat.com/mizuno-neo-zen-2",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Road Trail Run",
+     "url": "https://www.roadtrailrun.com/2026/03/mizuno-neo-zen-2-initial-review-notable.html",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  },
+  {
+   "lote": "res_rodada2",
+   "modelo": "Mizuno Neo Vista 3",
+   "correcoes": {
+    "usos_indicados": "lon mar mei rod",
+    "nao_indicado_para": "aqu dia rap",
+    "aprovacao_1a5": 4.0
+   },
+   "motivo": "Tirei 'rit' e marquei 'rap': RTINGS diz que a propulsão limitada torna esforços rápidos mais difíceis (fraco em 5/10 km) e RunRepeat lista 'falta o rebote esperado' e 'caro para o desempenho'. Aprovação: RunRepeat 83 (4,15) e RTINGS 7,5 longão/7,1 maratona (~3,65-3,75) dão ~4,0. Longão e maratona confirmados.",
+   "fontes": [
+    {
+     "fonte": "RTINGS",
+     "url": "https://www.rtings.com/running-shoes/reviews/mizuno/neo-vista-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "RunRepeat",
+     "url": "https://runrepeat.com/mizuno-neo-vista-3",
+     "tipo": "laboratorio"
+    },
+    {
+     "fonte": "Doctors of Running",
+     "url": "https://www.doctorsofrunning.com/?p=12440",
+     "tipo": "review"
+    }
+   ],
+   "reviews_novas": {
+    "pro": 0,
+    "clientes": 0
+   },
+   "confianca": "media"
+  }
+ ]
+}
