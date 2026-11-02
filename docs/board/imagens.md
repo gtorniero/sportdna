@@ -15,7 +15,7 @@ O app só mostra a ilustração dos tipos listados em `TIMG`; tipo sem imagem ca
 | Mini-malibu / funboard | minimal | ok (refazer mais larga, se der) |
 | Evolution / allround | evo | ok |
 | Fish | fish | ok (refazer deitada, como as outras) |
-| Groveler | grov | refazer (saiu em pé e com fundo dividido) |
+| Groveler | grov | ok |
 | Biquilha moderna | twin | ok (refazer deitada, como as outras) |
 | Softboard performance | softp | ok |
 | Step-up | step | ok (vista de cima mostra as quilhas; aprovada assim) |
@@ -29,13 +29,13 @@ Os originais do Gemini (2000 px) estão em `docs/board/imagens-originais/`, incl
 - 2/nov/2026: gun com o plug do leash retocado (original em `imagens-originais/gun.jpg`).
 
 ## Próxima sessão (pendente)
-2. Refazer groveler (saiu em pé e com fundo dividido) e, se quiser, fish e biquilha deitadas.
-3. Gerar as 6 variantes de rabeta: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.
+2. Se quiser, refazer fish e biquilha deitadas.
+3. Gerar as 4 variantes de rabeta que faltam: evo-roundpin, evo-round, mid-round, longp-round.
 4. Opcional: refazer a mini-malibu mais larga (ficou parecida com a mid-length).
 5. Salvar em `surf/img/tipos/`, incluir a chave em `TIMG` e mandar para revisão do Gustavo.
 
 ## Variantes de rabeta
-O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Faltam: short-roundpin, short-round, evo-roundpin, evo-round, mid-round, longp-round.
+O motor muda a rabeta em alguns tipos; o app procura `img/tipos/<tipo>-<rabeta>.webp` (rabeta: square, squash, round, roundpin, pin, swallow) e, sem variante, usa a do tipo. Prontas: short-roundpin, short-round. Faltam: evo-roundpin, evo-round, mid-round, longp-round.
 
 ## Conferir antes de aceitar
 Número e posição das quilhas, formato da rabeta, nenhum logo ou texto, mesmo fundo. Pedir revisão do Gustavo.
