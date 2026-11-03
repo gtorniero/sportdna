@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-02",
+  "environment": "Local mocked UI and security tests plus one actual Stripe sandbox backend payment; frontend provider return not validated",
+  "automatedSecurityTests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "browser": {
+    "run": {
+      "pendingDoesNotUnlock": true,
+      "approvedOpensReport": true,
+      "reloadResumesPaidReport": true,
+      "axeCheckoutViolations": 0,
+      "axePixViolations": 0,
+      "axeReportViolations": 0
+    },
+    "surf": {
+      "pendingDoesNotUnlock": true,
+      "approvedOpensReport": true,
+      "axeCheckoutViolations": 0,
+      "axeReportViolations": 0
+    },
+    "racket": {
+      "pendingDoesNotUnlock": true,
+      "approvedOpensReport": true,
+      "axeCheckoutViolations": 0,
+      "axeReportViolations": 0
+    }
+  },
+  "productionPaymentsEnabled": false,
+  "secretsCommitted": false,
+  "providerWebhookDeliveryTested": true,
+  "seoStaticChecks": {
+    "passed": 4,
+    "failed": 0
+  },
+  "d1": {
+    "id": "936d7152-4ddd-4764-9cd5-a6cd8e966582",
+    "schemaApplied": true,
+    "tablesVerified": [
+      "orders",
+      "rate_limits"
+    ],
+    "workerBound": true
+  },
+  "stripeSandbox": {
+    "product": "racket-report",
+    "amountCentavos": 1999,
+    "orderId": "f1cb29fa-626d-429b-b78c-9b4c60c097a7",
+    "paidViaSignedWebhook": true,
+    "realMoney": false,
+    "returnBlockedByLocalCertificateWarning": true
+  },
+  "mercadoPago": {
+    "applicationId": "5664014589493403",
+    "credentialsConfigured": false,
+    "providerTested": false
+  }
+}

@@ -477,6 +477,8 @@ details.rk:not([open]){gap:0}
 </div>
 <div id="modalRoot"></div>
 
+<script src="../assets/payments/config.js"></script>
+<script src="../assets/payments/client.js"></script>
 <script>
 (function(){
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1417,6 +1419,7 @@ function closeModal(){clearInterval(pixTimer);if(pixKey)document.removeEventList
   const rep=$('#report');let t=!rep.hidden?rep.querySelector('h2'):pixFrom&&document.contains(pixFrom)?pixFrom:null;
   if(t){if(t.tagName==='H2')t.setAttribute('tabindex','-1');try{t.focus({preventScroll:!rep.hidden})}catch(e){t.focus()}}pixFrom=null}
 function pix(e){
+  if(window.SportDNAPayments?.open('run-report'))return;
   pixFrom=e&&e.currentTarget||document.activeElement;
   const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RUNDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5909SPORT DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">
@@ -1630,6 +1633,12 @@ async function makePDF(r){
   return ok;
 }
 
+
+/* SPORTDNA_CHECKOUT_ADAPTER_START */
+window.SportDNAPayments?.register({name:'run',snapshot:()=>JSON.parse(JSON.stringify(A)),
+ restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers);RES=engine(conv(),true)},
+ unlock:()=>{renderReport();show('report')}});
+/* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();
 </script>
 

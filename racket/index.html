@@ -699,6 +699,8 @@ details.more[open]>summary{margin-bottom:10px}
 </div>
 <div id="modalRoot"></div>
 
+<script src="../assets/payments/config.js"></script>
+<script src="../assets/payments/client.js"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -1061,7 +1063,7 @@ function duelHTML(a,b,withFit){const TL=[];
   <p class="note" style="margin-top:8px">Índices de 0 a 10 calculados a partir das specs medidas. # é a posição no ranking do catálogo naquele atributo.</p></div></div>`;
 }
 function fillSel(sel,v){sel.innerHTML=optList(v)}
-let cmpPaid=LS.get('rm_cmp')==='1';
+let cmpPaid=!window.SportDNAPayments?.enabled&&LS.get('rm_cmp')==='1';
 const duelFree=()=>+(LS.get('rm_duel_n')||0)<1;
 const duelOpen=()=>cmpPaid||tier>=2;
 function duelBadge(){$('#duelBadge').textContent=duelOpen()?'Comparador liberado':duelFree()?'1 comparação grátis':'Comparação grátis usada'}
@@ -1091,7 +1093,7 @@ $('#duelQuiz').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[
 /* ---------- Salvar / código ---------- */
 const encode=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=+$/,'');
 const decode=s=>JSON.parse(decodeURIComponent(escape(atob(s.trim()))));
-function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,o.a||o);tier=o.t||0}
+function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,o.a||o);tier=window.SportDNAPayments?.enabled?0:o.t||0}
 if(LS.get('rm_last'))$('#resumeBox').hidden=false;
 $('#resume').addEventListener('click',()=>{try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}});
 $('#codeGo').addEventListener('click',()=>{try{loadAnswers(decode($('#codeIn').value));$('#codeErr').hidden=true;RES=compute();renderPreview();show('preview')}catch(e){$('#codeErr').hidden=false}});
@@ -1422,6 +1424,7 @@ function qrSVG(seed){
 let pixTimer=null;
 function closeModal(){clearInterval(pixTimer);$('#modalRoot').innerHTML=''}
 function pix(t){
+  if(window.SportDNAPayments?.open(t==='cmp'?'racket-comparator':'racket-report'))return;
   const isCmp=t==='cmp';
   const price=isCmp?4.99:19.99;
   const label=isCmp?'Comparador ilimitado':'Relatório RACKET DNA';
@@ -1917,6 +1920,12 @@ async function drawRacketCard(d=racketCardData()){
 }catch(e){const o=$('#cardHome');if(o)o.remove()}})();
 
 /* ---------- Hero ---------- */
+
+/* SPORTDNA_CHECKOUT_ADAPTER_START */
+window.SportDNAPayments?.register({name:'racket',snapshot:()=>JSON.parse(JSON.stringify(A)),
+ restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers);RES=Object.keys(A).length?compute():null},
+ unlock:product=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;persist();renderReport();show('report')}}});
+/* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();
 </script>
 
