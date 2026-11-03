@@ -636,7 +636,7 @@ details.more[open]>summary{margin-bottom:10px}
         <li><b data-n="estudos">21</b><span>estudos científicos sobre braço e equipamento</span></li>
         <li><b data-n="casos">379</b><span>casos de especialistas, em 3 idiomas</span></li>
         <li><b data-n="perfis">3.000</b><span>perfis simulados em cada teste de segurança</span></li>
-        <li><b data-n="top3">39,8%</b><span>de acerto no top 3 contra especialistas (acaso: <span data-n="acaso">4,8%</span>)</span></li>
+        <li><b data-n="rk">62</b><span>raquetes com specs medidas</span></li>
       </ul>
     </section>
     <div class="diffs">
@@ -1794,7 +1794,7 @@ function pdfPages(){
    <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,ranked.slice(0,10)))}</div><p class="small">Cada ponto é uma raquete; os números são o seu top 10.</p></div></div>
    ${curFit?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
    <h2 class="st">Como chegamos aqui</h2>
-   <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>${RES.answered}</b><span>respostas suas sobre corpo, braço e jogo</span></div><div><b>${fmt(NREV)}</b><span>avaliações de testadores e sites nos índices</span></div><div><b>${dec(METODO.top3)}%</b><span>de acerto no top 3 contra ${fmt(METODO.casos)} casos de especialistas (acaso: ${dec(ACASO3)}%)</span></div></div>
+   <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>${RES.answered}</b><span>respostas suas sobre corpo, braço e jogo</span></div><div><b>${fmt(NREV)}</b><span>avaliações de testadores e sites nos índices</span></div><div><b>${fmt(METODO.casos)}</b><span>casos de especialistas, em 3 idiomas, usados na calibração</span></div></div>
    <p class="small">O DNA Score combina a distância entre o seu perfil ideal e os índices de cada raquete, filtros de segurança para o braço, peso e swingweight para o seu físico, e a aprovação de testadores. Sem patrocínio de marca.</p>
    <div class="gls">${[['Swingweight','Quanto a raquete “pesa” ao acelerar. Alto: bola pesada e estabilidade; baixo: rapidez.'],['Balanço','Ponto de equilíbrio a partir do cabo. Abaixo de 320 mm, cabeça leve; acima, cabeça pesada.'],['Rigidez (RA)','Quanto o quadro flexiona. Abaixo de 63 é macio e tende a ser mais confortável; acima de 68 é firme e potente.'],['Padrão','Cordas verticais × horizontais. Aberto (16×19) dá spin; fechado (18×20) dá controle.'],['Conforto no braço','Nossa nota de 0 a 10 para o quanto a raquete tende a ser confortável para cotovelo, punho e ombro. Não previne nem trata lesão.'],['Tensão','Mais alta: mais controle e menos potência. Mais baixa: mais saída de bola e conforto.']].map(g=>`<div><b>${g[0]}</b><span>${g[1]}</span></div>`).join('')}</div>
    ${foot}</section>`;
