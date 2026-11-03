@@ -5,6 +5,74 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 9: questionário mais curto e orçamento em 3 faixas (nov/2026)
+
+### O que mudou
+- Saíram duas perguntas, a pedido do dono:
+  - **Mão dominante.** No tênis não faz diferença: o peso já era zero desde a rodada 3. Saiu também a dica de overgrip para canhoto e a frase "Canhoto ou destro não muda a recomendação".
+  - **Backhand de uma ou duas mãos.** Saíram os efeitos no motor: `alvo.umaMao`, `peso.umaMaoAvancado`, `zona.swUmaMao` e `pen.umaMao` (swingweight mínimo, cotovelo e balanço). Saíram também o motivo "massa suficiente para o backhand de uma mão" e os chips do PDF. A evidência já era fraca (ver rodada 3).
+- O questionário vai de **26–31** para **24–29** perguntas (sem e com as condicionais).
+- O orçamento agora tem 3 faixas: "Até R$ 1.400" (`1400`), "R$ 1.400 a R$ 2.000" (`2000`) e "Acima de R$ 2.000 ou sem limite" (`99999`).
+  - A penalidade progressiva (`pen.orcamento`) continua igual: até 8% acima é leve, e daí em diante cresce.
+  - O limite de cada faixa é o seu valor. A terceira faixa não tem penalidade nem o bônus `placar.dentroOrcamento`.
+  - "Cabe no orçamento" não aparece mais para quem marcou sem limite.
+- Códigos antigos (salvos, colados ou restaurados pelo checkout):
+  - `dom` e `bh` são descartados.
+  - O orçamento antigo vai para a faixa nova: 1.800 → 2.000; 2.200 → sem limite.
+- Exemplo pronto: o orçamento passou de 2.200 para 2.000. O resultado não muda: Head Boom MP 95% · Clash 100 v3 95% · Black Ace 300 92%.
+- Ferramentas: `calibrar.mjs` não manda mais `dom` e `bh`, e o orçamento do caso vira 1400/2000/99999. `vies.mjs` mede as 3 faixas.
+
+### Medição antes × depois
+Casos de especialistas (`calibrar.mjs`, 268 casos úteis de 379, 88 na parte de teste):
+
+| | R8 total | R9 total | R8 teste | R9 teste |
+|---|---|---|---|---|
+| Top 1 | 17,2% | 16,8% | 18,2% | 18,2% |
+| Top 3 | 36,6% | 36,6% | 39,8% | 39,8% |
+| Top 10 | 63,4% | 63,4% | 68,2% | 68,2% |
+| MRR | 0,316 | 0,313 | 0,336 | 0,336 |
+| Algum indicado no top 3 | 42,2% | 42,2% | 47,7% | 47,7% |
+
+- Com dor no braço: top 3 de 63,9% para 66,7%.
+- Grupo cotovelo: top 3 de 57,7% para 61,5%.
+- Grupo potência: top 3 de 62,1% para 58,6% (1 caso de 29 saiu do top 3).
+- Acaso: top 3 ≈ 4,8% (3 de 62).
+
+Segurança (`vies.mjs --realista`, 3.000 perfis, três sementes):
+
+| | R8, 12345 | R9, 12345 | R8, 777 | R9, 777 | R8, 2026 | R9, 2026 |
+|---|---|---|---|---|---|---|
+| Pódios com 2+ contraindicações sérias | 111 | 112 | 94 | 113 | 114 | 109 |
+| Pódios com 1+ séria | 266 | 263 | 265 | 292 | 270 | 284 |
+| 1ª acima do orçamento, faixa até R$ 1.400 | 16,3% | 17,1% | 15,8% | 19,5% | 16,2% | 18,0% |
+| Faixa até R$ 1.400, mais de 8% acima | 4,7% | 4,1% | 5,0% | 4,5% | 4,5% | 3,5% |
+| 1ª acima do orçamento, todos | 6,5% | 8,7% | 5,6% | 8,9% | 5,7% | 8,3% |
+
+- Os perfis sorteados não são os mesmos antes e depois, porque o questionário mudou e o sorteio anda junto. Por isso medimos com três sementes.
+- Na média, os pódios com 2+ sérias ficam em 106 antes e 111 depois. A diferença cabe no ruído entre sementes (94 a 114).
+- Na faixa até R$ 1.400, a 1ª acima do orçamento sobe cerca de 2 pontos, mas só dentro da tolerância de 8%. Os casos mais de 8% acima caíram.
+- O total "1ª acima" sobe porque a faixa do meio agora é R$ 2.000, e não R$ 1.800/2.200. Nessa faixa, nenhuma 1ª passa mais de 8% do limite.
+- 1ª dentro da zona do mapa: 91,3% → 90,9%. Cobertura: 56 modelos já em 1º e 60 no top 3, de 62.
+
+### Decisão
+O resultado não piorou de forma clara: nos casos de especialistas a parte de teste ficou idêntica, e a segurança ficou dentro do ruído. Por isso não rodamos `--ajustar --trava`, e os pesos da rodada 8 continuam.
+
+Ponto para acompanhar: a faixa até R$ 1.400 com a 1ª um pouco acima do orçamento (até 8%).
+
+### Números públicos (abertura do app e página 5 do PDF)
+| Número | Valor | Fonte |
+|---|---|---|
+| Raquetes | 62 | `CATALOG` em `racket/index.html` |
+| Perguntas | 24 a 29 | `Q` (sem e com as condicionais) |
+| Variáveis por raquete | 45 | `NVAR` = 29 perguntas + 9 especificações + 7 índices |
+| Avaliações | 670 | soma de `r.nrev` (TW 551 + outros sites 119) |
+| Estudos científicos | 21 | `dados/ciencia.json` |
+| Casos de especialistas | 379, em 3 idiomas | `dados/casos.json` (200), `casos-pt.json` (67), `casos-es.json` (112) |
+| Perfis simulados | 3.000 por teste | `vies.mjs --realista` |
+| Acerto no top 3 | 39,8% (acaso 4,8%) | `calibrar.mjs`, parte de teste (88 casos) |
+
+Os números escritos no código estão em `METODO`, em `racket/index.html`. Atualize lá a cada rodada.
+
 ## Rodada 8: auditoria das fichas e nova calibração (nov/2026)
 
 ### Auditoria

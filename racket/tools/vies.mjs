@@ -105,7 +105,7 @@ const kids=res.filter(x=>+x.a.age<14).length;console.log(`Menores de 14 anos: ${
 const acima=(x,i)=>cat[i].price&&cat[i].price[0]>+x.a.budget;
 const ac=res.filter(x=>acima(x,x.top[0])).length;
 console.log(`\nOrçamento: 1ª acima em ${ac} (${pct(ac/N)}); pódio todo acima em ${res.filter(x=>x.top.every(i=>acima(x,i))).length}`);
-['1400','1800','2200','99999'].forEach(o=>{const g=res.filter(x=>x.a.budget===o);if(!g.length)return;const a1=g.filter(x=>acima(x,x.top[0])).length,a8=g.filter(x=>cat[x.top[0]].price[0]>+o*1.08).length;console.log(`  até ${o==='99999'?'sem limite':'R$ '+o}: ${g.length} perfis, 1ª acima ${pct(a1/g.length)} (mais de 8% acima ${pct(a8/g.length)}), Match médio da 1ª ${(g.reduce((s,x)=>s+x.fit[0],0)/g.length).toFixed(1)}`)});
+['1400','2000','99999'].forEach(o=>{const g=res.filter(x=>x.a.budget===o);if(!g.length)return;const a1=g.filter(x=>acima(x,x.top[0])).length,a8=g.filter(x=>cat[x.top[0]].price[0]>+o*1.08).length;console.log(`  até ${o==='99999'?'sem limite':'R$ '+o}: ${g.length} perfis, 1ª acima ${pct(a1/g.length)} (mais de 8% acima ${pct(a8/g.length)}), Match médio da 1ª ${(g.reduce((s,x)=>s+x.fit[0],0)/g.length).toFixed(1)}`)});
 const imp=res.filter(x=>x.a.imp==='no');console.log(`Prefere comprar no Brasil: ${imp.length}; 1ª difícil de achar: ${imp.filter(x=>cat[x.top[0]].br==='d').length}`);
 console.log(`1ª dentro da zona do mapa (peso × swingweight): ${pct(res.filter(x=>x.zona).length/N)}`);
 const f1=res.map(x=>x.fit[0]).sort((a,b)=>a-b);console.log(`Match da 1ª: mín ${f1[0]} · p10 ${f1[Math.floor(N*.1)]} · mediana ${f1[N>>1]} · máx ${f1[N-1]}`);

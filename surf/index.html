@@ -174,6 +174,7 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .mini .panel{gap:10px}
 .lock{border:1.5px dashed var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+footer .sd-cookie-link{opacity:1} /* contraste AA do link de cookies no rodapé */
 /* prévia: as 3 finalistas e o relatório borrado no topo */
 .hook{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:28px;align-items:center}
 .rpeek{margin:0;position:relative;height:380px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
@@ -439,6 +440,27 @@ table.cmpt{min-width:0}table.cmpt th:first-child{width:28%}table.cmpt tr.df td{b
 .pg.tight{gap:7px}.pg.tight .pbox{padding:8px 11px;gap:5px}.pg.tight .prev p,.pg.tight .plist,.pg.tight .pdl{font-size:9.5px}
 .prevs{display:flex;flex-direction:column;gap:9px}.prevh{font-size:11px;font-weight:700;color:var(--pri);margin-bottom:3px!important}
 .prev{border-left:3px solid var(--ball);background:var(--bg);border-radius:0 8px 8px 0;padding:5px 9px;margin-bottom:4px}.prev p{font-size:10.5px}.prev span{font-size:9px;color:var(--muted)}.prev b{color:var(--ink)}
+/* abertura: números do motor */
+.bigband{display:flex;flex-direction:column;gap:16px}
+.bbg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bb{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.bb b{font-family:var(--f-display);font-weight:800!important;font-size:clamp(32px,5vw,46px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.bb span{font-size:14px;line-height:1.35;color:var(--muted)}
+.bb.hl{background:#0E4D64;border-color:#0E4D64}.bb.hl b{color:#6CCFF6}.bb.hl span{color:#FFFFFF}
+.bbm{font-size:15px;color:var(--muted);max-width:78ch}
+@media (max-width:760px){.bbg{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bb{padding:14px}}
+/* calculadora de litragem */
+.cform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.crow{display:flex;flex-direction:column;gap:6px;min-width:0}.crow.wide{grid-column:1/-1}
+.crow label{font-weight:700;font-size:15px}
+.crow input,.crow select{width:100%}
+.crow input[aria-invalid="true"]{border-color:var(--clay)}
+.chelp{font-size:14px;color:var(--muted)}.cerr{font-size:14px;font-weight:700;color:var(--clay)}
+.cres{display:flex;flex-direction:column;gap:14px;border:2px solid var(--pri);border-radius:16px;padding:18px}
+.cbig{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.cbig b{font-family:var(--f-display);font-size:clamp(44px,8vw,60px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.cbig span{font-size:18px;font-weight:700;color:var(--muted)}
+.ctipos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.ctipos li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}.ctipos li:last-child{border-bottom:0}.ctipos li b{font-variant-numeric:tabular-nums;white-space:nowrap}.ctipos li.on{font-weight:700}
+@media (max-width:640px){.cform{grid-template-columns:minmax(0,1fr)}}
 /* relatório pago: barra de seções, seções e blocos novos */
 .rnav{position:sticky;top:0;z-index:30;background:var(--bg);padding:10px 0 8px;margin-top:-10px;box-shadow:0 0 0 100vmax var(--bg),0 1px 0 100vmax var(--line);clip-path:inset(0 -100vmax -1px -100vmax)}
 .rnav-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.rnav-top #pdfTop{margin-left:auto}.rnav-top .pdfst:empty{display:none}.rnav-top .pdfst{flex-basis:100%;text-align:right}
@@ -521,24 +543,27 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
         <p class="lead">Responda de <span id="nQ">20 a 25</span> perguntas sobre seu corpo, seu surf, seus objetivos, seu mar e sua prancha atual. Você vê a análise inteira antes de pagar qualquer coisa.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha prancha</button>
+          <button class="btn btn-ghost" id="calcGo" type="button">Calcular minha litragem</button>
           <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
         </div>
-        <p class="note">Grátis · 3 minutos · sem cadastro</p>
+        <p class="note">Prévia grátis · 3 minutos · sem cadastro</p>
       </div>
       <div class="herocol">
       <div id="cardHome" class="cardwrap herocard homecard" aria-label="Exemplo dos cards: DNA de surf e a prancha"></div>
-      <div class="court">
-        <p class="eyebrow acc">O motor</p>
-        <div class="stats s4">
-          <div class="stat"><b id="nRk">13</b><span>tipos de prancha</span></div>
-          <div class="stat"><b>17</b><span>variáveis por prancha</span></div>
-          <div class="stat"><b id="nCross">481</b><span>cruzamentos com o seu perfil em cada análise</span></div>
-          <div class="stat"><b id="nCombS">200 tri</b><span>pranchas diferentes possíveis. A sua é uma.</span></div>
-        </div>
-        <p class="mono acc" style="font-size:13px">Recomendamos tudo, menos marca e shaper.</p>
-      </div>
       </div>
     </div>
+    <section class="bigband" aria-labelledby="bbT">
+      <div><p class="eyebrow">O trabalho por trás do resultado</p><h2 id="bbT">Os números do motor</h2></div>
+      <ul class="bbg">
+        <li class="bb hl"><b id="bbTipos">13</b><span>tipos de prancha comparados com o seu perfil</span></li>
+        <li class="bb"><b id="bbVar">17</b><span>variáveis da prancha: medidas, formato, quilhas e material</span></li>
+        <li class="bb"><b id="bbRev">26</b><span>reviews de lojas, revistas e surfistas, com a fonte no relatório</span></li>
+        <li class="bb"><b>422</b><span>casos reais na calibração de out/2026</span></li>
+        <li class="bb"><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos (ao acaso: 23%)</span></li>
+        <li class="bb"><b>3.000</b><span>perfis simulados nos testes de segurança</span></li>
+      </ul>
+      <p class="bbm">Suas <span id="bbQ">18 a 23</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida da prancha. Ajustamos os pesos com 422 casos reais de lojas, revistas, marcas, atletas e fóruns, e testamos 3.000 perfis simulados: nenhum dos <span id="bbIni">1.348</span> perfis de primeiras ondas recebeu pranchinha, step-up ou gun entre os 3 primeiros. As travas de segurança de nov/2026 ainda vão ser medidas de novo contra os casos reais. Recomendamos tudo, menos marca e shaper.</p>
+    </section>
     <div class="diffs">
       <div class="diff"><h3>Litragem pelo seu nível</h3><p>Calculada pelo que você já faz na onda, não só pelo tempo de surf. Você vê a faixa antes de pagar.</p></div>
       <div class="diff"><h3>Comparação com a sua prancha</h3><p>A diferença traduzida em sensação: entra mais cedo na onda, mais solta, mais estável.</p></div>
@@ -559,6 +584,25 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
     <div class="arts">
       <div class="whead"><div><p class="eyebrow">Para ler antes de escolher</p><h2>Guias da SPORT DNA</h2></div><a class="btn btn-ghost" href="../#board">Ver os 15 artigos de surf</a></div>
       <div class="artg"><a class="art" href="../#a-prancha-01"><span class="artm">Iniciante · 3 min</span><b>Como escolher sua primeira prancha de surf</b><span class="artd">Soft, funboard, longboard ou evolution: qual ajuda você a remar, ficar de pé e pegar mais ondas.</span></a><a class="art" href="../#a-prancha-02"><span class="artm">Todos · 3 min</span><b>Litragem: como entender o volume da prancha</b><span class="artd">Como relacionar litros, peso e nível para chegar a uma faixa segura.</span></a><a class="art" href="../#a-prancha-03"><span class="artm">Iniciante · 3 min</span><b>Comprimento, largura e espessura: como ler as medidas</b><span class="artd">O que cada medida em pés e polegadas muda no seu surf.</span></a><a class="art" href="../#a-prancha-06"><span class="artm">Iniciante · 3 min</span><b>Prancha pequena demais: o erro que trava a evolução</b><span class="artd">Por que descer de tamanho cedo reduz ondas e atrasa a técnica.</span></a><a class="art" href="../#a-prancha-05"><span class="artm">Intermediário · 3 min</span><b>Quilhas: como escolher pela onda do seu pico</b><span class="artd">Single, biquilha, triquilha ou quadriquilha, e FCS ou Futures.</span></a><a class="art" href="../#a-prancha-07"><span class="artm">Todos · 3 min</span><b>Prancha usada: como avaliar antes de comprar</b><span class="artd">Delaminação, dings, amarelamento e vincos: o que examinar.</span></a></div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA DE LITRAGEM (grátis) -->
+  <section id="calc" hidden>
+    <div class="panel">
+      <div><p class="eyebrow">Grátis · 30 segundos</p><h2 id="calcT">Calculadora de litragem</h2>
+      <p class="muted" style="margin-top:6px">Litro é a medida de <b>quanto a prancha boia</b>. Mais litros: rema e fica de pé com mais facilidade. Menos litros: vira mais fácil, mas exige mais de você. A conta é a mesma do teste completo.</p></div>
+      <form id="calcF" class="cform" novalidate>
+        <div class="crow"><label for="cPeso">Seu peso (kg)</label><input id="cPeso" type="number" inputmode="numeric" min="35" max="140" step="1" placeholder="ex.: 72" aria-describedby="cPesoErr" required><p class="cerr" id="cPesoErr" hidden></p></div>
+        <div class="crow"><label for="cAlt">Sua altura (cm)</label><input id="cAlt" type="number" inputmode="numeric" min="140" max="210" step="1" placeholder="ex.: 175" aria-describedby="cAltErr" required><p class="cerr" id="cAltErr" hidden></p></div>
+        <div class="crow wide"><label for="cNivel">Seu nível hoje</label><select id="cNivel"></select><p class="chelp" id="cNivelH"></p></div>
+        <div class="crow"><label for="cFis">Condicionamento para remar</label><select id="cFis"></select></div>
+        <div class="crow"><label for="cIdade">Idade</label><select id="cIdade"></select></div>
+        <div class="crow wide"><label for="cTipo">Tipo de prancha</label><select id="cTipo" aria-describedby="cTipoH"></select><p class="chelp" id="cTipoH">Cada tipo pede uma litragem diferente para o mesmo surfista.</p></div>
+        <div class="crow wide"><button class="btn btn-go" type="submit">Calcular</button></div>
+      </form>
+      <div id="calcOut" aria-live="polite"></div>
+      <div class="row"><button class="btn btn-go" type="button" id="calcTest">Fazer o teste completo</button><button class="btn btn-ghost" type="button" id="calcBack">Voltar ao início</button></div>
     </div>
   </section>
 
@@ -694,6 +738,27 @@ function ajustaPodio(sc,must,notFirst,mg){
   let prox=fora;
   for(let i=pod.length-1;i>=0;i--){const k=pod[i];sc[k]=Math.max(sc[k],prox+mg);if(i<pod.length-1&&sc[k]<=sc[pod[i+1]])sc[k]=sc[pod[i+1]]+mg;prox=sc[k]}
 }
+/* litragem de cada tipo: a única fórmula de volume do app (usada pelo motor e pela calculadora de litragem) */
+function litragem(a,H,lvl){
+  const g=(k,d)=>a[k]===undefined?d:a[k];
+  const peso=g('peso',75),alt=g('altura',175),tam=g('tam',1),flut=g('flut',1);
+  const V=PESOS.vol;
+  const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1),GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
+  const body=(g('motivo',1)===4?V.voltar:1)*V.idade[g('idade',1)]*V.freq[g('freq',1)]*V.fis[g('fis',1)];
+  const flutM=V.flut[flut];
+  const dor=g('dor',[]);
+  let add=(dor.includes(0)?V.dor[0]:0)+(dor.includes(1)?V.dor[1]:0)+(dor.includes(2)?V.dor[2]:0)+(dor.includes(3)?V.dor[3]:0)+(g('incomoda',6)===0?V.incomodaRema:g('incomoda',6)===2?V.incomodaGrande:0);
+  const mw=V.pesoModelo[lvl];
+  const volOf=k=>{const A=ARCH[k];let v=peso*GF*(1+(MODF[k]-1)*mw)*flutM*body+add;
+    v+= (k==='step'||k==='gun')?V.ondaStep[tam]:V.ondaOutros[tam];
+    if(constrOf(k,a)[0].startsWith('Epóxi'))v+=V.epoxi;
+    if(A.fixedVol){const d=dimsFixed(k,peso,alt);v=d.V}
+    if(!A.fixedVol){const rv=A.ref[0]*Math.pow(peso/75,V.refExp);v=clamp(v,rv*V.refMin,rv*V.refMax)}
+    if(k==='softp'&&lvl<=1)v=Math.max(v,peso*V.softpIniciante);
+    if(g('onde',0)===1&&lvl>=2&&!A.fixedVol)v*=V.piscina;
+    return v};
+  return {GF,rng:L0.rng,vols:Object.fromEntries(KEYS.map(k=>[k,volOf(k)]))};
+}
 /* ---------- motor ---------- */
 function engine(a,long,over){
   a=Object.assign({},a,over||{});
@@ -709,22 +774,7 @@ function engine(a,long,over){
   const tam=g('tam',1),fo=g('forca',1),obj=g('obj',1),flut=g('flut',1),quiver=g('quiver',0);
   // 3. litragem de cada tipo (antes do placar: a pranchinha perde pontos quando a litragem não cabe em 6'4")
   a._lvl=lvl;
-  const V=P.vol;
-  const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1),GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
-  const body=(g('motivo',1)===4?V.voltar:1)*V.idade[g('idade',1)]*V.freq[g('freq',1)]*V.fis[g('fis',1)];
-  const flutM=V.flut[flut];
-  const dor=g('dor',[]);
-  let add=(dor.includes(0)?V.dor[0]:0)+(dor.includes(1)?V.dor[1]:0)+(dor.includes(2)?V.dor[2]:0)+(dor.includes(3)?V.dor[3]:0)+(g('incomoda',6)===0?V.incomodaRema:g('incomoda',6)===2?V.incomodaGrande:0);
-  const mw=V.pesoModelo[lvl];
-  const volOf=k=>{const A=ARCH[k];let v=peso*GF*(1+(MODF[k]-1)*mw)*flutM*body+add;
-    v+= (k==='step'||k==='gun')?V.ondaStep[tam]:V.ondaOutros[tam];
-    if(constrOf(k,a)[0].startsWith('Epóxi'))v+=V.epoxi;
-    if(A.fixedVol){const d=dimsFixed(k,peso,alt);v=d.V}
-    if(!A.fixedVol){const rv=A.ref[0]*Math.pow(peso/75,V.refExp);v=clamp(v,rv*V.refMin,rv*V.refMax)}
-    if(k==='softp'&&lvl<=1)v=Math.max(v,peso*V.softpIniciante);
-    if(g('onde',0)===1&&lvl>=2&&!A.fixedVol)v*=V.piscina;
-    return v};
-  const vols=Object.fromEntries(KEYS.map(k=>[k,volOf(k)]));
+  const {GF,rng,vols}=litragem(a,H,lvl);
   // 4. modelo
   const sc={};
   const IMPK=['rem','est','vel','man','ctl','tol'],im=a.imp||null,imM=im?IMPK.reduce((t,x)=>t+im[x],0)/6:0;
@@ -777,7 +827,7 @@ function engine(a,long,over){
   const F=P.fit,C=P.conf;
   const fins=top.map((k,idx)=>({k,fit:Math.round(clamp(F.base-idx*F.passo-(sc[top[0]]-sc[k])*F.porPonto,F.min,F.max)),vol:vols[k]}));
   const conf=Math.round(clamp((long?C.longo:C.curto)+gap*C.porGap-contra*P.habil.contra,C.min,C.max));
-  return {H,lvl,S,sc,fins,conf,long,a,peso,alt,GF,rng:L0.rng,contra,volAll:vols};
+  return {H,lvl,S,sc,fins,conf,long,a,peso,alt,GF,rng,contra,volAll:vols};
 }
 const IXR={};function idxRef(k){if(!IXR[k]){const A=ARCH[k];IXR[k]=boardIdx(k,{V:A.ref[0],L:A.ref[1],W:A.ref[2],T:A.ref[3]},{rocker:A.rk,bottom:A.bottom,setup:A.setup,tail:A.tailN},75)}return IXR[k]}
 function constrOf(k,a){
@@ -991,10 +1041,8 @@ const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5,tol:5};
 function nivelResp(){const o={};['tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
 const A={};let step=0;
 const NVAR=Q.length+BX.length+17;
-(function(){document.getElementById('nQ').textContent=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nCross').textContent=(NVAR*KEYS.length).toLocaleString('pt-BR');const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
-const CT=CB.reduce((p,x)=>p*x[1],1);
-const big=n=>n>=1e12?Math.round(n/1e12)+' tri':n>=1e9?Math.round(n/1e9)+' bi':Math.round(n/1e6)+' mi';
-document.getElementById('nCombS').textContent=big(CT);document.getElementById('nCombS').title=CT.toLocaleString('pt-BR')+' combinações de 17 variáveis';
+(function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nQ').textContent=nQ;document.getElementById('bbQ').textContent=nQ;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
+document.getElementById('bbVar').textContent=CB.length;
 })();
 const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:'2',imp:{rem:8,est:6,vel:7,man:6,ctl:3,tol:6},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
 
@@ -1047,8 +1095,47 @@ function renderQs(){
   $('#next').textContent=step===STEPS.length-1?'Ver minha análise':'Continuar';
 }
 function missing(){return Q.filter(q=>q.s===step&&!q.opt&&q.type!=='rate'&&(!q.cond||q.cond())).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.multi?!(v&&v.length):!v})}
-function show(id){['landing','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
+function show(id){['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
 $('#start').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
+/* ---------- calculadora de litragem (grátis): usa litragem(), a mesma função do motor ---------- */
+const LVD=['ainda com espuma ou empurrão do professor','já pega espuma sozinho e fica de pé','anda na parede e faz as primeiras curvas','faz cavada, batida e rasgada','manobra forte em onda com força'];
+/* tipos mais comuns no 1º lugar do teste em cada nível (3.000 perfis de surf/tools/vies.mjs, nov/2026); o primeiro é o padrão */
+const CALC_TIPOS=[['minimal','soft','long','mid','evo'],['mid','minimal','twin','longp','evo'],['mid','grov','fish','longp','twin'],['grov','fish','mid','short','evo'],['twin','grov','short','longp','step']];
+const qOpts=id=>Q.find(q=>q.id===id).o;
+function calcLitragem(o){const H=(LV[o.lvl].min+LV[o.lvl].max)/2;return litragem({peso:o.peso,altura:o.alt,fis:o.fis,idade:o.idade,_lvl:o.lvl},H,o.lvl)}
+function calcTipoOpts(){const lv=+$('#cNivel').value,cur=$('#cTipo').value,def=CALC_TIPOS[lv][0];
+  $('#cTipo').innerHTML=`<option value="auto">Não sei · ${esc(PN[def])}</option>`+KEYS.map(k=>`<option value="${k}">${esc(PN[k])}</option>`).join('');
+  $('#cTipo').value=cur&&cur!=='auto'?cur:'auto';$('#cTipoH').textContent='Cada tipo pede uma litragem diferente para o mesmo surfista. Sem escolher, usamos '+PN[def]+', o tipo que o teste mais indica no nível '+LV[lv].n+'.';$('#cNivelH').textContent='Escolha pelo que você faz na onda, não pelo tempo de surf. '+LV[lv].n+': '+LVD[lv]+'.'}
+function calcInit(){
+  if(!$('#cNivel').options.length){
+    $('#cNivel').innerHTML=LV.map((l,i)=>`<option value="${i}">${esc(l.n)}</option>`).join('');$('#cNivel').value='2';
+    $('#cFis').innerHTML=qOpts('fis').map(o=>`<option value="${o[0]}">${esc(o[1])}${o[2]?' · '+esc(o[2].toLowerCase()):''}</option>`).join('');$('#cFis').value='1';
+    $('#cIdade').innerHTML=qOpts('idade').map(o=>`<option value="${o[0]}">${esc(o[1])}</option>`).join('');$('#cIdade').value='1';
+    calcTipoOpts();
+  }
+  if(A.peso&&!$('#cPeso').value)$('#cPeso').value=A.peso;if(A.altura&&!$('#cAlt').value)$('#cAlt').value=A.altura;
+}
+function calcErr(id,msg){const inp=$('#'+id),e=$('#'+id+'Err');inp.setAttribute('aria-invalid',msg?'true':'false');e.textContent=msg||'';e.hidden=!msg;if(msg)e.setAttribute('role','alert');else e.removeAttribute('role')}
+function calcRun(){
+  const peso=+$('#cPeso').value,alt=+$('#cAlt').value;let bad=null;
+  const ep=!$('#cPeso').value?'Informe o seu peso, em kg.':peso<35||peso>140?'O peso precisa estar entre 35 e 140 kg.':'';
+  const ea=!$('#cAlt').value?'Informe a sua altura, em cm.':alt<140||alt>210?'A altura precisa estar entre 140 e 210 cm.':'';
+  calcErr('cPeso',ep);calcErr('cAlt',ea);if(ep)bad='cPeso';else if(ea)bad='cAlt';
+  if(bad){$('#calcOut').innerHTML='';$('#'+bad).focus();return}
+  const lvl=+$('#cNivel').value,fis=+$('#cFis').value,idade=+$('#cIdade').value,tv=$('#cTipo').value,k=tv==='auto'?CALC_TIPOS[lvl][0]:tv;
+  const R=calcLitragem({peso,alt,lvl,fis,idade}),V=R.vols[k],lo=Math.round(V-R.rng),hi=Math.round(V+R.rng);
+  const outros=[...new Set([k,...CALC_TIPOS[lvl]])].slice(0,5);
+  $('#calcOut').innerHTML=`<div class="cres"><div><p class="eyebrow">Sua litragem ideal · ${esc(PN[k])}</p><p class="cbig"><b>${dec1(V)}</b><span>litros</span></p>
+    <p class="sline">Faixa ideal: <b>${lo} a ${hi} L</b></p><p class="muted">${dec1(V/peso)} L por kg · ${peso} kg · ${esc(LV[lvl].n)} · condicionamento ${esc(qOpts('fis')[fis][1].toLowerCase())}</p></div>
+    <div><h3 style="font-size:16px;margin-bottom:6px">Para o mesmo surfista, outros tipos comuns no seu nível</h3><ul class="ctipos">${outros.map(t=>{const v=R.vols[t];return `<li class="${t===k?'on':''}"><span>${esc(PN[t])}</span><b>${dec1(v)} L <span class="muted" style="font-weight:500">(${Math.round(v-R.rng)} a ${Math.round(v+R.rng)} L)</span></b></li>`}).join('')}</ul></div>
+    <p class="note">O teste completo usa a mesma conta e ajusta mais: o ponto exato do seu nível pelo que você faz na onda, as ondas do seu pico, dores, a sua prancha atual e o material. Por isso o resultado dele pode variar dentro dessa faixa.</p></div>`;
+}
+$('#calcGo').addEventListener('click',()=>{calcInit();show('calc')});
+$('#cNivel').addEventListener('change',calcTipoOpts);
+$('#calcF').addEventListener('submit',e=>{e.preventDefault();calcRun()});
+$('#calcBack').addEventListener('click',()=>show('landing'));
+$('#calcTest').addEventListener('click',()=>{const pe=$('#cPeso').value,al=$('#cAlt').value;if(pe&&+pe>=35&&+pe<=140)A.peso=pe;if(al&&+al>=140&&+al<=210)A.altura=al;A.fis=$('#cFis').value;A.idade=$('#cIdade').value;step=0;show('quiz');renderQs()});
+
 $('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}step--;renderQs()});
 $('#next').addEventListener('click',()=>{
@@ -1216,7 +1303,7 @@ function pix(){
         <button class="btn btn-go" type="button" id="pxPdf" style="width:100%;margin-top:14px">Baixar relatório em PDF (A4)</button>
         <button class="btn btn-ghost" type="button" id="pxSee" style="width:100%;margin-top:8px">Ver relatório na tela</button>
         <p class="note pdfst" aria-live="polite" style="text-align:center;margin-top:8px"></p>`;
-      $('#pxPdf').onclick=async()=>{$('#pxPdf').disabled=true;const ok=await makePDF(RES);if(ok)closeModal();else{const b=$('#pxPdf');if(b)b.disabled=false}};
+      $('#pxPdf').onclick=async()=>{const b0=$('#pxPdf');b0.disabled=true;const ok=await makePDF(RES);const b=$('#pxPdf');if(b)b.disabled=false;if(ok==='done'&&!isIOS())setTimeout(closeModal,600)};
       $('#pxSee').onclick=closeModal;$('#pxPdf').focus();
     },1100);
   };
@@ -1557,6 +1644,7 @@ function renderReport(){
   $('#rBack').onclick=()=>show('preview');
   $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
+  if(PDFC.key===pdfKey(r)&&PDFC.blob)pdfSay('');schedulePDF(r);
   const copy=(btn,txt,out)=>{const b=$(btn);if(b)b.onclick=()=>{navigator.clipboard.writeText(txt()).then(()=>{$(out).textContent='Ficha copiada.'},()=>{$(out).textContent='Não deu para copiar: selecione a tabela e copie.'})}};
   copy('#fcopy',()=>r._ficha,'#fcopied');
   /* chips de salto: rolam até a seção, abrem a parte recolhida e põem o foco no título */
@@ -1665,6 +1753,7 @@ async function wireCards(r){
 /* ---------- relatório em PDF (A4, 5 páginas, padrão SPORT DNA) ---------- */
 /* trechos de review resumidos e traduzidos, conferidos na busca (out/2026); fontes em docs/board/reviews.md. [tipo, modelo, resumo, fonte, url, quem, nível, nota, geração] */
 const REVIEWS=[["soft","Wavestorm Classic 8'0","Barata, fácil de usar e com muita flutuação; o ponto fraco é que custa a virar.","The Inertia","https://www.theinertia.com/gear/wavestorm-classic-foam-soft-top-surfboard-review/","editor de equipamentos","—","prós e contras","8'0\""],["soft","Catch Surf Odysea Log","Surfistas de todos os níveis se divertem nela; resistente para uma soft, com núcleo forte e bem vedada.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/catch-surf-odysea-log-review/","equipe da loja","todos os níveis","sem nota","review de 2023"],["softp","Catch Surf x Lost Crowd Killer","Testada em 16 sessões e 65 ondas; aprovada como um brinquedo bem desenhado para se divertir.","Empire Ave","https://empireave.com/product-reviews/surf-hardware/catch-surf-x-lost-crowd-killer-softboard-review/","redação da Empire Ave","—","sem nota","6'8\", cerca de 47 L"],["softp","Catch Surf Skipper Pro","Versátil: dá para aprender e evoluir nela; o deck poderia ser mais forte e o preço é alto, mas revende bem.","Tradewind Surf (loja)","https://tradewindsurf.com.au/?p=65194","equipe da loja","—","sem nota","review de 2023"],["long","Takayama In The Pink","Equilibra desempenho e versatilidade, de onda pequena e fraca a acima da cabeça; o epóxi ajuda na durabilidade.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/takayama-in-the-pink-review/","equipe da loja","—","sem nota","Tuflite, review de 2022"],["long","McTavish Cruiser 10'0","Rema rápido e, pelo contorno estreito, vira com muita facilidade; prefere onda do ombro para cima.","Seabreeze (fórum)","https://www.seabreeze.com.au/forums/Surfing/Longboarding/10-foot-boards","dono da prancha","—","sem nota","10'0\""],["longp","Harley Ingleby HI4","Surpreendeu por ser leve e assentar bem na água; usa mais em onda pequena, mas aguenta dia acima da cabeça.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/harley-ingleby-hi4-surfboard-review","Derek, cliente da loja","—","sem nota","9'3\""],["minimal","Torq Mod Fun (TET)","Divertida para iniciante e intermediário, resistente e fácil de carregar, segundo um surfista de pranchinha.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/torq-mod-fun-review/","equipe da loja","—","sem nota","TET, review de 2022"],["minimal","Torq Mod Fun 7'2\"","Clientes acham muito leve e fácil de carregar; manobra bem, e um diz que vira mais fácil que a anterior.","Boardshop (loja)","https://www.boardshop.co.uk/torq-mod-fun-surfboard-7ft-2-white-pinline","clientes da loja","iniciante","4,9/5 (loja)","7'2\", 47,2 L"],["fish","7S Super Fish 3 CV","Boa flutuação e forma bonita, mas vários donos relatam acabamento fraco e prancha quebrada em poucos meses.","ProductReview.com.au","https://www.productreview.com.au/listings/7s-super-fish-3-cv","donos da prancha","—","maioria negativa","Super Fish 3 CV"],["mid","JS Big Baron","Entra rápido na onda e desliza bem, melhor em onda pequena; segura e responde menos na batida que a prancha anterior.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/js-industries-big-baron-surfboard-review-by-jacob","Jacob, cliente da loja","—","sem nota","7'6\""],["mid","Firewire Seaside & Beyond","Comprada usada, remou e respondeu melhor que o esperado; serve de iniciante avançado para cima.","Stoked for Travel","https://www.stokedfortravel.com/?p=9317","autor do site","—","sem nota","6'8\", 40,9 L"],["evo","Channel Islands Average Joe","Rema fácil para entrar na onda; serve à maioria dos surfistas em mar médio ou fraco. Não é a melhor para ficar no pocket.","Boardshop (loja)","https://www.boardshop.co.uk/blog/ci-average-joe-review/","Ian, da loja","—","sem nota","5'9\""],["evo","Firewire Dominator 2.0","Para intermediário a profissional, não para iniciante; a rabeta squash solta mais nas curvas e ganha velocidade nos trechos planos.","Stoked for Travel","https://www.stokedfortravel.com/?p=8927","autor do site","—","sem nota","Dominator 2, Helium 2"],["evo","Haydenshapes Hypto Krypto","Muito volume para remar e velocidade na parede; a rabeta segura quando a onda cresce.","Tradewind Surf (loja)","https://tradewindsurf.com.au/?p=52933","equipe da loja","—","sem nota","review de 2014"],["fish","Christenson Fish","Anda em onda no joelho e em tubo acima da cabeça; bordas retas seguram no mar grande. Ponto fraco: espera de 6 meses.","Outside","https://www.outsideonline.com/outdoor-gear/water-sports-gear/christenson-fish-surfboards-reviews?scope=anon","redação da Outside","intermediário para cima","sem nota","—"],["fish","Channel Islands Fishbeard","Muito rápida, desenha bem as curvas e, para uma biquilha, vai bem de costas para a onda.","Empire Ave","https://empireave.com/product-reviews/surfboards/channel-islands-fishbeard-review/","redação da Empire Ave","—","sem nota","5'9\", 32 L"],["grov","Lost Puddle Jumper","Virou bem em onda de uns 30 cm; a partir de uns 60 cm, melhor voltar para a prancha normal.","Tradewind Surf (loja)","https://tradewindsurf.com.au/travelblog/lost-puddle-jumper-review/","equipe da loja","—","sem nota","original, review de 2015"],["grov","Lost Puddle Jumper Pro","Um testador gostou de 30 cm a quase 2 m; outro achou fácil e rápida, tanto de quadri quanto de triquilha.","Surf n Show (loja)","https://surfstationstore.com/blogs/surfboard-reviews/surf-n-show-lost-puddle-jumper-pro-review","dois testadores da loja","—","sem nota","Pro, review de 2023"],["grov","Firewire Sweet Potato","Duvidou que tão larga virasse bem; com as quilhas indicadas, vira muito bem e não perde velocidade, até onda na cabeça.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/firewire-sweet-potato-surfboard-review-by-scott","Scott, cliente da loja","—","sem nota","5'6\", 56 L, Volcanic"],["twin","Haydenshapes Hypto Krypto Twin","Cético: vê mais evolução de marketing que de desenho; a facilidade de remar vem do formato de fish.","Stoked for Travel","https://www.stokedfortravel.com/?p=9964","autor do site","—","sem nota","—"],["twin","DHD MF Twin","Previsível e confiável na borda; uma das poucas biquilhas em que conseguiu boa cavada de costas.","Down the Line Surf (loja)","https://downthelinesurf.co.uk/blogs/product-reviews/dhd-mf-twin-review","equipe da loja","—","sem nota","—"],["short","Lost Driver 2.0","Testada em 2 a 6 pés: a pranchinha de performance mais rápida e fácil que o testador já surfou nesse tamanho.","Surf n Show (loja)","https://surfstationstore.com/blogs/surfboard-reviews/lost-driver-2-0-surfboard-review","testador da loja","—","sem nota","5'9\" e 5'7\", review de 2020"],["short","Lost Sub Driver 2.0","Elogia velocidade, flexão e impulso na cavada; trepida um pouco em algumas condições.","Hawaiian South Shore (loja)","https://www.hawaiiansouthshore.com/blogs/hawaiian-south-shore-surfing-blog/lost-sub-driver-2-0-surfboard-review-by-chad","Chad, cliente da loja","—","sem nota","—"],["step","Firewire Hydronaut","Rema como uma prancha bem maior e responde como uma menor; a faixa de 3 a 6 pés indicada pela marca pareceu limitada.","Boardshop (vídeo)","https://vimeo.com/285306507","equipe da Boardshop","—","sem nota","LFT"],["step","Pyzel Ghost Pro (como step-up)","Comprada para onda de 5 a 8 pés: rema incrivelmente bem; dá para usar menos volume do que se imagina.","ProductReview.com.au","https://www.productreview.com.au/c/surfboards","dono da prancha","—","sem nota","Ghost Pro"]];
+{const e=document.getElementById('bbRev');if(e)e.textContent=REVIEWS.length}
 const WAVE=['até meio metro','meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','acima de 2,5 m'],FORCA=['cheias e fracas','mistas','cavadas e rápidas'];
 function rankAll(r){
   const rk=KEYS.slice().sort((p,q)=>r.sc[q]-r.sc[p]);let prev=99;
@@ -1779,7 +1868,8 @@ function pdfHTML(r){
   <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Litragem','Volume da prancha em litros. Define quanto ela boia e quanto rema.'],['L por kg','Litros divididos pelo seu peso. Quanto menor, mais técnica a prancha exige.'],['Rocker','Curva da prancha do bico à rabeta. Mais curva: encaixa em onda forte; mais reta: mais rápida.'],['Rabeta','A parte de trás. Larga dá velocidade em onda fraca; fina segura em onda forte.'],['Borda','A lateral. Cheia (50/50) perdoa; fina (80/20) morde a parede.'],['Fundo','O desenho de baixo. Côncavo canaliza a água e acelera; vee ajuda a virar.'],['Quilhas','As barbatanas. Mono é suave, bi é solta, tri é versátil, quadri é rápida.'],['PU e epóxi','Os dois materiais de prancha. PU tem sensação clássica; epóxi é leve e boia mais.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Seu surf × a prancha',p2)}${pdfPage(3,'Setup',p3)}${pdfPage(4,'Pódio',p4)}${pdfPage(5,'Ranking e método',p5)}</div>`;
 }
-const LIBS=['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js','https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'];
+/* bibliotecas servidas pelo próprio site (nada de CDN: redes que bloqueiam CDN e o Safari continuam gerando o PDF) */
+const LIBS=['../assets/vendor/html2canvas-1.4.1.min.js','../assets/vendor/jspdf-2.5.1.umd.min.js'];
 const loadJS=u=>new Promise((ok,no)=>{if(document.querySelector(`script[src="${u}"]`))return ok();const s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=()=>no(new Error(u));document.head.appendChild(s)});
 /* garante que nada passe do rodapé: tira primeiro os itens extras (reviews além do primeiro, cards e alertas a mais) */
 function fitPages(box){box.querySelectorAll('.pg').forEach(pg=>{
@@ -1793,23 +1883,54 @@ function inlineSVG(root){
   const PROPS=['fill','fill-opacity','stroke','stroke-width','stroke-opacity','stroke-dasharray','stroke-linecap','stroke-linejoin','opacity','font-size','font-weight','font-family','paint-order'];
   root.querySelectorAll('svg *').forEach(el=>{if(/^(defs|linearGradient|stop)$/.test(el.tagName))return;const cs=getComputedStyle(el);el.setAttribute('style',PROPS.map(p=>`${p}:${cs.getPropertyValue(p)}`).join(';'))});
 }
-let pdfBusy=false;
-async function makePDF(r){
-  if(pdfBusy)return false;pdfBusy=true;let ok=false;const st=document.querySelectorAll('.pdfst'),say=t=>st.forEach(x=>x.textContent=t);
-  say('Gerando o PDF…');let box;
+/* PDF: gerado em segundo plano assim que o relatório pago aparece e guardado como Blob.
+   No clique, se o Blob está pronto, baixa na hora, dentro do mesmo gesto (o Safari do iPhone exige isso).
+   Se ainda não está, mostra "Gerando o PDF…" e depois um botão "Abrir o PDF" (um gesto novo). */
+const PDFC={key:null,blob:null,promise:null,name:'',url:null};
+const pdfKey=r=>JSON.stringify([r.a,r.k,r.d&&r.d.V]);
+const isIOS=()=>/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+async function buildPDFBlob(r){
+  await Promise.all(LIBS.map(loadJS));
+  let box=document.createElement('div');box.innerHTML=pdfHTML(r);box=box.firstElementChild;document.body.appendChild(box);
   try{
-    await Promise.all(LIBS.map(loadJS));
-    box=document.createElement('div');box.innerHTML=pdfHTML(r);box=box.firstElementChild;document.body.appendChild(box);
     if(document.fonts&&document.fonts.ready)await document.fonts.ready;
     fitPages(box);inlineSVG(box);
     const pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',compress:true}),pages=[...box.querySelectorAll('.pg')];
-    for(let i=0;i<pages.length;i++){say(`Gerando o PDF… página ${i+1} de ${pages.length}`);
+    for(let i=0;i<pages.length;i++){
       const c=await html2canvas(pages[i],{scale:2.4,backgroundColor:'#FFFFFF',logging:false,windowWidth:900});
-      if(i)pdf.addPage();pdf.addImage(c.toDataURL('image/jpeg',.86),'JPEG',0,0,210,297)}
-    pdf.save(`surf-dna-${k2slug(PN[r.k])}.pdf`);say('PDF baixado.');ok=true;
-  }catch(e){say('Não deu para gerar o PDF agora. Confira a conexão e tente de novo.')}
-  finally{if(box)box.remove();pdfBusy=false}
-  return ok;
+      if(i)pdf.addPage();pdf.addImage(c.toDataURL('image/jpeg',.86),'JPEG',0,0,210,297);
+      await new Promise(z=>setTimeout(z,0));
+    }
+    return pdf.output('blob');
+  }finally{box.remove()}
+}
+function ensurePDF(r){
+  const key=pdfKey(r);
+  if(PDFC.key===key&&(PDFC.blob||PDFC.promise))return PDFC.blob?Promise.resolve(PDFC.blob):PDFC.promise;
+  if(PDFC.url){URL.revokeObjectURL(PDFC.url);PDFC.url=null}
+  PDFC.key=key;PDFC.blob=null;PDFC.name=`surf-dna-${k2slug(PN[r.k])}.pdf`;
+  const pr=buildPDFBlob(r).then(b=>{if(PDFC.key===key){PDFC.blob=b;PDFC.promise=null}return b},e=>{if(PDFC.key===key){PDFC.promise=null;PDFC.key=null}throw e});
+  PDFC.promise=pr;return pr;
+}
+function schedulePDF(r){const go=()=>{ensurePDF(r).catch(e=>console.warn('SURF DNA: PDF em segundo plano falhou',e))};
+  if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,800)}
+const pdfURL=()=>{if(!PDFC.url&&PDFC.blob)PDFC.url=URL.createObjectURL(PDFC.blob);return PDFC.url};
+function saveBlobNow(){const a=document.createElement('a');a.href=pdfURL();a.download=PDFC.name;a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+const pdfSay=html=>document.querySelectorAll('.pdfst').forEach(x=>x.innerHTML=html);
+function pdfOpenBtn(){pdfSay(`PDF pronto. <a class="btn btn-go btn-sm pdfopen" href="${pdfURL()}" download="${esc(PDFC.name)}" target="_blank" rel="noopener">Abrir o PDF</a>`)}
+function pdfFail(r,e){console.warn('SURF DNA: não deu para gerar o PDF',e);
+  pdfSay('Não deu para gerar o PDF agora. <button class="btn btn-ghost btn-sm pdfretry" type="button">Tentar de novo</button>');
+  document.querySelectorAll('.pdfretry').forEach(b=>b.onclick=()=>makePDF(r))}
+/* devolve 'done' (baixou), 'pending' (vai mostrar "Abrir o PDF") ou false (erro) */
+async function makePDF(r){
+  let dl=null;
+  if(window.claude&&window.claude.use){try{dl=await window.claude.use('downloads')}catch(e){dl=null}}
+  if(dl){try{pdfSay('Gerando o PDF…');const b=await ensurePDF(r);await dl.save({filename:PDFC.name,data:b});pdfSay('PDF salvo.');return 'done'}catch(e){if(e&&e.code==='declined'){pdfSay('');return false}pdfFail(r,e);return false}}
+  if(PDFC.key===pdfKey(r)&&PDFC.blob){try{saveBlobNow();pdfSay(isIOS()?'':'PDF baixado.');if(isIOS())pdfOpenBtn();return 'done'}catch(e){pdfFail(r,e);return false}}
+  pdfSay('Gerando o PDF…');
+  try{await ensurePDF(r)}catch(e){pdfFail(r,e);return false}
+  if(!isIOS()){try{saveBlobNow()}catch(e){console.warn('SURF DNA: download automático bloqueado',e)}}
+  pdfOpenBtn();return 'pending';
 }
 const k2slug=t=>t.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
@@ -1831,7 +1952,7 @@ window.SportDNAPayments?.register({name:'surf',snapshot:()=>JSON.parse(JSON.stri
   var live=d.createElement('div');live.className='a11y-sr';live.setAttribute('role','status');live.setAttribute('aria-live','polite');d.body.appendChild(live);
   function say(t){live.textContent='';setTimeout(function(){live.textContent=t},80)}
   var srh=d.getElementById('a11y-h1');
-  var NAMES={landing:'Início',duelSec:'Comparar duas raquetes',quiz:'Questionário',analysis:'Análise',preview:'Prévia do resultado',report:'Relatório'};
+  var NAMES={landing:'Início',calc:'Calculadora de litragem',quiz:'Questionário',analysis:'Análise',preview:'Prévia do resultado',report:'Relatório'};
   var secs=Object.keys(NAMES).map(function(id){return d.getElementById(id)}).filter(Boolean);
   function visible(){for(var i=0;i<secs.length;i++)if(!secs[i].hidden)return secs[i];return null}
   function firstHeading(s){if(!s)return null;var hs=s.querySelectorAll('h1,h2,legend');for(var i=0;i<hs.length;i++){var r=hs[i].getBoundingClientRect();if(r.width>0&&r.height>0)return hs[i]}return null}

@@ -35,17 +35,16 @@ function resp(c){
   const est={baseline:'agg',agressivo:'agg','all-court':'all','saque-voleio':'net','contra-ataque':'cnt'}[f.estilo];
   const brl=f.orcamento_brl??(f.orcamento_usd!=null?f.orcamento_usd*BRL.usd:f.orcamento_eur!=null?f.orcamento_eur*BRL.eur:null);
   const a={
-    age:String({adulto:35,senior:62,junior:14}[f.idade_faixa]||35),height:'175',weight:'75',dom:'R',
+    age:String({adulto:35,senior:62,junior:14}[f.idade_faixa]||35),height:'175',weight:'75',
     str:{alta:'high',baixa:'low'}[f.forca]||'mid',cond:'2',
     arm:f.dor_braco?'now':'no',
     lvl,years:{beg:'0',int:'1',adv:'10'}[lvl],freq:'2',
     swing:{beg:'short',int:'mid',adv:'long'}[lvl],
     spin:pri==='spin'?'high':lvl==='beg'?'low':'mid',
-    bh:f.backhand==='1'||f.backhand===1?'one':'two',
     serve:{beg:'push',int:'safe',adv:'mix'}[lvl],
     opp:'mix',cur:'none',why:f.dor_braco?'pain':'first',want:pri?[pri]:[],headp:'any',
     string:'?',tens:'?',restr:'3m',imp:c.idioma==='pt'?'no':'yes',
-    budget:brl==null?'99999':brl<=1400?'1400':brl<=1800?'1800':brl<=2200?'2200':'99999'
+    budget:brl==null?'99999':brl<=1400?'1400':brl<=2000?'2000':'99999'
   };
   if(est)a.style=[est];
   if(f.dor_braco){a.joint=['elbow'];a.pain='2';a.lim='1'}
@@ -101,7 +100,7 @@ const out=await pg.evaluate(({entradas,PES,AJ})=>{
       /^pen\.(orcamento\.|dificilAchar|poucaOferta)/,/^pen\.(pesoTolerancia|pesoLonge|bracoIndiceMin)$/,/\.(lim|limCotovelo|limOutras|sw|bal|g|idade|margem|cotoveloPeso|tolerancia100|desconto100)$/,
       /^placar\.(alvoAlto|aprovacaoPadrao|dentroOrcamento|braco\.centro)$/,/^placar\.braco\..*(Min|Max|MaxCotovelo)$/,
       /^match\.(base|distRuim|min|max|escala|conf)/,/^match\.pen$/];
-    const SAUDE=[/^pen\.(raHoje|raPassado|raForte|bracoLeve|pesadaFraco|ombro|punho)\./,/^pen\.umaMao\.cotovelo$/,/^alvo\.(dor|articulacao|dorForte|emTratamento)\./,/^alvo\.idade\.seniorAlvo\./,/^placar\.braco\./];
+    const SAUDE=[/^pen\.(raHoje|raPassado|raForte|bracoLeve|pesadaFraco|ombro|punho)\./,/^alvo\.(dor|articulacao|dorForte|emTratamento)\./,/^alvo\.idade\.seniorAlvo\./,/^placar\.braco\./];
     const get=p=>p.split('.').reduce((o,k)=>o[k],PESOS);const set=(p,v)=>{const k=p.split('.');const o=k.slice(0,-1).reduce((o,k)=>o[k],PESOS);o[k[k.length-1]]=v};
     const chaves=folhas.filter(p=>!FORA.some(r=>r.test(p))&&get(p)!==0);
     const base0=Object.fromEntries(chaves.map(p=>[p,get(p)]));
