@@ -47,6 +47,11 @@ const AREAS = {
     vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
     inside:[["Tipo de prancha com DNA Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
     price:[["Grátis","Prévia com a litragem"],["R$ 19,99","Relatório completo"]],
+    engine:{title:"Não é palpite. É um motor calibrado com 422 casos reais de surf.",
+      lede:"Cada caso (review de loja, teste de revista, prancha de atleta, tabela de marca, relato de fórum) virou um perfil do questionário e rodou no motor. O que errava foi ajustado e conferido em casos guardados à parte.",
+      stats:[["422","casos reais de surf na calibração, de 5 frentes"],["3.000","perfis simulados para conferir as travas de segurança"],["598","cruzamentos com o seu perfil em cada análise"]],
+      steps:[["Seu nível pelo que você faz na onda","Dez habilidades, como você pega onda e como passa a arrebentação viram uma nota de 0 a 100 e um entre 5 níveis. Tempo de surf, sozinho, não decide."],["Seu estilo e suas prioridades","Linha, curvas, manobras, tubo, aéreo ou clássico, e o peso que você dá a remada, estabilidade, velocidade, manobra, onda forte e perdão a erro."],["13 tipos disputam o seu perfil","Cada tipo tem afinidade com nível, estilo, tamanho e força da onda, objetivo e uso. O motor soma, ranqueia e aplica travas para não indicar prancha acima do seu nível."],["A litragem, com a conta aberta","Litros = peso × fator do seu nível (de 1,0 L/kg para quem começa a 0,37 L/kg no avançado) × ajuste do tipo de prancha × corpo (condicionamento, idade e dor)."],["As 12 decisões de shape","Bico, ponto mais largo, rabeta, borda, rocker, fundo, quilhas, tamanho e formato da quilha, caixas, construção e acabamento, cada uma com o porquê."]],
+      sources:"Fontes da calibração: reviews da Boardcave e da Hawaiian South Shore; testes da Stab, The Inertia, Empire Ave, Swellnet e Surf Simply; tabelas da NSP, Softech, Catch Surf e outras calculadoras; pranchas de atletas da JS Industries, Stab, WSL e Volcom; relatos do fórum Seabreeze. Nenhuma marca paga para aparecer."},
     gloss:[["Litragem","Volume da prancha em litros. Define flutuação e remada."],["Rocker","Curvatura do bico à rabeta. Mais rocker, mais manobra e menos velocidade."],["Rabeta","Formato da traseira. Muda soltura e firmeza na parede."],["Quilhas","Single, twin, thruster ou quad. Cada configuração dá outra linha."],["Stringer","Longarina central de madeira que dá rigidez."],["EPS","Bloco de isopor expandido com epóxi. Mais leve e flutuante que o PU."]]},
   tenis:{key:"tenis", name:"RUN DNA", w1:"Run", sport:"Tênis de corrida", cls:"a-tenis",
     q:"Qual tênis de corrida acompanha o seu corpo, o seu ritmo e o seu objetivo?",
@@ -155,7 +160,7 @@ const areasSec = ()=>`  <section id="areas"><div class="wrap">
     </article>`}).join("")}</div>
   </div></section>`;
 function home(){
-  const feat = ORDER.flatMap(k => byArea(k).filter(x=>x.cat==="escolher").slice(0,2));
+  const feat = ORDER.map(k => featured(k)[0]).filter(Boolean);
   return `
   <section class="hero"><div class="wrap hero-grid">
     <div class="hero-txt">
@@ -187,6 +192,16 @@ function home(){
 }
 
 /* ---------- HUB ---------- */
+/* 3 guias em destaque: primeiro os de "como escolher", depois os demais na ordem */
+const featured = k => { const l=byArea(k); return [...l.filter(x=>x.cat==="escolher"),...l.filter(x=>x.cat!=="escolher")].slice(0,3); };
+const engineSec = a => `<section class="band" id="motor"><div class="wrap">
+    <div class="shead"><div><div class="eyebrow">O motor</div><h2>${a.engine.title}</h2><p>${a.engine.lede}</p></div></div>
+    <div class="eng-stats">${a.engine.stats.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")}</div>
+    <h3 class="eng-h">Como o cálculo é feito</h3>
+    <ol class="eng-steps">${a.engine.steps.map(([t,d],i)=>`<li><span class="k" aria-hidden="true">${i+1}</span><div><b>${t}</b><span>${d}</span></div></li>`).join("")}</ol>
+    <p class="eng-src">${a.engine.sources}</p>
+    <a class="btn btn-area" href="${a.quiz}">Fazer o teste grátis <span class="arr">→</span></a>
+  </div></section>`;
 let hubFilter = "todos", curHub = null;
 function hub(k){
   const a = AREAS[k];
@@ -201,8 +216,10 @@ function hub(k){
     </div>
     ${true ? reportFrame(k, 440) : `<div class="calc ${a.cls}"><div class="eyebrow">Variáveis do teste</div>${vars(a)}<p class="soon">Relatório de exemplo em breve.</p></div>`}
   </div></section>
+  ${a.engine?engineSec(a):""}
   ${k==="board"?`<section style="padding-block:28px 0"><div class="wrap">${TOOLBOX}</div></section>`:""}
   <nav class="subnav" aria-label="Nesta página"><div class="wrap">
+    ${a.engine?`<button type="button" data-scroll="motor">O motor</button>`:""}
     <button type="button" data-scroll="relatorio">O relatório</button>
     <button type="button" data-scroll="guias">Guias (${byArea(k).length})</button>
     <button type="button" data-scroll="glossario">Glossário</button>
@@ -218,12 +235,16 @@ function hub(k){
     ${reportFrame(k, 640)}
   </div></section>
   <section id="guias" style="padding-top:0"><div class="wrap">
-    <div class="shead"><div><div class="eyebrow">${byArea(k).length} guias</div><h2>Guias ${a.name}</h2></div></div>
-    <div class="filters" role="group" aria-label="Filtrar por categoria">
-      ${["todos",...Object.keys(CATS)].map(c=>`<button type="button" data-filter="${c}" aria-pressed="${c===hubFilter}">${c==="todos"?"Todos":CATS[c]}</button>`).join("")}
-      <span class="count" id="hubCount" aria-live="polite"></span>
-    </div>
-    <div class="grid-a" id="hubGrid"></div>
+    <div class="shead"><div><div class="eyebrow">${byArea(k).length} guias</div><h2>Para ler antes de comprar</h2></div></div>
+    <div class="grid-a">${featured(k).map(acard).join("")}</div>
+    <details class="more-guides">
+      <summary>Ver todos os ${byArea(k).length} guias ${a.name}</summary>
+      <div class="filters" role="group" aria-label="Filtrar por categoria">
+        ${["todos",...Object.keys(CATS)].map(c=>`<button type="button" data-filter="${c}" aria-pressed="${c===hubFilter}">${c==="todos"?"Todos":CATS[c]}</button>`).join("")}
+        <span class="count" id="hubCount" aria-live="polite"></span>
+      </div>
+      <div class="grid-a" id="hubGrid"></div>
+    </details>
   </div></section>
   <section id="glossario" style="padding-top:0"><div class="wrap">
     <div class="shead"><div><div class="eyebrow">Glossário rápido</div><h2>Os termos que mais confundem.</h2></div></div>
