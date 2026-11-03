@@ -7,7 +7,7 @@ Site guarda-chuva com três testes de equipamento: RACKET DNA (raquete de tênis
 | Pasta | O que é | Quem mexe |
 | --- | --- | --- |
 | `index.html` | Home, páginas de cada app, biblioteca e leitor de artigos (roteamento por `#hash`) | Sessão do site |
-| `content/` | Os 45 artigos (`raquete.js`, `tenis.js`, `prancha.js`), formato em `docs/guia-de-artigos.md` | Sessão do site |
+| `content/` | Os 59 artigos (`raquete.js`, `tenis.js`, `prancha.js`), formato em `docs/guia-de-artigos.md` | Sessão do site |
 | `assets/reports/` | Imagens dos relatórios de exemplo usadas na home e nas páginas dos apps | Sessão do site |
 | `racket/` | RACKET DNA, arquivo único `index.html` | Sessão do Racket |
 | `surf/` | SURF DNA, arquivo único `index.html` | Sessão do Board |

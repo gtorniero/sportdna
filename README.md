@@ -6,7 +6,7 @@ Find your DNA. Testes que cruzam seu corpo, nível e estilo com a ficha técnica
 - **SURF DNA** · prancha de surf · `surf/`
 - **RUN DNA** · tênis de corrida · `run/`
 
-Mais 45 guias em `content/`, lidos pela home (`index.html`).
+Mais 59 guias em `content/`, lidos pela home (`index.html`).
 
 Site estático: abra `index.html` com um servidor local (`python3 -m http.server`) ou publique a raiz no GitHub Pages ou na Vercel.
 
