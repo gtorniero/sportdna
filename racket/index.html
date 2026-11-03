@@ -264,6 +264,7 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .cmpfit .kpi b{font-family:var(--f-body);font-variant-numeric:tabular-nums;font-size:38px;font-weight:700!important;letter-spacing:-.02em}
 .vs{font-family:var(--f-display);font-weight:800;color:var(--muted)}
 footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+footer .sd-cookie-link{opacity:1!important;color:var(--muted)}
 /* Pix modal */
 .modal{position:fixed;inset:0;background:rgba(5,22,29,.62);display:grid;place-items:center;padding:16px;z-index:50}
 .sheet{background:var(--surface);color:var(--ink);border-radius:20px;max-width:440px;width:100%;max-height:calc(100dvh - 32px);overflow:auto;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
@@ -346,6 +347,14 @@ details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:
 @media (max-width:560px){.drow{grid-template-columns:34px minmax(0,1fr) 92px minmax(0,1fr) 34px;gap:5px}.drow .mid small{display:none}.dsel{grid-template-columns:minmax(0,1fr)}.dsel .vs{text-align:center}}
 /* por que é fácil errar */
 .erra{display:flex;flex-direction:column;gap:22px}
+.bnband{background:#0E4D64;color:#FFFFFF;border-radius:22px;padding:clamp(20px,3.4vw,32px);display:flex;flex-direction:column;gap:14px}
+.bnband h2.eyebrow{color:#DDF247;margin:0}
+.bnlead{font-size:16px;max-width:70ch;color:#FFFFFF}
+.bnlist{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 22px}
+.bnlist li{display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(255,255,255,.28);padding-top:12px;min-width:0}
+.bnlist b{font-family:'Archivo',var(--f-body);font-weight:800!important;font-size:clamp(32px,5.4vw,48px);line-height:1;letter-spacing:-.03em;color:#DDF247;font-variant-numeric:tabular-nums}
+.bnlist span{font-size:14px;line-height:1.35;color:#FFFFFF}
+@media (max-width:760px){.bnlist{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .bignums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .bn{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:4px}
 .bn b{font-family:var(--f-mono);font-size:clamp(30px,5vw,44px);line-height:1;font-variant-numeric:tabular-nums}
@@ -552,6 +561,14 @@ details.cmpbox[open]{background:var(--surface)}
 .altc .pc{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;border:1px solid var(--line)}
 .altc .pc.up{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
 details.more{border-top:1px solid var(--line);padding-top:6px}
+details.fold>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary span{display:flex;flex-direction:column;gap:2px;min-width:0}
+details.fold>summary small{font-size:14px;color:var(--muted)}
+details.fold>summary::after{content:"Ver";flex:none;font-size:14px;font-weight:700;color:var(--pri);border:1px solid var(--line);border-radius:99px;padding:6px 14px}
+details.fold[open]>summary::after{content:"Fechar"}
+details.fold>summary:focus-visible{outline:3px solid var(--pri);outline-offset:4px;border-radius:8px}
+.foldin{display:flex;flex-direction:column;gap:14px;margin-top:16px}
 details.more>summary{cursor:pointer;font-weight:700;color:var(--pri);min-height:44px;display:flex;align-items:center}
 details.more>summary:focus-visible,details.calc>summary:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
 details.more[open]>summary{margin-bottom:10px}
@@ -587,18 +604,18 @@ details.more[open]>summary{margin-bottom:10px}
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Laboratório de raquetes</p>
         <h1>A raquete certa para o seu jogo e para o seu braço.</h1>
-        <p class="lead">Responda <span id="nQ">21</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê a análise inteira antes de pagar qualquer coisa.</p>
+        <p class="lead">Responda <span id="nQ">24 a 29</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê a análise inteira antes de pagar qualquer coisa.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha raquete</button>
-          <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
           <button class="btn btn-ghost" id="duelGo" type="button">Comparar duas raquetes</button>
+          <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
         </div>
         <p class="note">Você vê o diagnóstico antes de pagar · leva uns 5 minutos</p>
-        <div id="resumeBox" class="resume" hidden>
-          <button class="btn btn-ghost btn-sm" id="resume" type="button">Retomar meu último resultado</button>
-        </div>
         <details>
-          <summary class="note" style="cursor:pointer">Tenho um código de resultado</summary>
+          <summary class="note" style="cursor:pointer;min-height:24px">Já fiz o teste: retomar ou abrir um código</summary>
+          <div id="resumeBox" class="resume" style="margin-top:8px" hidden>
+            <button class="btn btn-ghost btn-sm" id="resume" type="button">Retomar meu último resultado</button>
+          </div>
           <div class="resume" style="margin-top:8px">
             <input type="text" id="codeIn" placeholder="Cole o código aqui" aria-label="Código de resultado">
             <button class="btn btn-ghost btn-sm" id="codeGo" type="button">Abrir</button>
@@ -608,17 +625,20 @@ details.more[open]>summary{margin-bottom:10px}
       </div>
       <div class="herocol">
       <div id="cardHome" class="cardwrap herocard homecard" aria-label="Exemplo do card do DNA de jogo"></div>
-      <div class="court">
-        <p class="eyebrow" style="color:#DDF247">O motor</p>
-        <div class="stats">
-          <div class="stat"><b id="nRk">0</b><span>raquetes no catálogo</span></div>
-          <div class="stat"><b>7</b><span>índices por raquete</span></div>
-          <div class="stat"><b>9</b><span>especificações cruzadas</span></div>
-        </div>
-        <p class="mono" style="font-size:13px">Specs medidas em laboratório + avaliações de testadores.</p>
-      </div>
       </div>
     </div>
+    <section class="bnband" aria-labelledby="bnT">
+      <h2 id="bnT" class="eyebrow">O trabalho por trás do motor</h2>
+      <p class="bnlead">Cruzamos as suas respostas com as specs medidas de <span data-n="rk">62</span> raquetes e com o que testadores escreveram sobre elas. Depois conferimos o ranking contra a escolha de especialistas e simulamos milhares de jogadores para barrar recomendações arriscadas.</p>
+      <ul class="bnlist">
+        <li><b data-n="rev">670</b><span>avaliações de testadores e sites lidas</span></li>
+        <li><b data-n="var">45</b><span>variáveis cruzadas para cada raquete</span></li>
+        <li><b data-n="estudos">21</b><span>estudos científicos sobre braço e equipamento</span></li>
+        <li><b data-n="casos">379</b><span>casos de especialistas, em 3 idiomas</span></li>
+        <li><b data-n="perfis">3.000</b><span>perfis simulados em cada teste de segurança</span></li>
+        <li><b data-n="top3">39,8%</b><span>de acerto no top 3 contra especialistas (acaso: <span data-n="acaso">4,8%</span>)</span></li>
+      </ul>
+    </section>
     <div class="diffs">
       <div class="diff"><h3>Índice Conforto no braço</h3><p>Rigidez, peso, balanço e a articulação que dói, avaliados antes de pagar.</p></div>
       <div class="diff"><h3>Specs na régua</h3><p>Cada especificação contra o catálogo inteiro e a sua faixa ideal.</p></div>
@@ -628,12 +648,12 @@ details.more[open]>summary{margin-bottom:10px}
     <div class="erra">
       <div><p class="eyebrow">Por que é fácil errar</p><h2>Raquete não é uma escolha. São seis.</h2><p class="muted" style="margin-top:8px;max-width:62ch">Modelo, cabeça, grip, corda, espessura e tensão. Cada uma muda potência, controle e o quanto chega de vibração no braço, e uma decisão errada anula as outras certas.</p></div>
       <div class="bignums">
-        <div class="bn hl"><b id="nVar">38</b><span>fatores lidos para cada raquete: <span id="nVarQ">22</span> respostas suas, 9 especificações medidas e 7 índices por raquete</span></div>
-        <div class="bn"><b id="nCross">2.204</b><span>comparações entre você e o catálogo a cada teste</span></div>
-        <div class="bn"><b id="nComb">88.740</b><span>combinações de raquete, grip, corda, espessura e tensão. O seu setup é uma delas.</span></div>
+        <div class="bn hl"><b id="nVar">45</b><span>fatores lidos para cada raquete: <span id="nVarQ">29</span> respostas suas, 9 especificações medidas e 7 índices por raquete</span></div>
+        <div class="bn"><b id="nCross">2.790</b><span>comparações entre você e o catálogo a cada teste</span></div>
+        <div class="bn"><b id="nComb">94.860</b><span>combinações de raquete, grip, corda, espessura e tensão. O seu setup é uma delas.</span></div>
       </div>
       <div class="decs" aria-label="As decisões e o número de opções de cada uma">
-        <div class="dc"><b id="dcM">58</b><span>Modelo</span><small>peso, balanço, swingweight, rigidez</small></div><span class="dx">×</span>
+        <div class="dc"><b id="dcM">62</b><span>Modelo</span><small>peso, balanço, swingweight, rigidez</small></div><span class="dx">×</span>
         <div class="dc"><b>5</b><span>Grip</span><small>L1 a L5</small></div><span class="dx">×</span>
         <div class="dc"><b>6</b><span>Tipo de corda</span><small>poliéster redondo ou facetado, multi, sintético, tripa, híbrido</small></div><span class="dx">×</span>
         <div class="dc"><b>3</b><span>Espessura</span><small>1,20 · 1,25 · 1,30 mm</small></div><span class="dx">×</span>
@@ -710,7 +730,7 @@ const fmt=n=>n.toLocaleString('pt-BR');
 const dec=n=>(+n).toFixed(1).replace('.',',');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
+function toast(t){document.querySelectorAll('.toast').forEach(x=>x.remove());const d=document.createElement('div');d.className='toast';d.setAttribute('role','status');d.textContent=t;(document.getElementById('conteudo')||document.body).appendChild(d);setTimeout(()=>d.remove(),2200)}
 
 /* ---------- Catálogo ----------
    wt = peso sem corda (g) · bal = balanço sem corda (mm) · sw = swingweight encordoado · ra = rigidez encordoada
@@ -748,7 +768,6 @@ const PESOS={
     articulacao:{elbow:{comfort:1},shoulder:{maneuver:1.5,power:1},wrist:{comfort:.5,maneuver:1}},
     idade:{padrao:35,maduro:45,maduroAlvo:{comfort:1.5},senior:55,seniorAlvo:{maneuver:2.25},jovem:16,jovemAlvo:{maneuver:1}},
     estilo:{doisEstilos:.7,keep:{power:1,comfort:.5,maneuver:.5},cnt:{control:1},agg:{power:1.125,spin:.5},all:{maneuver:1.5},netc:{maneuver:1,stability:.3},net:{maneuver:3,stability:.5}} /* rodada 8: net.maneuver 1,5 → 3 */,
-    umaMao:{stability:.8,control:.4},
     sensacao:{heavy:{maneuver:2.5},light:{stability:2}},
     dorForte:{comfort:1.5},emTratamento:{comfort:1},
     anos:{'0':{power:1},'10':{control:.5}},
@@ -766,13 +785,13 @@ const PESOS={
     forca:{low:-12,high:8,vhigh:12},senior:-10,jovem:-15,
     folego:{'0':-8,'1':-4,'3':3},
     altura:{ref:175,porCm:.25,min:-8,max:6},corpo:{ref:75,porKg:.15,min:-6,max:5},
-    ombro:-8,umaMaoAvancado:3,
+    ombro:-8,
     sensacaoPesada:-10,sensacaoLeve:8,
     dorHojeMin:280,adultoMin:258,idadeAdulto:14
   },
   /* Faixas ideais do mapa e das barras (zones e alargamento em compute). Origem: regra (rodadas 3 e 4) */
   zona:{
-    swBase:305,swFaixa:30,swUmaMao:5,swTeto:{beg:312,int:320,adv_int:326},swTetoPadrao:336,swOmbro:318,swAtual:4,
+    swBase:305,swFaixa:30,swTeto:{beg:312,int:320,adv_int:326},swTetoPadrao:336,swOmbro:318,swAtual:4,
     raMax:{forte:60,hojeCotovelo:62,hoje:63,passado:66,nenhuma:72},raMin:54,raLargura:9,
     cabecaPref:{'98':[95,98],'100':[99,101],'104':[102,107]},cabecaNivel:{beg:[100,107],adv:[97,100],padrao:[98,102]},
     balMax:{punho:325,rede:325,padrao:335},balLargura:14,
@@ -792,7 +811,6 @@ const PESOS={
     ombro:{sw:320,peso:.6}, /* mantido: evidência fraca, ciencia.md tema 8 */
     cabecaPreferida:{fora98:5,tolerancia100:2,desconto100:1,peso100:1.5,fora104:5},
     cabecaIniciante:6,cabecaAvancado:6,cabeca107:4,cabeca110:15,
-    umaMao:{sw:312,peso:.25,cotoveloPeso:295,cotovelo:.3,bal:325,balPeso:.15},
     atualPesada:{margem:8,peso:.7,pesoBraco:.35},atualLeve:.6,
     /* orçamento progressivo, no modelo do RUN DNA (rodada 6): até 8% acima é leve; daí em diante 18 + 10 a cada 10% */
     orcamento:{tolerancia:.08,leve:1.5,acima:18,porFaixa:10,faixa:.1},
@@ -893,7 +911,6 @@ const Q=[
  {s:0,id:'age',type:'step',t:'Quantos anos você tem?',u:'anos',min:10,max:90,mid:35,h:'Arraste a barra ou digite.'},
  {s:0,id:'height',type:'step',t:'Sua altura',u:'cm',min:140,max:210,mid:175},
  {s:0,id:'weight',type:'step',t:'Seu peso',u:'kg',min:35,max:150,mid:75},
- {s:0,id:'dom',t:'Mão dominante',o:[['L','Canhoto'],['R','Destro']]},
  {s:0,id:'str',t:'E a sua força, comparada a quem joga com você?',o:[['low','Abaixo da média','Em bola pesada, o golpe sai atrasado e sem peso'],['mid','Na média','Aguenta a troca de bola, mas nem sempre consegue acelerar'],['high','Acima da média','Gera velocidade sem esforço, até em posição difícil'],['vhigh','Muito acima','Faz academia com frequência ou tem força de sobra']]},
  {s:0,id:'cond',t:'Como está o seu fôlego em quadra?',o:[['0','Perco rendimento cedo','No meio do jogo os golpes já perdem força'],['1','Termino, mas no limite','O fim da partida é bem pior que o começo'],['2','Jogo a partida toda bem','Canso no fim, como todo mundo, sem mudar o jogo'],['3','Sobra gás','Jogaria outra partida em seguida no mesmo nível']]},
  {s:1,id:'arm',t:'Você sente dor no braço quando joga?',h:'Cotovelo, ombro ou punho.',o:[['no','Nunca tive'],['past','Já tive, hoje não'],['now','Tenho hoje']]},
@@ -905,7 +922,6 @@ const Q=[
  {s:2,id:'freq',t:'Quantas vezes por semana você joga?',o:[['1','1 vez'],['2','2 a 3 vezes'],['4','4 ou mais']]},
  {s:2,id:'swing',t:'Como é o seu swing?',h:'O tamanho e a velocidade do movimento até a bola. '+'<button type="button" class="gl" data-g="swing">Entenda</button>',o:[['short','Curto e compacto','Pouca preparação, bloqueia a bola'],['mid','Médio','Preparação moderada'],['long','Longo e rápido','Preparação ampla e aceleração forte']]},
  {s:2,id:'spin',t:'Quanto topspin você usa?',h:'Topspin é o efeito em que a raquete sobe por trás da bola: ela gira para a frente, passa alta sobre a rede e cai rápido dentro da quadra. Se você bate a bola mais reta ou não sabe, escolha "Pouco".',o:[['low','Pouco','Bola mais reta, quase sem girar'],['mid','Médio','Bola com algum giro, passa a rede com folga'],['high','Muito','Bola alta e pesada, que quica alto no adversário']]},
- {s:2,id:'bh',t:'Seu backhand é de uma ou de duas mãos?',h:'Backhand é o golpe do lado contrário à mão que segura a raquete. Para quem é destro, a bola que vem pela esquerda.',o:[['two','Duas mãos'],['one','Uma mão','Pede mais massa e estabilidade']]},
  {s:2,id:'serve',t:'Como é o seu saque hoje?',h:'Seja sincero: isso muda a recomendação.',o:[['weak','Ainda inseguro','Faço dupla falta com frequência'],['push','Só coloco em jogo','Saque lento, quase empurrado'],['safe','Seguro','Raramente erro, mas não ganho ponto com ele'],['flat','Chapado e forte','Bola reta e rápida, sem efeito, para ganhar o ponto direto'],['kick','Com efeito','A bola faz curva (slice) ou quica alto (kick)'],['mix','Vario tudo','Reto ou com efeito, conforme o ponto']]},
  {s:3,id:'style',multi:2,scale:['Mais básico','Mais avançado'],t:'Como você joga?',h:'Escolha até 2. Do jogo mais básico (esquerda) ao mais avançado (direita).',o:[['keep','Mantenho a bola em jogo','Ainda estou firmando os golpes'],['cnt','Devolvo tudo','Consistência e contra-ataque'],['agg','Ataco do fundo','Busco a bola vencedora da linha de base'],['all','Jogo completo','Fundo e rede conforme o ponto'],['netc','Subo quando a bola deixa','Fecho o ponto no voleio, a batida antes de a bola quicar'],['net','Saque e voleio','Saco e já corro para a rede']]},
  {s:3,id:'opp',t:'Como é a bola dos seus adversários?',o:[['soft','Mais lenta','Bola sem peso, você que gera'],['mix','Variada','Às vezes lenta, às vezes forte'],['heavy','Pesada e rápida','A raquete às vezes treme']]},
@@ -920,16 +936,22 @@ const Q=[
  {s:5,id:'tens',t:'Qual tensão você usa?',h:'A <button type="button" class="gl" data-g="tension">libragem</button> que você pede ao encordoador.',o:[['?','Não sei'],['46','Até 47 lb','Até 21 kg'],['50','48 a 52 lb','22 a 24 kg'],['54','53 a 56 lb','24 a 25 kg'],['58','57 lb ou mais','26 kg ou mais']]},
  {s:5,id:'restr',t:'De quanto em quanto tempo você troca a corda?',o:[['zero','Nunca troquei','Nunca arrebentou, então nunca troquei'],['never','Só quando arrebenta'],['6m','A cada 6 meses ou mais'],['3m','A cada 2 a 3 meses'],['1m','Todo mês ou menos']]},
  {s:5,id:'imp',t:'Compraria uma raquete importada?',h:'Algumas marcas quase não são vendidas no Brasil.',o:[['yes','Sim','Compro fora ou encomendo'],['no','Prefiro achar aqui','Loja no Brasil, troca fácil']]},
- {s:5,id:'budget',t:'Quanto pretende gastar na raquete nova?',h:'Preços de raquete nova, da geração atual, no Brasil.',o:[['1400','Até R$ 1.400'],['1800','R$ 1.400 a 1.800'],['2200','R$ 1.800 a 2.200'],['99999','Acima de R$ 2.200 ou sem limite']]}
+ {s:5,id:'budget',t:'Quanto pretende gastar na raquete nova?',h:'Preços de raquete nova, da geração atual, no Brasil.',o:[['1400','Até R$ 1.400'],['2000','R$ 1.400 a R$ 2.000'],['99999','Acima de R$ 2.000 ou sem limite']]}
 ];
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',dom:'R',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',bh:'two',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',headp:'100',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2200'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',headp:'100',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
-$('#nRk').textContent=RK.length;
 $('#nQ').textContent=Q.filter(q=>!q.if).length+' a '+Q.length;
 const NVAR=Q.length+9+7;
+/* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
+   casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
+   perfis: vies.mjs --realista (3.000 por rodada); top 3: calibrar.mjs, parte de teste (88 casos), rodada 9 */
+const METODO={casos:379,idiomas:3,estudos:21,perfis:3000,top3:39.8,testeN:88};
+const NREV=RK.reduce((s,r)=>s+(r.nrev||0),0);
+const ACASO3=3/RK.length*100;
+document.querySelectorAll('[data-n]').forEach(e=>{const k=e.dataset.n;e.textContent=k==='rev'?fmt(NREV):k==='var'?NVAR:k==='rk'?RK.length:k==='casos'?fmt(METODO.casos):k==='estudos'?METODO.estudos:k==='perfis'?fmt(METODO.perfis):k==='top3'?dec(METODO.top3)+'%':k==='acaso'?dec(ACASO3)+'%':k==='testeN'?METODO.testeN:''});
 $('#nVar').textContent=NVAR;$('#nVarQ').textContent=Q.length;$('#nCross').textContent=fmt(NVAR*RK.length);$('#dcM').textContent=RK.length;$('#nComb').textContent=fmt(RK.length*5*6*3*17);
 
 let qi=0;const VQ=()=>Q.filter(vis);
@@ -1094,7 +1116,9 @@ $('#duelQuiz').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[
 /* ---------- Salvar / código ---------- */
 const encode=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=+$/,'');
 const decode=s=>JSON.parse(decodeURIComponent(escape(atob(s.trim()))));
-function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,o.a||o);tier=window.SportDNAPayments?.enabled?0:o.t||0}
+/* códigos antigos: perguntas que saíram (mão dominante, backhand) são ignoradas; orçamento das 4 faixas antigas vai para a faixa nova */
+function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;if(a.budget!=null&&!['1400','2000','99999'].includes(String(a.budget))){const b=+a.budget;a.budget=!(b>0)?'99999':b<=1400?'1400':b<=2000?'2000':'99999'}return a}
+function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));tier=window.SportDNAPayments?.enabled?0:o.t||0}
 if(LS.get('rm_last'))$('#resumeBox').hidden=false;
 $('#resume').addEventListener('click',()=>{try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}});
 $('#codeGo').addEventListener('click',()=>{try{loadAnswers(decode($('#codeIn').value));$('#codeErr').hidden=true;RES=compute();renderPreview();show('preview')}catch(e){$('#codeErr').hidden=false}});
@@ -1113,7 +1137,6 @@ function target(){
   Object.keys(P.articulacao).forEach(j=>{if(J(j))addT(T,P.articulacao[j])});
   const AG=+A.age||P.idade.padrao; if(AG>=P.idade.maduro)addT(T,P.idade.maduroAlvo); if(AG>=P.idade.senior)addT(T,P.idade.seniorAlvo); if(AG<P.idade.jovem)addT(T,P.idade.jovemAlvo);
   {const w=stW();['keep','cnt','agg','all','netc','net'].forEach(s=>{if(ST(s))addT(T,P.estilo[s],w)})}
-  if(A.bh==='one'&&A.lvl!=='beg')addT(T,P.umaMao);
   addT(T,P.sensacao[A.feel]);
   if(A.arm!=='no'&&A.pain==='3')addT(T,P.dorForte); if(A.arm!=='no'&&A.lim==='3')addT(T,P.emTratamento);
   addT(T,P.anos[A.years]);addT(T,P.saque[A.serve]);addT(T,P.adversario[A.opp]);addT(T,P.motivo[A.why]);
@@ -1129,7 +1152,7 @@ function targetWeight(){
   const AG=+A.age||PESOS.alvo.idade.padrao,HT=+A.height||P.altura.ref,WT=+A.weight||P.corpo.ref;
   w+=P.forca[A.str]||0; if(AG>=PESOS.alvo.idade.senior)w+=P.senior; if(AG<PESOS.alvo.idade.jovem)w+=P.jovem;
   w+=P.folego[A.cond]||0;
-  w+=cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max); if(J('shoulder'))w+=P.ombro; if(A.bh==='one'&&(A.lvl==='adv'||A.lvl==='adv_int'))w+=P.umaMaoAvancado;
+  w+=cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max); if(J('shoulder'))w+=P.ombro;
   const c=curRacket();
   if(A.feel==='heavy')w=Math.min(w,(c?c.wt:w)+P.sensacaoPesada); if(A.feel==='light')w=Math.max(w,(c?c.wt:w)+P.sensacaoLeve);
   if(A.arm==='now')w=Math.max(w,P.dorHojeMin);
@@ -1141,7 +1164,7 @@ function targetWeight(){
 const dorForte=()=>A.arm!=='no'&&(A.pain==='3'||A.lim==='3');
 function zones(T,tw){
   const P=PESOS.zona;const k=T.stability/(T.stability+T.maneuver);
-  let sw=Math.round(P.swBase+k*P.swFaixa); if(A.bh==='one'&&A.lvl!=='beg')sw+=P.swUmaMao; sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao); if(J('shoulder'))sw=Math.min(sw,P.swOmbro); const c=curRacket(); if(c&&A.feel==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&A.feel==='light')sw=Math.max(sw,c.sw+P.swAtual);
+  let sw=Math.round(P.swBase+k*P.swFaixa); sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao); if(J('shoulder'))sw=Math.min(sw,P.swOmbro); const c=curRacket(); if(c&&A.feel==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&A.feel==='light')sw=Math.max(sw,c.sw+P.swAtual);
   const sev=dorForte();
   const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):A.arm==='past'?P.raMax.passado:P.raMax.nenhuma;
   const raMin=Math.max(P.raMin,raMax-P.raLargura);
@@ -1170,10 +1193,6 @@ function penalties(r,c,tw){
   if(A.lvl==='adv'&&r.head>104)add(P.cabecaAvancado,'Cabeça grande para o seu nível');
   if(r.head>=107&&r.head<110&&(A.lvl==='adv'||A.lvl==='adv_int'||A.headp!=='104'))add(P.cabeca107,'Cabeça de 107 pol² ou mais, pensada para mais saída de bola');
   if(r.head>=110&&A.lvl!=='beg')add(P.cabeca110,'Raquete de cabeça muito grande, feita para iniciantes');
-  {const U=P.umaMao;
-  if(A.bh==='one'&&A.lvl!=='beg'&&r.sw<U.sw)add((U.sw-r.sw)*U.peso,'Pouca massa para backhand de uma mão');
-  if(A.bh==='one'&&J('elbow')&&r.wt<U.cotoveloPeso)add((U.cotoveloPeso-r.wt)*U.cotovelo,'Leve demais para backhand de uma mão com cotovelo sensível: a vibração sobra para o braço');
-  if(A.bh==='one'&&A.lvl!=='beg'&&r.bal>U.bal)add((r.bal-U.bal)*U.balPeso,`Balanço ${r.bal} mm: pesada na cabeça para backhand de uma mão`);}
   if(c&&A.feel==='heavy'&&r.sw>c.sw-P.atualPesada.margem)add((r.sw-(c.sw-P.atualPesada.margem))*(armOk?P.atualPesada.pesoBraco:P.atualPesada.peso),r.sw>=c.sw?`Swingweight igual ou acima da sua atual, que já pesa`:`Swingweight só ${c.sw-r.sw} abaixo da sua atual, pouco para quem sente a raquete pesada`);
   if(c&&A.feel==='light'&&r.sw<c.sw)add((c.sw-r.sw)*P.atualLeve,`Swingweight abaixo da sua atual, que já é leve`);
   {const O=P.orcamento,ac=r.price?r.price[0]/+A.budget-1:0;
@@ -1457,7 +1476,7 @@ function pix(t){
       $('#pxBody').innerHTML=`<div class="okbig">✓</div><h3 style="text-align:center">Pagamento confirmado</h3><p class="muted" style="text-align:center">Seu relatório está liberado.</p>
         <button class="btn btn-go" type="button" id="pxPdf" style="width:100%;margin-top:14px">Baixar relatório em PDF (A4)</button>
         <button class="btn btn-ghost" type="button" id="pxSee" style="width:100%;margin-top:8px">Ver relatório na tela</button>`;
-      $('#pxPdf').onclick=async()=>{const r=await downloadPDF($('#pxPdf'));if(r&&r.ok&&!r.ios)closeModal()};$('#pxSee').onclick=closeModal;$('#pxPdf').focus();
+      $('#pxPdf').onclick=async()=>{const r=await downloadPDF($('#pxPdf'));if(r&&r.ok&&!r.ios&&!r.tap)setTimeout(closeModal,1500)};$('#pxSee').onclick=closeModal;$('#pxPdf').focus();
     },1100);
   };
   $('#pxOk').focus();
@@ -1483,10 +1502,9 @@ function whyItems(r,c){
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para a sua força e o seu nível.`);
   if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, do tipo que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':': dentro do limite para quem já teve dor'}.${r.tech?` Tem tecnologia de conforto (${esc(r.tech)}).`:''}`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
-  if(A.bh==='one'&&r.sw>=315)out.push(`Swingweight ${r.sw}: massa suficiente para o backhand de uma mão atravessar a bola.`);
-  else if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
+  if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
   if(J('wrist')&&r.bal<=325)out.push(`Balanço de ${r.bal} mm, leve na cabeça: menos alavanca sobre o punho.`);
-  if(r.price&&r.price[0]<=+A.budget)out.push('Cabe no orçamento que você indicou.');
+  if(r.price&&+A.budget<99999&&r.price[0]<=+A.budget)out.push('Cabe no orçamento que você indicou.');
   if(!out.length)out.push('É a que fica mais perto do seu perfil ideal nos seis atributos.');
   return out.slice(0,4);
 }
@@ -1497,8 +1515,7 @@ function why(r,c,T){
   if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: na faixa ideal de peso e swingweight para você.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para sua força e seu nível.`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
-  if(A.bh==='one'&&r.sw>=315)out.push(`Swingweight ${r.sw}: massa suficiente para o backhand de uma mão atravessar a bola.`);
-  else if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
+  if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
   if(J('wrist')&&r.bal<=325)out.push(`Balanço de ${r.bal} mm, leve na cabeça: menos alavanca sobre o punho.`);
   return out.slice(0,5);
 }
@@ -1558,7 +1575,7 @@ function racketHead(x){
     <div style="text-align:right"><div class="fit">${x.fit}%</div><span class="muted" style="font-size:13px">${gl("fit")}</span></div></div>`;
 }
 /* relatório pago, na ordem do padrão comum dos 3 apps:
-   barra fixa · 1 Seu resultado · 2 Por que combina · 3 Ficha técnica · 4 Sua atual × a nova · 5 Alternativas · 6 Comparador · 7 Guia de compra · 8 Seu DNA · 9 rodapé */
+   barra fixa · 1 Seu resultado · 2 Por que combina · 3 Sua atual × a nova · 4 Alternativas · 5 Comparador · 6 Guia de compra · 7 Seu DNA · 8 Ficha técnica (recolhida, com Copiar) · 9 rodapé */
 function fichaRows(r){
   const BR={d:'Difícil de achar',p:'Pouca oferta'};
   return [['Raquete','',esc(r.name)],['Ano','',r.year||'—'],['Preço novo','',precoTxt(r)],['Peso sem corda','wt',r.wt+' g'],['Balanço sem corda','bal',r.bal+' mm'],['Swingweight','sw',String(r.sw)],['Rigidez','ra',r.ra+' RA'],['Cabeça','head',r.head+' pol²'],['Padrão de cordas','pat',r.pat.replace('x','×')]]
@@ -1569,7 +1586,7 @@ function renderReport(){
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Atual × nova':'Perfil × nova';
-  const chips=[['r-res','Resultado'],['r-por','Por que combina'],['r-ficha','Ficha técnica'],['r-atual',cmpName]].concat(full?[['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA']]);
+  const chips=[['r-res','Resultado'],['r-por','Por que combina'],['r-atual',cmpName]].concat(full?[['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
   const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Baixar PDF</button>':'';
   let h=`<div class="rbar"><div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
   <nav class="rchips" aria-label="Seções do relatório">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
@@ -1585,10 +1602,6 @@ function renderReport(){
     ${rv.length?`<div style="display:flex;flex-direction:column;gap:10px"><h3>O que dizem de quem jogou com ela</h3><p class="note" style="margin-top:-6px">${r.ntw?r.ntw+' notas de testadores analisadas. ':''}Trechos resumidos e traduzidos de avaliações publicadas.</p>
       <ul class="rvq">${rv.map(q=>`<li><p>“${esc(q[5])}”</p><small>${esc(q[1])}${q[2]?' · '+esc(q[2]):''}${q[3]?' · '+dec(q[3])+'/10':''} · ${esc(q[0])}${q[4]?' '+esc(q[4]):''}</small></li>`).join('')}</ul></div>`:''}
     <div style="display:flex;flex-direction:column;gap:10px"><h3>Pontos de atenção</h3>${juniorNote(1)}${painNote(1)}<ul class="why">${attention(r).map(x=>`<li>${x}</li>`).join('')}</ul></div></section>`;
-  /* 3. Ficha técnica */
-  h+=`<section class="panel" id="r-ficha"><div class="phead"><h2 class="sec">Ficha técnica</h2><button class="btn btn-ghost btn-sm" type="button" id="fichaCp" aria-label="Copiar ficha técnica">Copiar</button></div>
-    <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fichaRows(r).map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
-    <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></section>`;
   /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada) */
   h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Sua atual × a nova':'Seu perfil × a nova'}</h2>
     <p class="muted" style="margin-top:-8px">${c?`Sua ${esc(c.name)} × a ${esc(r.model)}`:`O seu perfil ideal × a ${esc(r.model)}. Informe a sua raquete no teste para ver a comparação com ela.`}</p>
@@ -1627,7 +1640,7 @@ function renderReport(){
       <p>Com a mão aberta, meça em centímetros da linha do meio da palma até a ponta do dedo anelar.</p>
       <div class="tbl"><table style="min-width:0"><thead><tr><th>Medida da mão</th><th>Grip</th></tr></thead><tbody>
       ${[['até 10,6 cm','L1 · 4 1/8'],['10,7 a 10,9 cm','L2 · 4 1/4'],['11,0 a 11,2 cm','L3 · 4 3/8'],['11,3 a 11,5 cm','L4 · 4 1/2'],['11,6 cm ou mais','L5 · 4 5/8']].map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td></tr>`).join('')}</tbody></table></div>
-      <ul class="why"><li>Na loja: segurando a raquete, o dedo indicador da outra mão deve caber entre a ponta dos seus dedos e a base da palma.</li><li>Entre dois tamanhos, escolha o menor e complete com overgrip: cada overgrip engrossa cerca de meio número.</li>${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário.</li>':''}</ul></div></section>`;
+      <ul class="why"><li>Na loja: segurando a raquete, o dedo indicador da outra mão deve caber entre a ponta dos seus dedos e a base da palma.</li><li>Entre dois tamanhos, escolha o menor e complete com overgrip: cada overgrip engrossa cerca de meio número.</li></ul></div></section>`;
   }else{
     h+=`<div class="lock"><h3>2º e 3º lugares, mapa, ranking, comparador e corda</h3><p class="muted">As alternativas, o mapa peso × swingweight do catálogo, o ranking dos 10, o comparador livre e a corda e tensão para a nova e para a sua fazem parte do relatório completo, que também sai em PDF A4.</p><button class="btn btn-go" type="button" id="up">Liberar por R$ 19,99</button></div>`;
   }
@@ -1640,6 +1653,10 @@ function renderReport(){
         <p style="font-weight:600">E o seu parceiro de quadra, joga como você?</p>
         <div class="row"><button class="btn btn-go" type="button" id="shareCard">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlCard">Salvar card do DNA</button>${full?'<button class="btn btn-ghost" type="button" id="dlRacket">Salvar card da raquete</button>':''}</div>
       </div></div></section>
+  ${(()=>{const fr=fichaRows(r);return `<section class="panel" id="r-ficha" aria-labelledby="h-ficha"><details class="fold"><summary><span><h2 id="h-ficha" class="sec">Ficha técnica</h2><small>As ${fr.length} especificações da ${esc(r.model)}, prontas para copiar e levar à loja</small></span></summary>
+    <div class="foldin"><div class="row"><button class="btn btn-pri btn-sm" type="button" id="fichaCp" aria-label="Copiar ficha técnica">Copiar</button></div>
+    <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fr.map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
+    <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></div></details></section>`})()}
   <div class="row">${full?'<button class="btn btn-go" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>`;
   const R=$('#report');R.innerHTML=h;
   wireSeg(R);
@@ -1653,9 +1670,11 @@ function renderReport(){
     try{await navigator.clipboard.writeText(t);toast('Ficha técnica copiada')}catch(e){const s=getSelection(),rg=document.createRange();rg.selectNodeContents(R.querySelector('.ficha'));s.removeAllRanges();s.addRange(rg);toast('Ficha selecionada: copie')}};
   /* saltos: a barra fixa não cobre o título (scroll-margin-top usa a altura real dela) */
   R.querySelectorAll('.rchips a').forEach(a=>a.onclick=e=>{e.preventDefault();rbarH();const t=R.querySelector(a.getAttribute('href'));if(!t)return;
+    const fd=t.querySelector('details.fold');if(fd){fd.open=true;rbarH()}
     t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
-    const f=t.querySelector('h2,summary');if(f){if(f.tagName==='H2'&&!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');try{f.focus({preventScroll:true})}catch(_){f.focus()}}});
+    const f=fd?fd.querySelector('summary'):t.querySelector('h2,summary');if(f){if(f.tagName==='H2'&&!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');try{f.focus({preventScroll:true})}catch(_){f.focus()}}});
   requestAnimationFrame(rbarH);
+  if(full)prebuildPDF();
 }
 function rbarH(){const b=$('#report .rbar');if(b&&b.offsetHeight)$('#report').style.setProperty('--rbar',b.offsetHeight+'px')}
 addEventListener('resize',rbarH);
@@ -1722,7 +1741,7 @@ function pdfPages(){
    <h2 class="st">Seu setup completo</h2>
    <div class="tiles">${tiles.map(([l,v,s],i)=>`<div class="tile${i>1?' sg':''}"><span>${l}${i>1?' · sugestão':''}</span><b>${v}</b><em>${esc(s)}</em></div>`).join('')}</div>
    <div class="cols"><div><h2 class="st">Por que ela</h2><ol class="why">${why(r,c,T).slice(0,4).map(x=>`<li>${x}</li>`).join('')}</ol></div>
-   <div><h2 class="st">Quem é você em quadra</h2><p class="arch">${esc(archetype())}</p><div class="chips">${[lvl,arm,A.bh==='one'?'Backhand de uma mão':'Backhand de duas mãos',A.dom==='L'?'Canhoto':'Destro',`Peso ideal ${tw} g`,c?'Usa '+esc(c.model):'Sem raquete atual no catálogo'].map(x=>`<span>${x}</span>`).join('')}</div>
+   <div><h2 class="st">Quem é você em quadra</h2><p class="arch">${esc(archetype())}</p><div class="chips">${[lvl,arm,`Peso ideal ${tw} g`,c?'Usa '+esc(c.model):'Sem raquete atual no catálogo'].map(x=>`<span>${x}</span>`).join('')}</div>
    <p class="small">Top 3 prioridades do seu jogo: ${KEYS.slice().sort((a,b)=>T[b]-T[a]).slice(0,3).map(k=>`<b>${LBL[k]}</b>`).join(' · ')}</p></div></div>
    ${curFit?`<div class="swap"><div><span>Sua ${esc(c.model)}</span><b class="o">${curFit.fit}%</b></div><i>→</i><div><span>${esc(r.model)}</span><b>${w.fit}%</b></div><p><b>+${w.fit-curFit.fit} pontos de encaixe.</b> ${curFit.pen.slice(0,2).map(p=>p[1]).join('. ')}${curFit.pen.length?'.':''}</p></div>`:`<div class="swap"><p><b>Primeira raquete ou modelo fora do catálogo.</b> O ranking foi feito só pelo seu corpo e pelo seu jogo; refaça informando a sua atual para ver a comparação lado a lado.</p></div>`}
    ${foot}</section>`;
@@ -1746,12 +1765,12 @@ function pdfPages(){
   const tr=transition(r,c);
   const p3=`<section class="pg">${head(3,'Setup: corda, tensão e adaptação')}
    <div class="cols c2">${card('Na raquete nova',r,st,'Sugestão de partida. Corda é preferência pessoal: ajuste pela sensação.')}
-   ${c?card('Se não trocar agora',c,st2,`O melhor setup para a raquete que você já tem.${nofix.length?' Corda melhora conforto e controle, mas não muda o que pesa contra ela: '+nofix.map(p=>p[1].split(':')[0].toLowerCase()).join(', ')+'.':''}`):`<div class="sc"><p class="ey">Grip</p><h3>${gs?'L'+gs.g:'Meça a mão'}</h3><p class="small">Na dúvida entre dois tamanhos, escolha o menor e complete com overgrip.${A.dom==='L'?' Canhoto: o overgrip enrola no sentido contrário.':''}</p></div>`}</div>
+   ${c?card('Se não trocar agora',c,st2,`O melhor setup para a raquete que você já tem.${nofix.length?' Corda melhora conforto e controle, mas não muda o que pesa contra ela: '+nofix.map(p=>p[1].split(':')[0].toLowerCase()).join(', ')+'.':''}`):`<div class="sc"><p class="ey">Grip</p><h3>${gs?'L'+gs.g:'Meça a mão'}</h3><p class="small">Na dúvida entre dois tamanhos, escolha o menor e complete com overgrip.</p></div>`}</div>
    <h2 class="st">De onde vem a sua tensão</h2><div class="wfw">${wf}</div>
    ${st.vs?`<p class="note2"><b>${st.vs}</b></p>`:''}${st.rs?`<p class="note2">${st.rs}</p>`:''}
    <h2 class="st">Plano de adaptação: 4 semanas</h2><div class="tl">${tr.map(x=>`<div class="tli"><b>${x[0]}</b><span>${x[1]}</span><p>${x[2]}</p></div>`).join('')}</div>
    <div class="cols c2"><div><h2 class="st">Ajustes finos possíveis</h2><ul class="why">${attention(r).slice(0,4).map(x=>`<li>${x}</li>`).join('')}</ul></div>
-   <div><h2 class="st">Sinal vermelho</h2><ul class="why"><li>Dor no cotovelo, punho ou ombro que dura até o dia seguinte: baixe 2 lb ou passe para multifilamento.</li><li>Dor que piora jogo após jogo: pare e procure um médico ou fisioterapeuta. Equipamento ajuda, mas não trata lesão.</li>${A.age&&+A.age<PESOS.juvenil.idade?'<li>Menos de '+PESOS.juvenil.idade+' anos: o catálogo é adulto. Procure uma raquete juvenil de 25 ou 26 polegadas com o seu professor.</li>':''}${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário (puxando para a esquerda).</li>':''}</ul></div></div>
+   <div><h2 class="st">Sinal vermelho</h2><ul class="why"><li>Dor no cotovelo, punho ou ombro que dura até o dia seguinte: baixe 2 lb ou passe para multifilamento.</li><li>Dor que piora jogo após jogo: pare e procure um médico ou fisioterapeuta. Equipamento ajuda, mas não trata lesão.</li>${A.age&&+A.age<PESOS.juvenil.idade?'<li>Menos de '+PESOS.juvenil.idade+' anos: o catálogo é adulto. Procure uma raquete juvenil de 25 ou 26 polegadas com o seu professor.</li>':''}</ul></div></div>
    <h2 class="st">Antes de comprar</h2><div class="chk">${['Peça para pesar na loja: a mesma raquete varia até 7 g.','Confirme o grip '+(gs?'L'+gs.g:'pela medida da mão')+'; grip errado não tem conserto barato.','Saia com a corda nova na tensão indicada: a de fábrica é genérica.','Se a loja tiver demonstração, teste a 1ª e a 2ª colocadas.'].map(x=>`<div><i></i><span>${x}</span></div>`).join('')}</div>
    ${foot}</section>`;
   /* página 4: prova social */
@@ -1775,37 +1794,81 @@ function pdfPages(){
    <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,ranked.slice(0,10)))}</div><p class="small">Cada ponto é uma raquete; os números são o seu top 10.</p></div></div>
    ${curFit?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
    <h2 class="st">Como chegamos aqui</h2>
-   <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>34</b><span>respostas sobre corpo, braço e jogo</span></div><div><b>815</b><span>avaliações públicas usadas na calibração</span></div><div><b>2×</b><span>o acaso em acertar a favorita de testadores reais</span></div></div>
-   <p class="small">O DNA Score combina a distância entre o seu perfil ideal e os índices de cada raquete, filtros de segurança para o braço, peso e swingweight para o seu físico, e a aprovação de testadores. Sem patrocínio de marca. Canhoto ou destro não muda a recomendação: as raquetes são simétricas.</p>
+   <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>${RES.answered}</b><span>respostas suas sobre corpo, braço e jogo</span></div><div><b>${fmt(NREV)}</b><span>avaliações de testadores e sites nos índices</span></div><div><b>${dec(METODO.top3)}%</b><span>de acerto no top 3 contra ${fmt(METODO.casos)} casos de especialistas (acaso: ${dec(ACASO3)}%)</span></div></div>
+   <p class="small">O DNA Score combina a distância entre o seu perfil ideal e os índices de cada raquete, filtros de segurança para o braço, peso e swingweight para o seu físico, e a aprovação de testadores. Sem patrocínio de marca.</p>
    <div class="gls">${[['Swingweight','Quanto a raquete “pesa” ao acelerar. Alto: bola pesada e estabilidade; baixo: rapidez.'],['Balanço','Ponto de equilíbrio a partir do cabo. Abaixo de 320 mm, cabeça leve; acima, cabeça pesada.'],['Rigidez (RA)','Quanto o quadro flexiona. Abaixo de 63 é macio e tende a ser mais confortável; acima de 68 é firme e potente.'],['Padrão','Cordas verticais × horizontais. Aberto (16×19) dá spin; fechado (18×20) dá controle.'],['Conforto no braço','Nossa nota de 0 a 10 para o quanto a raquete tende a ser confortável para cotovelo, punho e ombro. Não previne nem trata lesão.'],['Tensão','Mais alta: mais controle e menos potência. Mais baixa: mais saída de bola e conforto.']].map(g=>`<div><b>${g[0]}</b><span>${g[1]}</span></div>`).join('')}</div>
    ${foot}</section>`;
   return p1+p2+p3+p4+p5;
 }
-async function downloadPDF(btn){
-  if(btn)btn.disabled=true;toast('Montando o PDF…');
+/* PDF: bibliotecas do próprio site (sem CDN), gerado em segundo plano assim que o relatório completo aparece.
+   No clique, se o arquivo já está pronto, baixa na hora, dentro do mesmo toque (Safari iOS 13+ aceita <a download> com blob).
+   Se ainda não está, mostra "Gerando o PDF…" e depois um botão "Abrir o PDF" (um toque novo, que o iPhone aceita). */
+const PDF_LIBS=[['../assets/vendor/html2canvas-1.4.1.min.js',()=>window.html2canvas],['../assets/vendor/jspdf-2.5.1.umd.min.js',()=>window.jspdf&&window.jspdf.jsPDF]];
+const isIOS=()=>/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const pdfKey=()=>encode({a:A,t:tier});
+let PDFC=null;/* {key, p: Promise, blob, url, fn} */
+function pdfName(){return `racket-dna-${RES.ranked[0].r.model.toLowerCase().replace(/[^a-z0-9]+/g,'-')}.pdf`}
+async function buildPDF(){
+  for(const [src,test] of PDF_LIBS)await loadLib(src,test);
+  try{await document.fonts.ready}catch(e){}
+  const host=document.createElement('div');host.className='pdfroot';host.setAttribute('aria-hidden','true');host.innerHTML=pdfPages();document.body.appendChild(host);
   try{
-    await loadLib('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',()=>window.html2canvas);
-    await loadLib('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',()=>window.jspdf&&window.jspdf.jsPDF);
-    try{await document.fonts.ready}catch(e){}
-    const host=document.createElement('div');host.className='pdfroot';host.innerHTML=pdfPages();document.body.appendChild(host);
     const doc=new window.jspdf.jsPDF({unit:'mm',format:'a4',compress:true});
     const pages=host.querySelectorAll('.pg');
-    for(let i=0;i<pages.length;i++){const cv=await window.html2canvas(pages[i],{scale:2,backgroundColor:'#FFFFFF',useCORS:true,logging:false});if(i)doc.addPage();doc.addImage(cv.toDataURL('image/jpeg',.9),'JPEG',0,0,210,297)}
-    host.remove();
-    const blob=doc.output('blob');const fn=`racket-dna-${RES.ranked[0].r.model.toLowerCase().replace(/[^a-z0-9]+/g,'-')}.pdf`;
-    let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
-    /* iPhone e iPad bloqueiam download que começa depois de alguns segundos: lá o PDF abre com um toque novo no link */
-    const ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-    if(dl){try{await dl.save({filename:fn,data:blob});toast('PDF salvo')}catch(e){if(e&&e.code!=='declined')doc.save(fn)}}
-    else if(!ios){doc.save(fn);toast('PDF baixado')}
-    pdfLink(btn,URL.createObjectURL(blob),fn,ios);
-    return {ok:true,ios};
-  }catch(e){toast('Não foi possível gerar o PDF agora. Confira a conexão e tente de novo.');return {ok:false}}
-  finally{if(btn)btn.disabled=false}
+    for(let i=0;i<pages.length;i++){const cv=await window.html2canvas(pages[i],{scale:2,backgroundColor:'#FFFFFF',useCORS:true,logging:false});if(i)doc.addPage();doc.addImage(cv.toDataURL('image/jpeg',.9),'JPEG',0,0,210,297);
+      await new Promise(ok=>setTimeout(ok,0))}
+    return doc.output('blob');
+  }finally{host.remove()}
 }
-function pdfLink(btn,url,fn,ios){document.querySelectorAll('.pdflink').forEach(x=>x.remove());if(!btn)return;
-  btn.insertAdjacentHTML('afterend',ios?`<a class="btn btn-go pdflink" href="${url}" download="${fn}" target="_blank" rel="noopener" style="width:100%;margin-top:8px">PDF pronto: toque para abrir</a>`:`<a class="note pdflink" href="${url}" download="${fn}" style="display:inline-block;margin-top:6px">Se o download não começou, clique aqui</a>`);
-  const a=document.querySelector('.pdflink');if(a&&ios)a.focus()}
+/* começa (ou reaproveita) a geração do PDF das respostas atuais; resultado antigo é descartado */
+function ensurePDF(){
+  const key=pdfKey();
+  if(PDFC&&PDFC.key===key&&!PDFC.err)return PDFC;
+  if(PDFC&&PDFC.url)try{URL.revokeObjectURL(PDFC.url)}catch(e){}
+  const c={key,fn:pdfName()};PDFC=c;
+  c.p=buildPDF().then(b=>{c.blob=b;c.url=URL.createObjectURL(b);return c},e=>{c.err=e;console.warn('RACKET DNA: falha ao gerar o PDF',e);throw e});
+  c.p.catch(()=>{});
+  return c;
+}
+function prebuildPDF(){if(tier<2||!RES)return;const go=()=>{try{if(tier>=2&&RES&&!$('#report').hidden)ensurePDF()}catch(e){console.warn('RACKET DNA: PDF em segundo plano',e)}};
+  if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,800)}
+function saveBlobNow(c){const a=document.createElement('a');a.href=c.url;a.download=c.fn;a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+async function deliverPDF(c){
+  let dl=null;try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){}
+  if(dl){try{await dl.save({filename:c.fn,data:c.blob});toast('PDF salvo');return true}catch(e){if(e&&e.code==='declined')return true}}
+  return false;
+}
+function pdfStatus(btn,html){document.querySelectorAll('.pdflink').forEach(x=>x.remove());if(!btn||!html)return null;
+  const w=document.createElement('div');w.className='pdflink';w.setAttribute('role','status');w.innerHTML=html;btn.insertAdjacentElement('afterend',w);return w}
+async function downloadPDF(btn){
+  const label=btn?btn.textContent:'';
+  const c=ensurePDF();
+  /* pronto: baixa no mesmo gesto */
+  if(c.blob){
+    if(window.claude&&window.claude.use){if(await deliverPDF(c))return {ok:true}}
+    saveBlobNow(c);toast('PDF baixado');
+    pdfStatus(btn,`<a class="note" href="${c.url}" download="${c.fn}">Se o download não começou, toque aqui para abrir o PDF</a>`);
+    return {ok:true,ios:isIOS()};
+  }
+  if(btn){btn.disabled=true;btn.textContent='Gerando o PDF…'}
+  pdfStatus(btn,'<span class="note">Gerando o PDF… leva alguns segundos.</span>');
+  try{
+    await c.p;
+    if(PDFC!==c)throw new Error('respostas mudaram');
+    if(window.claude&&window.claude.use&&await deliverPDF(c)){pdfStatus(btn,'');return {ok:true}}
+    const ios=isIOS();
+    /* fora do iPhone o download automático costuma passar; o botão abaixo fica como garantia (e é o caminho no iPhone) */
+    if(!ios){saveBlobNow(c);toast('PDF baixado')}
+    const w=pdfStatus(btn,`<a class="btn btn-go btn-sm" href="${c.url}" download="${c.fn}" target="_blank" rel="noopener">Abrir o PDF</a>`);
+    if(ios&&w)w.querySelector('a').focus();
+    return {ok:true,ios,tap:ios};
+  }catch(e){
+    console.warn('RACKET DNA: PDF não gerado',e);
+    const w=pdfStatus(btn,'<p class="err" role="alert" style="margin:6px 0">Não foi possível gerar o PDF agora.</p><button class="btn btn-ghost btn-sm" type="button">Tentar de novo</button>');
+    if(w)w.querySelector('button').onclick=()=>{if(PDFC===c)PDFC=null;downloadPDF(btn)};
+    return {ok:false};
+  }finally{if(btn){btn.disabled=false;btn.textContent=label}}
+}
 window.__pdfPages=()=>pdfPages();
 
 /* ---------- Card PNG ---------- */
@@ -1924,7 +1987,7 @@ async function drawRacketCard(d=racketCardData()){
 
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
 window.SportDNAPayments?.register({name:'racket',snapshot:()=>JSON.parse(JSON.stringify(A)),
- restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers);RES=Object.keys(A).length?compute():null},
+ restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(answers));RES=Object.keys(A).length?compute():null},
  unlock:product=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;persist();renderReport();show('report')}}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();
