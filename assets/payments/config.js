@@ -1,2 +1,2 @@
-// No provider secrets belong in this public file. Enable only on a dedicated test deployment.
-window.SPORTDNA_PAYMENTS = Object.freeze({ mode: 'off', api: '' });
+// Teste somente por opção explícita; nenhuma credencial neste arquivo.
+(()=>{const params=new URLSearchParams(location.search);if(params.get('checkout_test')==='1')sessionStorage.setItem('sportdna-checkout-test','1');if(params.get('checkout_test')==='0')sessionStorage.removeItem('sportdna-checkout-test');const test=sessionStorage.getItem('sportdna-checkout-test')==='1';window.SPORTDNA_PAYMENTS=Object.freeze({mode:test?'test':'off',api:test?'https://sportdna-payments-test.guitorniero.workers.dev':''});})();
