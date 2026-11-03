@@ -5,11 +5,10 @@ const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}
 const tokenFormat=/^[0-9a-f]{64}$/;
 const fail=(status,message)=>{throw Object.assign(new Error(message),{status})};
 function ready(env,provider) {
- // This first release deliberately cannot charge real money.
- if(env.PAYMENTS_MODE!=='test') fail(503,'Pagamentos ainda não habilitados.');
+ if(!['test','live'].includes(env.PAYMENTS_MODE)) fail(503,'Pagamentos ainda não habilitados.');
  if(!env.DB||!env.RATE_SECRET) fail(503,'Configuração de pagamentos incompleta.');
- if(provider==='stripe'&&(!/^[sr]k_test_/.test(env.STRIPE_KEY||'')||!env.STRIPE_WEBHOOK_SECRET)) fail(503,'Stripe de teste indisponível.');
- if(provider==='mercadopago'&&(!env.MP_TOKEN||env.MP_TEST_CREDENTIALS_CONFIRMED!=='true'||!env.MP_WEBHOOK_SECRET)) fail(503,'Pix de teste indisponível.');
+ if(provider==='stripe'&&(!new RegExp('^[sr]k_'+env.PAYMENTS_MODE+'_').test(env.STRIPE_KEY||'')||!env.STRIPE_WEBHOOK_SECRET)) fail(503,'Stripe indisponível.');
+ if(provider==='mercadopago'&&(!env.MP_TOKEN||(env.PAYMENTS_MODE==='test'&&env.MP_TEST_CREDENTIALS_CONFIRMED!=='true')||!env.MP_WEBHOOK_SECRET)) fail(503,'Pix indisponível.');
 }
 const stripe=env=>new StripeClient(env.STRIPE_KEY,{apiVersion:'2026-09-30.endive',httpClient:StripeClient.createFetchHttpClient(),maxNetworkRetries:1});
 async function mp(env,path,body,id) {
@@ -37,6 +36,7 @@ function publicOrder(o) {
   checkoutUrl:o.checkout_url||null,pixCode:o.pix_code||null,pixImage:o.pix_image||null};
 }
 async function refresh(o,env,force=false) {
+ if(o.mode!==env.PAYMENTS_MODE) fail(409,'Pedido de outro ambiente.');
  if(!o.provider_id) return o;
  if(!force&&Date.now()-o.checked_at<5000) return o;
  const value=o.provider==='stripe'?await stripe(env).checkout.sessions.retrieve(o.provider_id,{expand:['payment_intent.latest_charge']}):await mp(env,'/'+encodeURIComponent(o.provider_id));
@@ -53,25 +53,26 @@ async function create(request,env) {
  const hash=await digest(b.token);
  let existing=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first();
  if(existing) {
-  if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!==b.provider) fail(409,'Pedido já utilizado.');
+  if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!==b.provider||existing.mode!==env.PAYMENTS_MODE) fail(409,'Pedido já utilizado.');
   if(existing.provider_id) return publicOrder(await refresh(existing,env));
  } else {
-  await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,created_at) VALUES (?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,'test',Date.now()).run();
+  await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,created_at) VALUES (?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,env.PAYMENTS_MODE,Date.now()).run();
  }
  let id,url=null,code=null,image=null;
  if(b.provider==='stripe') {
   const s=await stripe(env).checkout.sessions.create({mode:'payment',client_reference_id:b.id,
    metadata:{sportdna_product:b.product},integration_identifier:'sportdna_reports_kpvndwqa',
-   line_items:[{quantity:1,price:product.stripeTestPrice}],
+   allowed_payment_method_types:['card'],
+   line_items:[{quantity:1,...(env.PAYMENTS_MODE==='test'?{price:product.stripeTestPrice}:{price_data:{currency:'brl',unit_amount:product.amount,product_data:{name:product.name}}})}],
    success_url:`${env.SITE_ORIGIN}/${product.path}/?payment=return`,cancel_url:`${env.SITE_ORIGIN}/${product.path}/?payment=cancel`},
    {idempotencyKey:b.id});
-  if(s.livemode!==false||!s.url?.startsWith('https://checkout.stripe.com/')) fail(502,'Checkout de teste inválido.');
+  if(s.livemode!==(env.PAYMENTS_MODE==='live')||!s.url?.startsWith('https://checkout.stripe.com/')) fail(502,'Checkout inválido.');
   id=s.id;url=s.url;
  } else {
   const amount=(product.amount/100).toFixed(2);
   const s=await mp(env,'',{type:'online',processing_mode:'automatic',total_amount:amount,external_reference:b.id,
-   payer:{email:b.email,first_name:'APRO'},transactions:{payments:[{amount,payment_method:{id:'pix',type:'bank_transfer'}}]}},b.id);
-  if(s.live_mode===true) fail(502,'Ambiente de teste inválido.');
+   payer:{email:b.email,...(env.PAYMENTS_MODE==='test'?{first_name:'APRO'}:{})},transactions:{payments:[{amount,payment_method:{id:'pix',type:'bank_transfer'}}]}},b.id);
+  if((typeof s.live_mode==='boolean'&&s.live_mode!==(env.PAYMENTS_MODE==='live'))||(env.PAYMENTS_MODE==='live'&&String(s.id).startsWith('ORDTST'))) fail(502,'Ambiente de pagamento inválido.');
   id=s.id;const method=s.transactions?.payments?.[0]?.payment_method;
   code=method?.qr_code||null;image=method?.qr_code_base64||null;
  }
@@ -103,7 +104,7 @@ async function webhook(request,env,provider) {
  let id;
  if(provider==='stripe') {
   let event;try{event=await stripe(env).webhooks.constructEventAsync(await request.text(),request.headers.get('stripe-signature'),env.STRIPE_WEBHOOK_SECRET,300,StripeClient.createSubtleCryptoProvider())}catch{fail(401,'Assinatura inválida.')}
-  if(event.livemode!==false) fail(400,'Ambiente inválido.');
+  if(event.livemode!==(env.PAYMENTS_MODE==='live')) fail(400,'Ambiente inválido.');
   const object=event.data.object;
   if(object.object==='checkout.session') id=object.id;
   else if(['charge.refunded','charge.dispute.created','charge.dispute.closed'].includes(event.type)) {
@@ -114,7 +115,7 @@ async function webhook(request,env,provider) {
  } else {
   if(!await verifyMP(request,env.MP_WEBHOOK_SECRET)) fail(401,'Assinatura inválida.');
   const body=await readJson(request),queryId=new URL(request.url).searchParams.get('data.id');
-  if(body.type!=='order'||String(body.data?.id).toLowerCase()!==queryId.toLowerCase()) fail(400,'Notificação inválida.');
+  if(body.type!=='order'||String(body.data?.id).toLowerCase()!==String(queryId||'').toLowerCase()) fail(400,'Notificação inválida.');
   id=String(body.data.id);
  }
  if(id) {
@@ -124,6 +125,8 @@ async function webhook(request,env,provider) {
  return {received:true};
 }
 export default {async fetch(request,env) {
+ // Explicit live bindings never fall back to sandbox credentials.
+ if(env.PAYMENTS_MODE==='live') env={...env,STRIPE_KEY:env.STRIPE_LIVE_KEY,STRIPE_WEBHOOK_SECRET:env.STRIPE_LIVE_WEBHOOK_SECRET,MP_TOKEN:env.MP_LIVE_TOKEN,MP_WEBHOOK_SECRET:env.MP_LIVE_WEBHOOK_SECRET};
  const origin=request.headers.get('Origin'),url=new URL(request.url);
  const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','Vary':'Origin','X-Content-Type-Options':'nosniff'};
  if(origin===env.SITE_ORIGIN) headers['Access-Control-Allow-Origin']=origin;

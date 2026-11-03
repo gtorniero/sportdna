@@ -39,7 +39,9 @@ export function mpState(s,order) {
  const p=s.transactions?.payments;
  if(s.id!==order.provider_id||s.external_reference!==order.id||s.country_code!=='BRA'||
     Math.round(Number(s.total_amount)*100)!==order.amount||!Array.isArray(p)||p.length!==1||
-    Math.round(Number(p[0].amount)*100)!==order.amount||p[0].payment_method?.id!=='pix'||s.live_mode===true)
+    Math.round(Number(p[0].amount)*100)!==order.amount||p[0].payment_method?.id!=='pix'||
+    (typeof s.live_mode==='boolean'&&s.live_mode!==(order.mode==='live'))||
+    (order.mode==='live'&&String(s.id).startsWith('ORDTST')))
     return 'invalid';
  if(s.status==='processed'&&s.status_detail==='accredited'&&p[0].status==='processed'&&p[0].status_detail==='accredited') return 'paid';
  if(['refunded','charged_back','cancelled','canceled'].includes(s.status)||['refunded','charged_back','cancelled','canceled'].includes(p[0].status)) return 'revoked';

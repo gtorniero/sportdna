@@ -86,3 +86,25 @@ test('signed duplicate Stripe notifications reconcile the stored order only',asy
   assert.equal((await e.DB.prepare('SELECT state FROM orders WHERE id=?').bind(order.id).first()).state,'paid');
  }finally{globalThis.fetch=oldFetch}
 });
+
+test('live Stripe uses explicit live keys and server price; stored orders cannot cross modes',async()=>{
+ const e={...env(),PAYMENTS_MODE:'live',STRIPE_LIVE_KEY:'rk_live_unit',STRIPE_LIVE_WEBHOOK_SECRET:'live-hook'};
+ const oldFetch=globalThis.fetch;let calls=0;
+ globalThis.fetch=async(url,init)=>{calls++;const p=new URLSearchParams(init.body);assert.equal(new Headers(init.headers).get('Authorization'),'Bearer rk_live_unit');assert.equal(p.get('line_items[0][price_data][unit_amount]'),'1999');assert.equal(p.get('allowed_payment_method_types[0]'),'card');return new Response(JSON.stringify({id:'cs_live_unit',livemode:true,url:'https://checkout.stripe.com/c/pay/unit'}),{headers:{'Content-Type':'application/json'}})};
+ const body={id:order.id,token:'a'.repeat(64),product:order.product,provider:'stripe',amount:1};
+ try{
+  const r=await worker.fetch(req('/orders',{method:'POST',body:JSON.stringify(body)}),e);assert.equal(r.status,200);assert.equal((await r.json()).mode,'live');assert.equal(calls,1);
+  assert.equal((await worker.fetch(req('/orders',{method:'POST',body:JSON.stringify(body)}),{...e,STRIPE_LIVE_KEY:undefined})).status,503);
+  assert.equal((await worker.fetch(req('/orders/'+order.id,{headers:{Authorization:'Bearer '+body.token}}),{...e,PAYMENTS_MODE:'test'})).status,409);assert.equal(calls,1);
+ }finally{globalThis.fetch=oldFetch}
+});
+test('live Pix rejects sandbox responses',()=>{
+ const o={...mpOrder,mode:'live'};assert.equal(mpState({...pix,live_mode:true},o),'paid');
+ assert.equal(mpState({...pix,live_mode:false},o),'invalid');
+ assert.equal(mpState({...pix,id:'ORDTST123'}, {...o,provider_id:'ORDTST123'}),'invalid');
+});
+test('live Pix uses its own token and omits sandbox approval marker',async()=>{
+ const e={...env(),PAYMENTS_MODE:'live',MP_LIVE_TOKEN:'live-mp-unit',MP_LIVE_WEBHOOK_SECRET:'live-mp-hook'};const oldFetch=globalThis.fetch;
+ globalThis.fetch=async(url,init)=>{assert.equal(init.headers.Authorization,'Bearer live-mp-unit');const b=JSON.parse(init.body);assert.equal(b.payer.first_name,undefined);assert.equal(b.total_amount,'19.99');return new Response(JSON.stringify({...pix,id:'ORDLIVEUNIT',status:'action_required',transactions:{payments:[{payment_method:{id:'pix',qr_code:'unit-pix'}}]}}),{headers:{'Content-Type':'application/json'}})};
+ try{const r=await worker.fetch(req('/orders',{method:'POST',body:JSON.stringify({id:order.id,token:'a'.repeat(64),product:order.product,provider:'mercadopago',email:'unit@example.com'})}),e);assert.equal(r.status,200);assert.equal((await r.json()).pixCode,'unit-pix')}finally{globalThis.fetch=oldFetch}
+});
