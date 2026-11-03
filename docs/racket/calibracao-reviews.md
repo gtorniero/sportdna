@@ -5,6 +5,264 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 8: auditoria das fichas e nova calibração (nov/2026)
+
+### Auditoria
+32 buscas. Correções e conferências estão em `dados/auditoria-nov2026.json`, no formato {modelo, campo, antes, depois, fonte, nota}. Só corrigimos o que tinha fonte.
+
+**Preços no Brasil (preço cheio):**
+
+| Modelo | Antes | Depois | Fontes |
+|---|---|---|---|
+| Pure Aero Team | R$ 2.300 a 2.350 | R$ 1.800 a 2.230 | Amazon, Magazine Luiza, Mercado Livre |
+| Pure Aero Lite | R$ 2.140 a 2.300 | R$ 1.970 a 2.300 | 4 lojas |
+| Pure Drive Team | R$ 2.000 a 2.100 | R$ 1.800 a 2.100 | |
+| Pure Drive Lite | R$ 2.100 | R$ 1.850 a 2.200 | |
+| Pure Aero | R$ 1.800 a 2.230 | R$ 1.600 a 2.230 | |
+| Pure Drive | R$ 1.930 a 2.090 | R$ 1.930 a 2.200 | |
+| Pure Aero 98 | R$ 2.050 a 2.450 | R$ 2.050 a 2.320 | |
+| Clash 100 v3 | R$ 1.620 a 1.800 | R$ 1.800 a 2.200 | R$ 1.620 era o preço no Pix |
+
+As versões Team e Lite da Babolat custam de fato quase o mesmo que as principais no Brasil. A faixa antiga só exagerava um pouco.
+
+**Fichas:**
+- Balanço sem corda da Phantom 100X: 321 → 320 mm. Da Gravity MP: 326 → 325 mm. Fonte: TW Europe.
+- Conferidas e sem diferença: Pure Aero, Pure Aero Team, Pure Aero 98, Pure Drive Team e Lite, Speed MP, Gravity MP, Boom MP, Clash 100 v3, Blade 98 v9, Phantom 100X, Black Ace 300 e EZONE 100.
+- Pure Drive: uma página da TW Europe diz RA 72 ("atualizado com mais amostras"), mas junto de SW 290, que não bate com nada. Ficou 69; conferir na página.
+
+**Disponibilidade:** continuam sem oferta nova no Brasil a Speed Team, a Boom Team, a Clash 108 v3, a Black Ace 105 e a Ki Q+ Tour. O preço da Extreme Team (R$ 2.049,90) foi confirmado.
+
+**Efeito das correções sozinhas:**
+- Casos de especialistas: nada muda, porque quase nenhum caso informa orçamento.
+- Amostra realista: Babolat no top 3 de 20,7% para 21,6%.
+- As fichas batem com a fonte. O desvio de marcas não vem de erro de ficha, e sim do motor e da aprovação TW.
+
+### Calibração
+Rodamos `calibrar.mjs --ajustar --trava`, com os mesmos critérios da rodada 7. Foram 9 passos aceitos, e a trava não precisou desfazer nenhum.
+
+| Peso | Rodada 7 | Rodada 8 |
+|---|---|---|
+| `alvo.nivel.adv.control` | 1,125 | 1,4063 |
+| `alvo.swing.long.power` | −1,5 | −0,75 |
+| `alvo.estilo.net.maneuver` | 1,5 | 3 |
+| `alvo.saque.mix.stability` | 0,5 | 0,625 |
+| `alvo.quer.power` | 2 | 3 |
+| `pen.swBorda` | 1,2 | 0,6 |
+| `placar.aprovacaoNivel.adv` | 2,5 | 1,25 |
+| `placar.aprovacaoTeto` | 8 | 4 |
+| `match.zona` | 4 | 2 |
+
+A aprovação dos testadores TW passou a pesar metade.
+
+### Rodada 7 × rodada 8
+Casos de especialistas: 268 no total, 88 na parte de teste.
+
+| | R7 total | R8 total | R7 teste | R8 teste |
+|---|---|---|---|---|
+| Top 1 | 18,7% | 17,2% | 19,3% | 18,2% |
+| Top 3 | 32,5% | 36,6% | 35,2% | 39,8% |
+| Top 10 | 61,6% | 63,4% | 68,2% | 68,2% |
+| MRR | 0,312 | 0,316 | 0,331 | 0,336 |
+| Algum indicado no top 3 | 39,6% | 42,2% | 44,3% | 47,7% |
+
+- Grupo cotovelo: top 3 de 30,8% para 57,7%.
+- Com dor no braço: top 3 de 27,8% para 63,9%.
+- Iniciante: sem mudança (top 3 de 16,2%).
+
+Marcas no nosso top 3 nos casos, contra o 1º indicado pelos especialistas:
+
+| Marca | Especialistas | R7 | R8 |
+|---|---|---|---|
+| Babolat | 33,2% | 20,6% | 20,8% |
+| Wilson | 28,4% | 14,8% | 19,0% |
+| Head | 22,8% | 29,5% | 26,9% |
+| Yonex | 10,1% | 14,7% | 13,4% |
+| Prince | 3,0% | 11,2% | 11,4% |
+| ProKennex | 0% | 4,6% | 5,5% |
+| Tecnifibre | 1,1% | 3,5% | 2,5% |
+| Dunlop | 1,5% | 0,6% | 0% |
+| Volkl | 0% | 0,5% | 0,5% |
+
+Segurança e cobertura (`vies.mjs`, 3.000 perfis):
+
+| | Realista R7 | Realista R8 | Uniforme R7 | Uniforme R8 |
+|---|---|---|---|---|
+| Pódios com contraindicação séria, 1+ / 2+ | 270 / 126 | 266 / 111 | 430 / 200 | 468 / 172 |
+| 1ª acima do orçamento, até R$ 1.400 | 20,0% | 16,3% | 14,9% | 10,8% |
+| Modelos já em 1º / no top 3 (de 62) | 54 / 59 | 52 / 62 | 54 / 59 | 51 / 59 |
+| 1ª dentro da zona do mapa | 93,2% | 91,3% | | |
+| Babolat 1º / top 3 | 23,4 / 20,7% | 21,9 / 21,5% | 13,5 / 12,3% | 12,5 / 12,0% |
+
+- No sorteio uniforme, os pódios com 1 contraindicação séria subiram (430 → 468), e os com 2 ou mais caíram. A trava mede a amostra realista, e lá os dois números caíram.
+- Exemplo pronto: Head Boom MP 95% · Clash 100 v3 95% · Black Ace 300 92%. Por isso foram refeitos:
+  - `assets/reports/racket.webp`;
+  - `assets/cards/racket-produto.webp`;
+  - `assets/cards/racket-perfil.webp` (DNA 95%, conforto 9,2, potência 8,5);
+  - os textos alternativos em `index.html`, `assets/site.js` e `guias/racket/`.
+
+### Leitura
+- O ganho veio de pesar menos a aprovação TW e o swingweight fora da zona, e de seguir mais o que a pessoa pede (potência e manobra na rede). O que mais melhorou foi o grupo com dor no braço.
+- Instabilidade: `alvo.nivel.adv.control` desceu na rodada 7 e voltou a subir agora. Com 180 casos de treino, um peso pode oscilar entre rodadas; vale aumentar a base de casos antes da próxima.
+- Babolat continua abaixo dos especialistas (20,8% × 33,2%). Pure Drive, Pure Aero e Pure Aero 98 já são 1º quando indicadas. O que perde é a família leve (Pure Drive Lite e Team, Pure Aero Team, posição mediana 26 a 45) e a Evo Drive (mediana 18).
+- Iniciante continua com 0% de top 1. Os guias indicam a Ti S6 (225 g e 115 pol²), abaixo do nosso piso de 258 g; é uma regra para rever com professores.
+
+## Rodada 7: calibração contra casos de especialistas (nov/2026)
+
+Ferramenta: `node racket/tools/calibrar.mjs --ajustar --trava --saida pesos.json`.
+- Descida por coordenadas em 120 pesos de `PESOS`, com multiplicadores 0,5/0,75/1,25/1,5/2, em duas voltas.
+- Divisão fixa por id (semente 20261102): 1 em cada 3 casos fica só para teste. O resto é dividido em 3 partes.
+- Um passo só entra se: o total melhora, pelo menos 2 das 3 partes melhoram e nenhuma piora mais de 0,01.
+- Objetivo: MRR + 0,5 × top 3 − 0,1 × desvio de marcas. O desvio é a distância L1 entre as marcas do nosso top 3 e as do 1º indicado.
+- Pesos de saúde e segurança têm piso de 0,5×.
+- Ficam fora: orçamento, "difícil de achar", limiares, alvos em gramas e mm, e `match.pen`. `match.pen` multiplica todas as penalidades, inclusive as de orçamento e segurança; na primeira rodada o ajuste tentou cortá-lo pela metade.
+- Trava: `vies.mjs --realista` com os pesos finais. Os pódios com 2+ contraindicações sérias e a faixa até R$ 1.400 acima do orçamento não podem piorar em relação à rodada 6.
+
+Passos aceitos: 10. A trava desfez 2:
+- `placar.aprovacaoTeto` 8 → 16 e `placar.aprovacaoNivel.adv` 2,5 → 5 foram desfeitos. Juntos, levavam a faixa até R$ 1.400 de 20,4% para 22,6% acima do orçamento. Também reforçavam o efeito popularidade da TW, o mesmo visto na rodada 3.
+
+Pesos que mudaram:
+| Peso | Rodada 6 | Rodada 7 |
+|---|---|---|
+| `alvo.nivel.adv.control` | 1,5 | 1,125 |
+| `alvo.idade.seniorAlvo.maneuver` | 1,5 | 2,25 |
+| `alvo.estilo.agg.power` | 0,5 | 1,125 |
+| `alvo.saque.mix.spin` | 0,5 | 1 |
+| `alvo.quer.control` | 2,5 | 3,125 |
+| `alvo.quer.comfort` | 2,5 | 5 |
+| `placar.aprovacaoNivel.int` | 1 | 1,25 |
+
+### Rodada 6 × rodada 7
+Casos de especialistas: 268 com modelo do catálogo, 88 deles na parte de teste.
+
+| | Rodada 6 total | Rodada 7 total | Rodada 6 teste | Rodada 7 teste |
+|---|---|---|---|---|
+| Top 1 | 19,0% | 18,7% | 19,3% | 19,3% |
+| Top 3 | 31,7% | 32,5% | 35,2% | 35,2% |
+| Top 10 | 61,2% | 61,6% | 68,2% | 68,2% |
+| MRR | 0,311 | 0,312 | 0,331 | 0,331 |
+| Algum indicado no top 3 | 39,2% | 39,6% | 44,3% | 44,3% |
+
+Marcas no nosso top 3, contra o 1º indicado pelos especialistas:
+| Marca | Especialistas | Rodada 6 | Rodada 7 |
+|---|---|---|---|
+| Babolat | 33,2% | 19,9% | 20,6% |
+| Wilson | 28,4% | 11,2% | 14,8% |
+| Head | 22,8% | 32,2% | 29,5% |
+| Yonex | 10,1% | 13,9% | 14,7% |
+| Prince | 3,0% | 12,9% | 11,2% |
+| Tecnifibre | 1,1% | 4,7% | 3,5% |
+| ProKennex | 0% | 4,0% | 4,6% |
+
+Segurança e cobertura (`vies.mjs`, 3.000 perfis):
+| | Realista, rodada 6 | Realista, rodada 7 | Uniforme, rodada 6 | Uniforme, rodada 7 |
+|---|---|---|---|---|
+| Pódios com contraindicação séria, 1+ / 2+ | 270 / 126 | 270 / 126 | 434 / 201 | 430 / 200 |
+| 1ª acima do orçamento, até R$ 1.400 | 20,4% | 20,0% | 14,8% | 14,9% |
+| 1ª acima do orçamento (todos) | 8,1% | 8,1% | 6,6% | 6,8% |
+| Modelos já em 1º / no top 3 (de 62) | 54 / 60 | 54 / 59 | 54 / 60 | 54 / 59 |
+| Babolat 1º / top 3 | 24,7 / 21,4% | 23,4 / 20,7% | 13,8 / 12,7% | 13,5 / 12,3% |
+
+- Nunca no top 3 na rodada 7: Vostra V8, Burn 100 v5 e Dunlop FX 500 na amostra realista; Ti S6, Burn 100 v5 e Dunlop FX 500 na uniforme.
+- Exemplo pronto: Phantom 100X 290 g 96% · Clash 100 v3 96% · Boom MP 95%. Antes: Black Ace 300, Phantom 100X e Boom MP.
+- Atualizados com o novo exemplo:
+  - `assets/reports/racket.webp`: 1000 × 1899, mesmo recorte;
+  - `assets/cards/racket-produto.webp`: 720 × 1280;
+  - os textos alternativos em `index.html`, `assets/site.js` e `guias/racket/`.
+
+### Leitura
+- A calibração ganhou pouco: +0,8 ponto de top 3 no total e nada na parte de teste. Os pesos não são o gargalo, como no RUN DNA.
+- O que mais erra:
+  - **Iniciante:** 0% de top 1. Os guias indicam raquetes muito leves e de cabeça muito grande (Ti S6, 225 g e 115 pol²), e o nosso peso ideal tem piso de 258 g.
+  - **Marcas:** Wilson e Babolat continuam sub-indicadas, e Head e Prince super-indicadas.
+- Próximo passo:
+  - revisar os dados dos modelos (aprovação, etiquetas, preço da Babolat no Brasil) e a regra do piso de peso para iniciante;
+  - conferir a leitura dos casos de iniciante, sem forçar o `resp()`. Nesta rodada ele não mudou.
+
+## Rodada 6: pesos nomeados, orçamento, segurança, ciência e 4 modelos novos (nov/2026)
+
+O que mudou em `racket/index.html`:
+- **Tabela `PESOS`.** Todos os pesos de `target`, `targetWeight`, `zones`, `penalties`, `score` e `compute`, mais a aprovação TW (`r.q`), estão numa tabela única, agrupada e com a origem de cada grupo. Equivalência provada: nos 3.000 perfis sorteados, o top 3 e o Match ficaram idênticos antes e depois da troca.
+- **Motor exposto para teste.** Com `?teste` na URL, `window.__RK` traz `A`, `Q`, `RK`, `compute`, `PESOS`, `idx` e `EXAMPLE`. Sem o parâmetro, nada muda.
+- **Orçamento progressivo**, no modelo do RUN DNA:
+  - até 8% acima: −1,5;
+  - mais de 8% acima: −18, e mais −10 a cada 10% a mais;
+  - dentro do orçamento: +3 no Match;
+  - a regra da zona não promove para 1º uma raquete bem acima do orçamento quando a 1ª cabe nele.
+- **Segurança:**
+  - Dor no braço e raquete abaixo de 275 g: 6 + 0,6 por grama.
+  - Força baixa ou 60+ anos e raquete de 310 g ou mais: 8 + 1 por grama.
+  - Rigidez para quem tem dor hoje: 2,2/1,8/1,2 → 3/2,5/1,8 por ponto de RA.
+  - "Difícil de achar no Brasil" para quem prefere comprar aqui: 6 → 12.
+- **Rigidez com evidência fraca (`ciencia.md`, tema 1).** Testamos um bloqueio duro de RA > 60 no pódio de quem tem dor forte e ele foi retirado. Ficou a penalidade suave (`pen.raForte`), e o texto do relatório não diz mais que o motor "limitou a 60 RA". Os pesos de ombro (0,6) e punho (0,8) não subiram (tema 8).
+- **Tecnologia de amortecimento vale menos** (`PESOS.indice`, tema 4): no índice de conforto, 0,08 → 0,03; no conforto no braço, 0,12 → 0,04, com a diferença indo para a massa (0,24 → 0,32).
+- **Textos:**
+  - O índice "Braço Seguro" passou a se chamar "Conforto no braço".
+  - Saíram "o que protege", "reduz a carga", "poupa o braço" e "proteger o braço".
+  - O glossário de grip passou a falar em linguagem de conforto.
+  - Quem tem dor recebe uma nota: idade, volume de jogo e técnica pesam mais que qualquer especificação, e se a dor persistir, procure um profissional.
+  - Menores de 14 anos recebem um aviso: o catálogo é adulto, e vale procurar uma raquete juvenil de 25 ou 26 polegadas.
+- **Herança de aprovação.** Versões leves sem review da TW herdam 0,7 da aprovação do modelo-pai (tabela `PAI`).
+- **4 modelos novos** (`catalogo-novos.md`): Evo Drive, Boost Aero, Pure Drive 107 e Ultra Power 100. Catálogo: 58 → 62.
+- **Acessibilidade.** A opção já escolhida na busca de raquete atual ganhou `role="option"`, o que corrige 2 violações do axe na etapa 5.
+
+Ferramentas novas:
+- `racket/tools/vies.mjs`: marcas, cobertura, contraindicações, orçamento e exemplo pronto. Opções `--realista`, `--exp`, `--pesos` e `--html`.
+- `racket/tools/calibrar.mjs`: medição contra os casos de especialistas, sem otimizar. Mede top 1, top 3, top 10 e MRR do 1º indicado, e compara as marcas.
+
+### Testes de viés (3.000 perfis, semente 12345)
+Contraindicação séria = as regras de `vies.mjs` sem as três de rigidez (evidência fraca).
+
+| | Uniforme, antes | Uniforme, depois (62) | Realista, antes | Realista, depois (62) |
+|---|---|---|---|---|
+| Babolat 1º / top 3 (catálogo 17,2% → 21,0%) | 11,1% / 11,6% | 13,8% / 12,7% | 20,6% / 18,5% | 24,7% / 21,4% |
+| Head 1º / top 3 | 35,5% / 32,5% | 26,7% / 23,9% | 35,6% / 34,0% | 25,2% / 24,3% |
+| Wilson 1º / top 3 | 25,2% / 27,9% | 31,6% / 33,5% | 22,3% / 22,8% | 27,7% / 27,4% |
+| Modelos já em 1º / no top 3 | 47 / 56 de 58 | 54 / 60 de 62 | 50 / 56 de 58 | 54 / 60 de 62 |
+| Pódios com contraindicação séria, 1+ / 2+ | 524 / 339 | 434 / 201 | 343 / 203 | 270 / 126 |
+| 1ª acima do orçamento (todos) | 22,4% | 6,6% | 21,8% | 8,1% |
+| 1ª acima do orçamento (até R$ 1.400) | 69,9% | 14,8% | 69,2% | 20,4% (8,6% mais de 8% acima) |
+| 1ª difícil de achar, para quem prefere o Brasil | 149 | 233 | 93 | 147 |
+| Match da 1ª (mín / p10 / mediana) | 79 / 91 / 94 | 77 / 89 / 95 | 83 / 91 / 95 | 81 / 90 / 95 |
+
+- Os 4 modelos novos na amostra realista: Boost Aero 5,3% em 1º e 12,2% no top 3; Evo Drive 1,3% e 4,5%; Ultra Power 100 0,6% e 1,7%; Pure Drive 107 0,1% e 0,7%.
+- Exemplo pronto: Black Ace 300, Phantom 100X e Boom MP. Antes, a Clash 100 era a 2ª.
+- Efeito colateral: há mais 1ª "difícil de achar" para quem prefere comprar no Brasil, porque as opções baratas do catálogo são quase todas importadas.
+
+### Por que a Babolat aparecia pouco (medido, sem correção forçada)
+Amostra realista, catálogo de 58, Babolat no top 3:
+- **Motor completo: 16,5%**, contra 17,2% do catálogo. Na amostra realista, a Babolat já estava perto da paridade com o catálogo. A queda para 11,6% no sorteio uniforme vem de 2/3 dos perfis com dor no braço, porque os quadros da Babolat são de 63 a 69 RA.
+- Sem a compressão 0,6: 16,3%. Não é a causa.
+- Sem a aprovação TW (±8): 13,6%. A aprovação ajuda a Babolat, não atrapalha.
+- Rigidez igual para todas nos índices: 18,4% (1º: 20,5% → 24,2%). É o maior efeito isolado entre os três, mas ainda pequeno.
+- Sem o orçamento: 19,2%. Com a zona do mapa também desligada: 21,6%. Os preços da Babolat no Brasil são altos: Team e Lite custam R$ 2.000 a 2.300, mais que a Pure Drive.
+- A família Pure Drive quase não aparece (cerca de 2,6% dos lugares no pódio, medido antes do ajuste final). A Babolat aparece pela Boost Drive, pela Pure Aero 98, pela Pure Aero e pela Pure Strike.
+- Nos casos de especialistas, a Babolat é 29,7% dos 1º indicados, contra 17,8% do nosso top 3. Isso fica para a calibração.
+
+### Casos de especialistas (só medição, nenhum peso ajustado)
+379 casos (en 200, pt 67, es 112). Contam os casos com pelo menos um modelo do catálogo. A métrica é o 1º indicado pelo guia no nosso ranking.
+
+| Motor | Casos | Top 1 | Top 3 | Top 10 | MRR | Algum indicado no top 3 |
+|---|---|---|---|---|---|---|
+| Antes da rodada 6 (58 modelos) | 256 | 20,3% | 32,4% | 62,9% | 0,323 | 39,5% |
+| Rodada 6, 58 modelos | 257 | 19,8% | 32,3% | 63,0% | 0,320 | 40,1% |
+| Rodada 6, 62 modelos | 268 | 19,0% | 31,7% | 61,2% | 0,311 | 39,2% |
+
+- Acaso: top 3 ≈ 5%.
+- Com os 4 modelos, entram 11 casos que antes não tinham modelo do catálogo. São casos difíceis (iniciante, conforto), por isso as médias caem um pouco.
+- Grupos com 62 modelos:
+  - spin: 73,9% de top 3;
+  - potência: 62,1%;
+  - cotovelo: 30,8% de top 3 e 88,5% de top 10;
+  - iniciante: 16,2% de top 3 e 0% de top 1. A Ti S6 é indicada como 1ª e fica em 47º no nosso ranking.
+- Marcas, nosso top 3 × 1º indicado pelos especialistas:
+  - Babolat 19,9% × 33,2%; Wilson 11,2% × 28,4%;
+  - Head 32,2% × 22,8%; Prince 12,9% × 3,0%; Tecnifibre 4,7% × 1,1%; ProKennex 4,0% × 0%.
+
+Limites:
+- Respostas que o caso não informa usam valores neutros (ver `resp` em `calibrar.mjs`).
+- Os perfis sorteados usam o número de modelos para escolher a raquete atual. Por isso as amostras de 58 e de 62 não são exatamente os mesmos perfis.
+- A imagem `assets/reports/racket.webp` ainda mostra "58 raquetes" e o exemplo antigo.
+
 ## Rodada 5 — iniciante leve, zona sempre com raquete, Match legível e tensão (30/out)
 
 Caso real: iniciante leve (perfil de mulher adulta, força abaixo da média). Peso ideal calculado 248 g → zona 240–256 g sem nenhuma raquete adulta no catálogo (a mais leve tem 260 g). Resultado: 1ª fora da zona, Match máximo 74% e 10º com 46%; tensão sugerida 55–57 lb com nylon.

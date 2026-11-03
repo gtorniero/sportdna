@@ -1,0 +1,2093 @@
+{
+ "meta": {
+  "gerado_em": "2026-11-02",
+  "metodo": "Busca web (WebSearch) em fontes em português; WebFetch bloqueado no ambiente, então os casos vêm de trechos de busca. Escolhas registradas como aparecem; 'ordem_confiavel'=false quando a ordem/top-1 não foi confirmada. Correspondência ao catálogo por família (geração ignorada; variantes de peso/cabeça/padrão diferentes não casadas).",
+  "aviso": "Maioria das fontes BR são blogs de afiliado ou lojas; poucos especialistas identificáveis (exceção: ortopedista Dr. Leonardo Zanesco, Empório do Tenista com testes em canal)."
+ },
+ "casos": [
+  {
+   "id": "pt-001",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/raquetes-tenis-spin/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Top 10 melhores raquetes de Tênis para Spin",
+   "recomendados": [
+    "Babolat Pure Aero",
+    "Babolat Pure Aero 98",
+    "Babolat Pure Drive",
+    "Yonex VCORE 100",
+    "Head Extreme MP",
+    "Wilson Shift 99",
+    "Wilson Ultra 100",
+    "Dunlop SX 300 Tour",
+    "Babolat Pure Aero Plus",
+    "Wilson Blade 100"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "Pure Aero 98",
+    "Pure Drive",
+    "VCORE 100 8ª geração",
+    "Extreme MP",
+    "Shift 99 v1 300 g",
+    "Ultra 100 v5"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Ranking de spin: Pure Aero no topo, Pure Aero 98 por somar controle; VCORE 100 citada para iniciantes e intermediários."
+  },
+  {
+   "id": "pt-002",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/raquetes-para-controle/",
+   "ano": 2021,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Top 7 melhores raquetes de Tênis para controle",
+   "recomendados": [
+    "Wilson Pro Staff 97",
+    "Yonex VCORE Duel G 97",
+    "Wilson Blade 98",
+    "Wilson Clash 100",
+    "Head Graphene 360 Speed Pro",
+    "Babolat Pure Drive",
+    "Tecnifibre TF40 305"
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14",
+    "Blade 98 16x19 v9",
+    "Clash 100 v3",
+    "Speed Pro",
+    "Pure Drive",
+    "TF40 305 16x19"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Ranking de controle: Pro Staff 97 para avançados e voleio; VCORE Duel G mais fácil; Blade 98 confortável; TF40 para quem vai à rede."
+  },
+  {
+   "id": "pt-003",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/raquetes-tenis-custo-beneficio/",
+   "ano": 2021,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As 5 melhores raquetes de Tênis custo benefício",
+   "recomendados": [
+    "Artengo TR930",
+    "Babolat Drive G Lite",
+    "Prince TeXtreme Tour 100P",
+    "Head Radical MP Lite",
+    "Babolat Pulsion"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Custo-benefício: Artengo TR930 (Decathlon) parecida com a Pure Drive e mais barata; Pulsion a mais barata."
+  },
+  {
+   "id": "pt-004",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As 16 melhores raquetes para iniciantes (indicações gerais)",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Wilson Clash 100",
+    "Head Radical MP",
+    "Yonex Ezone 100"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "Clash 100 v3",
+    "Radical MP",
+    "EZONE 100"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Pure Drive como melhor geral para iniciante (porém rígida); Clash versátil; Radical MP a melhor Head para começar; Ezone 100 fácil em todos os golpes."
+  },
+  {
+   "id": "pt-005",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciantes com lesão/problema no braço",
+   "recomendados": [
+    "Wilson Clash 100",
+    "ProKennex Ki Q+ 15"
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Com problema no braço, priorizar baixa rigidez: Clash 100 e ProKennex Ki Q+ 15."
+  },
+  {
+   "id": "pt-006",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciantes com pouca força no braço",
+   "recomendados": [
+    "Babolat Pure Drive Team",
+    "Babolat Pure Drive Lite"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive Team",
+    "Pure Drive Lite"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Versões mais leves da Pure Drive preservam a proposta em menor peso."
+  },
+  {
+   "id": "pt-007",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciantes que querem aprender topspin",
+   "recomendados": [
+    "Babolat Pure Aero Lite",
+    "Babolat Pure Aero Team",
+    "Wilson Shift 99"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero Lite",
+    "Pure Aero Team",
+    "Shift 99 v1 300 g"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Para aprender a gerar rotação; Shift 99 citada como das mais fáceis entre as de 300 g."
+  },
+  {
+   "id": "pt-008",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciantes: cabeça grande e peso leve",
+   "recomendados": [
+    "Prince TeXtreme2 Beast 104",
+    "Head Ti Instinct Supreme",
+    "Head Gravity S"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": false,
+   "texto_curto": "Cabeças grandes e pesos leves para quem ainda aprende a técnica; Gravity S prioriza controle."
+  },
+  {
+   "id": "pt-009",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciantes: alternativas econômicas",
+   "recomendados": [
+    "Artengo TR930",
+    "Dunlop FX 500"
+   ],
+   "recomendados_catalogo": [
+    "FX 500"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "TR930 muito parecida com a Pure Drive por preço menor; FX 500 como 'Pure Drive da Dunlop', bom controle nos voleios."
+  },
+  {
+   "id": "pt-010",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-iniciantes/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciantes: opção premium Yonex",
+   "recomendados": [
+    "Yonex Astrel 105"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Opção premium para iniciantes, preço maior."
+  },
+  {
+   "id": "pt-011",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-tenis/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As 12 melhores raquetes de Tênis em 2023",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Wilson Pro Staff 97",
+    "Head Speed Pro",
+    "Babolat Pure Aero",
+    "Yonex VCORE 95",
+    "Yonex EZONE 98"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "Pro Staff 97 v14",
+    "Speed Pro",
+    "Pure Aero",
+    "EZONE 98"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Lista geral; Pro Staff 97 em 2º e Speed Pro em 3º confirmados; demais posições não confirmadas."
+  },
+  {
+   "id": "pt-012",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/melhores-raquetes-tenis/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor raquete para jogar no saibro",
+   "recomendados": [
+    "Babolat Pure Aero"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pure Aero apontada como a melhor para saibro."
+  },
+  {
+   "id": "pt-013",
+   "idioma": "pt",
+   "fonte": "Tênis Recreativo (blog)",
+   "url": "https://tenisrecreativo.com.br/raquetes-leves/",
+   "ano": 2021,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As raquetes de Tênis mais leves (disponíveis no Brasil)",
+   "recomendados": [
+    "Babolat Pure Drive Super Lite",
+    "Babolat Boost Aero",
+    "Wilson Ultra 100UL v3",
+    "Head Ti S6",
+    "Wilson Hyper Hammer 5.3 Stretch OS"
+   ],
+   "recomendados_catalogo": [
+    "Ti S6"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Raquetes abaixo de 280 g; Ti S6 (249,5 g) e Hyper Hammer 5.3 entre as mais leves para adultos."
+  },
+  {
+   "id": "pt-014",
+   "idioma": "pt",
+   "fonte": "Blog do rankingdetenis.com (loja Bola de Tênis Delivery)",
+   "url": "https://blog.rankingdetenis.com/lista-melhores-raquetes-de-tenis/",
+   "ano": 2022,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As 11 Melhores Raquetes de Tênis para comprar em 2022",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Head Gravity MP",
+    "Babolat Pure Aero",
+    "Wilson Blade 98",
+    "Wilson Clash 100 v2",
+    "Wilson Ultra 100 v4",
+    "Head Extreme MP"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "Gravity MP",
+    "Pure Aero",
+    "Blade 98 16x19 v9",
+    "Clash 100 v3",
+    "Ultra 100 v5",
+    "Extreme MP"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Lista geral 2022 com Pure Drive em 1º; posições seguintes inferidas da ordem do texto."
+  },
+  {
+   "id": "pt-015",
+   "idioma": "pt",
+   "fonte": "Blog do rankingdetenis.com (loja Bola de Tênis Delivery)",
+   "url": "https://blog.rankingdetenis.com/lista-melhores-raquetes-de-tenis/",
+   "ano": 2022,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor para spin (lista 2022)",
+   "recomendados": [
+    "Head Extreme MP"
+   ],
+   "recomendados_catalogo": [
+    "Extreme MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Extreme MP apontada como melhor para spin pelo padrão aberto."
+  },
+  {
+   "id": "pt-016",
+   "idioma": "pt",
+   "fonte": "Blog do rankingdetenis.com (loja Bola de Tênis Delivery)",
+   "url": "https://blog.rankingdetenis.com/lista-melhores-raquetes-de-tenis/",
+   "ano": 2022,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Para iniciantes e intermediários que querem domínio dos golpes",
+   "recomendados": [
+    "Head Gravity MP"
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Gravity MP indicada para iniciantes e intermediários."
+  },
+  {
+   "id": "pt-017",
+   "idioma": "pt",
+   "fonte": "Blog do rankingdetenis.com (loja Bola de Tênis Delivery)",
+   "url": "https://blog.rankingdetenis.com/lista-melhores-raquetes-de-tenis/",
+   "ano": 2022,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Spin e controle com conforto",
+   "recomendados": [
+    "Wilson Blade 98"
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Blade 98 V8 associada a spin e controle com conforto."
+  },
+  {
+   "id": "pt-018",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor raquete de tênis: as 8 melhores (geral)",
+   "recomendados": [
+    "Head Speed MP",
+    "Wilson Pro Staff 97 v14",
+    "Babolat Pure Drive 2021",
+    "Yonex EZONE 98",
+    "Tecnifibre T-Fight 305",
+    "Prince Tour 100 ATS",
+    "Babolat Pure Aero 98"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP",
+    "Pro Staff 97 v14",
+    "Pure Drive",
+    "EZONE 98",
+    "Pure Aero 98"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Speed MP 2024 declarada principal escolha; demais na ordem da tabela."
+  },
+  {
+   "id": "pt-019",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "saque-voleio",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Precisão e jogo de rede",
+   "recomendados": [
+    "Wilson Pro Staff 97 v14"
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "315 g, cabeça 97, voltada a precisão e rede."
+  },
+  {
+   "id": "pt-020",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Potência",
+   "recomendados": [
+    "Babolat Pure Drive 2021"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pure Drive indicada para potência."
+  },
+  {
+   "id": "pt-021",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Equilíbrio e conforto",
+   "recomendados": [
+    "Head Speed MP"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Speed MP 2024 voltada a equilíbrio e conforto."
+  },
+  {
+   "id": "pt-022",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Sweet spot tolerante",
+   "recomendados": [
+    "Yonex EZONE 98"
+   ],
+   "recomendados_catalogo": [
+    "EZONE 98"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "EZONE 98 com sweet spot tolerante."
+  },
+  {
+   "id": "pt-023",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Controle",
+   "recomendados": [
+    "Tecnifibre T-Fight 305"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "T-Fight 305 voltada a controle."
+  },
+  {
+   "id": "pt-024",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Proteção articular",
+   "recomendados": [
+    "Prince Tour 100 ATS"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Prince Tour 100 ATS (310 g) com foco em proteção articular."
+  },
+  {
+   "id": "pt-025",
+   "idioma": "pt",
+   "fonte": "TesteCasa",
+   "url": "https://testecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Spin",
+   "recomendados": [
+    "Babolat Pure Aero 98"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pure Aero 98 (2023) voltada a spin."
+  },
+  {
+   "id": "pt-026",
+   "idioma": "pt",
+   "fonte": "AnalisaMelhor",
+   "url": "https://analisamelhor.com.br/melhor-raquete-de-tenis/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor raquete de tênis: os 7 melhores em 2026",
+   "recomendados": [
+    "Head Speed MP",
+    "Wilson Pro Staff 97 v14",
+    "Babolat Pure Drive 2021",
+    "Yonex EZONE 98",
+    "Tecnifibre T-Fight 305",
+    "Prince Tour 100 ATS"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP",
+    "Pro Staff 97 v14",
+    "Pure Drive",
+    "EZONE 98"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Mesma tabela do TesteCasa; Speed MP 2024 como a mais versátil."
+  },
+  {
+   "id": "pt-027",
+   "idioma": "pt",
+   "fonte": "AnáliseCasa",
+   "url": "https://analisecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor raquete de tênis: as 10 melhores em 2026 (melhor geral)",
+   "recomendados": [
+    "Head Speed MP"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Speed MP como melhor opção geral pelas especificações."
+  },
+  {
+   "id": "pt-028",
+   "idioma": "pt",
+   "fonte": "AnáliseCasa",
+   "url": "https://analisecasa.com.br/melhor-raquete-de-tenis/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor custo-benefício",
+   "recomendados": [
+    "Dunlop Nitro"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Dunlop Nitro indicada como melhor custo-benefício."
+  },
+  {
+   "id": "pt-029",
+   "idioma": "pt",
+   "fonte": "RevisaEsporte",
+   "url": "https://revisaesporte.com.br/melhor-raquete-de-tenis/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor raquete de tênis: os 7 melhores em 2026",
+   "recomendados": [
+    "Head Speed MP"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Speed MP (versão 2024) em 1º por equilibrar potência controlada e conforto no braço."
+  },
+  {
+   "id": "pt-030",
+   "idioma": "pt",
+   "fonte": "MKT Esportivo",
+   "url": "https://www.mktesportivo.com/2025/11/as-8-melhores-raquetes-de-tenis/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "midia",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "10 Melhores raquetes de Tênis para comprar em 2025",
+   "recomendados": [
+    "Wilson Clash 100 Pro V2",
+    "Babolat Pure Drive 2025",
+    "Head Radical MP 2025",
+    "Wilson Shift 99 V1 Pro",
+    "Camewin"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "Radical MP"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Lista geral; ordem não confirmada; Camewin como entrada barata."
+  },
+  {
+   "id": "pt-031",
+   "idioma": "pt",
+   "fonte": "MKT Esportivo",
+   "url": "https://www.mktesportivo.com/2025/11/as-8-melhores-raquetes-de-tenis/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "midia",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Para quem já joga e quer mais desempenho",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Wilson Pro Staff 97 V14",
+    "Yonex VCORE 98"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "Pro Staff 97 v14",
+    "VCORE 98 8ª geração"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Pro Staff 97 V14 como favorita de avançados."
+  },
+  {
+   "id": "pt-032",
+   "idioma": "pt",
+   "fonte": "MKT Esportivo",
+   "url": "https://www.mktesportivo.com/2025/11/as-8-melhores-raquetes-de-tenis/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "midia",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Primeira raquete (iniciante)",
+   "recomendados": [
+    "Wilson Advantage XL",
+    "Wilson Ultra Power RXT 105"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": false,
+   "texto_curto": "Leves, cabeça 105+, tolerantes fora do centro."
+  },
+  {
+   "id": "pt-033",
+   "idioma": "pt",
+   "fonte": "Infotechcompras",
+   "url": "https://infotechcompras.com.br/melhores-raquetes-de-tenis-de-2025/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhores Raquetes de Tênis de 2025 (top 5)",
+   "recomendados": [
+    "Wilson Pro Staff 97 V14",
+    "Head Boom Team",
+    "Babolat Pure Drive",
+    "Wilson Hyper Hammer 5.3"
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14",
+    "Boom Team",
+    "Pure Drive"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pro Staff 97 V14 em 1º, Boom Team em 2º, Pure Drive (11ª geração) em 3º, Hyper Hammer 5.3 em 5º; 4º não identificado."
+  },
+  {
+   "id": "pt-034",
+   "idioma": "pt",
+   "fonte": "Blog do Tênis BR",
+   "url": "https://blogdotenisbrasil.com.br/10-melhores-raquetes-de-tenis-de-2025-qual-escolher-para-melhorar-seu-jogo/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "10 Melhores Raquetes de Tênis de 2025 (raquetes dos profissionais)",
+   "recomendados": [
+    "Yonex VCORE 98",
+    "Babolat Pure Aero Rafa Origin",
+    "Head Speed Pro",
+    "Wilson Blade 98"
+   ],
+   "recomendados_catalogo": [
+    "VCORE 98 8ª geração",
+    "Speed Pro",
+    "Blade 98 16x19 v9"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Lista ligada a atletas (Fonseca, Nadal, Sinner, Sabalenka); itens 4 a 10 não confirmados."
+  },
+  {
+   "id": "pt-035",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/as-raquetes-que-mais-evoluiram-em-2026-e-para-quem-cada-uma-serve/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Quem compete e gosta de controle agressivo",
+   "recomendados": [
+    "Head Speed Tour"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Nova Speed Tour 97 em 2026."
+  },
+  {
+   "id": "pt-036",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/as-raquetes-que-mais-evoluiram-em-2026-e-para-quem-cada-uma-serve/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Fundo de quadra que dita o ponto com topspin",
+   "recomendados": [
+    "Babolat Pure Aero 98"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero 98"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pure Aero 98 2026, 98 pol² para precisão."
+  },
+  {
+   "id": "pt-037",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/as-raquetes-que-mais-evoluiram-em-2026-e-para-quem-cada-uma-serve/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Vindo de raquete de pouca potência (iniciante a intermediário)",
+   "recomendados": [
+    "Yonex Ezone 100"
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Upgrade de potência mais seguro de 2025–2026."
+  },
+  {
+   "id": "pt-038",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/as-raquetes-que-mais-evoluiram-em-2026-e-para-quem-cada-uma-serve/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Avançados que batem mais reto e entram na quadra",
+   "recomendados": [
+    "Wilson Blade 98 v9",
+    "Yonex Percept 97",
+    "Head Gravity Pro"
+   ],
+   "recomendados_catalogo": [
+    "Blade 98 16x19 v9",
+    "Percept 97",
+    "Gravity Pro"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Raquetes de jogador para bolas retas."
+  },
+  {
+   "id": "pt-039",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/as-raquetes-que-mais-evoluiram-em-2026-e-para-quem-cada-uma-serve/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Intermediário baixo",
+   "recomendados": [
+    "Yonex Ezone 100",
+    "Wilson Shift 99L"
+   ],
+   "recomendados_catalogo": [
+    "EZONE 100"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Para intermediário baixo; aulas valem mais que troca de raquete."
+  },
+  {
+   "id": "pt-040",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/as-raquetes-que-mais-evoluiram-em-2026-e-para-quem-cada-uma-serve/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Alternativa de alto desempenho por custo menor",
+   "recomendados": [
+    "Artengo TR960"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Artengo TR960 como opção barata."
+  },
+  {
+   "id": "pt-041",
+   "idioma": "pt",
+   "fonte": "Universo do Tenista",
+   "url": "https://universodotenista.com/qual-a-melhor-raquete-para-iniciantes-no-tenis/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Raquetes para iniciantes 2026",
+   "recomendados": [
+    "Wilson Ultra 100L"
+   ],
+   "recomendados_catalogo": [
+    "Ultra 100L v5"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Ultra 100L leve e fácil de manusear; demais itens não legíveis."
+  },
+  {
+   "id": "pt-042",
+   "idioma": "pt",
+   "fonte": "Empório do Tenista (loja, canal de reviews)",
+   "url": "https://emporiodotenista.com.br/as-melhores-raquetes-de-controle-de-2024/",
+   "ano": 2024,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "loja_reviewer",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "As Melhores Raquetes de Controle de 2024: adultos iniciantes e intermediários",
+   "recomendados": [
+    "Head Gravity MP"
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Gravity MP (RA 59) a de maior controle testada no ano."
+  },
+  {
+   "id": "pt-043",
+   "idioma": "pt",
+   "fonte": "Empório do Tenista (loja, canal de reviews)",
+   "url": "https://emporiodotenista.com.br/as-melhores-raquetes-de-controle-de-2024/",
+   "ano": 2024,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "loja_reviewer",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "As Melhores Raquetes de Controle de 2024: intermediários e avançados",
+   "recomendados": [
+    "Head Speed MP",
+    "Wilson Blade 98"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP",
+    "Blade 98 16x19 v9"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Speed MP e Blade 98 para controle em nível mais alto."
+  },
+  {
+   "id": "pt-044",
+   "idioma": "pt",
+   "fonte": "Empório do Tenista (loja, canal de reviews)",
+   "url": "https://emporiodotenista.com.br/as-melhores-raquetes-de-controle-de-2024/",
+   "ano": 2024,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "loja_reviewer",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Iniciando, mas já quer raquete de performance sem 305–310 g",
+   "recomendados": [
+    "Head Boom MP"
+   ],
+   "recomendados_catalogo": [
+    "Boom MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Boom MP, 4ª no ranking de controle."
+  },
+  {
+   "id": "pt-045",
+   "idioma": "pt",
+   "fonte": "Empório do Tenista (loja, canal de reviews)",
+   "url": "https://emporiodotenista.com.br/as-melhores-raquetes-de-potencia-de-2024/",
+   "ano": 2024,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "loja_reviewer",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "orcamento_brl": null
+   },
+   "categoria_original": "As Melhores Raquetes de Potência de 2024",
+   "recomendados": [
+    "Head Extreme MP",
+    "Wilson Shift 99"
+   ],
+   "recomendados_catalogo": [
+    "Extreme MP",
+    "Shift 99 v1 300 g"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Extreme MP em 2º e Shift 99 em 3º; 1º lugar não identificado."
+  },
+  {
+   "id": "pt-046",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2024/07/20/as-10-melhores-raquetes-de-tenis-para-iniciantes/",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As 10 melhores raquetes de tênis para iniciantes (itens 1–6)",
+   "recomendados": [
+    "Wilson Clash 108",
+    "Babolat Pure Drive Lite",
+    "Babolat Pure Drive 107",
+    "Wilson Burn 100S",
+    "Babolat Boost Aero",
+    "Head Radical Team"
+   ],
+   "recomendados_catalogo": [
+    "Clash 108 v3",
+    "Pure Drive Lite"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Clash 108 em 1º; Pure Drive Lite para quem já evolui; itens 7–10 não identificados."
+  },
+  {
+   "id": "pt-047",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2024/03/02/as-melhores-raquetes-de-tenis-em-2024/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Guia completo: iniciantes",
+   "recomendados": [
+    "Wilson Energy XL",
+    "Wilson Fusion XL"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": false,
+   "texto_curto": "Até 280 g, cabeça acima de 100 pol², cabeça de 112 pol² dá sweet spot."
+  },
+  {
+   "id": "pt-048",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2024/03/02/as-melhores-raquetes-de-tenis-em-2024/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Guia completo: intermediários",
+   "recomendados": [
+    "Babolat Pure Aero",
+    "Wilson Clash"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "Clash 100 v3"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "280–300 g; Pure Aero manejável, Clash equilibra flexibilidade e potência."
+  },
+  {
+   "id": "pt-049",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2024/03/02/as-melhores-raquetes-de-tenis-em-2024/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Guia completo: avançados",
+   "recomendados": [
+    "Prince Tour 100",
+    "Head Speed MP",
+    "Yonex VCore 98"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP",
+    "VCORE 98 8ª geração"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "300 g ou mais; Prince Tour 100 (310 g), Speed MP para quem treina muito, VCORE 98 para técnica refinada."
+  },
+  {
+   "id": "pt-050",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2024/03/02/as-melhores-raquetes-de-tenis-em-2024/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhores de 2025 (atualização)",
+   "recomendados": [
+    "Babolat Pure Drive 2025",
+    "Yonex Ezone 100 2025",
+    "Head Gravity MP 2025",
+    "Head Radical MP 2025"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive",
+    "EZONE 100",
+    "Gravity MP",
+    "Radical MP"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Pure Drive para quase todos os níveis; Ezone 100 conforto; Gravity MP conforto; Radical MP versátil."
+  },
+  {
+   "id": "pt-051",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2024/03/02/as-melhores-raquetes-de-tenis-em-2024/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Quem coloca o conforto em primeiro lugar",
+   "recomendados": [
+    "Head Gravity MP",
+    "Yonex Ezone 100"
+   ],
+   "recomendados_catalogo": [
+    "Gravity MP",
+    "EZONE 100"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Gravity MP com amortecimento (295 g); Ezone 100 potência acessível com conforto."
+  },
+  {
+   "id": "pt-052",
+   "idioma": "pt",
+   "fonte": "Brasil Tênis",
+   "url": "https://brasiltenis.com.br/2026/04/12/as-dez-melhores-raquetes-de-tenis-em-2026/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As dez melhores raquetes de tênis em 2026",
+   "recomendados": [
+    "Head Speed Pro"
+   ],
+   "recomendados_catalogo": [
+    "Speed Pro"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Speed Pro 2026 com Hy-bor em destaque; lista completa não identificada."
+  },
+  {
+   "id": "pt-053",
+   "idioma": "pt",
+   "fonte": "Lance! (Outros Lances)",
+   "url": "https://www.lance.com.br/outros-lances/2025/07/03/as-melhores-raquetes-leves-para-iniciantes-no-tenis/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "midia",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As melhores raquetes leves para iniciantes",
+   "recomendados": [
+    "Adams Teloon Air II",
+    "Wilson Tour Slam Lite",
+    "Babolat Voltage"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": false,
+   "texto_curto": "Teloon Air II (256 g) das mais leves; Tour Slam Lite pelo custo-benefício."
+  },
+  {
+   "id": "pt-054",
+   "idioma": "pt",
+   "fonte": "my-best Brasil",
+   "url": "https://br.my-best.com/423",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Top 10 Melhores Raquetes de Tênis em 2026",
+   "recomendados": [
+    "Wilson Tour Slam",
+    "Head Graphene XT Speed S",
+    "Babolat B Fly 25"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": false,
+   "texto_curto": "Tour Slam em 1º; Speed S em 6º; B Fly 25 (infantil) em 7º; demais não identificados."
+  },
+  {
+   "id": "pt-055",
+   "idioma": "pt",
+   "fonte": "Energia para Recomeçar",
+   "url": "https://energiapararecomecar.com.br/melhor-raquete-de-tenis/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor Raquete de Tênis: As 6 Melhores em 2026",
+   "recomendados": [
+    "Tecnifibre T-Fight 300"
+   ],
+   "recomendados_catalogo": [
+    "TFight 300"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "T-Fight 98 300 16x19 Isoflex como a mais recomendada."
+  },
+  {
+   "id": "pt-056",
+   "idioma": "pt",
+   "fonte": "Os Melhores Tênis",
+   "url": "https://osmelhorestenis.com.br/melhor-raquete-de-tenis-para-iniciantes/",
+   "ano": 2026,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor Raquete de Tênis para Iniciantes em 2026",
+   "recomendados": [
+    "Wilson Energy XL",
+    "Wilson Federer",
+    "Wilson Fusion XL",
+    "Babolat Feather"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": false,
+   "texto_curto": "Energy XL melhor opção de entrada."
+  },
+  {
+   "id": "pt-057",
+   "idioma": "pt",
+   "fonte": "Os Melhores Tênis",
+   "url": "https://osmelhorestenis.com.br/melhores-raquetes-de-tenis-para-intermediarios/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "As 5 Melhores Raquetes de Tênis para Intermediários (2025)",
+   "recomendados": [
+    "Babolat Pure Drive Team",
+    "Yonex Ezone 100",
+    "Wilson Blade 98 V9",
+    "Head Radical MP 2025",
+    "Wilson Clash 100 Pro V2"
+   ],
+   "recomendados_catalogo": [
+    "Pure Drive Team",
+    "EZONE 100",
+    "Blade 98 16x19 v9",
+    "Radical MP"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Ordem não confirmada."
+  },
+  {
+   "id": "pt-058",
+   "idioma": "pt",
+   "fonte": "Os Melhores Tênis",
+   "url": "https://osmelhorestenis.com.br/melhor-raquete-de-tenis-profissional/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Melhor Raquete de Tênis Profissional: Top 5",
+   "recomendados": [
+    "Wilson Pro Staff 97L V14",
+    "Babolat Pure Aero Rafa",
+    "Head Speed Pro Legend",
+    "Yonex VCORE 100",
+    "Tecnifibre T-Fight 300 Isoflex"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero",
+    "Speed Pro",
+    "VCORE 100 8ª geração",
+    "TFight 300"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pro Staff 97L V14 marcada como melhor opção."
+  },
+  {
+   "id": "pt-059",
+   "idioma": "pt",
+   "fonte": "Dr. Leonardo Zanesco (ortopedista de ombro e cotovelo)",
+   "url": "https://www.drleonardozanesco.com.br/guia-tecnico-para-escolha-de-raquetes-de-tenis",
+   "ano": 2024,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "medico",
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Dor no braço / cotovelo de tenista",
+   "recomendados": [
+    "Wilson Clash 100",
+    "Wilson Clash 108",
+    "Tecnifibre TF-X1",
+    "Tecnifibre TF40"
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "Clash 108 v3"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Ortopedista indica Clash 100, Clash 108 ainda mais tolerante, e Tecnifibre TF-X1/TF40 pela absorção de impacto; cordas macias."
+  },
+  {
+   "id": "pt-060",
+   "idioma": "pt",
+   "fonte": "Aqui Paga Menos",
+   "url": "https://aquipagamenos.com.br/melhores-raquetes-de-tenis-2025/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": true,
+   "fonte_tipo": "afiliado",
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Braços sensíveis / quem já teve epicondilite",
+   "recomendados": [
+    "Wilson Clash 100",
+    "Yonex Ezone 100"
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "EZONE 100"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Clash 100 (FreeFlex, a mais flexível) e Ezone 100 com vibração reduzida."
+  },
+  {
+   "id": "pt-061",
+   "idioma": "pt",
+   "fonte": "Pró Spin (loja)",
+   "url": "https://www.prospin.com.br/raquetes/raquete-de-tenis-performance",
+   "ano": 2026,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "loja",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Raquetes de performance: passou da fase recreativa",
+   "recomendados": [
+    "Wilson Clash 100 v3",
+    "Head Boom MP",
+    "Babolat Pure Drive"
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3",
+    "Boom MP",
+    "Pure Drive"
+   ],
+   "ordem_confiavel": false,
+   "texto_curto": "Para quem ainda constrói o jogo."
+  },
+  {
+   "id": "pt-062",
+   "idioma": "pt",
+   "fonte": "Tudo Tenista",
+   "url": "https://tudotenista.com/qual-raquete-e-melhor-wilson-babolat-ou-head/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Quem tem lesões ou quer manuseio fácil",
+   "recomendados": [
+    "Wilson Clash"
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Clash para lesões e manuseio fácil."
+  },
+  {
+   "id": "pt-063",
+   "idioma": "pt",
+   "fonte": "Tudo Tenista",
+   "url": "https://tudotenista.com/qual-raquete-e-melhor-wilson-babolat-ou-head/",
+   "ano": 2025,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Equilíbrio entre controle e potência",
+   "recomendados": [
+    "Head Speed MP"
+   ],
+   "recomendados_catalogo": [
+    "Speed MP"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Head Speed (de Djokovic) equilibra controle e potência."
+  },
+  {
+   "id": "pt-064",
+   "idioma": "pt",
+   "fonte": "Superprof Portugal (blog)",
+   "url": "https://www.superprof.pt/blog/melhores-raquetes-aulas-tenis/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog_pt",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Raquete mais versátil (não para iniciantes)",
+   "recomendados": [
+    "Babolat Pure Aero 2023"
+   ],
+   "recomendados_catalogo": [
+    "Pure Aero"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pure Aero 2023 versátil; não indicada a iniciantes."
+  },
+  {
+   "id": "pt-065",
+   "idioma": "pt",
+   "fonte": "Superprof Portugal (blog)",
+   "url": "https://www.superprof.pt/blog/melhores-raquetes-aulas-tenis/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog_pt",
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Relação qualidade-preço para amadores",
+   "recomendados": [
+    "Artengo"
+   ],
+   "recomendados_catalogo": [],
+   "ordem_confiavel": true,
+   "texto_curto": "Artengo (Decathlon) popular entre amadores."
+  },
+  {
+   "id": "pt-066",
+   "idioma": "pt",
+   "fonte": "Superprof Portugal (blog)",
+   "url": "https://www.superprof.pt/blog/equipamento-aprender-tenis/",
+   "ano": 2023,
+   "fonte_loja": false,
+   "fonte_afiliado": false,
+   "fonte_tipo": "blog_pt",
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "orcamento_brl": null
+   },
+   "categoria_original": "Tenistas de nível avançado",
+   "recomendados": [
+    "Wilson Pro Staff 97"
+   ],
+   "recomendados_catalogo": [
+    "Pro Staff 97 v14"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Pro Staff 97 entre as melhores para avançados."
+  },
+  {
+   "id": "pt-067",
+   "idioma": "pt",
+   "fonte": "Fairplay Lojas (blog)",
+   "url": "https://fairplaylojas.com.br/blog/como-escolher-raquete-de-tenis-ideal",
+   "ano": 2025,
+   "fonte_loja": true,
+   "fonte_afiliado": false,
+   "fonte_tipo": "loja",
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "orcamento_brl": null
+   },
+   "categoria_original": "Versátil para quem evolui de intermediário para avançado",
+   "recomendados": [
+    "Wilson Clash"
+   ],
+   "recomendados_catalogo": [
+    "Clash 100 v3"
+   ],
+   "ordem_confiavel": true,
+   "texto_curto": "Clash como exemplo de raquete versátil."
+  }
+ ]
+}

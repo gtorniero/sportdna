@@ -1,5 +1,19 @@
 # Tenis Match — calibração e validação com reviews (out/2026)
 
+## Rodada 6: auditoria de dados, marcas e cobertura (nov/2026)
+- **Auditoria com fonte de 63 modelos** por 6 agentes (Nike, Puma, ASICS, Brooks, Mizuno, New Balance, modelos fracos), registro em `dados/auditoria-nov2026.json`. Ex.: Pegasus 42 maciez 2,4 → 3,0 e aprovação 3,8 → 4,1, sem “pé largo” e “longão”; Novablast 6 e Superblast 3 com aprovação maior; Wave Rider 30, Neo Vista 3, Neo Zen 2 e SC Trainer v3 com resposta menor.
+- **9 “importados” são vendidos no Brasil** (7 New Balance, On Cloudsoma, adidas Prime X3 e Takumi Sen 11): 189 dos 212 vendidos aqui.
+- **18 contradições de etiquetas** resolvidas (contraindicação vale; em tênis rápido, “não indicado para ritmo” sai).
+- **Motor:** ressalvas leves com valor fixo (não escalam com a contraindicação séria); categorias vizinhas (ex.: treino rápido versátil para treino diário); quem relatou desconforto com neutro só recebe estabilidade no topo e tênis sem apoio perde 4.
+- **Resultado (234 casos):** top 3 26% → 31%; top 10 47% → 54%. Marcas perto das dos especialistas (ver `validacao.md`); pódios com 2+ contraindicações sérias: 32 em 15.000.
+- **Cobertura (`run/tools/cobertura.mjs`):** 179 dos 212 tênis chegam ao pódio para algum perfil e 145 são 1º lugar. Fora: 6 Fila (regra), 6 importados e 21 dominados por um irmão mais barato ou mais bem avaliado, quase todos de entrada. Todos menos 3 entram no top 10 de algum perfil.
+
+## Rodada 5: ciência e calibração com especialistas (nov/2026)
+- **Ciência:** cada regra do motor revisada contra a literatura (`ciencia.md`). Mudanças: menos maciez “de presente” para 85 kg+ (Malisoux 2020: maciez protegeu os leves), base estável para pesados, maciez para até 65 kg, supertênis fora para quem pediu estabilidade, textos sem promessa de prevenção.
+- **Pergunta nova:** “Onde o seu tênis gasta mais?” (8 opções) no lugar de “Que parte do pé toca o chão primeiro?”.
+- **Pesos numa tabela (`PESOS`)** e calibração contra 304 casos de especialistas (`validacao.md`, `run/tools/calibrar.mjs`). Top 3: 16% → 26%; top 10: 36% → 47%. Pódios com 2+ contraindicações sérias: 130 → 61 em 15.000.
+- **Fica para a próxima:** reviews dos 48 modelos fracos (busca esgotou), revisão das etiquetas e notas de Nike, ASICS, Brooks e Puma, e validação com corredores reais.
+
 ## Rodada 4: gráficos e ranking coerentes (28/out/2026)
 Mesma checagem feita no Racket Match (PR #20): o relatório mostra uma meta e o 1º lugar a contradiz?
 
