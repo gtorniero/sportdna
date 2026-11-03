@@ -392,7 +392,7 @@ footer .f-base{display:flex;justify-content:space-between;align-items:center;gap
 .eng-steps .k{width:28px;height:28px;border-radius:50%;background:var(--area);color:var(--ink-on-color);display:grid;place-items:center;font-size:.8rem;font-weight:800}
 .eng-steps b{display:block;margin-bottom:2px}.eng-steps span{color:#BDBDB8;font-size:.95rem}
 .eng-src{color:#9E9E9A;font-size:.85rem;max-width:60em;margin:0 0 24px}
-@media (max-width:760px){.eng-stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:760px){.eng-stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.eng-stats div:last-child:nth-child(odd){grid-column:1/-1}}
 /* guias: o resto fica fechado */
 .more-guides{margin-top:22px}
 .more-guides>summary{cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:12px 20px;min-height:44px;list-style:none}
