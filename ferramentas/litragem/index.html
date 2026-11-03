@@ -148,7 +148,7 @@ section.block{padding-block:56px;border-top:1px solid var(--line)}
 .method div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
 .method b{display:block;font-family:var(--f-display);font-size:1.6rem;margin-bottom:4px}
 .method span{color:var(--muted);font-size:.93rem}
-.formula{margin-top:14px;font-family:var(--f-mono);font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto;white-space:nowrap}
+.formula{margin-top:14px;font-family:var(--f-mono);font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;white-space:normal;overflow-wrap:anywhere;line-height:1.6}
 
 .faq{display:grid;gap:10px;max-width:820px}
 .faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
@@ -202,7 +202,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <section class="hero"><div class="wrap">
     <span class="tag"><i></i>Ferramenta grátis · Surf</span>
     <h1>Calculadora de <span class="hl">litragem</span> de prancha</h1>
-    <p>Quantos litros a sua prancha deve ter? Mova os controles e veja a faixa certa para o seu peso, o seu nível e o tipo de prancha. Mesma fórmula do SURF DNA, calibrada com 390 surfistas reais.</p>
+    <p>Quantos litros a sua prancha deve ter? Mova os controles e veja a faixa certa para o seu peso, o seu nível e o tipo de prancha. Mesma fórmula do SURF DNA, ajustada com casos reais de surfistas, lojas, revistas e atletas.</p>
   </div></section>
 
   <div class="wrap tool">
@@ -240,7 +240,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
           <fieldset class="q"><legend>Condicionamento para remar</legend><div class="seg" id="fis"></div></fieldset>
           <fieldset class="q"><legend>Idade</legend><div class="seg" id="idade"></div></fieldset>
           <fieldset class="q"><legend>Com que frequência você surfa?</legend><div class="seg" id="freq"></div></fieldset>
-          <fieldset class="q"><legend>Roupa que você mais usa</legend><div class="seg" id="roupa"></div></fieldset>
           <fieldset class="q"><legend>Material</legend><div class="seg" id="mat"></div></fieldset>
           <div class="q">
             <label class="ql" for="atual">Litragem da sua prancha atual</label>
@@ -327,13 +326,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 <script>
 (function(){
-/* Fatores do SURF DNA (surf/), calibrados com 390 casos reais em out/2026 */
+/* espelho de litragem() em surf/index.html — manter igual
+   (LV[].gf e rng, MODF, ARCH[].ref, PESOS.vol, dimsFixed() do soft; altura fixa em 175 cm, o padrão do motor;
+   onda no padrão do motor, meio metro a 1 m) */
+const LITRAGEM={
+  gf:[[1.0,0.8],[0.58,0.47],[0.45,0.41],[0.41,0.385],[0.40,0.37]],rng:[1,2,2,1.5,1],
+  modf:{soft:1,minimal:1.8,mid:1.25,evo:1.1,fish:1.06,grov:1.10,twin:1.0,short:1,step:1.11},
+  ref:{soft:[78,96,23,3.5],minimal:[56,90,22,3],mid:[48,86,21.5,2.875],evo:[40,76,21,2.75],fish:[37,68,21.25,2.625],grov:[32,68,20.5,2.5],twin:[32,70,20.25,2.5],short:[28,72,19.25,2.375],step:[32,76,19.5,2.5]},
+  fixo:{soft:[84,108]},alt:175,tam:1,
+  vol:{idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],fis:[1.08,1.03,1,0.97],pesoModelo:[0.15,0.5,1,1,1],ondaStep:[0,0,0,1,2],ondaOutros:[0.5,0,0,0,0],epoxi:-1,refExp:0.9,refMin:0.75,refMax:1.3}
+};
+const clampL=(x,a,b)=>Math.max(a,Math.min(b,x));
+/* o: peso, lv (0–4), pos (0–1 dentro do nível), k (tipo), flut, fis, idade, freq, eps (epóxi) */
+function litragemSite(o){
+  const X=LITRAGEM,V=X.vol,g=X.gf[o.lv],GF=g[0]-(g[0]-g[1])*o.pos,mw=V.pesoModelo[o.lv],k=o.k;
+  if(X.fixo[k]){const [V0,L0,W0,T0]=X.ref[k],[a,b]=X.fixo[k],t=clampL(((X.alt-155)/45)*0.5+((o.peso-55)/45)*0.5,0,1),L=a+(b-a)*t,sc=Math.pow(clampL(o.peso/78,0.75,1.35),0.35);
+    return {v:V0/(L0*W0*T0)*L*(W0*sc)*(T0*Math.pow(sc,0.8)),GF,fixo:true}}
+  let v=o.peso*GF*(1+(X.modf[k]-1)*mw)*V.flut[o.flut]*V.idade[o.idade]*V.freq[o.freq]*V.fis[o.fis];
+  v+=(k==='step')?V.ondaStep[X.tam]:V.ondaOutros[X.tam];
+  if(o.eps)v+=V.epoxi;
+  const raw=v,rv=X.ref[k][0]*Math.pow(o.peso/75,V.refExp);v=clampL(v,rv*V.refMin,rv*V.refMax);
+  return {v,raw,GF,fixo:false};
+}
 const LV=[
-  {n:'Primeiras ondas',d:'Ainda com espuma ou empurrão',gf:[1.0,0.8],rng:1},
-  {n:'Já fica de pé',d:'Pega espuma sozinho',gf:[0.58,0.47],rng:2},
-  {n:'Intermediário',d:'Anda na parede, primeiras curvas',gf:[0.45,0.41],rng:2},
-  {n:'Intermediário avançado',d:'Cavada, batida, rasgada',gf:[0.41,0.385],rng:1.5},
-  {n:'Avançado',d:'Manobra em onda com força',gf:[0.385,0.36],rng:1}];
+  {n:'Primeiras ondas',d:'Ainda com espuma ou empurrão',rng:1},
+  {n:'Já fica de pé',d:'Pega espuma sozinho',rng:2},
+  {n:'Intermediário',d:'Anda na parede, primeiras curvas',rng:2},
+  {n:'Intermediário avançado',d:'Cavada, batida, rasgada',rng:1.5},
+  {n:'Avançado',d:'Manobra em onda com força',rng:1}];
 const TIPOS=[
   {k:'auto',n:'Não sei',d:'Usa o mais comum para o nível',m:null},
   {k:'soft',n:'Softboard',d:'Espuma, para aprender',m:1},
@@ -341,30 +361,28 @@ const TIPOS=[
   {k:'mid',n:'Mid-length / egg',d:"6'8\" a 7'8\"",m:1.25},
   {k:'evo',n:'Evolution',d:'Pranchinha com volume',m:1.1},
   {k:'fish',n:'Fish',d:'Curta, larga, rabeta swallow',m:1.06},
-  {k:'grov',n:'Groveler',d:'Para dia pequeno',m:1.06},
+  {k:'grov',n:'Groveler',d:'Para dia pequeno',m:1.10},
   {k:'twin',n:'Biquilha moderna',d:'Solta e rápida',m:1.0},
   {k:'short',n:'Pranchinha',d:'Shortboard de performance',m:1.0},
   {k:'step',n:'Step-up',d:'Para onda maior',m:1.11}];
-const AUTO=['soft','minimal','evo','short','short'];
+/* o tipo que o SURF DNA mais indica em 1º lugar em cada nível (mesmo padrão da calculadora do app) */
+const AUTO=['minimal','mid','mid','grov','twin'];
 const POS=[['Começando',0],['No meio',0.5],['Dominando',1]];
 const FLUT=[['Mais espuma',1.08,'Entro cedo e pego mais ondas'],['Equilíbrio',1,''],['Mais justa',0.95,'Responde mais rápido']];
-const FIS=[['Canso rápido',1.5],['Razoável',0],['Bom',0],['Muito bom',0]];
+const FIS=[['Canso rápido',1.08],['Razoável',1.03],['Bom',1],['Muito bom',0.97]];
 const IDADE=[['Até 25',1],['26 a 35',1],['36 a 45',1.01],['46 a 55',1.03],['56+',1.05]];
 const FREQ=[['1 a 2 por mês',1.03],['3 a 6 por mês',1.01],['2 a 3 por semana',1],['4+ por semana',1]];
-const ROUPA=[['Bermuda ou lycra',1],['Roupa fina',1],['3/2 mm ou mais',1.01]];
 const MAT=[['PU (tradicional)',0],['Epóxi (EPS)',-1]];
-const S={peso:75,lv:2,pos:1,tipo:'auto',flut:1,fis:1,idade:1,freq:2,roupa:0,mat:0,atual:null};
+const S={peso:75,lv:2,pos:1,tipo:'auto',flut:1,fis:1,idade:1,freq:2,mat:0,atual:null};
 const $=id=>document.getElementById(id);
 const dec=n=>n.toFixed(1).replace('.',',');
 
-function mwOf(lv){return [0.15,0.5,1,1,1][lv]}
+function mwOf(lv){return LITRAGEM.vol.pesoModelo[lv]}
 function tipoOf(k,lv){const key=k==='auto'?AUTO[lv]:k;return TIPOS.find(t=>t.k===key)}
 function calc(o){
-  const L=LV[o.lv],pos=POS[o.pos][1],GF=L.gf[0]-(L.gf[0]-L.gf[1])*pos;
-  const t=tipoOf(o.tipo,o.lv),mw=mwOf(o.lv);
-  const body=IDADE[o.idade][1]*FREQ[o.freq][1]*ROUPA[o.roupa][1];
-  let v=o.peso*GF*(1+(t.m-1)*mw)*FLUT[o.flut][1]*body+FIS[o.fis][1]+MAT[o.mat][1];
-  return {v,lo:v-L.rng,hi:v+L.rng,GF,t};
+  const t=tipoOf(o.tipo,o.lv),L=LV[o.lv];
+  const r=litragemSite({peso:o.peso,lv:o.lv,pos:POS[o.pos][1],k:t.k,flut:o.flut,fis:o.fis,idade:o.idade,freq:o.freq,eps:o.mat===1&&t.k!=='soft'});
+  return {v:r.v,raw:r.raw,lo:r.v-L.rng,hi:r.v+L.rng,GF:r.GF,t,fixo:r.fixo};
 }
 
 function seg(id,arr,key,cls){
@@ -374,7 +392,7 @@ function seg(id,arr,key,cls){
 function renderOpts(){
   $('lv').innerHTML=LV.map((x,i)=>`<button type="button" class="opt" data-k="lv" data-v="${i}" aria-pressed="${S.lv===i}"><b>${x.n}</b><small>${x.d}</small></button>`).join('');
   $('tipo').innerHTML=TIPOS.map(x=>`<button type="button" class="opt" data-k="tipo" data-v="${x.k}" aria-pressed="${S.tipo===x.k}"><b>${x.n}</b><small>${x.d}</small></button>`).join('');
-  seg('pos',POS,'pos');seg('flut',FLUT,'flut');seg('fis',FIS,'fis');seg('idade',IDADE,'idade');seg('freq',FREQ,'freq');seg('roupa',ROUPA,'roupa');seg('mat',MAT,'mat');
+  seg('pos',POS,'pos');seg('flut',FLUT,'flut');seg('fis',FIS,'fis');seg('idade',IDADE,'idade');seg('freq',FREQ,'freq');seg('mat',MAT,'mat');
 }
 
 const SCALE=[15,110];
@@ -406,7 +424,9 @@ function update(){
   const axis=`<div class="axis"><span></span><div><span>0</span><span>${Math.round(mx/2)}</span><span>${Math.round(mx)} L</span></div><span></span></div>`;
   $('byLevel').innerHTML=all.map((r,i)=>bar(LV[i].n,r.t.n,r,i===S.lv)).join('')+axis;
   $('byType').innerHTML=tps.map(x=>`<button type="button" data-k="tipo" data-v="${x.t.k}" aria-pressed="${x.t.k===r.t.k}" aria-label="Usar ${x.t.n} no cálculo: ${Math.round(x.r.lo)} a ${Math.round(x.r.hi)} litros" style="all:unset;cursor:pointer;display:block">${bar(x.t.n,'',x.r,x.t.k===r.t.k)}</button>`).join('')+axis;
-  $('formula').textContent=`${S.peso} kg × ${dec(r.GF).replace(',',',')} (fator ${LV[S.lv].n.toLowerCase()}) × ${dec(1+(r.t.m-1)*mwOf(S.lv))} (${r.t.n.toLowerCase()}) × ${FLUT[S.flut][1].toFixed(2).replace('.',',')} (remada) ${FIS[S.fis][1]?'+ 1,5 L (condicionamento) ':''}${MAT[S.mat][1]?'− 1 L (EPS) ':''}≈ ${dec(r.v)} L`;
+  {const f2=x=>x.toFixed(2).replace('.',','),V=LITRAGEM.vol;
+   $('formula').textContent=r.fixo?`${r.t.n}: a litragem vem do tamanho padrão da prancha para ${S.peso} kg ≈ ${dec(r.v)} L`:
+   `${S.peso} kg × ${r.GF.toFixed(3).replace('.',',')} (fator ${LV[S.lv].n.toLowerCase()}) × ${f2(1+(r.t.m-1)*mwOf(S.lv))} (${r.t.n.toLowerCase()}) × ${f2(FLUT[S.flut][1])} (remada) × ${f2(V.idade[S.idade])} (idade) × ${f2(V.freq[S.freq])} (frequência) × ${f2(FIS[S.fis][1])} (condicionamento) ${MAT[S.mat][1]?'− 1 L (EPS) ':''}${Math.abs(r.raw-r.v)>0.05?`= ${dec(r.raw)} L, limitado a ${dec(r.v)} L para esse tipo`:`≈ ${dec(r.v)} L`}`}
   try{history.replaceState(null,'','#'+[S.peso,S.lv,S.pos,S.tipo,S.flut].join('-'))}catch(e){}
 }
 function readHash(){
