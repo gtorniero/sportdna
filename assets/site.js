@@ -330,7 +330,9 @@ function privacy(){
       <ul>
         <li>As respostas dos testes são processadas no seu próprio navegador. Não temos conta de usuário nem banco de dados com elas.</li>
         <li>O RACKET DNA guarda no seu navegador o último resultado e o que você liberou, para você voltar depois. Para apagar, limpe os dados do site no navegador.</li>
-        <li>Não usamos ferramentas de análise de tráfego nem anúncios.</li>
+        <li>Google Analytics e Pixel da Meta só são carregados após sua escolha de cookies opcionais. Medimos páginas públicas e início e conclusão dos testes apenas por esporte. As tags não recebem respostas, peso, idade, dor, condições físicas, e-mail, códigos de resultado ou conteúdo do relatório.</li>
+        <li>Rótulos de campanha e identificadores de clique válidos podem ser usados para atribuir visitas. Recusar não impede o uso do site. Você pode alterar sua escolha em Preferências de cookies, no rodapé; ela vale por até 180 dias. Ao revogar, interrompemos novas coletas opcionais e removemos os cookies opcionais acessíveis ao site. Dados já recebidos pelos fornecedores não são apagados automaticamente.</li>
+        <li>Google e Meta podem processar identificadores do navegador e informações técnicas, como IP e dispositivo, em outros países. Consulte as políticas do Google e da Meta. Simulações e pagamentos de teste não geram compras nos pixels.</li>
       </ul>
       <h2>Contato e e-mail</h2>
       <ul>
@@ -436,3 +438,6 @@ function legacyRoute(){
 window.addEventListener("hashchange",legacyRoute);
 if(!legacyRoute()){ render(window.ML_VIEW || 'inicio'); if(location.hash==='#conceito') requestAnimationFrame(()=>document.getElementById('conceito')?.scrollIntoView()); }
 })();
+
+// A mesma medição consentida em todas as páginas públicas geradas.
+if (typeof document.querySelector === 'function' && !document.querySelector('script[src="/assets/measurement.js"]')) { const m = document.createElement('script'); m.src = '/assets/measurement.js'; m.defer = true; document.head.appendChild(m); }
