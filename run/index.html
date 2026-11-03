@@ -229,6 +229,44 @@ table.t10 tr.pref td{background:var(--soft)}
   .specs{grid-template-columns:repeat(3,minmax(0,1fr))}
   .kpis{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
+/* relatório: barra fixa com saltos, seções numa ordem só, ficha e tabelas empilhadas no celular */
+.rnav{position:sticky;top:0;z-index:20;background:var(--bg);padding:10px 0 6px;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--line);min-width:0}
+.rnav-a{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.rnav-c{display:flex;gap:6px;list-style:none;margin:0;padding:2px 2px 6px;overflow-x:auto;scrollbar-width:thin;min-width:0}
+.rnav-c li{flex:none}
+.rnav-c a{display:inline-flex;align-items:center;min-height:32px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.rnav-c a:hover{border-color:var(--pri)}
+.rnav-c a[aria-current]{background:var(--pri);border-color:var(--pri);color:var(--pri-ink)}
+.rnav-c a:focus-visible{outline:3px solid var(--pri);outline-offset:-1px}
+.rnav .pdfst:empty{display:none}
+.rsec{display:flex;flex-direction:column;gap:14px;scroll-margin-top:calc(var(--navh,110px) + 12px);min-width:0}
+.sech{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.sech:focus{outline:none}.sech:focus-visible{outline:3px solid var(--pri);outline-offset:4px}
+.pname{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.01em;line-height:1.08;font-family:var(--f-display);margin:2px 0 0}
+.pname.sm{font-size:clamp(20px,3vw,24px)}
+table.ftab{min-width:0;font-size:15px}
+.ftab th{width:34%;font-size:13px;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:700}
+.ftab td{overflow-wrap:anywhere}
+details.rk>summary{cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:44px;justify-content:center;list-style:none;padding-left:28px;position:relative;font-family:var(--f-display);font-size:18px;font-weight:700}
+details.rk>summary::-webkit-details-marker{display:none}
+details.rk>summary::before{content:"";position:absolute;left:4px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translateY(-70%) rotate(-45deg);transition:transform .2s}
+details.rk[open]>summary::before{transform:translateY(-70%) rotate(45deg)}
+details.rk>summary small{font-family:var(--f-body);font-size:14px;font-weight:400}
+details.rk>summary:focus-visible{outline:3px solid var(--pri);outline-offset:4px;border-radius:8px}
+details.rk:not([open]){gap:0}
+#rkBrand{min-height:44px;padding:8px 12px}
+@media (max-width:600px){
+  table.stk{min-width:0}
+  .stk thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .stk,.stk tbody,.stk tr,.stk td{display:block;width:100%}
+  .stk tr{border-bottom:1px solid var(--line);padding:10px 4px}
+  .stk td{border:0;padding:3px 0;display:grid;grid-template-columns:104px minmax(0,1fr);gap:10px;white-space:normal;align-items:center}
+  .stk td::before{content:attr(data-label);font-size:12px;font-weight:700;color:var(--muted);font-family:var(--f-body)}
+  table.t10 tr.pref{background:var(--soft);border-radius:10px}table.t10 tr.pref td{background:transparent}
+  .duelt.stk td:first-child{display:block;font-weight:700;padding-bottom:4px}
+  .duelt.stk td:first-child::before{content:none}
+  .duelt.stk td{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+}
 /* Pix simulado (mesmo do SURF DNA) */
 .btn-sm{min-height:40px;padding:8px 14px;font-size:14px;border-radius:10px}
 .modal{position:fixed;inset:0;background:rgba(5,22,29,.62);display:grid;place-items:center;padding:16px;z-index:50}
@@ -804,15 +842,19 @@ function engine(a,long){
   const conf=Math.min(96,(long?87:79)+(cats[0][1]-(cats[1]?cats[1][1]:0))*1.1);
   const tkPerfil=Math.round(fins.reduce((s,f)=>s+f.m.p,0)/fins.length);
   const pref=(a.marca||[]).map(i=>BRANDS[i-1]).filter(Boolean);
-  // por marca, só modelos vendidos no Brasil
-  const best={};M.forEach(m=>{if(!m.br)return;const v=sm(m,1);if(!best[m.b]||v>best[m.b].s)best[m.b]={m,s:v}});
-  const brands=Object.values(best).map(x=>({m:x.m,s:x.s,fit:Math.round(Math.max(50,Math.min(97,96-(t0-x.s)*2))),pref:pref.includes(x.m.b)})).sort((p,q)=>q.s-p.s);
-  const fitOf=v=>Math.round(Math.max(50,Math.min(97,96-(t0-v)*2)));
-  let last=99;const top10=ranked.slice(0,10).map((x,i)=>{const f=i<3?fins[i].fit:Math.min(last,Math.round(Math.max(50,96-i*2-(t0-x.s)*2)));last=f;return i<3?fins[i]:{m:x.m,s:x.s,fit:f}});
-  const byBrand=b=>M.filter(m=>m.b===b&&m.br).map(m=>({m,s:sm(m,1)})).sort((p,q)=>q.s-p.s).slice(0,3).map(x=>({m:x.m,s:x.s,fit:fitOf(x.s)}));
-  const cm=a.atual&&M.find(m=>m.n===a.atual);const atual=cm?{m:cm,fit:fins.some(f=>f.m===cm)?fins.find(f=>f.m===cm).fit:Math.round(Math.max(20,Math.min(97,96-(t0-sm(cm,1))*2)))}:null;
+  // um DNA Score por tênis, igual em todas as seções: sai da posição no ranking principal.
+  // Antes, o quadro por marca recalculava com outra fórmula (sem o desconto de posição), e o mesmo tênis aparecia com notas diferentes.
+  // Depois do ranking vêm os tênis fora da sua categoria (placar relaxado), sempre abaixo do último do ranking.
+  const rest=M.filter(m=>!ranked.some(x=>x.m===m)).map(m=>({m,s:sm(m,1),out:1})).sort((p,q)=>q.s-p.s);
+  const FIT=new Map();let last=99;
+  [...ranked,...rest].forEach((x,i)=>{const f=i<3?fins[i].fit:Math.min(last,Math.round(Math.max(i<10?50:20,96-Math.min(i,9)*2-(t0-x.s)*2)));last=f;FIT.set(x.m,{fit:f,pos:i+1,out:!!x.out,s:x.s})});
+  const fitM=m=>FIT.get(m).fit,posM=m=>FIT.get(m).pos,inRank=m=>!FIT.get(m).out;
+  const top10=ranked.slice(0,10).map((x,i)=>i<3?fins[i]:{m:x.m,s:x.s,fit:fitM(x.m)});
+  // por marca, só modelos vendidos no Brasil e do ranking principal (mesmo DNA Score do top 10)
+  const byBrand=b=>ranked.filter(x=>x.m.b===b&&x.m.br).slice(0,3).map(x=>({m:x.m,s:x.s,fit:fitM(x.m),pos:posM(x.m)}));
+  const cm=a.atual&&M.find(m=>m.n===a.atual);const atual=cm?{m:cm,fit:fitM(cm)}:null;
   const parts=m=>{const C={};sm(m,1,C);return C};
-  return {top10,byBrand,pref,brands,level,c1,c2,fins,second,atual,conf:Math.round(conf),long,a,peso,tkPerfil,T,W,ID,ranked,parts,fitOf,inZ,bmax};
+  return {top10,byBrand,pref,level,c1,c2,fins,second,atual,conf:Math.round(conf),long,a,peso,tkPerfil,T,W,ID,ranked,parts,fitM,posM,inRank,inZ,bmax};
 }
 
 const BRANDS=[...new Set(M.map(m=>m.b))].sort((a,b)=>M.filter(m=>m.b===b).length-M.filter(m=>m.b===a).length||a.localeCompare(b));
@@ -836,7 +878,10 @@ function idealVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];const pz=+(g('peso',
   const cus=cl10(4+Math.max(0,4-g('orc',1))*1.1+(g('prior',0)===3?2:0));
   return [amort,resp,leve,est,dur,cus]}
 function factors(r){const a=r.a,m=r.fins[0].m,out=[];const iv=idx(m),id=r.ID;
-  SX.forEach((k,i)=>{const d=iv[i]-id[i];if(id[i]>=6.5&&d>=-0.5)out.push(['+',k+' alto, como você precisa']);else if(id[i]>=6.5&&d<-1.5)out.push(['−',k+' um pouco abaixo do ideal'])});
+  // cada índice com a frase certa: custo por km alto no índice quer dizer custo baixo em reais
+  const UP=['Bem amortecido, como você precisa','Boa resposta, como você precisa','Leve, como você precisa','Estável, como você precisa','Durável: '+m.du+' km','Custo por km baixo: '+kmCost(m).replace(' por km','')];
+  const DN=['Menos amortecido do que o ideal','Menos resposta do que o ideal','Mais pesado do que o ideal','Menos estável do que o ideal','Dura menos do que o ideal: '+m.du+' km','Custo por km acima do ideal: '+kmCost(m).replace(' por km','')];
+  SX.forEach((k,i)=>{const d=iv[i]-id[i];if(id[i]>=6.5&&d>=-0.5)out.push(['+',UP[i]]);else if(id[i]>=6.5&&d<-1.5)out.push(['−',DN[i]])});
   const B=BUD[a.orc===undefined?1:a.orc];if(a.orc!==SEM_LIMITE)out.push(m.p<=B[1]?['+','Dentro do orçamento']:['−','Acima do orçamento']);
   if(a.largura===2)out.push(m.lg?['+','Fôrma larga']:['−','Fôrma padrão; prove antes']);
   if(r.peso>=85&&stackOf(m)>=36)out.push(['+','Espuma alta para '+r.peso+' kg']);
@@ -1043,7 +1088,7 @@ function renderPreview(){
     <div class="plans">
       <div class="plan best">
         <h3>Relatório completo</h3><span class="price">R$ 9,99</span>
-        <ul><li>Seu tênis ideal com Fit Score e ficha técnica</li><li>Por que combina com você e pontos de atenção</li><li>Tamanho e data de troca</li><li>Comparação com o seu tênis atual</li><li>2º e 3º lugares, com marca e modelo</li><li>Seu top 10 com DNA, marca e preço</li><li>Top 3 geral ou top 3 da sua marca, lado a lado</li><li>O melhor tênis de cada marca para você</li><li>Segundo par para rodízio</li><li>Dicas para pagar menos</li><li>Relatório em PDF (A4) de 5 páginas para guardar</li></ul>
+        <ul><li>Seu tênis ideal com DNA Score e ficha técnica</li><li>Por que combina com você e pontos de atenção</li><li>Tamanho e data de troca</li><li>Comparação com o seu tênis atual</li><li>2º e 3º lugares, com marca e modelo</li><li>Seu top 10 com DNA Score, marca e preço</li><li>O melhor tênis de cada marca para você</li><li>Comparador com qualquer tênis do catálogo</li><li>Segundo par para rodízio</li><li>Dicas para pagar menos</li><li>Cards do seu DNA para compartilhar</li><li>Relatório em PDF (A4) de 5 páginas para guardar</li></ul>
         <button class="btn btn-go" type="button" id="buy" data-buy>Pagar com Pix (simulação)</button>
       </div>
     </div>
@@ -1071,39 +1116,27 @@ function atualDiffs(r){
   if(c.c!==m.c)out.push(`Categoria muda de ${CAT[c.c].n.toLowerCase()} para ${CAT[m.c].n.toLowerCase()}`);
   return out;
 }
-// comparação com o tênis que a pessoa usa hoje
-function atualT(r){
-  const cur=r.atual;if(!cur)return '';
-  const c=cur.m,w=r.fins[0],m=w.m;
-  if(c===m)return `<div class="panel"><h3>Seu tênis atual</h3><p>O ${esc(c.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.</p></div>`;
-  const ic=idx(c),im=idx(m),out=atualDiffs(r);
-  const row=(l,f)=>`<tr><td>${l}</td><td class="n">${f(c)}</td><td class="n">${f(m)}</td></tr>`;
-  return `<div class="panel"><div><h3>Seu tênis atual × o recomendado</h3><p class="muted" style="font-size:14px">O que muda saindo do ${esc(modelOf(c))} para o ${esc(modelOf(m))}.</p></div>
-  <div class="two"><div>${VZ.hex(SX,[{name:modelOf(c)+' (atual)',v:ic,c:'var(--clay)',dash:1},{name:modelOf(m),v:im,c:'var(--pri)',fill:'var(--pri)',fo:.16,dots:1}])}</div>
-  <div style="display:flex;flex-direction:column;gap:14px;min-width:0"><div class="tbl"><table class="duelt" style="min-width:0"><thead><tr><th><span class="a11y-sr">Característica</span></th><th>Atual</th><th>Recomendado</th></tr></thead><tbody>
-  ${row('Fit Score',x=>(x===c?cur.fit:w.fit)+'%')}${row('Preço',x=>priceTxt(x).replace(' (aprox.)',''))}${row('Peso',x=>x.g+' g')}${row('Espuma',x=>stackOf(x)+' / '+foreOf(x)+' mm')}${row('Drop',x=>dec1(x.dr)+' mm')}${row('Durabilidade',x=>x.du+' km')}${row('Custo por km',x=>kmCost(x).replace(' por km',''))}</tbody></table></div>
-  ${out.length?`<ul class="why">${out.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div></div></div>`;
-}
-function whyT(r){
+// screen=1: versão do relatório na tela, sem repetir o que já aparece em outro lugar (categoria no "Seu resultado", orçamento no chip); até 4 itens
+function whyT(r,screen){
   const a=r.a,f=r.fins[0].m,out=[];
-  out.push(`Seu perfil (${PROF[r.level].toLowerCase()}) e o objetivo de ${OBJ[a.obj===undefined?1:a.obj].toLowerCase()} apontam para a categoria ${CAT[r.c1].n.toLowerCase()}.`);
+  if(!(screen&&zoneT(r)))out.push(`Seu perfil (${PROF[r.level].toLowerCase()}) e o objetivo de ${OBJ[a.obj===undefined?1:a.obj].toLowerCase()} apontam para a categoria ${CAT[r.c1].n.toLowerCase()}.`);
   if(r.peso>=85)out.push(`Com ${r.peso} kg, priorizamos espuma mais alta e base estável.`);
   if(a.neutro===1)out.push('Você relatou desconforto com tênis neutro, por isso estabilidade entrou na conta.');
   else out.push(GIRO[a.pisada===undefined?7:a.pisada]===1?'Sua sola gasta mais por dentro: demos um pouco mais de peso à estabilidade, mas ficamos no neutro, porque os estudos não mostram ganho em escolher o tênis pela pisada.':'Sem desconforto relatado, ficamos no neutro: os estudos não mostram ganho em escolher tênis pelo tipo de pisada.');
   if(a.largura===2&&f.lg)out.push('O modelo tem fôrma mais larga, como o seu pé.');
   if(f.nr>=3)out.push(`Nas ${f.nr} reviews que lemos${f.nc?` (${f.np} profissionais e ${f.nc} de clientes)`:''}, a aprovação média é ${dec1(f.sc)} de 5.`);
-  if(a.orc!==SEM_LIMITE)out.push(`${priceTxt(f)}, ${f.p<=BUD[a.orc===undefined?1:a.orc][1]?'dentro':'um pouco acima'} do seu orçamento.`);
-  return out;
+  if(!screen&&a.orc!==SEM_LIMITE)out.push(`${priceTxt(f)}, ${f.p<=BUD[a.orc===undefined?1:a.orc][1]?'dentro':'um pouco acima'} do seu orçamento.`);
+  return screen?out.slice(0,4):out;
 }
-// quando o 1º fica fora da zona (categoria ideal dentro do orçamento), diz por quê e qual o melhor dentro dela
+// quando o 1º fica fora da zona (categoria ideal dentro do orçamento): uma frase só, com o motivo e o melhor dentro dela
 function zoneT(r){
   const w=r.fins[0],f=w.m,c=CAT[r.c1].n.toLowerCase(),cap=r.bmax<99999;
   if(r.inZ(f))return '';
   const zona=`${c}${cap?', até '+brl(r.bmax):''}`;
-  const fora=[f.c!==r.c1?`é da categoria ${CAT[f.c].n.toLowerCase()}`:'',f.p>r.bmax*1.08?`custa ${priceTxt(f).replace(' (aprox.)','')}, acima do seu orçamento`:''].filter(Boolean).join(' e ');
+  const fora=[f.c!==r.c1?`é de ${CAT[f.c].n.toLowerCase()}`:'',f.p>r.bmax*1.08?`custa ${priceTxt(f).replace(' (aprox.)','')}, acima do seu orçamento`:''].filter(Boolean).join(' e ');
   const b=r.ranked.find(x=>r.inZ(x.m)&&x.m!==f&&!PODIO_FORA.includes(x.m.b));
-  if(!b)return `Fica fora da sua categoria ideal (${zona}): ${fora}. Nenhum tênis de ${c} do catálogo ${cap?'cabe no seu orçamento':'combina com o seu perfil'}, por isso o 1º vem da categoria mais próxima.`;
-  const t=r.top10.find(x=>x.m===b.m),bf=t?t.fit:Math.min(r.fitOf(b.s),r.top10[r.top10.length-1].fit),gap=Math.max(1,w.fit-bf);
+  if(!b)return `Suas respostas apontam para ${zona}, mas nenhum tênis dessa categoria ${cap?'cabe no seu orçamento':'combina com o seu perfil'}; por isso o 1º ${fora}.`;
+  const bf=r.fitM(b.m),gap=Math.max(1,w.fit-bf);
   const pw=r.parts(f),pb=r.parts(b.m),bi=idx(b.m);
   const dv=k=>(pw[k]||0)-(pb[k]||0),k=[...new Set([...Object.keys(pw),...Object.keys(pb)])].filter(k=>k!=='cat').sort((x,y)=>dv(y)-dv(x))[0];
   const SL=['amortecimento','resposta','leveza','estabilidade'];
@@ -1116,11 +1149,10 @@ function zoneT(r){
   const i=k&&k[0]==='s'?+k[1]:-1;
   const why=i>=0?(bi[i]<r.ID[i]?(i===2?'é mais pesado do que você precisa':`tem menos ${SL[i]} do que você precisa`):`tem ${SL[i]} além do que você precisa`):L[k];
   const lost=k&&dv(k)>0.3;
-  return `Fica fora da sua categoria ideal (${zona}): ${fora}. O melhor dentro dela, ${b.m.n}, ficou ${gap} ${gap===1?'ponto':'pontos'} atrás${lost&&why?` (${why})`:' (soma de pequenas diferenças)'}.`;
+  return `Suas respostas apontam para ${zona}; ele ${fora}, mas ficou ${gap} ${gap===1?'ponto':'pontos'} à frente do melhor de lá, o ${b.m.n} (${lost&&why?why:'soma de pequenas diferenças'}).`;
 }
 function attT(r){
   const a=r.a,f=r.fins[0].m,out=[];
-  const z=zoneT(r);if(z)out.push(z);
   if(a.dor>0)out.push('Você relatou dor. Tênis ajuda no conforto, mas dor persistente pede avaliação de um profissional.');
   if(f.c==='sup')out.push('Supertênis dura menos (350 a 450 km) e não serve como único par: use em prova e treinos-chave.');
   if(f.dr<7)out.push(`Drop baixo (${dec1(f.dr)} mm): se o seu atual é mais alto, faça a transição aos poucos.`);
@@ -1135,86 +1167,118 @@ function attT(r){
   out.push('Nenhum tênis previne lesão sozinho: o que mais pesa é aumentar o volume de treino aos poucos.');
   return out;
 }
+/* ficha técnica do 1º: uma tabela só, que também vira texto para copiar */
+function fichaRows(r){
+  const a=r.a,m=r.fins[0].m,km=KMW[a.km===undefined?1:a.km],mo=Math.max(1,Math.round(m.du/km/4.3));
+  return [['Tênis',m.n],['Categoria',CAT[m.c].n+(m.pl==='carbono'?' · placa de carbono':m.pl?' · com placa':'')],
+    ['Preço médio',priceTxt(m)+(m.ap?' · estimado':' · consultado em out/2026')],['Custo por km',kmCost(m)],
+    ['Peso',m.g+' g'],['Espuma (salto / antepé)',mm1(stackOf(m))+' / '+mm1(foreOf(m))+' mm'],['Drop',dec1(m.dr)+' mm'],
+    ['Fôrma',m.lg?'Tem versão larga (2E/wide)':'Padrão'],['Durabilidade',m.du+' km'],
+    ['Troca',`em cerca de ${mo} ${mo===1?'mês':'meses'}, com ${km} km por semana`],
+    ['Numeração',sizeText(a)+(m.tam?` Clientes relatam que veste ${m.tam}.`:'')+' Prove no fim do dia, com a meia de corrida.'],
+    ['Fonte',(m.fi?'specs da ficha da marca (sem medição de laboratório)':'specs de laboratório')+' · '+(m.nr?m.nr+(m.nr===1?' review lida':' reviews lidas')+(m.nc?` (${m.np} ${m.np===1?'profissional':'profissionais'}, ${m.nc} de ${m.nc===1?'cliente':'clientes'})`:''):'sem review independente ainda')]];
+}
+let navIO=null,navRO=null;
 function renderReport(){
-  const r=RES,a=r.a,w=r.fins[0],m=w.m,km=KMW[a.km===undefined?1:a.km],mo=Math.max(1,Math.round(m.du/km/4.3));
-  const pdfBtn=id=>`<div class="pdfbar"><button class="btn btn-pri" type="button" id="${id}">Baixar relatório em PDF (A4)</button><span class="note pdfst" aria-live="polite"></span></div>`;
-  const cols=['var(--pri)','var(--clay)','var(--muted)'];
-  let h=`${pdfBtn('pdfTop')}
-  <div class="panel"><h3>Seus cards</h3><p class="muted">Prontos para story: o seu perfil de corredor e o tênis que mais combina com você, com o DNA.</p>
-    <div id="cardsOut" class="cardpair"></div>
-    <div class="row"><button class="btn btn-pri" type="button" id="shareCards">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlRunner">Salvar card do corredor</button><button class="btn btn-ghost" type="button" id="dlShoe">Salvar card do tênis</button></div></div>
-  <div class="panel winner">
-    <p class="eyebrow">Seu tênis ideal</p>
-    <div class="whead"><div><p class="eyebrow">${esc(m.b)}</p><h2>${esc(modelOf(m))}</h2><p class="muted mono" style="font-size:14px">Preço médio: ${priceTxt(m)}</p>${brandLink(m)}<p class="src">${m.ap?'Preço estimado':'Preço consultado em out/2026'} · ${m.fi?'specs da ficha da marca (sem medição de laboratório)':'specs de laboratório'} · ${m.nr?m.nr+(m.nr===1?' review lida':' reviews lidas')+(m.nc?` (${m.np} ${m.np===1?'profissional':'profissionais'}, ${m.nc} de ${m.nc===1?'cliente':'clientes'})`:''):'sem review independente ainda'}</p></div>
-      <div style="text-align:right"><div class="fit">${w.fit}%</div><span class="muted" style="font-size:13px">Fit Score</span></div></div>
+  const r=RES,a=r.a,w=r.fins[0],m=w.m;
+  const cur=r.atual,hasAt=cur&&cur.m!==m,zone=zoneT(r);
+  const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
+  const sec=(id,title,body)=>`<section class="rsec" id="${id}" aria-labelledby="${id}-h"><h2 class="sech" id="${id}-h">${title}</h2>${body}</section>`;
+  const specLine=x=>`${CAT[x.c].n} · ${x.g} g · espuma ${mm1(stackOf(x))} mm · drop ${dec1(x.dr)} mm · ${priceTxt(x)}`;
+  const att=attT(r).filter(x=>!/^Prove no fim do dia/.test(x)&&!/^Clientes relatam que veste/.test(x));
+  /* 0. barra do relatório */
+  let h=`<nav class="rnav" aria-label="Seções do relatório">
+    <div class="rnav-a"><button class="btn btn-ghost btn-sm" type="button" id="rBack">Voltar</button><button class="btn btn-ghost btn-sm" type="button" id="rHome">Início</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
+    <ul class="rnav-c">${S.map(x=>`<li><a href="#${x[0]}">${x[1]}</a></li>`).join('')}</ul></nav>`;
+  /* 1. seu resultado */
+  h+=sec('r-res','Seu resultado',`<div class="panel winner">
+    <div class="whead"><div style="min-width:0"><p class="eyebrow">Seu tênis ideal · ${esc(m.b)}</p><h3 class="pname">${esc(modelOf(m))}</h3><p class="muted mono" style="font-size:14px;margin-top:6px">${specLine(m)}</p></div>
+      <div style="text-align:right"><div class="fit">${w.fit}%</div><span class="muted" style="font-size:13px">DNA Score</span></div></div>
+    <p>${esc(/[.!?]$/.test(m.nt)?m.nt:m.nt+'.')}${zone?' '+esc(zone):''}</p>${brandLink(m)}</div>`);
+  /* 2. por que combina */
+  h+=sec('r-why','Por que combina',`<div class="panel">
     <div class="chips">${factors(r).map(f=>`<span class="fx ${f[0]==='+'?'up':'dn'}">${f[0]} ${esc(f[1])}</span>`).join('')}</div>
-    <div class="specs">
-      <div class="spec"><span>Categoria</span><b style="font-size:14px">${CAT[m.c].n}</b></div>
-      <div class="spec"><span>Peso</span><b>${m.g} g</b></div>
-      <div class="spec"><span>Espuma</span><b>${stackOf(m)} mm</b></div>
-      <div class="spec"><span>Drop</span><b>${dec1(m.dr)} mm</b></div>
-      <div class="spec"><span>Durabilidade</span><b>${m.du} km</b></div>
-      <div class="spec"><span>Custo por km</span><b>${kmCost(m).replace(' por km','')}</b></div>
-    </div>
-    <div class="two">
-      <div><h3 style="margin-bottom:8px">Por que ele combina com você</h3><ul class="why">${whyT(r).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div><h3 style="margin-bottom:8px">Pontos de atenção</h3><ul class="why">${attT(r).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
-        <div class="arm"><b>${mo}</b><div><strong>${mo===1?'Mês':'Meses'} até a troca</strong><p class="muted" style="font-size:14px">Com cerca de ${km} km por semana, ele dura uns ${mo} ${mo===1?'mês':'meses'} (${m.du} km).</p></div></div>
-      </div>
-    </div>
-  </div>
-  <div class="panel">
-    <div class="vhead"><div><h3>Ficha de laboratório</h3><p class="muted" style="font-size:14px">Seis índices de 0 a 10. No hexágono, a linha laranja é o que suas respostas pedem; nas barras, o tênis contra a média da categoria e os ${M.length} modelos do catálogo.</p></div>
-      <div class="seg" role="group" aria-label="Formato dos índices"><button type="button" data-i="hex" aria-pressed="true">Hexágono</button><button type="button" data-i="bar" aria-pressed="false">Barras</button></div></div>
+    <div class="two"><ul class="why">${whyT(r,1).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+      <div><h3 style="margin-bottom:8px">Pontos de atenção</h3><ul class="why">${att.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div></div>`);
+  /* 3. ficha técnica (o hexágono fica em "Sua atual × a nova" quando há tênis atual) */
+  const F=fichaRows(r);
+  h+=sec('r-ficha','Ficha técnica',`<div class="panel">
+    <div class="vhead"><p class="muted" style="font-size:14px">${esc(m.n)}: medidas, preço e quando trocar.</p><button class="btn btn-ghost btn-sm" type="button" id="fichaCp">Copiar</button></div>
+    <table class="ftab"><caption class="a11y-sr">Ficha técnica do ${esc(m.n)}</caption><tbody>${F.map(x=>`<tr><th scope="row">${x[0]}</th><td>${esc(x[1])}</td></tr>`).join('')}</tbody></table>
+    <p class="note" id="fichaSt" aria-live="polite"></p>
+    <div class="vhead"><div><h3>Seis índices de 0 a 10</h3><p class="muted" style="font-size:14px">${hasAt?`O ${esc(modelOf(m))} contra a média da categoria e os ${M.length} modelos do catálogo.`:`No hexágono, a linha laranja é o que suas respostas pedem; nas barras, o tênis contra a média da categoria e os ${M.length} modelos do catálogo.`}</p></div>
+      ${hasAt?'':`<div class="seg" role="group" aria-label="Formato dos índices"><button type="button" data-i="hex" aria-pressed="true">Hexágono</button><button type="button" data-i="bar" aria-pressed="false">Barras</button></div>`}</div>
     <div style="max-width:560px;width:100%;margin:0 auto">
-      <div id="ihex">${VZ.hex(SX,[{name:'O que você precisa',v:r.ID,c:'var(--ball)',dash:1},{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.18,dots:1}])}</div>
+      ${hasAt?'':`<div id="ihex">${VZ.hex(SX,[{name:'O que você precisa',v:r.ID,c:'var(--ball)',dash:1},{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.18,dots:1}])}</div>`}
       <div id="ibar">${VZ.bars(m)}</div>
-    </div>
-  </div>`;
-  h+=atualT(r);
-  {
-    h+=`<div class="mini">${r.fins.slice(1).map((x,i)=>`<div class="panel"><p class="eyebrow">${i+2}º lugar · ${esc(x.m.b)}</p><div class="whead"><h2>${esc(modelOf(x.m))}</h2><div class="fit" style="font-size:28px">${x.fit}%</div></div><p class="mono" style="font-size:14px">${priceTxt(x.m)} · ${x.m.g} g · drop ${dec1(x.m.dr)} mm · ${x.m.du} km</p><p style="font-size:15px">${esc(x.m.nt)}</p>${brandLink(x.m)}</div>`).join('')}</div>`;
-    const t10=r.top10,mk=Math.max(...t10.map(x=>x.m.p/x.m.du));
-    h+=`<div class="panel"><div class="vhead"><div><h3>Seus 10 que mais combinam</h3><p class="muted" style="font-size:14px">Fit Score, marca e preço lado a lado, entre os ${M.length} tênis do catálogo.</p></div>
-      <div class="seg" role="group" aria-label="Ordenar o top 10"><button type="button" data-o="fit" aria-pressed="true">Por DNA</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
-      <div class="tbl"><table class="t10"><thead><tr><th>#</th><th>Tênis</th><th>Marca</th><th>Categoria</th><th>Preço</th><th>Custo/km</th><th style="width:150px">DNA</th></tr></thead><tbody id="t10b"></tbody></table></div></div>`;
-    h+=`<div class="panel" id="cmpP"><div class="vhead"><div><h3>Top 3 lado a lado</h3><p class="muted" style="font-size:14px" id="cmpSub">Os três que mais combinam com você, de qualquer marca.</p></div>
-      <div class="row" style="gap:8px"><div class="seg" role="group" aria-label="Tipo de top 3"><button type="button" data-t="g" aria-pressed="true">Geral</button><button type="button" data-t="b" aria-pressed="false">Por marca</button></div>
-      <select id="cmpBrand" aria-label="Marca" hidden>${BRANDS.map(b=>`<option${r.pref[0]===b?' selected':''}>${esc(b)}</option>`).join('')}</select></div></div>
-      <div id="cmpBody"></div></div>`;
-    h+=`<div class="panel"><div class="vhead"><div><h3>O melhor de cada marca</h3><p class="muted" style="font-size:14px">O tênis de cada uma das principais marcas que mais combina com você${r.pref.length?'. Suas marcas preferidas vêm primeiro':''}.</p></div></div>
-      ${r.pref.length?`<div class="chips">${r.brands.filter(x=>x.pref).map(x=>`<span class="fx up">Seu melhor ${esc(x.m.b)}: ${esc(modelOf(x.m))} · ${x.fit}%</span>`).join('')}</div>`:''}
-      <div class="brk">${r.brands.filter(x=>x.pref||MARCAS.includes(x.m.b)).sort((p,q)=>q.pref-p.pref||p.m.b.localeCompare(q.m.b,'pt',{sensitivity:'base'})).map(x=>`<div class="brow${x.pref?' pref':''}"><div style="min-width:0"><p class="eyebrow">${esc(x.m.b)}${x.pref?' · sua preferida':''}</p><b>${esc(modelOf(x.m))}</b><small class="muted mono">${priceTxt(x.m).replace(' (aprox.)','')} · ${CAT[x.m.c].n}</small>${brandLink(x.m)}</div><div class="bfit"><span class="mono">${x.fit}%</span><div class="meter"><i style="width:${x.fit}%"></i></div></div></div>`).join('')}</div>
-      <p class="note">Marcas com menos modelos no catálogo têm menos chance de ter um tênis da categoria ideal; por isso o Fit Score delas pode ser mais baixo.</p></div>`;
-    if(r.second)h+=`<div class="panel"><h3>Segundo par para rodízio</h3><p class="muted">Alternar dois pares pode ajudar: num estudo com 264 corredores, quem alternava teve 39% menos lesões. É um indício, não garantia. Use este ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}.</p><div class="whead"><div><p class="eyebrow">${esc(r.second.b)}</p><h2>${esc(modelOf(r.second))}</h2><p class="muted mono" style="font-size:14px">${priceTxt(r.second)} · ${CAT[r.second.c].n}</p>${brandLink(r.second)}</div></div><p class="note">Os dois pares juntos: ${brl(m.p+r.second.p)}. Custo por km do rodízio: ${('R$ '+((m.p+r.second.p)/(m.du+r.second.du)).toFixed(2)).replace('.',',')}.</p><div style="max-width:460px;width:100%;margin:0 auto">${VZ.hex(SX,[{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.14},{name:modelOf(r.second),v:idx(r.second),c:'var(--ball)',fill:'var(--ball)',fo:.14}])}</div><p class="muted" style="font-size:14px;text-align:center">Juntos, os dois cobrem mais área do hexágono do que qualquer um sozinho.</p></div>`;
-    h+=`<div class="panel"><h3>Para pagar menos</h3><ul class="why"><li>A versão da coleção anterior costuma sair 30% a 50% mais barata, com quase o mesmo desempenho.</li><li>Lançamentos raramente entram em promoção nos primeiros meses.</li><li>Compare o preço por km, não só o preço: um tênis mais caro que dura mais pode sair mais barato.</li></ul></div>`;
+    </div></div>`);
+  /* 4. sua atual × a nova */
+  if(cur){
+    if(!hasAt)h+=sec('r-atual','Sua atual × a nova',`<div class="panel"><p>O ${esc(m.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.</p></div>`);
+    else{const c=cur.m,out=atualDiffs(r);
+      h+=sec('r-atual','Sua atual × a nova',`<div class="panel"><p class="muted" style="font-size:14px">DNA Score: ${esc(modelOf(c))} (atual) <b class="mono" style="color:var(--ink)">${cur.fit}%</b> · ${esc(modelOf(m))} <b class="mono" style="color:var(--ink)">${w.fit}%</b>.</p>
+        <div class="two"><div>${VZ.hex(SX,[{name:'O que você precisa',v:r.ID,c:'var(--ball)',dash:1},{name:modelOf(c)+' (atual)',v:idx(c),c:'var(--clay)',dash:1},{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.16,dots:1}])}</div>
+        <div><h3 style="margin-bottom:8px">O que você vai sentir</h3>${out.length?`<ul class="why">${out.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'<p class="muted">Os dois são muito parecidos nas medidas.</p>'}</div></div></div>`)}
   }
-  h+=`${pdfBtn('pdfBot')}
-  <div class="row"><button class="btn btn-pri" type="button" id="duelRep">Comparar com outro tênis</button><button class="btn btn-ghost" type="button" id="again">Refazer o teste</button></div>`;
+  /* 5. alternativas: 2º e 3º + ranking recolhido com filtro por marca (o melhor de cada marca) */
+  const brs=[...new Set([...MARCAS,...r.pref])].sort((x,y)=>x.localeCompare(y,'pt',{sensitivity:'base'}));
+  h+=sec('r-alt','Alternativas',`<div class="mini">${r.fins.slice(1).map((x,i)=>`<div class="panel"><p class="eyebrow">${i+2}º lugar · ${esc(x.m.b)}</p><div class="whead"><h3 class="pname sm">${esc(modelOf(x.m))}</h3><div style="text-align:right"><div class="fit" style="font-size:28px">${x.fit}%</div><span class="muted" style="font-size:12px">DNA Score</span></div></div><p class="mono" style="font-size:14px">${priceTxt(x.m)} · ${x.m.g} g · drop ${dec1(x.m.dr)} mm · ${x.m.du} km</p><p style="font-size:15px">${esc(x.m.nt)}</p>${brandLink(x.m)}</div>`).join('')}</div>
+    <details class="panel rk" id="rkD"><summary><span>Ranking: seus 10 que mais combinam</span><small class="muted">e o melhor de cada marca</small></summary>
+      <div class="vhead"><div class="q" style="gap:4px"><label class="ql" for="rkBrand" style="font-size:14px">Marca</label><select id="rkBrand"><option value="">Todas as marcas</option>${brs.map(b=>`<option value="${esc(b)}">${esc(b)}${r.pref.includes(b)?' (sua preferida)':''}</option>`).join('')}</select></div>
+        <div class="seg" role="group" aria-label="Ordenar o ranking"><button type="button" data-o="fit" aria-pressed="true">Por DNA</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
+      <p class="muted" style="font-size:14px" id="rkSub" aria-live="polite"></p>
+      <div class="tbl"><table class="t10 stk"><thead><tr><th>#</th><th>Tênis</th><th>Marca</th><th>Categoria</th><th>Preço</th><th>Custo/km</th><th style="width:150px">DNA Score</th></tr></thead><tbody id="t10b"></tbody></table></div>
+      <p class="note">Só tênis vendidos no Brasil entram no filtro por marca. Marcas com menos modelos no catálogo têm menos chance de ter um tênis da categoria ideal; por isso o DNA Score delas pode ser mais baixo.</p></details>`);
+  /* 6. comparador (recolhido) */
+  h+=sec('r-cmp','Comparador',`<details class="panel rk" id="cmpD"><summary><span>Comparar com outro tênis</span><small class="muted">qualquer modelo do catálogo, lado a lado</small></summary>
+    <div class="two"><div class="q"><label class="ql" for="rA">Tênis A</label><select id="rA" style="width:100%">${catOpts(m.n)}</select></div><div class="q"><label class="ql" for="rB">Tênis B</label><select id="rB" style="width:100%">${catOpts(r.fins[1].m.n)}</select></div></div>
+    <div id="rOut"></div></details>`);
+  /* 7. guia de compra: segundo par + pagar menos */
+  h+=sec('r-guia','Guia de compra',`${r.second?`<div class="panel"><h3>Segundo par para rodízio</h3><p class="muted">Alternar dois pares pode ajudar: num estudo com 264 corredores, quem alternava teve 39% menos lesões. É um indício, não garantia. Use este ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}.</p><div><p class="eyebrow">${esc(r.second.b)}</p><h4 class="pname sm">${esc(modelOf(r.second))}</h4><p class="muted mono" style="font-size:14px">${priceTxt(r.second)} · ${CAT[r.second.c].n}</p>${brandLink(r.second)}</div><p class="note">Os dois pares juntos: ${brl(m.p+r.second.p)}. Custo por km do rodízio: ${('R$ '+((m.p+r.second.p)/(m.du+r.second.du)).toFixed(2)).replace('.',',')}.</p><div style="max-width:460px;width:100%;margin:0 auto">${VZ.hex(SX,[{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.14},{name:modelOf(r.second),v:idx(r.second),c:'var(--ball)',fill:'var(--ball)',fo:.14}])}</div><p class="muted" style="font-size:14px;text-align:center">Juntos, os dois cobrem mais área do hexágono do que qualquer um sozinho.</p></div>`:''}
+    <div class="panel"><h3>Para pagar menos</h3><ul class="why"><li>A versão da coleção anterior costuma sair 30% a 50% mais barata, com quase o mesmo desempenho.</li><li>Lançamentos raramente entram em promoção nos primeiros meses.</li><li>Compare o preço por km, não só o preço: um tênis mais caro que dura mais pode sair mais barato.</li></ul></div>`);
+  /* 8. seu DNA: cards */
+  h+=sec('r-dna','Seu DNA',`<div class="panel"><p class="muted">Prontos para story: o seu perfil de corredor e o tênis que mais combina com você, com o DNA Score.</p>
+    <div id="cardsOut" class="cardpair"></div>
+    <div class="row"><button class="btn btn-pri" type="button" id="shareCards">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlRunner">Salvar card do corredor</button><button class="btn btn-ghost" type="button" id="dlShoe">Salvar card do tênis</button></div></div>`);
+  /* 9. rodapé */
+  h+=`<div class="pdfbar"><button class="btn btn-pri" type="button" id="pdfBot">Baixar relatório em PDF (A4)</button><button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><span class="note pdfst" aria-live="polite"></span></div>`;
   $('#report').innerHTML=h;
+  /* ranking: todas as marcas (top 10, com ordenação) ou o melhor de uma marca */
   {
-    const cols=['var(--pri)','var(--clay)','var(--muted)'],avgKm=M.reduce((s,x)=>s+x.p/x.du,0)/M.length;
-    const cmp=list=>{const maxKm=Math.max(...list.map(f=>f.m.p/f.m.du));
-      $('#cmpBody').innerHTML=`<div class="cmp" tabindex="0" role="region" aria-label="Comparação lado a lado dos tênis">${list.map((f,k)=>`<div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h4>${k+1}º · ${esc(f.m.n)}</h4><p class="mono muted" style="font-size:13px">${f.fit}% · ${priceTxt(f.m).replace(' (aprox.)','')}</p>${brandLink(f.m)}</div>`).join('')}</div>
-      <div class="two"><div>${VZ.hex(SX,list.map((f,k)=>({name:modelOf(f.m),v:idx(f.m),c:cols[k],fill:k?'none':cols[0],fo:k?0:.14,dots:k===0})))}</div>
-      <div style="min-width:0"><h3 style="margin-bottom:8px">Mapa do catálogo</h3>${VZ.map(list)}</div></div>
-      <div class="tbl"><table><thead><tr><th>Modelo</th><th>Preço</th><th>Peso</th><th>Salto / antepé</th><th>Dura</th><th>Custo por km <span style="text-transform:none;letter-spacing:0">(média ${('R$ '+avgKm.toFixed(2)).replace('.',',')})</span></th></tr></thead><tbody>${list.map(f=>`<tr><td>${esc(f.m.n)}</td><td class="n">${priceTxt(f.m).replace(' (aprox.)','')}</td><td class="n">${f.m.g} g</td><td class="n">${stackOf(f.m)} / ${foreOf(f.m)} mm</td><td class="n">${f.m.du} km</td><td class="n"><span class="kmbar"><i style="width:${Math.round(f.m.p/f.m.du/maxKm*70)}px"></i>${kmCost(f.m).replace(' por km','')}</span></td></tr>`).join('')}</tbody></table></div>`;};
-    const setT=t=>{document.querySelectorAll('#cmpP [data-t]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.t===t));const sel=$('#cmpBrand');sel.hidden=t!=='b';
-      if(t==='g'){$('#cmpSub').textContent='Os três que mais combinam com você, de qualquer marca.';cmp(r.fins)}
-      else{const L=r.byBrand(sel.value);$('#cmpSub').textContent=L.length<3?`O catálogo tem ${L.length} ${L.length===1?'modelo':'modelos'} da ${sel.value} à venda no Brasil.`:`Os três ${sel.value} que mais combinam com você.`;cmp(L)}};
-    document.querySelectorAll('#cmpP [data-t]').forEach(b=>b.onclick=()=>setT(b.dataset.t));$('#cmpBrand').onchange=()=>setT('b');
-    setT(r.pref.length?'b':'g');
-    const t10=o=>{document.querySelectorAll('[data-o]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.o===o));
-      const L=r.top10.map((x,i)=>({...x,i})).sort((a,b)=>o==='p'?a.m.p-b.m.p:o==='km'?a.m.p/a.m.du-b.m.p/b.m.du:a.i-b.i);
-      $('#t10b').innerHTML=L.map(x=>`<tr class="${r.pref.includes(x.m.b)?'pref':''}"><td class="n">${x.i+1}º</td><td><b>${esc(modelOf(x.m))}</b></td><td>${esc(x.m.b)}</td><td class="muted">${CAT[x.m.c].n}</td><td class="n">${priceTxt(x.m).replace(' (aprox.)','')}</td><td class="n">${kmCost(x.m).replace(' por km','')}</td><td><span class="mfit"><i style="width:${x.fit}%"></i></span><span class="mono" style="font-weight:700">${x.fit}%</span></td></tr>`).join('')};
-    document.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>t10(b.dataset.o));t10('fit');
+    let ord='fit';
+    const rows=L=>L.map(x=>`<tr class="${r.pref.includes(x.m.b)?'pref':''}"><td class="n" data-label="Posição">${x.pos}º</td><td data-label="Tênis"><b>${esc(modelOf(x.m))}</b></td><td data-label="Marca">${esc(x.m.b)}</td><td class="muted" data-label="Categoria">${CAT[x.m.c].n}</td><td class="n" data-label="Preço">${priceTxt(x.m).replace(' (aprox.)','')}</td><td class="n" data-label="Custo/km">${kmCost(x.m).replace(' por km','')}</td><td data-label="DNA Score"><span><span class="mfit" aria-hidden="true"><i style="width:${x.fit}%"></i></span><span class="mono" style="font-weight:700">${x.fit}%</span></span></td></tr>`).join('');
+    const draw=()=>{const b=$('#rkBrand').value;
+      document.querySelectorAll('#rkD [data-o]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.o===ord));
+      let L=b?r.byBrand(b):r.top10.map((x,i)=>({...x,pos:i+1}));
+      L=L.slice().sort((p,q)=>ord==='p'?p.m.p-q.m.p:ord==='km'?p.m.p/p.m.du-q.m.p/q.m.du:p.pos-q.pos);
+      $('#rkSub').textContent=!b?`Os 10 com maior DNA Score entre os ${M.length} tênis do catálogo.`:L.length?`Seu melhor ${b}: ${modelOf(r.byBrand(b)[0].m)}, com ${r.byBrand(b)[0].fit}% (${r.byBrand(b)[0].pos}º no ranking geral).${L.length<3?` A ${b} tem ${L.length} ${L.length===1?'modelo':'modelos'} no seu ranking à venda no Brasil.`:''}`:`Nenhum tênis da ${b} à venda no Brasil entra no seu ranking: a marca não tem modelo da sua categoria.`;
+      $('#t10b').innerHTML=rows(L)};
+    document.querySelectorAll('#rkD [data-o]').forEach(b=>b.onclick=()=>{ord=b.dataset.o;draw()});$('#rkBrand').onchange=draw;draw();
   }
-  const iv=v=>{document.querySelectorAll('#report [data-i]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.i===v));$('#ihex').hidden=v!=='hex';$('#ibar').hidden=v!=='bar'};
+  /* comparador */
+  {const go=()=>{const A=M.find(x=>x.n===$('#rA').value),B=M.find(x=>x.n===$('#rB').value);$('#rOut').innerHTML=A===B?'<p class="muted">Escolha dois tênis diferentes.</p>':duelHTML(A,B)};
+    $('#rA').onchange=go;$('#rB').onchange=go;go()}
+  const iv=v=>{document.querySelectorAll('#report [data-i]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.i===v));if($('#ihex')){$('#ihex').hidden=v!=='hex';$('#ibar').hidden=v!=='bar'}};
   document.querySelectorAll('#report [data-i]').forEach(b=>b.onclick=()=>iv(b.dataset.i));iv('hex');
+  $('#fichaCp').onclick=async()=>{const t=`Ficha técnica · RUN DNA\n`+F.map(x=>x[0]+': '+x[1]).join('\n');
+    try{await navigator.clipboard.writeText(t);$('#fichaSt').textContent='Ficha copiada.'}catch(e){$('#fichaSt').textContent='Não deu para copiar: selecione a tabela e copie.'}};
   $('#again').onclick=()=>{step=0;show('quiz');renderQs()};
+  $('#rBack').onclick=()=>{step=STEPS.length-1;show('quiz');renderQs()};
+  $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
-  $('#duelRep').onclick=()=>openDuel(r.fins[0].m.n,r.fins[1].m.n,'report');
+  /* barra fixa: altura para o salto não esconder o título; chip da seção visível em destaque */
+  // o relatório é montado ainda oculto: a altura da barra é medida quando ela aparece e a cada mudança de tamanho
+  const nav=$('#report .rnav');
+  const setH=()=>{const hh=nav.offsetHeight;if(!hh)return;$('#report').style.setProperty('--navh',hh+'px');
+    if(navIO)navIO.disconnect();
+    if('IntersectionObserver' in window){navIO=new IntersectionObserver(es=>{es.filter(e=>e.isIntersecting).forEach(e=>mark(e.target.id))},{rootMargin:`-${hh+10}px 0px -65% 0px`});document.querySelectorAll('#report .rsec').forEach(s=>navIO.observe(s))}};
+  if(navRO)navRO.disconnect();if('ResizeObserver' in window){navRO=new ResizeObserver(setH);navRO.observe(nav)}
+  const links=[...nav.querySelectorAll('a')],ul=nav.querySelector('ul');
+  const mark=id=>links.forEach(l=>{const on=l.getAttribute('href')==='#'+id;if(on){l.setAttribute('aria-current','true');ul.scrollTo({left:Math.max(0,l.offsetLeft-ul.offsetLeft-16)})}else l.removeAttribute('aria-current')});
+  links.forEach(l=>l.onclick=e=>{const t=document.getElementById(l.getAttribute('href').slice(1));if(!t)return;e.preventDefault();setH();
+    const d=t.querySelector('details');if(d&&!d.open&&t.id!=='r-alt')d.open=true;
+    t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    const hh=t.querySelector('h2');hh.setAttribute('tabindex','-1');try{hh.focus({preventScroll:true})}catch(_){hh.focus()}mark(t.id)});
   showCards(r);
 }
 
@@ -1222,8 +1286,8 @@ function renderReport(){
 /* ---------- comparador: um tênis contra o outro ---------- */
 const catOpts=sel=>BRANDS.slice().sort((x,y)=>x.localeCompare(y,'pt',{sensitivity:'base'})).map(b=>`<optgroup label="${esc(b)}">${M.filter(m=>m.b===b).map(m=>`<option${m.n===sel?' selected':''}>${esc(m.n)}</option>`).join('')}</optgroup>`).join('');
 let duelFrom='landing';
-// Fit Score de um tênis para quem já fez o teste (fora da categoria indicada não tem Fit Score)
-const fitFor=m=>{if(!RES)return null;const x=RES.ranked.find(y=>y.m===m);return x?RES.fitOf(x.s):null};
+// DNA Score de um tênis para quem já fez o teste: o mesmo do relatório (fitM)
+const fitFor=m=>RES?RES.fitM(m):null;
 function duelHTML(a,b){
   const ia=idx(a),ib=idx(b),na=modelOf(a),nb=modelOf(b),out=[];
   const cmp=(d,lim,txt)=>{if(Math.abs(d)>=lim)out.push(txt(d))};
@@ -1237,10 +1301,10 @@ function duelHTML(a,b){
   cmp(b.du-a.du,100,d=>`${esc(nb)} dura uns ${Math.abs(d)} km ${d>0?'a mais':'a menos'}`);
   if(a.c!==b.c)out.push(`Categorias diferentes: ${CAT[a.c].n.toLowerCase()} × ${CAT[b.c].n.toLowerCase()}`);
   const fa=fitFor(a),fb=fitFor(b);
-  const row=(l,f)=>`<tr><td>${l}</td><td class="n">${f(a)}</td><td class="n">${f(b)}</td></tr>`;
+  const row=(l,f)=>`<tr><td>${l}</td><td class="n" data-label="${esc(na)}">${f(a)}</td><td class="n" data-label="${esc(nb)}">${f(b)}</td></tr>`;
   return `<div class="two" style="margin-top:6px"><div>${VZ.hex(SX,[{name:na,v:ia,c:'var(--clay)',dash:1},{name:nb,v:ib,c:'var(--pri)',fill:'var(--pri)',fo:.16,dots:1}])}</div>
-  <div style="display:flex;flex-direction:column;gap:14px;min-width:0"><div class="tbl"><table class="duelt" style="min-width:0"><thead><tr><th><span class="a11y-sr">Medida</span></th><th>${esc(na)}</th><th>${esc(nb)}</th></tr></thead><tbody>
-  ${RES?row('Seu Fit Score',x=>{const v=x===a?fa:fb;return v===null?'fora da sua categoria':v+'%'}):''}
+  <div style="display:flex;flex-direction:column;gap:14px;min-width:0"><div class="tbl"><table class="duelt stk" style="min-width:0"><thead><tr><th><span class="a11y-sr">Medida</span></th><th>${esc(na)}</th><th>${esc(nb)}</th></tr></thead><tbody>
+  ${RES?row('Seu DNA Score',x=>{const v=x===a?fa:fb;return v+'%'+(RES.inRank(x)?'':' (fora da sua categoria)')}):''}
   ${row('Marca',x=>esc(x.b))}${row('Categoria',x=>CAT[x.c].n)}${row('Preço',x=>priceTxt(x).replace(' (aprox.)',''))}${row('Peso',x=>x.g+' g')}${row('Espuma',x=>stackOf(x)+' / '+foreOf(x)+' mm')}${row('Drop',x=>dec1(x.dr)+' mm')}${row('Durabilidade',x=>x.du+' km')}${row('Custo por km',x=>kmCost(x).replace(' por km',''))}${row('Reviews',x=>`${dec1(x.sc)} de 5 · ${x.np+x.nc}`)}${row('Specs',x=>x.fi?'da ficha':'de laboratório')}
   </tbody></table></div>
   ${out.length?`<ul class="why">${out.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<p class="muted">Os dois são muito parecidos nas medidas.</p>'}</div></div>`;
@@ -1464,13 +1528,13 @@ function pdfHTML(r){
     ['Numeração',tamT,m.tam?'clientes relatam que veste '+m.tam:'sugestão: prove no fim do dia',1],
     ['Segundo par',r.second?modelOf(r.second):'Sem rodízio',r.second?`${r.second.b} · ${CAT[r.second.c].n.toLowerCase()}`:'você escolheu um único par',1]];
   const trow=(l,f,u)=>`<div class="ptr"><b>${l}</b><span>${f(c)}${u||''} → <em>${f(m)}${u||''}</em></span></div>`;
-  const p1=`<div class="p1top"><div style="display:flex;flex-direction:column;gap:6px"><p class="pey">Seu tênis ideal · ${esc(m.b)}</p><h1>${esc(modelOf(m))}</h1><p class="pl"><b>${CAT[m.c].n}.</b> ${esc(m.nt)}</p></div><div class="pscore">${ringSVG(w.fit,128)}<div>Fit Score</div></div></div>
+  const p1=`<div class="p1top"><div style="display:flex;flex-direction:column;gap:6px"><p class="pey">Seu tênis ideal · ${esc(m.b)}</p><h1>${esc(modelOf(m))}</h1><p class="pl"><b>${CAT[m.c].n}.</b> ${esc(m.nt)}</p></div><div class="pscore">${ringSVG(w.fit,128)}<div>DNA Score</div></div></div>
   <div class="pkpi"><div class="em"><b>${r.conf}%</b><span>confiança do resultado</span></div><div><b>${gap<=3?'Empate':'+'+gap+' pts'}</b><span>${gap<=3?'técnico com o 2º lugar ('+esc(modelOf(s2.m))+')':'à frente do 2º ('+esc(modelOf(s2.m))+')'}</span></div><div><b>${priceTxt(m).replace(/ \(.*\)/,'')}</b><span>${m.ap?'preço estimado':'preço médio'} · ${m.br?(host?'à venda no Brasil ('+esc(host)+')':'à venda no Brasil'):'importado, sem loja no Brasil'}</span></div><div><b>${m.nr}</b><span>${m.nr===1?'review lida':'reviews lidas'} (${m.np} ${m.np===1?'profissional':'profissionais'}, ${m.nc} de ${m.nc===1?'cliente':'clientes'})</span></div><div><b>${mo} ${mo===1?'mês':'meses'}</b><span>até a troca, com ${km} km por semana (${m.du} km)</span></div></div>
   <div class="psetup">${tiles.map(t=>`<div class="${t[3]?'sug':''}"><span>${t[0]}</span><b>${esc(t[1])}</b><small>${esc(t[2])}</small></div>`).join('')}</div>
   <p class="pnote">Quadro tracejado é sugestão: o detalhe está na página 3. ${m.fi?'Specs da ficha da marca, sem medição de laboratório.':'Specs de laboratório.'} Nenhuma marca paga para aparecer.</p>
   <div class="pbox"><h3>Por que ele combina com você</h3><ul class="plist">${whyT(r).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
   <div class="pcols"><div class="pbox s"><h3>Seu perfil</h3><dl class="pdl"><dt>Corpo</dt><dd>${r.peso} kg · pé ${pz}</dd><dt>Nível</dt><dd>${PROF[r.level]}</dd><dt>Corrida</dt><dd>${ql('km',1)} por semana · ${ql('pace',2).toLowerCase()} · ${ql('terreno',0).toLowerCase()}</dd><dt>Objetivo</dt><dd>${OBJ[a.obj===undefined?1:a.obj]} · tiro ou ritmo: ${ql('treino',0).toLowerCase()}</dd><dt>Gosto</dt><dd>${ql('sens',1)} · prioridade: ${ql('prior',0).toLowerCase()}</dd><dt>Orçamento</dt><dd>${ql('orc',1)}</dd></dl></div>
-  <div class="pbox s"><h3>${c?'Do seu atual para o novo':same?'Seu tênis atual':'Sem tênis atual'}</h3>${c?trow('Fit Score',x=>x===c?at.fit:w.fit,'%')+trow('Preço',x=>priceTxt(x).replace(/ \(.*\)/,''))+trow('Peso',x=>x.g,' g')+trow('Espuma',x=>mm1(stackOf(x)),' mm')+trow('Drop',x=>dec1(x.dr),' mm')+trow('Custo por km',x=>kmCost(x).replace(' por km','')):`<p class="muted" style="font-size:10.5px">${same?`O ${esc(m.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.`:'Você não informou o tênis que usa hoje. A página 2 mostra onde o recomendado fica no catálogo.'}</p>`}</div></div>`;
+  <div class="pbox s"><h3>${c?'Do seu atual para o novo':same?'Seu tênis atual':'Sem tênis atual'}</h3>${c?trow('DNA Score',x=>x===c?at.fit:w.fit,'%')+trow('Preço',x=>priceTxt(x).replace(/ \(.*\)/,''))+trow('Peso',x=>x.g,' g')+trow('Espuma',x=>mm1(stackOf(x)),' mm')+trow('Drop',x=>dec1(x.dr),' mm')+trow('Custo por km',x=>kmCost(x).replace(' por km','')):`<p class="muted" style="font-size:10.5px">${same?`O ${esc(m.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.`:'Você não informou o tênis que usa hoje. A página 2 mostra onde o recomendado fica no catálogo.'}</p>`}</div></div>`;
   /* página 2: sua corrida × o tênis */
   const ser=[{c:'#FF8A3D',v:r.ID,fill:'#FF8A3D',fo:.18,w:1.8,dash:'4 3'},{c:'#0E4D64',v:im,fill:'#0E4D64',fo:.14,w:2.4}];if(c)ser.push({c:'#B4472F',v:ic,w:1.8,dash:'6 4'});
   const all=f=>M.map(f);
@@ -1505,7 +1569,7 @@ function pdfHTML(r){
   const pod=[1,0,2].filter(i=>F[i]).map(i=>{const x=F[i],[L,C]=lead(x,i);return `<div class="ppc p${i+1}"><div><p class="pey">${i+1}º lugar · ${esc(x.m.b)}</p><h3>${esc(modelOf(x.m))}</h3><p class="pms">${priceTxt(x.m).replace(/ \(.*\)/,'')} · ${x.m.g} g · drop ${dec1(x.m.dr)} mm · ${x.m.du} km</p></div>
     <div class="ptag"><span><em class="up">Lidera:</em> ${L[1]>0?L[0].toLowerCase():'nenhum índice sozinho'}</span><span><em class="dn">Cede:</em> ${C[1]<0?C[0].toLowerCase():'nada em relação aos outros'}</span></div>
     <div class="ppri">${pri.map(([v,j])=>`<div><span>${SX[j]}</span><span><u style="width:${v*10}%"></u><i style="width:${x.ix[j]*10}%"></i></span><b>${dec1(x.ix[j])}</b></div>`).join('')}</div>
-    <div class="blk" style="height:${[150,112,86][i]}px"><b>${x.fit}%</b><span>Fit Score</span></div></div>`}).join('');
+    <div class="blk" style="height:${[150,112,86][i]}px"><b>${x.fit}%</b><span>DNA Score</span></div></div>`}).join('');
   const rv=(x,i)=>{const mm=x.m,src=`${mm.nr} ${mm.nr===1?'review lida':'reviews lidas'} · ${mm.np} ${mm.np===1?'profissional':'profissionais'}, ${mm.nc} de ${mm.nc===1?'cliente':'clientes'}${mm.nr?' · aprovação média '+dec1(mm.sc)+' de 5':''}`;
     const yes=mm.u.map(t=>USO[t]).filter(Boolean),no=mm.nn.map(t=>NAO[t]).filter(Boolean);
     const L=[`<div class="prev"><p>“${esc(mm.nt)}”</p><span><b>Resumo do consenso</b> · ${src}</span></div>`];
@@ -1530,7 +1594,7 @@ function pdfHTML(r){
   ${c?`<div class="pbox s"><h3>Por que o seu atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
   <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, preços de lojas no Brasil</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites e clientes</span></div><div><b>${NV}</b><span>variáveis: ${(NV*M.length).toLocaleString('pt-BR')} cruzamentos por análise</span></div><div><b>85%</b><span>dos 500 perfis de teste com o 1º na categoria ideal</span></div></div>
   <p class="pnote">Especificações aproximadas, em revisão. Nenhuma marca paga para aparecer no resultado; links de loja só depois da recomendação.</p></div>
-  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['Fit Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Num estudo com 264 corredores, quem alternava teve menos lesões; é indício, não garantia.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
+  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['DNA Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Num estudo com 264 corredores, quem alternava teve menos lesões; é indício, não garantia.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Sua corrida × o tênis',p2)}${pdfPage(3,'Ajuste e adaptação',p3)}${pdfPage(4,'Pódio',p4)}${pdfPage(5,'Ranking e método',p5)}</div>`;
 }
 const LIBS=['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js','https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'];

@@ -438,6 +438,65 @@ table.cmpt{min-width:0}table.cmpt th:first-child{width:28%}table.cmpt tr.df td{b
 .pg.tight{gap:7px}.pg.tight .pbox{padding:8px 11px;gap:5px}.pg.tight .prev p,.pg.tight .plist,.pg.tight .pdl{font-size:9.5px}
 .prevs{display:flex;flex-direction:column;gap:9px}.prevh{font-size:11px;font-weight:700;color:var(--pri);margin-bottom:3px!important}
 .prev{border-left:3px solid var(--ball);background:var(--bg);border-radius:0 8px 8px 0;padding:5px 9px;margin-bottom:4px}.prev p{font-size:10.5px}.prev span{font-size:9px;color:var(--muted)}.prev b{color:var(--ink)}
+/* relatório pago: barra de seções, seções e blocos novos */
+.rnav{position:sticky;top:0;z-index:30;background:var(--bg);padding:10px 0 8px;margin-top:-10px;box-shadow:0 0 0 100vmax var(--bg),0 1px 0 100vmax var(--line);clip-path:inset(0 -100vmax -1px -100vmax)}
+.rnav-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.rnav-top #pdfTop{margin-left:auto}.rnav-top .pdfst:empty{display:none}.rnav-top .pdfst{flex-basis:100%;text-align:right}
+.rchips{display:flex;gap:8px;overflow-x:auto;list-style:none;margin:8px 0 0;padding:3px 3px 5px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.rchips li{flex:none}
+.rchip{display:inline-flex;align-items:center;min-height:32px;padding:4px 13px;border:1px solid var(--line);border-radius:99px;background:var(--surface);color:var(--ink);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.rchip:hover{border-color:var(--pri)}.rchip:focus-visible{outline:3px solid var(--pri);outline-offset:-1px}
+#report .rsec{scroll-margin-top:var(--navh,120px)}
+.rgrp{display:flex;flex-direction:column;gap:20px}
+.fitl{font-size:13px;font-weight:700;color:var(--muted);display:block;margin-top:4px}
+.sline{font-size:18px;font-weight:600}.sline b{font-size:20px}
+.timg.hero{max-width:520px}
+#r-resultado .anat-fig{max-width:640px;margin:0 auto}
+@media (min-width:761px){.rchips{flex-wrap:wrap;overflow:visible}}
+.wct h3{font-family:var(--f-body);font-size:16px;font-weight:700;letter-spacing:0;margin:0}
+.wcard.wide{grid-column:1/-1}.wcard .fb{padding-top:26px}
+@media (min-width:761px){#r-porque .why-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.attn{display:flex;flex-direction:column;gap:10px}.attn h3{font-size:18px}
+.fh3{font-size:17px;margin-bottom:10px}
+.feel{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.feel li{border:1px solid var(--line);border-radius:12px;padding:9px 12px;display:flex;flex-direction:column;gap:1px;background:var(--bg)}
+.fl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.fv{font-size:16px}.fp{font-size:14px;color:var(--muted)}
+.altg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.altc{border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px;background:var(--bg);min-width:0}
+.altimg{position:relative;height:110px;border-radius:10px;background:transparent;overflow:hidden;display:grid;place-items:center;margin-bottom:4px}
+.altimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}.altimg svg{max-height:100px;max-width:100%;width:auto;height:auto}
+.altc .whead{align-items:flex-start;flex-wrap:nowrap}.altc h3{font-size:19px}
+.altsc{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;flex:none}.altsc b{font-family:var(--f-display);font-size:24px}.altsc span{font-size:12px;color:var(--muted);font-weight:700}
+.altm{font-size:14px}.altd{font-size:15px}
+.rank{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.rank li{display:grid;grid-template-columns:34px minmax(0,1fr) 48px 62px;gap:8px;align-items:center;padding:7px 4px;border-bottom:1px solid var(--line);font-size:15px}
+.rank li.on{font-weight:700;background:var(--soft);border-radius:8px}.rkp{color:var(--muted);font-weight:700}.rks{text-align:right;font-weight:700}.rkl{text-align:right;color:var(--muted)}
+details.fold>summary h2.fh{font-size:20px;margin:0}
+.foldin{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.guia{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gcard{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--bg);min-width:0}
+.gcard h3{font-size:17px}.gcard ul{margin:8px 0 0;padding-left:18px;font-size:15px}.gcard li+li{margin-top:5px}
+.gcard a{color:var(--pri);font-weight:700}
+.dnaarch{font-family:var(--f-display);font-size:20px;font-weight:700;margin-top:4px}
+.dnacards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:560px;width:100%;margin:0 auto}
+.dnac{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+.dnac .cardwrap{width:100%;max-width:240px;min-height:0;aspect-ratio:9/16}
+.dnac .cardimg{max-width:100%;transform:none}
+.dnac figcaption{font-weight:700;font-size:14px;text-align:center}.dnac .row{justify-content:center;gap:8px}
+table.ft{min-width:0;font-size:15px}table.ft th[scope=row]{font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:600;width:40%}
+table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
+.rfoot{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+@media (max-width:600px){
+  .altg,.guia{grid-template-columns:minmax(0,1fr)}
+  .altimg{height:84px}
+  .det-fig svg{max-height:190px;width:auto;max-width:100%;display:block;margin:0 auto}
+  .winner .whead{flex-wrap:nowrap;align-items:flex-start}.winner .fitring{width:72px;height:72px}.winner .fitring b{width:56px;height:56px;font-size:18px}.winner .fitl{font-size:12px;white-space:nowrap}
+  .dnacards{gap:10px}
+  table.stk,table.stk tbody,table.stk tr,table.stk th,table.stk td{display:block;width:auto!important}
+  table.stk thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  table.stk tr{padding:8px 0;border-bottom:1px solid var(--line)}
+  table.stk th,table.stk td{border:0;padding:2px 6px}
+  table.stk td::before{content:attr(data-l) ": ";font-weight:700;color:var(--muted)}
+}
 </style>
 
 <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
@@ -1035,35 +1094,16 @@ const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de f
 const TIMG=new Set(['mid','short','soft','long','longp','minimal','evo','fish','twin','softp','step','gun','grov','short-round','short-roundpin','evo-round','evo-roundpin','mid-round','longp-round']);
 /* variante pela rabeta escolhida pelo motor (ex.: short-roundpin.webp); sem variante, usa a do tipo */
 const timgKey=(k,tail)=>{const v=tail?k+'-'+tailKey(tail):'';return TIMG.has(v)?v:k};
-const timg=(k,cls,tail)=>TIMG.has(k)?`<figure class="timg ${cls||''}"><img src="img/tipos/${timgKey(k,tail)}.webp" width="1400" height="781" loading="lazy" alt="Ilustração de ${esc(PN[k].toLowerCase())}, vista de cima e de lado"><figcaption>Ilustração do tipo, gerada por IA e sem marca. As medidas da sua estão no Passo 1.</figcaption></figure>`:'';
+const timg=(k,cls,tail)=>TIMG.has(k)?`<figure class="timg ${cls||''}"><img src="img/tipos/${timgKey(k,tail)}.webp" width="1400" height="781" loading="lazy" alt="Ilustração de ${esc(PN[k].toLowerCase())}, vista de cima e de lado"><figcaption>Ilustração do tipo, gerada por IA e sem marca. As medidas da sua estão logo abaixo.</figcaption></figure>`:'';
 const STY=['pegar onda e deslizar','fazer curvas na parede','manobras fortes','entrar no tubo','aéreos','o estilo clássico'];
-function radarG(labels,series){
-  const cx=210,cy=150,R=98,n=labels.length;
-  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+Math.cos(a)*R*v/10,cy+Math.sin(a)*R*v/10]};
-  const poly=v=>v.map((x,i)=>pt(i,cl(x,0,10)).map(z=>z.toFixed(1)).join(',')).join(' ');
-  let g='';
-  [2.5,5,7.5,10].forEach(v=>{g+=`<polygon points="${poly(labels.map(()=>v))}" fill="none" stroke="var(--line)" stroke-width="1"/>`});
-  labels.forEach((k,i)=>{const p=pt(i,10);g+=`<line x1="${cx}" y1="${cy}" x2="${p[0].toFixed(1)}" y2="${p[1].toFixed(1)}" stroke="var(--line)"/>`;
-    const l=pt(i,11.8);const anc=Math.abs(l[0]-cx)<5?'middle':l[0]>cx?'start':'end';
-    g+=`<text x="${l[0].toFixed(1)}" y="${(l[1]+(l[1]<cy-40?0:l[1]>cy+40?10:4)).toFixed(1)}" text-anchor="${anc}" font-size="13" font-weight="600" font-family="DM Sans, sans-serif" fill="var(--ink)">${k}</text>`});
-  series.forEach((s,si)=>{g+=si===0?`<polygon points="${poly(s.v)}" fill="var(--pri)" fill-opacity=".14" stroke="var(--pri)" stroke-width="2" stroke-linejoin="round"/>`+s.v.map((v,i)=>{const p=pt(i,cl(v,0,10));return `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3" fill="var(--pri)"/>`}).join(''):`<polygon points="${poly(s.v)}" fill="none" stroke="var(--clay)" stroke-width="1.6" stroke-dasharray="5 4" stroke-linejoin="round"/>`});
-  return `<svg class="radar" viewBox="0 0 420 300" role="img" aria-label="Como a prancha se comporta: ${series.map(s=>s.name).join(' e ')}">${g}</svg>
-  <div class="legend">${series.map((s,i)=>`<span><i style="background:${i?'var(--clay)':'var(--pri)'}"></i>${esc(s.name)}</span>`).join('')}</div>`;
-}
-function perfBars(r){
-  const a=r.ix,b=r.atual.ix;
-  return `<div class="pbars">${BXP.map((lab,i)=>{const dv=a[i]-b[i];
-    return `<div class="pb"><span class="pbl">${lab}</span><div class="pbt"><i class="pbar" style="width:${a[i]*10}%"></i><b class="pbm" style="left:${b[i]*10}%"></b></div><span class="pbd mono ${dv>0.25?'up':dv<-0.25?'dn':''}">${Math.abs(dv)<0.25?'igual':(dv>0?'+':'−')+dec1(Math.abs(dv))}</span></div>`}).join('')}</div>
-  <p class="note"><span class="key k1"></span>Nova prancha <span class="key k2"></span>Sua atual · notas de 0 a 10</p>`;
-}
 /* quanto boia: três faixas fáceis de ler */
-function floatBar(r){
+function floatBar(r,o){o=o||{};
   const V=r.d.V,lo=Math.round(V-r.rng),hi=Math.round(V+r.rng);
   const pos=v=>v<lo?34*cl((v-lo*.6)/(lo*.4),0,1):v<=hi?34+32*(v-lo)/Math.max(1,hi-lo):66+34*cl((v-hi)/(hi*.7),0,1);
-  const at=r.atual?r.atual.d.V:null;
+  const at=o.atual!==false&&r.atual?r.atual.d.V:null;
   const atTxt=at==null?'':at<lo?`Sua prancha atual tem cerca de ${Math.round(at)} L: boia menos do que você precisa, por isso cansa na remada e perde ondas.`:at>hi?`Sua prancha atual tem cerca de ${Math.round(at)} L: boia mais do que precisa, por isso fica pesada para virar.`:`Sua prancha atual, com cerca de ${Math.round(at)} L, já está na faixa certa de flutuação.`;
-  return `<p>Litro é a medida de <b>quanto a prancha boia</b>. Mais litros: rema e fica de pé com mais facilidade. Menos litros: vira mais fácil, mas exige mais de você.</p>
-  <div class="fb" role="img" aria-label="Faixa ideal de ${lo} a ${hi} litros">
+  return `${o.intro===false?'':'<p>Litro é a medida de <b>quanto a prancha boia</b>. Mais litros: rema e fica de pé com mais facilidade. Menos litros: vira mais fácil, mas exige mais de você.</p>'}
+  <div class="fb" role="img" aria-label="Faixa ideal de ${lo} a ${hi} litros; esta prancha tem ${dec1(V)} L${at!=null?', a sua atual cerca de '+Math.round(at)+' L':''}">
     <div class="fbt"><span class="z1"></span><span class="z2"></span><span class="z3"></span>
       <b class="fbm new" style="left:${pos(V)}%"><em>${dec1(V)} L</em></b>${at!=null?`<b class="fbm old" style="left:${pos(at)}%"><em>atual ${Math.round(at)} L</em></b>`:''}</div>
     <div class="fbl"><div><strong>Pouco</strong><span>Rema com esforço e perde ondas</span></div><div class="mid"><strong>Ideal: ${lo} a ${hi} L</strong><span>Rema bem e ainda vira</span></div><div><strong>Demais</strong><span>Boia muito, mas fica difícil de virar</span></div></div>
@@ -1105,7 +1145,7 @@ function renderPreview(){
       <div class="kpi"><b>${r.conf}%</b><span>confiança do resultado</span></div>
       <div class="kpi"><b>${lo}–${hi} L</b><span>quanto ela deve boiar</span></div>
     </div>
-    <p class="note">A porcentagem de cada finalista mostra o quanto ela combina com o seu perfil.</p>
+    <p class="note">O DNA Score de cada finalista mostra o quanto ela combina com o seu perfil.</p>
   </div>
   <div class="panel">
     <div><p class="eyebrow">Seu nível</p><h3>${LV[r.lvl].n}</h3></div>
@@ -1122,7 +1162,7 @@ function renderPreview(){
     <h2>Revele sua prancha</h2>
     <div class="plan one">
       <div class="onep"><h3>Seu relatório completo</h3><span class="price">${PRICE_TXT}</span><span class="note">pagamento único</span></div>
-      <ul><li>A prancha ideal, explicada em palavras simples</li><li>Todas as 17 variáveis: medidas, litros, formato, quilhas e construção</li><li>As outras 2 finalistas e o comparador entre modelos</li><li>Guia para achar a prancha numa loja e ficha técnica para qualquer shaper</li><li>Relatório em PDF (A4), ${PDF_PAGES} páginas, para baixar e levar à loja</li><li>Seu DNA: briefing pronto para fazer a prancha com um coach</li></ul>
+      <ul><li>A prancha ideal, explicada em palavras simples</li><li>Todas as 17 variáveis: medidas, litros, formato, quilhas e construção</li><li>As outras 2 finalistas e o comparador entre modelos</li><li>Guia para achar a prancha numa loja e ficha técnica para qualquer shaper</li><li>Relatório em PDF (A4), ${PDF_PAGES} páginas, para baixar e levar à loja</li><li>${COACH_ON?'Seu DNA: briefing pronto para fazer a prancha com um coach':'Seu DNA: cards da sua prancha e do seu jeito de surfar para compartilhar'}</li></ul>
       <button class="btn btn-go" type="button" data-buy>Pagar ${PRICE_TXT} com Pix (simulação)</button>
     </div>
     <p class="note">O cálculo já foi feito: o pagamento só revela o resultado. Nenhuma marca ou shaper paga para aparecer.</p>
@@ -1145,6 +1185,7 @@ function qrSVG(seed){
 let pixTimer=null,pixKey=null;
 function closeModal(){clearInterval(pixTimer);if(pixKey)document.removeEventListener('keydown',pixKey);pixKey=null;$('#modalRoot').innerHTML=''}
 function pix(){
+  if(tier>=2&&RES){show('report');return}
   const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-SURFDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865406'+PRICE.toFixed(2)+'5802BR5909SPORT DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">
     <div class="phead"><div><p class="eyebrow">Pagamento via Pix</p><h3 id="pxT">Relatório SURF DNA</h3></div><button class="btn btn-ghost btn-sm" id="pxX" type="button" aria-label="Fechar">Fechar</button></div>
@@ -1232,23 +1273,6 @@ function detailRows(r){
     ['Curva','o quanto ela se curva da ponta ao fim',`Bico ${frac(dc.rocker[0])} · rabeta ${frac(dc.rocker[1])}`,'Prancha mais reta é mais rápida em onda fraca; mais curvada encaixa melhor em onda forte.']
   ];
 }
-function varGroups(r){
-  const d=r.d,dc=r.dc,sh=x=>String(x).split(':')[0];
-  return [
-    ['Medidas','O tamanho e quanto ela boia',[['Comprimento',ftin(d.L),1],['Largura',frac(d.W),1],['Espessura',frac(d.T),1],['Litros',dec1(d.V)+' L',1]]],
-    ['Formato','O desenho visto de cima e de lado',[['Bico',dc.nose,0],['Ponto mais largo',sh(dc.wide),0],['Rabeta',dc.tail,1],['Borda',dc.rail,0],['Curva (rocker)','Bico '+frac(dc.rocker[0])+' · rabeta '+frac(dc.rocker[1]),1],['Fundo',sh(dc.bottom),1]]],
-    ['Quilhas','As barbatanas embaixo',[['Configuração',FINSET[dc.setup],1],['Tamanho',dc.finSize,0],['Formato da quilha',sh(dc.template),0],['Caixas',dc.boxes,0]]],
-    ['Construção','Material e acabamento',[['Material',dc.constr[0],0],['Laminação',dc.lam,0],['Acabamento',dc.finish,0]]]
-  ];
-}
-function varMap(r){
-  const G=varGroups(r),n=G.reduce((s,g)=>s+g[2].length,0),free=G.reduce((s,g)=>s+g[2].filter(v=>v[2]).length,0);
-  return `<details class="panel fold"><summary><span><b>Sua prancha em ${n} variáveis</b><small>Medidas, formato, quilhas e construção: o mapa completo</small></span></summary><div class="whead"><div><p class="muted">Toda prancha se define por estes ${n} itens, em 4 grupos. Calculamos todos para você.</p></div>
-    <div class="vmcount"><b class="mono">${tier>=2?n:free}<span>/${n}</span></b><small>${tier>=2?'todas reveladas':'reveladas neste plano'}</small></div></div>
-    <div class="vm">${G.map((g,gi)=>`<div class="vmg"><p class="vmh"><span>${gi+1}</span>${g[0]} <em>${g[2].length}</em></p><p class="vms">${g[1]}</p>
-      ${g[2].map(v=>{const open=tier>=2||v[2];return `<div class="vmr"><span>${v[0]}</span>${open?`<b>${esc(v[1])}</b>`:`<b class="vml" aria-label="Disponível no setup completo">no setup completo</b>`}</div>`}).join('')}</div>`).join('')}</div>
-  </details>`;
-}
 /* ---------- comparar duas pranchas ---------- */
 function cmpOptions(r){
   const o=[['ideal','Sua prancha ideal · '+PN[r.k]]];
@@ -1280,14 +1304,8 @@ function compareHTML(r,ka,kb){
   <div class="legend"><span><i style="background:var(--pri)"></i>A · ${esc(PN[A.k])}</span><span><i style="background:var(--clay)"></i>B · ${esc(PN[B.k])}</span></div>
   <p class="muted" style="font-size:15px">${Math.abs(dv)<1.5?'As duas boiam quase igual.':`A prancha B boia ${Math.round(Math.abs(dv))} L ${dv>0?'a mais':'a menos'} que a A: ${dv>0?'rema mais fácil, mas vira com menos facilidade':'vira mais fácil, mas exige mais na remada'}.`} Elas diferem em ${diff} de ${rows.length} itens.</p>
   <div class="cmpbars">${BXP.map((l,i)=>`<div class="cb"><span class="pbl">${l}</span><div class="cbt"><i style="width:${A.ix[i]*10}%;background:var(--pri)"></i><i style="width:${B.ix[i]*10}%;background:var(--clay)"></i></div><span class="mono cbv">${dec1(A.ix[i])} · ${dec1(B.ix[i])}</span></div>`).join('')}</div>
-  <details class="mini"><summary>Ver item a item (${rows.length} itens)</summary><div class="tbl"><table class="cmpt"><thead><tr><th>Item</th><th>A</th><th>B</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x[1]!==x[2]?'df':''}"><th>${x[0]}</th><td>${esc(x[1])}</td><td>${esc(x[2])}</td></tr>`).join('')}</tbody></table></div></details>
+  <details class="mini"><summary>Ver item a item (${rows.length} itens)</summary><div class="tbl"><table class="cmpt stk"><thead><tr><th scope="col">Item</th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x[1]!==x[2]?'df':''}"><th scope="row">${x[0]}</th><td data-l="A">${esc(x[1])}</td><td data-l="B">${esc(x[2])}</td></tr>`).join('')}</tbody></table></div></details>
   <p class="note">Linhas destacadas mudam de uma prancha para a outra. Tipos fora do seu ranking são dimensionados para o seu peso e altura.</p>`;
-}
-function cmpPanel(r){
-  const o=cmpOptions(r),nk=r.a.muda===1&&r.a.estilo_novo>=0?NOVO_K[r.a.estilo_novo]:(r.a.muda===0&&r.atual?r.atual.k:null),b=nk&&nk!==r.k?'k_'+nk:'fin1';
-  const sel=(id,v,lab)=>`<label class="cmpl" for="${id}"><span>${lab}</span><select id="${id}">${o.map(x=>`<option value="${x[0]}"${x[0]===v?' selected':''}>${esc(x[1])}</option>`).join('')}</select></label>`;
-  return `<div class="panel"><div><p class="eyebrow">Comparador</p><h3>Compare uma prancha com outra</h3><p class="muted" style="margin-top:4px">Escolha duas e veja, na mesma escala, o que muda no formato, nas medidas e no comportamento.</p></div>
-  <div class="cmpsel">${sel('cmpA','ideal','Prancha A')}${sel('cmpB',b,'Prancha B')}</div><div id="cmpOut" style="display:flex;flex-direction:column;gap:16px">${compareHTML(r,'ideal',b)}</div></div>`;
 }
 function wireCmp(r){const a=$('#cmpA'),b=$('#cmpB');if(!a)return;const go=()=>{$('#cmpOut').innerHTML=compareHTML(r,a.value,b.value)};a.onchange=go;b.onchange=go}
 /* ---------- Seu DNA: briefing para o coach ---------- */
@@ -1358,11 +1376,6 @@ function wireMatch(r){
     $('#mOut').scrollIntoView({behavior:'smooth',block:'start'});
   });
 }
-function heroTiles(r){
-  const d=r.d,dc=r.dc,I={"L": "M3 12h18M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3", "W": "M12 3v18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3", "T": "M4 9h16M4 15h16M12 4v16", "V": "M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z", "tail": "M12 3c4 0 6 5 6 10l-6 8-6-8c0-5 2-10 6-10z", "fin": "M5 20h14M8 20c0-7 3-12 10-15-2 5-2 10 0 15", "mat": "M4 7l8-4 8 4-8 4-8-4zM4 12l8 4 8-4M4 17l8 4 8-4"};
-  const t=[['L','Comprimento',ftin(d.L),mF(d.L)],['W','Largura',frac(d.W),cmF(d.W)],['T','Espessura',frac(d.T),cmF(d.T)],['V','Litros',dec1(d.V)+' L','o quanto boia'],['tail','Rabeta',dc.tail.split(' (')[0],''],['fin','Quilhas',FINSET[dc.setup].split(' (')[0],''],['mat','Material',dc.constr[0],'']];
-  return `<div class="htiles">${t.map(x=>`<div class="ht${x[0]==='V'?' hl':''}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${I[x[0]]}"/></svg><span class="htl">${x[1]}</span><b>${esc(x[2])}</b>${x[3]?`<small>${x[3]}</small>`:''}</div>`).join('')}</div>`;
-}
 const ICO={
  wave:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 15c3-5 6-5 9 0s6 5 9 0M2 9c2-3 4-3 6 0"/></svg>',
  target:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -1391,72 +1404,167 @@ function whyV(r,max){
   if(inc)out.push(card('swap','Contra a sua atual',inc));
   return out.slice(0,max||out.length).join('');
 }
+/* ---------- relatório pago: esqueleto comum SPORT DNA (resultado, por que, atual × nova, alternativas, comparador, guia, DNA, ficha) ---------- */
+const RSEC=[['r-resultado','Resultado'],['r-porque','Por que combina'],['r-troca',null],['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica']];
+function reportNav(r){
+  return `<nav class="rnav" aria-label="Seções do relatório">
+    <div class="rnav-top"><button class="btn btn-ghost btn-sm" type="button" id="rBack" aria-label="Voltar para a prévia">← Voltar</button><button class="btn btn-ghost btn-sm" type="button" id="rHome" aria-label="Início do SURF DNA">Início</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
+    <ul class="rchips">${RSEC.map(([id,l])=>`<li><a class="rchip" href="#${id}" data-jump>${l||(r.atual?'Atual × nova':'Comportamento')}</a></li>`).join('')}</ul>
+  </nav>`;
+}
+/* 2 · por que combina: até 4 itens; litros explicados uma vez só, com a faixa visual */
+function whyR(r){
+  const a=r.a,S=r.S,t=S.indexOf(Math.max(...S)),out=[];
+  const card=(ic,title,body,viz,wide)=>`<div class="wcard${wide?' wide':''}">${ICO[ic]}<div class="wct"><h3>${title}</h3><p>${body}</p>${viz||''}</div></div>`;
+  const flut=ARCH[r.k].fixedVol?'':a.flut===0?', com um pouco mais de flutuação porque você prefere que ela boie mais':a.flut===2?', com um pouco menos porque você prefere que ela fique solta':'';
+  out.push(card('drop',`${dec1(r.d.V)} litros`,`Pelo seu peso (${r.peso} kg) e pelo seu nível (${LV[r.lvl].n.toLowerCase()})${flut}. Litro é o quanto a prancha boia: mais litros rema e fica de pé com mais facilidade; menos litros vira mais fácil, mas exige mais de você.`,floatBar(r,{intro:false,atual:false}),true));
+  const sty=['Linha','Curvas','Manobras','Tubo','Aéreo','Clássico'];
+  out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,`<div class="styb">${sty.map((x,i)=>`<span class="${i===t?'on':''}" style="--v:${Math.round(S[i]/Math.max(...S)*100)}%"><i></i>${x}</span>`).join('')}</div>`));
+  if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){
+    const P=['rem','est','vel','man','ctl','tol'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
+    out.push(card('target','Suas prioridades','O que você pediu (barra clara) contra o que ela entrega (barra escura), de 0 a 10.',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${BXP[i]}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${v} · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
+  }
+  const inc={0:'Você perde ondas com a atual: esta rema mais fácil.',1:'Você cai muito com a atual: esta é mais estável em pé.',3:'A atual é travada: esta vira com mais facilidade.'}[a.incomoda];
+  const extra=[inc&&['swap','Contra a sua atual',inc],a.forca===0&&['bolt','Ondas fracas','A prancha é mais reta embaixo para deslizar e ganhar velocidade.'],a.forca===2&&['bolt','Ondas fortes','Bico mais curvado e rabeta mais fina, para segurar na parede.'],a.pass===2&&['dive','Passa de joelhinho','O comprimento e a espessura ainda deixam fazer isso com tranquilidade.'],a.pass===3&&['dive','Já dá pato','A espessura foi mantida num nível que ainda afunda.']].filter(Boolean);
+  extra.forEach(x=>out.push(card(...x)));
+  return out.slice(0,4).join('');
+}
+function attR(r){
+  const L=attB(r),dor=(r.a.dor||[]).length;
+  if(dor){if(/^Nenhum ponto/.test(L[0]))L.length=0;L.unshift('Você marcou dor ou lesão: por isso ela ficou com mais flutuação e estabilidade. A prancha não trata nem previne lesão; se a dor aparecer ou piorar na água, procure um médico ou fisioterapeuta.')}
+  return L.map(x=>`<div class="att">${/^Nenhum ponto/.test(x)?ICO.ok:ICO.warn}<p>${esc(x)}</p></div>`).join('');
+}
+/* 4 · um gráfico só: nova (barra) contra a atual (marca), ou só a nova */
+function behaviorChart(r){
+  const a=r.ix,b=r.atual?r.atual.ix:null;
+  const lab=BXP.map((l,i)=>`${l}: nova ${dec1(a[i])}${b?', atual '+dec1(b[i]):''}`).join('; ');
+  return `<div class="pbars" role="img" aria-label="Notas de 0 a 10. ${lab}.">${BXP.map((l,i)=>{const dv=b?a[i]-b[i]:0;
+    return `<div class="pb"><span class="pbl">${l}</span><div class="pbt"><i class="pbar" style="width:${a[i]*10}%"></i>${b?`<b class="pbm" style="left:${b[i]*10}%"></b>`:''}</div><span class="pbd mono ${b?(dv>0.25?'up':dv<-0.25?'dn':''):''}">${b?(Math.abs(dv)<0.25?'igual':(dv>0?'+':'−')+dec1(Math.abs(dv))):dec1(a[i])}</span></div>`}).join('')}</div>
+  <p class="note">${b?'<span class="key k1"></span>Nova prancha <span class="key k2"></span>Sua atual · notas de 0 a 10; à direita, a diferença':'Notas de 0 a 10 da prancha nova'}</p>`;
+}
+function trocaSec(r){
+  const c=r.atual;
+  if(!c)return `<section class="panel rsec" id="r-troca" aria-labelledby="h-troca"><div><h2 id="h-troca">Como ela se comporta</h2><p class="muted">Você não informou uma prancha atual, então mostramos só a nova.</p></div>${behaviorChart(r)}</section>`;
+  const rows=feelB(r).filter(x=>x[0]!=='Tipo');
+  return `<section class="panel rsec" id="r-troca" aria-labelledby="h-troca"><div><h2 id="h-troca">Sua atual × a nova</h2><p class="muted">${esc(PN[c.k])} <span aria-hidden="true">→</span><span class="a11y-sr">para</span> ${esc(PN[r.k])}</p></div>
+    <div class="two"><div>${behaviorChart(r)}</div>
+      <div><h3 class="fh3">O que você vai sentir</h3><ul class="feel">${rows.map(x=>`<li><span class="fl">${x[0]}</span><span class="fv mono">${esc(x[1])} <span aria-hidden="true">→</span><span class="a11y-sr">para</span> <b>${esc(x[2])}</b></span><span class="fp">${esc(x[3])}</span></li>`).join('')}</ul>
+      <p class="note">${c.medida?'Com as medidas que você informou.':c.soV?'Com os litros que você informou; comprimento, largura e espessura são estimados pelo tipo.':'Com o comprimento que você informou; os litros são estimados pelo tipo.'}</p></div></div></section>`;
+}
+/* 5 · alternativas: 2º e 3º com imagem de altura fixa, ranking recolhido */
+function top10(r){
+  const fk=r.fins.map(f=>f.k),L=r.fins.map((f,i)=>({k:f.k,fit:f.fit,d:i?dims(f.k,f.vol,r.peso,r.alt):r.d}));
+  rankAll(r).filter(x=>!fk.includes(x.k)).forEach(x=>L.push(x));
+  let prev=100;return L.slice(0,10).map((x,i)=>{const fit=Math.min(x.fit,prev);prev=fit;return {k:x.k,d:x.d,fit,pos:i+1}});
+}
+function altSec(r){
+  const cards=r.fins.slice(1,3).map((x,i)=>{const B=boardFor(r,'fin'+(i+1));
+    return `<article class="altc"><div class="altimg">${TIMG.has(x.k)?`<img src="img/tipos/${timgKey(x.k)}.webp" width="1400" height="781" loading="lazy" alt="">`:boardSVG(B.k,B.d,B.dc,{h:true})}</div>
+    <p class="eyebrow">${i+2}º lugar</p><div class="whead"><div><h3>${PN[x.k]}</h3><span class="tech">${PL[x.k]}</span></div><p class="altsc"><b>${x.fit}%</b><span>DNA Score</span></p></div>
+    <p class="mono altm">${ftin(B.d.L)} × ${frac(B.d.W)} × ${frac(B.d.T)} · ${dec1(B.d.V)} L</p><p class="muted altd">${esc(PD[x.k])}</p></article>`}).join('');
+  return `<section class="panel rsec" id="r-alt" aria-labelledby="h-alt"><h2 id="h-alt">Alternativas</h2><div class="altg">${cards}</div>
+    <details class="mini"><summary>Ver o ranking dos 10 primeiros, entre ${KEYS.length} tipos</summary><ol class="rank">${top10(r).map(x=>`<li${x.pos===1?' class="on"':''}><span class="rkp">${x.pos}º</span><span class="rkn">${PN[x.k]}</span><span class="mono rks">${x.fit}%</span><span class="mono rkl">${dec1(x.d.V)} L</span></li>`).join('')}</ol><p class="note">DNA Score e litros de cada tipo, calculados para o seu peso e altura.</p></details>
+    <p class="note">Ilustrações dos tipos geradas por IA, sem marca.</p></section>`;
+}
+/* 6 · comparador recolhido: abre no que ainda não apareceu (2º × 3º), ou ideal × o estilo que a pessoa pediu */
+function cmpPanel(r){
+  const o=cmpOptions(r),nk=r.a.muda===1&&r.a.estilo_novo>=0?NOVO_K[r.a.estilo_novo]:null;
+  let a=r.fins[1]?'fin1':'ideal',b=r.fins[2]?'fin2':(r.atual?'atual':'k_'+KEYS.find(x=>x!==r.k));
+  if(nk&&nk!==r.k){a='ideal';b='k_'+nk}
+  const sel=(id,v,lab)=>`<label class="cmpl" for="${id}"><span>${lab}</span><select id="${id}">${o.map(x=>`<option value="${x[0]}"${x[0]===v?' selected':''}>${esc(x[1])}</option>`).join('')}</select></label>`;
+  return `<section class="panel rsec" id="r-cmp" aria-labelledby="h-cmp"><details class="fold"><summary><span><h2 id="h-cmp" class="fh">Comparador</h2><small>Escolha duas pranchas e veja, na mesma escala, o que muda no formato, nas medidas e no comportamento.</small></span></summary>
+  <div class="foldin"><div class="cmpsel">${sel('cmpA',a,'Prancha A')}${sel('cmpB',b,'Prancha B')}</div><div id="cmpOut" style="display:flex;flex-direction:column;gap:16px">${compareHTML(r,a,b)}</div></div></details></section>`;
+}
+/* 7 · guia de compra */
+function guiaSec(r){
+  const d=r.d,lo=Math.round(d.V-r.rng),hi=Math.round(d.V+r.rng);
+  const G=[
+    ['Na loja',[`Procure primeiro pelos litros: de ${lo} a ${hi} L. Vêm escritos no fundo, junto das medidas.`,`Depois o comprimento: perto de ${ftin(d.L)}, 2" para mais ou para menos.`,'Escolha pelo tipo e pelas medidas, não pela marca.']],
+    ['O que perguntar',['Quantos litros ela tem? É PU ou epóxi?','As quilhas vêm junto? Dá para trocar se não servir?']],
+    ['Usada ou nova',['Usada custa menos e serve bem enquanto você evolui.','Fuja de rachaduras, amassados fundos e manchas escuras ou amareladas (água dentro). Aperte o deck no pé de trás: não pode afundar fácil.','Nova vale quando você quer material e medidas exatos.']],
+    ['Quando encomendar ao shaper',['Quando a loja não tem os seus litros e medidas, ou você quer escolher o material.',`Leve a <a href="#r-ficha" data-jump>ficha técnica</a> do fim deste relatório e pergunte o prazo.`]]
+  ];
+  return `<section class="panel rsec" id="r-guia" aria-labelledby="h-guia"><div><h2 id="h-guia">Guia de compra</h2><p class="muted">Como achar a sua prancha na loja ou mandar fazer. Nenhuma marca paga para aparecer aqui.</p></div>
+  <div class="guia">${G.map(([t,L])=>`<div class="gcard"><h3>${t}</h3><ul>${L.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div></section>`;
+}
+/* 8 · seu DNA: os dois cards e os botões */
+function dnaSec(r){
+  return `<section class="panel rsec" id="r-dna" aria-labelledby="h-dna"><div><h2 id="h-dna">Seu DNA</h2><p class="dnaarch" id="cardArch">${esc(archetype(r))}</p><p class="muted">Dois cards prontos para o story do Instagram ou o status do WhatsApp: o seu jeito de surfar e a sua prancha. E o seu parceiro de surf, pega onda como você?</p></div>
+  <div class="dnacards">
+    <figure class="dnac"><div id="cardOut" class="cardwrap" aria-label="Seu DNA de surf em card"></div><figcaption>Seu DNA de surf</figcaption><div class="row"><button class="btn btn-go btn-sm" type="button" id="shareCard" aria-label="Compartilhar card do DNA">Compartilhar</button><button class="btn btn-ghost btn-sm" type="button" id="dlCard" aria-label="Salvar card do DNA">Salvar</button></div></figure>
+    <figure class="dnac"><div id="cardBoard" class="cardwrap" aria-label="Card da sua prancha"></div><figcaption>A prancha do seu surf</figcaption><div class="row"><button class="btn btn-go btn-sm" type="button" id="shareBoard" aria-label="Compartilhar card da prancha">Compartilhar</button><button class="btn btn-ghost btn-sm" type="button" id="dlBoard" aria-label="Salvar card da prancha">Salvar</button></div></figure>
+  </div><p class="note" id="cardMsg" aria-live="polite"></p></section>`;
+}
+/* 9 · ficha técnica no fim (SURF): as 17 variáveis numa tabela só, com Copiar */
+function fichaGroups(r){
+  const d=r.d,dc=r.dc;
+  return [
+    ['Medidas',[['Comprimento',ftin(d.L)+' ('+mF(d.L)+')'],['Largura',frac(d.W)+' ('+cmF(d.W)+')'],['Espessura',frac(d.T)+' ('+cmF(d.T)+')'],['Litros',dec1(d.V)+' L']]],
+    ['Formato',[['Bico',dc.nose],['Ponto mais largo',dc.wide],['Rabeta',dc.tail],['Borda',dc.rail],['Curva (rocker)','Bico '+frac(dc.rocker[0])+' · rabeta '+frac(dc.rocker[1])],['Fundo',dc.bottom]]],
+    ['Quilhas',[['Configuração',FINSET[dc.setup]],['Tamanho',dc.finSize],['Formato da quilha',dc.template],['Caixas',dc.boxes]]],
+    ['Construção',[['Material',dc.constr[0]],['Laminação',dc.lam],['Acabamento',dc.finish]]]
+  ];
+}
+function fichaSec(r){
+  const G=fichaGroups(r),n=G.reduce((s,g)=>s+g[1].length,0);
+  r._ficha=['FICHA TÉCNICA · SURF DNA','Tipo: '+PN[r.k],...G.flatMap(([g,rows])=>['',g.toUpperCase(),...rows.map(x=>x[0]+': '+x[1])]),'','Surfista: '+r.peso+' kg, '+r.alt+' cm, '+LV[r.lvl].n.toLowerCase()].join('\n');
+  return `<section class="panel rsec" id="r-ficha" aria-labelledby="h-ficha"><details class="fold"><summary><span><h2 id="h-ficha" class="fh">Ficha técnica</h2><small>As ${n} variáveis da sua prancha, prontas para copiar e mandar a qualquer shaper</small></span></summary>
+  <div class="foldin"><div class="row"><button class="btn btn-pri btn-sm" type="button" id="fcopy" aria-label="Copiar ficha técnica">Copiar</button><span class="note" id="fcopied" aria-live="polite"></span></div>
+  <table class="ft"><caption class="a11y-sr">Ficha técnica: ${esc(PN[r.k])}</caption><tbody>${G.map(([g,rows])=>`<tr class="ftg"><th colspan="2" scope="colgroup">${g}</th></tr>${rows.map(x=>`<tr><th scope="row">${x[0]}</th><td>${esc(x[1])}</td></tr>`).join('')}`).join('')}</tbody></table></div></details></section>`;
+}
 function renderReport(){
   const r=RES,k=r.k,d=r.d,dc=r.dc,w=r.fins[0];
-  const series=[{name:'Nova prancha',v:r.ix}];if(r.atual)series.push({name:'Sua atual',v:r.atual.ix});
-  const pdfBtn=id=>`<div class="pdfbar"><button class="btn btn-pri" type="button" id="${id}">Baixar relatório em PDF (A4)</button><span class="note pdfst" aria-live="polite"></span></div>`;
-  let h=`${pdfBtn('pdfTop')}
-  <div class="panel bcard"><div class="two" style="align-items:center"><div id="cardBoard" class="cardwrap herocard" aria-label="Card da sua prancha"></div><div style="display:flex;flex-direction:column;gap:12px"><p class="eyebrow">A prancha do seu surf</p><h2>${PN[k]} · ${w.fit}%</h2><p class="muted">O resumo da sua prancha num card: tipo, medidas, litros, rabeta, quilhas e o pódio entre os ${KEYS.length} tipos. Mostre na loja ou mande para o shaper.</p><div class="row"><button class="btn btn-go" type="button" id="shareBoard">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlBoard">Salvar card da prancha</button></div></div></div></div>
+  let h=reportNav(r);
+  /* 1 · seu resultado */
+  h+=`<section class="rsec rgrp" id="r-resultado" aria-labelledby="h-res">
   <div class="panel winner">
-    <p class="eyebrow">Sua prancha ideal</p>
-    <div class="whead"><div style="display:flex;flex-direction:column;gap:8px;min-width:0"><h2>${PN[k]}</h2><span class="tech">Em palavras simples: <b>${PL[k]}</b></span><p class="muted" style="font-size:16px;max-width:56ch">${PD[k]}</p></div>
-      <div class="fitbox"><div class="fitring" style="--p:${w.fit}"><b>${w.fit}%</b></div><span class="muted" style="font-size:13px">combina com você</span></div></div>
-    <div class="alts"><span class="altl">Também combinam</span>${r.fins.slice(1,3).map((x,i)=>`<div class="alt"><span class="altr" style="--p:${x.fit}"><b>${x.fit}%</b></span><span><small>${i+2}º lugar</small><b>${PN[x.k]}</b></span></div>`).join('')}</div>
-    ${ondaAtt(r)}
-    ${TIMG.has(k)?timg(k,'',dc.tail):`<div class="hboard">${boardSVG(k,d,dc,{h:true})}</div>`}
-    ${heroTiles(r)}
-    <div class="w-sec"><h3>Por que ela combina com você</h3><div class="why-cards">${whyV(r)}</div></div>
-  </div>
-  ${varMap(r)}
-  <div class="panel">
-    <div><p class="eyebrow">Passo 1</p><h3>As 3 medidas da sua prancha</h3><p class="muted" style="margin-top:4px">Toda prancha é descrita por comprimento, largura e espessura. Juntas, elas dão os litros.</p></div>
-    <div class="anat">
-      <div class="anat-fig">${boardSVG(k,d,dc,{dims:true,h:true})}${sideSVG(d,dc,{dims:true})}</div>
-      <div class="meas">
-        <div class="ms"><span class="msn">1</span><div><p class="msl">Comprimento</p><p class="msv mono">${ftin(d.L)} <small>${mF(d.L)}</small></p><p class="msd">Da ponta ao fim. Mais comprida: mais estável e rema melhor.</p></div></div>
-        <div class="ms"><span class="msn">2</span><div><p class="msl">Largura</p><p class="msv mono">${frac(d.W)} <small>${cmF(d.W)}</small></p><p class="msd">No ponto mais largo. Mais larga: mais equilíbrio em pé.</p></div></div>
-        <div class="ms"><span class="msn">3</span><div><p class="msl">Espessura</p><p class="msv mono">${frac(d.T)} <small>${cmF(d.T)}</small></p><p class="msd">A grossura no meio. Mais grossa: boia mais.</p></div></div>
-        <div class="ms total"><span class="msn">=</span><div><p class="msl">Litros</p><p class="msv mono">${dec1(d.V)} L</p><p class="msd">O quanto ela boia. É o número mais importante na hora de comprar.</p></div></div>
-      </div>
-    </div>
-    <p class="note">No Brasil, as medidas vêm em pés (') e polegadas ("), escritas no fundo da prancha: ${ftin(d.L)} x ${frac(d.W)} x ${frac(d.T)}.</p>
+    <div class="whead"><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><p class="eyebrow">Seu resultado</p><h2 id="h-res">${PN[k]}</h2><span class="tech">Em palavras simples: <b>${PL[k]}</b></span></div>
+      <div class="fitbox"><div class="fitring" style="--p:${w.fit}"><b>${w.fit}%</b></div><span class="fitl">DNA Score</span></div></div>
+    <p class="sline"><span class="mono">${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}</span> · <b class="mono">${dec1(d.V)} L</b></p>
+    <p class="muted" style="font-size:16px;max-width:60ch">${PD[k]}</p>
+    ${TIMG.has(k)?timg(k,'hero',dc.tail):''}
   </div>
   <div class="panel">
-    <div><p class="eyebrow">Passo 2</p><h3>Quanto ela boia</h3></div>
-    ${floatBar(r)}
-  </div>
-  <div class="panel">
-    <div><p class="eyebrow">Passo 3</p><h3>Os detalhes</h3><p class="muted" style="margin-top:4px">Depois das medidas, o formato decide como ela se comporta na onda.</p></div>
+    <div><h3>As 3 medidas</h3><p class="muted" style="margin-top:4px">Comprimento, largura e espessura. Juntas, elas dão os litros. No Brasil vêm em pés (') e polegadas ("), escritas no fundo da prancha.</p></div>
+    <div class="anat-fig">${boardSVG(k,d,dc,{dims:true,h:true})}${sideSVG(d,dc,{dims:true})}</div>
+    <p class="note">Em centímetros: ${mF(d.L)} × ${cmF(d.W)} × ${cmF(d.T)}.</p>
+    <div><h3>Os detalhes</h3><p class="muted" style="margin-top:4px">Depois das medidas, o formato decide como ela se comporta na onda.</p></div>
     <div class="det">
       <div class="det-fig">${boardSVG(k,d,dc,{view:'bottom'})}<p class="note" style="text-align:center">Vista de baixo</p></div>
       <div class="dlist">${detailRows(r).map(x=>`<div class="dr"><p class="drl"><b>${x[0]}</b> <span>${x[1]}</span></p><p class="drv">${esc(x[2])}</p><p class="drd">${esc(x[3])}</p></div>`).join('')}</div>
     </div>
-  </div>
-  <div class="${r.atual?'two':''}">
-    <div class="panel"><h3>Como ela se comporta</h3>${radarG(BXP,series)}</div>
-    ${r.atual?`<div class="panel"><h3>Comparada com a sua atual</h3>${perfBars(r)}</div>`:''}
-  </div>`;
+  </div></section>`;
+  /* 2 · por que combina */
+  h+=`<section class="panel rsec" id="r-porque" aria-labelledby="h-porque"><h2 id="h-porque">Por que combina</h2><div class="why-cards">${whyR(r)}</div>
+    <div class="attn"><h3>Pontos de atenção</h3>${attR(r)}</div></section>`;
+  h+=trocaSec(r);
+  h+=altSec(r);
   h+=cmpPanel(r);
-  if(r.atual){h+=`<div class="panel"><h3>O que você vai sentir na troca</h3><div class="tbl"><table><thead><tr><th>Item</th><th>Atual</th><th>Nova</th><th>Na prática</th></tr></thead><tbody>${feelB(r).map(x=>`<tr><td>${x[0]}</td><td class="n">${esc(x[1])}</td><td class="n">${esc(x[2])}</td><td>${esc(x[3])}</td></tr>`).join('')}</tbody></table></div><p class="note">${r.atual.medida?'Com as medidas que você informou.':r.atual.soV?'Com os litros que você informou; comprimento, largura e espessura são estimados pelo tipo.':'Com o comprimento que você informou; os litros são estimados pelo tipo.'}</p></div>`}
-  if(tier>=2){
-    h+=`<div class="mini">${r.fins.slice(1).map((x,i)=>{const dd=dims(x.k,x.vol,r.peso,r.alt);return `<div class="panel"><p class="eyebrow">${i+2}º lugar</p>${timg(x.k,'sm').replace(/<figcaption>.*?<\/figcaption>/,'')}<div class="whead"><div><h3>${PN[x.k]}</h3><span class="tech">${PL[x.k]}</span></div><div class="fit" style="font-size:26px">${x.fit}%</div></div><p class="mono" style="font-size:14px">${ftin(dd.L)} × ${frac(dd.W)} × ${frac(dd.T)} · ${dec1(dd.V)} L</p><p style="font-size:15px" class="muted">${esc(PD[x.k])}</p></div>`}).join('')}</div>`;
-    const rows=[['Bico',dc.nose],['Ponto mais largo',dc.wide],['Rabeta',dc.tail],['Borda',dc.rail],['Curva (rocker)','Bico '+frac(dc.rocker[0])+' · rabeta '+frac(dc.rocker[1])],['Fundo',dc.bottom],['Quilhas',FINSET[dc.setup]+' · tamanho '+dc.finSize],['Formato da quilha',dc.template],['Caixas de quilha',dc.boxes],['Construção',dc.constr[0]+'. '+dc.constr[1]],['Laminação',dc.lam],['Acabamento',dc.finish]];
-    h+=cardsPanel();
-    const ficha=['FICHA TÉCNICA · SURF DNA','Tipo: '+ARCH[k].n,'Medidas: '+ftin(d.L)+' x '+frac(d.W)+' x '+frac(d.T),'Litragem: '+dec1(d.V)+' L',...rows.map(x=>x[0]+': '+x[1]),'Surfista: '+r.peso+' kg, '+r.alt+' cm, '+LV[r.lvl].n.toLowerCase()].join('\n');r._ficha=ficha;
-    h+=`<details class="panel fold"><summary><span><b>Ficha técnica para qualquer shaper</b><small>As 12 decisões de shape, prontas para copiar</small></span></summary><pre class="mono" style="white-space:pre-wrap;font-size:13px;margin:0;background:var(--bg);border-radius:12px;padding:14px;overflow-x:auto">${esc(ficha)}</pre><div class="row"><button class="btn btn-ghost" type="button" id="fcopy">Copiar ficha técnica</button><span class="note" id="fcopied"></span></div></details>`;
-  }
-  if(tier<2)h+=cardsPanel();
+  h+=guiaSec(r);
+  h+=dnaSec(r);
   if(COACH_ON)h+=matchSection(r);
-  h+=pdfBtn('pdfBot');
-  h+=`<div class="row"><button class="btn btn-ghost" type="button" id="again">Refazer o teste</button></div>`;
+  h+=fichaSec(r);
+  h+=`<div class="rfoot"><button class="btn btn-pri" type="button" id="pdfBot">Baixar relatório em PDF (A4)</button><button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><span class="note pdfst" aria-live="polite"></span></div>`;
   $('#report').innerHTML=h;
   wireMatch(r);
   wireCmp(r);
   wireCards(r);
   $('#again').onclick=()=>{step=0;show('quiz');renderQs()};
+  $('#rBack').onclick=()=>show('preview');
+  $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
-  const copy=(btn,txt,out)=>{const b=$(btn);if(b)b.onclick=()=>{navigator.clipboard.writeText(txt()).then(()=>{$(out).textContent='Copiado'},()=>{$(out).textContent='Selecione o texto e copie'})}};
+  const copy=(btn,txt,out)=>{const b=$(btn);if(b)b.onclick=()=>{navigator.clipboard.writeText(txt()).then(()=>{$(out).textContent='Ficha copiada.'},()=>{$(out).textContent='Não deu para copiar: selecione a tabela e copie.'})}};
   copy('#fcopy',()=>r._ficha,'#fcopied');
+  /* chips de salto: rolam até a seção, abrem a parte recolhida e põem o foco no título */
+  const nav=$('#report .rnav'),setH=()=>{if(nav&&nav.offsetHeight)$('#report').style.setProperty('--navh',(nav.offsetHeight+12)+'px')};
+  setH();if(!window._rnavRS){window._rnavRS=1;addEventListener('resize',()=>{const n=document.querySelector('#report .rnav');if(n&&n.offsetHeight)document.querySelector('#report').style.setProperty('--navh',(n.offsetHeight+12)+'px')})}
+  $('#report').querySelectorAll('a[data-jump]').forEach(a=>a.onclick=e=>{
+    const t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;e.preventDefault();setH();
+    const dt=t.querySelector('details.fold');if(dt)dt.open=true;
+    const red=matchMedia('(prefers-reduced-motion: reduce)').matches;t.scrollIntoView({behavior:red?'auto':'smooth',block:'start'});
+    const f=dt?dt.querySelector('summary'):t.querySelector('h2');if(!f)return;if(!dt)f.setAttribute('tabindex','-1');
+    try{f.focus({preventScroll:true})}catch(_){f.focus()}
+  });
 }
 
 if(window.CanvasRenderingContext2D&&!CanvasRenderingContext2D.prototype.roundRect)CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){r=Math.min(+r||0,w/2,h/2);this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath();return this};
@@ -1489,7 +1597,7 @@ async function drawDNA(d){
   K.forEach((k,i)=>{const p=pt(i,12.8);x.fillStyle='rgba(255,255,255,.85)';x.fillText(BXP[i],p[0],p[1]+12);const q=pt(i,d.im[k]);x.fillStyle='#6CCFF6';x.beginPath();x.arc(q[0],q[1],11,0,7);x.fill()});
   x.textAlign='left';let cxp=90;const cyp=cy+R+205;x.font='700 40px "DM Sans", sans-serif';
   K.map((k,i)=>[d.im[k],i]).sort((a,b)=>b[0]-a[0]).slice(0,2).forEach(([v,i])=>{const t=`${BXP[i]} ${v}`;const w=x.measureText(t).width+60;x.fillStyle='#6CCFF6';x.beginPath();x.roundRect(cxp,cyp-52,w,76,38);x.fill();x.fillStyle='#0B2530';x.fillText(t,cxp+30,cyp);cxp+=w+20});
-  x.fillStyle='#FFFFFF';x.font='800 64px Archivo, sans-serif';x.fillText(`DNA ${d.fit}%`,90,H-230);
+  x.fillStyle='#FFFFFF';x.font='800 64px Archivo, sans-serif';x.fillText(`DNA Score ${d.fit}%`,90,H-230);
   x.fillStyle='rgba(255,255,255,.75)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no SURF DNA',90,H-150);
   return cv;
 }
@@ -1515,7 +1623,7 @@ async function drawBoardCard(d){
   if(wn+wp+8>room){fs=Math.floor(fs*room/(wn+wp+8));x.font=F(fs);wn=x.measureText(num).width;x.font=F(fs*.42);wp=x.measureText('%').width}
   const base=y0+215+fs*.3,xr=W-80;x.fillStyle=INK;x.textAlign='right';
   x.font=F(fs*.42);x.fillText('%',xr,base-fs*.33);x.font=F(fs);x.fillText(num,xr-wp-8,base);
-  x.fillStyle='rgba(11,37,48,.7)';x.font='700 34px "DM Sans", sans-serif';x.fillText('DNA',xr-wp-12,base-fs*.78);x.textAlign='left';
+  x.fillStyle='rgba(11,37,48,.7)';x.font='700 34px "DM Sans", sans-serif';x.fillText('DNA Score',xr-wp-12,base-fs*.78);x.textAlign='left';
   x.fillStyle=INK;x.font='600 34px "DM Sans", sans-serif';x.fillText('Sem marca: leve a ficha a qualquer loja ou shaper',90,y+30);
   const by=Math.max(1250,y+150),bh=440;x.fillStyle=PET;x.beginPath();x.roundRect(60,by,W-120,bh,36);x.fill();
   x.fillStyle='#6CCFF6';x.font='700 30px "DM Sans", sans-serif';x.fillText(`ESCOLHIDA ENTRE ${KEYS.length} TIPOS DE PRANCHA`,100,by+70);
@@ -1529,13 +1637,6 @@ async function drawBoardCard(d){
 }
 const cardImg=(cv,alt)=>`<img class="cardimg" alt="${esc(alt)}" src="${cv.toDataURL('image/png')}">`;
 async function saveCanvas(cv,name){const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
-function cardsPanel(){return `<div class="panel"><div class="two" style="align-items:center">
-  <div id="cardOut" class="cardwrap herocard" aria-label="Seu DNA de surf em card"></div>
-  <div style="display:flex;flex-direction:column;gap:12px"><p class="eyebrow">Seu DNA de surf</p><h2 id="cardArch"></h2>
-    <p class="muted">O card do seu perfil está pronto para o story do Instagram ou o status do WhatsApp.</p>
-    <p style="font-weight:600">E o seu parceiro de surf, pega onda como você?</p>
-    <div class="row"><button class="btn btn-go" type="button" id="shareCard">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlCard">Salvar card do DNA</button></div><p class="note" id="cardMsg" aria-live="polite"></p>
-  </div></div></div>`}
 async function shareCanvas(cv,name,txt){
   try{const blob=await new Promise(z=>cv.toBlob(z,'image/png'));const file=new File([blob],name,{type:'image/png'});
     if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],text:txt});return}
@@ -1548,13 +1649,13 @@ async function wireCards(r){
   $('#dlCard').onclick=async()=>saveCanvas(await drawDNA(cardData(r)),'surf-dna-dna.png');
   $('#shareBoard').onclick=async()=>shareCanvas(await drawBoardCard(boardCardData(r)),'surf-dna-prancha.png',`Minha prancha no SURF DNA: ${PN[r.k]}, ${r.fins[0].fit}%. E a sua?`);
   $('#dlBoard').onclick=async()=>saveCanvas(await drawBoardCard(boardCardData(r)),'surf-dna-prancha.png');
-  try{const b=await drawBoardCard(boardCardData(r));const o=$('#cardBoard');if(o)o.innerHTML=cardImg(b,'Card da prancha: '+PN[r.k]+', DNA '+r.fins[0].fit+'%')}catch(e){const o=$('#cardBoard');if(o)o.closest('.panel').remove()}
+  try{const b=await drawBoardCard(boardCardData(r));const o=$('#cardBoard');if(o)o.innerHTML=cardImg(b,'Card da prancha: '+PN[r.k]+', DNA Score '+r.fins[0].fit+'%')}catch(e){const o=$('#cardBoard');if(o)o.closest('figure').remove()}
   try{const a=await drawDNA(cardData(r));const o=$('#cardOut');if(o)o.innerHTML=cardImg(a,'Card do DNA de surf: '+archetype(r))}catch(e){}
 }
 /* exemplo na abertura, com o mesmo perfil do "Ver um exemplo pronto" */
 (function(){try{
   Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));const r=compute();Object.keys(A).forEach(k=>delete A[k]);
-  Promise.all([drawDNA(cardData(r)),drawBoardCard(boardCardData(r))]).then(([a,b])=>{const o=$('#cardHome');if(o)o.innerHTML=`<div class="cardpair">${cardImg(a,'Exemplo de card do DNA de surf: '+archetype(r))}${cardImg(b,'Exemplo de card da prancha: '+PN[r.k]+', DNA '+r.fins[0].fit+'%')}</div>`});
+  Promise.all([drawDNA(cardData(r)),drawBoardCard(boardCardData(r))]).then(([a,b])=>{const o=$('#cardHome');if(o)o.innerHTML=`<div class="cardpair">${cardImg(a,'Exemplo de card do DNA de surf: '+archetype(r))}${cardImg(b,'Exemplo de card da prancha: '+PN[r.k]+', DNA Score '+r.fins[0].fit+'%')}</div>`});
 }catch(e){const o=$('#cardHome');if(o)o.remove()}})();
 
 /* ---------- relatório em PDF (A4, 5 páginas, padrão SPORT DNA) ---------- */
