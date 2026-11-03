@@ -31,11 +31,16 @@ const AREAS = {
     h1:`A raquete certa para o seu jogo e para o seu <span class="hl">braço</span>.`,
     lede:"Peso, balanço, swingweight, rigidez, cabeça e padrão de cordas. O teste cruza suas respostas com a ficha técnica de cada raquete e mostra a análise inteira antes de você pagar.",
     quiz:"racket/",
-    facts:[["62","raquetes no catálogo"],["26 a 31","perguntas"],["R$ 19,99","relatório"]],
+    facts:[["62","raquetes no catálogo"],["24 a 29","perguntas"],["R$ 19,99","relatório"]],
     vin:["Idade e força","Dor no braço","Medida da mão","Nível e frequência","Estilo, topspin e swing","Onde você erra","Raquete atual e sensação","Orçamento e corda"],
     vout:["Peso","Balanço","Swingweight","Rigidez (RA)","Cabeça","Padrão","Corda e tensão","Grip"],
     inside:[["Raquete ideal com DNA Score","Marca, modelo e as seis especificações que importam."],["Índice Conforto no braço","Rigidez, peso e balanço avaliados para quem sente o braço."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
     price:[["R$ 19,99","Relatório completo"]],
+    engine:{title:"Não é palpite. É um motor calibrado com 379 recomendações de especialistas.",
+      lede:"Indicações de especialistas em português, inglês e espanhol viraram perfis do questionário e rodaram no motor. Os pesos foram ajustados e conferidos em casos guardados à parte, com travas para não piorar a segurança do braço nem estourar o seu orçamento.",
+      stats:[["670","avaliações de testadores e de sites especializados"],["45","variáveis cruzadas: respostas, ficha técnica e índices"],["21","estudos científicos sobre raquete e braço"],["379","recomendações de especialistas, em 3 idiomas"],["3.000","perfis simulados para conferir segurança e viés"],["40%","de acerto no top 3 dos especialistas (o acaso daria 5%)"]],
+      steps:[["Seu corpo e o seu braço","Idade, força, medida da mão e dor no braço definem a faixa de peso e quanto conforto a raquete precisa ter."],["Seu jogo","Nível, frequência, estilo, topspin, swing e onde você erra viram um perfil ideal em seis atributos: potência, controle, spin, conforto, manobra e estabilidade."],["62 raquetes disputam o seu perfil","Peso, balanço, swingweight, rigidez, cabeça e padrão de cada raquete viram índices, comparados com o seu perfil ideal."],["Travas de segurança e orçamento","Raquete leve demais para quem sente o braço, pesada demais para quem tem pouca força e preço acima do seu orçamento perdem pontos."],["Corda, tensão e grip","A corda, a espessura e a tensão para o seu jogo, e como medir o grip."]],
+      sources:"Fontes da calibração: Tennisnerd, Tennis Warehouse, The Tennis Tribe, TennisHack, Too Many Rackets, Tennis Express, Tênis Recreativo, InnerTenis, Universo do Tenista e Brasil Tênis, entre 74 fontes. Nenhuma marca paga para aparecer."},
     gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
   board:{key:"board", name:"SURF DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
     q:"Qual prancha faz você remar, entrar na onda e evoluir no mar onde você surfa?",
@@ -63,6 +68,11 @@ const AREAS = {
     vout:["Categoria","Altura de espuma","Drop","Peso","Durabilidade","Custo por km","Quando trocar","Segundo par"],
     inside:[["Tênis ideal com DNA Score","Modelo, preço médio no Brasil e ficha técnica."],["Ficha de laboratório","Peso, espuma e drop medidos, e seis índices contra a média do catálogo."],["Quando trocar","A data de troca pela sua quilometragem semanal."],["Segundo par e custo por km","Rodízio e os finalistas lado a lado."]],
     price:[["R$ 9,99","Relatório completo"]],
+    engine:{title:"Não é palpite. É um motor calibrado com 234 recomendações de especialistas.",
+      lede:"Cada indicação de especialista (guias de revistas, testes de laboratório, lojas e treinadores) virou um perfil do questionário e rodou no motor. Os pesos foram ajustados e conferidos em casos guardados à parte, sem marca nenhuma pagando para aparecer.",
+      stats:[["1.755","reviews lidas, de testadores e de clientes"],["37","critérios técnicos por tênis"],["41","estudos científicos por trás das regras"],["234","recomendações de especialistas, de 35 fontes"],["5.000","perfis simulados para conferir segurança e viés"],["31%","de acerto no top 3 dos especialistas (o acaso daria 2%)"]],
+      steps:[["Seu corpo e o seu treino","Peso, largura do pé, dor, km por semana, ritmo, terreno e objetivo definem a categoria ideal: treino diário, amortecimento, estabilidade, treino rápido, prova ou trilha."],["Sem mito da pisada","Neutro por padrão: os estudos não mostram ganho em escolher pelo tipo de pisada. Estabilidade entra quando você relata desconforto."],["212 tênis disputam o seu perfil","Peso, espuma e drop medidos em laboratório, durabilidade e aprovação nas reviews, comparados com o tênis ideal para você."],["Travas de segurança","Contraindicações sérias (como supertênis para quem pediu estabilidade) tiram o tênis do pódio."],["Custo por km e data de troca","O preço médio no Brasil dividido pela durabilidade, e quando trocar pela sua quilometragem."]],
+      sources:"Fontes da calibração: testes e guias da RunRepeat, RTINGS, Solereview, Outside, iRunFar, Believe in the Run, Doctors of Running e Runner's World, e fontes brasileiras como Centauro Arena, Exame e Webrun, num total de 35 fontes. Nenhuma marca paga para aparecer."},
     gloss:[["Drop","Diferença de altura entre calcanhar e antepé, em mm."],["Stack","Altura total de espuma sob o pé."],["PEBA","Espuma leve e muito responsiva, comum em tênis de prova."],["Placa de carbono","Lâmina rígida na entressola que muda a mecânica da passada."],["Rocker","Curvatura da sola que ajuda a rolar do apoio à impulsão."],["Cabedal","A parte de cima do tênis, que segura o pé."]]}
 };
 const ORDER = ["racket","board","tenis"];
@@ -80,7 +90,7 @@ document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go
 document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
-  racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, para um atacante completo de topspin moderado, nível intermediário. Abaixo, Por que combina (peso na faixa ideal, quadro flexível, swingweight mais solto que a Head Speed Pro atual e preço dentro do orçamento), trechos de testadores, pontos de atenção e a ficha técnica.",
+  racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
   board:"Exemplo de relatório do SURF DNA: prancha ideal mid-length (egg) com DNA Score de 96%, medidas de 6 pés e 11 polegadas por 19 e 7/8 por 2 e 5/8 polegadas e 38,7 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, quilhas 2+1, fundo plano para single concave, construção em epóxi (EPS) e curva do bico de 3 e 3/4 polegadas.",
   tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Winflo 12, com DNA Score de 96%. Treino diário, 299 g, 41 mm de espuma, drop de 10 mm, R$ 664,99 e custo de R$ 0,95 por km. Abaixo, Por que combina, com custo por km baixo e preço dentro do orçamento, e a ficha técnica, com durabilidade de 700 km e troca em cerca de 5 meses."};
 function reportFrame(k, h){
@@ -112,8 +122,8 @@ const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="$
 /* ---------- HOME ---------- */
 let heroK = "racket";
 const MODEL_TXT={
-  racket:"a raquete ideal com DNA Score, o setup em seis decisões, a raquete em 3D, o perfil de jogo no hexágono e a comparação com a sua raquete atual.",
-  board:"o tipo de prancha com o percentual de combinação, o desenho da prancha, as medidas e a litragem, os motivos em cards e a comparação com a sua prancha atual.",
+  racket:"a raquete ideal com DNA Score, a ficha técnica, o perfil de jogo no hexágono e a comparação com a sua raquete atual.",
+  board:"o tipo de prancha com DNA Score, o desenho da prancha, as medidas e a litragem, os motivos em cards e a comparação com a sua prancha atual.",
   tenis:"o tênis ideal com DNA Score e preço médio, a ficha técnica, os prós e contras das reviews e a data de troca pela sua quilometragem."};
 function modelSec(){
   const a=AREAS[heroK];
@@ -141,6 +151,8 @@ const conceitoSec = ()=>`<section class="band" id="conceito"><div class="wrap">
       <div class="step"><span class="n">PASSO 2</span><h3>Veja a análise grátis</h3><p>Seu perfil, as especificações ideais e o grau de confiança do resultado, antes de pagar qualquer coisa.</p></div>
       <div class="step"><span class="n">PASSO 3</span><h3>Desbloqueie o relatório</h3><p>Os finalistas com marca e modelo, comparados com o que você já tem, num relatório como o exemplo abaixo.</p></div>
     </div>
+    <h3 class="eng-h" style="margin-top:40px">O que tem por trás dos três testes</h3>
+    <div class="eng-stats home-stats">${[["2.451","reviews e avaliações lidas, de testadores e de clientes","a-tenis"],["1.035","casos reais e indicações de especialistas na calibração","a-racket"],["62","estudos científicos por trás das regras","a-board"],["274","tênis e raquetes com ficha técnica, mais 13 tipos de prancha","a-tenis"],["11.000","perfis simulados para conferir segurança e viés","a-racket"],["0","marcas pagando para aparecer no resultado","a-board"]].map(([v,l,c])=>`<div class="${c}"><b>${v}</b><span>${l}</span></div>`).join("")}</div>
     <div class="principles">
       <div class="principle"><span class="ck">✓</span><div><b>Análise antes de pagar</b><span>Você vê o raciocínio inteiro. Só os finalistas ficam ocultos.</span></div></div>
       <div class="principle"><span class="ck">✓</span><div><b>Nenhuma marca no comando</b><span>Ninguém paga para aparecer no resultado. Mesmas respostas, mesmo resultado.</span></div></div>
