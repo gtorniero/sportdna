@@ -1,5 +1,12 @@
 # Tenis Match — calibração e validação com reviews (out/2026)
 
+## Abertura com números grandes e PDF local (03/nov/2026)
+- **Abertura:** o quadro "O motor" virou uma faixa de 6 números: 1.755 reviews (soma de `nr` no catálogo), 37 critérios por tênis (`Q.length+8+6+4`), 41 estudos (títulos distintos em `dados/ciencia.json`; 47 citações), 234 recomendações de especialistas de 35 fontes (casos úteis em `dados/casos.json`), 5.000 perfis simulados (teste de segurança) e 31% de pódios com um tênis indicado pelos especialistas contra cerca de 2% ao acaso (`run/tools/calibrar.mjs`: 30,8% top 3 e 54,3% top 10 nos 234 casos; acaso calculado em 2,1%). Saíram os números de efeito (cruzamentos por análise e combinações possíveis).
+- **Conferido de novo em 03/nov:** pódios com 2+ contraindicações sérias: 32 em 15.000 (5.000 perfis, mesma semente e mesmo sorteio da rodada 6).
+- **Texto corrigido:** "Cumulus 28 declara 8 mm e mede cerca de 12" (o catálogo tem 12 mm); "segundo par: um dos outros 211" (era 31, do catálogo antigo). No PDF, página 5, o "85% dos 500 perfis" (rodada 4, motor antigo) virou o 31% contra especialistas.
+- **Exemplo pronto:** Nike Winflo 12, DNA 96%; 2º Mizuno Wave Sky 9 (93%) e 3º Under Armour Infinite Pro (90%). Imagem do relatório e cards já batem com o motor.
+- **PDF:** bibliotecas em `assets/vendor/` (sem CDN), gerado em segundo plano quando o relatório pago aparece; clique baixa na hora, ou mostra "Abrir o PDF" quando ainda está gerando; "Tentar de novo" no erro.
+
 ## Rodada 6: auditoria de dados, marcas e cobertura (nov/2026)
 - **Auditoria com fonte de 63 modelos** por 6 agentes (Nike, Puma, ASICS, Brooks, Mizuno, New Balance, modelos fracos), registro em `dados/auditoria-nov2026.json`. Ex.: Pegasus 42 maciez 2,4 → 3,0 e aprovação 3,8 → 4,1, sem “pé largo” e “longão”; Novablast 6 e Superblast 3 com aprovação maior; Wave Rider 30, Neo Vista 3, Neo Zen 2 e SC Trainer v3 com resposta menor.
 - **9 “importados” são vendidos no Brasil** (7 New Balance, On Cloudsoma, adidas Prime X3 e Takumi Sen 11): 189 dos 212 vendidos aqui.

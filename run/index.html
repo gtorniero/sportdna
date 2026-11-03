@@ -161,7 +161,18 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .mini .panel{gap:10px}
 footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+footer .sd-cookie-link{opacity:1;color:var(--ink)}
 
+/* faixa de números grandes da abertura */
+.dnaband{background:#0E4D64;color:#FFFFFF;border-radius:22px;padding:clamp(20px,3.4vw,32px);display:flex;flex-direction:column;gap:20px}
+.dnaband .eyebrow{color:#FFA366}.dnaband h2{color:#FFFFFF}
+.dnanums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dn{border-top:2px solid rgba(255,255,255,.28);padding-top:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.dn b{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.4vw,52px);line-height:1;letter-spacing:-.02em;color:#FFA366;font-variant-numeric:tabular-nums}
+.dn span{font-size:14px;line-height:1.4;color:#FFFFFF}
+.dn.hl{border-top-color:#FFA366}
+.dnatxt{font-size:15px;color:#FFFFFF;max-width:72ch}
+@media (max-width:600px){.dnanums{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 14px}.dn span{font-size:13px}}
 .erra{display:flex;flex-direction:column;gap:22px}
 .bignums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .bn{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:4px}
@@ -240,6 +251,7 @@ table.t10 tr.pref td{background:var(--soft)}
 .rnav-c a[aria-current]{background:var(--pri);border-color:var(--pri);color:var(--pri-ink)}
 .rnav-c a:focus-visible{outline:3px solid var(--pri);outline-offset:-1px}
 .rnav .pdfst:empty{display:none}
+.pdfact{display:inline-flex}#modalRoot .pdfact{display:flex;justify-content:center;margin-top:8px}
 .rsec{display:flex;flex-direction:column;gap:14px;scroll-margin-top:calc(var(--navh,110px) + 12px);min-width:0}
 .sech{font-size:22px;font-weight:800;letter-spacing:-.01em}
 .sech:focus{outline:none}.sech:focus-visible{outline:3px solid var(--pri);outline-offset:4px}
@@ -381,26 +393,27 @@ details.rk:not([open]){gap:0}
         <p class="lead">Responda 19 perguntas sobre seu corpo, sua corrida e seu objetivo. Você vê a análise inteira antes de pagar qualquer coisa.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir meu tênis</button>
+          <button class="btn btn-ghost" id="duelGo" type="button">Comparar dois tênis</button>
           <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
         </div>
-        <div class="row"><button class="btn btn-ghost" id="duelGo" type="button">Comparar dois tênis</button><span class="note">Escolha dois modelos e veja specs, preço e diferenças lado a lado.</span></div>
-        <p class="note">Grátis · 3 minutos · sem cadastro</p>
+        <p class="note">Grátis · 3 minutos · sem cadastro. No comparador, você escolhe dois modelos e vê specs, preço e diferenças lado a lado.</p>
       </div>
       <div class="herocol">
       <div id="cardHome" class="homecard" aria-label="Exemplo dos cards: perfil de corredor e tênis com o DNA"></div>
-      <div class="court">
-        <p class="eyebrow acc">O motor</p>
-        <div class="stats">
-          <div class="stat"><b id="nRk">227</b><span>tênis de <span id="nBr">15</span> marcas</span></div>
-          <div class="stat"><b>8</b><span>categorias</span></div>
-          <div class="stat"><b>6</b><span>índices por tênis</span></div>
-        </div>
-        <p style="font-size:14px;opacity:.9">Peso, espuma, drop, durabilidade, preço médio e custo por km, cruzados com seu peso, seu ritmo, seus km por semana e seu objetivo.</p>
-        <p style="font-size:14px;opacity:.9">Calibrado contra 304 recomendações de especialistas de 35 fontes, com 1.755 reviews lidas e 47 estudos científicos por trás de cada regra.</p>
-        <p class="mono acc" style="font-size:13px">Nenhuma marca paga para aparecer.</p>
-      </div>
       </div>
     </div>
+    <section class="dnaband" aria-labelledby="bandH">
+      <div class="dnahead"><p class="eyebrow">O trabalho por trás do resultado</p><h2 id="bandH">Um motor testado contra quem entende de tênis</h2></div>
+      <div class="dnanums">
+        <div class="dn"><b>1.755</b><span>reviews lidas, de quem testa tênis e de clientes</span></div>
+        <div class="dn"><b id="nVar">37</b><span>critérios cruzados para cada tênis</span></div>
+        <div class="dn"><b>41</b><span>estudos científicos por trás das regras</span></div>
+        <div class="dn"><b>234</b><span>recomendações de especialistas, de 35 fontes, para calibrar</span></div>
+        <div class="dn"><b>5.000</b><span>perfis de corredor simulados para testar o motor</span></div>
+        <div class="dn hl"><b>31%</b><span>das vezes o nosso pódio traz um tênis que especialistas indicam para o mesmo perfil (ao acaso, cerca de 2%)</span></div>
+      </div>
+      <p class="dnatxt">Suas <span id="nQ">19</span> respostas são cruzadas com <span id="nRk">212</span> tênis de <span id="nBr">13</span> marcas: peso, espuma, drop, durabilidade e preço, mais o que as reviews dizem de cada um. O peso de cada critério foi ajustado até o resultado concordar com as recomendações de especialistas. Nenhuma marca paga para aparecer.</p>
+    </section>
     <div class="diffs">
       <div class="diff"><h3>Preço médio no Brasil</h3><p>Cada finalista com preço de referência e custo por km. Você sabe quanto vai gastar antes de abrir a loja.</p></div>
       <div class="diff"><h3>Sem mito da pisada</h3><p>Neutro por padrão, como mostram os estudos. Estabilidade só entra se você sente desconforto com neutro.</p></div>
@@ -409,16 +422,11 @@ details.rk:not([open]){gap:0}
     </div>
     <div class="erra">
       <div><p class="eyebrow">Por que é fácil errar</p><h2>Tênis de corrida não é uma escolha. São quatro.</h2><p class="muted" style="margin-top:8px;max-width:62ch">Modelo, numeração, forma e segundo par. Cada uma muda conforto, adaptação e quanto você paga por quilômetro, e uma decisão errada anula as outras certas.</p></div>
-      <div class="bignums">
-        <div class="bn hl"><b id="nVar">35</b><span>variáveis cruzadas no ranking: <span id="nVarQ">17</span> respostas suas, 8 especificações medidas, 6 índices e 4 sinais das reviews por tênis</span></div>
-        <div class="bn"><b id="nCross">1.120</b><span>cruzamentos entre o seu perfil e o catálogo em cada análise</span></div>
-        <div class="bn"><b id="nComb">6.144</b><span>combinações possíveis no catálogo. A certa para você é uma.</span></div>
-      </div>
       <div class="decs" aria-label="As decisões e o número de opções de cada uma">
         <div class="dc"><b id="dcM">32</b><span>Modelo</span><small>peso, espuma, drop, placa, durabilidade</small></div><span class="dx">×</span>
         <div class="dc"><b>3</b><span>Numeração</span><small>o seu número, ½ ou 1 acima</small></div><span class="dx">×</span>
         <div class="dc"><b>2</b><span>Forma</span><small>padrão ou larga (2E)</small></div><span class="dx">×</span>
-        <div class="dc"><b id="dcS">32</b><span>Segundo par</span><small>nenhum ou um dos outros 31 para rodízio</small></div>
+        <div class="dc"><b id="dcS">32</b><span>Segundo par</span><small>nenhum ou um dos outros <span id="dcS2" style="font:inherit;color:inherit">211</span> para rodízio</small></div>
       </div>
       <p class="note" style="margin-top:-10px">Peso, drop e altura de espuma vêm de laboratório quando existem; preços consultados em lojas brasileiras em out/2026.</p>
       <h3 style="margin-bottom:-8px">Erros comuns na hora de escolher</h3>
@@ -427,7 +435,7 @@ details.rk:not([open]){gap:0}
         <div class="mist"><h4>Comprar o número do dia a dia</h4><p>O pé incha ao correr. Sem um dedo de folga na ponta vêm unha roxa e bolha. Muita gente sobe meio número ou um.</p></div>
         <div class="mist"><h4>Usar supertênis para tudo</h4><p>Placa de carbono dura de 350 a 450 km, é menos estável em ritmo lento e custa mais que o dobro por km. É par de prova.</p></div>
         <div class="mist"><h4>Achar que mais macio protege mais</h4><p>Espuma alta e mole sem base larga deixa o pé instável. Corredor pesado precisa de espuma e de base, não só de maciez.</p></div>
-        <div class="mist"><h4>Confiar no drop da caixa</h4><p>O Cumulus 28 declara 8 mm e mede 13 no laboratório. Para quem pisa de antepé ou tem o Aquiles sensível, essa diferença pesa.</p></div>
+        <div class="mist"><h4>Confiar no drop da caixa</h4><p>O Cumulus 28 declara 8 mm e mede cerca de 12 no laboratório. Para quem pisa de antepé ou tem o Aquiles sensível, essa diferença pesa.</p></div>
         <div class="mist"><h4>Correr até o solado furar</h4><p>A espuma perde amortecimento muito antes de a sola gastar. Troque entre 500 e 800 km, conforme o modelo e o seu peso.</p></div>
       </div>
     </div>
@@ -973,7 +981,7 @@ const Q=[
  {s:3,id:'pares',t:'Vai ser seu único tênis de corrida?',o:O(['Sim, único par','Não, quero montar um rodízio'])}
 ];
 const A={};let step=0;
-{const fmt=n=>n.toLocaleString('pt-BR');const NVAR=Q.length+8+6+4;$('#nVar').textContent=NVAR;$('#nVarQ').textContent=Q.length;$('#nCross').textContent=fmt(NVAR*M.length);$('#dcM').textContent=M.length;$('#dcS').textContent=M.length;$('#nComb').textContent=fmt(M.length*3*2*M.length);$('#nRk').textContent=M.length;$('#nBr').textContent=BRANDS.length}
+{/* números da abertura que saem do código (os outros vêm de docs/tenis/argumentos.md) */const NVAR=Q.length+8+6+4;$('#nVar').textContent=NVAR;$('#nQ').textContent=Q.length;$('#dcM').textContent=M.length;$('#dcS').textContent=M.length;$('#dcS2').textContent=M.length-1;$('#nRk').textContent=M.length;$('#nBr').textContent=BRANDS.length}
 const EXAMPLE={atual:'Nike Pegasus 42',marca:['2','3'],peso:'82',largura:'1',dor:'1',pisada:'0',calor:'0',uso:'0',tempo:'2',km:'2',pace:'2',terreno:'0',obj:'2',prova:'2',treino:'1',sens:'0',prior:'0',neutro:'0',orc:'1',pares:'1'};
 
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
@@ -1269,6 +1277,7 @@ function renderReport(){
   $('#rBack').onclick=()=>{step=STEPS.length-1;show('quiz');renderQs()};
   $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
+  pdfPrewarm(r);
   /* barra fixa: altura para o salto não esconder o título; chip da seção visível em destaque */
   // o relatório é montado ainda oculto: a altura da barra é medida quando ela aparece e a cada mudança de tamanho
   const nav=$('#report .rnav');
@@ -1440,7 +1449,7 @@ function pix(e){
   /* Esc fecha; Tab fica dentro do modal */
   if(pixKey)document.removeEventListener('keydown',pixKey);
   pixKey=e=>{if(e.key==='Escape'){closeModal();return}
-    if(e.key==='Tab'){const f=[...document.querySelectorAll('#modalRoot button:not([disabled]),#modalRoot input')];if(!f.length)return;const i=f.indexOf(document.activeElement);
+    if(e.key==='Tab'){const f=[...document.querySelectorAll('#modalRoot button:not([disabled]),#modalRoot input,#modalRoot a[href]')];if(!f.length)return;const i=f.indexOf(document.activeElement);
       if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&(i===f.length-1||i<0)){e.preventDefault();f[0].focus()}}};
   document.addEventListener('keydown',pixKey);
   $('#pxCp').onclick=async()=>{try{await navigator.clipboard.writeText(code);$('#pxCp').textContent='Copiado'}catch(e){$('#pxC').select();$('#pxCp').textContent='Selecione e copie'}};
@@ -1454,7 +1463,7 @@ function pix(e){
         <button class="btn btn-go" type="button" id="pxPdf" style="width:100%;margin-top:14px">Baixar relatório em PDF (A4)</button>
         <button class="btn btn-ghost" type="button" id="pxSee" style="width:100%;margin-top:8px">Ver relatório na tela</button>
         <p class="note pdfst" aria-live="polite" style="text-align:center;margin-top:8px"></p>`;
-      $('#pxPdf').onclick=async()=>{$('#pxPdf').disabled=true;const ok=await makePDF(RES);if(ok)closeModal();else{const b=$('#pxPdf');if(b)b.disabled=false}};
+      $('#pxPdf').onclick=async()=>{$('#pxPdf').disabled=true;const ok=await makePDF(RES);if(ok==='done'&&!isIOS())closeModal();else{const b=$('#pxPdf');if(b)b.disabled=false}};
       $('#pxSee').onclick=closeModal;$('#pxPdf').focus();
     },1100);
   };
@@ -1596,13 +1605,15 @@ function pdfHTML(r){
   <div class="pcols" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)"><div class="pbox"><h3>Seus 10 primeiros entre ${M.length} tênis</h3><table class="ptab"><thead><tr><th>#</th><th>Tênis</th><th>Preço</th><th>DNA</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.m===m?'hl':c&&x.m===c?'at':''}"><td class="n">${x.pos?x.pos+'º':'—'}</td><td>${esc(x.m.n)}${c&&x.m===c?' · seu atual':''}<br><span class="muted" style="font-size:9px">${CAT[x.m.c].n} · ${kmCost(x.m).replace(' por km','/km')}</span></td><td class="n">${priceTxt(x.m).replace(/ \(.*\)/,'')}</td><td class="n"><span style="display:inline-block;width:${Math.round(x.fit*.4)}px;height:5px;border-radius:9px;background:${x.m===m?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>Mapa do catálogo</h3>${mapPDF(r,rows.filter(x=>x.pos&&x.pos<=10),at)}<p class="pnote">Os ${M.length} tênis por peso e espuma, na cor da categoria; o número é a posição no seu top 10. Escuro: o recomendado; laranja: o pódio${c?'; anel vermelho tracejado: o seu atual':''}.</p></div></div>
   ${c?`<div class="pbox s"><h3>Por que o seu atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
-  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, preços de lojas no Brasil</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites e clientes</span></div><div><b>${NV}</b><span>variáveis: ${(NV*M.length).toLocaleString('pt-BR')} cruzamentos por análise</span></div><div><b>85%</b><span>dos 500 perfis de teste com o 1º na categoria ideal</span></div></div>
+  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, preços de lojas no Brasil</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites e clientes</span></div><div><b>${NV}</b><span>variáveis: ${(NV*M.length).toLocaleString('pt-BR')} cruzamentos por análise</span></div><div><b>31%</b><span>dos casos de especialistas com um tênis indicado por eles no pódio (ao acaso, cerca de 2%)</span></div></div>
   <p class="pnote">Especificações aproximadas, em revisão. Nenhuma marca paga para aparecer no resultado; links de loja só depois da recomendação.</p></div>
   <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['DNA Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Num estudo com 264 corredores, quem alternava teve menos lesões; é indício, não garantia.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Sua corrida × o tênis',p2)}${pdfPage(3,'Ajuste e adaptação',p3)}${pdfPage(4,'Pódio',p4)}${pdfPage(5,'Ranking e método',p5)}</div>`;
 }
-const LIBS=['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js','https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'];
-const loadJS=u=>new Promise((ok,no)=>{if(document.querySelector(`script[src="${u}"]`))return ok();const s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=()=>no(new Error(u));document.head.appendChild(s)});
+/* bibliotecas no próprio site: nada de CDN (redes que bloqueiam CDN e Safari no iPhone) */
+const LIBS=['../assets/vendor/html2canvas-1.4.1.min.js','../assets/vendor/jspdf-2.5.1.umd.min.js'];
+/* carrega uma vez; se falhar, tira a tag para o "Tentar de novo" baixar de novo */
+const JS={};const loadJS=u=>JS[u]||(JS[u]=new Promise((ok,no)=>{const s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=()=>{s.remove();delete JS[u];no(new Error('não carregou '+u))};document.head.appendChild(s)}));
 /* garante que nada passe do rodapé: tira primeiro os itens extras (trechos de review, itens de lista e alertas a mais) */
 function fitPages(box){box.querySelectorAll('.pg').forEach(pg=>{
   const lim=pg.getBoundingClientRect().top+1123-46;
@@ -1615,23 +1626,66 @@ function inlineSVG(root){
   const PROPS=['fill','fill-opacity','stroke','stroke-width','stroke-opacity','stroke-dasharray','stroke-linecap','stroke-linejoin','opacity','font-size','font-weight','font-family','paint-order'];
   root.querySelectorAll('svg *').forEach(el=>{if(/^(defs|linearGradient|stop)$/.test(el.tagName))return;const cs=getComputedStyle(el);el.setAttribute('style',PROPS.map(p=>`${p}:${cs.getPropertyValue(p)}`).join(';'))});
 }
-let pdfBusy=false;
-async function makePDF(r){
-  if(pdfBusy)return false;pdfBusy=true;let ok=false;const st=document.querySelectorAll('.pdfst'),say=t=>st.forEach(x=>x.textContent=t);
-  say('Gerando o PDF…');let box;
+/* PDF: gerado em segundo plano assim que o relatório pago aparece e guardado como Blob.
+   No clique, se o Blob está pronto, o download sai na hora, dentro do mesmo toque (Safari iOS 13+).
+   Se não está, mostra "Gerando o PDF…" e depois um botão "Abrir o PDF" (um toque novo, que o iPhone aceita). */
+const PDF={key:null,blob:null,url:null,name:'',job:null};
+const pdfKey=()=>JSON.stringify(A);
+const isIOS=()=>/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const pause=()=>new Promise(ok=>setTimeout(ok,0));
+async function buildPDF(r){
+  let box;
   try{
     await Promise.all(LIBS.map(loadJS));
+    if(!window.html2canvas||!(window.jspdf&&window.jspdf.jsPDF))throw new Error('bibliotecas do PDF não carregaram');
     box=document.createElement('div');box.innerHTML=pdfHTML(r);box=box.firstElementChild;document.body.appendChild(box);
     if(document.fonts&&document.fonts.ready)await document.fonts.ready;
     fitPages(box);inlineSVG(box);
     const pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',compress:true}),pages=[...box.querySelectorAll('.pg')];
-    for(let i=0;i<pages.length;i++){say(`Gerando o PDF… página ${i+1} de ${pages.length}`);
+    for(let i=0;i<pages.length;i++){await pause();
       const cv=await html2canvas(pages[i],{scale:2.4,backgroundColor:'#FFFFFF',logging:false,windowWidth:900});
       if(i)pdf.addPage();pdf.addImage(cv.toDataURL('image/jpeg',.86),'JPEG',0,0,210,297)}
-    pdf.save(`run-dna-${slug(r.fins[0].m.n)}.pdf`);say('PDF baixado.');ok=true;
-  }catch(e){say('Não deu para gerar o PDF agora. Confira a conexão e tente de novo.')}
-  finally{if(box)box.remove();pdfBusy=false}
-  return ok;
+    return pdf.output('blob');
+  }finally{if(box)box.remove()}
+}
+/* começa (ou reaproveita) a geração para as respostas atuais; resultado antigo é descartado */
+function pdfJob(r){
+  const key=pdfKey();
+  if(PDF.key===key&&(PDF.blob||PDF.job))return PDF.job||Promise.resolve(PDF.blob);
+  if(PDF.url){URL.revokeObjectURL(PDF.url)}
+  Object.assign(PDF,{key,blob:null,url:null,name:`run-dna-${slug(r.fins[0].m.n)}.pdf`});
+  const job=buildPDF(r).then(blob=>{if(PDF.key===key){PDF.blob=blob;PDF.url=URL.createObjectURL(blob);PDF.job=null}return blob},
+    e=>{if(PDF.key===key){PDF.job=null;PDF.key=null}throw e});
+  PDF.job=job;return job;
+}
+function pdfPrewarm(r){const go=()=>{pdfJob(r).catch(e=>console.warn('RUN DNA: PDF em segundo plano falhou',e))};
+  if(window.requestIdleCallback)requestIdleCallback(go,{timeout:2500});else setTimeout(go,600)}
+function pdfSay(t){document.querySelectorAll('.pdfst').forEach(x=>x.textContent=t)}
+function pdfActs(html){document.querySelectorAll('.pdfact').forEach(x=>x.remove());if(!html)return;
+  document.querySelectorAll('.pdfst').forEach(st=>st.insertAdjacentHTML('afterend',`<span class="pdfact">${html}</span>`))}
+/* baixa no mesmo gesto: link com download e URL do Blob */
+function pdfSave(){const a=document.createElement('a');a.href=PDF.url;a.download=PDF.name;a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+let pdfRetry=null;
+async function makePDF(r){
+  const key=pdfKey();pdfActs('');
+  /* no app Claude, o download passa pelo próprio app */
+  if(window.claude&&window.claude.use){try{const dl=await window.claude.use('downloads');if(dl){pdfSay('Gerando o PDF…');const blob=await pdfJob(r);
+      try{await dl.save({filename:PDF.name,data:blob});pdfSay('PDF salvo.');return 'done'}catch(e){if(e&&e.code==='declined'){pdfSay('');return false}}}}catch(e){console.warn('RUN DNA: downloads do app indisponível',e)}}
+  if(PDF.key===key&&PDF.blob&&PDF.url){pdfSave();pdfSay('PDF baixado.');
+    if(isIOS())pdfActs(`<a class="btn btn-ghost btn-sm" href="${PDF.url}" download="${PDF.name}" target="_blank" rel="noopener">Abrir o PDF</a>`);
+    return 'done'}
+  pdfSay('Gerando o PDF…');
+  try{await pdfJob(r);
+    if(pdfKey()!==key)return false;
+    pdfSay('PDF pronto. Toque em "Abrir o PDF" para baixar.');
+    pdfActs(`<a class="btn btn-go btn-sm pdfopen" href="${PDF.url}" download="${PDF.name}" target="_blank" rel="noopener">Abrir o PDF</a>`);
+    const o=document.querySelector('#modalRoot .pdfopen')||document.querySelector('.pdfopen');if(o)o.focus();
+    return 'link';
+  }catch(e){console.warn('RUN DNA: não foi possível gerar o PDF',e);
+    pdfSay('Não deu para gerar o PDF. Confira a conexão e toque em "Tentar de novo".');
+    pdfActs(`<button class="btn btn-ghost btn-sm pdfretry" type="button">Tentar de novo</button>`);
+    document.querySelectorAll('.pdfretry').forEach(b=>b.onclick=()=>makePDF(r));
+    return false}
 }
 
 
