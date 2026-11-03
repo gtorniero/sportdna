@@ -68,7 +68,7 @@
  function open(product){
   if(!enabled)return false;
   const body=panel('Como deseja pagar?');
-  const label=document.createElement('label');label.textContent='Seu e-mail (necessário para Pix)';const email=document.createElement('input');email.type='email';email.autocomplete='email';email.style.cssText='width:100%;margin:8px 0 16px';label.append(email);body.append(label);
+  const label=document.createElement('label');label.textContent='Seu e-mail (para Pix ou código promocional)';const email=document.createElement('input');email.type='email';email.autocomplete='email';email.style.cssText='width:100%;margin:8px 0 16px';label.append(email);body.append(label);
   for(const [provider,text] of [['stripe','Cartão — Stripe'],['mercadopago','Pix — Mercado Pago']]){
    const button=document.createElement('button');button.type='button';button.className='btn btn-go';button.textContent=text;button.style.cssText='width:100%;margin-bottom:10px';
    button.onclick=async()=>{
@@ -80,6 +80,20 @@
     }catch(e){message(e.message);body.querySelectorAll('button').forEach(b=>b.disabled=false)}finally{busy=false}
    };body.append(button);
   }
+  const promoLabel=document.createElement('label');promoLabel.textContent='Código promocional';
+  const promo=document.createElement('input');promo.autocomplete='off';promo.maxLength=80;promo.style.cssText='width:100%;margin:8px 0 12px';promoLabel.append(promo);body.append(promoLabel);
+  const apply=document.createElement('button');apply.type='button';apply.className='btn btn-pri';apply.textContent='Aplicar código e liberar grátis';apply.style.cssText='width:100%;margin-bottom:12px';body.append(apply);
+  apply.onclick=async()=>{
+   if(busy)return;if(!email.value||!email.checkValidity()){message('Informe seu e-mail para receber o acesso.');email.focus();return}
+   if(!promo.value.trim()){message('Digite o código promocional.');promo.focus();return}
+   busy=true;body.querySelectorAll('button').forEach(b=>b.disabled=true);
+   try{
+    const p={id:crypto.randomUUID(),token:random(),app:app.name,product,provider:'promo',answers:app.snapshot()};
+    const order=await api('/promos/redeem',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,email:email.value,codigo:promo.value})});
+    if(order.state!=='paid'||order.provider!=='promo'||order.amount!==0)throw new Error('Código não confirmado.');
+    save(p);await check();
+   }catch(e){message(e.message)}finally{busy=false;body.querySelectorAll('button').forEach(b=>b.disabled=false)}
+  };
   body.querySelector('button').focus();return true;
  }
  window.SportDNAPayments={enabled,open,register(options){app=options;if(!enabled)return;const p=get();if(p?.app===app.name){app.restore(p.answers);check().then(paid=>{if(!paid&&new URLSearchParams(location.search).has('payment'))pendingPanel({})})}}};

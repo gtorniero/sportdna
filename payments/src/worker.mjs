@@ -1,3 +1,4 @@
+import {redeemPromo} from './promos.mjs';
 import StripeClient from 'stripe';
 import {sendReport} from './email.mjs';
 import {catalog,digest,verifyMP,stripeState,mpState} from './security.mjs';
@@ -37,6 +38,7 @@ function publicOrder(o) {
 }
 async function refresh(o,env,force=false) {
  if(o.mode!==env.PAYMENTS_MODE) fail(409,'Pedido de outro ambiente.');
+ if(o.provider==='promo'){const r=await env.DB.prepare('SELECT email FROM promo_order_emails WHERE order_id=?').bind(o.id).first();return {...o,recipientEmail:r?.email};}
  if(!o.provider_id) return o;
  if(!force&&Date.now()-o.checked_at<5000) return o;
  const value=o.provider==='stripe'?await stripe(env).checkout.sessions.retrieve(o.provider_id,{expand:['payment_intent.latest_charge']}):await mp(env,'/'+encodeURIComponent(o.provider_id));
@@ -78,6 +80,20 @@ async function create(request,env) {
  }
  if(typeof id!=='string'||id.length>128) fail(502,'Pedido não confirmado pelo provedor.');
  await env.DB.prepare('UPDATE orders SET provider_id=?,state=?,checkout_url=?,pix_code=?,pix_image=? WHERE id=?').bind(id,'pending',url,code,image,b.id).run();
+ return publicOrder(await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first());
+}
+async function redeem(request,env){
+ const b=await readJson(request);
+ if(!catalog[b.product]||!uuid.test(b.id)||!tokenFormat.test(b.token))fail(400,'Pedido inválido.');
+ ready(env,'promo');await rate(request,env);
+ const hash=await digest(b.token);
+ const existing=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first();
+ if(existing){if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!=='promo'||existing.mode!==env.PAYMENTS_MODE)fail(409,'Pedido já utilizado.');return publicOrder(existing);}
+ const g=await redeemPromo(env.PROMOS,request,'sportdna',b.product,b.codigo,b.email);
+ await env.DB.prepare('CREATE TABLE IF NOT EXISTS promo_order_emails(order_id TEXT PRIMARY KEY,email TEXT NOT NULL,grant_id TEXT NOT NULL)').run();
+ await env.DB.batch([
+ env.DB.prepare("INSERT INTO orders(id,token_hash,product,provider,amount,mode,state,created_at) VALUES (?,?,?,'promo',0,?,'paid',?)").bind(b.id,hash,b.product,env.PAYMENTS_MODE,Date.now()),
+ env.DB.prepare('INSERT INTO promo_order_emails(order_id,email,grant_id) VALUES (?,?,?)').bind(b.id,String(b.email).trim().toLowerCase(),g.id)]);
  return publicOrder(await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first());
 }
 async function status(request,env,id) {
@@ -136,6 +152,7 @@ export default {async fetch(request,env) {
   if(request.method==='OPTIONS') return new Response(null,{status:204,headers:{...headers,'Access-Control-Allow-Methods':'POST, GET, OPTIONS','Access-Control-Allow-Headers':'Content-Type, Authorization'}});
   let value;
   if(request.method==='POST'&&url.pathname==='/orders') value=await create(request,env);
+  else if(request.method==='POST'&&url.pathname==='/promos/redeem') value=await redeem(request,env);
   else if(request.method==='POST'&&/^\/orders\/[^/]+\/email$/.test(url.pathname)) value=await emailReport(request,env,url.pathname.split('/')[2]);
   else if(request.method==='GET'&&url.pathname.startsWith('/orders/')) value=await status(request,env,url.pathname.slice(8));
   else if(request.method==='POST'&&url.pathname==='/webhooks/stripe') value=await webhook(request,env,'stripe');
