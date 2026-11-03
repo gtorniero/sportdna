@@ -34,7 +34,7 @@ const AREAS = {
     facts:[["62","raquetes no catálogo"],["26 a 31","perguntas"],["R$ 19,99","relatório"]],
     vin:["Idade e força","Dor no braço","Medida da mão","Nível e frequência","Estilo, topspin e swing","Onde você erra","Raquete atual e sensação","Orçamento e corda"],
     vout:["Peso","Balanço","Swingweight","Rigidez (RA)","Cabeça","Padrão","Corda e tensão","Grip"],
-    inside:[["Raquete ideal com Fit Score","Marca, modelo e as seis especificações que importam."],["Índice Conforto no braço","Rigidez, peso e balanço avaliados para quem sente o braço."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
+    inside:[["Raquete ideal com DNA Score","Marca, modelo e as seis especificações que importam."],["Índice Conforto no braço","Rigidez, peso e balanço avaliados para quem sente o braço."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
     price:[["R$ 19,99","Relatório completo"]],
     gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
   board:{key:"board", name:"SURF DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
@@ -45,7 +45,7 @@ const AREAS = {
     facts:[["13","tipos de prancha"],["18 a 23","perguntas"],["R$ 19,99","relatório"]],
     vin:["Peso, altura e idade","Tempo e frequência de surf","O que já faz na onda","Estilo","Flutuação preferida","Tamanho e força da onda","Papel no quiver","Prancha atual"],
     vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
-    inside:[["Tipo de prancha com Fit Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
+    inside:[["Tipo de prancha com DNA Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
     price:[["Grátis","Prévia com a litragem"],["R$ 19,99","Relatório completo"]],
     gloss:[["Litragem","Volume da prancha em litros. Define flutuação e remada."],["Rocker","Curvatura do bico à rabeta. Mais rocker, mais manobra e menos velocidade."],["Rabeta","Formato da traseira. Muda soltura e firmeza na parede."],["Quilhas","Single, twin, thruster ou quad. Cada configuração dá outra linha."],["Stringer","Longarina central de madeira que dá rigidez."],["EPS","Bloco de isopor expandido com epóxi. Mais leve e flutuante que o PU."]]},
   tenis:{key:"tenis", name:"RUN DNA", w1:"Run", sport:"Tênis de corrida", cls:"a-tenis",
@@ -56,7 +56,7 @@ const AREAS = {
     facts:[["212","tênis de 13 marcas"],["19","perguntas"],["R$ 9,99","relatório"]],
     vin:["Peso e largura do pé","Dor ao correr","Km por semana e ritmo","Terreno","Objetivo e prova","Treino de tiro","Sensação preferida","Orçamento"],
     vout:["Categoria","Altura de espuma","Drop","Peso","Durabilidade","Custo por km","Quando trocar","Segundo par"],
-    inside:[["Tênis ideal com Fit Score","Modelo, preço médio no Brasil e ficha técnica."],["Ficha de laboratório","Peso, espuma e drop medidos, e seis índices contra a média do catálogo."],["Quando trocar","A data de troca pela sua quilometragem semanal."],["Segundo par e custo por km","Rodízio e os finalistas lado a lado."]],
+    inside:[["Tênis ideal com DNA Score","Modelo, preço médio no Brasil e ficha técnica."],["Ficha de laboratório","Peso, espuma e drop medidos, e seis índices contra a média do catálogo."],["Quando trocar","A data de troca pela sua quilometragem semanal."],["Segundo par e custo por km","Rodízio e os finalistas lado a lado."]],
     price:[["R$ 9,99","Relatório completo"]],
     gloss:[["Drop","Diferença de altura entre calcanhar e antepé, em mm."],["Stack","Altura total de espuma sob o pé."],["PEBA","Espuma leve e muito responsiva, comum em tênis de prova."],["Placa de carbono","Lâmina rígida na entressola que muda a mecânica da passada."],["Rocker","Curvatura da sola que ajuda a rolar do apoio à impulsão."],["Cabedal","A parte de cima do tênis, que segura o pé."]]}
 };
@@ -75,9 +75,9 @@ document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go
 document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" data-go="${k}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
-  racket:"Exemplo de relatório do RACKET DNA: raquete recomendada Head Boom MP, DNA Score de 95%. Setup em seis decisões: cabeça de 100 polegadas quadradas com padrão 16x19, grip pela medida da mão, corda híbrida de 1,25 mm e tensão de 46 a 48 libras. Especificações: 295 g sem corda, balanço de 315 mm, swingweight 316 e rigidez de 61 RA. Inclui o card de DNA de jogo, o motivo de cada escolha, trechos de reviews e a comparação com a raquete atual.",
-  board:"Exemplo de relatório do SURF DNA: prancha recomendada mid-length, 96% de combinação, com groveler (91%) e fish (85%) como alternativas. Medidas: 6 pés e 11 polegadas de comprimento, 19 e 7/8 de largura, 2 e 5/8 de espessura, 38,7 litros, rabeta round, quilhas 2+1 e construção em epóxi. Inclui o desenho da prancha e os motivos em cards: estilo, prioridades, litragem, arrebentação, ondas fracas e comparação com a prancha atual.",
-  tenis:"Exemplo de relatório do RUN DNA: tênis recomendado Mizuno Wave Sky 9, Fit Score de 96%, preço médio de R$ 699,89. Categoria máximo amortecimento, 286 g, 43,2 mm de espuma, drop de 4,4 mm, durabilidade de 750 km e custo de R$ 0,93 por km. Inclui os motivos da escolha, os pontos de atenção, o mês de troca, a ficha de laboratório e a comparação com o tênis atual."};
+  racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, para um atacante completo de topspin moderado, nível intermediário. Abaixo, Por que combina (peso na faixa ideal, quadro flexível, swingweight mais solto que a Head Speed Pro atual e preço dentro do orçamento), trechos de testadores, pontos de atenção e a ficha técnica.",
+  board:"Exemplo de relatório do SURF DNA: prancha ideal mid-length (egg) com DNA Score de 96%, medidas de 6 pés e 11 polegadas por 19 e 7/8 por 2 e 5/8 polegadas e 38,7 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, quilhas 2+1, fundo plano para single concave, construção em epóxi (EPS) e curva do bico de 3 e 3/4 polegadas.",
+  tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Winflo 12, com DNA Score de 96%. Treino diário, 299 g, 41 mm de espuma, drop de 10 mm, R$ 664,99 e custo de R$ 0,95 por km. Abaixo, Por que combina, com custo por km baixo e preço dentro do orçamento, e a ficha técnica, com durabilidade de 700 km e troca em cerca de 5 meses."};
 function reportFrame(k, h){
   const a = AREAS[k];
   return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"tenis"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
@@ -97,19 +97,19 @@ function vars(a){
 }
 const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/index.html"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
 const CARDS={
-  racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, hexágono com conforto 9,2 e potência 8,5, DNA 95%"],
+  racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, nível intermediário, hexágono com conforto 9,2 e potência 8,5"],
           produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: Head Boom MP, 295 g, cabeça de 100 pol², 61 RA, padrão 16x19, DNA 95%, escolhida entre 62 raquetes"]},
   board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
          produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 11 polegadas por 19 7/8 polegadas, 38,7 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
   tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
-         produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Mizuno Wave Sky 9, 286 g, 43,2 mm de espuma, drop de 4,4 mm, 750 km de durabilidade, DNA 96%, escolhido entre 212 tênis"]}};
+         produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Nike Winflo 12, treino diário, 299 g, 41 mm de espuma, drop de 10 mm, 700 km de durabilidade, R$ 664,99, DNA 96%, escolhido entre 212 tênis"]}};
 const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="${CARDS[k][t][1]}" width="720" height="1280" loading="lazy" decoding="async">`;
 /* ---------- HOME ---------- */
 let heroK = "racket";
 const MODEL_TXT={
   racket:"a raquete ideal com DNA Score, o setup em seis decisões, a raquete em 3D, o perfil de jogo no hexágono e a comparação com a sua raquete atual.",
   board:"o tipo de prancha com o percentual de combinação, o desenho da prancha, as medidas e a litragem, os motivos em cards e a comparação com a sua prancha atual.",
-  tenis:"o tênis ideal com Fit Score e preço médio, a ficha técnica, os prós e contras das reviews e a data de troca pela sua quilometragem."};
+  tenis:"o tênis ideal com DNA Score e preço médio, a ficha técnica, os prós e contras das reviews e a data de troca pela sua quilometragem."};
 function modelSec(){
   const a=AREAS[heroK];
   return `<div class="model ${a.cls}">

@@ -501,6 +501,59 @@ details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:
 .wq .q{background:var(--soft);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
 .wq .q:first-child{background:var(--pri);color:var(--pri-ink)}
 .wq .q p{margin:0;font-weight:600}.wq .q small{opacity:.85;font-size:13px}.wq .q small b{background:var(--ball);color:var(--ball-ink);border-radius:8px;padding:0 6px}
+/* relatório: barra fixa com saltos, seções na ordem do padrão comum */
+.rbar{position:sticky;top:0;z-index:20;background:var(--bg);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;padding:8px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.rbar .backbar{gap:8px}
+.rchips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0;padding:2px}
+.rchips::-webkit-scrollbar{display:none}
+.rchips a{flex:none;display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border:1px solid var(--line);border-radius:99px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;background:var(--surface);white-space:nowrap}
+.rchips a:hover{border-color:var(--pri)}
+.rchips a:focus-visible{outline:3px solid var(--pri);outline-offset:1px}
+#report>section{scroll-margin-top:calc(var(--rbar,110px) + 12px)}
+#report .gl{display:inline-flex;align-items:center;min-height:24px;vertical-align:middle}
+#report h2.sec{font-size:22px}
+#report h2.eyebrow{font-size:12px;letter-spacing:.12em}
+.rname{font-size:clamp(26px,4vw,32px);font-weight:700;letter-spacing:-.025em}
+.hero2{font-size:17px;line-height:1.55;margin:0;max-width:70ch}
+.rvq{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rvq li{border-left:3px solid var(--ball);padding:2px 0 2px 12px}
+.rvq p{font-weight:600;margin:0}
+.rvq small{color:var(--muted);font-size:13px}
+.alert{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.alert.warn{border-color:var(--warn)}
+.ficha{min-width:0}
+.ficha th{width:42%;font-size:14px;letter-spacing:0;text-transform:none;color:var(--muted);font-weight:500}
+.ficha td{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.hexvals{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 18px;font-size:13.5px}
+.hexvals li{padding:2px 0}
+table.stack{min-width:0}
+details.cmpbox[open]{background:var(--surface)}
+.ficha th,.ficha td{padding:7px 8px}
+@media (max-width:600px){
+  .ficha th{width:auto;white-space:nowrap;font-size:13.5px}
+  .ficha th,.ficha td{padding:6px 6px}
+  table.stack,table.stack tbody{display:block;width:auto}
+  table.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  table.stack tr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;column-gap:14px;row-gap:2px;padding:8px 0;border-bottom:1px solid var(--line)}
+  table.stack td{display:block;border:0;padding:0;white-space:normal}
+  table.stack td::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  table.stack td:first-child{font-weight:700;align-self:end}
+  table.stack td:first-child::before,table.stack td.full::before{content:none}
+  table.stack td.full{grid-column:1/-1;font-size:14px;color:var(--muted)}
+  table.stack td.wide{grid-column:1/-1}
+  table.stack td.wide::before{display:inline;margin-right:6px}
+}
+.altl{display:flex;flex-direction:column;gap:10px}
+.altc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;background:var(--bg);border-radius:14px;padding:14px}
+.altc h3{font-size:18px}
+.altc .fit{font-size:30px}
+.altc .pcs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.altc .pc{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;border:1px solid var(--line)}
+.altc .pc.up{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+details.more{border-top:1px solid var(--line);padding-top:6px}
+details.more>summary{cursor:pointer;font-weight:700;color:var(--pri);min-height:44px;display:flex;align-items:center}
+details.more>summary:focus-visible,details.calc>summary:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+details.more[open]>summary{margin-bottom:10px}
 .pdfroot .rad svg{width:100%!important;max-width:none!important;height:auto!important}
 .pdfroot .cols.c2.radc{grid-template-columns:330px minmax(0,1fr)}.pdfroot .cols>div{min-width:0}.pdfroot .rad{width:330px}.pdfroot .igr{display:grid;grid-template-columns:minmax(0,1fr) 40px 40px 40px;gap:8px;align-items:end;padding:6px 0;border-bottom:1px solid #CFDEE2;font-size:11.5px}.pdfroot .igr.n3{grid-template-columns:minmax(0,1fr) 40px 40px}.pdfroot .igr>span:not(:first-child),.pdfroot .igr>b{text-align:right}.pdfroot .igh{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#4A6570;font-weight:700}.pdfroot table.it{table-layout:fixed}.pdfroot .it td:first-child,.pdfroot .it th:first-child{width:auto}.pdfroot .it th:not(:first-child),.pdfroot .it td:not(:first-child){width:44px}
 .pdfroot .swap{margin-top:20px;display:grid;grid-template-columns:auto auto auto 1fr;gap:16px;align-items:center;background:#EEF4F5;border-radius:14px;padding:14px 18px}
@@ -1200,8 +1253,8 @@ function radar(series,opt={}){
     g+=`<text x="${l[0].toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anc}" font-size="12.5" font-weight="600" font-family="DM Sans, sans-serif" fill="var(--ink)">${LBL[k]}</text>`;
     const idl=series.find(s=>s.ideal||s.name.includes('ideal'));
     const vals=(main.length?main:series).map(s=>`<tspan fill="${s.c}" font-weight="700">${dec(s.v[k])}</tspan>`).join('<tspan fill="var(--muted)"> · </tspan>')+(idl&&main.length?`<tspan fill="var(--muted)"> · alvo ${dec(idl.v[k])}</tspan>`:'');
-    g+=`<text x="${l[0].toFixed(1)}" y="${(y+15).toFixed(1)}" text-anchor="${anc}" font-size="12" font-weight="500" font-family="DM Sans, sans-serif">${vals}</text>`});
-  return `<svg class="radar" viewBox="-20 -10 400 350" role="img" data-a11y="1" aria-label="Hexágono de índices de 0 a 10. ${series.map(s=>esc(s.name)+': '+KEYS.map(k=>LBL[k]+' '+dec(s.v[k])).join(', ')).join('. ')}.">${g}</svg>
+    if(opt.values!==false)g+=`<text x="${l[0].toFixed(1)}" y="${(y+15).toFixed(1)}" text-anchor="${anc}" font-size="12" font-weight="500" font-family="DM Sans, sans-serif">${vals}</text>`});
+  return `<svg class="radar" viewBox="${opt.values===false?'-20 -2 400 330':'-20 -10 400 350'}" role="img" data-a11y="1" aria-label="Hexágono de índices de 0 a 10. ${series.map(s=>esc(s.name)+': '+KEYS.map(k=>LBL[k]+' '+dec(s.v[k])).join(', ')).join('. ')}.">${g}</svg>
   <div class="legend">${series.map(s=>{const id=s.ideal||s.name.includes('ideal');return `<span><i style="${id?'background:color-mix(in srgb,var(--ball) 60%,transparent);border:1.5px dashed var(--ink);width:14px;height:10px':s.dash?`background:none;border-top:3px dashed ${s.c};height:0`:`background:${s.c}`}"></i>${esc(s.name)}</span>`}).join('')}</div>`;
 }
 /* barras de índice: preenchimento = raquete, marca lima = seu ideal, anel = sua atual */
@@ -1211,7 +1264,8 @@ function ibars(v,T,cur){
 }
 function viz(id,series,T,v,cur){
   return `<div class="phead"><h3>Perfil de jogo</h3><div class="seg" role="group" aria-label="Visualização"><button type="button" aria-pressed="true" data-v="hex" data-for="${id}">Hexágono</button><button type="button" aria-pressed="false" data-v="bar" data-for="${id}">Barras</button></div></div>
-  <div id="${id}_hex">${radar(series,{values:true})}</div><div id="${id}_bar" hidden>${ibars(v,T,cur)}</div>`;
+  <div id="${id}_hex">${radar(series,{values:false})}</div><div id="${id}_bar" hidden>${ibars(v,T,cur)}</div>
+  <ul class="hexvals" aria-label="Valores de cada atributo, de 0 a 10">${KEYS.map(k=>`<li><b>${LBL[k]}:</b> ${series.filter(s=>!s.ideal).map(s=>`${esc(s.name==='Sua atual'?'sua atual':s.name)} ${dec(s.v[k])}`).concat(series.filter(s=>s.ideal).map(s=>'ideal '+dec(s.v[k]))).join(' · ')}</li>`).join('')}</ul>`;
 }
 function wireSeg(root){
   root.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
@@ -1265,14 +1319,15 @@ function gauge(v){
 
 /* ---------- Prévia ---------- */
 const armTxt=v=>v>=7.5?'Muito amigável ao braço':v>=6?'Amigável ao braço':v>=4.5?'Neutra':'Exige cuidado';
-function juniorNote(){
+/* rep=true: versão para dentro de "Por que combina" no relatório (caixa simples, não painel) */
+function juniorNote(rep){
   if(!A.age||+A.age>=PESOS.juvenil.idade)return '';
-  return `<div class="panel" style="border-color:var(--warn)"><p><strong>Menos de ${PESOS.juvenil.idade} anos.</strong> O nosso catálogo só tem raquetes adultas (27 polegadas). Para quem ainda está crescendo, vale procurar uma raquete juvenil de 25 ou 26 polegadas, mais leve e mais curta, e pedir ajuda ao professor na escolha. Use o resultado abaixo como referência de estilo, não como compra.</p></div>`;
+  return `<div class="${rep?'alert warn':'panel'}" style="border-color:var(--warn)"><p><strong>Menos de ${PESOS.juvenil.idade} anos.</strong> O nosso catálogo só tem raquetes adultas (27 polegadas). Para quem ainda está crescendo, vale procurar uma raquete juvenil de 25 ou 26 polegadas, mais leve e mais curta, e pedir ajuda ao professor na escolha. Use ${rep?'este resultado':'o resultado abaixo'} como referência de estilo, não como compra.</p></div>`;
 }
-function painNote(){
+function painNote(rep){
   if(!A.arm||A.arm==='no')return '';
-  if(!(A.pain==='3'||A.lim==='3'))return `<div class="panel"><p><strong>Sobre a dor no braço.</strong> A raquete é só uma parte: idade, tempo e volume de jogo e a técnica pesam mais do que qualquer especificação. Se a dor persistir, procure um médico ou fisioterapeuta.</p></div>`;
-  return `<div class="panel" style="border-color:var(--warn)"><p><strong>Dor forte ou em tratamento.</strong> Nenhuma raquete previne ou trata lesão. Idade, volume de jogo e técnica pesam mais do que qualquer especificação. Antes de voltar a jogar forte, fale com o seu médico ou fisioterapeuta. O motor deu preferência a raquetes mais flexíveis, que os especialistas costumam indicar para quem sente o braço, e a corda indicada é multifilamento.</p></div>`;
+  if(!(A.pain==='3'||A.lim==='3'))return `<div class="${rep?'alert':'panel'}"><p><strong>Sobre a dor no braço.</strong> A raquete é só uma parte: idade, tempo e volume de jogo e a técnica pesam mais do que qualquer especificação. Se a dor persistir, procure um médico ou fisioterapeuta.</p></div>`;
+  return `<div class="${rep?'alert warn':'panel'}" style="border-color:var(--warn)"><p><strong>Dor forte ou em tratamento.</strong> Nenhuma raquete previne ou trata lesão. Idade, volume de jogo e técnica pesam mais do que qualquer especificação. Antes de voltar a jogar forte, fale com o seu médico ou fisioterapeuta. O motor deu preferência a raquetes mais flexíveis, que os especialistas costumam indicar para quem sente o braço, e a corda indicada é multifilamento.</p></div>`;
 }
 /* oculta texto no grátis: o conteúdo real não vai para a página, só um molde do mesmo tamanho */
 const mask=t=>`<span class="sr-only">Disponível no relatório.</span><span class="mk" aria-hidden="true">${String(t).replace(/<[^>]+>/g,' ').replace(/[^\s.,:]/g,'x')}</span>`;
@@ -1411,15 +1466,26 @@ function gripSize(){
   if(A.grip&&A.grip!=='0')return {g:+A.grip,src:'mantendo o grip da sua raquete atual'};
   return null;
 }
-/* parágrafo de abertura do relatório: por que esta raquete, sem jargão */
-function whyPara(x,T){const r=x.r;const lv={beg:'iniciante',int:'intermediário',adv_int:'intermediário avançado',adv:'avançado'}[A.lvl]||'';
+/* abertura do relatório: no máximo 2 frases, sem jargão; o resto vai para "Por que combina" */
+function heroText(x,T){const r=x.r;const lv={beg:'iniciante',int:'intermediário',adv_int:'intermediário avançado',adv:'avançado'}[A.lvl]||'';
   const top=KEYS.filter(k=>T[k]>=6).sort((a,b)=>T[b]-T[a]).slice(0,2);const out=[];
   out.push(`Entre as ${RK.length} raquetes do catálogo, a ${esc(r.model)} é a que mais combina com o seu jogo: ${esc(archetype().toLowerCase())}${lv?', nível '+lv:''}.`);
   if(top.length)out.push(`O que o seu jogo mais pede é ${top.map(k=>LBL[k].toLowerCase()).join(' e ')}, e ela ${top.every(k=>r.ix[k]>=T[k]-.5)?'entrega isso':'chega perto disso'} sem abrir mão do resto.`);
-  if(inZone(r))out.push(`Com ${r.wt} g, fica dentro do peso que calculamos para a sua força e o seu nível.`);
-  if(A.arm!=='no')out.push(r.ra<=63?`Os ${r.ra} RA fazem dela um quadro flexível, do tipo que costuma ser descrito como mais confortável por quem sente o braço.`:`A rigidez de ${r.ra} RA está dentro do limite para quem já teve dor.`);
-  if(r.price&&r.price[0]<=+A.budget)out.push('E cabe no orçamento que você indicou.');
   return out.join(' ')}
+/* "Por que combina": até 4 motivos concretos (os índices ficam no gráfico da seção 4) */
+function whyItems(r,c){
+  const out=[];
+  if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: dentro da faixa de peso que calculamos para a sua força e o seu nível.`);
+  else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para a sua força e o seu nível.`);
+  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, do tipo que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':': dentro do limite para quem já teve dor'}.${r.tech?` Tem tecnologia de conforto (${esc(r.tech)}).`:''}`);
+  if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
+  if(A.bh==='one'&&r.sw>=315)out.push(`Swingweight ${r.sw}: massa suficiente para o backhand de uma mão atravessar a bola.`);
+  else if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
+  if(J('wrist')&&r.bal<=325)out.push(`Balanço de ${r.bal} mm, leve na cabeça: menos alavanca sobre o punho.`);
+  if(r.price&&r.price[0]<=+A.budget)out.push('Cabe no orçamento que você indicou.');
+  if(!out.length)out.push('É a que fica mais perto do seu perfil ideal nos seis atributos.');
+  return out.slice(0,4);
+}
 function why(r,c,T){
   const out=[];const ranked=KEYS.map(k=>({k,d:Math.abs(r.ix[k]-T[k]),t:T[k]})).filter(x=>x.t>=6).sort((a,b)=>a.d-b.d);
   ranked.slice(0,2).forEach(x=>out.push(`${LBL[x.k]} ${dec(r.ix[x.k])} para um alvo de ${dec(x.t)}: o índice que o seu jogo mais pede.`));
@@ -1484,83 +1550,111 @@ function archetype(){
 }
 function racketHead(x){
   const r=x.r;
-  return `<div class="whead"><div><p class="eyebrow">${esc(r.brand)}${r.year?` · ${r.year}`:''}</p><h2>${esc(r.model)}</h2><p class="muted mono" style="font-size:14px">Novo: ${precoTxt(r)}</p><p style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${brTag(r)}${r.tech?`<span class="techchip">${esc(r.tech)}</span>`:''}<span class="techchip" style="border-color:var(--line);color:var(--muted)">${r.nrev?`Specs + ${gl('rev',r.nrev+(r.nrev>1?' avaliações':' avaliação'))}`:'Só specs medidas'}</span></p>${proLine(r)}</div>
+  return `<div class="whead"><div><p class="eyebrow">${esc(r.brand)}${r.year?` · ${r.year}`:''}</p><h3 class="rname">${esc(r.model)}</h3><p class="muted mono" style="font-size:14px">Novo: ${precoTxt(r)}</p><p style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${brTag(r)}${r.tech?`<span class="techchip">${esc(r.tech)}</span>`:''}<span class="techchip" style="border-color:var(--line);color:var(--muted)">${r.nrev?`Specs + ${gl('rev',r.nrev+(r.nrev>1?' avaliações':' avaliação'))}`:'Só specs medidas'}</span></p>${proLine(r)}</div>
     <div style="text-align:right"><div class="fit">${x.fit}%</div><span class="muted" style="font-size:13px">${gl("fit")}</span></div></div>`;
 }
-function specGrid(r){
-  return `<div class="specs">
-    <div class="spec"><span>${gl("wt")}</span><b>${r.wt} g</b></div>
-    <div class="spec"><span>${gl("bal")}</span><b>${r.bal} mm</b></div>
-    <div class="spec"><span>${gl("sw")}</span><b>${r.sw}</b></div>
-    <div class="spec"><span>${gl("ra")}</span><b>${r.ra} RA</b></div>
-    <div class="spec"><span>${gl("head")}</span><b>${r.head} pol²</b></div>
-    <div class="spec"><span>${gl("pat")}</span><b>${r.pat.replace('x','×')}</b></div></div>`;
-}
-function setup6(r,gs,st){
-  const lk=tier<2;const it=[['Modelo',esc(r.name),0],['Cabeça',r.head+' pol² · '+r.pat.replace('x','×'),0],['Grip',gs?'L'+gs.g:'Meça a mão',0],['Corda · sugestão',st.s.split(':')[0].replace(/ \d.*$/,''),1],['Espessura · sugestão',(st.s.match(/1,\d\d mm/)||['1,25 mm'])[0],1],['Tensão · sugestão',st.lb[0]+' a '+st.lb[1]+' lb',1]];
-  return `<div><p class="eyebrow" style="margin-bottom:8px">Seu setup em 6 decisões${lk?' · 3 liberadas em Raquete + corda':''}</p><div class="setup6">${it.map(([l,v,p])=>`<div class="s6${p&&lk?' lk':''}"><span>${l}</span><b>${p&&lk?'bloqueado':v}</b>${p&&lk?'':'<i>✓</i>'}</div>`).join('')}</div></div>`;
+/* relatório pago, na ordem do padrão comum dos 3 apps:
+   barra fixa · 1 Seu resultado · 2 Por que combina · 3 Ficha técnica · 4 Sua atual × a nova · 5 Alternativas · 6 Comparador · 7 Guia de compra · 8 Seu DNA · 9 rodapé */
+function fichaRows(r){
+  const BR={d:'Difícil de achar',p:'Pouca oferta'};
+  return [['Raquete','',esc(r.name)],['Ano','',r.year||'—'],['Preço novo','',precoTxt(r)],['Peso sem corda','wt',r.wt+' g'],['Balanço sem corda','bal',r.bal+' mm'],['Swingweight','sw',String(r.sw)],['Rigidez','ra',r.ra+' RA'],['Cabeça','head',r.head+' pol²'],['Padrão de cordas','pat',r.pat.replace('x','×')]]
+    .concat(r.tech?[['Tecnologia','',esc(r.tech)]]:[]).concat([['No Brasil','',BR[r.br]||'Fácil de achar']]);
 }
 function renderReport(){
-  const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);
+  const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);const full=tier>=2;
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
-  let h=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${tier>=2?'<button class="btn btn-go btn-sm" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}</div>`+juniorNote()+painNote()+`
-  <div class="panel winner">
-    <p class="eyebrow">A raquete que mais encaixa no seu jogo</p>
+  const cmpName=c?'Atual × nova':'Perfil × nova';
+  const chips=[['r-res','Resultado'],['r-por','Por que combina'],['r-ficha','Ficha técnica'],['r-atual',cmpName]].concat(full?[['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA']]);
+  const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Baixar PDF</button>':'';
+  let h=`<div class="rbar"><div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
+  <nav class="rchips" aria-label="Seções do relatório">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
+  /* 1. Seu resultado */
+  h+=`<section class="panel winner" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
     ${racketHead(w)}
-    <p class="whypara">${whyPara(w,T)}</p>
-    ${setup6(r,gs,st)}
     <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
-  </div>
-    </div>
-  </div>
-  ${(REVQ[r.id]||[]).length?`<div class="panel"><div class="phead"><h3>O que dizem de quem jogou com ela</h3><span class="note">${r.ntw?r.ntw+' notas de testadores analisadas':'Reviews publicadas'}</span></div><div class="wq">${REVQ[r.id].slice(0,3).map(q=>`<div class="q"><p>“${esc(q[5])}”</p><small>${esc(q[1])}${q[2]?' · '+esc(q[2]):''}${q[3]?` <b>${dec(q[3])}/10</b>`:''}<br>${esc(q[0])}${q[4]?' · '+esc(q[4]):''}</small></div>`).join('')}</div><p class="note">Trechos resumidos e traduzidos de avaliações publicadas.</p></div>`:''}
-  <div class="panel">${viz('rp',series,T,r.ix,c?c.ix:null)}</div>
-  </div>
-  ${c?`<div class="panel"><h3>Sua ${esc(c.name)} × a ${esc(r.model)}</h3>${curFit?`<p class="muted">A sua ficou com DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}<div class="tbl"><table><thead><tr><th>Item</th><th>Atual</th><th>Nova</th><th>O que você vai sentir</th></tr></thead><tbody>${feel(r,c).map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td><td class="n">${x[2]}</td><td>${x[3]}</td></tr>`).join('')}</tbody></table></div></div>`:''}`;
-  if(tier>=2){
-    h+=`<div class="panel"><div class="phead"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
-      <p class="note">Cada ponto é uma das ${RK.length} raquetes do catálogo. Os números são o seu top 10, na ordem do ranking.${c?' O anel laranja é a sua atual.':''}</p></div>
-    <div class="panel"><h3>Ranking dos 10 melhores</h3><div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div></div>
-    <details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Comparar duas raquetes</b><span>A recomendada contra a sua ou contra qualquer outra das ${RK.length}, atributo por atributo, com o DNA Score de cada uma.</span></span><span class="cmpgo" aria-hidden="true">Comparar</span></summary>
+    <p class="hero2">${heroText(w,T)}</p></section>`;
+  /* 2. Por que combina */
+  const rv=(REVQ[r.id]||[]).slice(0,3);
+  h+=`<section class="panel" id="r-por"><h2 class="sec">Por que combina</h2>
+    <ul class="why">${whyItems(r,c).map(x=>`<li>${x}</li>`).join('')}</ul>
+    ${rv.length?`<div style="display:flex;flex-direction:column;gap:10px"><h3>O que dizem de quem jogou com ela</h3><p class="note" style="margin-top:-6px">${r.ntw?r.ntw+' notas de testadores analisadas. ':''}Trechos resumidos e traduzidos de avaliações publicadas.</p>
+      <ul class="rvq">${rv.map(q=>`<li><p>“${esc(q[5])}”</p><small>${esc(q[1])}${q[2]?' · '+esc(q[2]):''}${q[3]?' · '+dec(q[3])+'/10':''} · ${esc(q[0])}${q[4]?' '+esc(q[4]):''}</small></li>`).join('')}</ul></div>`:''}
+    <div style="display:flex;flex-direction:column;gap:10px"><h3>Pontos de atenção</h3>${juniorNote(1)}${painNote(1)}<ul class="why">${attention(r).map(x=>`<li>${x}</li>`).join('')}</ul></div></section>`;
+  /* 3. Ficha técnica */
+  h+=`<section class="panel" id="r-ficha"><div class="phead"><h2 class="sec">Ficha técnica</h2><button class="btn btn-ghost btn-sm" type="button" id="fichaCp" aria-label="Copiar ficha técnica">Copiar</button></div>
+    <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fichaRows(r).map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
+    <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></section>`;
+  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada) */
+  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Sua atual × a nova':'Seu perfil × a nova'}</h2>
+    <p class="muted" style="margin-top:-8px">${c?`Sua ${esc(c.name)} × a ${esc(r.model)}`:`O seu perfil ideal × a ${esc(r.model)}. Informe a sua raquete no teste para ver a comparação com ela.`}</p>
+    ${c&&curFit?`<p>A sua ficou com DNA Score <strong>${curFit.fit}%</strong>, ${w.fit-curFit.fit} pontos abaixo da recomendada${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}
+    ${viz('rp',series,T,r.ix,c?c.ix:null)}
+    ${c?`<h3>O que você vai sentir</h3><table class="stack"><thead><tr><th scope="col">Item</th><th scope="col">Atual</th><th scope="col">Nova</th><th scope="col">O que você vai sentir</th></tr></thead><tbody>${feel(r,c).map(x=>`<tr><td>${x[0]}</td><td class="n" data-label="Atual">${x[1]}</td><td class="n" data-label="Nova">${x[2]}</td><td class="full">${x[3]}</td></tr>`).join('')}</tbody></table>`:''}
+  </section>`;
+  if(full){
+    /* 5. Alternativas: 2º e 3º à vista; ranking e mapa recolhidos */
+    const top3=ranked.slice(0,3);
+    h+=`<section class="panel" id="r-alt"><h2 class="sec">Alternativas</h2>
+      <div class="altl">${ranked.slice(1,3).map((x,i)=>`<div class="altc"><div style="min-width:0"><p class="eyebrow">${i+2}º lugar · ${esc(x.r.brand)}${x.r.year?' · '+x.r.year:''}</p><h3>${esc(x.r.model)}</h3><p class="mono specline">${x.r.wt} g · SW ${x.r.sw} · ${x.r.ra} RA · ${x.r.head} pol² · ${x.r.pat.replace('x','×')}</p><p class="note" style="margin-top:2px">Novo: ${precoTxt(x.r)} ${brTag(x.r)}</p><div class="pcs">${tradeChips(x,top3)}</div></div><div style="text-align:right"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>`).join('')}</div>
+      <details class="more"><summary>Ver o ranking dos 10 e o mapa do catálogo</summary>
+        <h3 style="margin-bottom:10px">Ranking dos 10 melhores</h3>
+        <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div>
+        <div class="phead" style="margin-top:22px"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
+        <p class="note">Cada ponto é uma das ${RK.length} raquetes do catálogo. Os números são o seu top 10, na ordem do ranking.${c?' O anel laranja é a sua atual.':''}</p>
+      </details></section>`;
+    /* 6. Comparador (recolhido) */
+    h+=`<section id="r-cmp" aria-label="Comparador"><details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Comparar duas raquetes</b><span>A recomendada contra a sua ou contra qualquer outra das ${RK.length}, atributo por atributo, com o DNA Score de cada uma.</span></span><span class="cmpgo" aria-hidden="true">Comparar</span></summary>
       <div class="cmpsel"><select id="cmpA" aria-label="Raquete A">${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Raquete B">${optList(c?c.id:ranked[1].r.id)}</select></div>
-      <div id="cmpOut"></div></details>
-    <div class="panel"><h3>Sugestão de corda e tensão</h3><p class="note" style="margin-top:-10px">Ponto de partida, não regra: corda é gosto pessoal. Use a sugestão no primeiro encordoamento e ajuste pela sensação.</p>
-      <div class="tbl"><table><thead><tr><th>Para</th><th>Corda</th><th>Tensão</th><th>Trocar</th></tr></thead><tbody>
-      <tr><td>${esc(r.model)} (nova)</td><td>${st.s}</td><td class="n">${st.lb[0]} a ${st.lb[1]} lb<br>${st.kg[0]} a ${st.kg[1]} kg</td><td>${st.swap}</td></tr>
-      ${c?(()=>{const s2=stringSetup(c);return `<tr><td>${esc(c.model)} (a sua)</td><td>${s2.s}</td><td class="n">${s2.lb[0]} a ${s2.lb[1]} lb<br>${s2.kg[0]} a ${s2.kg[1]} kg</td><td>${s2.swap}</td></tr>`})():''}
-      </tbody></table></div>
+      <div id="cmpOut"></div></details></section>`;
+    /* 7. Guia de compra: corda e tensão + grip */
+    const polyTip=A.string==='poly'&&A.arm!=='no'&&!/Poliéster perde/.test(st.rs);
+    const strRow=(x,label,s2)=>`<tr><td class="wide">${label}</td><td class="wide" data-label="Corda">${s2.s}</td><td class="n" data-label="Tensão">${s2.lb[0]} a ${s2.lb[1]} lb<br>${s2.kg[0]} a ${s2.kg[1]} kg</td><td data-label="Trocar">${s2.swap||'—'}</td></tr>`;
+    h+=`<section class="panel" id="r-guia"><h2 class="sec">Guia de compra</h2>
+      <div style="display:flex;flex-direction:column;gap:12px"><h3>Sugestão de corda e tensão</h3><p class="note" style="margin-top:-6px">Ponto de partida, não regra: corda é gosto pessoal. Use a sugestão no primeiro encordoamento e ajuste pela sensação.</p>
+      <table class="stack"><thead><tr><th scope="col">Para</th><th scope="col">Corda</th><th scope="col">Tensão</th><th scope="col">Trocar</th></tr></thead><tbody>
+      ${strRow(r,esc(r.model)+' (nova)',st)}${c?strRow(c,esc(c.model)+' (a sua)',stringSetup(c)):''}
+      </tbody></table>
       <details class="calc"><summary>Ver o cálculo da tensão (${st.base} lb para a ${esc(r.model)})</summary><div class="tbl"><table style="min-width:0"><tbody>${st.steps.map((x,i)=>`<tr><td>${x[0]}</td><td class="n" style="text-align:right">${i?(x[1]>0?'+':'−')+Math.abs(x[1]):x[1]} lb</td></tr>`).join('')}<tr><td><strong>Centro da faixa</strong></td><td class="n" style="text-align:right"><strong>${st.base} lb</strong></td></tr></tbody></table></div></details>
       ${st.vs?`<p><strong>${st.vs}</strong></p>`:''}${st.rs?`<p class="muted">${st.rs}</p>`:''}
-      <p class="note">Comece pelo meio da faixa. Bola indo longa: suba 2 lb no próximo encordoamento. Sem profundidade ou com dor: desça 2 lb.${A.string==='poly'&&A.arm!=='no'?' Poliéster perde tensão rápido e endurece; com histórico de dor, não passe do prazo de troca.':''}</p>
-    </div>
-`;
-    h+=`<div class="panel"><h3>Grip: como medir e escolher</h3>
+      <p class="note">Comece pelo meio da faixa. Bola indo longa: suba 2 lb no próximo encordoamento. Sem profundidade ou com dor: desça 2 lb.${polyTip?' Poliéster perde tensão rápido e endurece; com histórico de dor, não passe do prazo de troca.':''}</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><h3>Grip: como medir e escolher</h3>
+      ${gs?`<p><strong>Para você: L${gs.g}</strong>, ${gs.src}.</p>`:''}
       <p>Com a mão aberta, meça em centímetros da linha do meio da palma até a ponta do dedo anelar.</p>
       <div class="tbl"><table style="min-width:0"><thead><tr><th>Medida da mão</th><th>Grip</th></tr></thead><tbody>
       ${[['até 10,6 cm','L1 · 4 1/8'],['10,7 a 10,9 cm','L2 · 4 1/4'],['11,0 a 11,2 cm','L3 · 4 3/8'],['11,3 a 11,5 cm','L4 · 4 1/2'],['11,6 cm ou mais','L5 · 4 5/8']].map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td></tr>`).join('')}</tbody></table></div>
-      <ul class="why"><li>Na loja: segurando a raquete, o dedo indicador da outra mão deve caber entre a ponta dos seus dedos e a base da palma.</li><li>Entre dois tamanhos, escolha o menor e complete com overgrip: cada overgrip engrossa cerca de meio número.</li>${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário.</li>':''}</ul></div>`;
+      <ul class="why"><li>Na loja: segurando a raquete, o dedo indicador da outra mão deve caber entre a ponta dos seus dedos e a base da palma.</li><li>Entre dois tamanhos, escolha o menor e complete com overgrip: cada overgrip engrossa cerca de meio número.</li>${A.dom==='L'?'<li>Canhoto: o overgrip enrola no sentido contrário.</li>':''}</ul></div></section>`;
   }else{
     h+=`<div class="lock"><h3>2º e 3º lugares, mapa, ranking, comparador e corda</h3><p class="muted">As alternativas, o mapa peso × swingweight do catálogo, o ranking dos 10, o comparador livre e a corda e tensão para a nova e para a sua fazem parte do relatório completo, que também sai em PDF A4.</p><button class="btn btn-go" type="button" id="up">Liberar por R$ 19,99</button></div>`;
   }
-  h+=`<div class="panel dna"><div class="dnagrid">
+  /* 8. Seu DNA: cards e compartilhar */
+  h+=`<section class="panel dna" id="r-dna"><div class="dnagrid">
       <div id="cardOut" class="cardwrap" aria-label="Seu DNA de jogo em card"></div>
       <div style="display:flex;flex-direction:column;gap:12px">
-        <p class="eyebrow">Seu DNA de jogo</p><h2>${archetype()}</h2>
-        <p class="muted">O card ao lado está pronto para o story do Instagram ou o status do WhatsApp. Mostra o seu perfil, não a raquete.</p>
+        <h2 class="eyebrow">Seu DNA de jogo</h2><p class="rname">${archetype()}</p>
+        <p class="muted">O card ao lado está pronto para o story do Instagram ou o status do WhatsApp. Ele mostra o seu perfil de jogo, sem nota. A raquete e o DNA Score vão no card da raquete.</p>
         <p style="font-weight:600">E o seu parceiro de quadra, joga como você?</p>
-        <div class="row"><button class="btn btn-go" type="button" id="shareCard">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlCard">Salvar card do DNA</button>${tier>=2?'<button class="btn btn-ghost" type="button" id="dlRacket">Salvar card da raquete</button>':''}</div>
-      </div></div></div>
-  <div class="row">${tier>=2?'<button class="btn btn-go" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>`;
-  $('#report').innerHTML=h;
-  wireSeg($('#report'));
+        <div class="row"><button class="btn btn-go" type="button" id="shareCard">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlCard">Salvar card do DNA</button>${full?'<button class="btn btn-ghost" type="button" id="dlRacket">Salvar card da raquete</button>':''}</div>
+      </div></div></section>
+  <div class="row">${full?'<button class="btn btn-go" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>`;
+  const R=$('#report');R.innerHTML=h;
+  wireSeg(R);
   const up=$('#up');if(up)up.onclick=()=>pix(2);
   $('#again').onclick=()=>{step=0;show('quiz');renderQs()};
-  $('#report').querySelector('[data-save]').onclick=saveBox;
-  $('#report').querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>downloadPDF(b));
+  R.querySelector('[data-save]').onclick=saveBox;
+  R.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>downloadPDF(b));
   $('#dlCard').onclick=()=>downloadCard();if($('#dlRacket'))$('#dlRacket').onclick=downloadRacketCard;$('#shareCard').onclick=shareCard;previewCard();
-  if(tier>=2){const f=()=>renderCmp();$('#cmpA').onchange=f;$('#cmpB').onchange=f;$('#cmp').addEventListener('toggle',()=>{if($('#cmp').open&&!$('#cmpOut').innerHTML)f()})}
+  if(full){const f=()=>renderCmp();$('#cmpA').onchange=f;$('#cmpB').onchange=f;$('#cmp').addEventListener('toggle',()=>{if($('#cmp').open&&!$('#cmpOut').innerHTML)f()})}
+  $('#fichaCp').onclick=async()=>{const t=fichaRows(r).map(([l,,v])=>`${l}: ${String(v).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&')}`).join('\n');
+    try{await navigator.clipboard.writeText(t);toast('Ficha técnica copiada')}catch(e){const s=getSelection(),rg=document.createRange();rg.selectNodeContents(R.querySelector('.ficha'));s.removeAllRanges();s.addRange(rg);toast('Ficha selecionada: copie')}};
+  /* saltos: a barra fixa não cobre o título (scroll-margin-top usa a altura real dela) */
+  R.querySelectorAll('.rchips a').forEach(a=>a.onclick=e=>{e.preventDefault();rbarH();const t=R.querySelector(a.getAttribute('href'));if(!t)return;
+    t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    const f=t.querySelector('h2,summary');if(f){if(f.tagName==='H2'&&!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');try{f.focus({preventScroll:true})}catch(_){f.focus()}}});
+  requestAnimationFrame(rbarH);
 }
+function rbarH(){const b=$('#report .rbar');if(b&&b.offsetHeight)$('#report').style.setProperty('--rbar',b.offsetHeight+'px')}
+addEventListener('resize',rbarH);
 const topKeys=()=>KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,2);
 function optList(sel){const by={};RK.forEach(r=>{(by[r.brand]=by[r.brand]||[]).push(r)});return Object.keys(by).sort().map(b=>`<optgroup label="${esc(b)}">${by[b].map(r=>`<option value="${r.id}"${r.id===sel?' selected':''}>${esc(r.name)}</option>`).join('')}</optgroup>`).join('')}
 function renderCmp(){
@@ -1712,7 +1806,8 @@ window.__pdfPages=()=>pdfPages();
 
 /* ---------- Card PNG ---------- */
 function wrapText(ctx,t,maxW){const w=t.split(' ');const L=[];let l='';w.forEach(x=>{const tt=l?l+' '+x:x;if(ctx.measureText(tt).width>maxW&&l){L.push(l);l=x}else l=tt});if(l)L.push(l);return L}
-const cardData=()=>({arch:archetype(),T:RES.T,top:topKeys(),fit:RES.ranked[0].fit});
+/* card do DNA: só o perfil (sem nota de raquete; o DNA Score vai no card da raquete) */
+const cardData=()=>({arch:archetype(),T:RES.T,top:topKeys(),lvl:{beg:'Iniciante',int:'Intermediário',adv_int:'Intermediário avançado',adv:'Avançado'}[A.lvl]||''});
 async function drawCard(d=cardData()){
   try{await document.fonts.ready}catch(e){}
   const W=1080,H=1920,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');
@@ -1734,7 +1829,7 @@ async function drawCard(d=cardData()){
   KEYS.forEach((k,i)=>{const p=pt(i,12.6);x.fillStyle='rgba(255,255,255,.85)';x.fillText(LBL[k],p[0],p[1]+12);const q=pt(i,T[k]);x.fillStyle='#DDF247';x.beginPath();x.arc(q[0],q[1],11,0,7);x.fill()});
   x.textAlign='left';let cxp=90;const cyp=cy+R+170;x.font='700 40px "DM Sans", sans-serif';
   d.top.forEach(k=>{const t=`${LBL[k]} ${dec(T[k])}`;const w=x.measureText(t).width+60;x.fillStyle='#DDF247';x.beginPath();x.roundRect(cxp,cyp-52,w,76,38);x.fill();x.fillStyle='#0B2530';x.fillText(t,cxp+30,cyp);cxp+=w+20});
-  x.fillStyle='#FFFFFF';x.font='800 64px Archivo, sans-serif';x.fillText(`DNA ${d.fit}%`,90,H-230);
+  if(d.lvl){x.fillStyle='rgba(255,255,255,.65)';x.font='600 30px "DM Sans", sans-serif';x.fillText('NÍVEL',90,H-290);x.fillStyle='#FFFFFF';x.font='800 64px Archivo, sans-serif';x.fillText(d.lvl,90,H-230)}
   x.fillStyle='rgba(255,255,255,.75)';x.font='500 38px "DM Sans", sans-serif';x.fillText('E o seu? Faça o teste no RACKET DNA',90,H-150);
   return cv;
 }
