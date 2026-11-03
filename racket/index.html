@@ -930,7 +930,6 @@ const Q=[
  {s:4,id:'feel',if:()=>A.cur!=='none',t:'Como você sente sua raquete hoje?',o:[['light','Leve demais','Treme contra bola pesada'],['ok','No ponto'],['heavy','Pesada demais','Cansa ou chega atrasado']]},
  {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é o conforto do braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
  {s:4,id:'want',multi:2,t:'O que você quer ganhar com a troca?',h:'Escolha até 2.',o:[['power','Mais potência','A bola sai mais forte com o mesmo esforço'],['control','Mais controle','A bola vai mais onde você mira'],['comfort','Mais conforto','Menos vibração chegando ao braço'],['spin','Mais spin','Mais efeito: a bola gira mais e cai dentro'],['maneuver','Mais leveza na mão','Raquete mais rápida de mexer, na rede e na defesa'],['stability','Mais estabilidade','Não treme contra bola forte']]},
- {s:4,id:'headp',t:'Tamanho de cabeça que você prefere',h:'Em polegadas quadradas. '+'<button type="button" class="gl" data-g="head">Entenda</button>',o:[['any','Tanto faz'],['98','Até 98 pol²','Mais precisão'],['100','100 pol²','O equilíbrio'],['104','102 ou mais','Mais perdão e saída de bola']]},
  {s:5,id:'string',t:'Qual corda você usa hoje?',o:[['?','Não sei / a que veio'],['poly','Poliéster','Dura, a mais comum entre quem tem topspin'],['multi','Multifilamento ou sintético','Mais macia'],['gut','Tripa natural','A mais macia e mais cara'],['hyb','Híbrido','Duas cordas diferentes, uma em cada direção']]},
  {s:5,id:'tens',t:'Qual tensão você usa?',h:'A <button type="button" class="gl" data-g="tension">libragem</button> que você pede ao encordoador.',o:[['?','Não sei'],['46','Até 47 lb','Até 21 kg'],['50','48 a 52 lb','22 a 24 kg'],['54','53 a 56 lb','24 a 25 kg'],['58','57 lb ou mais','26 kg ou mais']]},
  {s:5,id:'restr',t:'De quanto em quanto tempo você troca a corda?',o:[['zero','Nunca troquei','Nunca arrebentou, então nunca troquei'],['never','Só quando arrebenta'],['6m','A cada 6 meses ou mais'],['3m','A cada 2 a 3 meses'],['1m','Todo mês ou menos']]},
@@ -940,7 +939,7 @@ const Q=[
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',headp:'100',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
 $('#nQ').textContent=Q.filter(q=>!q.if).length+' a '+Q.length;
 const NVAR=Q.length+9+7;
