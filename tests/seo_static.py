@@ -55,6 +55,8 @@ class SEO(unittest.TestCase):
     text=re.sub(r'^  if\(window\.SportDNAPayments\?\.open.*\n', '', text, flags=re.M)
     text=text.replace("!window.SportDNAPayments?.enabled&&LS.get('rm_cmp')", "LS.get('rm_cmp')")
     text=text.replace("tier=window.SportDNAPayments?.enabled?0:o.t||0", "tier=o.t||0")
+    # Checkout wording changes only; calculations and report rendering stay exact.
+    text=text.replace('com cartão ou Pix','com Pix (simulação)').replace('via cartão ou Pix','via Pix (simulação)')
     return [re.sub(r'[ \t]+$', '', x, flags=re.M).rstrip() for x in re.findall(r'<script(?![^>]*application/ld\+json)[^>]*>(.*?)</script>',text,re.S) if x.strip()]
    self.maxDiff=1000
    self.assertEqual(scripts(before),scripts(after),app)
