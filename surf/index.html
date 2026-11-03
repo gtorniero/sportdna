@@ -534,7 +534,6 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
 
   <!-- LANDING -->
   <main id="conteudo" class="a11y-main" role="main">
-  <h1 class="a11y-sr" id="a11y-h1" hidden></h1>
   <section id="landing" style="display:flex;flex-direction:column;gap:28px">
     <div class="hero">
       <div style="display:flex;flex-direction:column;gap:18px">
@@ -1951,7 +1950,8 @@ window.SportDNAPayments?.register({name:'surf',snapshot:()=>JSON.parse(JSON.stri
   var main=d.getElementById('conteudo');
   var live=d.createElement('div');live.className='a11y-sr';live.setAttribute('role','status');live.setAttribute('aria-live','polite');d.body.appendChild(live);
   function say(t){live.textContent='';setTimeout(function(){live.textContent=t},80)}
-  var srh=d.getElementById('a11y-h1');
+  /* título oculto criado só com JS: sem JS, a página tem um h1 só */
+  var srh=d.createElement('h1');srh.className='a11y-sr';srh.id='a11y-h1';srh.hidden=true;main.insertBefore(srh,main.firstChild);
   var NAMES={landing:'Início',calc:'Calculadora de litragem',quiz:'Questionário',analysis:'Análise',preview:'Prévia do resultado',report:'Relatório'};
   var secs=Object.keys(NAMES).map(function(id){return d.getElementById(id)}).filter(Boolean);
   function visible(){for(var i=0;i<secs.length;i++)if(!secs[i].hidden)return secs[i];return null}
