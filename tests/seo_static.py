@@ -19,7 +19,7 @@ class Page(HTMLParser):
 class SEO(unittest.TestCase):
  def test_all_canonical_pages_and_links(self):
   tree=ET.parse(ROOT/'sitemap.xml');urls=[x.text for x in tree.findall('.//{*}loc')]
-  self.assertEqual(len(urls),57);self.assertEqual(len(set(urls)),len(urls))
+  self.assertEqual(len(urls),69);self.assertEqual(len(set(urls)),len(urls))
   titles=set();descriptions=set()
   for url in urls:
    with self.subTest(url=url):
@@ -59,7 +59,7 @@ class SEO(unittest.TestCase):
    self.maxDiff=1000
    self.assertEqual(scripts(before),scripts(after),app)
  def test_static_articles_and_legacy_routes(self):
-  self.assertEqual(len([k for k in CONFIG['routes'] if k.startswith('a-')]),47)
+  self.assertEqual(len([k for k in CONFIG['routes'] if k.startswith('a-')]),59)
   for key,route in CONFIG['routes'].items():
    if key=='conceito':continue
    text=(ROOT/route/'index.html').read_text()
