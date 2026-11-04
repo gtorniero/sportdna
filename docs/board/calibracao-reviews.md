@@ -112,3 +112,9 @@ Sem mudança de placar nem de litragem (`node surf/tools/vies.mjs --dump` idênt
 - **"Ver um exemplo pronto" hoje:** Mid-length / egg, DNA Score 96%, 6'11" × 19 7/8" × 2 5/8", 38,7 L, rabeta round, 2+1, epóxi; pódio mid-length 96%, groveler 91%, fish 85% (condicionamento "razoável"; as rodadas 3 a 5 citam 37,6 L, valor antigo).
 - **Números da abertura e fonte:** 13 tipos (`KEYS`), 17 variáveis da prancha (ficha técnica), 26 reviews (`REVIEWS`), 422 casos e 77% no top 3 (rodada 1; ao acaso 3/13 = 23%; base fora do repositório e ainda não medida depois das rodadas 2–5), 3.000 perfis (`vies.mjs`). Segurança medida agora: 0 dos 1.348 perfis em Primeiras Ondas com pranchinha, step-up ou gun no pódio; no nível ≤ 1, 2 de 1.965, ambos de quem pediu para mudar para pranchinha.
 - **PDF:** html2canvas e jsPDF de `assets/vendor/` (sem CDN), gerado em segundo plano quando o relatório pago aparece; download na hora se o arquivo já está pronto, senão botão "Abrir o PDF".
+
+## Rodada 5: questionário (4/nov/2026)
+- **Dor ou lesão:** nova opção "Não tenho dor", exclusiva (desmarca as dores e vice-versa). Dá o mesmo resultado que deixar em branco.
+- **Arrebentação:** "Joelhinho" e "Pato" viraram "Joelhinho ou pato" (valor 2, mesmos pontos do antigo joelhinho). "Uso o canal" manteve o valor 4. Respostas antigas com "pato" (valor 3) continuam valendo no motor.
+- **Prioridades:** o texto explica a troca (mais remada e estabilidade, prancha maior que vira menos; mais manobra, prancha menor que rema menos) e pede 2 ou 3 prioridades. Aviso quando 4 ou mais itens recebem 8 ou mais.
+- **Perguntas sem efeito:** medido em 400 perfis aleatórios trocando a resposta de cada pergunta. Nenhuma é inútil. As mais fracas: frequência e idade (nunca mudam o tipo; mudam 1 L ou mais em 16–17% dos perfis), altura (3% nos litros, mas define o comprimento) e força da onda (3% no tipo, mas muda rocker, fundo e rabeta).
