@@ -579,7 +579,8 @@ details.more[open]>summary{margin-bottom:10px}
 .pdfroot .swap b{font-family:'Archivo',sans-serif;font-weight:800;font-size:30px;color:#0E4D64}.pdfroot .swap b.o{color:#E07A1F}.pdfroot .swap i{font-style:normal;font-size:22px;color:#4A6570}
 .pdfroot .swap p{margin:0;font-size:11px}.pdfroot .swap p b{font-family:inherit;font-size:11.5px;color:#0B2530}
 .pdfroot .chk{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}.pdfroot .chk div{display:flex;gap:9px;align-items:flex-start;font-size:11.5px}.pdfroot .chk i{flex:none;width:14px;height:14px;border:2px solid #0E4D64;border-radius:4px;margin-top:1px}
-.pdfroot .pg{font-size:13px}.pdfroot .tli p{font-size:11px}.pdfroot .wf{padding:7px 0}
+.pdfroot .pg{font-size:13px}.pdfroot .tli p{font-size:11px}
+.pdfroot .pg.lite{font-size:12px}.pdfroot .pg.lite .st{font-size:13.5px;color:#4A6570;margin:16px 0 8px!important}.pdfroot .pg.lite .sc{border-color:#CFDEE2!important}
 .pdfroot .prw{display:grid;grid-template-columns:1.12fr 1fr 1fr;gap:10px}.pdfroot .prc{border:1px solid #CFDEE2;border-radius:12px;padding:9px 11px}.pdfroot .prc.win{border:1.5px solid #0B2530}
 .pdfroot .prc .qh span{font-size:9.5px;color:#4A6570;font-weight:600}.pdfroot .prl{display:flex;flex-wrap:wrap;gap:4px}.pdfroot .prl span{background:#0B2530;color:#fff;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:600}.pdfroot .prc.win .prl span{background:#DDF247;color:#0B2530}
 .pdfroot .hpro span{display:block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;font-weight:700;margin-bottom:3px}
@@ -642,7 +643,7 @@ details.more[open]>summary{margin-bottom:10px}
       <div class="diff"><h3>Índice Conforto no braço</h3><p>Rigidez, peso, balanço e a articulação que dói, avaliados antes de pagar.</p></div>
       <div class="diff"><h3>Specs na régua</h3><p>Cada especificação contra o catálogo inteiro e a sua faixa ideal.</p></div>
       <div class="diff"><h3>Comparação com a sua</h3><p>A diferença traduzida em sensação: mais solta, mais macia, mais estável.</p></div>
-      <div class="diff"><h3>Libragem na conta</h3><p>A tensão sai de uma conta que você vê, ajuste por ajuste, e compara com a que você usa hoje.</p></div>
+      <div class="diff"><h3>Corda e tensão para você</h3><p>Tipo de corda, espessura e tensão para o seu jogo, comparadas com a que você usa hoje.</p></div>
     </div>
     <div class="erra">
       <div><p class="eyebrow">Por que é fácil errar</p><h2>Raquete não é uma escolha. São seis.</h2><p class="muted" style="margin-top:8px;max-width:62ch">Modelo, cabeça, grip, corda, espessura e tensão. Cada uma muda potência, controle e o quanto chega de vibração no braço, e uma decisão errada anula as outras certas.</p></div>
@@ -891,11 +892,11 @@ const GLOS={
  maneuver:['Manobra','Facilidade de mover a raquete rápido: na rede, na devolução e no fim do jogo. Vem de swingweight e peso mais baixos.'],
  stability:['Estabilidade','O quanto a raquete segura contra bola pesada e batida fora do centro sem torcer. Vem de mais massa e swingweight.'],
  arm:['Conforto no braço','Índice nosso, de 0 a 10, que combina rigidez, peso e balanço (tecnologia de amortecimento conta pouco). Quanto maior, mais confortável a raquete tende a ser para cotovelo, ombro e punho. Nenhuma raquete previne ou trata lesão; se a dor persistir, procure um médico ou fisioterapeuta.'],
- fit:['DNA Score','Nota de 0 a 100% que mede o encaixe da raquete no seu jogo, de 0 a 100%. Mede a distância entre os índices da raquete e o seu perfil ideal e desconta penalidades: peso fora da faixa, rigidez para quem tem dor, cabeça, orçamento e o que você quer ganhar na troca.'],
+ fit:['DNA Score','Nota de 0 a 100% que mede o encaixe da raquete no seu jogo. Comparamos a raquete com o seu perfil ideal e levamos em conta o seu corpo, o seu braço, o orçamento e o que você quer ganhar na troca.'],
  tension:['Tensão (libragem)','Força com que a corda é esticada, em libras (lb). Mais baixa: mais potência e conforto, menos controle. Mais alta: mais controle, bola mais curta e mais vibração. Poliéster costuma ir 2 a 4 lb abaixo do multifilamento.'],
  ntrp:['NTRP','Escala americana de nível, de 1.0 a 7.0, usada no mundo todo. 2.5: troca bola devagar. 3.0: consistência em ritmo médio. 3.5: direciona a bola e começa a subir à rede. 4.0: golpes confiáveis e variação de spin. 4.5 ou mais: potência e spin como arma, saque forte. Na dúvida, escolha o nível de baixo.'],
  swing:['Swing','O tamanho e a velocidade do movimento até a bola. Curto e compacto: a raquete anda pouco antes de bater, comum em quem bloqueia ou joga na rede. Longo e rápido: preparação ampla e aceleração forte, como nos profissionais.'],
- rev:['Base em reviews','Além das specs medidas, cada raquete com reviews publicadas em sites globais (Tennis Warehouse, Tennisnerd, Tennis Companion e outros) tem o perfil ajustado pelo consenso dos testadores. Usamos o formato do perfil, onde ela é forte ou fraca, e não a nota absoluta, porque testador que gosta de uma raquete tende a dar nota alta em tudo. Na Tennis Warehouse usamos a nota individual de cada testador (até 20 por raquete, somando gerações) e corrigimos pela régua de cada um: tem testador que dá 9 para tudo. A aprovação geral entra no DNA Score com no máximo 6 pontos, porque, nos nossos testes, ela ajuda a prever se a raquete vai agradar.'],
+ rev:['Base em reviews','Além das specs medidas, cada raquete com reviews publicadas em sites globais (Tennis Warehouse, Tennisnerd, Tennis Companion e outros) tem o perfil ajustado pelo consenso dos testadores. Olhamos onde ela é forte ou fraca, e não só a nota final, porque testador que gosta de uma raquete tende a dar nota alta em tudo. A aprovação dos testadores também conta no DNA Score, porque ajuda a prever se a raquete vai agradar.'],
  pro:['Raquete de profissional','Os profissionais assinam uma linha, mas quase sempre jogam com versões customizadas: mais pesadas, com chumbo, às vezes um molde antigo pintado como o modelo atual. O modelo da loja é o mais próximo, não o mesmo. Use como referência de estilo, não como prova de que serve para você.'],
  grip:['Grip','A espessura do cabo, de L1 a L5 (4 1/8 a 4 5/8 polegadas). Um cabo do tamanho da mão deixa você segurar sem apertar demais, o que costuma ser mais confortável; grosso demais trava o punho.']
 };
@@ -1397,7 +1398,7 @@ function renderPreview(){
   <div class="panel">
     <p class="eyebrow">O que está por trás</p>
     <div class="kpis">
-      <div class="kpi"><b>${fmt(NVAR*RK.length)}</b><span>cruzamentos: ${NVAR} variáveis × ${RK.length} raquetes</span></div>
+      <div class="kpi"><b>${RK.length}</b><span>raquetes do catálogo comparadas com o seu jogo</span></div>
       <div class="kpi"><b>${top[0].r.nrev||'—'}</b><span>avaliações de testadores por trás da 1ª</span></div>
       <div class="kpi"><b>${RES.tw} g</b><span>peso ideal sem corda</span></div>
       <div class="kpi"><b>${curFit?mask(curFit.fit+'%'):'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
@@ -1419,7 +1420,7 @@ function renderPreview(){
         <li>As 3 raquetes que mais encaixam, reveladas, com o ranking dos 10</li>
         <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>
         <li>Diagnóstico completo da sua raquete atual</li>
-        <li>Sugestão de corda, espessura e tensão, com a conta à vista</li>
+        <li>Sugestão de corda, espessura e tensão para a nova e para a sua</li>
         <li>Comparador ilimitado (sozinho sai R$ 4,99) e card para story</li>
         <li>Onde é fácil ou difícil de achar cada raquete no Brasil</li>
       </ul>
@@ -1564,6 +1565,8 @@ function stringSetup(r){
   const rs=A.restr==='zero'?'Corda nunca trocada é corda morta: o poliéster perde tensão nas primeiras semanas e fica duro como arame. Isso tira controle e manda vibração direto para o braço. Antes de qualquer coisa, troque a corda, mesmo que ela nunca tenha arrebentado.':A.restr==='never'||A.restr==='6m'?(/oli/.test(s)?'Poliéster perde tensão e endurece em poucas semanas. Trocando só a cada 6 meses ou mais, a corda fica morta e rígida, o que tira controle e castiga o braço.':'Corda velha perde elasticidade. Mesmo sem arrebentar, troque no prazo indicado.'):'';
   return {s,lb:[base-1,base+1],kg:[kg(base-1),kg(base+1)],swap,steps,base,vs,rs};
 }
+/* motivo da tensão em palavras, sem a conta ajuste por ajuste */
+function tensWhy(st){const x=st.steps.slice(1).map(s=>s[0].charAt(0).toLowerCase()+s[0].slice(1));return 'Faixa pensada para a corda indicada e o seu perfil'+(x.length?', considerando também: '+x.join('; '):'')+'.'}
 function archetype(){
   const SN={keep:'Jogador consistente',agg:'Atacante de fundo',cnt:'Contra-atacador',all:'Jogador completo',netc:'Jogador ofensivo',net:'Atacante de rede'};const sa=[].concat(A.style||[]);const st=sa.length>1?(sa.includes('net')||sa.includes('netc')?(sa.includes('agg')?'Atacante que fecha na rede':'Jogador de rede'):sa.includes('agg')&&sa.includes('all')?'Atacante completo':SN[sa[0]]):SN[sa[0]]||'Jogador';
   const sp={low:'de bola reta',mid:'de topspin moderado',high:'de muito topspin'}[A.spin]||'';
@@ -1632,7 +1635,7 @@ function renderReport(){
       <table class="stack"><thead><tr><th scope="col">Para</th><th scope="col">Corda</th><th scope="col">Tensão</th><th scope="col">Trocar</th></tr></thead><tbody>
       ${strRow(r,esc(r.model)+' (nova)',st)}${c?strRow(c,esc(c.model)+' (a sua)',stringSetup(c)):''}
       </tbody></table>
-      <details class="calc"><summary>Ver o cálculo da tensão (${st.base} lb para a ${esc(r.model)})</summary><div class="tbl"><table style="min-width:0"><tbody>${st.steps.map((x,i)=>`<tr><td>${x[0]}</td><td class="n" style="text-align:right">${i?(x[1]>0?'+':'−')+Math.abs(x[1]):x[1]} lb</td></tr>`).join('')}<tr><td><strong>Centro da faixa</strong></td><td class="n" style="text-align:right"><strong>${st.base} lb</strong></td></tr></tbody></table></div></details>
+      <p class="muted">${tensWhy(st)}</p>
       ${st.vs?`<p><strong>${st.vs}</strong></p>`:''}${st.rs?`<p class="muted">${st.rs}</p>`:''}
       <p class="note">Comece pelo meio da faixa. Bola indo longa: suba 2 lb no próximo encordoamento. Sem profundidade ou com dor: desça 2 lb.${polyTip?' Poliéster perde tensão rápido e endurece; com histórico de dor, não passe do prazo de troca.':''}</p></div>
       <div style="display:flex;flex-direction:column;gap:12px"><h3>Grip: como medir e escolher</h3>
@@ -1758,15 +1761,14 @@ function pdfPages(){
    ${c?`<h2 class="st">Saindo da ${esc(c.model)} para a ${esc(r.model)}</h2><table class="ft"><tbody>${feel(r,c).map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]} → <b>${x[2]}</b></td><td>${x[3]}</td></tr>`).join('')}</tbody></table>`:''}
    ${foot}</section>`;
   /* página 3: setup */
-  const mx=Math.max(...st.steps.map(x=>Math.abs(x[1])).slice(1),2);
-  let acc=st.steps[0][1];const wf=st.steps.map((x,i)=>{if(!i)return `<div class="wf base"><span>${x[0]}</span><b>${x[1]} lb</b></div>`;acc+=x[1];return `<div class="wf"><span>${x[0]}</span><div class="wfb"><i class="${x[1]>0?'p':'n'}" style="width:${Math.abs(x[1])/mx*45}%;${x[1]>0?'left:50%':'right:50%'}"></i></div><b>${x[1]>0?'+':'−'}${Math.abs(x[1])} lb</b></div>`}).join('')+`<div class="wf tot"><span>Seu centro de tensão</span><b>${st.base} lb · ${dec(st.base*.4536)} kg</b></div>`;
   const nofix=curFit?curFit.pen.filter(p=>/Peso|Swingweight|Balanço|Cabeça|Rigidez/.test(p[1])).slice(0,3):[];
   const card=(t,rr,s,sub)=>`<div class="sc"><p class="ey">${t}</p><h3>${esc(rr.model)}</h3><p class="small">${sub}</p><div class="scg"><div><span>Corda</span><b>${s.s.replace(/:.*$/,'')}</b><em>${STR_EX(s.s)}</em></div><div><span>Tensão</span><b>${s.lb[0]}–${s.lb[1]} lb</b><em>${s.kg[0]}–${s.kg[1]} kg</em></div><div><span>Troca</span><b>${s.swap||'a cada 2 a 3 meses'}</b></div></div></div>`;
   const tr=transition(r,c);
-  const p3=`<section class="pg">${head(3,'Setup: corda, tensão e adaptação')}
+  /* ajuda de compra: última página, com menos destaque (nov/2026) */
+  const p3=`<section class="pg lite">${head(5,'Depois da escolha: corda, adaptação e compra')}
    <div class="cols c2">${card('Na raquete nova',r,st,'Sugestão de partida. Corda é preferência pessoal: ajuste pela sensação.')}
    ${c?card('Se não trocar agora',c,st2,`O melhor setup para a raquete que você já tem.${nofix.length?' Corda melhora conforto e controle, mas não muda o que pesa contra ela: '+nofix.map(p=>p[1].split(':')[0].toLowerCase()).join(', ')+'.':''}`):`<div class="sc"><p class="ey">Grip</p><h3>${gs?'L'+gs.g:'Meça a mão'}</h3><p class="small">Na dúvida entre dois tamanhos, escolha o menor e complete com overgrip.</p></div>`}</div>
-   <h2 class="st">De onde vem a sua tensão</h2><div class="wfw">${wf}</div>
+   <p class="small">${tensWhy(st)} Comece pelo centro da faixa e ajuste pela sensação.</p>
    ${st.vs?`<p class="note2"><b>${st.vs}</b></p>`:''}${st.rs?`<p class="note2">${st.rs}</p>`:''}
    <h2 class="st">Plano de adaptação: 4 semanas</h2><div class="tl">${tr.map(x=>`<div class="tli"><b>${x[0]}</b><span>${x[1]}</span><p>${x[2]}</p></div>`).join('')}</div>
    <div class="cols c2"><div><h2 class="st">Ajustes finos possíveis</h2><ul class="why">${attention(r).slice(0,4).map(x=>`<li>${x}</li>`).join('')}</ul></div>
@@ -1774,7 +1776,7 @@ function pdfPages(){
    <h2 class="st">Antes de comprar</h2><div class="chk">${['Peça para pesar na loja: a mesma raquete varia até 7 g.','Confirme o grip '+(gs?'L'+gs.g:'pela medida da mão')+'; grip errado não tem conserto barato.','Saia com a corda nova na tensão indicada: a de fábrica é genérica.','Se a loja tiver demonstração, teste a 1ª e a 2ª colocadas.'].map(x=>`<div><i></i><span>${x}</span></div>`).join('')}</div>
    ${foot}</section>`;
   /* página 4: prova social */
-  const p4=`<section class="pg">${head(4,'O pódio e o que dizem os testadores')}
+  const p4=`<section class="pg">${head(3,'O pódio e o que dizem os testadores')}
    <div class="pod">${top.map((x,i)=>`<div class="pc3${i?'':' win'}"><span class="pos">${i+1}º</span><p class="hb">${esc(x.r.brand)}</p><h3>${esc(x.r.model)}</h3><b class="pfit">${x.fit}%</b>
      <p class="small">${x.r.usd?'~R$ '+fmt(x.r.price[0])+' · importada':precoTxt(x.r,'–')+(x.r.br==='p'?' · pouca oferta':'')}</p>
      <div class="pcs">${tradeChips(x,top)}</div>
@@ -1789,16 +1791,17 @@ function pdfPages(){
    ${foot}</section>`;
   /* página 5: ranking e método */
   const list=ranked.slice(0,10);if(curFit)list.push(curFit);list.sort((a,b)=>b.fit-a.fit);
-  const p5=`<section class="pg">${head(5,'Ranking completo e como chegamos aqui')}
+  const p5=`<section class="pg">${head(4,'Ranking completo e como chegamos aqui')}
    <div class="cols c2"><div><h2 class="st">Top 10 para o seu perfil</h2><div class="rk5">${list.map(x=>{const isC=curFit&&x===curFit;return `<div class="r5${x===w?' w':''}${isC?' c':''}"><span>${isC?'—':ranked.indexOf(x)+1}</span><div><i style="width:${x.fit}%"></i><em>${esc(x.r.name)}${isC?' (sua)':''}</em></div><b>${x.fit}%</b></div>`}).join('')}</div></div>
    <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,ranked.slice(0,10)))}</div><p class="small">Cada ponto é uma raquete; os números são o seu top 10.</p></div></div>
    ${curFit?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
    <h2 class="st">Como chegamos aqui</h2>
    <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>${RES.answered}</b><span>respostas suas sobre corpo, braço e jogo</span></div><div><b>${fmt(NREV)}</b><span>avaliações de testadores e sites nos índices</span></div><div><b>${fmt(METODO.casos)}</b><span>casos de especialistas, em 3 idiomas, usados na calibração</span></div></div>
-   <p class="small">O DNA Score combina a distância entre o seu perfil ideal e os índices de cada raquete, filtros de segurança para o braço, peso e swingweight para o seu físico, e a aprovação de testadores. Sem patrocínio de marca.</p>
+   <p class="small">O DNA Score compara o seu perfil ideal com cada raquete do catálogo e leva em conta o seu braço, o seu físico e a opinião de testadores. Sem patrocínio de marca.</p>
    <div class="gls">${[['Swingweight','Quanto a raquete “pesa” ao acelerar. Alto: bola pesada e estabilidade; baixo: rapidez.'],['Balanço','Ponto de equilíbrio a partir do cabo. Abaixo de 320 mm, cabeça leve; acima, cabeça pesada.'],['Rigidez (RA)','Quanto o quadro flexiona. Abaixo de 63 é macio e tende a ser mais confortável; acima de 68 é firme e potente.'],['Padrão','Cordas verticais × horizontais. Aberto (16×19) dá spin; fechado (18×20) dá controle.'],['Conforto no braço','Nossa nota de 0 a 10 para o quanto a raquete tende a ser confortável para cotovelo, punho e ombro. Não previne nem trata lesão.'],['Tensão','Mais alta: mais controle e menos potência. Mais baixa: mais saída de bola e conforto.']].map(g=>`<div><b>${g[0]}</b><span>${g[1]}</span></div>`).join('')}</div>
    ${foot}</section>`;
-  return p1+p2+p3+p4+p5;
+  /* ordem: veredito, jogo × raquete, pódio, ranking e método; setup e compra por último */
+  return p1+p2+p4+p5+p3;
 }
 /* PDF: bibliotecas do próprio site (sem CDN), gerado em segundo plano assim que o relatório completo aparece.
    No clique, se o arquivo já está pronto, baixa na hora, dentro do mesmo toque (Safari iOS 13+ aceita <a download> com blob).

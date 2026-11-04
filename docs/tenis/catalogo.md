@@ -3,7 +3,7 @@
 ## Tamanho
 - 212 tênis de 13 marcas, 189 vendidos no Brasil (nov/2026). A Saucony (15 modelos) saiu em 24/out/2026 e a 361° (4) em 25/out/2026; antes eram 231 tênis de 15 marcas e 795 reviews.
 - **Links:** fora do app desde 28/out/2026. Não deu para verificar 100% dos links (o ambiente de teste não abre as lojas) e os testados no celular estavam quebrados. As URLs seguem no catálogo para uma revisão futura, mas o app não mostra nenhuma.
-- **Orçamento "Sem limite de preço"** (desde 02/nov/2026): o preço não pesa contra nenhum tênis e o relatório não fala em orçamento. Com essa opção o pódio tende a modelos topo de linha.
+- **Orçamento** (desde 04/nov/2026): 4 faixas (até R$ 500: 32 tênis; R$ 500 a 1.000: 71; R$ 1.000 a 1.500: 65; acima: 44) e a pessoa pode marcar mais de uma. A última, "Acima de R$ 1.500 ou sem limite", tira o teto: nenhum tênis fica "acima do orçamento" e, marcada sozinha, o preço não pesa contra nenhum tênis. Com ela o pódio tende a modelos topo de linha.
 - **Comparador:** "Comparar dois tênis" na home e "Comparar com outro tênis" no relatório: specs lado a lado, hexágono sobreposto, o que muda e, depois do teste, o Fit Score de cada um.
 - 191 vendidos no Brasil. 40 importados, com preço convertido de US$ × 5,40 × 1,6. Os importados aparecem como "importado" e perdem 3 pontos no Fit Score.
 

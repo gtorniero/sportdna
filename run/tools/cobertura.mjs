@@ -13,17 +13,18 @@ fs.writeFileSync(tmp,html.slice(0,j)+'window.__T={engine,M,BUD,PODIO_FORA};\n'+h
 const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+tmp);fs.unlinkSync(tmp);
 const r=await p.evaluate(()=>{
   const {engine,M,BUD,PODIO_FORA}=window.__T;
-  const OPC={peso:[50,58,65,72,80,88,96,105],largura:[0,1,2],dor:[0,1,2,3,4,5,6],pisada:[0,1,2,3,4,5,6,7],tempo:[0,1,2,3,4],km:[0,1,2,3,4],pace:[0,1,2,3,4],terreno:[0,1,2,3],calor:[0,1,2],obj:[0,1,2,3,4,5],treino:[0,1,2],sens:[0,1,2],prior:[0,1,2,3],neutro:[0,1,2],orc:[0,1,2,3,4,5],uso:[0,1,2],pares:[0,1]};
+  const OPC={peso:[50,58,65,72,80,88,96,105],largura:[0,1,2],dor:[0,1,2,3,4,5,6],pisada:[0,1,2,3,4,5,6,7],tempo:[0,1,2,3,4],km:[0,1,2,3,4],pace:[0,1,2,3,4],terreno:[0,1,2,3],calor:[0,1,2],obj:[0,1,2,3,4,5],treino:[0,1,2],sens:[0,1,2],prior:[0,1,2,3],neutro:[0,1,2],orc:[[0],[1],[2],[3],[0,1],[1,2],[2,3],[0,2],[1,3],[0,3]],uso:[0,1,2],pares:[0,1]};
   const OBJ={ent:0,dia:2,max:3,est:2,rap:1,sup:3,tri:4,con:5};
   let st=99;const mb=()=>{st|=0;st=st+0x6D2B79F5|0;let t=Math.imul(st^st>>>15,1|st);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
   const pos=(m,a)=>{const e=engine(a,false);const k=e.ranked.findIndex(x=>x.m===m);return k<0?999:k};
   const out=[];
   for(const m of M){
-    const orc=BUD.findIndex(([lo,hi],q)=>q<5&&m.p>=lo&&m.p<=hi);
+    // orçamento de partida: a faixa do preço do tênis (pode marcar mais de uma; a busca testa pares)
+    const orc=BUD.findIndex(([lo,hi])=>m.p>=lo&&m.p<=hi);
     let best=null,bestP=1e9;
     for(let t=0;t<6;t++){
       const a={};for(const k in OPC)a[k]=OPC[k][Math.floor(mb()*OPC[k].length)];
-      a.obj=OBJ[m.c];a.orc=orc<0?5:orc;if(m.c==='tri')a.terreno=2+Math.floor(mb()*2);if(m.c==='est')a.neutro=1;if(m.c==='sup'||m.c==='rap'){a.tempo=4;a.pace=4;a.km=3;a.treino=2}
+      a.obj=OBJ[m.c];a.orc=OPC.orc[orc<0?3:orc];if(m.c==='tri')a.terreno=2+Math.floor(mb()*2);if(m.c==='est')a.neutro=1;if(m.c==='sup'||m.c==='rap'){a.tempo=4;a.pace=4;a.km=3;a.treino=2}
       let cur=pos(m,a);
       for(let it=0;it<6&&cur>0;it++){let mel=false;
         for(const k in OPC)for(const v of OPC[k]){if(a[k]===v)continue;const o=a[k];a[k]=v;const q=pos(m,a);if(q<cur){cur=q;mel=true}else a[k]=o}

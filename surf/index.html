@@ -380,6 +380,7 @@ table.cmpt{min-width:0}table.cmpt th:first-child{width:28%}table.cmpt tr.df td{b
 .pey{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .pbox{border:1px solid var(--line);border-radius:12px;padding:11px 13px;display:flex;flex-direction:column;gap:7px;min-width:0}
 .pbox.s{background:var(--bg);border-color:var(--bg)}
+.pg.lite h2{font-size:17px}.pg.lite h3{font-size:12.5px;color:var(--muted)}
 .pcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .pcols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .p1top{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:16px;align-items:center}
@@ -1040,7 +1041,6 @@ const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5,tol:5};
 // nível a partir das respostas cruas, com a mesma conversão de conv() (passar de joelhinho ou pato conta a habilidade 0)
 function nivelResp(){const o={};['tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
 const A={};let step=0;
-const NVAR=Q.length+BX.length+17;
 (function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nQ').textContent=nQ;document.getElementById('bbQ').textContent=nQ;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
 document.getElementById('bbVar').textContent=CB.length;
 })();
@@ -1233,7 +1233,7 @@ function renderPreview(){
   <div class="panel">
     <p class="eyebrow">O que está por trás</p>
     <div class="kpis">
-      <div class="kpi"><b>${(NVAR*KEYS.length).toLocaleString('pt-BR')}</b><span>cruzamentos: ${NVAR} variáveis × ${KEYS.length} tipos</span></div>
+      <div class="kpi"><b>${KEYS.length}</b><span>tipos de prancha comparados com o seu perfil</span></div>
       <div class="kpi"><b>${r.conf}%</b><span>confiança do resultado</span></div>
       <div class="kpi"><b>${lo}–${hi} L</b><span>quanto ela deve boiar</span></div>
     </div>
@@ -1797,13 +1797,8 @@ function adaptPlan(r){
     ['Semana 3','Curvas',lng?'Passos curtos para a frente e o primeiro cross-step em onda pequena.':ini?'Primeiras curvas na parede: olhe para onde quer ir e transfira o peso devagar.':`Cavada e batida com calma. Se ela travar ou soltar demais, teste quilha ${r.dc.finSize==='S'?'M':'um tamanho diferente'}.`],
     ['Semana 4','Ritmo normal',`Volte ao seu mar de sempre, dentro da faixa dela (${WAVE[r.a.tam===undefined?1:r.a.tam]}). Se ainda perde ondas, reveja a litragem com o coach.`]];
 }
-function origins(){
-  const F=['Corpo','Nível','Estilo','Onda','Local e uso','Prioridades','Tipo'];
-  const R=[['Tipo de prancha',[1,2,3,4,5]],['Litros',[0,1,4,5,6]],['Comprimento, largura e espessura',[0,6]],['Bico e ponto mais largo',[2,3,6]],['Rabeta',[2,3,6]],['Borda',[1,6]],['Curva (rocker)',[2,3,6]],['Fundo',[1,3,6]],['Quilhas',[2,3,4,6]],['Tamanho da quilha',[0,3]],['Material',[1,3,4,6]],['Laminação',[0,2,4,6]]];
-  return `<table class="pori"><thead><tr><th>Decisão</th>${F.map(f=>`<th>${f}</th>`).join('')}</tr></thead><tbody>${R.map(([n,on])=>`<tr><td>${n}</td>${F.map((_,i)=>`<td><i class="${on.includes(i)?'':'o'}"></i></td>`).join('')}</tr>`).join('')}</tbody></table>`;
-}
-function pdfPage(n,title,body){
-  return `<section class="pg"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><span>SURF DNA<small>by SPORT DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>SURF DNA · by SPORT DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
+function pdfPage(n,title,body,cls){
+  return `<section class="pg${cls?' '+cls:''}"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg><span>SURF DNA<small>by SPORT DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>SURF DNA · by SPORT DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
 }
 function pdfHTML(r){
   const k=r.k,d=r.d,dc=r.dc,w=r.fins[0],s2=r.fins[1],gap=w.fit-s2.fit,lo=Math.round(d.V-r.rng),hi=Math.round(d.V+r.rng),at=r.atual,a=r.a;
@@ -1817,7 +1812,7 @@ function pdfHTML(r){
   <div style="width:440px;margin:-6px auto">${boardSVG(k,d,dc,{h:true})}</div>
   <div class="psetup"><div><span>Medidas</span><b>${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}</b><small>${mF(d.L)} · ${cmF(d.W)} · ${cmF(d.T)}</small></div><div><span>Litros</span><b>${dec1(d.V)} L</b><small>${dec1(d.V/r.peso)} L por kg</small></div><div><span>Rabeta e bico</span><b>${esc(dc.tail)}</b><small>${esc(dc.nose)}</small></div>
   <div><span>Quilhas</span><b>${FINSET[dc.setup]}</b><small>tamanho ${dc.finSize} · ${esc(dc.template.split(':')[0])}</small></div><div><span>Fundo e curva</span><b>${esc(dc.bottom.split(':')[0])}</b><small>bico ${frac(dc.rocker[0])} · rabeta ${frac(dc.rocker[1])}</small></div><div class="${sugM?'sug':''}"><span>Material</span><b>${esc(dc.constr[0])}</b><small>${sugM?'sugestão: veja a alternativa na página 3':'definido pelo tipo de prancha'}</small></div></div>
-  <p class="pnote">Quadro tracejado é sugestão: a alternativa está explicada na página 3. Nenhuma marca paga para aparecer.</p>
+  <p class="pnote">Quadro tracejado é sugestão: a alternativa está explicada na página 5. Nenhuma marca paga para aparecer.</p>
   <div><h3 style="margin-bottom:7px">Por que ela combina com você</h3><div class="why-cards">${whyV(r,6)}</div></div>
   <div class="pcols"><div class="pbox s"><h3>Seu perfil</h3><dl class="pdl"><dt>Corpo</dt><dd>${r.peso} kg · ${r.alt} cm</dd><dt>Nível</dt><dd>${LV[r.lvl].n}</dd><dt>Seu surf</dt><dd>${sty}</dd><dt>Seu mar</dt><dd>${a.onde===1?'piscina de onda':a.onde===2?'mar e piscina':'mar'}, ${WAVE[a.tam===undefined?1:a.tam]}, ondas ${FORCA[a.forca===undefined?1:a.forca]}</dd><dt>Prioridades</dt><dd>${top3.map(([v,i])=>BXP[i].toLowerCase()+' '+v).join(' · ')}</dd></dl></div>
   <div class="pbox s"><h3>${at?'Da sua atual para a nova':'Sem prancha atual'}</h3>${at?feelB(r).slice(0,3).map(x=>`<div class="ptr"><b>${x[0]}</b><span>${esc(x[1])} → <em>${esc(x[2])}</em></span><span></span><span>${esc(x[3])}</span></div>`).join(''):`<p class="muted" style="font-size:10.5px">Você não informou uma prancha atual. A página 2 mostra onde a recomendada fica entre os 13 tipos do catálogo.</p>`}</div></div>`;
@@ -1830,45 +1825,44 @@ function pdfHTML(r){
   <div class="pbox"><h3>As medidas na régua do catálogo</h3><p class="pnote">Cada risco é um dos 13 tipos, dimensionado para o seu peso e altura. A faixa azul-clara é a zona ideal para você (as faixas aceitáveis da loja); a marca escura é a recomendada${at?' e a vermelha, a sua atual':''}.</p>
   <div class="prul">${rulerRow('Comprimento','',vals(x=>x.L),d.L,[d.L-2,d.L+2],at?at.d.L:null,ftin)}${rulerRow('Largura','',vals(x=>x.W),d.W,[d.W-.25,d.W+.25],at?at.d.W:null,frac)}${rulerRow('Espessura','',vals(x=>x.T),d.T,[d.T-.125,d.T+.125],at?at.d.T:null,frac)}${rulerRow('Litros',' L',vals(x=>x.V),d.V,[lo,hi],at?at.d.V:null,v=>String(Math.round(v)))}</div></div>
   <div class="pbox s"><h3>${at?'O que muda saindo da sua atual':'O que esperar dela'}</h3><ul class="plist">${at?feelB(r).map(x=>`<li><b>${x[0]}:</b> ${esc(x[3])}</li>`).join('')+BXP.map((l,i)=>[l,r.ix[i]-at.ix[i]]).filter(x=>Math.abs(x[1])>=1).map(([l,v])=>`<li><b>${l}:</b> ${v>0?'sobe':'cai'} ${dec1(Math.abs(v))} ponto${Math.abs(v)>=2?'s':''} de 10.</li>`).join(''):BXP.map((l,i)=>`<li><b>${l}:</b> ${dec1(r.ix[i])} de 10.</li>`).join('')}</ul></div>`;
-  /* página 3: setup */
+  /* página 5 (por último, com menos destaque): setup, adaptação e compra */
   let keep='';
   if(at){const save=r.d;r.d=at.d;const da=decide(r,at.k);r.d=save;const dv=d.V-at.d.V;
     const nofix=[];if(Math.abs(dv)>=3)nofix.push(`Ajuste nenhum muda a flutuação: ela continua com ${Math.round(Math.abs(dv))} L ${dv>0?'a menos':'a mais'} do que você precisa${dv>0?', e a remada continua pesada':', e vai continuar difícil de afundar a borda'}.`);
     if(at.k!==k)nofix.push(`O formato continua de ${PN[at.k].toLowerCase()}: o comportamento de ${PN[k].toLowerCase()} só vem com a troca.`);
     keep=`<div class="pbox"><h3>Se não trocar agora: ajuste a sua atual</h3><dl class="pdl"><dt>Quilhas</dt><dd>${FINSET[da.setup]} · tamanho ${da.finSize}</dd><dt>Formato</dt><dd>${esc(da.template.split(':')[0])}</dd><dt>Leash</dt><dd>${esc(da.leash)}</dd><dt>Deck</dt><dd>${esc(da.deck)}</dd></dl><p class="pnote"><b style="color:var(--clay)">O que o ajuste não corrige:</b> ${nofix.length?esc(nofix.join(' ')):'pouca coisa: a sua atual já está perto do ideal, e o ajuste de quilha resolve boa parte.'}</p></div>`}
   else keep=`<div class="pbox"><h3>Se não trocar agora</h3><p class="muted" style="font-size:10.5px">Você não informou prancha atual. Se for alugar ou pegar emprestada até comprar, procure a mesma faixa de ${lo} a ${hi} L e um tipo parecido.</p></div>`;
-  const p3=`<div><p class="pey">Página 3</p><h2>Setup e adaptação</h2></div>
+  const p3=`<div><p class="pey">Página 5</p><h2>Depois da escolha: setup, adaptação e compra</h2></div>
   <div class="pcols"><div class="pbox"><h3>Na nova prancha</h3><dl class="pdl"><dt>Quilhas</dt><dd>${FINSET[dc.setup]} · tamanho ${dc.finSize}</dd><dt>Formato</dt><dd>${esc(dc.template)}</dd><dt>Caixas</dt><dd>${esc(dc.boxes)}</dd><dt>Material</dt><dd>${esc(dc.constr[0])}. ${esc(dc.constr[1])}</dd>${sugM?`<dt>Alternativa</dt><dd style="font-weight:500">${esc(dc.constr[2].split('. ').slice(-1)[0])}</dd>`:''}<dt>Laminação</dt><dd>${esc(dc.lam)}</dd><dt>Acabamento</dt><dd>${esc(dc.finish)}</dd><dt>Leash</dt><dd>${esc(dc.leash)}</dd><dt>Deck</dt><dd>${esc(dc.deck)}</dd></dl></div>${keep}</div>
-  <div class="pbox"><h3>De onde vem cada decisão</h3><p class="pnote">Ponto cheio: a resposta entra no cálculo daquela decisão.</p>${origins()}</div>
   <div><h3 style="margin-bottom:7px">Plano de adaptação: 4 semanas</h3><div class="pweeks">${adaptPlan(r).map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><p>${esc(x[2])}</p></div>`).join('')}</div></div>
   <div class="pcols"><div class="pbox"><h3>Sinais de alerta</h3><div class="palert">${attB(r).filter(x=>!/Nenhum ponto/.test(x)).concat(['Litragem baixa demais: você afunda até o peito na remada e perde ondas que antes pegava.','Litragem alta demais: não consegue passar a arrebentação nem afundar a borda na curva.']).slice(0,4).map(x=>`<p>${esc(x)}</p>`).join('')}</div></div>
   <div class="pbox"><h3>Checklist de compra</h3><div class="pchk" style="grid-template-columns:minmax(0,1fr)">${[`${ARCH[k].n}, de ${ftin(d.L-2)} a ${ftin(d.L+2)}`,`Largura de ${frac(d.W-.25)} a ${frac(d.W+.25)}`,`Espessura de ${frac(d.T-.125)} a ${frac(d.T+.125)}`,`Litragem de ${dec1(d.V-1.5)} a ${dec1(d.V+1.5)} L, escrita ou no site da marca`,`Rabeta ${dc.tail.toLowerCase()} e ${FINSET[dc.setup].toLowerCase()}`,'Usada: deck sem partes moles, sem trincas nas caixas de quilha','Usada: consertos sem amarelado e sem água dentro'].map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div>`;
-  /* página 4: pódio */
+  /* página 3: pódio */
   const lead=(x,i)=>{const o=fins.filter((_,j)=>j!==i);const L=BXP.map((l,j)=>[l,x.ix[j]-Math.max(...o.map(y=>y.ix[j]))]).sort((p,q)=>q[1]-p[1]);const C=BXP.map((l,j)=>[l,x.ix[j]-Math.max(...o.map(y=>y.ix[j]))]).sort((p,q)=>p[1]-q[1]);return [L[0],C[0]]};
   const pod=[1,0,2].filter(i=>fins[i]).map(i=>{const x=fins[i],[L,C]=lead(x,i);return `<div class="ppc p${i+1}"><div><p class="pey">${i+1}º lugar</p><h3>${PN[x.k]}</h3><p class="pms">${ftin(x.d.L)} × ${frac(x.d.W)} × ${frac(x.d.T)} · ${dec1(x.d.V)} L</p></div>
     <div class="ptag"><span><em class="up">Lidera:</em> ${L[1]>0?L[0].toLowerCase():'nenhum índice sozinha'}</span><span><em class="dn">Cede:</em> ${C[1]<0?C[0].toLowerCase():'nada em relação às outras'}</span></div>
     <div class="ppri">${top3.map(([v,j])=>`<div><span>${BXP[j]}</span><span><u style="width:${v*10}%"></u><i style="width:${x.ix[j]*10}%"></i></span><b>${dec1(x.ix[j])}</b></div>`).join('')}</div>
     <div class="blk" style="height:${[150,112,86][i]}px"><b>${x.fit}%</b><span>DNA Score</span></div></div>`}).join('');
-  const p4=`<div><p class="pey">Página 4</p><h2>O pódio</h2><p class="muted" style="margin-top:3px">${gap<=3?`Empate técnico: o 1º e o 2º lugar estão a ${gap} ponto${gap===1?'':'s'}. As duas servem; a escolha fica pelo que cada uma lidera.`:`A ${PN[k].toLowerCase()} ficou ${gap} pontos à frente do 2º lugar.`} Barras: azul-claro é o que você pediu, escuro é o que a prancha entrega nas suas 3 prioridades.</p></div>
+  const p4=`<div><p class="pey">Página 3</p><h2>O pódio</h2><p class="muted" style="margin-top:3px">${gap<=3?`Empate técnico: o 1º e o 2º lugar estão a ${gap} ponto${gap===1?'':'s'}. As duas servem; a escolha fica pelo que cada uma lidera.`:`A ${PN[k].toLowerCase()} ficou ${gap} pontos à frente do 2º lugar.`} Barras: azul-claro é o que você pediu, escuro é o que a prancha entrega nas suas 3 prioridades.</p></div>
   <div class="ppod">${pod}</div>
   <div class="pbox"><h3>O que dizem de cada tipo</h3><p class="pnote">Trechos de reviews publicados, resumidos e traduzidos, de modelos de referência de cada tipo. Lojas tendem a elogiar o que vendem; por isso cada trecho mostra a fonte.</p>
   <div class="prevs">${fins.map((x,i)=>{const R=REVIEWS.filter(y=>y[0]===x.k).slice(0,i?2:3);return `<div class="prevg"><p class="prevh">${i+1}º · ${PN[x.k]}</p>${R.length?R.map((y,j)=>`<div class="prev"${j?` data-cut="${10+i*3+j}"`:''}><p>“${esc(y[2])}”</p><span><b>${esc(y[1])}</b> · ${esc(y[3])} (${esc(new URL(y[4]).hostname.replace(/^www\./,''))}) · ${esc(y[5])}${y[6]!=='—'?' · '+esc(y[6]):''}${y[7]!=='sem nota'?' · nota '+esc(y[7]):''}${y[8]!=='—'?' · '+esc(y[8]):''}</span></div>`).join(''):`<p class="pnote">Não achamos review independente deste tipo; o que existe é texto das próprias marcas. ${COACH_ON?'Fale com o coach antes de comprar.':'Peça a opinião de um professor de surf antes de comprar.'}</p>`}</div>`}).join('')}</div>
-  <p class="pnote">Base do motor: 422 casos reais de lojas, revistas, marcas, atletas e fóruns.</p></div>
+  <p class="pnote">O resultado foi conferido com 422 casos reais de lojas, revistas, marcas, atletas e fóruns.</p></div>
 `;
-  /* página 5: ranking e método */
+  /* página 4: ranking e método */
   const atPos=at?R.findIndex(x=>x.k===at.k):-1,rows=R.slice(0,10);if(atPos>=10)rows.push(R[atPos]);
   let behind='';
   if(at){if(at.k===k)behind=`Sua atual é do mesmo tipo da recomendada. O que muda são as medidas: ${dec1(at.d.V)} L hoje contra ${dec1(d.V)} L ideais.`;
     else{const x=R[atPos],def=BXP.map((l,i)=>[l,(r.ix[i]-at.ix[i])*(im[P[i]]/5)]).sort((p,q)=>q[1]-p[1]).slice(0,2).filter(y=>y[1]>0.4);
       behind=`O tipo da sua atual (${PN[at.k]}) ficou em ${atPos+1}º lugar, com ${x.fit}%, ${w.fit-x.fit} pontos atrás. ${def.length?'Onde ela mais perde, pesando pelas suas prioridades: '+def.map(y=>y[0].toLowerCase()).join(' e ')+'. ':''}${at.d.V<lo?`Com ${Math.round(at.d.V)} L, ela boia menos que a sua faixa (${lo} a ${hi} L).`:at.d.V>hi?`Com ${Math.round(at.d.V)} L, ela boia mais que a sua faixa (${lo} a ${hi} L).`:'A flutuação dela está dentro da sua faixa.'}`}}
-  const p5=`<div><p class="pey">Página 5</p><h2>Ranking e método</h2></div>
+  const p5=`<div><p class="pey">Página 4</p><h2>Ranking e método</h2></div>
   <div class="pcols" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)"><div class="pbox"><h3>Os 10 primeiros entre 13 tipos</h3><table class="ptab"><thead><tr><th>#</th><th>Tipo</th><th>DNA</th><th>Litros</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.k===k?'hl':at&&x.k===at.k?'at':''}"><td class="n">${x.pos}º</td><td>${PN[x.k]}${at&&x.k===at.k?' · sua atual':''}</td><td class="n"><span style="display:inline-block;width:${x.fit*.5}px;height:5px;border-radius:9px;background:${x.k===k?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td><td class="n">${Math.round(x.d.V)} L</td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>Mapa do catálogo</h3>${catMap(r,R)}<p class="pnote">Os 13 tipos dimensionados para você; o número é a posição no ranking. Ponto escuro: a recomendada; azul-claro: o pódio${at?'; anel vermelho tracejado: a medida da sua atual':''}.</p></div></div>
   ${at?`<div class="pbox s"><h3>Por que a sua atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
-  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>422</b><span>casos reais na calibração (390 usados)</span></div><div><b>77%</b><span>tipo certo no top 3 (80% nos 122 casos de validação)</span></div><div><b>72%</b><span>litragem a ±15% do que a pessoa usa</span></div><div><b>${(NVAR*KEYS.length).toLocaleString('pt-BR')}</b><span>cruzamentos: ${NVAR} variáveis × 13 tipos</span></div></div>
+  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns</span></div><div><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos</span></div><div><b>3.000</b><span>perfis simulados nos testes de segurança</span></div><div><b>${REVIEWS.length}</b><span>reviews com fonte, de lojas, revistas e surfistas</span></div></div>
   <p class="pnote">Especificações aproximadas, em revisão por professor de surf. Nenhuma marca ou shaper paga para aparecer no resultado.</p></div>
   <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Litragem','Volume da prancha em litros. Define quanto ela boia e quanto rema.'],['L por kg','Litros divididos pelo seu peso. Quanto menor, mais técnica a prancha exige.'],['Rocker','Curva da prancha do bico à rabeta. Mais curva: encaixa em onda forte; mais reta: mais rápida.'],['Rabeta','A parte de trás. Larga dá velocidade em onda fraca; fina segura em onda forte.'],['Borda','A lateral. Cheia (50/50) perdoa; fina (80/20) morde a parede.'],['Fundo','O desenho de baixo. Côncavo canaliza a água e acelera; vee ajuda a virar.'],['Quilhas','As barbatanas. Mono é suave, bi é solta, tri é versátil, quadri é rápida.'],['PU e epóxi','Os dois materiais de prancha. PU tem sensação clássica; epóxi é leve e boia mais.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
-  return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Seu surf × a prancha',p2)}${pdfPage(3,'Setup',p3)}${pdfPage(4,'Pódio',p4)}${pdfPage(5,'Ranking e método',p5)}</div>`;
+  return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Seu surf × a prancha',p2)}${pdfPage(3,'Pódio',p4)}${pdfPage(4,'Ranking e método',p5)}${pdfPage(5,'Setup e compra',p3,'lite')}</div>`;
 }
 /* bibliotecas servidas pelo próprio site (nada de CDN: redes que bloqueiam CDN e o Safari continuam gerando o PDF) */
 const LIBS=['../assets/vendor/html2canvas-1.4.1.min.js','../assets/vendor/jspdf-2.5.1.umd.min.js'];

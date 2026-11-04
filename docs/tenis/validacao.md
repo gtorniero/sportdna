@@ -25,8 +25,12 @@ Divisão fixa: 1 em cada 3 casos só para teste.
 | Leitura dos casos corrigida (prova = avançado com rodízio; “daily running” ≠ uso casual; guias de US$ 100 = entrada) e regra de par de prova | 21% | 48% | 0,205 | 19% |
 | Pesos calibrados (leveza 1,8; usos 2,4; contraindicação 6 e teto 12; clientes 0,7) | 26% | 47% | 0,217 | 23% |
 | Auditoria de 63 modelos, contradições resolvidas, categorias vizinhas, ressalvas leves fixas e nova calibração (rodada 6) | **31%** | **54%** | 0,287 | **30%** |
+| Orçamento em 4 faixas com marcação múltipla (rodada 7; sem o corte de R$ 700, perde nos 42 casos com orçamento) | 29% | 50% | 0,274 | 28% |
 
 Para comparação, sortear 3 tênis do catálogo acertaria perto de 2%.
+
+## Marcas depois da rodada 7 (top 3 nos 234 casos: especialistas × nós)
+ASICS 26 × 24 · Nike 21 × 20 · Hoka 11 × 10 · adidas 9 × 9 · New Balance 9 × 10 · Brooks 8 × 6 · Puma 6 × 0,6 · Olympikus 5 × 7 · Mizuno 4 × 11 · On 1 × 4.
 
 ## Marcas depois da rodada 6 (top 3 nos 234 casos: especialistas × nós)
 ASICS 26 × 23 · Nike 21 × 21 · Hoka 11 × 10 · adidas 9 × 9 · New Balance 9 × 9 · Brooks 8 × 6 · Puma 6 × 0,4 · Olympikus 5 × 6 · Mizuno 4 × 10 · On 1 × 4. Puma aparece nos guias quase só como supertênis de prova (Fast-R Elite 3, Deviate Elite 4), onde concorre com outros 29.

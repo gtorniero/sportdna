@@ -1,6 +1,6 @@
 # RUN DNA — argumentos de venda (nov/2026)
 
-Documento interno. Números conferidos no código e nos dados em 02/nov/2026 e de novo em 03/nov/2026. Use só o que está aqui; não arredonde para cima.
+Documento interno. Números conferidos no código e nos dados em 02/nov/2026, 03/nov/2026 e 04/nov/2026 (orçamento em 4 faixas, rodada 7). Use só o que está aqui; não arredonde para cima.
 
 ## Em uma frase
 O RUN DNA cruza o seu corpo e o seu treino com 212 tênis (189 com medida de laboratório) e 1.755 reviews, e foi calibrado contra centenas de recomendações de especialistas — sem nenhuma marca pagando para aparecer.
@@ -21,10 +21,10 @@ O RUN DNA cruza o seu corpo e o seu treino com 212 tênis (189 com medida de lab
 
 ## O que nos diferencia (verdadeiro e verificável)
 - **Ciência, não mito.** Neutro por padrão, porque estudos com milhares de corredores (Nielsen 2014; Cochrane 2022) mostram que escolher pela pisada não reduz lesão. Estabilidade só para quem sente desconforto.
-- **Testado contra especialistas.** Num teste com recomendações reais de especialistas, o motor coloca um tênis indicado por eles no top 3 em 31% dos casos e no top 10 em 54% (escolhendo 3 ao acaso seria perto de 2%).
-- **Equilíbrio entre marcas.** A participação das marcas no nosso pódio acompanha a dos especialistas (ex.: Nike 21% × 21%, ASICS 23% × 26%). Nenhuma marca paga.
-- **Segurança primeiro.** Em 5.000 perfis simulados (15.000 tênis no pódio), 99,8% dos tênis do pódio não têm duas ou mais contraindicações sérias citadas pelas reviews (pé largo, peso, estabilidade, Aquiles, trilha técnica, pisada).
-- **Cada tênis tem um porquê.** 145 dos 212 modelos são a melhor escolha para algum perfil de corredor.
+- **Testado contra especialistas.** Num teste com recomendações reais de especialistas, o motor coloca um tênis indicado por eles no top 3 em 29% dos casos e no top 10 em 50% (escolhendo 3 ao acaso seria perto de 2%).
+- **Equilíbrio entre marcas.** A participação das marcas no nosso pódio acompanha a dos especialistas (ex.: Nike 20% × 21%, ASICS 24% × 26%). Nenhuma marca paga.
+- **Segurança primeiro.** Em 5.000 perfis simulados (15.000 tênis no pódio), 99,9% dos tênis do pódio não têm duas ou mais contraindicações sérias citadas pelas reviews (pé largo, peso, estabilidade, Aquiles, trilha técnica, pisada).
+- **Cada tênis tem um porquê.** 138 dos 212 modelos são a melhor escolha para algum perfil de corredor.
 - **Honestidade.** Mostramos quando o dado é só da ficha da marca, quando o preço é estimado e quando as reviews discordam. Não prometemos prevenir lesão.
 
 ## O que não dizer
