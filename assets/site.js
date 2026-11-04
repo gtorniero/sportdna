@@ -396,7 +396,7 @@ function publicLinks(scope){
   scope.querySelectorAll('a[data-go]').forEach(a=>{a.href=root+(window.ML_ROUTES[a.dataset.go]||'');});
   scope.querySelectorAll('[src], a[href]').forEach(el=>{
     const attr=el.hasAttribute('src')?'src':'href', value=el.getAttribute(attr);
-    if(/^(assets|apps|ferramentas)\//.test(value)) el.setAttribute(attr,root+value);
+    if(/^(assets|apps|ferramentas|racket|surf|run)\//.test(value)) el.setAttribute(attr,root+value);
   });
 }
 publicLinks(document);
