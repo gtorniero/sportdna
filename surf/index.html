@@ -280,6 +280,7 @@ details.fold>summary:focus-visible{outline:3px solid var(--pri);outline-offset:4
 .mcount{font-size:14px;font-weight:700;color:var(--pri)}
 .lve{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.lve .on{color:var(--ink);font-weight:700}
 .rates{display:flex;flex-direction:column;gap:10px}
+.imp-warn{margin:4px 0 0;font-weight:700;color:var(--clay)}.imp-warn:empty{display:none}
 .rt{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px}
 .rti{width:40px;height:40px;padding:8px;border-radius:12px;background:var(--surface);fill:none;stroke:var(--pri);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .rtx{display:flex;flex-direction:column;gap:8px;min-width:0}.rtx label{display:flex;flex-direction:column;gap:2px}.rtx b{font-size:16px}.rtx span{font-size:14px;color:var(--muted)}
@@ -641,7 +642,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
 <div id="modalRoot"></div>
 
 <script src="../assets/payments/config.js?v=20261104"></script>
-<script src="../assets/payments/client.js?v=20261104"></script>
+<script src="../assets/payments/client.js?v=20261104b"></script>
 <script>
 (function(){
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1015,15 +1016,15 @@ const Q=[
  {s:0,id:'altura',type:'number',t:'Qual a sua altura?',h:'Em cm. Ajusta o comprimento.',min:140,max:210,step:1,ph:'ex.: 175'},
  {s:0,id:'idade',t:'Qual a sua idade?',o:O(['Até 25','26 a 35','36 a 45','46 a 55','56 ou mais'])},
  {s:0,id:'fis',t:'Como está o seu condicionamento para remar?',h:'Remada é 80% do tempo na água. Quem cansa rápido precisa de mais flutuação.',o:O([['Canso rápido','Pouca atividade física'],['Razoável','Ativo, sem rotina de treino'],['Bom','Treino 2 a 3 vezes por semana'],['Muito bom','Nado, remo ou treino forte com frequência']])},
- {s:0,id:'dor',multi:4,opt:true,t:'Você tem alguma dor ou lesão que atrapalha no surf?',h:'Se não tiver, deixe em branco. Dor muda a flutuação e a estabilidade que a prancha precisa ter.',o:O([['Ombro','Remar cansa ou dói'],['Joelho ou quadril','Ficar de pé é difícil ou dói'],['Lombar ou costas','Dói na remada ou na base'],['Mobilidade reduzida','Falta flexibilidade para levantar rápido']])},
+ {s:0,id:'dor',multi:4,none:'4',opt:true,t:'Você tem alguma dor ou lesão que atrapalha no surf?',h:'Dor muda a flutuação e a estabilidade que a prancha precisa ter.',o:O([['Ombro','Remar cansa ou dói'],['Joelho ou quadril','Ficar de pé é difícil ou dói'],['Lombar ou costas','Dói na remada ou na base'],['Mobilidade reduzida','Falta flexibilidade para levantar rápido'],['Não tenho dor','Nada me atrapalha no surf']])},
  {s:1,id:'tempo',t:'Há quanto tempo você surfa?',o:O(['Ainda não surfo','Menos de 6 meses','6 meses a 1 ano','1 a 3 anos','3 a 6 anos','Mais de 6 anos'])},
  {s:1,id:'freq',t:'Com que frequência?',o:O(['1 a 2 vezes por mês','3 a 6 vezes por mês','2 a 3 vezes por semana','4 ou mais por semana'])},
  {s:1,id:'auto',t:'Como você pega onda hoje?',o:O([['Com empurrão do professor','Ainda preciso de ajuda'],['Sozinho, na espuma','Já remo e entro na onda quebrada'],['Sozinho, na onda verde','Entro na parede antes de quebrar']])},
- {s:1,id:'pass',t:'Como você passa a arrebentação?',h:'Define o quanto de espuma e comprimento você consegue levar para o fundo.',o:O([['Ainda não passo','Fico na espuma, perto da areia'],['Vou por cima ou empurro','Seguro a prancha e passo por cima das ondas'],['Joelhinho','Afundo o bico com o joelho e passo'],['Pato (duck dive)','Afundo a prancha inteira por baixo da onda'],['Uso o canal','Remo por onde não quebra; com prancha grande, viro de cabeça para baixo (tartaruga)']])},
+ {s:1,id:'pass',t:'Como você passa a arrebentação?',h:'Define o quanto de espuma e comprimento você consegue levar para o fundo.',o:[['0','Ainda não passo','Fico na espuma, perto da areia'],['1','Vou por cima ou empurro','Seguro a prancha e passo por cima das ondas'],['2','Joelhinho ou pato','Afundo o bico ou a prancha inteira e passo por baixo da onda'],['4','Uso o canal','Remo por onde não quebra; com prancha grande, viro de cabeça para baixo (tartaruga)']]},
  {s:1,id:'skills',multi:9,opt:true,t:'O que você já faz na onda?',h:'Marque o que faz com frequência. Se está começando, deixe em branco.',o:O(SK).slice(1)},
  {s:2,id:'objv',t:'Qual é o seu principal objetivo no surf agora?',o:O([['Aprender a ficar de pé','Começar do jeito certo'],['Ganhar autonomia','Pegar ondas sozinho, ler o mar, surfar sem professor'],['Evoluir e aprender manobras','Cavada, batida, rasgada'],['Curtir mais, sem pressão','Pegar mais ondas e deslizar'],['Ondas maiores e mais fortes','Encarar dias mais pesados'],['Surf clássico','Andar sobre a prancha, noseride']])},
  {s:2,id:'estilo',t:'Que tipo de surf você mais curte?',h:'Se está começando, escolha a primeira.',o:[['0','Pegar onda e deslizar','Ficar de pé e curtir a onda'],['1','Fazer curvas na parede','Descer e subir a onda'],['2','Manobras fortes','Batidas e rasgadas'],['5','Estilo clássico','Andar sobre a prancha, como no longboard']]},
- {s:2,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 10 (essencial) para cada característica. Nenhuma prancha é 10 em tudo: o equilíbrio entre elas decide o tipo.'},
+ {s:2,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 10 (essencial). Nenhuma prancha é 10 em tudo, porque uma coisa puxa a outra: quanto mais remada e estabilidade, maior a prancha e menos ela vira; quanto mais manobra, menor a prancha e menos ela rema. Escolha 2 ou 3 prioridades de verdade.'},
  {s:3,id:'tam',t:'Qual o tamanho de onda mais comum onde você surfa?',h:'Se for usar em piscina, pense no tamanho da sessão que você reserva.',o:O(['Até meio metro','Meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','Acima de 2,5 m'])},
  {s:3,id:'forca',t:'Como são essas ondas?',o:O([['Cheias e fracas','Demoram a quebrar, pouca força'],['Mistas','Depende do dia'],['Cavadas e rápidas','Quebram de uma vez, com força']])},
  {s:4,id:'foam',cond:()=>nivelResp()<=1,t:'Você quer começar numa prancha de espuma (soft)?',h:'Soft é macia e aguenta batida. É a mais indicada para quem está começando.',o:O([['Não, quero prancha de fibra'],['Sim, quero soft']])},
@@ -1053,8 +1054,10 @@ function renderQs(){
     const fs=document.createElement('fieldset');fs.className='q';
     if(q.type==='rate'){
       if(!A[q.id])A[q.id]=Object.assign({},IMPDEF);
-      fs.innerHTML=`<legend>${q.t}</legend><p class="help">${q.h}</p><div class="rates">${IMP.map(f=>`<div class="rt"><svg class="rti" viewBox="0 0 24 24" aria-hidden="true"><path d="${f[3]}"/></svg><div class="rtx"><label for="r_${f[0]}"><b>${f[1]}</b><span>${f[2]}</span></label><div class="rtr"><input type="range" id="r_${f[0]}" min="1" max="10" step="1" value="${A[q.id][f[0]]}"><output class="mono" id="ro_${f[0]}">${A[q.id][f[0]]}</output></div></div></div>`).join('')}</div>`;
-      IMP.forEach(f=>{const el=fs.querySelector('#r_'+f[0]);el.addEventListener('input',()=>{A[q.id][f[0]]=+el.value;fs.querySelector('#ro_'+f[0]).textContent=el.value})});
+      fs.innerHTML=`<legend>${q.t}</legend><p class="help">${q.h}</p><div class="rates">${IMP.map(f=>`<div class="rt"><svg class="rti" viewBox="0 0 24 24" aria-hidden="true"><path d="${f[3]}"/></svg><div class="rtx"><label for="r_${f[0]}"><b>${f[1]}</b><span>${f[2]}</span></label><div class="rtr"><input type="range" id="r_${f[0]}" min="1" max="10" step="1" value="${A[q.id][f[0]]}"><output class="mono" id="ro_${f[0]}">${A[q.id][f[0]]}</output></div></div></div>`).join('')}</div><p class="imp-warn" id="impWarn" role="status" aria-live="polite"></p>`;
+      /* aviso quando quase tudo ganha nota alta: assim o resultado perde a direção */
+      const warn=()=>{const v=Object.values(A[q.id]),hi=v.filter(n=>n>=8).length,el=fs.querySelector('#impWarn');el.textContent=hi>=4?`Você deu 8 ou mais para ${hi} de 6 itens. Nota alta em quase tudo deixa o resultado sem direção: baixe o que é menos importante para você.`:''};
+      IMP.forEach(f=>{const el=fs.querySelector('#r_'+f[0]);el.addEventListener('input',()=>{A[q.id][f[0]]=+el.value;fs.querySelector('#ro_'+f[0]).textContent=el.value});el.addEventListener('change',warn)});warn();
     }else if(q.type==='board'){
       const v=A[q.id]=A[q.id]||{};
       fs.innerHTML=`<legend>${q.t} <span class="opt-tag">Opcional</span></legend><p class="help">${q.h}</p>
@@ -1079,7 +1082,7 @@ function renderQs(){
         b.innerHTML=`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
         b.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(o[0]):A[q.id]===o[0]);
         b.addEventListener('click',()=>{
-          if(q.multi){let v=A[q.id]||[];v=v.includes(o[0])?v.filter(x=>x!==o[0]):[...v,o[0]].slice(-q.multi);A[q.id]=v}
+          if(q.multi){let v=A[q.id]||[];v=v.includes(o[0])?v.filter(x=>x!==o[0]):q.none===o[0]?[o[0]]:[...v.filter(x=>x!==q.none),o[0]].slice(-q.multi);A[q.id]=v}
           else{const was=A[q.id];A[q.id]=o[0];if(['atual_mod','muda'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);return}}
           g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(q.o[i][0]):A[q.id]===q.o[i][0]));
           $('#err').hidden=true;mcount();
@@ -1339,7 +1342,7 @@ function whyB(r){
   out.push(`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`);
   if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){const P=['rem','est','vel','man','ctl','tol'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,2);out.push(`Suas prioridades foram ${BXP[top[0][1]].toLowerCase()} (${top[0][0]}/10) e ${BXP[top[1][1]].toLowerCase()} (${top[1][0]}/10): ela tem ${dec1(r.ix[top[0][1]])} e ${dec1(r.ix[top[1][1]])} nesses pontos.`)}
   if(a.onde===1)out.push('Na piscina a remada pesa menos, então a litragem ficou um pouco mais justa e a prancha favorece velocidade e manobra.');
-  if(a.pass===2)out.push('Você passa a arrebentação de joelhinho: o comprimento e a espessura ainda deixam fazer isso com tranquilidade.');
+  if(a.pass===2)out.push('Você passa a arrebentação de joelhinho ou pato: o comprimento e a espessura ainda deixam afundar a prancha para passar.');
   if(a.pass===3)out.push('Você já dá pato: a espessura foi mantida num nível que ainda afunda.');
   out.push(`${dec1(r.d.V)} litros, pelo seu peso (${r.peso} kg) e pelo seu nível (${LV[r.lvl].n.toLowerCase()})${ARCH[r.k].fixedVol?'.':a.flut===0?', com um pouco mais de flutuação porque você prefere que ela boie mais.':a.flut===2?', com um pouco menos porque você prefere que ela fique solta.':'.'}`);
   if(a.forca===0)out.push('Suas ondas são fracas: a prancha é mais reta embaixo para deslizar e ganhar velocidade.');
@@ -1486,7 +1489,7 @@ function whyV(r,max){
   }
   const vmin=Math.max(10,Math.round(r.peso*0.3)),vmax=Math.round(r.peso*1.2),pos=clamp((r.d.V-vmin)/(vmax-vmin)*100,2,98);
   out.push(card('drop',`${dec1(r.d.V)} litros`,`Pelo seu peso (${r.peso} kg) e pelo seu nível (${LV[r.lvl].n.toLowerCase()})${ARCH[r.k].fixedVol?'.':a.flut===0?', com um pouco mais de flutuação porque você prefere que ela boie mais.':a.flut===2?', com um pouco menos porque você prefere que ela fique solta.':'.'}`,`<div class="vbar"><div class="vt"><i style="left:${pos}%"></i></div><div class="vl"><span>Solta · ${vmin} L</span><span>Boia mais · ${vmax} L</span></div></div>`));
-  if(a.pass===2)out.push(card('dive','Passa de joelhinho','O comprimento e a espessura ainda deixam fazer isso com tranquilidade.'));
+  if(a.pass===2)out.push(card('dive','Passa de joelhinho ou pato','O comprimento e a espessura ainda deixam afundar a prancha para passar a arrebentação.'));
   if(a.pass===3)out.push(card('dive','Já dá pato','A espessura foi mantida num nível que ainda afunda.'));
   if(a.forca===0)out.push(card('bolt','Ondas fracas','A prancha é mais reta embaixo para deslizar e ganhar velocidade.'));
   if(a.forca===2)out.push(card('bolt','Ondas fortes','Bico mais curvado e rabeta mais fina, para segurar na parede.'));
@@ -1515,12 +1518,12 @@ function whyR(r){
     out.push(card('target','Suas prioridades','O que você pediu (barra clara) contra o que ela entrega (barra escura), de 0 a 10.',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${BXP[i]}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${v} · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
   }
   const inc={0:'Você perde ondas com a atual: esta rema mais fácil.',1:'Você cai muito com a atual: esta é mais estável em pé.',3:'A atual é travada: esta vira com mais facilidade.'}[a.incomoda];
-  const extra=[inc&&['swap','Contra a sua atual',inc],a.forca===0&&['bolt','Ondas fracas','A prancha é mais reta embaixo para deslizar e ganhar velocidade.'],a.forca===2&&['bolt','Ondas fortes','Bico mais curvado e rabeta mais fina, para segurar na parede.'],a.pass===2&&['dive','Passa de joelhinho','O comprimento e a espessura ainda deixam fazer isso com tranquilidade.'],a.pass===3&&['dive','Já dá pato','A espessura foi mantida num nível que ainda afunda.']].filter(Boolean);
+  const extra=[inc&&['swap','Contra a sua atual',inc],a.forca===0&&['bolt','Ondas fracas','A prancha é mais reta embaixo para deslizar e ganhar velocidade.'],a.forca===2&&['bolt','Ondas fortes','Bico mais curvado e rabeta mais fina, para segurar na parede.'],a.pass===2&&['dive','Passa de joelhinho ou pato','O comprimento e a espessura ainda deixam afundar a prancha para passar a arrebentação.'],a.pass===3&&['dive','Já dá pato','A espessura foi mantida num nível que ainda afunda.']].filter(Boolean);
   extra.forEach(x=>out.push(card(...x)));
   return out.slice(0,4).join('');
 }
 function attR(r){
-  const L=attB(r),dor=(r.a.dor||[]).length;
+  const L=attB(r),dor=(r.a.dor||[]).filter(x=>x<4).length;
   if(dor){if(/^Nenhum ponto/.test(L[0]))L.length=0;L.unshift('Você marcou dor ou lesão: por isso ela ficou com mais flutuação e estabilidade. A prancha não trata nem previne lesão; se a dor aparecer ou piorar na água, procure um médico ou fisioterapeuta.')}
   return L.map(x=>`<div class="att">${/^Nenhum ponto/.test(x)?ICO.ok:ICO.warn}<p>${esc(x)}</p></div>`).join('');
 }
