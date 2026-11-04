@@ -24,7 +24,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sportdna.com.br/#organization","name":"SPORT DNA","url":"https://sportdna.com.br/"},{"@type":"WebSite","@id":"https://sportdna.com.br/#website","name":"SPORT DNA","url":"https://sportdna.com.br/","inLanguage":"pt-BR"},{"@type":"WebPage","@id":"https://sportdna.com.br/racket/#webpage","url":"https://sportdna.com.br/racket/","name":"Teste: Qual raquete de tênis escolher? RACKET DNA","description":"Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por R$ 19,99.","inLanguage":"pt-BR","isPartOf":{"@id":"https://sportdna.com.br/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://sportdna.com.br/"},{"@type":"ListItem","position":2,"name":"Teste: Qual raquete de tênis escolher? RACKET DNA","item":"https://sportdna.com.br/racket/"}]}]}</script>
 <!-- SEO_END -->
 </head><body>
-<title>RACKET DNA</title>
+
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <style>
@@ -594,7 +594,7 @@ details.more[open]>summary{margin-bottom:10px}
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>
       <span>RACKET DNA<small>by SPORT DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Protótipo · pagamento simulado</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Pagamento único · cartão ou Pix</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -604,7 +604,7 @@ details.more[open]>summary{margin-bottom:10px}
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Laboratório de raquetes</p>
         <h1>A raquete certa para o seu jogo e para o seu braço.</h1>
-        <p class="lead">Responda <span id="nQ">24 a 29</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê a análise inteira antes de pagar qualquer coisa.</p>
+        <p class="lead">Responda <span id="nQ">24 a 29</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha raquete</button>
           <button class="btn btn-ghost" id="duelGo" type="button">Comparar duas raquetes</button>
@@ -720,8 +720,8 @@ details.more[open]>summary{margin-bottom:10px}
 </div>
 <div id="modalRoot"></div>
 
-<script src="../assets/payments/config.js"></script>
-<script src="../assets/payments/client.js"></script>
+<script src="../assets/payments/config.js?v=20261104"></script>
+<script src="../assets/payments/client.js?v=20261104b"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -920,8 +920,8 @@ const Q=[
  {s:2,id:'lvl',t:'Qual o seu nível?',h:'Usamos a escala '+'<button type="button" class="gl" data-g="ntrp">NTRP</button>'+', de 1.0 a 7.0. Na dúvida, escolha o nível de baixo.',o:[['beg','Iniciante','NTRP 2.0 a 2.5 · ainda erra a troca de bola em ritmo médio'],['int','Intermediário','NTRP 3.0 a 3.5 · troca bola com consistência e joga partidas'],['adv_int','Intermediário avançado','NTRP 4.0 · golpes confiáveis, varia direção e spin'],['adv','Avançado','NTRP 4.5+ · compete, usa potência e spin como arma']]},
  {s:2,id:'years',t:'Há quanto tempo você joga?',o:[['0','Menos de 1 ano'],['1','1 a 3 anos'],['3','3 a 10 anos'],['10','Mais de 10 anos']]},
  {s:2,id:'freq',t:'Quantas vezes por semana você joga?',o:[['1','1 vez'],['2','2 a 3 vezes'],['4','4 ou mais']]},
- {s:2,id:'swing',t:'Como é o seu swing?',h:'O tamanho e a velocidade do movimento até a bola. '+'<button type="button" class="gl" data-g="swing">Entenda</button>',o:[['short','Curto e compacto','Pouca preparação, bloqueia a bola'],['mid','Médio','Preparação moderada'],['long','Longo e rápido','Preparação ampla e aceleração forte']]},
- {s:2,id:'spin',t:'Quanto topspin você usa?',h:'Topspin é o efeito em que a raquete sobe por trás da bola: ela gira para a frente, passa alta sobre a rede e cai rápido dentro da quadra. Se você bate a bola mais reta ou não sabe, escolha "Pouco".',o:[['low','Pouco','Bola mais reta, quase sem girar'],['mid','Médio','Bola com algum giro, passa a rede com folga'],['high','Muito','Bola alta e pesada, que quica alto no adversário']]},
+ {s:2,id:'swing',if:()=>A.lvl&&A.lvl!=='beg',t:'Como é o seu swing (o movimento da raquete até a bola)?',h:'O tamanho e a velocidade do movimento até a bola. '+'<button type="button" class="gl" data-g="swing">Entenda</button>',o:[['short','Curto e compacto','Pouca preparação, bloqueia a bola'],['mid','Médio','Preparação moderada'],['long','Longo e rápido','Preparação ampla e aceleração forte']]},
+ {s:2,id:'spin',if:()=>A.lvl&&A.lvl!=='beg',t:'Quanto topspin (efeito na bola) você usa?',h:'Topspin é o efeito em que a raquete sobe por trás da bola: ela gira para a frente, passa alta sobre a rede e cai rápido dentro da quadra. Se você bate a bola mais reta ou não sabe, escolha "Pouco".',o:[['low','Pouco','Bola mais reta, quase sem girar'],['mid','Médio','Bola com algum giro, passa a rede com folga'],['high','Muito','Bola alta e pesada, que quica alto no adversário']]},
  {s:2,id:'serve',t:'Como é o seu saque hoje?',h:'Seja sincero: isso muda a recomendação.',o:[['weak','Ainda inseguro','Faço dupla falta com frequência'],['push','Só coloco em jogo','Saque lento, quase empurrado'],['safe','Seguro','Raramente erro, mas não ganho ponto com ele'],['flat','Chapado e forte','Bola reta e rápida, sem efeito, para ganhar o ponto direto'],['kick','Com efeito','A bola faz curva (slice) ou quica alto (kick)'],['mix','Vario tudo','Reto ou com efeito, conforme o ponto']]},
  {s:3,id:'style',multi:2,scale:['Mais básico','Mais avançado'],t:'Como você joga?',h:'Escolha até 2. Do jogo mais básico (esquerda) ao mais avançado (direita).',o:[['keep','Mantenho a bola em jogo','Ainda estou firmando os golpes'],['cnt','Devolvo tudo','Consistência e contra-ataque'],['agg','Ataco do fundo','Busco a bola vencedora da linha de base'],['all','Jogo completo','Fundo e rede conforme o ponto'],['netc','Subo quando a bola deixa','Fecho o ponto no voleio, a batida antes de a bola quicar'],['net','Saque e voleio','Saco e já corro para a rede']]},
  {s:3,id:'opp',t:'Como é a bola dos seus adversários?',o:[['soft','Mais lenta','Bola sem peso, você que gera'],['mix','Variada','Às vezes lenta, às vezes forte'],['heavy','Pesada e rápida','A raquete às vezes treme']]},
@@ -931,9 +931,8 @@ const Q=[
  {s:4,id:'feel',if:()=>A.cur!=='none',t:'Como você sente sua raquete hoje?',o:[['light','Leve demais','Treme contra bola pesada'],['ok','No ponto'],['heavy','Pesada demais','Cansa ou chega atrasado']]},
  {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é o conforto do braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
  {s:4,id:'want',multi:2,t:'O que você quer ganhar com a troca?',h:'Escolha até 2.',o:[['power','Mais potência','A bola sai mais forte com o mesmo esforço'],['control','Mais controle','A bola vai mais onde você mira'],['comfort','Mais conforto','Menos vibração chegando ao braço'],['spin','Mais spin','Mais efeito: a bola gira mais e cai dentro'],['maneuver','Mais leveza na mão','Raquete mais rápida de mexer, na rede e na defesa'],['stability','Mais estabilidade','Não treme contra bola forte']]},
- {s:4,id:'headp',t:'Tamanho de cabeça que você prefere',h:'Em polegadas quadradas. '+'<button type="button" class="gl" data-g="head">Entenda</button>',o:[['any','Tanto faz'],['98','Até 98 pol²','Mais precisão'],['100','100 pol²','O equilíbrio'],['104','102 ou mais','Mais perdão e saída de bola']]},
- {s:5,id:'string',t:'Qual corda você usa hoje?',o:[['?','Não sei / a que veio'],['poly','Poliéster','Dura, a mais comum entre quem tem topspin'],['multi','Multifilamento ou sintético','Mais macia'],['gut','Tripa natural','A mais macia e mais cara'],['hyb','Híbrido','Duas cordas diferentes, uma em cada direção']]},
- {s:5,id:'tens',t:'Qual tensão você usa?',h:'A <button type="button" class="gl" data-g="tension">libragem</button> que você pede ao encordoador.',o:[['?','Não sei'],['46','Até 47 lb','Até 21 kg'],['50','48 a 52 lb','22 a 24 kg'],['54','53 a 56 lb','24 a 25 kg'],['58','57 lb ou mais','26 kg ou mais']]},
+ {s:5,id:'string',if:()=>A.lvl==='adv_int'||A.lvl==='adv',t:'Qual corda você usa hoje?',o:[['?','Não sei / a que veio'],['poly','Poliéster','Dura, a mais comum entre quem tem topspin'],['multi','Multifilamento ou sintético','Mais macia'],['gut','Tripa natural','A mais macia e mais cara'],['hyb','Híbrido','Duas cordas diferentes, uma em cada direção']]},
+ {s:5,id:'tens',if:()=>A.lvl==='adv_int'||A.lvl==='adv',t:'Qual tensão você usa?',h:'A <button type="button" class="gl" data-g="tension">libragem</button> que você pede ao encordoador.',o:[['?','Não sei'],['46','Até 47 lb','Até 21 kg'],['50','48 a 52 lb','22 a 24 kg'],['54','53 a 56 lb','24 a 25 kg'],['58','57 lb ou mais','26 kg ou mais']]},
  {s:5,id:'restr',t:'De quanto em quanto tempo você troca a corda?',o:[['zero','Nunca troquei','Nunca arrebentou, então nunca troquei'],['never','Só quando arrebenta'],['6m','A cada 6 meses ou mais'],['3m','A cada 2 a 3 meses'],['1m','Todo mês ou menos']]},
  {s:5,id:'imp',t:'Compraria uma raquete importada?',h:'Algumas marcas quase não são vendidas no Brasil.',o:[['yes','Sim','Compro fora ou encomendo'],['no','Prefiro achar aqui','Loja no Brasil, troca fácil']]},
  {s:5,id:'budget',t:'Quanto pretende gastar na raquete nova?',h:'Preços de raquete nova, da geração atual, no Brasil.',o:[['1400','Até R$ 1.400'],['2000','R$ 1.400 a R$ 2.000'],['99999','Acima de R$ 2.000 ou sem limite']]}
@@ -941,7 +940,7 @@ const Q=[
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',headp:'100',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
 $('#nQ').textContent=Q.filter(q=>!q.if).length+' a '+Q.length;
 const NVAR=Q.length+9+7;
@@ -1221,6 +1220,8 @@ function score(r,T,tw,c){
 let RES=null,tier=0,ZZ=null;
 const inZone=r=>!!ZZ&&r.wt>=ZZ.wt[0]&&r.wt<=ZZ.wt[1]&&r.sw>=ZZ.sw[0]&&r.sw<=ZZ.sw[1];
 function compute(){
+  /* resposta de pergunta que ficou oculta (ex.: mudou o nível depois) não entra na conta */
+  ['swing','spin','string','tens'].forEach(id=>{const q=Q.find(x=>x.id===id);if(q&&q.if&&!q.if())delete A[id]});
   const M=PESOS.match,L=PESOS.zona.alargar;
   const T=target(),tw=targetWeight(),c=curRacket();ZZ=zones(T,tw);
   /* a zona do mapa precisa ter raquete de verdade: alarga aos poucos até caber pelo menos 3 do catálogo */
@@ -1389,7 +1390,7 @@ function renderPreview(){
           <span class="pct">${x.fit}%</span></div>`).join('')}
       </div>
         <button class="btn btn-go" type="button" data-buy="2" style="width:100%">Revelar minhas raquetes · R$ 19,99</button>
-        <p class="note" style="margin:0">Pagamento único via Pix. O relatório sai na hora, também em PDF.</p>
+        <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF.</p>
       </div>
       <figure class="rpeek"><img src="../assets/reports/racket.webp" alt="Prévia borrada de um relatório completo do RACKET DNA" loading="lazy"><figcaption>Relatório completo · 5 páginas em PDF</figcaption></figure>
     </div>
@@ -1414,7 +1415,7 @@ function renderPreview(){
     <div class="single">
       <p class="eyebrow">Um relatório, tudo incluído</p>
       <h2 style="margin:6px 0 4px">Relatório RACKET DNA</h2>
-      <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="muted">pagamento único, via Pix</span></div>
+      <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="muted">pagamento único, por cartão ou Pix</span></div>
       <ul>
         <li>As 3 raquetes que mais encaixam, reveladas, com o ranking dos 10</li>
         <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>

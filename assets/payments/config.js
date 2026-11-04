@@ -1,2 +1,11 @@
-// Teste somente por opção explícita; nenhuma credencial neste arquivo.
-(()=>{const params=new URLSearchParams(location.search);if(params.get('checkout_test')==='1')sessionStorage.setItem('sportdna-checkout-test','1');if(params.get('checkout_test')==='0')sessionStorage.removeItem('sportdna-checkout-test');const test=sessionStorage.getItem('sportdna-checkout-test')==='1';window.SPORTDNA_PAYMENTS=Object.freeze({mode:test?'test':'off',api:test?'https://sportdna-payments-test.guitorniero.workers.dev':''});})();
+// Preços exibidos no checkout. O catálogo do servidor continua sendo a fonte da cobrança.
+// tests/payment-prices.test.mjs verifica os valores contra payments/src/security.mjs.
+window.SPORTDNA_PAYMENTS=Object.freeze({
+ mode:'live',api:'https://sportdna-payments-test.guitorniero.workers.dev',
+ products:Object.freeze({
+  'racket-report':Object.freeze({name:'Relatório RACKET DNA',amount:1999}),
+  'surf-report':Object.freeze({name:'Relatório SURF DNA',amount:1999}),
+  'run-report':Object.freeze({name:'Relatório RUN DNA',amount:999}),
+  'racket-comparator':Object.freeze({name:'Comparador RACKET DNA',amount:499})
+ })
+});

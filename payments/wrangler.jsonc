@@ -2,12 +2,9 @@
   "name": "sportdna-payments-test",
   "main": "src/worker.mjs",
   "compatibility_date": "2026-11-02",
-  "vars": {
-    "PAYMENTS_MODE": "off",
-    "SITE_ORIGIN": "https://sportdna.com.br",
-    "MP_TEST_CREDENTIALS_CONFIRMED": "false"
-  },
+  "vars": {},
+  "keep_vars": true,
   // Bind a NEW SPORT DNA database before deployment. Never reuse another brand's database.
-  "d1_databases": [{"binding":"DB","database_name":"sportdna-payments-test","database_id":"936d7152-4ddd-4764-9cd5-a6cd8e966582","migrations_dir":"migrations"}],
+  "d1_databases": [{"binding":"DB","database_name":"sportdna-payments-test","database_id":"936d7152-4ddd-4764-9cd5-a6cd8e966582","migrations_dir":"migrations"}, {"binding":"PROMOS","database_name":"btw-promocoes","database_id":"84c12b97-d46d-4ba6-abe5-f6e8e7bcf84c"}],
   "observability": { "enabled": false }
 }
