@@ -1,5 +1,6 @@
 // Calibração do motor do RUN DNA contra casos de especialistas.
-// Uso: node run/tools/calibrar.mjs docs/tenis/dados/casos.json [--ajustar]
+// Uso: node run/tools/calibrar.mjs docs/tenis/dados/casos.json [--ajustar] [--so=orc]
+// --so=prefixo: com --ajustar, só mexe nos pesos cujo nome começa com o prefixo (ex.: orc = pesos do orçamento)
 // Abre run/index.html num Chromium (Playwright), converte cada caso em respostas do questionário,
 // mede acerto (um tênis indicado pelos especialistas no nosso top 3 / top 10) e, com --ajustar,
 // procura pesos melhores por descida coordenada, validando em casos que ficam fora do ajuste.
@@ -15,9 +16,12 @@ const tmp=path.join(raiz,'run/tools/.motor.html');
 const h2=html.slice(0,j)+'window.__T={engine,M,PESOS,get sm(){return window.__sm}};\n'+html.slice(j);
 fs.writeFileSync(tmp,h2.replace('  let ranked=M.map(m=>({m,s:sm(m)}))','  window.__sm=sm;\n  let ranked=M.map(m=>({m,s:sm(m)}))'));
 const b=await chromium.launch();const p=await b.newPage();await p.goto('file://'+tmp);fs.unlinkSync(tmp);
-const r=await p.evaluate(({casos,ajustar})=>{
+const so=(flags.find(f=>f.startsWith('--so='))||'').slice(5);
+const r=await p.evaluate(({casos,ajustar,so})=>{
   const {engine,M,PESOS}=window.__T;
   const idx=(v,m,d)=>v==null?d:(m[v]??d);
+  // guia "barato" sem valor em R$: a faixa até R$ 500 (antes era R$ 400 a 700, que não existe mais)
+  const ORC_BARATO=[0];
   const resp=c=>{const f=c.perfil||{};const a={};
     a.peso={leve:60,medio:72,pesado:90}[f.peso]??72;
     a.largura=idx(f.largura,{estreito:0,normal:1,largo:2},1);
@@ -33,7 +37,8 @@ const r=await p.evaluate(({casos,ajustar})=>{
     a.prior=idx(f.prioridade,{conforto:0,durabilidade:1,leveza:2,preco:3},0);
     a.neutro=f.desconforto_neutro===true?1:0;
     const brl=f.orcamento_brl??(f.orcamento_usd!=null?f.orcamento_usd*5.4:null);
-    a.orc=brl==null?5:brl<=400?0:brl<=700?1:brl<=1000?2:brl<=1500?3:4;
+    // faixas do app (pode marcar mais de uma): 0 até R$ 500, 1 R$ 500 a 1.000, 2 R$ 1.000 a 1.500, 3 acima de R$ 1.500 ou sem limite
+    a.orc=brl==null?[3]:brl<=500?[0]:brl<=1000?[1]:brl<=1500?[2]:[3];
     // ajustes de leitura do caso pelo nome da categoria do guia (o perfil da fonte vem incompleto)
     const cat=(c.categoria_original||'').toLowerCase();
     a.pares=0;
@@ -42,8 +47,8 @@ const r=await p.evaluate(({casos,ajustar})=>{
     // "daily running/daily trainer" é corredor comum, não uso casual (no app, "dia a dia" é correr e usar fora da corrida)
     if(f.objetivo==='dia_a_dia'&&!/casual|walk|lifestyle|all.day|work|trabalho|caminhada/.test(cat))a.obj=2;
     // guias "até US$ 100": os especialistas indicam tênis de entrada
-    if(f.orcamento_usd!=null&&f.orcamento_usd<=110)a.orc=0;
-    if(f.orcamento_usd==null&&f.orcamento_brl==null&&/budget|cheap|barat|under \$|até r\$|custo.benef/.test(cat))a.orc=/r\$ ?(3|4)\d\d/.test(cat)?0:1;
+    if(f.orcamento_usd!=null&&f.orcamento_usd<=110)a.orc=[0];
+    if(f.orcamento_usd==null&&f.orcamento_brl==null&&/budget|cheap|barat|under \$|até r\$|custo.benef/.test(cat))a.orc=/r\$ ?(3|4)\d\d/.test(cat)?[0]:ORC_BARATO;
     a.calor=1;a.uso=0;return a};
   const nomes=new Set(M.map(m=>m.n));
   const usar=casos.map(c=>({c,picks:(c.recomendados||[]).map(x=>x.no_catalogo).filter(n=>n&&nomes.has(n))})).filter(x=>x.picks.length);
@@ -81,7 +86,7 @@ const r=await p.evaluate(({casos,ajustar})=>{
   // validação cruzada em 3 partes: uma mudança só entra se melhorar o total e pelo menos 2 das 3 partes, sem piorar nenhuma em mais de 0,01.
   // Pesos de saúde e encaixe não caem abaixo da metade do valor atual (não trocamos segurança por acerto).
   const SAUDE=['naoBase','naoExtra','naoMax','pesadoLeve','dropAqu','torcMacio','estNeutro','dropCalc','largoBom','largoRuim'];
-  const chaves=Object.keys(PESOS).filter(k=>!['cat1','orcPor150','orcAbaixoPor','evidAlvo','notaN'].includes(k));
+  const chaves=so?Object.keys(PESOS).filter(k=>k.startsWith(so)):Object.keys(PESOS).filter(k=>!['cat1','orcPor150','orcAbaixoPor','evidAlvo','notaN'].includes(k));
   const partes=[0,1,2].map(q=>usar.filter((_,k)=>k%3===q));
   // além do acerto, aproxima a distribuição de marcas da dos especialistas (distância L1 entre as duas), sem regra por marca
   const desvio=L=>{const mE={},mM={};L.forEach(({c,picks})=>{picks.slice(0,3).forEach(n=>{const b=M.find(m=>m.n===n).b;mE[b]=(mE[b]||0)+1});engine(resp(c),true).top10.slice(0,3).forEach(x=>{mM[x.m.b]=(mM[x.m.b]||0)+1})});
@@ -94,5 +99,5 @@ const r=await p.evaluate(({casos,ajustar})=>{
       if(ganho>0.003&&melhora>=2&&!pior){melhorV=v;melhorS=sc}}
     PESOS[k]=melhorV;if(melhorV!==v0){log.push(`${k}: ${+v0.toFixed(4)} → ${+melhorV.toFixed(4)}`);atual=melhorS}}
   return {antes,depois:{treino:medir(treino),teste:medir(teste),todos:medir(usar)},pesos:{...PESOS},log,n:usar.length,descartados:casos.length-usar.length};
-},{casos,ajustar:flags.includes('--ajustar')});
+},{casos,ajustar:flags.includes('--ajustar'),so});
 console.log(JSON.stringify(r,null,1));await b.close();

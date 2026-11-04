@@ -13,6 +13,15 @@ Vale para Racket Match, Board Match e Tenis Match (PDF de 5 páginas no Tenis de
 
 **RACKET DNA e SURF DNA (nov/2026):** ordem 1 Veredito, 2 Seu jogo × o equipamento, 3 Pódio + prova social, 4 Ranking e método, 5 Setup, adaptação e compra (ajuda de compra por último, com menos destaque). Sem o gráfico de origem de cada ajuste da tensão (RACKET) e sem a tabela "De onde vem cada decisão" (SURF).
 
+**RUN DNA, ordem própria desde 04/nov/2026 (5 páginas, decisão do dono):** ranking e método vêm antes e com mais destaque; a ajuda de compra fica no fim, compacta.
+1. **Veredito** — como acima (produto, DNA Score, confiança, distância para o 2º, preço, 6 quadros, por que ele, perfil com a janela de orçamento, atual → novo).
+2. **Ranking e pódio** — top 3 com o que lidera e o que cede e barras das 3 prioridades; top 10 com o atual; mapa do catálogo; por que o atual ficou para trás (em palavras).
+3. **Método e dados** — 6 números grandes (tênis, reviews, critérios, estudos, recomendações de especialistas, perfis simulados), como chegamos ao resultado em 4 passos, o que dizem as reviews do pódio com as fontes, atletas (frase honesta), glossário.
+4. **Sua corrida × o tênis** — hexágono, tabela índice a índice, régua do catálogo, o que muda saindo do atual.
+5. **Guia de compra** (fonte menor, títulos discretos) — numeração, fôrma, uso, troca e rodízio; "se não trocar agora"; plano de 4 semanas; sinais de alerta; checklist de compra.
+
+Sem "De onde vem a escolha": nada de fórmulas, pesos ou pontos do placar no PDF nem no relatório na tela, para não expor a construção do motor. As explicações em palavras ("por que combina", "por que o atual ficou para trás") continuam.
+
 **Regras:**
 - Diferenciar do Tennis Engineer, nunca copiar (layout, texto, gráficos).
 - Mínimo de 2 trechos de review por item do catálogo, resumidos e traduzidos (nunca citação literal longa), com fonte.

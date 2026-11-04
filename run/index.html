@@ -341,11 +341,6 @@ details.rk:not([open]){gap:0}
 .prt .mk.at{background:var(--clay);width:3px}
 .prt .lo,.prt .hi{position:absolute;top:13px;font-size:8.5px;color:var(--muted)}.prt .hi{right:0}.prt .lo{left:0}
 .plist{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:3px;font-size:10.5px}
-.pori{display:flex;flex-direction:column;gap:3px;font-size:10px}
-.pori div{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1fr) 34px;align-items:center;gap:0}
-.pori div span:nth-child(2){display:flex;justify-content:flex-end;border-right:1px solid var(--muted)}.pori div span:nth-child(3){display:flex;border-left:1px solid var(--muted)}
-.pori i{display:block;height:8px;border-radius:2px;background:var(--pri)}.pori i.n{background:var(--clay)}
-.pori b{text-align:right;font-variant-numeric:tabular-nums}
 .pweeks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .pweeks div{background:var(--bg);border-radius:10px;padding:9px 10px;display:flex;flex-direction:column;gap:3px;font-size:10px}
 .pweeks b{font-size:11.5px}.pweeks span{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pri)}
@@ -365,6 +360,12 @@ details.rk:not([open]){gap:0}
 .pnums div{background:var(--bg);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column}.pnums b{font-size:18px;letter-spacing:-.02em}.pnums span{font-size:9.5px;color:var(--muted);line-height:1.25}
 .pgl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px 16px;font-size:10px}.pgl b{font-weight:700}
 .pnote{font-size:9.5px;color:var(--muted)}
+.pnums.big{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pnums.big div{padding:12px 14px}.pnums.big b{font-size:26px;color:var(--pri)}.pnums.big span{font-size:10.5px}
+.psteps{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:11px}
+/* guia de compra: última página, compacta e com menos destaque */
+.pg.guia{gap:8px}.pg.guia h2{font-size:16px}.pg.guia h3{font-size:11.5px;color:var(--muted)}.pg.guia .pbox{padding:8px 11px;gap:5px}
+.pg.guia .pdl,.pg.guia .palert p,.pg.guia .pchk,.pg.guia .pweeks div,.pg.guia .pnote{font-size:9.5px}.pg.guia .pweeks b{font-size:10.5px}.pg.guia .pweeks div{padding:7px 9px}
+.pg.guia .palert p{padding:4px 8px}.pg.guia .pchk{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .pg.tight{gap:7px}.pg.tight .pbox{padding:8px 11px;gap:5px}.pg.tight .prev p,.pg.tight .plist,.pg.tight .pdl{font-size:9.5px}
 .prevs{display:flex;flex-direction:column;gap:9px}.prevh{font-size:11px;font-weight:700;color:var(--pri);margin-bottom:3px!important}
 .prev{border-left:3px solid var(--ball);background:var(--bg);border-radius:0 8px 8px 0;padding:5px 9px;margin-bottom:4px}.prev p{font-size:10.5px}.prev span{font-size:9px;color:var(--muted)}.prev b{color:var(--ink)}
@@ -745,9 +746,22 @@ const PESOS={
   nota:3.184,notaN:4,                                         // nota das reviews, puxada para a média com pouca evidência
   aprox:0.6,ficha:2.4,importado:3,evid:0.9,evidAlvo:4,clientes:0.7 // qualidade do dado
 };
-// a última faixa é "sem limite de preço": o preço não pesa contra nenhum tênis
-const BUD=[[0,400],[400,700],[700,1000],[1000,1500],[1500,99999],[0,99999]];
-const SEM_LIMITE=5;
+// orçamento: 4 faixas e a pessoa pode marcar mais de uma; a janela vai do menor piso ao maior teto marcado.
+// A última é "acima de R$ 1.500 ou sem limite": sem teto (nada fica "acima do orçamento"); marcada sozinha, também sem piso.
+const BUD=[[0,500],[500,1000],[1000,1500],[1500,99999]];
+const SEM_LIMITE=3;
+// respostas antigas (uma faixa só, 0 a 5: até 400, 400–700, 700–1.000, 1.000–1.500, acima de 1.500, sem limite)
+const ORC_ANTIGO=[[0],[0,1],[1],[2],[3],[3]];
+function orcSel(v){
+  if(Array.isArray(v)){const s=[...new Set(v.map(Number).filter(x=>Number.isInteger(x)&&x>=0&&x<BUD.length))].sort((x,y)=>x-y);return s.length?s:ORC_ANTIGO[1]}
+  const n=v===undefined||v===null||v===''?NaN:Number(v);return Number.isInteger(n)&&ORC_ANTIGO[n]?ORC_ANTIGO[n]:ORC_ANTIGO[1]}
+// tudo que depende do orçamento sai daqui. lvl reproduz o nível antigo pelo teto (0 até R$ 400 … 4 acima de R$ 1.500 ou sem limite),
+// usado nas regras de supertênis, na faixa de entrada e no índice de custo por km
+function budget(a){const sel=orcSel(a&&a.orc),lo=sel[0],hi=sel[sel.length-1],semLimite=hi===SEM_LIMITE;
+  const min=semLimite&&lo===SEM_LIMITE?0:BUD[lo][0],max=semLimite?99999:BUD[hi][1];
+  return {sel,min,max,semLimite,lvl:semLimite?4:max<=500?0:max<=1000?2:3}}
+// a janela em texto: "até R$ 1.000", "de R$ 500 a R$ 1.500", "a partir de R$ 1.000, sem limite", "sem limite de preço"
+function budTxt(b){const r=n=>'R$ '+Math.round(n).toLocaleString('pt-BR');return b.semLimite?(b.min?`a partir de ${r(b.min)}, sem limite`:'sem limite de preço'):b.min?`de ${r(b.min)} a ${r(b.max)}`:`até ${r(b.max)}`}
 const PROF=['Primeiros Quilômetros','Corredor em Construção','Corredor Constante','Corredor de Prova','Corredor de Alta Quilometragem'];
 /* traços do corredor e usos pedidos, no mesmo vocabulário das reviews */
 function traits(a,level){const g=(k,d)=>a[k]===undefined?d:a[k];const T=new Set();
@@ -763,7 +777,7 @@ function wants(a){const g=(k,d)=>a[k]===undefined?d:a[k];const W={0:['rod','dia'
   if(g('treino',0)===2)W.push('rit','tir');if(g('uso',0)>0)W.push(g('uso',0)===1?'aca':'dia');return W}
 function engine(a,long){
   const g=(k,d)=>a[k]===undefined?d:a[k];
-  const peso=g('peso',75),obj=g('obj',1),sens=g('sens',1),km=g('km',1),ter=g('terreno',0),dor=g('dor',0),orc=g('orc',1),prior=g('prior',0);
+  const peso=g('peso',75),obj=g('obj',1),sens=g('sens',1),km=g('km',1),ter=g('terreno',0),dor=g('dor',0),B=budget(a),orc=B.lvl,prior=g('prior',0);
   let level=Math.round((g('tempo',2)+km+g('pace',2))/3);
   if(g('tempo',2)===0)level=0;level=Math.max(0,Math.min(4,level));
   const heavy=peso>=85,T=traits(a,level),W=wants(a);
@@ -797,7 +811,7 @@ function engine(a,long){
   // leveza só pesa para quem pediu leveza ou faz ritmo; "não indicado para ritmo" só pesa quando o tênis é para velocidade
   const fast=c1==='rap'||c1==='sup',lw=prior===2||obj===1||g('treino',0)===2?P.faltaLev:P.faltaLevSem;
   if(!fast)ID[1]=Math.min(ID[1],6);
-  const [bmin,bmax]=BUD[orc];
+  const bmin=B.min,bmax=B.max;
   const pi=PISADA[g('pisada',7)],giro=GIRO[g('pisada',7)];
   // sola gasta por dentro: um pouco mais de estabilidade no que o perfil pede, sem trocar a categoria (pisada não decide; ver ciência)
   if(giro===1&&g('neutro',0)!==1)ID[3]=Math.min(10,ID[3]+P.giroEst);
@@ -864,7 +878,7 @@ function engine(a,long){
   const byBrand=b=>ranked.filter(x=>x.m.b===b&&x.m.br).slice(0,3).map(x=>({m:x.m,s:x.s,fit:fitM(x.m),pos:posM(x.m)}));
   const cm=a.atual&&M.find(m=>m.n===a.atual);const atual=cm?{m:cm,fit:fitM(cm)}:null;
   const parts=m=>{const C={};sm(m,1,C);return C};
-  return {top10,byBrand,pref,level,c1,c2,fins,second,atual,conf:Math.round(conf),long,a,peso,tkPerfil,T,W,ID,ranked,parts,fitM,posM,inRank,inZ,bmax};
+  return {top10,byBrand,pref,level,c1,c2,fins,second,atual,conf:Math.round(conf),long,a,peso,tkPerfil,T,W,ID,ranked,parts,fitM,posM,inRank,inZ,bmax,bud:B};
 }
 
 const BRANDS=[...new Set(M.map(m=>m.b))].sort((a,b)=>M.filter(m=>m.b===b).length-M.filter(m=>m.b===a).length||a.localeCompare(b));
@@ -878,21 +892,21 @@ const cl10=x=>Math.max(1,Math.min(10,Math.round(x*10)/10));
 function idx(m){return [cl10(m.mz*2*.65+(m.hs-28)/(46-28)*10*.35),cl10(m.rs*2+(m.pl==='carbono'?.4:0)),cl10((320-m.g)/14),cl10(m.es*2),cl10(m.du/80),cl10(10-(m.p/m.du-0.5)*4)]}
 const SX=['Amortecimento','Resposta','Leveza','Estabilidade','Durabilidade','Custo por km'];
 const RX=['Volume','Ritmo','Regularidade','Foco em prova','Conforto','Orçamento'];
-function runnerVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];return [(g('km',1)+1)/5,(g('pace',2)+1)/5,(Math.min(4,g('tempo',2))+1)/5,Math.min(1,([1,2,3].includes(g('obj',1))?.5:.1)+g('treino',0)*.25),[1,.6,.3][g('sens',1)],Math.min(1,(g('orc',1)+1)/5)]}
+function runnerVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];return [(g('km',1)+1)/5,(g('pace',2)+1)/5,(Math.min(4,g('tempo',2))+1)/5,Math.min(1,([1,2,3].includes(g('obj',1))?.5:.1)+g('treino',0)*.25),[1,.6,.3][g('sens',1)],Math.min(1,(budget(a).lvl+1)/5)]}
 function idealVec(a){const g=(k,d)=>a[k]===undefined?d:a[k];const pz=+(g('peso',75));
   const amort=cl10(5+(g('sens',1)===0?2.5:g('sens',1)===2?-2:0)+(pz>=85?1.5:0)+([0,0,1,2,0,1][g('obj',1)]||0));
   const resp=cl10(4+g('treino',0)*1.5+(g('pace',2)>=3?1.5:0)+(g('prior',0)===2?2:0)+(g('sens',1)===2?1.5:0));
   const leve=cl10(4+(g('prior',0)===2?3:0)+(g('obj',1)===1?1.5:0)+(pz>=85?-1:0));
   const est=cl10(5+(g('neutro',0)===1?3:0)+(g('dor',0)===4?2:0)+(pz>=85?1:0));
   const dur=cl10(4+g('km',1)*1.2+(g('prior',0)===1?2:0));
-  const cus=cl10(4+Math.max(0,4-g('orc',1))*1.1+(g('prior',0)===3?2:0));
+  const cus=cl10(4+Math.max(0,4-budget(a).lvl)*1.1+(g('prior',0)===3?2:0));
   return [amort,resp,leve,est,dur,cus]}
 function factors(r){const a=r.a,m=r.fins[0].m,out=[];const iv=idx(m),id=r.ID;
   // cada índice com a frase certa: custo por km alto no índice quer dizer custo baixo em reais
   const UP=['Bem amortecido, como você precisa','Boa resposta, como você precisa','Leve, como você precisa','Estável, como você precisa','Durável: '+m.du+' km','Custo por km baixo: '+kmCost(m).replace(' por km','')];
   const DN=['Menos amortecido do que o ideal','Menos resposta do que o ideal','Mais pesado do que o ideal','Menos estável do que o ideal','Dura menos do que o ideal: '+m.du+' km','Custo por km acima do ideal: '+kmCost(m).replace(' por km','')];
   SX.forEach((k,i)=>{const d=iv[i]-id[i];if(id[i]>=6.5&&d>=-0.5)out.push(['+',UP[i]]);else if(id[i]>=6.5&&d<-1.5)out.push(['−',DN[i]])});
-  const B=BUD[a.orc===undefined?1:a.orc];if(a.orc!==SEM_LIMITE)out.push(m.p<=B[1]?['+','Dentro do orçamento']:['−','Acima do orçamento']);
+  const B=budget(a);if(!B.semLimite)out.push(m.p<=B.max?['+','Dentro do orçamento']:['−','Acima do orçamento']);
   if(a.largura===2)out.push(m.lg?['+','Fôrma larga']:['−','Fôrma padrão; prove antes']);
   if(r.peso>=85&&stackOf(m)>=36)out.push(['+','Espuma alta para '+r.peso+' kg']);
   return out.slice(0,6)}
@@ -973,19 +987,21 @@ const Q=[
  {s:3,id:'sens',t:'Que sensação você prefere no pé?',o:O([['Macio','Tipo nuvem'],['Equilíbrio'],['Firme e responsivo']])},
  {s:3,id:'prior',t:'O que pesa mais na escolha?',o:O(['Conforto','Durabilidade','Leveza e velocidade','Preço'])},
  {s:3,id:'neutro',t:'Já sentiu desconforto recorrente com tênis neutro?',h:'Neutro é o tênis sem apoio extra no arco. A maioria dos corredores se dá bem com ele.',o:O(['Não','Sim','Não sei'])},
- {s:3,id:'orc',t:'Quanto pretende investir?',o:O(['Até R$ 400','R$ 400 a 700','R$ 700 a 1.000','R$ 1.000 a 1.500','Acima de R$ 1.500',['Sem limite de preço','Mostramos o melhor, custe o que custar']])},
- {s:3,id:'marca',multi:3,opt:1,t:'Tem marca preferida?',h:'Opcional. Escolha até 3. Não muda o ranking geral: mostramos o melhor tênis de cada marca para você.',o:O(['Sem preferência',...BRANDS])},
+ {s:3,id:'orc',multi:4,t:'Quanto pretende investir?',h:'Pode marcar mais de uma faixa.',o:O(['Até R$ 500','R$ 500 a 1.000','R$ 1.000 a 1.500',['Acima de R$ 1.500 ou sem limite','Mostramos o melhor, custe o que custar']])},
+ {s:3,id:'marca',multi:3,none:'0',opt:1,t:'Tem marca preferida?',h:'Opcional. Escolha até 3. Não muda o ranking geral: mostramos o melhor tênis de cada marca para você.',o:O(['Sem preferência',...BRANDS])},
  {s:3,id:'uso',t:'Vai usar o tênis fora da corrida?',o:O(['Não, só para correr','Também na academia','Também no dia a dia'])},
  {s:3,id:'atual',type:'select',opt:1,t:'Qual tênis você usa hoje?',h:'Opcional. No relatório você compara o seu tênis com o recomendado.'},
  {s:3,id:'pares',t:'Vai ser seu único tênis de corrida?',o:O(['Sim, único par','Não, quero montar um rodízio'])}
 ];
 const A={};let step=0;
 {/* números da abertura que saem do código (os outros vêm de docs/tenis/argumentos.md) */const NVAR=Q.length+8+6+4;$('#nVar').textContent=NVAR;$('#nQ').textContent=Q.length;$('#dcM').textContent=M.length;$('#dcS').textContent=M.length;$('#dcS2').textContent=M.length-1;$('#nRk').textContent=M.length;$('#nBr').textContent=BRANDS.length}
-const EXAMPLE={atual:'Nike Pegasus 42',marca:['2','3'],peso:'82',largura:'1',dor:'1',pisada:'0',calor:'0',uso:'0',tempo:'2',km:'2',pace:'2',terreno:'0',obj:'2',prova:'2',treino:'1',sens:'0',prior:'0',neutro:'0',orc:'1',pares:'1'};
+const EXAMPLE={atual:'Nike Pegasus 42',marca:['2','3'],peso:'82',largura:'1',dor:'1',pisada:'0',calor:'0',uso:'0',tempo:'2',km:'2',pace:'2',terreno:'0',obj:'2',prova:'2',treino:'1',sens:'0',prior:'0',neutro:'0',orc:['1'],pares:'1'};
 
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
+// respostas salvas antes das faixas novas (orc numérico de 0 a 5) viram a lista de faixas de hoje
+function normA(){if(A.orc!==undefined)A.orc=orcSel(A.orc).map(String)}
 function renderQs(){
-  renderSteps();
+  normA();renderSteps();
   const box=$('#qs');box.innerHTML='';
   Q.filter(q=>q.s===step).forEach(q=>{
     const fs=document.createElement('fieldset');fs.className='q';
@@ -997,14 +1013,15 @@ function renderQs(){
       fs.innerHTML=`<label class="ql" for="q_${q.id}">${q.t}</label>${q.h?`<p class="help">${q.h}</p>`:''}<select id="q_${q.id}" style="width:100%;max-width:420px"><option value="">Não sei ou não está na lista</option>${BRANDS.slice().sort((x,y)=>x.localeCompare(y,'pt',{sensitivity:'base'})).map(b=>`<optgroup label="${esc(b)}">${M.filter(m=>m.b===b).map(m=>`<option${A[q.id]===m.n?' selected':''}>${esc(m.n)}</option>`).join('')}</optgroup>`).join('')}</select>`;
       const sel=fs.querySelector('select');sel.addEventListener('change',()=>{A[q.id]=sel.value});
     }else{
-      fs.innerHTML=`<legend>${q.t}</legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts"></div>`;
+      // a dica (ex.: "Pode marcar mais de uma faixa.") também é lida com o grupo pelo leitor de tela
+      fs.innerHTML=`<legend>${q.t}</legend>${q.h?`<p class="help" id="h_${q.id}">${q.h}</p>`:''}<div class="opts"></div>`;if(q.h)fs.setAttribute('aria-describedby','h_'+q.id);
       const g=fs.querySelector('.opts');
       q.o.forEach(o=>{
         const b=document.createElement('button');b.type='button';b.className='opt';b.id=`o_${q.id}_${o[0]}`;
         b.innerHTML=`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
         const on=v=>q.multi?(A[q.id]||[]).includes(v):A[q.id]===v;
         b.setAttribute('aria-pressed',on(o[0]));
-        b.addEventListener('click',()=>{if(q.multi){let v=A[q.id]||[];if(o[0]==='0')v=['0'];else{v=v.filter(x=>x!=='0');v=v.includes(o[0])?v.filter(x=>x!==o[0]):[...v,o[0]].slice(-q.multi)}A[q.id]=v}else A[q.id]=o[0];g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',on(q.o[i][0])));$('#err').hidden=true});
+        b.addEventListener('click',()=>{if(q.multi){let v=A[q.id]||[];if(o[0]===q.none)v=[o[0]];else{v=v.filter(x=>x!==q.none);v=v.includes(o[0])?v.filter(x=>x!==o[0]):[...v,o[0]].slice(-q.multi)}A[q.id]=v}else A[q.id]=o[0];g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',on(q.o[i][0])));$('#err').hidden=true});
         g.appendChild(b);
       });
     }
@@ -1013,7 +1030,7 @@ function renderQs(){
   $('#back').textContent=step===0?'Início':'Voltar';
   $('#next').textContent=step===STEPS.length-1?'Ver minha análise':'Continuar';
 }
-function missing(){return Q.filter(q=>q.s===step).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.opt?false:!v})}
+function missing(){return Q.filter(q=>q.s===step).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.opt?false:!v||(Array.isArray(v)&&!v.length)})}
 function show(id){['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
 $('#start').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
 $('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,EXAMPLE);runAnalysis()});
@@ -1023,7 +1040,7 @@ $('#next').addEventListener('click',()=>{
   if(m.length){$('#err').textContent='Falta responder: '+m.map(q=>q.t.replace('?','')+(q.type==='number'&&A[q.id]?` (entre ${q.min} e ${q.max}${q.u?' '+q.u:''})`:'')).join(' · ');$('#err').hidden=false;return}
   if(step<STEPS.length-1){step++;renderQs();window.scrollTo({top:0,behavior:'smooth'})}else runAnalysis();
 });
-function conv(src=A){const o={};Q.forEach(q=>{const v=src[q.id];if(v===undefined||v==='')return;o[q.id]=q.type==='select'?v:Array.isArray(v)?v.map(Number).filter(x=>x>0):Number(v)});return o}
+function conv(src=A){const o={};Q.forEach(q=>{const v=src[q.id];if(v===undefined||v==='')return;o[q.id]=q.type==='select'?v:Array.isArray(v)?v.map(Number).filter(x=>q.none===undefined?x>=0:x>0):Number(v)});return o}
 
 /* ---------- análise ---------- */
 let RES=null;
@@ -1032,7 +1049,7 @@ function runAnalysis(){
   const steps=['Lendo seu peso e o formato do seu pé','Traduzindo ritmo e quilometragem em categoria','Cruzando com '+M.length+' tênis de '+BRANDS.length+' marcas','Ajustando espuma, drop e orçamento','Calculando durabilidade e custo por km'];
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
   const lis=[...ul.children];const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  RES=engine(conv(),true);
+  normA();RES=engine(conv(),true);
   let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
@@ -1135,7 +1152,7 @@ function whyT(r,screen){
   else out.push(GIRO[a.pisada===undefined?7:a.pisada]===1?'Sua sola gasta mais por dentro: demos um pouco mais de peso à estabilidade, mas ficamos no neutro, porque os estudos não mostram ganho em escolher o tênis pela pisada.':'Sem desconforto relatado, ficamos no neutro: os estudos não mostram ganho em escolher tênis pelo tipo de pisada.');
   if(a.largura===2&&f.lg)out.push('O modelo tem fôrma mais larga, como o seu pé.');
   if(f.nr>=3)out.push(`Nas ${f.nr} reviews que lemos${f.nc?` (${f.np} profissionais e ${f.nc} de clientes)`:''}, a aprovação média é ${dec1(f.sc)} de 5.`);
-  if(!screen&&a.orc!==SEM_LIMITE)out.push(`${priceTxt(f)}, ${f.p<=BUD[a.orc===undefined?1:a.orc][1]?'dentro':'um pouco acima'} do seu orçamento.`);
+  if(!screen&&!r.bud.semLimite)out.push(`${priceTxt(f)}, ${f.p<=r.bud.max?'dentro':'acima'} do seu orçamento (${budTxt(r.bud)}).`);
   return screen?out.slice(0,4):out;
 }
 // quando o 1º fica fora da zona (categoria ideal dentro do orçamento): uma frase só, com o motivo e o melhor dentro dela
@@ -1147,19 +1164,23 @@ function zoneT(r){
   const b=r.ranked.find(x=>r.inZ(x.m)&&x.m!==f&&!PODIO_FORA.includes(x.m.b));
   if(!b)return `Suas respostas apontam para ${zona}, mas nenhum tênis dessa categoria ${cap?'cabe no seu orçamento':'combina com o seu perfil'}; por isso o 1º ${fora}.`;
   const bf=r.fitM(b.m),gap=Math.max(1,w.fit-bf);
-  const pw=r.parts(f),pb=r.parts(b.m),bi=idx(b.m);
+  const pw=r.parts(f),pb=r.parts(b.m);
   const dv=k=>(pw[k]||0)-(pb[k]||0),k=[...new Set([...Object.keys(pw),...Object.keys(pb)])].filter(k=>k!=='cat').sort((x,y)=>dv(y)-dv(x))[0];
-  const SL=['amortecimento','resposta','leveza','estabilidade'];
-  const L={orc:b.m.p>r.bmax?`custa ${priceTxt(b.m).replace(' (aprox.)','')}, perto do teto do seu orçamento`:b.m.p<BUD[r.a.orc===undefined?1:r.a.orc][0]?'fica abaixo da faixa de preço que você escolheu':'o preço encaixa pior no seu orçamento',
+  const why=lossTxt(r,b.m,k);
+  const lost=k&&dv(k)>0.3;
+  return `Suas respostas apontam para ${zona}; ele ${fora}, mas ficou ${gap} ${gap===1?'ponto':'pontos'} à frente do melhor de lá, o ${b.m.n} (${lost&&why?why:'soma de pequenas diferenças'}).`;
+}
+// por que um tênis (o) perdeu para outro, em palavras e sem números do placar; k é o fator em que ele mais perdeu
+function lossTxt(r,o,k){
+  const SL=['amortecimento','resposta','leveza','estabilidade'],bi=idx(o);
+  const L={orc:o.p>r.bmax*1.08?`custa ${priceTxt(o).replace(' (aprox.)','')}, acima do seu orçamento`:o.p>r.bmax?`custa ${priceTxt(o).replace(' (aprox.)','')}, perto do teto do seu orçamento`:o.p<r.bud.min?'fica abaixo da faixa de preço que você escolheu':'o preço encaixa pior no seu orçamento',
     sens:'a maciez fica longe da sensação que você prefere',peso:'espuma ou peso menos indicados para o seu peso',larg:'fôrma justa para o seu pé largo',
     prior:['é menos macio, e conforto é a sua prioridade','dura menos, e durabilidade é a sua prioridade','é mais pesado, e leveza é a sua prioridade','é mais caro, e preço é a sua prioridade'][r.a.prior===undefined?0:r.a.prior],
     dor:'é menos indicado para a dor que você relatou',drop:'o drop combina menos com a sua pisada',est:'é menos estável, e você relatou desconforto com tênis neutro',
     uso:'as reviews não citam o uso que você quer',nao:'as reviews não o indicam para o seu perfil',perfil:'as reviews o indicam menos para o seu perfil',
-    nota:'tem nota mais baixa nas reviews',ap:'o preço é só estimado',fi:'as specs são só da ficha da marca, sem laboratório',br:'não é vendido no Brasil',np:'tem poucas reviews profissionais'};
+    naoLeve:'as reviews fazem ressalvas para o seu perfil',nota:'tem nota mais baixa nas reviews',ap:'o preço é só estimado',fi:'as specs são só da ficha da marca, sem laboratório',br:'não é vendido no Brasil',np:'tem poucas reviews profissionais'};
   const i=k&&k[0]==='s'?+k[1]:-1;
-  const why=i>=0?(bi[i]<r.ID[i]?(i===2?'é mais pesado do que você precisa':`tem menos ${SL[i]} do que você precisa`):`tem ${SL[i]} além do que você precisa`):L[k];
-  const lost=k&&dv(k)>0.3;
-  return `Suas respostas apontam para ${zona}; ele ${fora}, mas ficou ${gap} ${gap===1?'ponto':'pontos'} à frente do melhor de lá, o ${b.m.n} (${lost&&why?why:'soma de pequenas diferenças'}).`;
+  return i>=0?(bi[i]<r.ID[i]?(i===2?'é mais pesado do que você precisa':`tem menos ${SL[i]} do que você precisa`):`tem ${SL[i]} além do que você precisa`):(L[k]||'');
 }
 function attT(r){
   const a=r.a,f=r.fins[0].m,out=[];
@@ -1473,7 +1494,6 @@ function pix(e){
 /* só dados que o motor já calcula; nada de atleta ou trecho de review sem fonte no catálogo */
 const USO={rod:'rodagem',dia:'dia a dia',lon:'longão',rit:'treino de ritmo',tir:'tiro',p10:'provas de 5 e 10 km',mei:'meia maratona',mar:'maratona',tri:'trilha',aca:'academia'};
 const NAO={lar:'pé largo',rap:'ritmo forte',lon:'distâncias longas',pes:'corredores acima de 85 kg',aqu:'Aquiles sensível',fore:'quem pisa de antepé',cal:'calor forte',lama:'lama',len:'trote leve',pro:'quem prona',hee:'quem pisa de calcanhar',est:'pé estreito',dia:'uso no dia a dia',tir:'tiro',asf:'asfalto',ini:'iniciantes',mar:'maratona',p10:'provas de 5 e 10 km'};
-const PART={orc:'Preço × orçamento',sens:'Sensação no pé',s0:'Amortecimento',s1:'Resposta',s2:'Leveza',s3:'Estabilidade',peso:'Espuma para o seu peso',larg:'Fôrma × largura do pé',prior:'Sua prioridade',dor:'Dor relatada',drop:'Drop × pisada',est:'Apoio (desconforto em neutro)',uso:'Usos citados nas reviews',nao:'Contraindicações nas reviews',naoLeve:'Ressalvas leves nas reviews',perfil:'Perfil indicado nas reviews',nota:'Nota das reviews',ap:'Preço só estimado',fi:'Specs só da ficha da marca',br:'Importado',np:'Poucas reviews profissionais'};
 const joinE=L=>L.length<2?L.join(''):L.slice(0,-1).join(', ')+' e '+L[L.length-1];
 const mm1=n=>Number.isInteger(n)?String(n):dec1(n);
 const slug=t=>t.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -1505,12 +1525,6 @@ function mapPDF(r,rows,at){
     g+=`<circle cx="${X}" cy="${Y}" r="${top?8.5:7}" fill="${top?'#0E4D64':i<3?'#FF8A3D':'#FFFFFF'}" stroke="${top?'#FFFFFF':'#0E4D64'}" stroke-width="1.2"/><text x="${X}" y="${(+Y+3).toFixed(1)}" text-anchor="middle" font-size="8" font-weight="700" fill="${top?'#FFFFFF':'#0B2530'}" font-family="DM Sans, sans-serif">${i+1}</text>`});
   return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block" role="img" aria-label="Mapa do catálogo por peso e espuma">${g}</svg>`;
 }
-/* de onde vem a escolha: quanto cada fator somou ou tirou do 1º no placar do motor */
-function originsPDF(r,m){
-  const P=r.parts(m),L=Object.keys(P).filter(k=>k!=='cat'&&PART[k]&&Math.abs(P[k])>=0.05).sort((a,b)=>Math.abs(P[b])-Math.abs(P[a])).slice(0,9);
-  const mx=Math.max(1,...L.map(k=>Math.abs(P[k])));
-  return `<div class="pori">${L.map(k=>{const v=P[k],w=(Math.abs(v)/mx*100).toFixed(0)+'%';return `<div><span>${PART[k]}</span><span>${v<0?`<i class="n" style="width:${w}"></i>`:''}</span><span>${v>0?`<i style="width:${w}"></i>`:''}</span><b>${v>0?'+':'−'}${dec1(Math.abs(v))}</b></div>`}).join('')}</div>`;
-}
 function adaptPlan(r,m){
   const a=r.a,km=KMW[a.km===undefined?1:a.km],at=r.atual&&r.atual.m!==m?r.atual.m:null,dd=at?m.dr-at.dr:null,fast=m.c==='sup'||m.c==='rap',k=n=>Math.max(3,Math.round(km*n/(km>=30?5:1))*(km>=30?5:1));
   return [
@@ -1519,8 +1533,8 @@ function adaptPlan(r,m){
     ['Semana 3',m.c==='sup'?'Ritmo de prova':fast?'Primeiro treino forte':'Longão',m.c==='sup'?'Um treino de ritmo ou tiro com ele; a rodagem fica com o par de treino.':fast?'Um treino de ritmo ou tiro com ele, com aquecimento longo.':`O longão da semana com ele; cerca de ${k(.75)} km no total.`],
     ['Semana 4',m.c==='sup'?'Só no que importa':'Ritmo normal',m.c==='sup'?'Guarde para prova e treinos-chave: ele dura de 350 a 450 km.':`Volta ao seu volume (${km} km por semana). Anote os km: a troca vem perto de ${m.du} km.`]];
 }
-function pdfPage(n,title,body){
-  return `<section class="pg"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span>RUN DNA<small>by SPORT DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>RUN DNA · by SPORT DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
+function pdfPage(n,title,body,cls){
+  return `<section class="pg${cls?' '+cls:''}"><header class="pgh"><div class="lg"><svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg><span>RUN DNA<small>by SPORT DNA</small></span></div><div class="pt"><b>${title}</b>Relatório de ${new Date().toLocaleDateString('pt-BR')}</div></header>${body}<footer class="pgf"><span>RUN DNA · by SPORT DNA · Um projeto Beyond the Work</span><span>Página ${n} de ${PDF_PAGES}</span></footer></section>`;
 }
 function pdfHTML(r){
   const a=r.a,w=r.fins[0],m=w.m,s2=r.fins[1],gap=w.fit-s2.fit,km=KMW[a.km===undefined?1:a.km],mo=Math.max(1,Math.round(m.du/km/4.3));
@@ -1529,7 +1543,7 @@ function pdfHTML(r){
   const pz=['estreito','normal','largo','sem informação'][a.largura===undefined?1:a.largura];
   const tamT=m.tam==='pequeno'?'Meio número acima':m.tam==='grande'?'Meio número abaixo':'Um dedo de folga';
   const host=m.url?m.url.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]:'';
-  const B=BUD[a.orc===undefined?1:a.orc],cat=M.filter(x=>x.c===r.c1);
+  const B=r.bud,bt=budTxt(B),cat=M.filter(x=>x.c===r.c1);
   const q=(arr,p)=>{const s=arr.slice().sort((x,y)=>x-y);return s[Math.min(s.length-1,Math.max(0,Math.round((s.length-1)*p)))]};
   const zone=f=>{const v=cat.map(f);return [q(v,.25),q(v,.75)]};
   /* página 1: veredito */
@@ -1543,21 +1557,21 @@ function pdfHTML(r){
   const p1=`<div class="p1top"><div style="display:flex;flex-direction:column;gap:6px"><p class="pey">Seu tênis ideal · ${esc(m.b)}</p><h1>${esc(modelOf(m))}</h1><p class="pl"><b>${CAT[m.c].n}.</b> ${esc(m.nt)}</p></div><div class="pscore">${ringSVG(w.fit,128)}<div>DNA Score</div></div></div>
   <div class="pkpi"><div class="em"><b>${r.conf}%</b><span>confiança do resultado</span></div><div><b>${gap<=3?'Empate':'+'+gap+' pts'}</b><span>${gap<=3?'técnico com o 2º lugar ('+esc(modelOf(s2.m))+')':'à frente do 2º ('+esc(modelOf(s2.m))+')'}</span></div><div><b>${priceTxt(m).replace(/ \(.*\)/,'')}</b><span>${m.ap?'preço estimado':'preço médio'} · ${m.br?(host?'à venda no Brasil ('+esc(host)+')':'à venda no Brasil'):'importado, sem loja no Brasil'}</span></div><div><b>${m.nr}</b><span>${m.nr===1?'review lida':'reviews lidas'} (${m.np} ${m.np===1?'profissional':'profissionais'}, ${m.nc} de ${m.nc===1?'cliente':'clientes'})</span></div><div><b>${mo} ${mo===1?'mês':'meses'}</b><span>até a troca, com ${km} km por semana (${m.du} km)</span></div></div>
   <div class="psetup">${tiles.map(t=>`<div class="${t[3]?'sug':''}"><span>${t[0]}</span><b>${esc(t[1])}</b><small>${esc(t[2])}</small></div>`).join('')}</div>
-  <p class="pnote">Quadro tracejado é sugestão: o detalhe está na página 3. ${m.fi?'Specs da ficha da marca, sem medição de laboratório.':'Specs de laboratório.'} Nenhuma marca paga para aparecer.</p>
+  <p class="pnote">Quadro tracejado é sugestão: o detalhe está no guia de compra, na página 5. ${m.fi?'Specs da ficha da marca, sem medição de laboratório.':'Specs de laboratório.'} Nenhuma marca paga para aparecer.</p>
   <div class="pbox"><h3>Por que ele combina com você</h3><ul class="plist">${whyT(r).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
-  <div class="pcols"><div class="pbox s"><h3>Seu perfil</h3><dl class="pdl"><dt>Corpo</dt><dd>${r.peso} kg · pé ${pz}</dd><dt>Nível</dt><dd>${PROF[r.level]}</dd><dt>Corrida</dt><dd>${ql('km',1)} por semana · ${ql('pace',2).toLowerCase()} · ${ql('terreno',0).toLowerCase()}</dd><dt>Objetivo</dt><dd>${OBJ[a.obj===undefined?1:a.obj]} · tiro ou ritmo: ${ql('treino',0).toLowerCase()}</dd><dt>Gosto</dt><dd>${ql('sens',1)} · prioridade: ${ql('prior',0).toLowerCase()}</dd><dt>Orçamento</dt><dd>${ql('orc',1)}</dd></dl></div>
+  <div class="pcols"><div class="pbox s"><h3>Seu perfil</h3><dl class="pdl"><dt>Corpo</dt><dd>${r.peso} kg · pé ${pz}</dd><dt>Nível</dt><dd>${PROF[r.level]}</dd><dt>Corrida</dt><dd>${ql('km',1)} por semana · ${ql('pace',2).toLowerCase()} · ${ql('terreno',0).toLowerCase()}</dd><dt>Objetivo</dt><dd>${OBJ[a.obj===undefined?1:a.obj]} · tiro ou ritmo: ${ql('treino',0).toLowerCase()}</dd><dt>Gosto</dt><dd>${ql('sens',1)} · prioridade: ${ql('prior',0).toLowerCase()}</dd><dt>Orçamento</dt><dd>${bt[0].toUpperCase()+bt.slice(1)}</dd></dl></div>
   <div class="pbox s"><h3>${c?'Do seu atual para o novo':same?'Seu tênis atual':'Sem tênis atual'}</h3>${c?trow('DNA Score',x=>x===c?at.fit:w.fit,'%')+trow('Preço',x=>priceTxt(x).replace(/ \(.*\)/,''))+trow('Peso',x=>x.g,' g')+trow('Espuma',x=>mm1(stackOf(x)),' mm')+trow('Drop',x=>dec1(x.dr),' mm')+trow('Custo por km',x=>kmCost(x).replace(' por km','')):`<p class="muted" style="font-size:10.5px">${same?`O ${esc(m.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.`:'Você não informou o tênis que usa hoje. A página 2 mostra onde o recomendado fica no catálogo.'}</p>`}</div></div>`;
-  /* página 2: sua corrida × o tênis */
+  /* página 4: sua corrida × o tênis */
   const ser=[{c:'#FF8A3D',v:r.ID,fill:'#FF8A3D',fo:.18,w:1.8,dash:'4 3'},{c:'#0E4D64',v:im,fill:'#0E4D64',fo:.14,w:2.4}];if(c)ser.push({c:'#B4472F',v:ic,w:1.8,dash:'6 4'});
   const all=f=>M.map(f);
   const diffs=c?atualDiffs(r):[];
-  const p2=`<div><p class="pey">Página 2</p><h2>Sua corrida × o tênis</h2><p class="muted" style="margin-top:3px">O que as suas respostas pedem, o que o ${esc(modelOf(m))} entrega${c?' e o que o seu atual entrega':''}, nos 6 índices de 0 a 10.</p></div>
+  const p2=`<div><p class="pey">Página 4</p><h2>Sua corrida × o tênis</h2><p class="muted" style="margin-top:3px">O que as suas respostas pedem, o que o ${esc(modelOf(m))} entrega${c?' e o que o seu atual entrega':''}, nos 6 índices de 0 a 10.</p></div>
   <div class="pcols" style="align-items:center"><div style="display:flex;flex-direction:column;align-items:center;gap:6px">${radarPDF(ser)}<div class="legend"><span><i style="background:#FF8A3D"></i>O que você precisa</span><span><i style="background:#0E4D64"></i>${esc(modelOf(m))}</span>${c?`<span><i style="background:#B4472F"></i>${esc(modelOf(c))} (atual)</span>`:''}</div></div>
   <table class="ptab"><thead><tr><th>Índice</th><th>Precisa</th><th>Novo</th>${c?'<th>Atual</th>':''}<th></th></tr></thead><tbody>${SX.map((l,i)=>`<tr><td>${l}</td><td class="n">${dec1(r.ID[i])}</td><td class="n">${dec1(im[i])}</td>${c?`<td class="n">${dec1(ic[i])}</td>`:''}<td><div class="pbar3"><i style="width:${r.ID[i]*10}%;background:#FF8A3D"></i><i style="width:${im[i]*10}%;background:#0E4D64"></i>${c?`<i style="width:${ic[i]*10}%;background:#B4472F"></i>`:''}</div></td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>As medidas na régua do catálogo</h3><p class="pnote">Cada risco é um dos ${M.length} tênis. A faixa laranja é a metade central da sua categoria ideal (${CAT[r.c1].n.toLowerCase()}); no preço, o seu orçamento. A marca escura é o recomendado${c?' e a vermelha, o seu atual':''}.</p>
-  <div class="prul">${rulerRow('Peso',' g',all(x=>x.g),m.g,zone(x=>x.g),c?c.g:null,v=>String(Math.round(v)))}${rulerRow('Espuma no salto',' mm',all(x=>stackOf(x)),stackOf(m),zone(x=>stackOf(x)),c?stackOf(c):null,v=>dec1(v))}${rulerRow('Drop',' mm',all(x=>x.dr),m.dr,zone(x=>x.dr),c?c.dr:null,v=>dec1(v))}${rulerRow('Durabilidade',' km',all(x=>x.du),m.du,zone(x=>x.du),c?c.du:null,v=>String(Math.round(v)))}${rulerRow('Preço','',all(x=>x.p),m.p,[B[0],Math.min(B[1],Math.max(...M.map(x=>x.p)))],c?c.p:null,brl,()=>priceTxt(m).replace(/ \(.*\)/,''))}${rulerRow('Custo por km','',all(x=>x.p/x.du),m.p/m.du,zone(x=>x.p/x.du),c?c.p/c.du:null,v=>('R$ '+v.toFixed(2)).replace('.',','))}</div></div>
+  <div class="prul">${rulerRow('Peso',' g',all(x=>x.g),m.g,zone(x=>x.g),c?c.g:null,v=>String(Math.round(v)))}${rulerRow('Espuma no salto',' mm',all(x=>stackOf(x)),stackOf(m),zone(x=>stackOf(x)),c?stackOf(c):null,v=>dec1(v))}${rulerRow('Drop',' mm',all(x=>x.dr),m.dr,zone(x=>x.dr),c?c.dr:null,v=>dec1(v))}${rulerRow('Durabilidade',' km',all(x=>x.du),m.du,zone(x=>x.du),c?c.du:null,v=>String(Math.round(v)))}${rulerRow('Preço','',all(x=>x.p),m.p,[B.min,Math.min(B.max,Math.max(...M.map(x=>x.p)))],c?c.p:null,brl,()=>priceTxt(m).replace(/ \(.*\)/,''))}${rulerRow('Custo por km','',all(x=>x.p/x.du),m.p/m.du,zone(x=>x.p/x.du),c?c.p/c.du:null,v=>('R$ '+v.toFixed(2)).replace('.',','))}</div></div>
   <div class="pbox s"><h3>${c?'O que muda saindo do '+esc(modelOf(c)):'O que esperar dele'}</h3><ul class="plist">${(c?diffs:factors(r).map(f=>(f[0]==='+'?'':'Atenção: ')+f[1])).concat(m.u.length?['Indicado pelas reviews para '+joinE(m.u.map(t=>USO[t]).filter(Boolean))]:[]).map(x=>`<li>${esc(x)}.</li>`).join('').replace(/\.\.<\/li>/g,'.</li>')}</ul></div>`;
-  /* página 3: ajuste e adaptação */
+  /* página 5: guia de compra (ajuste, troca, adaptação, alertas e checklist), compacto e no fim */
   const second=r.second?`${modelOf(r.second)}, ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}`:'';
   let keep;
   if(c){const ok=SX.filter((l,i)=>ic[i]>=im[i]+0.5),nf=[];
@@ -1569,45 +1583,46 @@ function pdfHTML(r){
   else keep=`<div class="pbox"><h3>Se não trocar agora</h3><p class="muted" style="font-size:10.5px">${same?'Você já usa o tênis ideal. Siga com ele até a troca.':'Você não informou o tênis atual.'} Tênis com mais de 500 a 800 km já perdeu amortecimento, mesmo com a sola inteira: nesse caso, a troca não deve esperar.</p></div>`;
   const alerts=attT(r).filter(x=>!/^Prove no fim do dia/.test(x)&&!/^Fica fora/.test(x)).concat(['Dor na canela, na panturrilha ou no Aquiles por mais de 2 dias: volte ao atual e reduza o volume com o novo.','Unha roxa ou bolha: numeração ou fôrma erradas. Volte à loja antes de seguir.']).slice(0,4);
   const chk=[`${m.n}, a geração certa (veja o nome completo)`,`Numeração: ${tamT.toLowerCase()}${m.tam?'':' entre o dedão e a ponta'}`,a.largura===2?(m.lg?'Versão larga (2E/wide), se houver no seu número':'Fôrma padrão: prove com calma, seu pé é largo'):'Fôrma padrão, sem apertar dos lados',`Preço de referência: ${priceTxt(m)}`,'Prove no fim do dia, com a meia de corrida','Corra uns passos na loja: o calcanhar não pode escapar',m.br?`Loja no Brasil${host?' ('+host+')':''}, com troca garantida`:'Importado: confira frete, imposto e política de troca','Anote a data e os km para saber a hora da troca'];
-  const p3=`<div><p class="pey">Página 3</p><h2>Ajuste e adaptação</h2></div>
+  const pG=`<div><p class="pey">Página 5 · Guia de compra</p><h2>Na hora de comprar e de começar a usar</h2></div>
   <div class="pcols"><div class="pbox"><h3>No tênis novo</h3><dl class="pdl"><dt>Numeração</dt><dd>${esc(sizeText(a))}${m.tam?` Clientes relatam que veste ${m.tam}.`:''}</dd><dt>Fôrma</dt><dd>${m.lg?'Tem versão larga':'Padrão'}${a.largura===2?(m.lg?', como o seu pé':'; seu pé é largo, prove antes'):''}</dd><dt>Use em</dt><dd>${m.u.length?esc(joinE(m.u.map(t=>USO[t]).filter(Boolean))):'rodagem'}</dd><dt>Troca</dt><dd>${esc(lifeText(m,a))}</dd>${second?`<dt>Rodízio</dt><dd>${esc(second)}</dd>`:''}</dl></div>${keep}</div>
-  <div class="pbox"><h3>De onde vem a escolha</h3><p class="pnote">Quanto cada fator somou (azul) ou tirou (vermelho) do ${esc(modelOf(m))} no placar do motor. Fora do gráfico: estar na sua categoria ideal e no orçamento, a base de tudo (${dec1(r.parts(m).cat||0)} pontos).</p>${originsPDF(r,m)}</div>
-  <div><h3 style="margin-bottom:7px">Plano de adaptação: 4 semanas</h3><div class="pweeks">${adaptPlan(r,m).map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><p>${esc(x[2])}</p></div>`).join('')}</div></div>
-  <div class="pcols"><div class="pbox"><h3>Sinais de alerta</h3><div class="palert">${alerts.map(x=>`<p>${esc(x)}</p>`).join('')}</div></div>
-  <div class="pbox"><h3>Checklist de compra</h3><div class="pchk">${chk.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div>`;
-  /* página 4: pódio + o que dizem as reviews */
+  <div class="pbox"><h3>Plano de adaptação: 4 semanas</h3><div class="pweeks">${adaptPlan(r,m).map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><p>${esc(x[2])}</p></div>`).join('')}</div></div>
+  <div class="pbox"><h3>Sinais de alerta</h3><div class="palert">${alerts.map(x=>`<p>${esc(x)}</p>`).join('')}</div></div>
+  <div class="pbox"><h3>Checklist de compra</h3><div class="pchk">${chk.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>`;
+  /* página 2: ranking e pódio */
   const F=r.fins.map(x=>({...x,ix:idx(x.m)})),pri=r.ID.map((v,i)=>[v,i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
   const lead=(x,i)=>{const o=F.filter((_,j)=>j!==i),D=SX.map((l,j)=>[l,x.ix[j]-Math.max(...o.map(y=>y.ix[j]))]);return [D.slice().sort((p,q)=>q[1]-p[1])[0],D.slice().sort((p,q)=>p[1]-q[1])[0]]};
   const pod=[1,0,2].filter(i=>F[i]).map(i=>{const x=F[i],[L,C]=lead(x,i);return `<div class="ppc p${i+1}"><div><p class="pey">${i+1}º lugar · ${esc(x.m.b)}</p><h3>${esc(modelOf(x.m))}</h3><p class="pms">${priceTxt(x.m).replace(/ \(.*\)/,'')} · ${x.m.g} g · drop ${dec1(x.m.dr)} mm · ${x.m.du} km</p></div>
     <div class="ptag"><span><em class="up">Lidera:</em> ${L[1]>0?L[0].toLowerCase():'nenhum índice sozinho'}</span><span><em class="dn">Cede:</em> ${C[1]<0?C[0].toLowerCase():'nada em relação aos outros'}</span></div>
     <div class="ppri">${pri.map(([v,j])=>`<div><span>${SX[j]}</span><span><u style="width:${v*10}%"></u><i style="width:${x.ix[j]*10}%"></i></span><b>${dec1(x.ix[j])}</b></div>`).join('')}</div>
-    <div class="blk" style="height:${[150,112,86][i]}px"><b>${x.fit}%</b><span>DNA Score</span></div></div>`}).join('');
+    <div class="blk" style="height:${[96,74,58][i]}px"><b>${x.fit}%</b><span>DNA Score</span></div></div>`}).join('');
   const rv=(x,i)=>{const mm=x.m,src=`${mm.nr} ${mm.nr===1?'review lida':'reviews lidas'} · ${mm.np} ${mm.np===1?'profissional':'profissionais'}, ${mm.nc} de ${mm.nc===1?'cliente':'clientes'}${mm.nr?' · aprovação média '+dec1(mm.sc)+' de 5':''}`;
     const yes=mm.u.map(t=>USO[t]).filter(Boolean),no=mm.nn.map(t=>NAO[t]).filter(Boolean);
     const L=[`<div class="prev"><p>“${esc(mm.nt)}”</p><span><b>Resumo do consenso</b> · ${src}</span></div>`];
     if(yes.length||no.length)L.push(`<div class="prev" data-cut="${10+i*3}"><p>${yes.length?'Indicado para '+esc(joinE(yes))+'.':''}${no.length?' Pouco indicado para '+esc(joinE(no))+'.':''}</p><span><b>Citado por 2 ou mais reviews</b>${mm.dv?' · as fontes discordam sobre '+esc(mm.dv):''}</span></div>`);
     return `<div><p class="prevh">${i+1}º · ${esc(mm.n)}</p>${L.join('')}</div>`};
-  const p4=`<div><p class="pey">Página 4</p><h2>O pódio</h2><p class="muted" style="margin-top:3px">${gap<=3?`Empate técnico: o 1º e o 2º estão a ${gap} ${gap===1?'ponto':'pontos'}. Os dois servem; a escolha fica pelo que cada um lidera.`:`O ${esc(modelOf(m))} ficou ${gap} pontos à frente do 2º lugar.`} Barras: laranja é o que você precisa, escuro é o que o tênis entrega nos 3 índices que mais pesam para você.</p></div>
-  <div class="ppod">${pod}</div>
-  <div class="pbox s"><h3>Quem corre com eles</h3><p style="font-size:10.5px">O catálogo do RUN DNA ainda não tem fonte verificada de atletas por modelo. Por isso não listamos ninguém: preferimos não inventar.</p></div>
-  <div class="pbox"><h3>O que dizem as reviews</h3><p class="pnote">Resumo do que as reviews lidas para o catálogo dizem de cada modelo (laboratório, sites especializados e clientes, out/2026). Fontes: RTINGS, RunRepeat, Doctors of Running, Road Trail Run, Believe in the Run, Running Shoes Guru, Solereview, Running Warehouse e blogs brasileiros com teste real.</p>
-  <div class="prevs">${F.map(rv).join('')}</div></div>`;
-  /* página 5: ranking e método */
+  /* páginas 2 (ranking e pódio) e 3 (método e dados) */
   const pos=c?r.ranked.findIndex(x=>x.m===c):-1,rows=r.top10.map((x,i)=>({...x,pos:i+1}));
   if(c&&!rows.some(x=>x.m===c))rows.push({m:c,fit:at.fit,pos:pos>=0?pos+1:null});
   let behind='';
   if(c){const pw=r.parts(m),pc=r.parts(c),dv=k=>(pw[k]||0)-(pc[k]||0);
-    const ks=[...new Set([...Object.keys(pw),...Object.keys(pc)])].filter(k=>PART[k]&&dv(k)>0.3).sort((x,y)=>dv(y)-dv(x)).slice(0,3);
-    behind=`O ${modelOf(c)} ficou ${pos>=0?`em ${pos+1}º lugar`:'fora do ranking da sua categoria'}, com ${at.fit}%, ${w.fit-at.fit} pontos atrás. ${(pc.cat||0)<(pw.cat||0)-0.5?`Ele é de ${CAT[c.c].n.toLowerCase()}, fora da sua categoria ideal (${CAT[r.c1].n.toLowerCase()}). `:''}${ks.length?'Onde mais perde: '+joinE(ks.map(k=>PART[k].toLowerCase()))+'.':''}`}
+    const ks=[...new Set([...Object.keys(pw),...Object.keys(pc)])].filter(k=>k!=='cat'&&dv(k)>0.3).sort((x,y)=>dv(y)-dv(x)).slice(0,3),why=[...new Set(ks.map(k=>lossTxt(r,c,k)).filter(Boolean))];
+    behind=`O ${modelOf(c)} ficou ${pos>=0?`em ${pos+1}º lugar`:'fora do ranking da sua categoria'}, com ${at.fit}%, ${w.fit-at.fit} pontos atrás. ${c.c!==r.c1&&(pc.cat||0)<(pw.cat||0)-0.5?`Ele é de ${CAT[c.c].n.toLowerCase()}, fora da sua categoria ideal (${CAT[r.c1].n.toLowerCase()}). `:''}${why.length?'O que mais pesou contra ele: '+why.join('; ')+'.':''}`}
   const NV=Q.length+8+6+4,NR=M.reduce((s,x)=>s+x.nr,0);
-  const p5=`<div><p class="pey">Página 5</p><h2>Ranking e método</h2></div>
+  const pR=`<div><p class="pey">Página 2</p><h2>Seu ranking</h2><p class="muted" style="margin-top:3px">${gap<=3?`Empate técnico: o 1º e o 2º estão a ${gap} ${gap===1?'ponto':'pontos'}. Os dois servem; a escolha fica pelo que cada um lidera.`:`O ${esc(modelOf(m))} ficou ${gap} pontos à frente do 2º lugar.`} Barras: laranja é o que você precisa, escuro é o que o tênis entrega nos 3 índices que mais pesam para você.</p></div>
+  <div class="ppod">${pod}</div>
   <div class="pcols" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)"><div class="pbox"><h3>Seus 10 primeiros entre ${M.length} tênis</h3><table class="ptab"><thead><tr><th>#</th><th>Tênis</th><th>Preço</th><th>DNA</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.m===m?'hl':c&&x.m===c?'at':''}"><td class="n">${x.pos?x.pos+'º':'—'}</td><td>${esc(x.m.n)}${c&&x.m===c?' · seu atual':''}<br><span class="muted" style="font-size:9px">${CAT[x.m.c].n} · ${kmCost(x.m).replace(' por km','/km')}</span></td><td class="n">${priceTxt(x.m).replace(/ \(.*\)/,'')}</td><td class="n"><span style="display:inline-block;width:${Math.round(x.fit*.4)}px;height:5px;border-radius:9px;background:${x.m===m?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>Mapa do catálogo</h3>${mapPDF(r,rows.filter(x=>x.pos&&x.pos<=10),at)}<p class="pnote">Os ${M.length} tênis por peso e espuma, na cor da categoria; o número é a posição no seu top 10. Escuro: o recomendado; laranja: o pódio${c?'; anel vermelho tracejado: o seu atual':''}.</p></div></div>
   ${c?`<div class="pbox s"><h3>Por que o seu atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
-  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, preços de lojas no Brasil</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites e clientes</span></div><div><b>${NV}</b><span>variáveis: ${(NV*M.length).toLocaleString('pt-BR')} cruzamentos por análise</span></div><div><b>234</b><span>recomendações de especialistas, de 35 fontes, usadas na calibração</span></div></div>
-  <p class="pnote">Especificações aproximadas, em revisão. Nenhuma marca paga para aparecer no resultado; links de loja só depois da recomendação.</p></div>
-  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['DNA Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Num estudo com 264 corredores, quem alternava teve menos lesões; é indício, não garantia.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
-  return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Sua corrida × o tênis',p2)}${pdfPage(3,'Ajuste e adaptação',p3)}${pdfPage(4,'Pódio',p4)}${pdfPage(5,'Ranking e método',p5)}</div>`;
+`;
+  const pM=`<div><p class="pey">Página 3</p><h2>Método e dados</h2><p class="muted" style="margin-top:3px">De onde vem o seu resultado: o que medimos, o que lemos e como testamos. Nenhuma marca paga para aparecer.</p></div>
+  <div class="pnums big"><div><b>${M.length}</b><span>tênis de ${BRANDS.length} marcas, ${M.filter(x=>x.br).length} vendidos no Brasil, com preço de lojas daqui</span></div><div><b>${NR.toLocaleString('pt-BR')}</b><span>reviews lidas, de laboratório, sites especializados e clientes</span></div><div><b>${NV}</b><span>critérios cruzados para cada tênis</span></div><div><b>41</b><span>estudos científicos por trás das regras</span></div><div><b>234</b><span>recomendações de especialistas, de 35 fontes, usadas na calibração</span></div><div><b>5.000</b><span>perfis de corredor simulados para testar o motor</span></div></div>
+  <div class="pbox"><h3>Como chegamos ao seu resultado</h3><ol class="psteps"><li>Suas ${Q.length} respostas viram um perfil: o que você precisa em amortecimento, resposta, leveza, estabilidade, durabilidade e custo por km.</li><li>Cada um dos ${M.length} tênis é comparado com esse perfil pelas medidas (de laboratório, quando existem), pelo preço no Brasil e pelo que as reviews dizem dele.</li><li>As regras seguem os estudos: neutro por padrão, estabilidade só para quem sente desconforto com neutro, supertênis só para quem compete.</li><li>O resultado foi conferido contra recomendações de especialistas e testado em perfis simulados, para não indicar tênis que as reviews contraindicam para o seu perfil.</li></ol></div>
+  <div class="pbox"><h3>O que dizem as reviews</h3><p class="pnote">Resumo do que as reviews lidas para o catálogo dizem de cada modelo do pódio (laboratório, sites especializados e clientes, out/2026). Fontes: RTINGS, RunRepeat, Doctors of Running, Road Trail Run, Believe in the Run, Running Shoes Guru, Solereview, Running Warehouse e blogs brasileiros com teste real.</p>
+  <div class="prevs">${F.map(rv).join('')}</div></div>
+  <div class="pbox s"><h3>Quem corre com eles</h3><p style="font-size:10.5px">O catálogo do RUN DNA ainda não tem fonte verificada de atletas por modelo. Por isso não listamos ninguém: preferimos não inventar.</p></div>
+  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Drop','Diferença de altura entre calcanhar e antepé. Drop baixo exige mais da panturrilha e do Aquiles.'],['Espuma (stack)','Altura da entressola no calcanhar e no antepé. Mais espuma, mais proteção e menos sensação do chão.'],['Placa','Lâmina dentro da espuma (às vezes de carbono) que deixa a passada mais rápida e o tênis mais rígido.'],['Fôrma larga (2E)','Versão mais larga do mesmo modelo, para pé que aperta dos lados.'],['DNA Score','Quanto o tênis combina com você, de 0 a 100%, comparado aos outros do catálogo.'],['Custo por km','Preço dividido pelos km que a espuma aguenta. Mostra quanto cada treino custa.'],['Rodízio','Alternar dois pares. Num estudo com 264 corredores, quem alternava teve menos lesões; é indício, não garantia.'],['Neutro e estabilidade','Neutro não tem apoio extra no arco; estabilidade tem. Só vale se o neutro incomoda.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>
+  <p class="pnote">Especificações aproximadas, em revisão. Nenhuma marca paga para aparecer no resultado; links de loja só depois da recomendação.</p>`;
+  return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Ranking e pódio',pR)}${pdfPage(3,'Método e dados',pM)}${pdfPage(4,'Sua corrida × o tênis',p2)}${pdfPage(5,'Guia de compra',pG,'guia')}</div>`;
 }
 /* bibliotecas no próprio site: nada de CDN (redes que bloqueiam CDN e Safari no iPhone) */
 const LIBS=['../assets/vendor/html2canvas-1.4.1.min.js','../assets/vendor/jspdf-2.5.1.umd.min.js'];
@@ -1690,7 +1705,7 @@ async function makePDF(r){
 
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
 window.SportDNAPayments?.register({name:'run',snapshot:()=>JSON.parse(JSON.stringify(A)),
- restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers);RES=engine(conv(),true)},
+ restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers||{});normA();RES=engine(conv(),true)},
  unlock:()=>{renderReport();show('report')}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();

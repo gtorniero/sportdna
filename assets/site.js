@@ -92,7 +92,7 @@ document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="#${k}" d
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
   board:"Exemplo de relatório do SURF DNA: prancha ideal mid-length (egg) com DNA Score de 96%, medidas de 6 pés e 11 polegadas por 19 e 7/8 por 2 e 5/8 polegadas e 38,7 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, quilhas 2+1, fundo plano para single concave, construção em epóxi (EPS) e curva do bico de 3 e 3/4 polegadas.",
-  tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Winflo 12, com DNA Score de 96%. Treino diário, 299 g, 41 mm de espuma, drop de 10 mm, R$ 664,99 e custo de R$ 0,95 por km. Abaixo, Por que combina, com custo por km baixo e preço dentro do orçamento, e a ficha técnica, com durabilidade de 700 km e troca em cerca de 5 meses."};
+  tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Vomero 18, com DNA Score de 96%. Máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, R$ 949,99 e custo de R$ 1,70 por km. Abaixo, Por que combina, bem amortecido e dentro do orçamento, e a ficha técnica, com durabilidade de 560 km e troca em cerca de 4 meses."};
 function reportFrame(k, h){
   const a = AREAS[k];
   return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"tenis"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
@@ -117,7 +117,7 @@ const CARDS={
   board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
          produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 11 polegadas por 19 7/8 polegadas, 38,7 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
   tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
-         produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Nike Winflo 12, treino diário, 299 g, 41 mm de espuma, drop de 10 mm, 700 km de durabilidade, R$ 664,99, DNA 96%, escolhido entre 212 tênis"]}};
+         produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Nike Vomero 18, máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, 560 km de durabilidade, R$ 949,99, DNA 96%, escolhido entre 212 tênis"]}};
 const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="${CARDS[k][t][1]}" width="720" height="1280" loading="lazy" decoding="async">`;
 /* ---------- HOME ---------- */
 let heroK = "racket";

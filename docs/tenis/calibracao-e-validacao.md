@@ -1,5 +1,29 @@
 # Tenis Match — calibração e validação com reviews (out/2026)
 
+## Rodada 7: orçamento em 4 faixas, com mais de uma marcada (04/nov/2026)
+- **Pergunta nova:** "Quanto pretende investir?" com 4 faixas e marcação múltipla ("Pode marcar mais de uma faixa."): Até R$ 500 · R$ 500 a 1.000 · R$ 1.000 a 1.500 · Acima de R$ 1.500 ou sem limite ("Mostramos o melhor, custe o que custar"). No catálogo: 32 tênis até R$ 500, 71 de R$ 500 a 1.000, 65 de R$ 1.000 a 1.500 e 44 acima. Antes eram 6 opções de escolha única (até R$ 400, 400 a 700, 700 a 1.000, 1.000 a 1.500, acima de 1.500, sem limite).
+- **Regra:** a janela vai do menor piso ao maior teto marcados (faixas salteadas, como 1ª + 3ª, cobrem tudo entre elas). Com a última faixa marcada não há teto (nada fica "acima do orçamento"); marcada sozinha, também não há piso. Tudo sai de `budget(a)` em `run/index.html` (`min`, `max`, `semLimite` e `lvl`, o nível antigo pelo teto: 0 até R$ 500, 2 até R$ 1.000, 3 até R$ 1.500, 4 sem teto), usado nas regras de supertênis, na faixa de entrada e no índice de custo por km. Textos do relatório descrevem a janela ("até R$ 1.000", "de R$ 500 a R$ 1.500", "a partir de R$ 1.000, sem limite", "sem limite de preço").
+- **Respostas antigas** (pagamento retomado com `orc` de 0 a 5): 0 → até R$ 500; 1 → até R$ 1.000 (faixas 1 e 2); 2 → R$ 500 a 1.000; 3 → R$ 1.000 a 1.500; 4 e 5 → acima de R$ 1.500 ou sem limite. Valor inválido cai em até R$ 1.000.
+- **Leitura dos casos (`calibrar.mjs`):** orçamento em R$ vira a faixa que o contém; sem orçamento, a última faixa (como era "sem limite"); guias de até US$ 110 e guias "baratos" sem valor, até R$ 500. `cobertura.mjs` testa as faixas sozinhas e em pares.
+- **Medição (antes → depois, mesmas ferramentas):**
+
+| Métrica | Antes | Depois |
+|---|---|---|
+| Top 3 (234 casos) | 30,8% | 29,5% |
+| Top 10 | 54,3% | 50,4% |
+| MRR | 0,287 | 0,274 |
+| Distância de marcas para os especialistas (L1, top 3) | 27,7 | 28,6 |
+| Pódios com 2+ contraindicações sérias (5.000 perfis, 15.000 vagas; 22% dos perfis marcam 2 faixas) | 33 | 19 |
+| 1º acima do teto (perfis com teto) | 11,6% (390 de 3.356) | 13,0% (460 de 3.526) |
+| 1º mais de 8% acima do teto | 11,6% | 6,6% (233) |
+| Tênis diferentes em 1º | 126 | 118 |
+| Cobertura: 1º para algum perfil / pódio / fora do top 10 | 145 / 179 / 3 | 138 / 174 / 4 |
+
+- **Onde piorou:** só nos 42 casos com orçamento declarado (os 192 sem orçamento ficam iguais). Os guias "baratos" indicam muito tênis de R$ 500 a 700, e o corte de R$ 700 deixou de existir: com teto de R$ 500 eles saem, com teto de R$ 1.000 entram os de R$ 900. É efeito das faixas, não dos pesos.
+- **Pesos do orçamento (`--ajustar --so=orc`):** a única troca aceita pela validação cruzada foi `orcTeto` 12 → 6 (top 3 +0,4 ponto, top 10 igual), que leva o 1º mais de 8% acima do teto de 6,6% para 9,2% dos perfis. Recusada: pesos ficam como estavam. `orcPor150` 1 → 2 daria top 10 51,7% e menos 1º acima do teto, mas não passa na validação cruzada (fica anotado para a próxima rodada).
+- **PDF reorganizado (mesmo dia):** veredito, ranking e pódio, método e dados, sua corrida × o tênis e, por último e compacto, o guia de compra (ajuste, troca, adaptação, alertas, checklist, "se não trocar agora"). Saiu o quadro "De onde vem a escolha" (barras de pontos do placar); "por que o atual ficou para trás" agora explica em palavras.
+- **Exemplo pronto** (orçamento "R$ 500 a 1.000", o mais perto do antigo "R$ 400 a 700"): Nike Vomero 18 (96%); 2º New Balance 1080 v15 (94%) e 3º Nike Winflo 12 (91%). Com teto de R$ 1.000 o Winflo 12 não é mais o 1º. Imagem do relatório e cards refeitos.
+
 ## Abertura com números grandes e PDF local (03/nov/2026)
 - **Abertura:** o quadro "O motor" virou uma faixa de 6 números: 1.755 reviews (soma de `nr` no catálogo), 37 critérios por tênis (`Q.length+8+6+4`), 41 estudos (títulos distintos em `dados/ciencia.json`; 47 citações), 234 recomendações de especialistas de 35 fontes (casos úteis em `dados/casos.json`), 5.000 perfis simulados (teste de segurança) e 31% de pódios com um tênis indicado pelos especialistas contra cerca de 2% ao acaso (`run/tools/calibrar.mjs`: 30,8% top 3 e 54,3% top 10 nos 234 casos; acaso calculado em 2,1%). Saíram os números de efeito (cruzamentos por análise e combinações possíveis).
 - **Conferido de novo em 03/nov:** pódios com 2+ contraindicações sérias: 32 em 15.000 (5.000 perfis, mesma semente e mesmo sorteio da rodada 6).
