@@ -59,7 +59,7 @@ O resultado não piorou de forma clara: nos casos de especialistas a parte de te
 
 Ponto para acompanhar: a faixa até R$ 1.400 com a 1ª um pouco acima do orçamento (até 8%).
 
-### Números públicos (abertura do app e página 5 do PDF)
+### Números públicos (abertura do app e página 4 do PDF)
 | Número | Valor | Fonte |
 |---|---|---|
 | Raquetes | 62 | `CATALOG` em `racket/index.html` |

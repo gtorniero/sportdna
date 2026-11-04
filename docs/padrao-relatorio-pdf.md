@@ -11,9 +11,12 @@ Vale para Racket Match, Board Match e Tenis Match (PDF de 5 páginas no Tenis de
 4. **Pódio + prova social** — top 3 com o que lidera e o que cede, barras das 3 prioridades; "Quem joga com elas no circuito" (até 6 atletas por item, * para versão customizada/pro stock, frase honesta quando não há profissional conhecido); trechos de reviews (3 do 1º, 2 dos demais) com fonte, testador, nível, nota e geração.
 5. **Ranking e método** — top 10 com o atual, mapa do catálogo, por que o atual ficou para trás, números do método, glossário.
 
+**RACKET DNA e SURF DNA (nov/2026):** ordem 1 Veredito, 2 Seu jogo × o equipamento, 3 Pódio + prova social, 4 Ranking e método, 5 Setup, adaptação e compra (ajuda de compra por último, com menos destaque). Sem o gráfico de origem de cada ajuste da tensão (RACKET) e sem a tabela "De onde vem cada decisão" (SURF).
+
 **Regras:**
 - Diferenciar do Tennis Engineer, nunca copiar (layout, texto, gráficos).
 - Mínimo de 2 trechos de review por item do catálogo, resumidos e traduzidos (nunca citação literal longa), com fonte.
 - Coerência total: todo setup calculado para o item recomendado (erro visto no TE).
 - Atletas só com fonte verificável e atual; na dúvida, fica de fora (nada inventado).
 - Honestidade: empate técnico, o que o ajuste não resolve, aviso de saúde quando houver dor.
+- Não expor a receita do motor (RACKET e SURF, nov/2026): nada de pontos por fator, penalidades, pesos, coeficientes ou fórmula com números. Explicar em palavras o que é considerado.
