@@ -355,7 +355,7 @@ function article(id){
 function privacy(){
   return `<article class="article"><div class="wrap">
     <nav class="crumbs" aria-label="Você está em"><a href="#inicio" data-go="inicio">Início</a><span>/</span><span>Privacidade e afiliados</span></nav>
-    <header class="art-head"><h1>Privacidade e afiliados</h1><p class="dek">O que o SPORT DNA guarda, o que não guarda e como funcionam os links de loja.</p><div class="by"><span>Atualizado em outubro de 2026</span></div></header>
+    <header class="art-head"><h1>Privacidade e afiliados</h1><p class="dek">O que o SPORT DNA guarda, o que não guarda e como funcionam os links de loja.</p><div class="by"><span>Atualizado em novembro de 2026</span></div></header>
     <div class="prose">
       <h2>Quem somos</h2>
       <p>O SPORT DNA é um projeto da Beyond the Work com três testes de equipamento: RACKET DNA (raquete de tênis), SURF DNA (prancha de surf) e RUN DNA (tênis de corrida).</p>
@@ -369,11 +369,11 @@ function privacy(){
       </ul>
       <h2>Contato e e-mail</h2>
       <ul>
-        <li>Os campos de e-mail do RACKET DNA não enviam nem guardam nada nesta versão.</li>
+        <li>Quando você compra ou usa um código promocional, o e-mail informado é usado para identificar o acesso. O envio do relatório por e-mail só acontece quando você solicita; o conteúdo é enviado ao nosso servidor e ao serviço de e-mail Resend, exclusivamente para o endereço confirmado da compra. Não guardamos o texto do relatório no banco de dados; guardamos o controle de reenvio.</li>
         <li>No SURF DNA, o resumo para o coach só sai se você mesmo mandar, pelo WhatsApp ou pelo Instagram, depois de autorizar.</li>
       </ul>
       <h2>Pagamento</h2>
-      <p>O pagamento ainda é uma simulação: nenhum valor é cobrado. Quando o pagamento real entrar, esta página vai dizer quem processa os dados.</p>
+      <p>O checkout oferece cartão pelo Stripe e Pix pelo Mercado Pago. Em produção há cobrança real, no valor exibido antes de escolher o meio de pagamento. Os dados de cartão são informados no checkout do Stripe. Para o Pix, o e-mail é encaminhado ao Mercado Pago. Nosso banco registra identificador do pedido, produto, valor, situação do pagamento e o resumo criptográfico do token de acesso. As respostas do teste ficam no navegador e não são enviadas para criar o pagamento. Ambientes de teste são identificados como tal.</p>
       <h2>Serviços de terceiros</h2>
       <p>Para carregar fontes e algumas bibliotecas, o navegador acessa o Google Fonts e o cdnjs (Cloudflare). Esses serviços podem registrar o endereço IP de quem acessa, como qualquer site.</p>
       <h2>Links de afiliado</h2>
@@ -386,7 +386,7 @@ function privacy(){
       <h2>Saúde</h2>
       <p>O conteúdo é educativo. Em caso de dor ou lesão, procure um profissional de saúde.</p>
       <h2>Fale com a gente</h2>
-      <p>Dúvidas ou pedidos sobre seus dados: <a href="https://github.com/gtorniero/sportdna/issues" target="_blank" rel="noopener">abra uma mensagem aqui</a>.</p>
+      <p>Dúvidas ou pedidos sobre seus dados: <a href="mailto:hi@sportdna.com.br">hi@sportdna.com.br</a>.</p>
     </div>
   </div></article>`;
 }

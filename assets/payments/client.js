@@ -4,6 +4,19 @@
  const test=config.mode==='test';
  const enabled=['test','live'].includes(config.mode)&&(/^https:\/\/[a-z0-9.-]+(?::\d+)?$/.test(config.api)||/^http:\/\/127\.0\.0\.1:\d+$/.test(config.api));
  const key='sportdna-'+config.mode+'-checkout-v1';let app=null,dialog=null,timer=null,busy=false;
+ const productInfo=product=>config.products?.[product];
+ const money=amount=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(amount/100);
+ function validAmount(order){
+  const info=productInfo(order.product);
+  return !!info&&Number.isSafeInteger(order.amount)&&(order.provider==='promo'?order.amount===0:order.amount===info.amount);
+ }
+ function summary(body,product,amount){
+  const info=productInfo(product);if(!info)throw new Error('Produto indisponível. Atualize a página.');
+  const text=document.createElement('p');text.id='payment-product-summary';
+  text.textContent=info.name+' · '+money(amount??info.amount)+' · pagamento único';
+  body.append(text);
+ }
+
  const get=()=>{try{return JSON.parse(sessionStorage.getItem(key+':'+app?.name)||'null')}catch{return null}};
  const save=x=>sessionStorage.setItem(key+':'+app?.name,JSON.stringify(x));
  const random=()=>[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join('');
@@ -23,7 +36,7 @@
   const pending=get();if(!pending||!app||pending.app!==app.name)return;
   try {
    const order=await api('/orders/'+pending.id,{headers:{Authorization:'Bearer '+pending.token}});
-   if(order.product!==pending.product||order.mode!==config.mode)throw new Error('Pedido incompatível com este relatório.');
+   if(order.product!==pending.product||order.mode!==config.mode||!validAmount(order))throw new Error('Produto ou valor diferente da oferta. Nenhum acesso foi liberado; consulte o suporte antes de pagar.');
    if(order.state==='paid'){
     app.restore(pending.answers);app.unlock(pending.product);close();emailButton(pending);return true;
    }
@@ -52,7 +65,10 @@
   };
  }
  function pendingPanel(order){
+  const product=order.product||get()?.product;
+  if(order.product&&!validAmount(order))throw new Error('O valor retornado é diferente da oferta. Atualize a página antes de pagar.');
   const body=panel('Confirmar pagamento');
+  summary(body,product,order.amount);
   if(order.checkoutUrl){
    const link=document.createElement('a');link.className='btn btn-go';link.textContent='Pagar com cartão';
    if(!order.checkoutUrl.startsWith('https://checkout.stripe.com/'))throw new Error('Endereço de checkout inválido.');
@@ -67,7 +83,9 @@
  }
  function open(product){
   if(!enabled)return false;
+  if(!productInfo(product)){panel('Pagamento indisponível');message('Não conseguimos carregar esta oferta. Atualize a página antes de pagar.');return true;}
   const body=panel('Como deseja pagar?');
+  summary(body,product);
   const label=document.createElement('label');label.textContent='Seu e-mail (para Pix ou código promocional)';const email=document.createElement('input');email.type='email';email.autocomplete='email';email.style.cssText='width:100%;margin:8px 0 16px';label.append(email);body.append(label);
   for(const [provider,text] of [['stripe','Cartão — Stripe'],['mercadopago','Pix — Mercado Pago']]){
    const button=document.createElement('button');button.type='button';button.className='btn btn-go';button.textContent=text;button.style.cssText='width:100%;margin-bottom:10px';

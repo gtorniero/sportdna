@@ -1,6 +1,6 @@
-# SPORT DNA — pagamentos de relatórios (preparação em teste)
+# SPORT DNA — pagamentos de relatórios
 
-Esta integração está **desligada por padrão e ainda não está pronta para vendas reais**. O site público continua com a simulação existente. Esta versão recusa `PAYMENTS_MODE=live` mesmo se alguém alterar a variável no painel.
+O frontend versionado usa `mode: live`. O Worker suporta `PAYMENTS_MODE=test` e `live`, com credenciais explícitas por ambiente. A ativação não comprova, por si só, que todos os produtos e provedores passaram pelo fluxo completo de produção. As evidências de 02/11 abaixo são históricas.
 
 ## Cadastrado em 02/11/2026
 
@@ -23,7 +23,7 @@ Respostas e token do pedido ficam em `sessionStorage` no navegador. **Ainda falt
 3. Criar credenciais **de teste** com menor permissão possível. Guardar somente em Cloudflare Secrets: `STRIPE_KEY`, `STRIPE_WEBHOOK_SECRET`, `MP_TOKEN`, `MP_WEBHOOK_SECRET` e `RATE_SECRET` aleatório. Nada disso deve entrar no GitHub, HTML, chat ou logs.
 4. Confirmar no painel do Mercado Pago que `MP_TOKEN` veio das credenciais **Teste** desta aplicação antes de definir `MP_TEST_CREDENTIALS_CONFIRMED=true`. O prefixo `APP_USR` também pode aparecer em credenciais de teste; o prefixo sozinho não prova o ambiente.
 5. Cadastrar os endpoints reais do Worker em `/webhooks/stripe` e `/webhooks/mercadopago` no ambiente de teste. Stripe: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`, `charge.refunded`, `charge.dispute.created`, `charge.dispute.closed`. Mercado Pago: tópico Order.
-6. Habilitar `PAYMENTS_MODE=test` somente depois de conferir credenciais, D1 e assinaturas. Para a prévia de teste do frontend, configurar `assets/payments/config.js` com `mode:'test'` e a origem HTTPS exata da API. O arquivo público permanece `mode:'off'`.
+6. Habilitar `PAYMENTS_MODE=test` somente depois de conferir credenciais, D1 e assinaturas. Para a prévia de teste do frontend, configurar `assets/payments/config.js` com `mode:'test'` e a origem HTTPS exata da API. Não altere o ambiente publicado ao preparar uma prévia de teste.
 7. Executar compras de teste de cada produto/provedor, confirmar notificações reais, duplicidade, expiração, reembolso, cancelamento, retorno do Checkout e retomada. **Os testes locais com mocks não substituem esses testes nos provedores.**
 
 ## Estado verificado em 02/11/2026
