@@ -76,7 +76,7 @@
   }else if(order.pixCode){
    if(order.pixImage&&/^[A-Za-z0-9+/=]+$/.test(order.pixImage)){const img=document.createElement('img');img.src='data:image/png;base64,'+order.pixImage;img.alt='QR Code Pix';img.style.cssText='max-width:220px;width:100%;display:block;margin:auto';body.append(img)}
    const label=document.createElement('label');label.textContent='Pix — copia e cola';
-   const input=document.createElement('textarea');input.readOnly=true;input.value=order.pixCode;input.style.width='100%';label.append(input);body.append(label);
+   const input=document.createElement('textarea');input.readOnly=true;input.value=order.pixCode;input.style.cssText='box-sizing:border-box;display:block;width:100%;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;border:1.5px solid #6B7F87;border-radius:12px;background:var(--surface,#fff);color:var(--ink,#111);min-height:96px;margin:8px 0 12px';label.append(input);body.append(label);
    const copy=document.createElement('button');copy.type='button';copy.className='btn btn-pri';copy.textContent='Copiar Pix';copy.onclick=async()=>{try{await navigator.clipboard.writeText(order.pixCode);message('Código Pix copiado.')}catch{input.select();message('Selecione e copie o código.')}};body.append(copy);
   }
   const button=document.createElement('button');button.type='button';button.className='btn btn-pri';button.textContent='Consultar pagamento';button.onclick=()=>{clearTimeout(timer);check()};body.append(button);check();
@@ -86,7 +86,7 @@
   if(!productInfo(product)){panel('Pagamento indisponível');message('Não conseguimos carregar esta oferta. Atualize a página antes de pagar.');return true;}
   const body=panel('Como deseja pagar?');
   summary(body,product);
-  const label=document.createElement('label');label.textContent='Seu e-mail (para Pix ou código promocional)';const email=document.createElement('input');email.type='email';email.autocomplete='email';email.style.cssText='width:100%;margin:8px 0 16px';label.append(email);body.append(label);
+  const label=document.createElement('label');label.textContent='Seu e-mail (para Pix ou código promocional)';const email=document.createElement('input');email.type='email';email.autocomplete='email';email.style.cssText='box-sizing:border-box;display:block;width:100%;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;border:1.5px solid #6B7F87;border-radius:12px;background:var(--surface,#fff);color:var(--ink,#111);margin:8px 0 16px';label.append(email);body.append(label);
   for(const [provider,text] of [['stripe','Cartão — Stripe'],['mercadopago','Pix — Mercado Pago']]){
    const button=document.createElement('button');button.type='button';button.className='btn btn-go';button.textContent=text;button.style.cssText='width:100%;margin-bottom:10px';
    button.onclick=async()=>{
@@ -99,7 +99,7 @@
    };body.append(button);
   }
   const promoLabel=document.createElement('label');promoLabel.textContent='Código promocional';
-  const promo=document.createElement('input');promo.autocomplete='off';promo.maxLength=80;promo.style.cssText='width:100%;margin:8px 0 12px';promoLabel.append(promo);body.append(promoLabel);
+  const promo=document.createElement('input');promo.autocomplete='off';promo.maxLength=80;promo.style.cssText='box-sizing:border-box;display:block;width:100%;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;border:1.5px solid #6B7F87;border-radius:12px;background:var(--surface,#fff);color:var(--ink,#111);margin:8px 0 12px';promoLabel.append(promo);body.append(promoLabel);
   const apply=document.createElement('button');apply.type='button';apply.className='btn btn-pri';apply.textContent='Aplicar código e liberar grátis';apply.style.cssText='width:100%;margin-bottom:12px';body.append(apply);
   apply.onclick=async()=>{
    if(busy)return;if(!email.value||!email.checkValidity()){message('Informe seu e-mail para receber o acesso.');email.focus();return}
