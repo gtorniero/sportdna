@@ -1136,7 +1136,7 @@ const cl=clamp;
 const dec1=n=>n.toFixed(1).replace('.',',');
 const O=arr=>arr.map((x,i)=>Array.isArray(x)?[String(i),x[0],x[1]]:[String(i),x]);
 const STEPS=['Seu corpo','Seu surf','Sua prancha','Seus objetivos','Seu mar'];
-const IMP=[['rem','Remada','O quanto a prancha anda quando você rema e entra cedo na onda.','M3 12h13M12 7l5 5-5 5'],['est','Estabilidade','O quanto ela fica firme quando você fica de pé e na hora de deitar e remar.','M4 18h16M12 18V7M7 10h10'],['vel','Velocidade na onda','O quanto ela ganha e mantém velocidade sozinha, mesmo em onda fraca.','M3 8h9M5 12h12M3 16h9'],['man','Manobra','A facilidade de virar e trocar de borda: cavada, batida, rasgada.','M5 17c0-7 5-11 13-11M14 3l4 3-4 3'],['ctl','Controle em onda forte','Segurança em ondas maiores, cavadas e rápidas, sem perder a borda.','M2 15c3-5 6-5 9 0s6 5 9 0M4 9c2-3 4-3 6 0']];
+const IMP=[['rem','Remada e estabilidade','O quanto ela anda na remada, entra cedo na onda e fica firme quando você fica de pé.','M3 12h13M12 7l5 5-5 5'],['vel','Velocidade na onda','O quanto ela ganha e mantém velocidade sozinha, mesmo em onda fraca.','M3 8h9M5 12h12M3 16h9'],['man','Manobra','A facilidade de virar e trocar de borda: cavada, batida, rasgada.','M5 17c0-7 5-11 13-11M14 3l4 3-4 3'],['ctl','Controle em onda forte','Segurança em ondas maiores, cavadas e rápidas, sem perder a borda.','M2 15c3-5 6-5 9 0s6 5 9 0M4 9c2-3 4-3 6 0']];
 const Q=[
  {s:0,id:'peso',type:'number',t:'Quanto você pesa?',h:'Em kg. É a base da litragem.',min:35,max:140,step:1,ph:'ex.: 72'},
  {s:0,id:'altura',type:'number',t:'Qual a sua altura?',h:'Em cm. Ajusta o comprimento.',min:140,max:210,step:1,ph:'ex.: 175'},
@@ -1158,20 +1158,21 @@ const Q=[
  {s:1,id:'pass',cond:()=>!(+A.nivel>=2),ofilter:o=>!(+A.nivel>=1&&o[0]==='0'),t:'Como você passa a arrebentação?',h:'Define o quanto de espuma e comprimento você consegue levar para o fundo.',o:[['0','Ainda não passo','Fico na espuma, perto da areia'],['1','Vou por cima ou empurro','Seguro a prancha e passo por cima das ondas'],['2','Joelhinho ou pato','Afundo o bico ou a prancha inteira e passo por baixo da onda'],['4','Uso o canal','Remo por onde não quebra; com prancha grande, viro de cabeça para baixo (tartaruga)']]},
  {s:3,id:'objv',multi:2,mtag:'Escolha até 2',ofilter:o=>!((o[0]==='0'&&+A.nivel>=1)||(o[0]==='1'&&+A.nivel>=3)),t:'Quais são os seus objetivos no surf agora?',h:'Escolha até 2. O resultado equilibra os dois.',o:[['0','Aprender a ficar de pé','Começar do jeito certo'],['1','Ganhar autonomia','Pegar ondas sozinho, ler o mar, surfar sem professor'],['2','Evoluir e aprender manobras','Cavada, batida, rasgada'],['3','Curtir mais, sem pressão','Pegar mais ondas e deslizar'],['4','Ondas maiores e mais fortes','Encarar dias mais pesados'],['5','Surf clássico','Andar sobre a prancha, noseride'],['6','Remar mais, com conforto','Pegar mais ondas cansando menos e poupando o corpo']]},
  {s:3,id:'estilo',t:'Que tipo de surf você mais curte?',h:'Se está começando, escolha a primeira.',o:[['0','Pegar onda e deslizar','Ficar de pé e curtir a onda'],['1','Fazer curvas na parede','Descer e subir a onda'],['2','Manobras fortes','Batidas e rasgadas'],['5','Estilo clássico','Andar sobre a prancha, como no longboard']]},
- {s:3,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 10 (essencial). Priorizar é escolher: nenhuma prancha é ótima em tudo. Quem quer o máximo de remada e estabilidade abre mão de manobra e de controle em onda forte; quem quer muita manobra abre mão de remada. Use 8 ou mais em até 3 itens.'},
+ {s:3,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 5 (essencial). Priorizar é escolher: nenhuma prancha é ótima em tudo. Quem quer o máximo de remada e estabilidade abre mão de manobra e de controle em onda forte; quem quer muita manobra abre mão de remada. Use 4 ou 5 em até 2 itens.'},
  {s:4,id:'tam',t:'Qual o tamanho de onda mais comum onde você surfa?',h:'Se for usar em piscina, pense no tamanho da sessão que você reserva.',o:O(['Até meio metro','Meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','Acima de 2,5 m'])},
  {s:4,id:'forca',t:'Como são essas ondas?',o:O([['Cheias e fracas','Demoram a quebrar, pouca força'],['Mistas','Depende do dia'],['Cavadas e rápidas','Quebram de uma vez, com força']])},
  {s:4,id:'grande',cond:()=>!!A.imp&&A.imp.ctl>=8&&A.tam!==undefined&&+A.tam<=2,t:'Você quer mesmo uma prancha para onda grande?',h:'Você deu nota alta para onda forte, mas o seu mar costuma ter até 1,5 m. Isso muda bastante o resultado.',o:[['0','Não, é para o meu mar de sempre','A nota de onda forte passa a contar como média'],['1','Sim, quero que ela aguente dias grandes','Pranchas que seguram em onda forte ganham pontos']]},
  {s:4,id:'foam',cond:()=>nivelResp()<=1,t:'Você quer começar numa prancha de espuma (soft)?',h:'Soft é macia e aguenta batida. É a mais indicada para quem está começando.',o:O([['Não, quero prancha de fibra'],['Sim, quero soft']])}
 ];
-const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5};
+// notas guardadas de 2 a 10 (a pessoa vê de 1 a 5); estabilidade segue a remada (pergunta única)
+const IMPDEF={rem:6,est:6,vel:6,man:6,ctl:6};
 // nível a partir das respostas cruas, com a mesma conversão de conv() (passar de joelhinho ou pato conta a habilidade 0)
 function nivelResp(){const o={};['nivel','tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});if(o.nivel>=2){o.auto=2;o.pass=2}if(o.nivel>=3)o.tempo=o.nivel>=4?5:4;o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
 const A={};let step=0;
 (function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
 document.getElementById('bbVar').textContent=CB.length;
 })();
-const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:['2'],imp:{rem:7,est:6,vel:7,man:6,ctl:3},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
+const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:['2'],imp:{rem:6,est:6,vel:8,man:6,ctl:4},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
 
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
 function renderQs(){
@@ -1180,15 +1181,15 @@ function renderQs(){
   Q.filter(q=>q.s===step&&(!q.cond||q.cond())).forEach(q=>{
     const fs=document.createElement('fieldset');fs.className='q';
     if(q.type==='rate'){
-      if(!A[q.id])A[q.id]=Object.assign({},IMPDEF);
-      fs.innerHTML=`<legend>${q.t}</legend><p class="help">${q.h}</p><div class="rates">${IMP.map(f=>`<div class="rt"><svg class="rti" viewBox="0 0 24 24" aria-hidden="true"><path d="${f[3]}"/></svg><div class="rtx"><label for="r_${f[0]}"><b>${f[1]}</b><span>${f[2]}</span></label><div class="rtr"><input type="range" id="r_${f[0]}" min="1" max="10" step="1" value="${A[q.id][f[0]]}"><output class="mono" id="ro_${f[0]}">${A[q.id][f[0]]}</output></div></div></div>`).join('')}</div><p class="imp-warn" id="impWarn" role="status" aria-live="polite"></p>`;
-      /* prioridades: a partir da 4ª nota 8 ou mais, o item que passou do limite fica vermelho e o aviso explica a troca */
+      if(!A[q.id])A[q.id]=Object.assign({},IMPDEF);A[q.id].est=A[q.id].rem;
+      fs.innerHTML=`<legend>${q.t}</legend><p class="help">${q.h}</p><div class="rates">${IMP.map(f=>`<div class="rt"><svg class="rti" viewBox="0 0 24 24" aria-hidden="true"><path d="${f[3]}"/></svg><div class="rtx"><label for="r_${f[0]}"><b>${f[1]}</b><span>${f[2]}</span></label><div class="rtr"><input type="range" id="r_${f[0]}" min="1" max="5" step="1" value="${Math.round(A[q.id][f[0]]/2)}"><output class="mono" id="ro_${f[0]}">${Math.round(A[q.id][f[0]]/2)}</output></div></div></div>`).join('')}</div><p class="imp-warn" id="impWarn" role="status" aria-live="polite"></p>`;
+      /* prioridades: a partir da 3ª nota 4 ou 5, o item que passou do limite fica vermelho e o aviso explica a troca */
       const hiOrd=IMP.map(f=>f[0]).filter(k=>A[q.id][k]>=8);
       const mark=k=>{const v=A[q.id][k],i=hiOrd.indexOf(k);if(v>=8&&i<0)hiOrd.push(k);if(v<8&&i>=0)hiOrd.splice(i,1);
-        IMP.forEach(f=>fs.querySelector('#r_'+f[0]).closest('.rt').classList.toggle('over',hiOrd.indexOf(f[0])>=3))};
-      const warn=()=>{const el=fs.querySelector('#impWarn'),ex=hiOrd.slice(3).map(k=>IMP.find(f=>f[0]===k)[1].toLowerCase());
-        el.textContent=ex.length?`Priorizar é escolher. Você já deu 8 ou mais para 3 itens, e ${ex.join(' e ')} passou do limite. Uma prancha com o máximo de remada e estabilidade abre mão de manobra e de controle em onda forte; uma muito manobrável rema menos. Baixe o que importa menos para você.`:''};
-      IMP.forEach(f=>{const el=fs.querySelector('#r_'+f[0]);el.addEventListener('input',()=>{A[q.id][f[0]]=+el.value;fs.querySelector('#ro_'+f[0]).textContent=el.value;mark(f[0])});el.addEventListener('change',warn)});IMP.forEach(f=>mark(f[0]));warn();
+        IMP.forEach(f=>fs.querySelector('#r_'+f[0]).closest('.rt').classList.toggle('over',hiOrd.indexOf(f[0])>=2))};
+      const warn=()=>{const el=fs.querySelector('#impWarn'),ex=hiOrd.slice(2).map(k=>IMP.find(f=>f[0]===k)[1].toLowerCase());
+        el.textContent=ex.length?`Priorizar é escolher. Você já deu 4 ou 5 para 2 itens, e ${ex.join(' e ')} passou do limite. Uma prancha com o máximo de remada e estabilidade abre mão de manobra e de controle em onda forte; uma muito manobrável rema menos. Baixe o que importa menos para você.`:''};
+      IMP.forEach(f=>{const el=fs.querySelector('#r_'+f[0]);el.addEventListener('input',()=>{A[q.id][f[0]]=2*el.value;if(f[0]==='rem')A[q.id].est=2*el.value;fs.querySelector('#ro_'+f[0]).textContent=el.value;mark(f[0])});el.addEventListener('change',warn)});IMP.forEach(f=>mark(f[0]));warn();
     }else if(q.type==='board'){
       const v=A[q.id]=A[q.id]||{};
       fs.innerHTML=`<legend>${q.t} <span class="opt-tag">Opcional</span></legend><p class="help">${q.h}</p>
@@ -1324,6 +1325,8 @@ function runAnalysis(){
 /* ---------- gráficos ---------- */
 let GID=0;
 const BXP=['Rema fácil','Estável','Rápida','Vira fácil','Onda grande'];
+// prioridade pedida: remada e estabilidade são uma pergunta só; nota de 1 a 5
+const PRL=i=>i===0?'Remada e estabilidade':BXP[i],N5=v=>Math.round(v/2);
 const PN=Object.fromEntries(KEYS.map(k=>[k,ARCH[k].n]));
 const PL={soft:'Prancha de espuma para aprender',long:'Prancha longa',longp:'Prancha longa esportiva',minimal:'Prancha média-grande',mid:'Prancha média e arredondada',evo:'Pranchinha com mais volume',fish:'Prancha curta e larga',grov:'Pranchinha larga para onda pequena',twin:'Prancha curta de duas quilhas',softp:'Prancha de espuma curta',short:'Pranchinha',step:'Pranchinha para onda grande',gun:'Prancha para onda gigante'};
 const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Entre a prancha de escolinha e a pranchinha. Rema fácil, entra cedo na onda e desliza bem.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha padrão de quem já surfa: curta, triquilha e rápida de responder. A litragem certa para você é o que faz ela remar bem.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
@@ -1484,7 +1487,7 @@ function feelB(r){
 function whyB(r){
   const a=r.a,S=r.S,out=[];const t=S.indexOf(Math.max(...S));
   out.push(`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`);
-  if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,2);out.push(`Suas prioridades foram ${BXP[top[0][1]].toLowerCase()} (${top[0][0]}/10) e ${BXP[top[1][1]].toLowerCase()} (${top[1][0]}/10): ela tem ${dec1(r.ix[top[0][1]])} e ${dec1(r.ix[top[1][1]])} nesses pontos.`)}
+  if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).filter(z=>z[1]!==1).sort((x,y)=>y[0]-x[0]).slice(0,2);out.push(`Suas prioridades foram ${PRL(top[0][1]).toLowerCase()} (${N5(top[0][0])} de 5) e ${PRL(top[1][1]).toLowerCase()} (${N5(top[1][0])} de 5): ela tem ${dec1(r.ix[top[0][1]])} e ${dec1(r.ix[top[1][1]])} de 10 nesses pontos.`)}
   if(a.onde===1)out.push('Na piscina a remada pesa menos, então a litragem ficou um pouco mais justa e a prancha favorece velocidade e manobra.');
   if(a.pass===2)out.push('Você passa a arrebentação de joelhinho ou pato: o comprimento e a espessura ainda deixam afundar a prancha para passar.');
   if(a.pass===3)out.push('Você já dá pato: a espessura foi mantida num nível que ainda afunda.');
@@ -1562,13 +1565,13 @@ function briefing(r,c){
   const S=[
    ...(c?[['Contato',[['Nome',c.nome],['E-mail',c.email],['WhatsApp',c.tel]]]]:[]),
    ['Surfista',[['Peso',qLab('peso')],['Altura',qLab('altura')],['Idade',qLab('idade')],['Condicionamento',qLab('fis')],['Dor ou lesão',qLab('dor')],['Nível declarado',qLab('nivel')],['Nível calculado',LV[r.lvl].n+' ('+(r.lvl+1)+' de 5)'],...(+A.nivel>=3?[]:[['Tempo de surf',qLab('tempo')]]),['Frequência',qLab('freq')],...(+A.nivel>=2?[]:[['Como pega onda',qLab('auto')],['Arrebentação',qLab('pass')]]),['Já faz na onda',qLab('skills')]]],
-   ['Objetivos',[['Objetivos',qLab('objv')],['Tipo de surf',qLab('estilo')],['Prioridades (1 a 10)',`remada ${im.rem}, estabilidade ${im.est}, velocidade ${im.vel}, manobra ${im.man}, onda forte ${im.ctl}`]]],
+   ['Objetivos',[['Objetivos',qLab('objv')],['Tipo de surf',qLab('estilo')],['Prioridades (1 a 5)',`remada e estabilidade ${N5(im.rem)}, velocidade ${N5(im.vel)}, manobra ${N5(im.man)}, onda forte ${N5(im.ctl)}`]]],
    ['Mar',[['Para que vai usar',qLab('uso')],['Tamanho de onda',qLab('tam')],['Força das ondas',qLab('forca')]]],
    ['Prancha',[['Prancha atual',qLab('atual_mod')+(r.atual?`${r.a.atual_L?' · '+ftin(r.a.atual_L):''}${r.a.atual_V?' · '+dec1(r.a.atual_V)+' L':''}`:'')],['Quer mudar de estilo',qLab('muda')+(A.muda==='1'?' · '+qLab('estilo_novo'):'')],['O que incomoda',qLab('incomoda')],['Por que quer uma nova',qLab('motivo')],['Espuma (soft)',qLab('foam')]]],
    ['Recomendação SURF DNA',[['Prancha ideal',`${PN[r.k]}${r.dc.variant?' '+r.dc.variant:''} · ${r.fins[0].fit}%`],['Medidas',`${ftin(d.L)} x ${frac(d.W)} x ${frac(d.T)}`],['Litros',`${dec1(d.V)} L (faixa ${lo} a ${hi} L)`],['Rabeta',dc.tail],['Bico',dc.nose],['Borda',dc.rail],['Curva (rocker)','bico '+frac(dc.rocker[0])+' · rabeta '+frac(dc.rocker[1])],['Fundo',dc.bottom],['Quilhas',FINSET[dc.setup]+' · '+dc.finSize+' · '+dc.boxes],['Material',dc.constr[0]],['Laminação',dc.lam],['Acabamento',dc.finish],['Finalistas',fin.join(' | ')]]]
   ];
   // WhatsApp: *texto* fica em negrito
-  const BOLD=['Nível calculado','Dor ou lesão','Objetivos','Prioridades (1 a 10)','Tamanho de onda','Prancha atual','Prancha ideal','Medidas','Litros'];
+  const BOLD=['Nível calculado','Dor ou lesão','Objetivos','Prioridades (1 a 5)','Tamanho de onda','Prancha atual','Prancha ideal','Medidas','Litros'];
   const txt=['*SEU DNA · SURF DNA*',`Olá, ${COACH.nome.split(' ')[0]}! Fiz o SURF DNA e o resultado foi *${PN[r.k].toLowerCase()}, ${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}, ${dec1(d.V)} L*. Queria a sua avaliação e a sua indicação de *shaper e modelo* para encomendar essa prancha. Segue o meu DNA:`,''].concat(...S.map(([t,rows])=>[`*${t.toUpperCase()}*`,...rows.map(([k,v])=>BOLD.includes(k)?`${k}: *${v}*`:`${k}: ${v}`),''])).join('\n');
   return {S,txt};
 }
@@ -1610,8 +1613,8 @@ function whyV(r,max){
   const card=(ic,title,body,viz)=>`<div class="wcard">${ICO[ic]}<div class="wct"><b>${title}</b><p>${body}</p>${viz||''}</div></div>`;
   out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,estiloViz(a)));
   if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){
-    const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
-    out.push(card('target','Suas prioridades','O que você pediu (barra clara) contra o que ela entrega (barra escura), de 0 a 10.',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${BXP[i]}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${v} · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
+    const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).filter(z=>z[1]!==1).sort((x,y)=>y[0]-x[0]).slice(0,3);
+    out.push(card('target','Suas prioridades','O que você pediu (barra clara, nota de 1 a 5) contra o que ela entrega (barra escura, de 0 a 10).',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${PRL(i)}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${N5(v)}/5 · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
   }
   const vmin=Math.max(10,Math.round(r.peso*0.3)),vmax=Math.round(r.peso*1.2),pos=clamp((r.d.V-vmin)/(vmax-vmin)*100,2,98);
   out.push(card('drop',`${dec1(r.d.V)} litros`,`Pelo seu peso (${r.peso} kg) e pelo seu nível (${LV[r.lvl].n.toLowerCase()})${ARCH[r.k].fixedVol?'.':a.flut===0?', com um pouco mais de flutuação porque você prefere que ela boie mais.':a.flut===2?', com um pouco menos porque você prefere que ela fique solta.':'.'}`,`<div class="vbar"><div class="vt"><i style="left:${pos}%"></i></div><div class="vl"><span>Solta · ${vmin} L</span><span>Boia mais · ${vmax} L</span></div></div>`));
@@ -1639,8 +1642,8 @@ function whyR(r){
   out.push(card('drop',`${dec1(r.d.V)} litros`,`Pelo seu peso (${r.peso} kg) e pelo seu nível (${LV[r.lvl].n.toLowerCase()})${flut}. Litro é o quanto a prancha boia: mais litros rema e fica de pé com mais facilidade; menos litros vira mais fácil, mas exige mais de você.`,floatBar(r,{intro:false,atual:false}),true));
   out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,estiloViz(a)));
   if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){
-    const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
-    out.push(card('target','Suas prioridades','O que você pediu (barra clara) contra o que ela entrega (barra escura), de 0 a 10.',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${BXP[i]}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${v} · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
+    const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).filter(z=>z[1]!==1).sort((x,y)=>y[0]-x[0]).slice(0,3);
+    out.push(card('target','Suas prioridades','O que você pediu (barra clara, nota de 1 a 5) contra o que ela entrega (barra escura, de 0 a 10).',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${PRL(i)}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${N5(v)}/5 · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
   }
   const inc={0:'Você perde ondas com a atual: esta rema mais fácil.',1:'Você cai muito com a atual: esta é mais estável em pé.',3:'A atual é travada: esta vira com mais facilidade.'}[a.incomoda];
   const extra=[inc&&['swap','Contra a sua atual',inc],a.forca===0&&['bolt','Ondas fracas','A prancha é mais reta embaixo para deslizar e ganhar velocidade.'],a.forca===2&&['bolt','Ondas fortes','Bico mais curvado e rabeta mais fina, para segurar na parede.'],a.pass===2&&['dive','Passa de joelhinho ou pato','O comprimento e a espessura ainda deixam afundar a prancha para passar a arrebentação.'],a.pass===3&&['dive','Já dá pato','A espessura foi mantida num nível que ainda afunda.']].filter(Boolean);
@@ -1923,7 +1926,7 @@ function pdfPage(n,title,body,cls){
 }
 function pdfHTML(r){
   const k=r.k,d=r.d,dc=r.dc,w=r.fins[0],s2=r.fins[1],gap=w.fit-s2.fit,lo=Math.round(d.V-r.rng),hi=Math.round(d.V+r.rng),at=r.atual,a=r.a;
-  const R=rankAll(r),im=a.imp||IMPDEF,P=['rem','est','vel','man','ctl'],top3=P.map((x,i)=>[im[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
+  const R=rankAll(r),im=a.imp||IMPDEF,P=['rem','est','vel','man','ctl'],top3=P.map((x,i)=>[im[x],i]).filter(z=>z[1]!==1).sort((x,y)=>y[0]-x[0]).slice(0,3);
   const fins=r.fins.map((x,i)=>Object.assign(boardFor(r,i?'fin'+i:'ideal'),{fit:x.fit}));
   const soft=/^soft/.test(ARCH[k].constr),sugM=!soft&&!!dc.constr[2];
   const sty=['pegar onda e deslizar','curvas na parede','manobras fortes','tubo','aéreos','estilo clássico'][r.S.indexOf(Math.max(...r.S))];
@@ -1935,14 +1938,14 @@ function pdfHTML(r){
   <div><span>Quilhas</span><b>${FINSET[dc.setup]}</b><small>tamanho ${dc.finSize} · ${esc(dc.template.split(':')[0])}</small></div><div><span>Fundo e curva</span><b>${esc(dc.bottom.split(':')[0])}</b><small>bico ${frac(dc.rocker[0])} · rabeta ${frac(dc.rocker[1])}</small></div><div class="${sugM?'sug':''}"><span>Material</span><b>${esc(dc.constr[0])}</b><small>${sugM?'sugestão: veja a alternativa na página 3':'definido pelo tipo de prancha'}</small></div></div>
   <p class="pnote">Quadro tracejado é sugestão: a alternativa está explicada na página 3. Nenhuma marca paga para aparecer.</p>
   <div><h3 style="margin-bottom:7px">Por que ela combina com você</h3><div class="why-cards">${whyV(r,6)}</div></div>
-  <div class="pcols"><div class="pbox s"><h3>Seu perfil</h3><dl class="pdl"><dt>Corpo</dt><dd>${r.peso} kg · ${r.alt} cm</dd><dt>Nível</dt><dd>${LV[r.lvl].n}</dd><dt>Seu surf</dt><dd>${sty}</dd><dt>Seu mar</dt><dd>${a.onde===1?'piscina de onda':a.onde===2?'mar e piscina':'mar'}, ${WAVE[a.tam===undefined?1:a.tam]}, ondas ${FORCA[a.forca===undefined?1:a.forca]}</dd><dt>Prioridades</dt><dd>${top3.map(([v,i])=>BXP[i].toLowerCase()+' '+v).join(' · ')}</dd></dl></div>
+  <div class="pcols"><div class="pbox s"><h3>Seu perfil</h3><dl class="pdl"><dt>Corpo</dt><dd>${r.peso} kg · ${r.alt} cm</dd><dt>Nível</dt><dd>${LV[r.lvl].n}</dd><dt>Seu surf</dt><dd>${sty}</dd><dt>Seu mar</dt><dd>${a.onde===1?'piscina de onda':a.onde===2?'mar e piscina':'mar'}, ${WAVE[a.tam===undefined?1:a.tam]}, ondas ${FORCA[a.forca===undefined?1:a.forca]}</dd><dt>Prioridades</dt><dd>${top3.map(([v,i])=>PRL(i).toLowerCase()+' '+N5(v)).join(' · ')} (de 1 a 5)</dd></dl></div>
   <div class="pbox s"><h3>${at?'Da sua atual para a nova':'Sem prancha atual'}</h3>${at?feelB(r).slice(0,3).map(x=>`<div class="ptr"><b>${x[0]}</b><span>${esc(x[1])} → <em>${esc(x[2])}</em></span><span></span><span>${esc(x[3])}</span></div>`).join(''):`<p class="muted" style="font-size:10.5px">Você não informou uma prancha atual. A página 2 compara a recomendada com o 2º e o 3º lugar.</p>`}</div></div>`;
   /* página 2: seu surf × a prancha */
   const ser=[{c:'#6CCFF6',v:P.map(x=>im[x]),fill:'#6CCFF6',fo:.25,w:1.6,dash:'4 3'},{c:'#0E4D64',v:r.ix,fill:'#0E4D64',fo:.14,w:2.4}];if(at)ser.push({c:'#B4472F',v:at.ix,w:1.8,dash:'6 4'});
   const vals=f=>R.map(x=>f(x.d));
   const p2=`<div><p class="pey">Página 2</p><h2>Seu surf × a prancha</h2><p class="muted" style="margin-top:3px">O que você pediu, o que ela entrega e o que a sua atual entrega, nos 5 índices que decidem como uma prancha se comporta.</p></div>
   <div class="pcols" style="align-items:center"><div style="display:flex;flex-direction:column;align-items:center;gap:6px">${radarPDF(ser)}<div class="legend" style="font-size:10px"><span><i style="background:#6CCFF6"></i>Você pediu</span><span><i style="background:#0E4D64"></i>Nova prancha</span>${at?'<span><i style="background:#B4472F"></i>Sua atual</span>':''}</div></div>
-  <table class="ptab"><thead><tr><th>Índice</th><th>Pediu</th><th>Nova</th>${at?'<th>Atual</th>':''}<th></th></tr></thead><tbody>${BXP.map((l,i)=>`<tr><td>${l}</td><td class="n">${im[P[i]]}</td><td class="n">${dec1(r.ix[i])}</td>${at?`<td class="n">${dec1(at.ix[i])}</td>`:''}<td><div class="pbar3"><i style="width:${im[P[i]]*10}%;background:#6CCFF6"></i><i style="width:${r.ix[i]*10}%;background:#0E4D64"></i>${at?`<i style="width:${at.ix[i]*10}%;background:#B4472F"></i>`:''}</div></td></tr>`).join('')}</tbody></table></div>
+  <table class="ptab"><thead><tr><th>Índice</th><th>Pediu</th><th>Nova</th>${at?'<th>Atual</th>':''}<th></th></tr></thead><tbody>${BXP.map((l,i)=>`<tr><td>${l}</td><td class="n">${N5(im[P[i]])}/5</td><td class="n">${dec1(r.ix[i])}</td>${at?`<td class="n">${dec1(at.ix[i])}</td>`:''}<td><div class="pbar3"><i style="width:${im[P[i]]*10}%;background:#6CCFF6"></i><i style="width:${r.ix[i]*10}%;background:#0E4D64"></i>${at?`<i style="width:${at.ix[i]*10}%;background:#B4472F"></i>`:''}</div></td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>As medidas na régua do catálogo</h3><p class="pnote">Cada risco é um dos 13 tipos, dimensionado para o seu peso e altura. A faixa azul-clara é a zona ideal para você (as faixas aceitáveis da loja); a marca escura é a recomendada${at?' e a vermelha, a sua atual':''}.</p>
   <div class="prul">${rulerRow('Comprimento','',vals(x=>x.L),d.L,faixaL(r),at?at.d.L:null,ftin)}${rulerRow('Largura','',vals(x=>x.W),d.W,[d.W-.25,d.W+.25],at?at.d.W:null,frac)}${rulerRow('Espessura','',vals(x=>x.T),d.T,[d.T-.125,d.T+.125],at?at.d.T:null,frac)}${rulerRow('Litros',' L',vals(x=>x.V),d.V,[lo,hi],at?at.d.V:null,v=>String(Math.round(v)))}</div></div>
 `;

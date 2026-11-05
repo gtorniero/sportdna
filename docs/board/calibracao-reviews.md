@@ -216,3 +216,10 @@ Problemas encontrados e corrigidos:
 - **"O que você já faz na onda?"** logo abaixo do nível e pré-preenchida com o que é comum em cada nível (até a pessoa mexer).
 
 Resultado: 0 perfis em 11 das 13 regras. Sobram 76 (0,6%) avançados de 55 kg com pranchinha um pouco acima de 0,45 L/kg (efeito da regra de transição do PR #83 a partir de uma evolution atual) e 695 com 3º lugar distante mas obrigatório (gun, step-up ou soft). Casos de referência: 23 de 23 (dois ajustados para a regra do PR #83). 3.000 perfis: travas sem piora. Exemplo pronto igual.
+
+## Rodada 17: prioridades de 1 a 5, remada e estabilidade juntas (5/nov/2026)
+- "O que é mais importante numa prancha para você?" passa a ter 4 notas de 1 a 5: **remada e estabilidade** (uma só: as duas vêm de volume, largura e espessura e quase nunca brigam entre si), velocidade, manobra e controle em onda forte. Padrão: 3.
+- Internamente as notas continuam de 2 a 10 (nota × 2) e estabilidade copia a remada, para as regras do motor (nota alta = 4 ou 5) não mudarem.
+- Aviso de priorizar: a partir da 3ª nota 4 ou 5, o item fica vermelho ("use 4 ou 5 em até 2 itens").
+- Relatório, PDF e briefing mostram as notas de 1 a 5 e "remada e estabilidade" uma vez só.
+- Exemplo pronto com notas 3, 4, 3, 2 (antes 7, 6, 7, 6, 3 de 10): resultado igual (Evolution 96%, 34,2 L, pódio evolution, fish, groveler).
