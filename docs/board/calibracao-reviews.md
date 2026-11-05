@@ -198,3 +198,8 @@ Motivo: surfista profissional de 70 kg recebia 21,4 L (0,305 L/kg), abaixo até 
 - **Piso de 0,34 L/kg** para todo tipo de medida calculada (`PESOS.vol.pisoLkg`).
 - Resultado, 70 kg: profissional 25,3 L (0,361 L/kg, a mediana do CT), 5'11"; avançado muito em forma 26,0 L; avançado médio 27,9 L; intermediário avançado 28,1 L.
 - Exemplo pronto igual. Casos de referência: 21 de 23, as mesmas 2 falhas que já existem no `main` depois do PR #83 (intermediário agora tem evolution como padrão; ver nota no PR).
+
+## Rodada 15: primeira prancha sem pergunta de prancha atual (5/nov/2026)
+- Quem responde "É a minha primeira" em "Por que você quer uma nova prancha?" não vê mais "Qual é a sua prancha atual?" nem as perguntas que dependem dela (medidas, mudar de estilo, para qual estilo, o que incomoda). Resposta antiga dessas perguntas não entra no cálculo nem no briefing.
+- Rodapé do app só com a assinatura: "SURF DNA · by SPORT DNA · Um projeto Beyond the Work".
+- Caso de referência "avançado com pranchinha, quer mudar para fish" passa a dizer o motivo (substituir a atual).
