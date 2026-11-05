@@ -18,3 +18,13 @@ test('free report uses server authorization, exact product and bearer; no paymen
  assert.equal((await worker.fetch(request({...body,product:'surf-report'}),env)).status,409);
  assert.equal((await worker.fetch(request({...body,token:'2'.repeat(64)}),env)).status,409);
 });
+
+test('Surf-only promotion rejects other products and grants the complete Surf report',async()=>{
+ const db=database();for(const sql of readFileSync(new URL('../migrations/0001.sql',import.meta.url),'utf8').split(';').filter(x=>x.trim()))await db.prepare(sql).run();await seed(db);
+ await db.prepare('UPDATE promo_codes SET sites=?').bind('["sportdna:surf-report"]').run();
+ const env={DB:db,PROMOS:db,SITE_ORIGIN:origin,PAYMENTS_MODE:'live',RATE_SECRET:'fixture'};
+ const redeem=product=>worker.fetch(new Request('https://api.example/promos/redeem',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({id:crypto.randomUUID(),token,product,email:'guest@example.com',codigo:'BTW-TEST-FRIENDS'})}),env);
+ for(const product of ['racket-report','run-report','racket-comparator'])assert.equal((await redeem(product)).status,400);
+ assert.equal((await db.prepare('SELECT COUNT(*) n FROM promo_grants').first()).n,0);
+ const r=await redeem('surf-report');assert.equal(r.status,200);const result=await r.json();assert.equal(result.amount,0);assert.equal(result.provider,'promo');assert.equal(result.state,'paid');
+});
