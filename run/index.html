@@ -9,6 +9,7 @@
 .court .mono,.court .acc{color:#FFA366!important}
 /* 2.5.8: área de toque mínima de 24 px sem mudar o desenho */
 .blink{position:relative}.blink::after{content:"";position:absolute;left:0;right:0;top:50%;height:24px;transform:translateY(-50%)}
+a.brand{text-decoration:none;color:inherit}a.brand:focus-visible{outline:3px solid var(--pri);outline-offset:4px;border-radius:10px}
 </style><!-- SEO_START -->
 <title>Teste: Qual tênis de corrida escolher? RUN DNA</title>
 <meta name="description" content="Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Prévia grátis e relatório completo por R$ 9,99.">
@@ -379,10 +380,10 @@ details.rk:not([open]){gap:0}
 <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
 <div class="wrap">
   <header class="top">
-    <div class="brand">
+    <a class="brand" id="brandHome" href="./" aria-label="RUN DNA: voltar para o início do teste">
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg>
       <span>RUN DNA<small>by SPORT DNA</small></span>
-    </div>
+    </a>
     <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Pagamento único · cartão ou Pix</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
@@ -1035,6 +1036,7 @@ function renderQs(){
 }
 function missing(){return Q.filter(q=>q.s===step).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.opt?false:!v||(Array.isArray(v)&&!v.length)})}
 function show(id){['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
+document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 $('#start').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
 $('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,EXAMPLE);runAnalysis()});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}step--;renderQs()});
