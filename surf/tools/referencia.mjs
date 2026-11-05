@@ -56,8 +56,9 @@ const res=await p.evaluate(C=>C.map(([nome,resp,esp])=>{const {A,compute,LV,PN}=
   esp.deve.forEach(k=>{if(!top.includes(k))falhas.push(`falta ${PN[k]}`)});
   esp.nao.forEach(k=>{if(top.includes(k))falhas.push(`não devia ter ${PN[k]}`)});
   if(esp.primeiro&&!esp.primeiro.includes(top[0]))falhas.push(`1º devia ser ${esp.primeiro.map(k=>PN[k]).join(' ou ')}`);
-  return {nome,nivel:LV[r.lvl].n,podio:r.fins.map(f=>`${PN[f.k]} ${f.fit}%`),L:Math.round(r.d.V*10)/10,falhas}}),C.map(([n,r,e])=>[n,{...corpo,...r},e]));
+  const dc=r.dc,ft=x=>`${Math.floor(x/12)}'${Math.round(x%12)}"`;
+  return {nome,nivel:LV[r.lvl].n,podio:r.fins.map(f=>`${PN[f.k]} ${f.fit}%`),L:Math.round(r.d.V*10)/10,falhas,ficha:`${ft(r.d.L)} · rabeta ${dc.tail} · ${dc.setup} ${dc.finSize} · fundo ${dc.bottom.split(':')[0]} · rocker bico ${dc.rocker[0].toFixed(2)} · ${dc.template.split(':')[0]} · borda ${dc.rail}`}}),C.map(([n,r,e])=>[n,{...corpo,...r},e]));
 await b.close();
-let ok=0;for(const x of res){if(!x.falhas.length)ok++;console.log(`${x.falhas.length?'FALHA':'ok   '} ${x.nome} [${x.nivel}] → ${x.podio.join(' · ')} · ${x.L} L${x.falhas.length?'\n      '+x.falhas.join('; '):''}`)}
+let ok=0;for(const x of res){if(!x.falhas.length)ok++;console.log(`${x.falhas.length?'FALHA':'ok   '} ${x.nome} [${x.nivel}] → ${x.podio.join(' · ')} · ${x.L} L\n      ficha: ${x.ficha}${x.falhas.length?'\n      '+x.falhas.join('; '):''}`)}
 console.log(`\n${ok} de ${res.length} casos de referência batem com o esperado.`);
 process.exitCode=ok===res.length?0:1;
