@@ -49,3 +49,7 @@ Além dos testes acima: revisar cobrança real e taxas na conta, recuperação/e
 
 Documentação: [Stripe Checkout](https://docs.stripe.com/payments/accept-a-payment?payment-ui=checkout&ui=stripe-hosted), [fulfillment e webhooks](https://docs.stripe.com/checkout/fulfillment), [Pix Orders](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/payment-integration/websites/pix), [teste Pix](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/integration-test/pix), [assinatura de notificações](https://www.mercadopago.com.br/developers/pt/docs/checkout-api-orders/optional-notifications).
 
+
+## Escopo por produto
+
+Permissões legadas `quiddo`, `retrozap` e `sportdna` continuam válidas. Uma campanha exclusiva usa `sportdna:surf-report`, `sportdna:racket-report`, `sportdna:run-report` ou `sportdna:racket-comparator`. A autorização é validada no servidor antes de conceder acesso. O gestor do Quiddo oferece a seleção do produto. São liberações gratuitas; desativar impede novos resgates, sem revogar acessos anteriores.
