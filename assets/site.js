@@ -47,7 +47,7 @@ const AREAS = {
     h1:`A prancha certa para o seu surf e para o seu <span class="hl">mar</span>.`,
     lede:"Tipo, medidas, litragem, rabeta, fundo, rocker e quilhas, calculados pelo seu peso, pelo que você já faz na onda e pelo seu pico. Recomendamos tudo, menos marca e shaper.",
     quiz:"surf/",
-    facts:[["13","tipos de prancha"],["18 a 23","perguntas"],["R$ 19,99","relatório"]],
+    facts:[["13","tipos de prancha"],["17 a 24","perguntas"],["R$ 19,99","relatório"]],
     vin:["Peso, altura e idade","Tempo e frequência de surf","O que já faz na onda","Estilo","Flutuação preferida","Tamanho e força da onda","Papel no quiver","Prancha atual"],
     vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
     inside:[["Tipo de prancha com DNA Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
