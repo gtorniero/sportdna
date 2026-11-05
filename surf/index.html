@@ -861,8 +861,11 @@ function engine(a,long,over){
   // prancha para dias pequenos ou para somar ao quiver que já tem pranchinha), queira soft ou o mar peça gun.
   // Se a litragem não cabe numa pranchinha de até 6'4", o padrão vira a evolution (pranchinha com volume).
   {const objv=g('objv',-1),est=g('estilo',0),outroEstilo=mu===1||(ak0&&mu===0&&ak0!=='short')||(mot===2&&ak0==='short')||objv===5||est===5||quiver===1||g('foam',-1)===1;
-   if(lvl>=2&&!outroEstilo&&!(tam===4&&lvl>=3&&g('onde',0)!==1)){const pk=vols.short<=pranchinhaVmax()*1.1?'short':'evo',ok=quiver===2?[pk,'step','gun']:[pk];
-     if(!must.includes(pk))must.push(pk);notFirst.push(...KEYS.filter(k=>!ok.includes(k)&&!notFirst.includes(k)))}}
+   // quem precisa de remada (dor, nota 8+ em remada ou cansa rápido) no intermediário e intermediário avançado, ou com dor no avançado:
+   // a evolution disputa o 1º lugar de igual para igual com a pranchinha e entra no pódio
+   const dor=(g('dor',[])).some(x=>x<4),remada=dor||(a.imp&&a.imp.rem>=8)||g('fis',1)===0,evoOk=(lvl<=3&&remada)||(lvl===4&&dor);
+   if(lvl>=2&&!outroEstilo&&!(tam===4&&lvl>=3&&g('onde',0)!==1)){const pk=vols.short<=pranchinhaVmax()*1.1?'short':'evo',ok=(quiver===2?[pk,'step','gun']:[pk]).concat(evoOk?['evo']:[]);
+     if(!must.includes(pk))must.push(pk);if(evoOk&&!must.includes('evo'))must.push('evo');notFirst.push(...KEYS.filter(k=>!ok.includes(k)&&!notFirst.includes(k)))}}
   ajustaPodio(sc,must,notFirst,Rg.podio.margem);
   const rank=KEYS.slice().sort((p,q)=>sc[q]-sc[p]);
   const top=rank.slice(0,3),gap=sc[top[0]]-sc[top[1]];
@@ -931,7 +934,8 @@ function decide(R,k){
   out.finSize=setup==='single'?(peso>85?'10"':'9"')+' central':['XS','S','M','L','XL'][wc+wv];
   out.template=S[1]+S[0]>.55?'Carve: mais rake e base larga, curvas longas':S[2]+S[3]+S[4]>.5?'Pivot: mais reta, gira no pocket':'Neutra: meio-termo';
   out.boxes='FCS II ou Futures';
-  if(setup==='tri'&&(S[3]>.2||S[1]>.3))out.boxes+=', 5 caixas (permite quadriquilha)';
+  if(setup==='tri'&&k==='short'&&(S[3]>.2||fo===2))out.boxes+=', 5 caixas: triquilha no dia a dia e quadriquilha para tubo e onda cavada (mais velocidade e mais pegada na parede)';
+  else if(setup==='tri'&&(S[3]>.2||S[1]>.3))out.boxes+=', 5 caixas (permite quadriquilha)';
   const c=constrOf(k,a);out.constr=c;
   const heavyFoot=peso>85||S[2]+S[4]>.4;
   out.lam=/soft/i.test(c[0])?'Não se aplica (soft)':k==='long'?'6+6 oz no deck, 6 oz no fundo':heavyFoot?'4+4 oz no deck com patch de 4 oz sob os pés, 4 oz no fundo':'4+4 oz no deck, 4 oz no fundo';
@@ -1087,7 +1091,7 @@ const A={};let step=0;
 (function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nQ').textContent=nQ;document.getElementById('bbQ').textContent=nQ;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
 document.getElementById('bbVar').textContent=CB.length;
 })();
-const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:'2',imp:{rem:8,est:6,vel:7,man:6,ctl:3},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
+const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:'2',imp:{rem:7,est:6,vel:7,man:6,ctl:3},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
 
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
 function renderQs(){
