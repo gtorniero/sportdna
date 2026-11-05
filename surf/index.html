@@ -29,6 +29,7 @@
 .a11y-skip:focus{top:calc(env(safe-area-inset-top,0px) + 10px)}
 .a11y-main{display:contents}
 .tbl:focus-visible,[data-stage]:focus-visible,canvas:focus-visible{outline:3px solid var(--pri);outline-offset:3px}
+a.brand{text-decoration:none;color:inherit}a.brand:focus-visible{outline:3px solid var(--pri);outline-offset:4px;border-radius:10px}
 </style><!-- SEO_START -->
 <title>Teste: Qual prancha de surf escolher? SURF DNA</title>
 <meta name="description" content="Faça o teste SURF DNA para explorar tipos, medidas e volume de prancha. Prévia grátis e relatório completo por R$ 19,99.">
@@ -568,10 +569,10 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
 <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
 <div class="wrap">
   <header class="top">
-    <div class="brand">
+    <a class="brand" id="brandHome" href="./" aria-label="SURF DNA: voltar para o início do teste">
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) rotate(32) translate(-32 -32)"><path d="M32 5 C38.5 6.5 41 18 41 30 C41 41 40 50 38 58 L32 52 L26 58 C24 50 23 41 23 30 C23 18 25.5 6.5 32 5Z" fill="#6CCFF6"/><line x1="32" y1="11" x2="32" y2="48" stroke="#0E4D64" stroke-width="1.5" stroke-linecap="round"/></g></svg>
       <span>SURF DNA<small>by SPORT DNA</small></span>
-    </div>
+    </a>
     <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Pagamento único · cartão ou Pix</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
@@ -1233,6 +1234,7 @@ function renderQs(){
 }
 function missing(){return Q.filter(q=>q.s===step&&!q.opt&&q.type!=='rate'&&(!q.cond||q.cond())).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.multi?!(v&&v.length):!v})}
 function show(id){['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
+document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 /* outro teste do zero: limpa as respostas e o relatório guardado nesta sessão do navegador */
 function newTest(){Object.keys(A).forEach(k=>delete A[k]);RES=null;tier=0;step=0;
   try{Object.keys(sessionStorage).filter(x=>/^sportdna-.*-checkout-v1:surf$/.test(x)).forEach(x=>sessionStorage.removeItem(x))}catch(e){}
