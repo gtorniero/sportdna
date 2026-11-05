@@ -559,7 +559,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Análise técnica independente</p>
         <h1>A prancha certa para o seu surf e para o seu mar.</h1>
-        <p class="lead">Responda de <span id="nQ">16 a 24</span> perguntas sobre seu corpo, seu surf, sua prancha, seus objetivos e seu mar. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
+        <p class="lead">Responda de <span id="nQ">16 a 25</span> perguntas sobre seu corpo, seu surf, sua prancha, seus objetivos e seu mar. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha prancha</button>
           <button class="btn btn-ghost" id="calcGo" type="button">Calcular minha litragem</button>
@@ -581,7 +581,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
         <li class="bb"><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos (ao acaso: 23%)</span></li>
         <li class="bb"><b>3.000</b><span>perfis simulados nos testes de segurança</span></li>
       </ul>
-      <p class="bbm">Suas <span id="bbQ">16 a 24</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida da prancha. Ajustamos os pesos com 422 casos reais de lojas, revistas, marcas, atletas e fóruns, e testamos 3.000 perfis simulados: nenhum dos <span id="bbIni">1.348</span> perfis de primeiras ondas recebeu pranchinha, step-up ou gun entre os 3 primeiros. As travas de segurança de nov/2026 ainda vão ser medidas de novo contra os casos reais. Recomendamos tudo, menos marca e shaper.</p>
+      <p class="bbm">Suas <span id="bbQ">16 a 25</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida da prancha. Ajustamos os pesos com 422 casos reais de lojas, revistas, marcas, atletas e fóruns, e testamos 3.000 perfis simulados: nenhum dos <span id="bbIni">1.348</span> perfis de primeiras ondas recebeu pranchinha, step-up ou gun entre os 3 primeiros. As travas de segurança de nov/2026 ainda vão ser medidas de novo contra os casos reais. Recomendamos tudo, menos marca e shaper.</p>
     </section>
     <div class="diffs">
       <div class="diff"><h3>Litragem pelo seu nível</h3><p>Calculada pelo que você já faz na onda, não só pelo tempo de surf. Você vê a faixa antes de pagar.</p></div>
@@ -1062,6 +1062,7 @@ const Q=[
  {s:3,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 10 (essencial). Priorizar é escolher: nenhuma prancha é ótima em tudo. Quem quer o máximo de remada e estabilidade abre mão de manobra e de controle em onda forte; quem quer muita manobra abre mão de remada. Use 8 ou mais em até 3 itens.'},
  {s:4,id:'tam',t:'Qual o tamanho de onda mais comum onde você surfa?',h:'Se for usar em piscina, pense no tamanho da sessão que você reserva.',o:O(['Até meio metro','Meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','Acima de 2,5 m'])},
  {s:4,id:'forca',t:'Como são essas ondas?',o:O([['Cheias e fracas','Demoram a quebrar, pouca força'],['Mistas','Depende do dia'],['Cavadas e rápidas','Quebram de uma vez, com força']])},
+ {s:4,id:'grande',cond:()=>!!A.imp&&A.imp.ctl>=8&&A.tam!==undefined&&+A.tam<=2,t:'Você quer mesmo uma prancha para onda grande?',h:'Você deu nota alta para onda forte, mas o seu mar costuma ter até 1,5 m. Isso muda bastante o resultado.',o:[['0','Não, é para o meu mar de sempre','A nota de onda forte passa a contar como média'],['1','Sim, quero que ela aguente dias grandes','Pranchas que seguram em onda forte ganham pontos']]},
  {s:4,id:'foam',cond:()=>nivelResp()<=1,t:'Você quer começar numa prancha de espuma (soft)?',h:'Soft é macia e aguenta batida. É a mais indicada para quem está começando.',o:O([['Não, quero prancha de fibra'],['Sim, quero soft']])}
 ];
 const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5};
@@ -1117,7 +1118,7 @@ function renderQs(){
         b.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(o[0]):A[q.id]===o[0]);
         b.addEventListener('click',()=>{
           if(q.multi){let v=A[q.id]||[];v=v.includes(o[0])?v.filter(x=>x!==o[0]):q.none===o[0]?[o[0]]:[...v.filter(x=>x!==q.none),o[0]].slice(-q.multi);A[q.id]=v}
-          else{const was=A[q.id];A[q.id]=o[0];if(['atual_mod','muda','nivel'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);const nb=document.getElementById(`o_${q.id}_${o[0]}`);if(nb)nb.focus({preventScroll:true});return}}
+          else{const was=A[q.id];A[q.id]=o[0];if(['atual_mod','muda','nivel','tam'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);const nb=document.getElementById(`o_${q.id}_${o[0]}`);if(nb)nb.focus({preventScroll:true});return}}
           g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(qo[i][0]):A[q.id]===qo[i][0]));
           $('#err').hidden=true;mcount();
         });
@@ -1187,6 +1188,8 @@ $('#next').addEventListener('click',()=>{
 function conv(){const o={};Q.forEach(q=>{if(q.cond&&!q.cond())return;if(q.type==='board'){const v=A[q.id]||{};const L=(+v.ft||0)*12+(+v.in||0);if(L>=48)o.atual_L=L;if(+v.l>=15)o.atual_V=+v.l;return}const v=A[q.id];if(v===undefined||v==='')return;o[q.id]=q.type==='rate'?Object.assign({},IMPDEF,v):q.multi?v.map(Number):Number(v)});
   if(o.nivel>=2){if(o.auto===undefined)o.auto=2;if(o.pass===undefined)o.pass=2}
   if(o.nivel>=3&&o.tempo===undefined)o.tempo=o.nivel>=4?5:4;
+  // onda forte com nota alta num mar de até 1,5 m: só vale se a pessoa confirmar
+  if(o.grande===0&&o.imp)o.imp.ctl=Math.min(o.imp.ctl,6);
   {const qv=Q.find(x=>x.id==='objv');if(o.objv!==undefined&&!qv.ofilter([String(o.objv)]))delete o.objv}
   if(o.pass>=2){o.skills=o.skills||[];if(!o.skills.includes(0))o.skills.push(0)}
   if(o.objv!==undefined)o.obj=[0,1,1,2,3,4][o.objv];
