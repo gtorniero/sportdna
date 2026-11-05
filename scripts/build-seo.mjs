@@ -33,6 +33,8 @@ function metadata(title,description,url,image,type='website',article=null){
 }
 const descriptions={inicio:'Testes e guias para escolher prancha de surf, raquete de tênis e tênis de corrida conforme seu corpo, nível e estilo. Relatórios de R$ 9,99 a R$ 19,99.',board:'Escolha sua prancha de surf com o SURF DNA. Explore tipos, volume e medidas, faça o teste grátis e conheça o relatório de R$ 19,99.',racket:'Encontre uma raquete de tênis para seu nível e estilo com o RACKET DNA. Teste grátis e relatório completo por R$ 19,99.',tenis:'Escolha tênis de corrida para seu perfil com o RUN DNA. Compare características, faça o teste e conheça o relatório de R$ 9,99.',blog:'Guias para escolher pranchas de surf, raquetes de tênis e tênis de corrida. Entenda volume, medidas, materiais e os compromissos de cada escolha.',privacidade:'Como o SPORT DNA processa respostas no navegador, pagamentos, envio de relatórios e links de afiliados.'};
 const titles={inicio:'SPORT DNA | Escolha seu equipamento esportivo',board:'Qual prancha de surf escolher? SURF DNA',racket:'Qual raquete de tênis escolher? RACKET DNA',tenis:'Qual tênis de corrida escolher? RUN DNA',blog:'Blog SPORT DNA | Guias de equipamentos esportivos',privacidade:'Privacidade e afiliados | SPORT DNA'};
+// ícone da aba: símbolo SPORT DNA no site, ícone de cada app nos testes
+const icons=(prefix,name)=>`<link rel="icon" type="image/svg+xml" href="${prefix}assets/brand/svg/${name}.svg">\n<link rel="icon" type="image/png" sizes="512x512" href="${prefix}assets/brand/png/${name}.png">\n<link rel="apple-touch-icon" href="${prefix}assets/brand/png/${name}.png">`;
 const sitemap=[];
 for(const view of ['inicio','board','racket','tenis','blog','privacidade',...A.map(a=>'a-'+a.id)]){
  const route=routes[view], prefix='../'.repeat(route.split('/').filter(Boolean).length)||'./';
@@ -43,7 +45,7 @@ for(const view of ['inicio','board','racket','tenis','blog','privacidade',...A.m
  else if(view==='blog'){body=api.library();api.fillLib();body=body.replace('<div id="libBody"></div>',`<div id="libBody">${element('libBody').innerHTML}</div>`)}
  else body=view==='privacidade'?api.privacy():api.home();
  let html=read('templates/site.html').replace(/<title>.*?<\/title>/s,'').replace(/<meta name="description"[^>]*>/,'');
- html=html.replace('</head>',metadata(a?(a.seoTitle||`${a.title} | SPORT DNA`):titles[view],a?a.dek:descriptions[view],absolute(route),`assets/reports/${a?({prancha:'board',raquete:'racket',tenis:'tenis'}[a.area]):(['board','racket','tenis'].includes(view)?view:'board')}.webp`,a?'article':'website',a)+'\n</head>');
+ html=html.replace('</head>',metadata(a?(a.seoTitle||`${a.title} | SPORT DNA`):titles[view],a?a.dek:descriptions[view],absolute(route),`assets/reports/${a?({prancha:'board',raquete:'racket',tenis:'tenis'}[a.area]):(['board','racket','tenis'].includes(view)?view:'board')}.webp`,a?'article':'website',a)+'\n'+icons(prefix,'sportdna-simbolo-cor')+'\n</head>');
  html=html.replace('<main id="app" tabindex="-1"></main>',`<main id="app" tabindex="-1">${body}</main>`);
  for(const id of ['brandHome','footBrand','nav','footLinks'])html=html.replace(new RegExp(`(<(?:a|div|nav)[^>]*id="${id}"[^>]*>)(<\\/(?:a|div|nav)>)`),(_,open,close)=>open+element(id).innerHTML+close);
  html=links(html,prefix);
@@ -61,12 +63,12 @@ for(const app of ['board','racket','tenis','litragem']){
  html=html.replace(/<head>([\s\S]*?)<\/head>/,(_,head)=>'<head>'+head.replace(/<title>.*?<\/title>/s,'').replace(/<meta name="description"[^>]*>/,'')+'</head>');
  const title=app==='litragem'?'Calculadora de litragem de prancha de surf | SPORT DNA':'Teste: '+titles[app];
  const description=app==='litragem'?'Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.':({board:'Faça o teste SURF DNA para explorar tipos, medidas e volume de prancha. Prévia grátis e relatório completo por R$ 19,99.',racket:'Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por R$ 19,99.',tenis:'Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Prévia grátis e relatório completo por R$ 9,99.'}[app]);
- html=html.replace('</head>',`<!-- SEO_START -->\n${metadata(title,description,absolute(route),`assets/reports/${app==='litragem'?'board':app}.webp`)}\n<!-- SEO_END -->\n</head>`);
+ html=html.replace('</head>',`<!-- SEO_START -->\n${metadata(title,description,absolute(route),`assets/reports/${app==='litragem'?'board':app}.webp`)}\n${icons(app==='litragem'?'../../':'../',{board:'surfdna-icone',racket:'racketdna-icone',tenis:'rundna-icone',litragem:'surfdna-icone'}[app])}\n<!-- SEO_END -->\n</head>`);
  // Replace legacy home hash links with canonical paths without changing app actions.
  html=html.replace(/href="\.\.\/\.\.\/(?:index\.html)?#(a-[^"\s]+|blog|board|racket|tenis|privacidade)"/g,(_,key)=>`href="../../${routes[key]||''}"`);
  write(route+'index.html',html);sitemap.push(absolute(route));
 }
 write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map(url=>`  <url><loc>${esc(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${absolute('sitemap.xml')}\n`);
-write('404.html',`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Página não encontrada | SPORT DNA</title></head><body><main><h1>Página não encontrada</h1><p>Confira o endereço ou <a href="${site.pathname}">volte ao início</a>.</p></main></body></html>`);
+write('404.html',`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><link rel="icon" type="image/svg+xml" href="${site.pathname}assets/brand/svg/sportdna-simbolo-cor.svg"><title>Página não encontrada | SPORT DNA</title></head><body><main><h1>Página não encontrada</h1><p>Confira o endereço ou <a href="${site.pathname}">volte ao início</a>.</p></main></body></html>`);
 console.log(`Generated ${sitemap.length} canonical pages, sitemap, robots and 404. Site: ${site.href}`);
