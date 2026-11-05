@@ -558,7 +558,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Análise técnica independente</p>
         <h1>A prancha certa para o seu surf e para o seu mar.</h1>
-        <p class="lead">Responda de <span id="nQ">17 a 24</span> perguntas sobre seu corpo, seu surf, sua prancha, seus objetivos e seu mar. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
+        <p class="lead">Responda de <span id="nQ">16 a 24</span> perguntas sobre seu corpo, seu surf, sua prancha, seus objetivos e seu mar. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha prancha</button>
           <button class="btn btn-ghost" id="calcGo" type="button">Calcular minha litragem</button>
@@ -580,7 +580,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
         <li class="bb"><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos (ao acaso: 23%)</span></li>
         <li class="bb"><b>3.000</b><span>perfis simulados nos testes de segurança</span></li>
       </ul>
-      <p class="bbm">Suas <span id="bbQ">17 a 24</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida da prancha. Ajustamos os pesos com 422 casos reais de lojas, revistas, marcas, atletas e fóruns, e testamos 3.000 perfis simulados: nenhum dos <span id="bbIni">1.348</span> perfis de primeiras ondas recebeu pranchinha, step-up ou gun entre os 3 primeiros. As travas de segurança de nov/2026 ainda vão ser medidas de novo contra os casos reais. Recomendamos tudo, menos marca e shaper.</p>
+      <p class="bbm">Suas <span id="bbQ">16 a 24</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida da prancha. Ajustamos os pesos com 422 casos reais de lojas, revistas, marcas, atletas e fóruns, e testamos 3.000 perfis simulados: nenhum dos <span id="bbIni">1.348</span> perfis de primeiras ondas recebeu pranchinha, step-up ou gun entre os 3 primeiros. As travas de segurança de nov/2026 ainda vão ser medidas de novo contra os casos reais. Recomendamos tudo, menos marca e shaper.</p>
     </section>
     <div class="diffs">
       <div class="diff"><h3>Litragem pelo seu nível</h3><p>Calculada pelo que você já faz na onda, não só pelo tempo de surf. Você vê a faixa antes de pagar.</p></div>
@@ -1047,12 +1047,12 @@ const Q=[
  {s:2,id:'estilo_novo',cond:()=>A.muda==='1',t:'Para qual estilo você quer mudar?',o:O([['Fish retrô','Biquilha, larga, rabeta em V'],['Longboard','Acima de 9\''],['Funboard ou mini-malibu','7\' a 8\', larga e grossa'],['Mid-length','6\'8" a 7\'8"'],['Evolution','Pranchinha com volume'],['Pranchinha','Performance, fina'],['Pranchinha para onda pequena','Curta e larga (groveler)'],['Biquilha moderna','Twin de performance']])},
  {s:2,id:'incomoda',cond:()=>!!A.atual_mod&&A.atual_mod!=='0',t:'O que mais incomoda na prancha atual?',o:O(['Rema pouco, perco ondas','Instável, caio muito','Grande demais, difícil de levar para o fundo','Travada nas manobras','Enterra o bico','Não pega velocidade','Nada, está tudo bem'])},
  {s:1,id:'nivel',ladder:true,t:'Qual é o seu nível no surf hoje?',h:'Seja sincero: é o ponto de partida do cálculo. As próximas perguntas confirmam.',o:[['0','Iniciante','Espuma e primeiras ondas','Ainda não surfo ou estou nas primeiras ondas, na espuma.'],['1','Intermediário','Pego onda e ando na parede','Pego onda sozinho, fico de pé e ando na parede.'],['2','Intermediário avançado','Cavada e batida','Faço curvas e as primeiras manobras, como cavada e batida.'],['3','Avançado','Muitas manobras','Já faço muitas manobras, mas ainda não um leque completo nem aéreo com consistência.'],['4','Profissional','Tubo, aéreo, onda grande','Entro no tubo, faço aéreo e pego onda de todo tamanho com segurança e consistência.']]},
- {s:1,id:'tempo',t:'Há quanto tempo você surfa?',o:O(['Ainda não surfo','Menos de 6 meses','6 meses a 1 ano','1 a 3 anos','3 a 6 anos','Mais de 6 anos'])},
+ {s:1,id:'tempo',cond:()=>!(+A.nivel>=3),t:'Há quanto tempo você surfa?',o:O(['Ainda não surfo','Menos de 6 meses','6 meses a 1 ano','1 a 3 anos','3 a 6 anos','Mais de 6 anos'])},
  {s:1,id:'freq',t:'Com que frequência?',o:O(['1 a 2 vezes por mês','3 a 6 vezes por mês','2 a 3 vezes por semana','4 ou mais por semana'])},
  {s:1,id:'auto',cond:()=>!(+A.nivel>=2),t:'Como você pega onda hoje?',o:O([['Com empurrão do professor','Ainda preciso de ajuda'],['Sozinho, na espuma','Já remo e entro na onda quebrada'],['Sozinho, na onda verde','Entro na parede antes de quebrar']])},
  {s:1,id:'pass',cond:()=>!(+A.nivel>=2),t:'Como você passa a arrebentação?',h:'Define o quanto de espuma e comprimento você consegue levar para o fundo.',o:[['0','Ainda não passo','Fico na espuma, perto da areia'],['1','Vou por cima ou empurro','Seguro a prancha e passo por cima das ondas'],['2','Joelhinho ou pato','Afundo o bico ou a prancha inteira e passo por baixo da onda'],['4','Uso o canal','Remo por onde não quebra; com prancha grande, viro de cabeça para baixo (tartaruga)']]},
  {s:1,id:'skills',multi:9,opt:true,t:'O que você já faz na onda?',h:'Marque o que faz com frequência. Se está começando, deixe em branco.',o:O(SK).slice(1)},
- {s:3,id:'objv',t:'Qual é o seu principal objetivo no surf agora?',o:O([['Aprender a ficar de pé','Começar do jeito certo'],['Ganhar autonomia','Pegar ondas sozinho, ler o mar, surfar sem professor'],['Evoluir e aprender manobras','Cavada, batida, rasgada'],['Curtir mais, sem pressão','Pegar mais ondas e deslizar'],['Ondas maiores e mais fortes','Encarar dias mais pesados'],['Surf clássico','Andar sobre a prancha, noseride']])},
+ {s:3,id:'objv',ofilter:o=>!((o[0]==='0'&&+A.nivel>=1)||(o[0]==='1'&&+A.nivel>=3)),t:'Qual é o seu principal objetivo no surf agora?',o:[['0','Aprender a ficar de pé','Começar do jeito certo'],['1','Ganhar autonomia','Pegar ondas sozinho, ler o mar, surfar sem professor'],['2','Evoluir e aprender manobras','Cavada, batida, rasgada'],['3','Curtir mais, sem pressão','Pegar mais ondas e deslizar'],['4','Ondas maiores e mais fortes','Encarar dias mais pesados'],['5','Surf clássico','Andar sobre a prancha, noseride']]},
  {s:3,id:'estilo',t:'Que tipo de surf você mais curte?',h:'Se está começando, escolha a primeira.',o:[['0','Pegar onda e deslizar','Ficar de pé e curtir a onda'],['1','Fazer curvas na parede','Descer e subir a onda'],['2','Manobras fortes','Batidas e rasgadas'],['5','Estilo clássico','Andar sobre a prancha, como no longboard']]},
  {s:3,id:'imp',type:'rate',t:'O que é mais importante numa prancha para você?',h:'Dê uma nota de 1 (pouco importante) a 10 (essencial). Priorizar é escolher: nenhuma prancha é ótima em tudo. Quem quer o máximo de remada e estabilidade abre mão de manobra e de controle em onda forte; quem quer muita manobra abre mão de remada. Use 8 ou mais em até 3 itens.'},
  {s:4,id:'tam',t:'Qual o tamanho de onda mais comum onde você surfa?',h:'Se for usar em piscina, pense no tamanho da sessão que você reserva.',o:O(['Até meio metro','Meio metro a 1 m','1 a 1,5 m','1,5 a 2,5 m','Acima de 2,5 m'])},
@@ -1061,7 +1061,7 @@ const Q=[
 ];
 const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5};
 // nível a partir das respostas cruas, com a mesma conversão de conv() (passar de joelhinho ou pato conta a habilidade 0)
-function nivelResp(){const o={};['nivel','tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});if(o.nivel>=2){o.auto=2;o.pass=2}o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
+function nivelResp(){const o={};['nivel','tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});if(o.nivel>=2){o.auto=2;o.pass=2}if(o.nivel>=3)o.tempo=o.nivel>=4?5:4;o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
 const A={};let step=0;
 (function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nQ').textContent=nQ;document.getElementById('bbQ').textContent=nQ;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
 document.getElementById('bbVar').textContent=CB.length;
@@ -1103,8 +1103,9 @@ function renderQs(){
       fs.innerHTML=q.multi?`<legend>${q.t} <span class="multi-tag">Marque quantas quiser</span></legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts multi" role="group"></div><p class="mcount" id="mc_${q.id}" aria-live="polite"></p>`:`<legend>${q.t}</legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts single"></div>`;
       const mcount=()=>{const el=fs.querySelector('.mcount');if(!el)return;const n=(A[q.id]||[]).length;el.textContent=n?`${n} ${n===1?'item marcado':'itens marcados'}`:'Nenhum marcado ainda';};
       const g=fs.querySelector('.opts');
+      const qo=q.ofilter?q.o.filter(q.ofilter):q.o;if(q.ofilter&&A[q.id]!==undefined&&!qo.some(o=>o[0]===A[q.id]))delete A[q.id];
       if(q.ladder){g.classList.add('ladder');const si=q.o.findIndex(o=>o[0]===A[q.id]);g.style.setProperty('--sel',si);const cap=document.createElement('p');cap.className='lvcap';cap.setAttribute('aria-live','polite');cap.textContent=si>=0?q.o[si][3]:'Escolha o degrau que descreve o seu surf hoje.';g.after(cap)}
-      q.o.forEach((o,oi)=>{
+      qo.forEach((o,oi)=>{
         const b=document.createElement('button');b.type='button';b.className='opt';b.id=`o_${q.id}_${o[0]}`;
         b.innerHTML=q.ladder?`<i class="lvbars" aria-hidden="true">${[0,1,2,3,4].map(j=>`<u class="${j<=oi?'on':''}"></u>`).join('')}</i><span>${esc(o[1])}</span><small>${esc(o[2])}</small>`:`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
         if(q.ladder){const si=q.o.findIndex(x=>x[0]===A[q.id]);if(si>=0&&oi<si)b.classList.add('reach')}
@@ -1112,7 +1113,7 @@ function renderQs(){
         b.addEventListener('click',()=>{
           if(q.multi){let v=A[q.id]||[];v=v.includes(o[0])?v.filter(x=>x!==o[0]):q.none===o[0]?[o[0]]:[...v.filter(x=>x!==q.none),o[0]].slice(-q.multi);A[q.id]=v}
           else{const was=A[q.id];A[q.id]=o[0];if(['atual_mod','muda','nivel'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);const nb=document.getElementById(`o_${q.id}_${o[0]}`);if(nb)nb.focus({preventScroll:true});return}}
-          g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(q.o[i][0]):A[q.id]===q.o[i][0]));
+          g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(qo[i][0]):A[q.id]===qo[i][0]));
           $('#err').hidden=true;mcount();
         });
         g.appendChild(b);
@@ -1175,6 +1176,8 @@ $('#next').addEventListener('click',()=>{
 });
 function conv(){const o={};Q.forEach(q=>{if(q.cond&&!q.cond())return;if(q.type==='board'){const v=A[q.id]||{};const L=(+v.ft||0)*12+(+v.in||0);if(L>=48)o.atual_L=L;if(+v.l>=15)o.atual_V=+v.l;return}const v=A[q.id];if(v===undefined||v==='')return;o[q.id]=q.type==='rate'?Object.assign({},IMPDEF,v):q.multi?v.map(Number):Number(v)});
   if(o.nivel>=2){if(o.auto===undefined)o.auto=2;if(o.pass===undefined)o.pass=2}
+  if(o.nivel>=3&&o.tempo===undefined)o.tempo=o.nivel>=4?5:4;
+  {const qv=Q.find(x=>x.id==='objv');if(o.objv!==undefined&&!qv.ofilter([String(o.objv)]))delete o.objv}
   if(o.pass>=2){o.skills=o.skills||[];if(!o.skills.includes(0))o.skills.push(0)}
   if(o.objv!==undefined)o.obj=[0,1,1,2,3,4][o.objv];
   if(o.uso!==undefined){o.quiver=[0,1,2,3,0,0][o.uso];o.onde=[0,0,0,0,1,2][o.uso]}
@@ -1577,7 +1580,7 @@ function trocaSec(r){
 function top10(r){
   const fk=r.fins.map(f=>f.k),L=r.fins.map((f,i)=>({k:f.k,fit:f.fit,d:i?dims(f.k,f.vol,r.peso,r.alt):r.d}));
   rankAll(r).filter(x=>!fk.includes(x.k)).forEach(x=>L.push(x));
-  let prev=100;return L.slice(0,10).map((x,i)=>{const fit=Math.min(x.fit,prev);prev=fit;return {k:x.k,d:x.d,fit,pos:i+1}});
+  let prev=100;return L.slice(0,3).map((x,i)=>{const fit=Math.min(x.fit,prev);prev=fit;return {k:x.k,d:x.d,fit,pos:i+1}});
 }
 function altSec(r){
   const cards=r.fins.slice(1,3).map((x,i)=>{const B=boardFor(r,'fin'+(i+1));
@@ -1585,7 +1588,7 @@ function altSec(r){
     <p class="eyebrow">${i+2}º lugar</p><div class="whead"><div><h3>${PN[x.k]}</h3><span class="tech">${PL[x.k]}</span></div><p class="altsc"><b>${x.fit}%</b><span>DNA Score</span></p></div>
     <p class="mono altm">${ftin(B.d.L)} × ${frac(B.d.W)} × ${frac(B.d.T)} · ${dec1(B.d.V)} L</p><p class="muted altd">${esc(PD[x.k])}</p></article>`}).join('');
   return `<section class="panel rsec" id="r-alt" aria-labelledby="h-alt"><h2 id="h-alt">Alternativas</h2><div class="altg">${cards}</div>
-    <details class="mini"><summary>Ver o ranking dos 10 primeiros, entre ${KEYS.length} tipos</summary><ol class="rank">${top10(r).map(x=>`<li${x.pos===1?' class="on"':''}><span class="rkp">${x.pos}º</span><span class="rkn">${PN[x.k]}</span><span class="mono rks">${x.fit}%</span><span class="mono rkl">${dec1(x.d.V)} L</span></li>`).join('')}</ol><p class="note">DNA Score e litros de cada tipo, calculados para o seu peso e altura.</p></details>
+    <details class="mini"><summary>Ver os 3 primeiros, entre ${KEYS.length} tipos</summary><ol class="rank">${top10(r).map(x=>`<li${x.pos===1?' class="on"':''}><span class="rkp">${x.pos}º</span><span class="rkn">${PN[x.k]}</span><span class="mono rks">${x.fit}%</span><span class="mono rkl">${dec1(x.d.V)} L</span></li>`).join('')}</ol><p class="note">DNA Score e litros de cada tipo, calculados para o seu peso e altura.</p></details>
     <p class="note">Ilustrações dos tipos geradas por IA, sem marca.</p></section>`;
 }
 /* 6 · comparador recolhido: abre no que ainda não apareceu (2º × 3º), ou ideal × o estilo que a pessoa pediu */
@@ -1879,13 +1882,13 @@ function pdfHTML(r){
   <p class="pnote">O resultado foi conferido com 422 casos reais de lojas, revistas, marcas, atletas e fóruns.</p></div>
 `;
   /* página 4: ranking e método */
-  const atPos=at?R.findIndex(x=>x.k===at.k):-1,rows=R.slice(0,10);if(atPos>=10)rows.push(R[atPos]);
+  const atPos=at?R.findIndex(x=>x.k===at.k):-1,rows=R.slice(0,3);if(atPos>=3)rows.push(R[atPos]);
   let behind='';
   if(at){if(at.k===k)behind=`Sua atual é do mesmo tipo da recomendada. O que muda são as medidas: ${dec1(at.d.V)} L hoje contra ${dec1(d.V)} L ideais.`;
     else{const x=R[atPos],def=BXP.map((l,i)=>[l,(r.ix[i]-at.ix[i])*(im[P[i]]/5)]).sort((p,q)=>q[1]-p[1]).slice(0,2).filter(y=>y[1]>0.4);
       behind=`O tipo da sua atual (${PN[at.k]}) ficou em ${atPos+1}º lugar, com ${x.fit}%, ${w.fit-x.fit} pontos atrás. ${def.length?'Onde ela mais perde, pesando pelas suas prioridades: '+def.map(y=>y[0].toLowerCase()).join(' e ')+'. ':''}${at.d.V<lo?`Com ${Math.round(at.d.V)} L, ela boia menos que a sua faixa (${lo} a ${hi} L).`:at.d.V>hi?`Com ${Math.round(at.d.V)} L, ela boia mais que a sua faixa (${lo} a ${hi} L).`:'A flutuação dela está dentro da sua faixa.'}`}}
   const p5=`<div><p class="pey">Página 4</p><h2>Ranking e método</h2></div>
-  <div class="pcols" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)"><div class="pbox"><h3>Os 10 primeiros entre 13 tipos</h3><table class="ptab"><thead><tr><th>#</th><th>Tipo</th><th>DNA</th><th>Litros</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.k===k?'hl':at&&x.k===at.k?'at':''}"><td class="n">${x.pos}º</td><td>${PN[x.k]}${at&&x.k===at.k?' · sua atual':''}</td><td class="n"><span style="display:inline-block;width:${x.fit*.5}px;height:5px;border-radius:9px;background:${x.k===k?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td><td class="n">${Math.round(x.d.V)} L</td></tr>`).join('')}</tbody></table></div>
+  <div class="pcols" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)"><div class="pbox"><h3>Os 3 primeiros entre 13 tipos</h3><table class="ptab"><thead><tr><th>#</th><th>Tipo</th><th>DNA</th><th>Litros</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.k===k?'hl':at&&x.k===at.k?'at':''}"><td class="n">${x.pos}º</td><td>${PN[x.k]}${at&&x.k===at.k?' · sua atual':''}</td><td class="n"><span style="display:inline-block;width:${x.fit*.5}px;height:5px;border-radius:9px;background:${x.k===k?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td><td class="n">${Math.round(x.d.V)} L</td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>Mapa do catálogo</h3>${catMap(r,R)}<p class="pnote">Os 13 tipos dimensionados para você; o número é a posição no ranking. Ponto escuro: a recomendada; azul-claro: o pódio${at?'; anel vermelho tracejado: a medida da sua atual':''}.</p></div></div>
   ${at?`<div class="pbox s"><h3>Por que a sua atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
   <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns</span></div><div><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos</span></div><div><b>3.000</b><span>perfis simulados nos testes de segurança</span></div><div><b>${REVIEWS.length}</b><span>reviews com fonte, de lojas, revistas e surfistas</span></div></div>
