@@ -714,7 +714,7 @@ const PESOS={
   // ranking → porcentagens · regra
   fit:{base:96,passo:3,porPonto:1.2,min:70,max:97},conf:{curto:79,longo:86,porGap:0.8,min:70,max:96},
   // litragem: fator por nível em LV (guild factor) e por tipo em MODF · shaper + calibração
-  vol:{voltar:1.03,idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],dor:[2.5,1.5,1,1.5],
+  vol:{pro:[0.36,0.33],voltar:1.03,idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],dor:[2.5,1.5,1,1.5],
     // condicionamento multiplica a litragem, como nas calculadoras de volume (Firewire, guild factor) · shaper
     fis:[1.08,1.03,1,0.97],
     incomodaRema:1.5,incomodaGrande:-1.5,pesoModelo:[0.15,0.5,1,1,1],ondaStep:[0,0,0,1,2],ondaOutros:[0.5,0,0,0,0],epoxi:-1,
@@ -750,7 +750,9 @@ function litragem(a,H,lvl){
   const g=(k,d)=>a[k]===undefined?d:a[k];
   const peso=g('peso',75),alt=g('altura',175),tam=g('tam',1),flut=g('flut',1);
   const V=PESOS.vol;
-  const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1),GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
+  const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1);let GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
+  // profissional declarado: faixa própria, prancha mais justa e ágil (0,36 a 0,33 L/kg antes dos ajustes de corpo)
+  if(g('nivel',-1)===4)GF=Math.min(GF,V.pro[0]-(V.pro[0]-V.pro[1])*pos);
   const body=(g('motivo',1)===4?V.voltar:1)*V.idade[g('idade',1)]*V.freq[g('freq',1)]*V.fis[g('fis',1)];
   const flutM=V.flut[flut];
   const dor=g('dor',[]);
