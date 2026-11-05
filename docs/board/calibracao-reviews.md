@@ -130,3 +130,8 @@ Sem mudança de placar nem de litragem (`node surf/tools/vies.mjs --dump` idênt
 - Profissional declarado tem faixa própria de fator: 0,36 → 0,33 L/kg (`PESOS.vol.pro`), contra 0,40 → 0,37 do Avançado. Depois entram os mesmos ajustes de corpo, onda e material.
 - Antes, profissional e avançado davam exatamente a mesma litragem. Agora, com 75 kg: avançado com 7 manobras, 29,9 L (0,40 L/kg) e profissional, 26,9 L (0,36); avançado com tubo e aéreo, jovem e condicionamento muito bom, 25,7 L (0,34) e profissional, 22,9 L (0,31). Em onda pequena e fraca (groveler, epóxi): 27,2 L contra 24,2 L.
 - Exemplo pronto e os outros níveis não mudam.
+
+## Rodada 9: ordem do questionário (5/nov/2026)
+- Etapas: Seu corpo → Seu surf → Sua prancha → Seus objetivos → Seu mar (o surf volta para antes da prancha).
+- "Qual é a sua prancha atual?" com as opções da menor para a maior prancha. Os valores das respostas não mudaram (ids explícitos), só a ordem na tela.
+- Sem mudança de resultado: as mesmas 3.000 respostas aleatórias e 126 combinações de prancha atual (14 tipos × mudar de estilo × incômodo) dão pódio, medidas e nível idênticos antes e depois.
