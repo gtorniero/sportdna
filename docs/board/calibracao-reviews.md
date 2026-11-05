@@ -135,3 +135,5 @@ Sem mudança de placar nem de litragem (`node surf/tools/vies.mjs --dump` idênt
 - Etapas: Seu corpo → Seu surf → Sua prancha → Seus objetivos → Seu mar (o surf volta para antes da prancha).
 - "Qual é a sua prancha atual?" com as opções da menor para a maior prancha. Os valores das respostas não mudaram (ids explícitos), só a ordem na tela.
 - Sem mudança de resultado: as mesmas 3.000 respostas aleatórias e 126 combinações de prancha atual (14 tipos × mudar de estilo × incômodo) dão pódio, medidas e nível idênticos antes e depois.
+- Pergunta de nível em escada: os 5 níveis numa linha (no celular, em coluna), com barras que crescem, resumo curto em cada degrau e a descrição completa embaixo do degrau escolhido. Os degraus até o escolhido ficam marcados. Valores das respostas iguais.
+- Acessibilidade: quando uma resposta redesenha a etapa (nível, prancha atual, mudar de estilo), o foco fica na opção escolhida e a etapa não é anunciada de novo (antes o foco pulava para a primeira pergunta).

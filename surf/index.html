@@ -279,6 +279,19 @@ details.fold>summary:focus-visible{outline:3px solid var(--pri);outline-offset:4
 .opts.single .opt::before{border-radius:50%}
 .opts.single .opt[aria-pressed="true"]::before{border-color:var(--pri);box-shadow:inset 0 0 0 4px var(--surface);background:var(--pri)}
 .opts.multi .opt::before{border-radius:5px}
+.opts.ladder{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;position:relative}
+.opts.ladder .opt{padding:12px 10px 12px;align-items:flex-start;gap:4px}
+.opts.ladder .opt::before{display:none}
+.opts.ladder .opt span{font-weight:700;line-height:1.2}
+.opts.ladder .opt small{font-size:12.5px}
+.lvbars{display:flex;align-items:flex-end;gap:3px;height:22px;margin-bottom:4px}
+.lvbars u{display:block;width:6px;border-radius:2px;background:var(--line)}
+.lvbars u:nth-child(1){height:6px}.lvbars u:nth-child(2){height:10px}.lvbars u:nth-child(3){height:14px}.lvbars u:nth-child(4){height:18px}.lvbars u:nth-child(5){height:22px}
+.lvbars u.on{background:var(--muted)}
+.opts.ladder .opt.reach{border-color:var(--pri);background:color-mix(in srgb,var(--soft) 55%,var(--bg))}
+.opts.ladder .opt[aria-pressed="true"] .lvbars u.on,.opts.ladder .opt.reach .lvbars u.on{background:var(--pri)}
+.lvcap{margin:8px 0 0;font-size:14px;color:var(--ink)}
+@media (max-width:760px){.opts.ladder{grid-template-columns:minmax(0,1fr)}.opts.ladder .opt{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:10px;row-gap:0;align-items:center}.opts.ladder .opt .lvbars{grid-row:1/3;margin:0}.opts.ladder .opt span,.opts.ladder .opt small{grid-column:2}}
 .opts.multi .opt[aria-pressed="true"]::before{border-color:var(--pri);background:var(--pri) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
 .mcount{font-size:14px;font-weight:700;color:var(--pri)}
 .lve{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.lve .on{color:var(--ink);font-weight:700}
@@ -1033,7 +1046,7 @@ const Q=[
  {s:2,id:'muda',cond:()=>!!A.atual_mod&&A.atual_mod!=='0',t:'Você quer mudar o estilo de prancha?',h:'Às vezes a ideia é a mesma prancha, só que melhor para você. Às vezes é trocar de vez: uma fish retrô, um long, uma fun.',o:O([['Não, quero o mesmo estilo','Só com as medidas certas para mim'],['Sim, quero outro estilo','Você escolhe qual na próxima pergunta'],['Tanto faz, me indique','O cálculo decide sozinho']])},
  {s:2,id:'estilo_novo',cond:()=>A.muda==='1',t:'Para qual estilo você quer mudar?',o:O([['Fish retrô','Biquilha, larga, rabeta em V'],['Longboard','Acima de 9\''],['Funboard ou mini-malibu','7\' a 8\', larga e grossa'],['Mid-length','6\'8" a 7\'8"'],['Evolution','Pranchinha com volume'],['Pranchinha','Performance, fina'],['Pranchinha para onda pequena','Curta e larga (groveler)'],['Biquilha moderna','Twin de performance']])},
  {s:2,id:'incomoda',cond:()=>!!A.atual_mod&&A.atual_mod!=='0',t:'O que mais incomoda na prancha atual?',o:O(['Rema pouco, perco ondas','Instável, caio muito','Grande demais, difícil de levar para o fundo','Travada nas manobras','Enterra o bico','Não pega velocidade','Nada, está tudo bem'])},
- {s:1,id:'nivel',t:'Qual é o seu nível no surf hoje?',h:'Seja sincero: é o ponto de partida do cálculo. As próximas perguntas confirmam.',o:[['0','Iniciante','Ainda não surfo ou estou nas primeiras ondas, na espuma'],['1','Intermediário','Pego onda sozinho, fico de pé e ando na parede'],['2','Intermediário avançado','Faço curvas e as primeiras manobras, como cavada e batida'],['3','Avançado','Já faço muitas manobras, mas ainda não um leque completo nem aéreo com consistência'],['4','Profissional','Entro no tubo, faço aéreo e pego onda de todo tamanho com segurança e consistência']]},
+ {s:1,id:'nivel',ladder:true,t:'Qual é o seu nível no surf hoje?',h:'Seja sincero: é o ponto de partida do cálculo. As próximas perguntas confirmam.',o:[['0','Iniciante','Espuma e primeiras ondas','Ainda não surfo ou estou nas primeiras ondas, na espuma.'],['1','Intermediário','Pego onda e ando na parede','Pego onda sozinho, fico de pé e ando na parede.'],['2','Intermediário avançado','Cavada e batida','Faço curvas e as primeiras manobras, como cavada e batida.'],['3','Avançado','Muitas manobras','Já faço muitas manobras, mas ainda não um leque completo nem aéreo com consistência.'],['4','Profissional','Tubo, aéreo, onda grande','Entro no tubo, faço aéreo e pego onda de todo tamanho com segurança e consistência.']]},
  {s:1,id:'tempo',t:'Há quanto tempo você surfa?',o:O(['Ainda não surfo','Menos de 6 meses','6 meses a 1 ano','1 a 3 anos','3 a 6 anos','Mais de 6 anos'])},
  {s:1,id:'freq',t:'Com que frequência?',o:O(['1 a 2 vezes por mês','3 a 6 vezes por mês','2 a 3 vezes por semana','4 ou mais por semana'])},
  {s:1,id:'auto',cond:()=>!(+A.nivel>=2),t:'Como você pega onda hoje?',o:O([['Com empurrão do professor','Ainda preciso de ajuda'],['Sozinho, na espuma','Já remo e entro na onda quebrada'],['Sozinho, na onda verde','Entro na parede antes de quebrar']])},
@@ -1090,13 +1103,15 @@ function renderQs(){
       fs.innerHTML=q.multi?`<legend>${q.t} <span class="multi-tag">Marque quantas quiser</span></legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts multi" role="group"></div><p class="mcount" id="mc_${q.id}" aria-live="polite"></p>`:`<legend>${q.t}</legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts single"></div>`;
       const mcount=()=>{const el=fs.querySelector('.mcount');if(!el)return;const n=(A[q.id]||[]).length;el.textContent=n?`${n} ${n===1?'item marcado':'itens marcados'}`:'Nenhum marcado ainda';};
       const g=fs.querySelector('.opts');
-      q.o.forEach(o=>{
+      if(q.ladder){g.classList.add('ladder');const si=q.o.findIndex(o=>o[0]===A[q.id]);g.style.setProperty('--sel',si);const cap=document.createElement('p');cap.className='lvcap';cap.setAttribute('aria-live','polite');cap.textContent=si>=0?q.o[si][3]:'Escolha o degrau que descreve o seu surf hoje.';g.after(cap)}
+      q.o.forEach((o,oi)=>{
         const b=document.createElement('button');b.type='button';b.className='opt';b.id=`o_${q.id}_${o[0]}`;
-        b.innerHTML=`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
+        b.innerHTML=q.ladder?`<i class="lvbars" aria-hidden="true">${[0,1,2,3,4].map(j=>`<u class="${j<=oi?'on':''}"></u>`).join('')}</i><span>${esc(o[1])}</span><small>${esc(o[2])}</small>`:`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
+        if(q.ladder){const si=q.o.findIndex(x=>x[0]===A[q.id]);if(si>=0&&oi<si)b.classList.add('reach')}
         b.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(o[0]):A[q.id]===o[0]);
         b.addEventListener('click',()=>{
           if(q.multi){let v=A[q.id]||[];v=v.includes(o[0])?v.filter(x=>x!==o[0]):q.none===o[0]?[o[0]]:[...v.filter(x=>x!==q.none),o[0]].slice(-q.multi);A[q.id]=v}
-          else{const was=A[q.id];A[q.id]=o[0];if(['atual_mod','muda','nivel'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);return}}
+          else{const was=A[q.id];A[q.id]=o[0];if(['atual_mod','muda','nivel'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);const nb=document.getElementById(`o_${q.id}_${o[0]}`);if(nb)nb.focus({preventScroll:true});return}}
           g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(q.o[i][0]):A[q.id]===q.o[i][0]));
           $('#err').hidden=true;mcount();
         });
@@ -1983,7 +1998,10 @@ window.SportDNAPayments?.register({name:'surf',snapshot:()=>JSON.parse(JSON.stri
   syncH1();
   /* etapas do questionário */
   var steps=d.getElementById('steps');
+  var lastStep=0;
   if(steps)new MutationObserver(function(){var on=steps.querySelector('.on');if(!on)return;var all=steps.children.length,idx=[].indexOf.call(steps.children,on)+1;
+    /* a etapa se redesenha quando uma resposta muda as perguntas seguintes: só anuncia e move o foco se a etapa mudou */
+    if(idx===lastStep&&d.getElementById('qs').contains(d.activeElement))return;lastStep=idx;
     steps.setAttribute('aria-label','Etapa '+idx+' de '+all);
     say('Etapa '+idx+' de '+all+': '+on.textContent.replace(/^\s*\d+\.\s*/,'').trim());
     setTimeout(function(){var q=d.querySelector('#qs fieldset, #qs .q');if(q&&started){focusEl(q)}},100);
