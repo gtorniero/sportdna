@@ -768,7 +768,7 @@ const PESOS={
   // ranking → porcentagens · regra
   fit:{base:96,passo:3,porPonto:1.2,min:70,max:97},conf:{curto:79,longo:86,porGap:0.8,min:70,max:96},
   // litragem: fator por nível em LV (guild factor) e por tipo em MODF · shaper + calibração
-  vol:{pro:[0.36,0.33],voltar:1.03,idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],dor:[2.5,1.5,1,1.5],
+  vol:{pro:[0.39,0.36],pisoLkg:0.34,descMax:0.96,voltar:1.03,idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],dor:[2.5,1.5,1,1.5],
     // condicionamento multiplica a litragem, como nas calculadoras de volume (Firewire, guild factor) · shaper
     fis:[1.08,1.03,1,0.97],
     incomodaRema:1.5,incomodaGrande:-1.5,pesoModelo:[0.15,0.5,1,1,1],ondaStep:[0,0,0,1,2],ondaOutros:[0.5,0,0,0,0],epoxi:-1,
@@ -805,10 +805,12 @@ function litragem(a,H,lvl){
   const peso=g('peso',75),alt=g('altura',175),tam=g('tam',1),flut=g('flut',1);
   const V=PESOS.vol;
   const L0=LV[lvl],pos=clamp((H-L0.min)/(L0.max-L0.min),0,1);let GF=L0.gf[0]-(L0.gf[0]-L0.gf[1])*pos;
-  // profissional declarado: faixa própria, prancha mais justa e ágil (0,36 a 0,33 L/kg antes dos ajustes de corpo)
+  // profissional declarado: faixa própria, prancha mais justa e ágil (0,39 a 0,36 L/kg antes dos ajustes de corpo; CT: 0,33–0,38, mediana ~0,36)
   if(g('nivel',-1)===4)GF=Math.min(GF,V.pro[0]-(V.pro[0]-V.pro[1])*pos);
-  const body=(g('motivo',1)===4?V.voltar:1)*V.idade[g('idade',1)]*V.freq[g('freq',1)]*V.fis[g('fis',1)];
-  const flutM=V.flut[flut];
+  // descontos de condicionamento e de flutuação somados não passam de 4% (antes empilhavam até −8% e levavam pros a 0,30 L/kg)
+  const fisF=V.fis[g('fis',1)],desc=Math.max(V.descMax,Math.min(1,fisF)*Math.min(1,V.flut[flut]));
+  const body=(g('motivo',1)===4?V.voltar:1)*V.idade[g('idade',1)]*V.freq[g('freq',1)]*Math.max(1,fisF);
+  const flutM=desc*Math.max(1,V.flut[flut]);
   const dor=g('dor',[]);
   let add=(dor.includes(0)?V.dor[0]:0)+(dor.includes(1)?V.dor[1]:0)+(dor.includes(2)?V.dor[2]:0)+(dor.includes(3)?V.dor[3]:0)+(g('incomoda',6)===0?V.incomodaRema:g('incomoda',6)===2?V.incomodaGrande:0);
   const mw=V.pesoModelo[lvl];
@@ -817,6 +819,8 @@ function litragem(a,H,lvl){
     if(constrOf(k,a)[0].startsWith('Epóxi'))v+=V.epoxi;
     if(A.fixedVol){const d=dimsFixed(k,peso,alt);v=d.V}
     if(!A.fixedVol){const rv=A.ref[0]*Math.pow(peso/75,V.refExp);v=clamp(v,rv*V.refMin,rv*V.refMax)}
+    // piso de 0,34 L/kg: nenhuma soma de descontos (condicionamento, flutuação, epóxi) leva abaixo do que pros do CT usam (0,33–0,38, mediana ~0,36)
+    if(!A.fixedVol)v=Math.max(v,peso*V.pisoLkg);
     if(k==='softp'&&lvl<=1)v=Math.max(v,peso*V.softpIniciante);
     if(g('onde',0)===1&&lvl>=2&&!A.fixedVol)v*=V.piscina;
     return v};
