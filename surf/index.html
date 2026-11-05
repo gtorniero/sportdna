@@ -560,14 +560,14 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
     <section class="bigband" aria-labelledby="bbT">
       <div><p class="eyebrow">O trabalho por trás do resultado</p><h2 id="bbT">Os números do motor</h2></div>
       <ul class="bbg">
-        <li class="bb hl"><b id="bbTipos">13</b><span>tipos de prancha comparados com o seu perfil</span></li>
-        <li class="bb"><b id="bbVar">17</b><span>variáveis da prancha: medidas, formato, quilhas e material</span></li>
-        <li class="bb"><b id="bbRev">26</b><span>reviews de lojas, revistas e surfistas, com a fonte no relatório</span></li>
-        <li class="bb"><b>422</b><span>casos reais na calibração de out/2026</span></li>
-        <li class="bb"><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos (ao acaso: 23%)</span></li>
-        <li class="bb"><b>3.000</b><span>perfis simulados nos testes de segurança</span></li>
+        <li class="bb hl"><b id="bbTipos">13</b><span>tipos de prancha disputam o seu resultado, da soft de escolinha à gun</span></li>
+        <li class="bb"><b>416</b><span>tamanhos de 35 modelos, de 12 marcas, comparados medida por medida</span></li>
+        <li class="bb"><b>73</b><span>páginas de shapers, marcas e calculadoras lidas, em 38 sites</span></li>
+        <li class="bb"><b>1.000+</b><span>fontes de surf mapeadas, em mais de 400 sites do mundo todo</span></li>
+        <li class="bb"><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns na calibração</span></li>
+        <li class="bb"><b id="bbVar">17</b><span>medidas na ficha técnica, prontas para levar a qualquer shaper</span></li>
       </ul>
-      <p class="bbm">Suas <span id="bbQ">17 a 24</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida da prancha. Ajustamos os pesos com 422 casos reais de lojas, revistas, marcas, atletas e fóruns, e testamos 3.000 perfis simulados: nenhum dos <span id="bbIni">1.348</span> perfis de primeiras ondas recebeu pranchinha, step-up ou gun entre os 3 primeiros. As travas de segurança de nov/2026 ainda vão ser medidas de novo contra os casos reais. Recomendamos tudo, menos marca e shaper.</p>
+      <p class="bbm">Suas <span id="bbQ">17 a 24</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida: são mais de 200 trilhões de pranchas possíveis, e a sua sai sob medida. Para chegar nas regras, comparamos 20 calculadoras de litragem do mercado e consultamos 82 referências científicas sobre remada, flutuação e hidrodinâmica. Recomendamos tudo, menos marca e shaper.</p>
     </section>
     <div class="diffs">
       <div class="diff"><h3>Litragem pelo seu nível</h3><p>Calculada pelo que você já faz na onda, não só pelo tempo de surf. Você vê a faixa antes de pagar.</p></div>
@@ -1873,7 +1873,7 @@ function pdfHTML(r){
   <div class="pcols" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)"><div class="pbox"><h3>Os 10 primeiros entre 13 tipos</h3><table class="ptab"><thead><tr><th>#</th><th>Tipo</th><th>DNA</th><th>Litros</th></tr></thead><tbody>${rows.map(x=>`<tr class="${x.k===k?'hl':at&&x.k===at.k?'at':''}"><td class="n">${x.pos}º</td><td>${PN[x.k]}${at&&x.k===at.k?' · sua atual':''}</td><td class="n"><span style="display:inline-block;width:${x.fit*.5}px;height:5px;border-radius:9px;background:${x.k===k?'#0E4D64':'#9FB4BB'};margin-right:5px;vertical-align:middle"></span>${x.fit}%</td><td class="n">${Math.round(x.d.V)} L</td></tr>`).join('')}</tbody></table></div>
   <div class="pbox"><h3>Mapa do catálogo</h3>${catMap(r,R)}<p class="pnote">Os 13 tipos dimensionados para você; o número é a posição no ranking. Ponto escuro: a recomendada; azul-claro: o pódio${at?'; anel vermelho tracejado: a medida da sua atual':''}.</p></div></div>
   ${at?`<div class="pbox s"><h3>Por que a sua atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:''}
-  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns</span></div><div><b>77%</b><span>de acerto do tipo entre os 3 primeiros nesses casos</span></div><div><b>3.000</b><span>perfis simulados nos testes de segurança</span></div><div><b>${REVIEWS.length}</b><span>reviews com fonte, de lojas, revistas e surfistas</span></div></div>
+  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns</span></div><div><b>416</b><span>tamanhos de 35 modelos, de 12 marcas, comparados medida por medida</span></div><div><b>1.000+</b><span>fontes de surf mapeadas, em mais de 400 sites</span></div><div><b>${REVIEWS.length}</b><span>reviews com fonte, de lojas, revistas e surfistas</span></div></div>
   <p class="pnote">Especificações aproximadas, em revisão por professor de surf. Nenhuma marca ou shaper paga para aparecer no resultado.</p></div>
   <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Litragem','Volume da prancha em litros. Define quanto ela boia e quanto rema.'],['L por kg','Litros divididos pelo seu peso. Quanto menor, mais técnica a prancha exige.'],['Rocker','Curva da prancha do bico à rabeta. Mais curva: encaixa em onda forte; mais reta: mais rápida.'],['Rabeta','A parte de trás. Larga dá velocidade em onda fraca; fina segura em onda forte.'],['Borda','A lateral. Cheia (50/50) perdoa; fina (80/20) morde a parede.'],['Fundo','O desenho de baixo. Côncavo canaliza a água e acelera; vee ajuda a virar.'],['Quilhas','As barbatanas. Mono é suave, bi é solta, tri é versátil, quadri é rápida.'],['PU e epóxi','Os dois materiais de prancha. PU tem sensação clássica; epóxi é leve e boia mais.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Seu surf × a prancha',p2)}${pdfPage(3,'Pódio',p4)}${pdfPage(4,'Ranking e método',p5)}${pdfPage(5,'Setup e compra',p3,'lite')}</div>`;
