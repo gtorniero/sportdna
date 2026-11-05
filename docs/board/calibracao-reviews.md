@@ -125,3 +125,8 @@ Sem mudança de placar nem de litragem (`node surf/tools/vies.mjs --dump` idênt
 - **Perguntas puladas:** do intermediário avançado para cima, "Como você pega onda hoje?" e "Como você passa a arrebentação?" não aparecem; o motor assume onda verde e joelhinho ou pato. "O que você já faz na onda?" continua para todos. Total: 17 a 24 perguntas.
 - **Prioridades:** sai "Perdoar erros" (era o mesmo que estabilidade); ficam 5 itens. O motor usa 5 notas (média e produto com os 5 índices); o perfil da prancha e o card de compartilhar mostram 5 eixos. A partir da 4ª nota 8 ou mais, esse item fica vermelho e o aviso explica a troca: o máximo de remada e estabilidade abre mão de manobra e controle em onda forte.
 - **Efeito:** "Ver um exemplo pronto" igual (Mid-length 96%, 38,7 L; pódio mid 96, groveler 91, fish 85). Tirar "perdoar erros" mudou o 1º lugar em 1 de 300 perfis aleatórios (mid → minimal). Checagem do nível declarado: profissional sem manobras marcadas cai em Avançado (pranchinha 29 L); iniciante que marca tudo fica em Já Fica de Pé (evolution 36 L).
+
+## Rodada 8: litragem do profissional (5/nov/2026)
+- Profissional declarado tem faixa própria de fator: 0,36 → 0,33 L/kg (`PESOS.vol.pro`), contra 0,40 → 0,37 do Avançado. Depois entram os mesmos ajustes de corpo, onda e material.
+- Antes, profissional e avançado davam exatamente a mesma litragem. Agora, com 75 kg: avançado com 7 manobras, 29,9 L (0,40 L/kg) e profissional, 26,9 L (0,36); avançado com tubo e aéreo, jovem e condicionamento muito bom, 25,7 L (0,34) e profissional, 22,9 L (0,31). Em onda pequena e fraca (groveler, epóxi): 27,2 L contra 24,2 L.
+- Exemplo pronto e os outros níveis não mudam.
