@@ -189,3 +189,12 @@ Teste do Gui: intermediário avançado com evolution 6'4" e 37 L, dor no ombro. 
 - **Faixa de comprimento:** até o intermediário avançado, de −1" a +3" ("na dúvida, a maior").
 - **Coach:** card do Gustavo em destaque (azul-petróleo, bloco azul-claro), mensagem do WhatsApp com negrito, PDF com 4 páginas (a 4ª é o especialista com o resumo do DNA; o glossário volta para a 3ª).
 - Caso do Gui depois: evolution 6'2" e 35,2 L em 1º, biquilha 5'10" e pranchinha 6'1" no pódio. Teste de viés (1.500 perfis): sem pódio incoerente novo; exemplo pronto agora dá evolution 6'2", 34,2 L (imagem `assets/reports/board.webp` atualizada).
+
+## Rodada 14: litragem do profissional (5/nov/2026)
+Motivo: surfista profissional de 70 kg recebia 21,4 L (0,305 L/kg), abaixo até dos atletas do CT (0,33–0,38 L/kg, mediana ~0,36; Toledo 70 kg ~25,4 L; Jadson 70 kg ~24 L; Surf Simply pro 0,35–0,40).
+- Causa: a faixa do profissional (0,36 → 0,33) e dois descontos empilhados (condicionamento muito bom −3% e prioridade de manobra −5%).
+- **Faixa do profissional:** 0,39 → 0,36 L/kg antes dos ajustes de corpo.
+- **Sem desconto no avançado e no profissional:** condicionamento e prioridade de manobra não descontam litros do nível Avançado (calculado) e de quem se declara avançado ou profissional; todo profissional tem condicionamento e quer manobra. Nos outros níveis, os dois descontos somados vão até 6% (`PESOS.vol.descMax = 0.94`). Acréscimos (cansa rápido, mais flutuação) continuam inteiros.
+- **Piso de 0,34 L/kg** para todo tipo de medida calculada (`PESOS.vol.pisoLkg`).
+- Resultado, 70 kg: profissional 25,3 L (0,361 L/kg, a mediana do CT), 5'11"; avançado muito em forma 26,0 L; avançado médio 27,9 L; intermediário avançado 28,1 L.
+- Exemplo pronto igual. Casos de referência: 21 de 23, as mesmas 2 falhas que já existem no `main` depois do PR #83 (intermediário agora tem evolution como padrão; ver nota no PR).
