@@ -91,7 +91,7 @@ document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
-  board:"Exemplo de relatório do SURF DNA: prancha ideal mid-length (egg) com DNA Score de 96%, medidas de 6 pés e 11 polegadas por 19 e 7/8 por 2 e 5/8 polegadas e 38,7 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, quilhas 2+1, fundo plano para single concave, construção em epóxi (EPS) e curva do bico de 3 e 3/4 polegadas.",
+  board:"Exemplo de relatório do SURF DNA: prancha ideal evolution (allround) com DNA Score de 96%, medidas de 6 pés e 2 polegadas por 19 e 3/4 por 2 e 1/2 polegadas e 34,2 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, construção em epóxi (EPS) e curva do bico de 4 e 1/4 polegadas.",
   tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Vomero 18, com DNA Score de 96%. Máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, R$ 949,99 e custo de R$ 1,70 por km. Abaixo, Por que combina, bem amortecido e dentro do orçamento, e a ficha técnica, com durabilidade de 560 km e troca em cerca de 4 meses."};
 function reportFrame(k, h){
   const a = AREAS[k];

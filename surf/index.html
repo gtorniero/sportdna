@@ -404,6 +404,7 @@ table.cmpt{min-width:0}table.cmpt th:first-child{width:28%}table.cmpt tr.df td{b
 .p1top{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:16px;align-items:center}
 .p1top .pl{font-size:12.5px;color:var(--muted)}.p1top .pl b{color:var(--ink)}
 .pscore{text-align:center;font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.pcoach{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:start}.pcoach img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #6CCFF6}.pcoach p{font-size:10.5px;margin-top:4px}.pcoach .pcwa{color:#0E4D64;font-size:11px}
 .pimg{background:#E6F0F2;border-radius:12px;height:170px;display:flex;align-items:center;justify-content:center;overflow:hidden}.pimg img{height:100%;width:auto;max-width:100%;object-fit:contain}
 .pkpi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
 .pkpi div{background:var(--bg);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:1px}
@@ -680,8 +681,8 @@ const ARCH={
  minimal:{n:'Mini-malibu / funboard',st:[4,2,1,0,0,2],lv:[5,5,2,1,0],tm:[5,5,3,1,0],fo:[5,4,2],ob:[4,4,3,0,1],vc:5,ref:[56,90,22,3],L:[84,98],nf:.35,tail:'round',tailN:'Round ou squash',nose:'Redondo',rail:'Macia, 60/40',foil:'60/40',rk:[4.25,2],bottom:'Single concave suave',setup:'tri',constr:'puEpoxi',d:'A ponte entre a escolinha e a parede: rema fácil e permite as primeiras curvas.'},
  mid:{n:'Mid-length / egg',st:[5,3,1,1,0,3],lv:[2,4,5,4,3],tm:[4,5,4,3,1],fo:[5,4,2],ob:[2,4,5,1,2],vc:4,ref:[48,86,21.5,2.875],L:[78,96],nf:.3,tail:'roundpin',tailN:'Round pin ou squash',nose:'Redondo',rail:'Macia, 60/40',foil:'60/40',rk:[4,1.875],bottom:'Single concave',setup:'2+1',constr:'puEpoxi',d:'Linhas longas e suaves. Entra cedo na onda e desliza com fluidez.'},
  evo:{n:'Evolution / allround',st:[3,3,2,1,1,1],lv:[0,4,5,3,1],tm:[3,5,5,3,1],fo:[4,5,3],ob:[1,4,3,2,0],vc:3,ref:[40,76,21,2.75],L:[70,82],nf:.18,tail:'squash',tailN:'Squash',nose:'Semi-redondo',rail:'Média, firme na rabeta',foil:'60/40',rk:[4.5,2],bottom:'Single para double concave',setup:'tri',constr:'puEpoxi',d:'Volume para remar e forma de pranchinha para aprender cavada e batida.'},
- fish:{n:'Fish',st:[5,4,2,1,1,2],lv:[0,2,4,5,4],tm:[5,5,4,2,0],fo:[5,4,2],ob:[0,3,5,2,0],vc:3,ref:[37,68,21.25,2.625],L:[62,74],nf:.25,tail:'swallow',tailN:'Swallow (rabo de peixe)',nose:'Largo e cheio',rail:'Média, baixa na rabeta',foil:'60/40',rk:[4,1.5],bottom:'Single concave com vee na rabeta',setup:'twin',constr:'puEpoxi',d:'Curta, larga e rápida. Gera velocidade sozinha em onda fraca.'},
- grov:{n:'Groveler',st:[3,3,4,1,3,0],lv:[0,1,5,5,4],tm:[5,5,4,1,0],fo:[5,4,2],ob:[0,4,4,4,0],vc:2,ref:[32,68,20.5,2.5],L:[62,72],nf:.15,tail:'squash',tailN:'Squash ou swallow',nose:'Largo',rail:'Média',foil:'60/40',rk:[4.25,1.75],bottom:'Single concave profundo ou double',setup:'quad',constr:'epoxi',d:'Pranchinha encurtada e larga para dia pequeno: manobra com remada extra.'},
+ fish:{n:'Fish',st:[5,4,2,1,1,2],lv:[0,2,4,5,4],tm:[5,5,3,2,0],fo:[5,4,2],ob:[0,3,5,2,0],vc:3,ref:[37,68,21.25,2.625],L:[62,74],nf:.25,tail:'swallow',tailN:'Swallow (rabo de peixe)',nose:'Largo e cheio',rail:'Média, baixa na rabeta',foil:'60/40',rk:[4,1.5],bottom:'Single concave com vee na rabeta',setup:'twin',constr:'puEpoxi',d:'Curta, larga e rápida. Gera velocidade sozinha em onda fraca.'},
+ grov:{n:'Groveler',st:[3,3,4,1,3,0],lv:[0,1,5,4,4],tm:[5,5,2,1,0],fo:[5,4,0],ob:[0,4,4,4,0],vc:2,ref:[32,68,20.5,2.5],L:[62,72],nf:.15,tail:'squash',tailN:'Squash ou swallow',nose:'Largo',rail:'Média',foil:'60/40',rk:[4.25,1.75],bottom:'Single concave profundo ou double',setup:'quad',constr:'epoxi',d:'Pranchinha encurtada e larga para dia pequeno: manobra com remada extra.'},
  twin:{n:'Biquilha moderna',st:[4,5,3,1,2,1],lv:[0,1,3,4,5],tm:[4,5,5,3,1],fo:[4,5,3],ob:[0,3,5,3,0],vc:2,ref:[32,70,20.25,2.5],L:[64,74],nf:.12,tail:'swallow',tailN:'Swallow ou squash',nose:'Pontudo médio',rail:'Firme na rabeta',foil:'80/20',rk:[4.5,1.75],bottom:'Double concave',setup:'twin',constr:'puEpoxi',d:'Solta e rápida, com curvas longas. Diverte de meio metro a 1,5 m.'},
  softp:{n:'Softboard performance',st:[3,2,2,0,2,1],lv:[1,4,3,2,1],tm:[5,5,3,1,0],fo:[4,4,2],ob:[2,3,5,1,0],vc:3,ref:[48,74,22,3],L:[66,84],nf:.2,tail:'squash',tailN:'Squash ou swallow',nose:'Semi-pontudo',rail:'Macia',foil:'50/50',rk:[4.5,2],bottom:'Single concave',setup:'tri',constr:'softLong',d:'Curta, divertida e quase indestrutível. Boa segunda prancha e de viagem.'},
  short:{n:'Pranchinha (shortboard)',st:[2,4,5,4,5,0],lv:[0,0,1,4,5],tm:[1,3,5,5,3],fo:[1,4,5],ob:[0,2,1,5,0],vc:1,ref:[28,72,19.25,2.375],L:[68,76],nf:.06,tail:'squash',tailN:'Squash ou round squash',nose:'Pontudo',rail:'Fina e dura na rabeta (80/20)',foil:'80/20',rk:[5.25,2.375],bottom:'Single para double concave',setup:'tri',constr:'puLeve',d:'Máxima resposta para manobras em onda com força. Exige remada e técnica.'},
@@ -689,6 +690,10 @@ const ARCH={
  gun:{n:'Gun',st:[3,2,1,4,0,0],lv:[0,0,0,2,4],tm:[0,0,1,3,5],fo:[1,3,5],ob:[0,0,0,4,0],vc:2,ref:[42,90,19.75,3],L:[86,104],nf:.04,tail:'pin',tailN:'Pin',nose:'Muito puxado',rail:'Fina, 80/20',foil:'80/20',rk:[6.25,2.75],bottom:'Vee',setup:'tri',constr:'puRef',d:'Para onda grande de verdade: remada para entrar cedo e controle em alta velocidade.'}
 };
 const KEYS=Object.keys(ARCH);
+// objetivo "evoluir e aprender manobras" (antes somado a "ganhar autonomia", que favorecia groveler e fish) · regra
+const WA_ICO='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>';
+const COACH_BIO='Surf coach profissional com mais de 35 anos de surf, filho de shaper. Ao longo da carreira já testou os maiores shapers do Brasil e do mundo e trabalha hoje com diversas marcas, direto da fábrica, sem intermediários e com as melhores condições do mercado.';
+const OBM={soft:0,softp:2,long:0,longp:2,minimal:1,mid:2,evo:5,fish:3,grov:3,twin:4,short:5,step:2,gun:0};
 const MODF={soft:1,long:1,longp:1,minimal:1.8,mid:1.25,evo:1.1,fish:1.06,grov:1.10,twin:1.0,softp:1.2,short:1,step:1.11,gun:1.3};
 const LV=[{n:'Primeiras Ondas',gf:[1.0,0.8],min:0,max:20,rng:1},{n:'Já Fica de Pé',gf:[0.58,0.47],min:20,max:40,rng:2},{n:'Intermediário',gf:[0.45,0.41],min:40,max:60,rng:2},{n:'Intermediário Avançado',gf:[0.41,0.385],min:60,max:80,rng:1.5},{n:'Avançado',gf:[0.40,0.37],min:80,max:101,rng:1}];
 const FINSET={single:'Monoquilha',tri:'Triquilha (thruster)',quad:'Quadriquilha','2+1':'2+1 (central e laterais)',twin:'Biquilha',twint:'Biquilha com trailer'};
@@ -706,7 +711,7 @@ const PESOS={
   // papel da prancha · regra + calibração
   quiver:{unica:2,pequenos:4,grandes:4,viagem:3,grandesShort:-8,grandesStep:4},
   // onda · shaper + teste de fogo
-  onda:{grovPequena:3,grovGrande:-6,gunGrande:14,shortGrande:-4,gunSemOnda:-40,stepSemOnda:-12},
+  onda:{grovPequena:3,grovGrande:-6,cavada:-3,gunGrande:14,shortGrande:-4,gunSemOnda:-40,stepSemOnda:-12},
   // corpo e dor: puxam para tipos de mais volume (vc) · regra (a validar com o Gustavo)
   dor:{forte:0.8,leve:0.5},
   // nível × tipo · shaper + teste de fogo
@@ -806,7 +811,7 @@ function engine(a,long,over){
   const IMPK=['rem','est','vel','man','ctl'],im=a.imp||null,imM=im?IMPK.reduce((t,x)=>t+im[x],0)/IMPK.length:0;
   const Af=P.afin,Qv=P.quiver,On=P.onda,Nt=P.nivelTipo,Ou=P.outros;
   KEYS.forEach(k=>{const A=ARCH[k];
-    let s=Af.nivel*A.lv[lvl]+Af.estilo*A.st.reduce((t,v,j)=>t+v*S[j],0)+Af.onda*(A.tm[tam]+A.fo[fo])/2+Af.objetivo*A.ob[obj];
+    let s=Af.nivel*A.lv[lvl]+Af.estilo*A.st.reduce((t,v,j)=>t+v*S[j],0)+Af.onda*(A.tm[tam]+A.fo[fo])/2+Af.objetivo*(g('objv',-1)===2?OBM[k]-(lvl<=1&&(k==='short'||k==='step')?3:0):A.ob[obj]);
     s+=Af.flut*(flut===0?A.vc-2.5:flut===2?2.5-A.vc:0);
     if(quiver===1&&['fish','grov','twin','mid','softp','minimal'].includes(k))s+=Qv.pequenos;
     if(quiver===2&&['step','gun','short'].includes(k))s+=Qv.grandes;
@@ -814,6 +819,8 @@ function engine(a,long,over){
     if(quiver===0&&['evo','mid','fish','minimal','grov'].includes(k))s+=Qv.unica;
     if(k==='grov'&&lvl>=2&&tam<=1)s+=On.grovPequena;
     if(k==='grov'&&tam>=3)s+=On.grovGrande;
+    // onda cavada de 1 m para cima: tipo feito para onda fraca perde pontos pelo que falta na afinidade com força
+    if(fo===2&&tam>=2&&A.fo[2]<3)s+=On.cavada*(3-A.fo[2]);
     // prancha para dias grandes: step-up e gun na frente da pranchinha do dia a dia
     if(quiver===2){if(k==='short')s+=Qv.grandesShort;if(k==='step')s+=Qv.grandesStep}
     if(tam===4&&lvl>=3){if(k==='gun')s+=On.gunGrande;if(k==='short')s+=On.shortGrande}
@@ -1474,27 +1481,24 @@ function briefing(r,c){
 }
 function matchSection(r){
   return `<section class="panel smatch" id="seuMatch" aria-labelledby="smT">
-  <div class="smhead"><div><p class="eyebrow">Seu DNA</p><h2 id="smT">Faça sua prancha com um especialista</h2><p class="muted" style="margin-top:6px;max-width:58ch">Juntamos tudo o que você respondeu e a prancha que calculamos num briefing único. Com ele, o coach confirma a escolha, ajusta o que for preciso e manda fazer sua prancha direto com a fábrica: sem intermediários e com as melhores condições do mercado.</p></div></div>
+  <div class="smhead"><div><p class="eyebrow">Seu DNA</p><h2 id="smT">Faça sua prancha com um especialista</h2><p class="muted" style="margin-top:6px;max-width:58ch">Juntamos tudo o que você respondeu e a prancha que calculamos numa mensagem pronta. Com ela, o coach confirma a escolha, indica shaper e modelo e ajusta o que for preciso.</p></div></div>
   <div class="coach">
     <img class="cfoto" src="${COACH.foto}" alt="Gustavo Lucas, surf coach" width="112" height="112">
     <div class="cinfo">
       <p class="cname">${COACH.nome}<span>Surf coach</span></p>
       <div class="ccont"><a class="cig" href="https://www.instagram.com/${COACH.ig}/" target="_blank" rel="noopener">@${COACH.ig}</a><a class="cig ctel" href="https://wa.me/${COACH.wa}?text=${encodeURIComponent(`Olá, Gustavo! Fiz o SURF DNA e o resultado foi ${PN[r.k].toLowerCase()}, ${ftin(r.d.L)} × ${frac(r.d.W)} × ${frac(r.d.T)}, ${dec1(r.d.V)} L. Queria sua recomendação de shaper e modelo para comprar essa prancha.`)}" target="_blank" rel="noopener" aria-label="Falar com o Gustavo no WhatsApp, ${COACH.tel}">WhatsApp ${COACH.tel}</a></div>
-      <p class="cbio">Mais de 35 anos de surf, filho de shaper. Trabalha com vários shapers para indicar a prancha e o shaper certos para cada surfista.</p>
+      <p class="cbio">${COACH_BIO}</p>
       <ul class="cfacts"><li>Coach de profissionais há mais de 10 anos</li><li>Escola de surf na Baleia, Litoral Norte de SP</li><li>Experiência internacional · Coach Travel SA</li><li>Entrega em todo o Brasil</li></ul>
       <p class="cparc"><b>Shapers e marcas parceiras:</b> Surface, Zampol, Pukas, Lost, DHD, Tokoro, Luke e Simon, entre outros.</p>
     </div>
   </div>
   <div class="cserv"><div><b>Coaching em vídeo</b><span>Você manda um vídeo surfando e recebe a análise.</span></div><div><b>Análise por imagem</b><span>Fotos da sua prancha e do seu surf, com ajuste da ficha.</span></div><div><b>Aula presencial</b><span>No Litoral Norte de SP, com teste de prancha.</span></div></div>
-  <div class="mcta"><a class="btn btn-go cwa" id="mWa" href="https://wa.me/${COACH.wa}?text=${encodeURIComponent(briefing(r).txt)}" target="_blank" rel="noopener">Mandar meu DNA para o Gustavo no WhatsApp</a><button class="btn btn-ghost" type="button" id="mCopy">Copiar a mensagem</button><a class="btn btn-ghost" href="https://www.instagram.com/${COACH.ig}/" target="_blank" rel="noopener">Instagram</a></div>
-  <p class="note" id="mCopied" aria-live="polite">A mensagem já vai com suas respostas e a prancha calculada. Nada é enviado até você apertar enviar no WhatsApp.</p>
+  <div class="mcta"><a class="btn btn-go cwa" id="mWa" href="https://wa.me/${COACH.wa}?text=${encodeURIComponent(briefing(r).txt)}" target="_blank" rel="noopener">${WA_ICO}Entrar em contato pelo WhatsApp</a></div>
+  <p class="note">A mensagem já vai com suas respostas e a prancha calculada. Nada é enviado até você apertar enviar no WhatsApp.</p>
   <details class="mini"><summary>Ver a mensagem</summary><pre class="mtxt" id="mTxt">${esc(briefing(r).txt)}</pre></details>
   </section>`;
 }
-function wireMatch(r){
-  const c=$('#mCopy');if(!c)return;const txt=briefing(r).txt;
-  c.onclick=()=>{navigator.clipboard.writeText(txt).then(()=>{$('#mCopied').textContent='Copiado. Agora é só colar na conversa com o Gustavo (WhatsApp ou direct do Instagram).'},()=>{$('#mTxt').closest('details').open=true;const t=$('#mTxt'),sel=getSelection(),rg=document.createRange();rg.selectNodeContents(t);sel.removeAllRanges();sel.addRange(rg);$('#mCopied').textContent='Selecionei a mensagem: copie com Ctrl+C ou Cmd+C.'})};
-}
+function wireMatch(r){}
 const ICO={
  wave:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 15c3-5 6-5 9 0s6 5 9 0M2 9c2-3 4-3 6 0"/></svg>',
  target:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -1872,7 +1876,7 @@ function pdfHTML(r){
       behind=`O tipo da sua atual (${PN[at.k]}) ficou em ${atPos+1}º lugar, com ${x.fit}%, ${w.fit-x.fit} pontos atrás. ${def.length?'Onde ela mais perde, pesando pelas suas prioridades: '+def.map(y=>y[0].toLowerCase()).join(' e ')+'. ':''}${at.d.V<lo?`Com ${Math.round(at.d.V)} L, ela boia menos que a sua faixa (${lo} a ${hi} L).`:at.d.V>hi?`Com ${Math.round(at.d.V)} L, ela boia mais que a sua faixa (${lo} a ${hi} L).`:'A flutuação dela está dentro da sua faixa.'}`}}
   const p3b=`  <div class="pbox"><h3>Números do método</h3><div class="pnums"><div><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns</span></div><div><b>416</b><span>tamanhos de 35 modelos, de 12 marcas, comparados medida por medida</span></div><div><b>1.000+</b><span>fontes de surf mapeadas, em mais de 400 sites</span></div><div><b>13</b><span>tipos de prancha, da soft de escolinha à gun</span></div></div>
   <p class="pnote">Especificações aproximadas, em revisão por professor de surf. Nenhuma marca ou shaper paga para aparecer no resultado.</p></div>
-  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Litragem','Volume da prancha em litros. Define quanto ela boia e quanto rema.'],['L por kg','Litros divididos pelo seu peso. Quanto menor, mais técnica a prancha exige.'],['Rocker','Curva da prancha do bico à rabeta. Mais curva: encaixa em onda forte; mais reta: mais rápida.'],['Rabeta','A parte de trás. Larga dá velocidade em onda fraca; fina segura em onda forte.'],['Borda','A lateral. Cheia (50/50) perdoa; fina (80/20) morde a parede.'],['Fundo','O desenho de baixo. Côncavo canaliza a água e acelera; vee ajuda a virar.'],['Quilhas','As barbatanas. Mono é suave, bi é solta, tri é versátil, quadri é rápida.'],['PU e epóxi','Os dois materiais de prancha. PU tem sensação clássica; epóxi é leve e boia mais.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`;
+${COACH_ON?`<div class="pbox pcoach"><img src="${COACH.foto}" alt="" width="64" height="64"><div><h3>Faça sua prancha com um especialista: ${COACH.nome}</h3><p>${COACH_BIO}</p><p class="pcwa"><b>WhatsApp ${COACH.tel}</b> · wa.me/${COACH.wa} · @${COACH.ig}</p><p class="pnote">Mande o seu DNA para ele pelo botão “Entrar em contato pelo WhatsApp” no fim do relatório on-line.</p></div></div>`:`  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Litragem','Volume da prancha em litros. Define quanto ela boia e quanto rema.'],['L por kg','Litros divididos pelo seu peso. Quanto menor, mais técnica a prancha exige.'],['Rocker','Curva da prancha do bico à rabeta. Mais curva: encaixa em onda forte; mais reta: mais rápida.'],['Rabeta','A parte de trás. Larga dá velocidade em onda fraca; fina segura em onda forte.'],['Borda','A lateral. Cheia (50/50) perdoa; fina (80/20) morde a parede.'],['Fundo','O desenho de baixo. Côncavo canaliza a água e acelera; vee ajuda a virar.'],['Quilhas','As barbatanas. Mono é suave, bi é solta, tri é versátil, quadri é rápida.'],['PU e epóxi','Os dois materiais de prancha. PU tem sensação clássica; epóxi é leve e boia mais.']].map(x=>`<span><b>${x[0]}:</b> ${x[1]}</span>`).join('')}</div></div>`}`;
   const atBox=at?`<div class="pbox s"><h3>Por que a sua atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:'';
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Seu surf × a prancha',p2+p2pod+atBox)}${pdfPage(3,'Setup e compra',p3+p3b,'lite')}</div>`;
 }
