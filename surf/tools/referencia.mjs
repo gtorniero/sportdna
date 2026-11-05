@@ -37,7 +37,7 @@ const C=[
  ['Profissional, onda acima de 2,5 m',{nivel:'4',skills:['1','2','3','4','5','6','7','8','9'],objv:'4',estilo:'3',imp:imp(7,5,6,6,10),tam:'4',forca:'2',uso:'2'},{deve:['gun','step'],nao:['long','soft','minimal','mid','fish','grov','twin'],primeiro:['gun','step']}],
  // quando a pessoa pede outro estilo
  ['Avançado, prancha para dias pequenos',{nivel:'3',skills:['1','2','3','4','5','6','7'],objv:'3',estilo:'1',imp:imp(7,5,9,7,3),tam:'0',forca:'0',uso:'1'},{deve:[],nao:['step','gun','long','soft'],primeiro:['grov','twin','fish']}],
- ['Avançado com pranchinha, quer mudar para fish',{nivel:'3',skills:['1','2','3','4','5','6','7'],objv:'3',estilo:'1',imp:imp(6,6,8,7,4),tam:'1',forca:'0',atual_mod:'11',muda:'1',estilo_novo:'0',incomoda:'6'},{deve:['fish'],nao:['gun','soft'],primeiro:['fish']}],
+ ['Avançado com pranchinha, quer mudar para fish',{nivel:'3',skills:['1','2','3','4','5','6','7'],objv:'3',estilo:'1',imp:imp(6,6,8,7,4),tam:'1',forca:'0',motivo:'1',atual_mod:'11',muda:'1',estilo_novo:'0',incomoda:'6'},{deve:['fish'],nao:['gun','soft'],primeiro:['fish']}],
  ['Avançado com pranchinha, quer somar ao quiver',{nivel:'3',skills:['1','2','3','4','5','6','7'],objv:'3',estilo:'1',imp:imp(6,6,8,7,4),tam:'1',forca:'1',motivo:'2',atual_mod:'11',muda:'2',incomoda:'6'},{deve:[],nao:['gun','soft'],primeiro:['twin','fish','grov','mid','evo','longp','step']}],
  ['Surf clássico, intermediário, onda pequena',{nivel:'1',tempo:'4',auto:'2',pass:'2',skills:['1','2','3'],objv:'5',estilo:'5',imp:imp(8,8,6,3,3),tam:'1',forca:'0'},{deve:['long'],nao:['short','step','gun','grov'],primeiro:['long','longp']}],
 ];
