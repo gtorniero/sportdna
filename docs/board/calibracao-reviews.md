@@ -203,3 +203,16 @@ Motivo: surfista profissional de 70 kg recebia 21,4 L (0,305 L/kg), abaixo até 
 - Quem responde "É a minha primeira" em "Por que você quer uma nova prancha?" não vê mais "Qual é a sua prancha atual?" nem as perguntas que dependem dela (medidas, mudar de estilo, para qual estilo, o que incomoda). Resposta antiga dessas perguntas não entra no cálculo nem no briefing.
 - Rodapé do app só com a assinatura: "SURF DNA · by SPORT DNA · Um projeto Beyond the Work".
 - Caso de referência "avançado com pranchinha, quer mudar para fish" passa a dizer o motivo (substituir a atual).
+
+## Rodada 16: auditoria com perfis realistas e correções (5/nov/2026)
+Ferramenta nova: `surf/tools/auditoria.mjs` monta 12.096 perfis com respostas coerentes entre si (6 corpos de 45 a 100 kg × 5 níveis × 6 mares × 5 objetivos × 5 pranchas atuais × com e sem dor × remada 5 e 8) e confere 13 regras de bom senso de coach.
+
+Problemas encontrados e corrigidos:
+- **Nível declarado × nível do relatório:** quem se declarava Intermediário caía em "Já Fica de Pé" (2 de 5), com litragem e tipos de quem está começando. Faixas novas (`PESOS.habil.declarado`): iniciante 0–1, intermediário 2–3, intermediário avançado 3–4, avançado e profissional 4.
+- **Pranchas menores que o tipo:** para gente leve, o comprimento caía até 3" abaixo do mínimo do tipo (fish 4'11", evolution 5'7"). Agora o comprimento nunca fica abaixo do mínimo do tipo, largura e espessura não ficam abaixo de 92% e 90% da referência, e a prancha fica com os litros que esse tamanho mínimo tem.
+- **Fish, biquilha e groveler para quem "já fica de pé":** perdem 12 pontos; a evolution perde 12 para Primeiras Ondas.
+- **2 ou 3 finalistas:** o 3º só aparece se estiver a até 20 pontos do 1º (ou se for obrigatório: gun/step-up em onda grande, soft pedida). DNA Score mínimo de 70% para 50%, para o número mostrar a distância de verdade.
+- **Relatório e PDF:** saem "confiança do resultado" (conflitava com o DNA Score), o nível abreviado ("Já") e "Loja ou shaper".
+- **"O que você já faz na onda?"** logo abaixo do nível e pré-preenchida com o que é comum em cada nível (até a pessoa mexer).
+
+Resultado: 0 perfis em 11 das 13 regras. Sobram 76 (0,6%) avançados de 55 kg com pranchinha um pouco acima de 0,45 L/kg (efeito da regra de transição do PR #83 a partir de uma evolution atual) e 695 com 3º lugar distante mas obrigatório (gun, step-up ou soft). Casos de referência: 23 de 23 (dois ajustados para a regra do PR #83). 3.000 perfis: travas sem piora. Exemplo pronto igual.
