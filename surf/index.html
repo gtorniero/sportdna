@@ -4,6 +4,7 @@
 .wcard{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px}
 .wi{width:40px;height:40px;padding:8px;border-radius:12px;background:var(--surface);fill:none;stroke:var(--pri);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .wct{display:flex;flex-direction:column;gap:6px;min-width:0}.wct b{font-size:16px}.wct p{font-size:14px;color:var(--muted);margin:0}
+.stc{display:flex;flex-direction:column;gap:6px;margin-top:6px}.stp{align-self:flex-start;background:var(--pri);color:var(--pri-ink);font-weight:700;font-size:13px;border-radius:99px;padding:5px 12px}.stl{font-size:12px;color:var(--muted);margin:2px 0 0}.stm{display:flex;flex-wrap:wrap;gap:5px}.stm span{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 9px;background:var(--surface)}.pdfdoc .stm span{font-size:9.5px;padding:2px 7px}.pdfdoc .stl{font-size:9.5px}
 .styb{display:flex;flex-direction:column;gap:4px;margin-top:4px}
 .styb span{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px;align-items:center;font-size:12px;color:var(--muted);grid-auto-flow:dense}
 .styb span i{grid-column:2;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--line) var(--v),transparent var(--v))}
@@ -1600,11 +1601,14 @@ const ICO={
  swap:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-4-4M20 16H6l4 4"/></svg>',
  warn:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 17H3zM12 10v4M12 17h.01"/></svg>',
  ok:'<svg class="wi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>'};
+/* estilo no "por que combina": o que a pessoa escolheu e as manobras que já faz (não as 6 barras do motor, que ela não escolheu) */
+function estiloViz(a){const MAN={4:'Cavada',5:'Gera velocidade',6:'Batida',7:'Rasgada',8:'Tubo',9:'Aéreo'};
+  const man=(a.skills||[]).filter(x=>x in MAN).map(x=>MAN[x]);
+  return `<div class="stc">${man.length?`<p class="stl">Já faz na onda</p><div class="stm">${man.map(x=>`<span>${x}</span>`).join('')}</div>`:''}</div>`}
 function whyV(r,max){
   const a=r.a,S=r.S,out=[];const t=S.indexOf(Math.max(...S));
   const card=(ic,title,body,viz)=>`<div class="wcard">${ICO[ic]}<div class="wct"><b>${title}</b><p>${body}</p>${viz||''}</div></div>`;
-  const sty=['Linha','Curvas','Manobras','Tubo','Aéreo','Clássico'];
-  out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,`<div class="styb">${sty.map((x,i)=>`<span class="${i===t?'on':''}" style="--v:${Math.round(S[i]/Math.max(...S)*100)}%"><i></i>${x}</span>`).join('')}</div>`));
+  out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,estiloViz(a)));
   if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){
     const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
     out.push(card('target','Suas prioridades','O que você pediu (barra clara) contra o que ela entrega (barra escura), de 0 a 10.',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${BXP[i]}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${v} · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
@@ -1633,8 +1637,7 @@ function whyR(r){
   const card=(ic,title,body,viz,wide)=>`<div class="wcard${wide?' wide':''}">${ICO[ic]}<div class="wct"><h3>${title}</h3><p>${body}</p>${viz||''}</div></div>`;
   const flut=ARCH[r.k].fixedVol?'':a.flut===0?', com um pouco mais de flutuação porque você prefere que ela boie mais':a.flut===2?', com um pouco menos porque você prefere que ela fique solta':'';
   out.push(card('drop',`${dec1(r.d.V)} litros`,`Pelo seu peso (${r.peso} kg) e pelo seu nível (${LV[r.lvl].n.toLowerCase()})${flut}. Litro é o quanto a prancha boia: mais litros rema e fica de pé com mais facilidade; menos litros vira mais fácil, mas exige mais de você.`,floatBar(r,{intro:false,atual:false}),true));
-  const sty=['Linha','Curvas','Manobras','Tubo','Aéreo','Clássico'];
-  out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,`<div class="styb">${sty.map((x,i)=>`<span class="${i===t?'on':''}" style="--v:${Math.round(S[i]/Math.max(...S)*100)}%"><i></i>${x}</span>`).join('')}</div>`));
+  out.push(card('wave','Seu estilo',`Você curte mais ${STY[t]}, e esse tipo de prancha é feito para isso.`,estiloViz(a)));
   if(a.imp&&Math.max(...Object.values(a.imp))>Math.min(...Object.values(a.imp))){
     const P=['rem','est','vel','man','ctl'],top=P.map((x,i)=>[a.imp[x],i]).sort((x,y)=>y[0]-x[0]).slice(0,3);
     out.push(card('target','Suas prioridades','O que você pediu (barra clara) contra o que ela entrega (barra escura), de 0 a 10.',`<div class="prio">${top.map(([v,i])=>`<div class="pr"><span>${BXP[i]}</span><div class="prt"><i class="you" style="width:${v*10}%"></i><i class="her" style="width:${r.ix[i]*10}%"></i></div><em class="mono">${v} · ${dec1(r.ix[i])}</em></div>`).join('')}</div>`));
