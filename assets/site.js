@@ -47,7 +47,7 @@ const AREAS = {
     h1:`A prancha certa para o seu surf e para o seu <span class="hl">mar</span>.`,
     lede:"Tipo, medidas, litragem, rabeta, fundo, rocker e quilhas, calculados pelo seu peso, pelo que você já faz na onda e pelo seu pico. Recomendamos tudo, menos marca e shaper.",
     quiz:"surf/",
-    facts:[["13","tipos de prancha"],["16 a 25","perguntas"],["R$ 19,99","relatório"]],
+    facts:[["13","tipos de prancha"],["3 min","de teste"],["R$ 19,99","relatório"]],
     vin:["Peso, altura e idade","Tempo e frequência de surf","O que já faz na onda","Estilo","Flutuação preferida","Tamanho e força da onda","Papel no quiver","Prancha atual"],
     vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
     inside:[["Tipo de prancha com DNA Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
@@ -91,7 +91,7 @@ document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
-  board:"Exemplo de relatório do SURF DNA: prancha ideal pranchinha (shortboard) com DNA Score de 96%, medidas de 5 pés e 11 polegadas por 20 e 5/8 por 2 e 5/8 polegadas e 32,1 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, construção em PU leve e curva do bico de 5 polegadas.",
+  board:"Exemplo de relatório do SURF DNA: prancha ideal pranchinha (shortboard), versão de onda fraca, com DNA Score de 96%, medidas de 5 pés e 11 polegadas por 20 e 5/8 por 2 e 5/8 polegadas e 32,1 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta swallow, triquilha (thruster), fundo single concave raso, construção em PU leve e curva do bico de 5 polegadas.",
   tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Vomero 18, com DNA Score de 96%. Máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, R$ 949,99 e custo de R$ 1,70 por km. Abaixo, Por que combina, bem amortecido e dentro do orçamento, e a ficha técnica, com durabilidade de 560 km e troca em cerca de 4 meses."};
 function reportFrame(k, h){
   const a = AREAS[k];

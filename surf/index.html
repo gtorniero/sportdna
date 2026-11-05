@@ -468,6 +468,8 @@ table.cmpt{min-width:0}table.cmpt th:first-child{width:28%}table.cmpt tr.df td{b
 .bb{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
 .bb b{font-family:var(--f-display);font-weight:800!important;font-size:clamp(32px,5vw,46px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--ink)}
 .bb span{font-size:14px;line-height:1.35;color:var(--muted)}
+.bb.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:16px}.bb.wide span{font-size:16px}
+.note.cost{font-weight:700;color:var(--ink)}
 .bb.hl{background:#0E4D64;border-color:#0E4D64}.bb.hl b{color:#6CCFF6}.bb.hl span{color:#FFFFFF}
 .bbm{font-size:15px;color:var(--muted);max-width:78ch}
 @media (max-width:760px){.bbg{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.bb{padding:14px}}
@@ -561,13 +563,14 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Análise técnica independente</p>
         <h1>A prancha certa para o seu surf e para o seu mar.</h1>
-        <p class="lead">Responda de <span id="nQ">16 a 25</span> perguntas sobre seu corpo, seu surf, sua prancha, seus objetivos e seu mar. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
+        <p class="lead">Em 3 minutos, conte sobre seu corpo, seu surf, sua prancha, seus objetivos e seu mar. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha prancha</button>
           <button class="btn btn-ghost" id="calcGo" type="button">Calcular minha litragem</button>
           <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
         </div>
         <p class="note">Prévia grátis · 3 minutos · sem cadastro</p>
+        <p class="note cost">Errar a prancha custa caro: uma nova sai por R$ 1.500 a R$ 4.000. Acertar custa R$ 19,99.</p>
       </div>
       <div class="herocol">
       <div id="cardHome" class="cardwrap herocard homecard" aria-label="Exemplo dos cards: DNA de surf e a prancha"></div>
@@ -576,14 +579,15 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
     <section class="bigband" aria-labelledby="bbT">
       <div><p class="eyebrow">O trabalho por trás do resultado</p><h2 id="bbT">Os números do motor</h2></div>
       <ul class="bbg">
-        <li class="bb hl"><b id="bbTipos">13</b><span>tipos de prancha disputam o seu resultado, da soft de escolinha à gun</span></li>
+        <li class="bb hl wide"><b>20+</b><span>anos de experiência do surf coach profissional que calibrou o motor com a gente</span></li>
+        <li class="bb"><b id="bbTipos">13</b><span>tipos de prancha disputam o seu resultado, da soft de escolinha à gun</span></li>
         <li class="bb"><b>416</b><span>tamanhos de 35 modelos, de 12 marcas, comparados medida por medida</span></li>
         <li class="bb"><b>73</b><span>páginas de shapers, marcas e calculadoras lidas, em 38 sites</span></li>
         <li class="bb"><b>1.000+</b><span>fontes de surf mapeadas, em mais de 400 sites do mundo todo</span></li>
         <li class="bb"><b>422</b><span>casos reais de lojas, revistas, marcas, atletas e fóruns na calibração</span></li>
         <li class="bb"><b id="bbVar">17</b><span>medidas na ficha técnica, prontas para levar a qualquer shaper</span></li>
       </ul>
-      <p class="bbm">Suas <span id="bbQ">16 a 25</span> respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida: são mais de 200 trilhões de pranchas possíveis, e a sua sai sob medida. Para chegar nas regras, comparamos 20 calculadoras de litragem do mercado e consultamos 82 referências científicas sobre remada, flutuação e hidrodinâmica. Recomendamos tudo, menos marca e shaper.</p>
+      <p class="bbm">Suas respostas viram nível, estilo e mar. O motor compara isso com os <span class="bbTiposTxt">13</span> tipos e calcula cada medida: são mais de 200 trilhões de pranchas possíveis, e a sua sai sob medida. Para chegar nas regras, comparamos 20 calculadoras de litragem do mercado e consultamos 82 referências científicas sobre remada, flutuação e hidrodinâmica. Recomendamos tudo, menos marca e shaper.</p>
     </section>
     <div class="diffs">
       <div class="diff"><h3>Litragem pelo seu nível</h3><p>Calculada pelo que você já faz na onda, não só pelo tempo de surf. Você vê a faixa antes de pagar.</p></div>
@@ -918,17 +922,27 @@ function decide(R,k){
   if(S[3]>.3&&['short','step','evo','mid'].includes(k))tail='Round pin';
   else if(S[1]>.35&&['short','evo','mid','longp'].includes(k))tail='Round';
   else if(fo===0&&['short','evo'].includes(k))tail='Squash larga';
+  // pranchinha: a versão muda com a onda e o estilo (rabeta, fundo e quilhas), sempre com até 6'4"
+  if(k==='short'){const vel=a.imp?a.imp.vel:5;
+    if(S[3]>.3){out.variant='para tubo';tail='Round pin'}
+    else if(fo===2){out.variant='de onda cavada';tail='Round squash'}
+    else if(fo===0){out.variant='de onda fraca';tail='Swallow'}
+    else if(S[2]+S[4]>.4){out.variant='de manobras';tail='Squash'}
+    else if(S[1]>.35){out.variant='de curvas';tail='Round'}
+    else{out.variant='para todo dia';tail='Squash ou round squash'}
+    out.shortQuad=fo===0&&vel>=8}
   out.tail=tail;
   out.rail=R.lvl<=1?'Cheia, 50/50':R.lvl===2&&A.foil==='80/20'?'Média, 60/40, dura só na rabeta':A.rail;
   let nr=A.rk[0]+(fo===0?-0.3:fo===2?0.4:0)+(S[3]>.3?0.3:0),tr=A.rk[1]+(S[2]+S[4]>.4?0.2:0)+(S[0]>.45?-0.2:0);
   out.rocker=[nr,tr];
-  out.bottom=fo===0&&!['long','soft'].includes(k)?'Plano para single concave: mais planeio':fo===2&&['short','step','evo'].includes(k)?A.bottom+(R.lvl>=3?', com canais leves na rabeta':''):A.bottom;
+  out.bottom=k==='short'?(fo===0?'Single concave raso: mais planeio em onda fraca':fo===2?'Single concave profundo para double, com vee na rabeta'+(R.lvl>=3?' e canais leves':''):S[2]+S[4]>.4?'Single para double concave: aceleração e resposta na batida':S[1]>.35?'Single concave com vee leve na rabeta: troca de borda suave':A.bottom):fo===0&&!['long','soft'].includes(k)?'Plano para single concave: mais planeio':fo===2&&['short','step','evo'].includes(k)?A.bottom+(R.lvl>=3?', com canais leves na rabeta':''):A.bottom;
   // quilhas
   let setup=A.setup;
   if(S[5]>.35&&['mid','longp','minimal'].includes(k))setup='single';
   if(S[1]>.3&&fo===0&&['fish','twin','grov'].includes(k))setup='twint';
   if(S[2]>.35&&['grov','evo','minimal'].includes(k))setup='tri';
   if(S[3]>.3&&['step','grov'].includes(k))setup='quad';
+  if(k==='short'&&out.shortQuad)setup='quad';
   out.setup=setup;
   const wc=peso<65?0:peso<=80?1:2,wv=tam<=1?0:tam<=2?1:2;
   out.finSize=setup==='single'?(peso>85?'10"':'9"')+' central':['XS','S','M','L','XL'][wc+wv];
@@ -1088,7 +1102,7 @@ const IMPDEF={rem:5,est:5,vel:5,man:5,ctl:5};
 // nível a partir das respostas cruas, com a mesma conversão de conv() (passar de joelhinho ou pato conta a habilidade 0)
 function nivelResp(){const o={};['nivel','tempo','auto','pass'].forEach(k=>{if(A[k]!==undefined&&A[k]!=='')o[k]=+A[k]});if(o.nivel>=2){o.auto=2;o.pass=2}if(o.nivel>=3)o.tempo=o.nivel>=4?5:4;o.skills=(A.skills||[]).map(Number);if(o.pass>=2&&!o.skills.includes(0))o.skills.push(0);return habil(o).lvl}
 const A={};let step=0;
-(function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('nQ').textContent=nQ;document.getElementById('bbQ').textContent=nQ;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
+(function(){const nQ=Q.filter(q=>!q.cond).length+' a '+Q.length;document.getElementById('bbTipos').textContent=KEYS.length;document.querySelectorAll('.bbTiposTxt').forEach(e=>e.textContent=KEYS.length);const CB=[['Comprimento',61,"5'0\" a 10'0\", de 1 em 1 polegada"],['Largura',49,'18" a 24", de 1/8 em 1/8'],['Espessura',15,'2" a 3 3/4", de 1/8 em 1/8'],['Bico',4,'pontudo, semi, redondo, largo'],['Ponto mais largo',3,'à frente, no centro, atrás'],['Rabeta',7,'square, squash, round, round pin, pin, swallow, round squash'],['Borda',3,'50/50 · 60/40 · 80/20'],['Curva do bico',29,'3" a 6 1/2"'],['Curva da rabeta',17,'1" a 3"'],['Fundo',5,'plano, single, double, single para double, vee'],['Quilhas',6,'mono, tri, quadri, 2+1, bi, bi com trailer'],['Tamanho da quilha',5,'XS a XL'],['Formato da quilha',3,'carve, pivot, neutra'],['Caixas',2,'FCS II, Futures'],['Material',5,'soft, PU, PU leve, PU reforçada, epóxi'],['Laminação',4,'4+4, 6+4, 6+6, com reforço'],['Acabamento',2,'hot coat, gloss']];
 document.getElementById('bbVar').textContent=CB.length;
 })();
 const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:'2',imp:{rem:7,est:6,vel:7,man:6,ctl:3},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
@@ -1290,7 +1304,7 @@ function renderPreview(){
             <span class="pct">${x.fit}%</span></div>`).join('')}
         </div>
         <button class="btn btn-go" type="button" data-buy style="width:100%">Revelar minha prancha · ${PRICE_TXT}</button>
-        <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF.</p>
+        <p class="note" style="margin:0"><b>Errar a prancha custa caro: uma nova sai por R$ 1.500 a R$ 4.000.</b> O relatório custa R$ 19,99, pagamento único por cartão ou Pix, e sai na hora, também em PDF.</p>
       </div>
       <figure class="rpeek"><img src="../assets/reports/board.webp" alt="Prévia borrada de um relatório completo do SURF DNA" loading="lazy"><figcaption>Relatório completo · ${PDF_PAGES} páginas em PDF</figcaption></figure>
     </div>
@@ -1485,7 +1499,7 @@ function briefing(r,c){
    ['Objetivos',[['Objetivo principal',qLab('objv')],['Tipo de surf',qLab('estilo')],['Prioridades (1 a 10)',`remada ${im.rem}, estabilidade ${im.est}, velocidade ${im.vel}, manobra ${im.man}, onda forte ${im.ctl}`]]],
    ['Mar',[['Para que vai usar',qLab('uso')],['Tamanho de onda',qLab('tam')],['Força das ondas',qLab('forca')]]],
    ['Prancha',[['Prancha atual',qLab('atual_mod')+(r.atual?`${r.a.atual_L?' · '+ftin(r.a.atual_L):''}${r.a.atual_V?' · '+dec1(r.a.atual_V)+' L':''}`:'')],['Quer mudar de estilo',qLab('muda')+(A.muda==='1'?' · '+qLab('estilo_novo'):'')],['O que incomoda',qLab('incomoda')],['Por que quer uma nova',qLab('motivo')],['Espuma (soft)',qLab('foam')]]],
-   ['Recomendação SURF DNA',[['Prancha ideal',`${PN[r.k]} · ${r.fins[0].fit}%`],['Medidas',`${ftin(d.L)} x ${frac(d.W)} x ${frac(d.T)}`],['Litros',`${dec1(d.V)} L (faixa ${lo} a ${hi} L)`],['Rabeta',dc.tail],['Bico',dc.nose],['Borda',dc.rail],['Curva (rocker)','bico '+frac(dc.rocker[0])+' · rabeta '+frac(dc.rocker[1])],['Fundo',dc.bottom],['Quilhas',FINSET[dc.setup]+' · '+dc.finSize+' · '+dc.boxes],['Material',dc.constr[0]],['Laminação',dc.lam],['Acabamento',dc.finish],['Finalistas',fin.join(' | ')]]]
+   ['Recomendação SURF DNA',[['Prancha ideal',`${PN[r.k]}${r.dc.variant?' '+r.dc.variant:''} · ${r.fins[0].fit}%`],['Medidas',`${ftin(d.L)} x ${frac(d.W)} x ${frac(d.T)}`],['Litros',`${dec1(d.V)} L (faixa ${lo} a ${hi} L)`],['Rabeta',dc.tail],['Bico',dc.nose],['Borda',dc.rail],['Curva (rocker)','bico '+frac(dc.rocker[0])+' · rabeta '+frac(dc.rocker[1])],['Fundo',dc.bottom],['Quilhas',FINSET[dc.setup]+' · '+dc.finSize+' · '+dc.boxes],['Material',dc.constr[0]],['Laminação',dc.lam],['Acabamento',dc.finish],['Finalistas',fin.join(' | ')]]]
   ];
   const txt=['SEU DNA · SURF DNA',`Olá, ${COACH.nome.split(' ')[0]}! Fiz o SURF DNA e o resultado foi ${PN[r.k].toLowerCase()}, ${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}, ${dec1(d.V)} L. Queria sua recomendação de shaper e modelo para comprar essa prancha. Segue o meu DNA:`,''].concat(...S.map(([t,rows])=>[t.toUpperCase(),...rows.map(([k,v])=>`${k}: ${v}`),''])).join('\n');
   return {S,txt};
@@ -1646,7 +1660,7 @@ function renderReport(){
   /* 1 · seu resultado */
   h+=`<section class="rsec rgrp" id="r-resultado" aria-labelledby="h-res">
   <div class="panel winner">
-    <div class="whead"><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><p class="eyebrow">Seu resultado</p><h2 id="h-res">${PN[k]}</h2><span class="tech">Em palavras simples: <b>${PL[k]}</b></span></div>
+    <div class="whead"><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><p class="eyebrow">Seu resultado</p><h2 id="h-res">${PN[k]}</h2><span class="tech">Em palavras simples: <b>${PL[k]}</b>${dc.variant?` · versão <b>${dc.variant}</b>`:''}</span></div>
       <div class="fitbox"><div class="fitring" style="--p:${w.fit}"><b>${w.fit}%</b></div><span class="fitl">DNA Score</span></div></div>
     <p class="sline"><span class="mono">${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}</span> · <b class="mono">${dec1(d.V)} L</b></p>
     <p class="muted" style="font-size:16px;max-width:60ch">${PD[k]}</p>
@@ -1842,7 +1856,7 @@ function pdfHTML(r){
   const soft=/^soft/.test(ARCH[k].constr),sugM=!soft&&!!dc.constr[2];
   const sty=['pegar onda e deslizar','curvas na parede','manobras fortes','tubo','aéreos','estilo clássico'][r.S.indexOf(Math.max(...r.S))];
   /* página 1: veredito */
-  const p1=`<div class="p1top"><div style="display:flex;flex-direction:column;gap:6px"><p class="pey">Sua prancha ideal</p><h1>${PN[k]}</h1><p class="pl">Em palavras simples: <b>${PL[k]}</b>. ${PD[k]}</p></div><div class="pscore">${ringSVG(w.fit,128)}<div>DNA Score</div></div></div>
+  const p1=`<div class="p1top"><div style="display:flex;flex-direction:column;gap:6px"><p class="pey">Sua prancha ideal</p><h1>${PN[k]}</h1><p class="pl">Em palavras simples: <b>${PL[k]}</b>${dc.variant?`, versão <b>${dc.variant}</b>`:''}. ${PD[k]}</p></div><div class="pscore">${ringSVG(w.fit,128)}<div>DNA Score</div></div></div>
   <div class="pkpi"><div class="em"><b>${r.conf}%</b><span>confiança do resultado</span></div><div><b>${gap<=3?'Empate':'+'+gap+' pts'}</b><span>${gap<=3?'técnico com o 2º lugar ('+PN[s2.k]+')':'à frente do 2º ('+PN[s2.k]+')'}</span></div><div><b>${lo}–${hi} L</b><span>faixa de flutuação para você</span></div><div><b>${LV[r.lvl].n.split(' ')[0]}${r.lvl===3?' av.':''}</b><span>seu nível (${r.lvl+1} de 5)</span></div><div><b>${soft?'Loja de surf':'Loja ou shaper'}</b><span>${soft?'nova ou usada, em qualquer lugar do Brasil':'nova, usada ou sob medida, em qualquer lugar do Brasil'}</span></div></div>
   ${TIMG.has(k)?`<div class="pimg"><img src="img/tipos/${timgKey(k,dc.tail)}.webp" alt=""></div>`:`<div style="width:440px;margin:-6px auto">${boardSVG(k,d,dc,{h:true})}</div>`}
   <div class="psetup"><div><span>Medidas</span><b>${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}</b><small>${mF(d.L)} · ${cmF(d.W)} · ${cmF(d.T)}</small></div><div><span>Litros</span><b>${dec1(d.V)} L</b><small>${dec1(d.V/r.peso)} L por kg</small></div><div><span>Rabeta e bico</span><b>${esc(dc.tail)}</b><small>${esc(dc.nose)}</small></div>
