@@ -176,3 +176,16 @@ Regra de coach: para quem já surfa, a pranchinha triquilha de até 6'4" é o "a
 - **Abertura:** "Em 3 minutos" no lugar do número de perguntas; "Errar a prancha custa caro: uma nova sai por R$ 1.500 a R$ 4.000. Acertar custa R$ 19,99." abaixo dos botões e na prévia; card "20+ anos de experiência do surf coach profissional que calibrou o motor com a gente" no topo dos números. Facts do guia: "3 min de teste".
 - **Banner de cookies menor** (`assets/measurement.js`, vale para os três apps): texto mais curto, letra 13 px, botões de 36 px de altura (acima do mínimo de 24 px da WCAG 2.2).
 - Testes: 23 de 23 casos de referência; regra da pranchinha sem violação em 2.500 respostas; 3.000 perfis com as travas de sempre; axe 0 no questionário, relatório e abertura.
+
+## Rodada 13: transição a partir da prancha atual, objetivos duplos e página do coach (5/nov/2026)
+
+Teste do Gui: intermediário avançado com evolution 6'4" e 37 L, dor no ombro. O motor indicava biquilha 5'7" e pranchinha 5'11" (até 5 L e 9" a menos). Feedback: queda grande demais para o nível, e remada pedida alta virava prancha com remada 4.
+
+- **Transição (`PESOS.transicao`):** até o intermediário avançado, a nova não perde mais que 2 a 4 L (1 a 2,5 L com dor, remada 8+, cansa rápido ou objetivo de conforto) nem mais que 2" a 4" de comprimento em relação à atual. Fish, biquilha, groveler e softboard curta descontam metade da diferença de comprimento de referência entre os tipos. Vale quando a atual é da família da pranchinha (evolution para baixo); o piso não leva tipos de performance acima de 0,58 L/kg.
+- **Padrão por nível:** no intermediário o 1º lugar padrão passa a ser a evolution (mid-length também disputa quando precisa de remada). No intermediário avançado, a pranchinha só é o padrão se não houver dor nem remada 7+.
+- **Remada alta (`PESOS.remadaAlta`):** até o intermediário avançado, nota 7+ em remada tira pontos do tipo que rema abaixo de (nota − 2).
+- **Objetivos:** até 2, o placar faz a média dos dois. Opção nova: "Remar mais, com conforto".
+- **Perguntas:** a partir do intermediário somem "com empurrão do professor" e "ainda não passo a arrebentação".
+- **Faixa de comprimento:** até o intermediário avançado, de −1" a +3" ("na dúvida, a maior").
+- **Coach:** card do Gustavo em destaque (azul-petróleo, bloco azul-claro), mensagem do WhatsApp com negrito, PDF com 4 páginas (a 4ª é o especialista com o resumo do DNA; o glossário volta para a 3ª).
+- Caso do Gui depois: evolution 6'2" e 35,2 L em 1º, biquilha 5'10" e pranchinha 6'1" no pódio. Teste de viés (1.500 perfis): sem pódio incoerente novo; exemplo pronto agora dá evolution 6'2", 34,2 L (imagem `assets/reports/board.webp` atualizada).
