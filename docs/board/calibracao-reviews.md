@@ -231,3 +231,11 @@ Observação do coach: o app encurtava demais (pranchinha atual 5'10" virava 5'7
 - **Pouco volume encurta pouco:** quando a litragem é baixa, a pranchinha perde no máximo 1" e os outros tipos 2"; o resto sai da largura e da espessura.
 - Exemplo (72 kg, 1,75 m, avançado, pranchinha atual 5'10" 30 L): pranchinha 5'11" 28,7 L · biquilha 5'8" 31,2 L · groveler 5'9" 29,7 L · fish 5'7" 31,7 L.
 - Testes: casos de referência 23 de 23; 3.000 perfis com travas iguais (pranchinha/biquilha/groveler/fish acima de 0,6 L/kg: 0); exemplo pronto igual.
+
+## Rodada 19: âncora na prancha atual (5/nov/2026)
+Pergunta do Gui: "por que um avançado que surfa com 30 L vai surfar com 24,7 L?". Regra: a prancha atual é a referência e a recomendação não muda muito, a não ser que a pessoa queira claramente uma sensação diferente.
+- **Âncora (`PESOS.ancora`)**, do intermediário avançado para cima, quando a pessoa informa os litros de uma pranchinha, step-up, biquilha, groveler, fish ou evolution: a pranchinha fica entre 1,5 L a menos e 3 L a mais que a equivalente da atual. Só sai disso com motivo: "rema pouco" +2 L; "grande demais" até 3 L a menos; remada 4 ou 5 +1 L. Biquilha, groveler e fish seguem a regra do quiver a partir dessa pranchinha. Teto de 0,58 L/kg.
+- **Sensação diferente:** pedir outro estilo, ou estar com prancha grande (evolution, mid, fun, long, soft) e querer manobra. Aí a âncora sai e a transição pode descer o dobro (`sensMult: 2`).
+- **Prancha grande sem pedir outra sensação** (ex.: mid 45 L e quer curtir) agora também desce aos poucos pela transição; antes saía uma pranchinha de 29,9 L. Agora: evolution 6'10" 41 L.
+- Exemplos: avançado 62 kg com pranchinha 5'10" 30 L → pranchinha 5'10" 28,5 L (antes 24,7 L), biquilha 5'7" 31 L; "rema pouco" → 32 L; "grande demais" → 27 L. Int. avançado 75 kg com mid 7'2" 45 L querendo manobra → pranchinha 6'0" 29,9 L.
+- Testes: referência 23 de 23; auditoria igual ou melhor (pranchinha acima de 0,45 L/kg no avançado: 76 → 43 perfis); 3.000 perfis sem pranchinha acima de 6'4" nem acima de 0,6 L/kg; exemplo pronto igual.

@@ -766,6 +766,8 @@ const PESOS={
   //   capPerf: o piso de litros não leva pranchinha, biquilha, groveler, fish e step-up acima de 0,58 L/kg · regra (a validar com o Gustavo)
   // [polegadas a menos, litros a mais] que a pranchinha do dia a dia · regra do coach (nov/2026)
   meio:{twin:[3,2.5],grov:[2.5,1],fish:[4,3],pranchinhaDrop:1},
+  // âncora na prancha atual: base = litros da atual convertidos para "pranchinha" ([divide por, depois subtrai]) · regra do Gui e do coach
+  ancora:{base:{short:[1,0],step:[1.11,0],twin:[1,2.5],grov:[1,1],fish:[1,3],evo:[1.1,0]},descer:1.5,descerGrande:3,subir:3,remaPouco:2,remadaAlta:1,sensMult:2},
   transicao:{volDrop:[2,2,2.5,4,99],volDropCuida:[1,1,1.5,2.5,99],lenDrop:[2,2,3,4,99],lenDropCuida:[1,1,2,3,99],tipoMeio:0.5,capPerf:0.58},
   // remada 7+ até o intermediário avançado: perde pontos o tipo que rema abaixo de (nota − 2) · regra
   remadaAlta:{lim:7,peso:2.5},
@@ -863,13 +865,28 @@ function engine(a,long,over){
   const cuida=(g('dor',[])).some(x=>x<4)||(a.imp&&a.imp.rem>=8)||g('fis',1)===0||objs.includes(6);
   // rodada 13: transição a partir da prancha atual (até o intermediário avançado)
   const minL={},fixL={};
-  {const ref=refAtual(a,peso,alt),Tr=P.transicao;
+  // sensação diferente (regra do Gui, nov/2026): só muda muito de prancha quem pede outro estilo ou está com prancha grande e quer manobra.
+  // Sem isso, mesmo quem vem de mid, fun ou long desce aos poucos.
+  const akA=a.atual_k||ATUAL_K[a.atual_mod||0],grandeA=['evo','softp','mid','minimal','long','longp','soft'].includes(akA),
+    sens=g('muda',-1)===1||(grandeA&&objs.includes(2));
+  {let ref=refAtual(a,peso,alt);const Tr=P.transicao;
+   if(!ref&&akA&&a.atual_V&&lvl>=2&&!sens)ref={k:akA,L:a.atual_L||null,V:a.atual_V};
    // regra de coach (nov/2026): quem já anda de pranchinha não desce muito de comprimento (até 1" a menos), em qualquer nível
    if(ref&&ref.L&&['short','step'].includes(ref.k))minL.short=ref.L-P.meio.pranchinhaDrop;
-   if(ref&&lvl<=3){const vd=(cuida?Tr.volDropCuida:Tr.volDrop)[lvl],ld=(cuida?Tr.lenDropCuida:Tr.lenDrop)[lvl];
+   if(ref&&lvl<=3){const sm=sens?P.ancora.sensMult:1,vd=(cuida?Tr.volDropCuida:Tr.volDrop)[lvl]*sm,ld=(cuida?Tr.lenDropCuida:Tr.lenDrop)[lvl]*sm;
      if(ref.V)KEYS.forEach(k=>{const fl=Math.min(ref.V-vd,['short','twin','grov','fish','step'].includes(k)?peso*Tr.capPerf:99);if(!ARCH[k].fixedVol&&vols[k]<fl)vols[k]=fl});
      if(ref.L)KEYS.forEach(k=>{if(ARCH[k].fixedVol)return;const off=['fish','twin','grov','softp'].includes(k)?Math.max(0,ARCH[ref.k].ref[1]-ARCH[k].ref[1])*Tr.tipoMeio:0;minL[k]=Math.max(minL[k]||0,ref.L-ld-off)})}}
   MINL=minL;FIXL={};
+  // âncora na prancha atual (nov/2026, regra do Gui e do coach): quem informa os litros da prancha que usa (da família da pranchinha)
+  // recebe uma pranchinha perto dela. Só muda com motivo: "rema pouco" sobe, "grande demais" desce, remada 4 ou 5 sobe um pouco.
+  {const ak=a.atual_k||ATUAL_K[a.atual_mod||0],An=P.ancora;
+   if(a.atual_V&&lvl>=2&&An.base[ak]&&!(sens&&grandeA)){const eq=a.atual_V/An.base[ak][0]-An.base[ak][1],inc=g('incomoda',6);
+     let lo=eq-(inc===2?An.descerGrande:An.descer),hi=eq+An.subir;
+     let v=Math.min(Math.max(vols.short,lo),hi);
+     if(inc===0)v=Math.max(v,eq+An.remaPouco);
+     if(a.imp&&a.imp.rem>=8)v=Math.max(v,eq+An.remadaAlta);
+     vols.short=Math.min(v,Math.max(vols.short,peso*P.transicao.capPerf));
+     if(ak==='evo'||ak==='step'||ak==='mid')vols[ak]=Math.min(Math.max(vols[ak],a.atual_V-(inc===2?An.descerGrande:An.descer)),a.atual_V+An.subir)}}
   // regra de coach (nov/2026): biquilha, groveler e fish são a pranchinha da pessoa mais curta e com mais litros
   // (marulheira/groveler 2–3" menor e ~1 L a mais; biquilha 3" menor e 2–3 L a mais; fish 4" menor e ~3 L a mais). Vale do intermediário para cima.
   if(lvl>=2){const sd=dims('short',vols.short,peso,alt),M=P.meio;
