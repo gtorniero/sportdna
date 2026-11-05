@@ -157,3 +157,12 @@ Motivo: perfil de teste (intermediário avançado, 70 kg, mar de 1 a 1,5 m, mist
 - **Casos de referência:** `surf/tools/referencia.mjs`, 15 perfis típicos com o que um coach espera no pódio (deve ter, não pode ter, quem pode ser o 1º). Antes: 13 de 15. Agora: 15 de 15. A lista precisa ser revisada pelo Gustavo e crescer com casos reais dele.
 - **3.000 perfis (`vies.mjs`):** pódios incoerentes continuam baixos (nível ≤ 1 com pranchinha em 1º: 1, de quem pediu para mudar para pranchinha; no pódio: 3; Primeiras Ondas abaixo de 0,7 L/kg: 8).
 - **Exemplo pronto mudou:** intermediário que quer aprender manobras em onda pequena passa de Mid-length para **Evolution / allround 96%, 6'2" × 19 3/4" × 2 1/2", 34,2 L** (pódio evolution, fish, groveler). `assets/reports/board.webp` e o texto alternativo atualizados.
+
+## Rodada 11: pranchinha triquilha como padrão (5/nov/2026)
+Regra de coach: para quem já surfa, a pranchinha triquilha de até 6'4" é o "arroz com feijão"; o que muda é a litragem, a rabeta, o fundo e o tamanho de quilha, conforme objetivo, mar e mobilidade.
+- **Regra no motor:** do nível Intermediário (calculado) para cima, a pranchinha é garantida no pódio e é o 1º lugar. Exceções, quando a pessoa pede outro estilo: "quero mudar de estilo"; manter o mesmo estilo de uma prancha atual que não é pranchinha; somar ao quiver quem já tem pranchinha; surf clássico (objetivo ou estilo); prancha para dias pequenos; soft. Onda acima de 2,5 m (avançado, mar) segue com gun e step-up; prancha para dias grandes aceita step-up ou gun em 1º. Se a litragem não cabe numa pranchinha de até 6'4" (pesados), o padrão vira a evolution.
+- **Pranchinha sempre triquilha** (antes virava quadriquilha para quem marcava tubo).
+- **Casos de referência:** 20 perfis em `surf/tools/referencia.mjs`, 20 de 20 batem.
+- **Teste da regra:** 2.500 respostas aleatórias; 324 se encaixam na regra e em 0 o 1º lugar ficou fora de pranchinha, evolution (pesados), step-up ou gun (dias grandes).
+- **3.000 perfis (`vies.mjs`):** pranchinha em 1º sobe de 10% para 17% (os sorteios incluem iniciantes e quem pede outro estilo); travas de segurança iguais.
+- **Exemplo pronto:** Pranchinha 96%, 5'11" × 20 5/8" × 2 5/8", 32,1 L, rabeta round, triquilha, PU leve. `board.webp`, texto alternativo e descrição da pranchinha ("a prancha padrão de quem já surfa") atualizados.

@@ -856,6 +856,13 @@ function engine(a,long,over){
   const must=[],notFirst=[];
   if(tam===4&&lvl>=3&&g('onde',0)!==1&&quiver!==1){must.push('gun','step');notFirst.push(...KEYS.filter(k=>!['gun','step','short'].includes(k)))}
   if(g('foam',-1)===1)must.push(sc.soft>=sc.softp?'soft':'softp');
+  // pranchinha triquilha é o padrão de quem já surfa (nov/2026, regra de coach): do intermediário para cima ela é o 1º lugar,
+  // a não ser que a pessoa peça outro estilo (mudar de estilo, manter um estilo que não é pranchinha, surf clássico,
+  // prancha para dias pequenos ou para somar ao quiver que já tem pranchinha), queira soft ou o mar peça gun.
+  // Se a litragem não cabe numa pranchinha de até 6'4", o padrão vira a evolution (pranchinha com volume).
+  {const objv=g('objv',-1),est=g('estilo',0),outroEstilo=mu===1||(ak0&&mu===0&&ak0!=='short')||(mot===2&&ak0==='short')||objv===5||est===5||quiver===1||g('foam',-1)===1;
+   if(lvl>=2&&!outroEstilo&&!(tam===4&&lvl>=3&&g('onde',0)!==1)){const pk=vols.short<=pranchinhaVmax()*1.1?'short':'evo',ok=quiver===2?[pk,'step','gun']:[pk];
+     if(!must.includes(pk))must.push(pk);notFirst.push(...KEYS.filter(k=>!ok.includes(k)&&!notFirst.includes(k)))}}
   ajustaPodio(sc,must,notFirst,Rg.podio.margem);
   const rank=KEYS.slice().sort((p,q)=>sc[q]-sc[p]);
   const top=rank.slice(0,3),gap=sc[top[0]]-sc[top[1]];
@@ -918,7 +925,7 @@ function decide(R,k){
   if(S[5]>.35&&['mid','longp','minimal'].includes(k))setup='single';
   if(S[1]>.3&&fo===0&&['fish','twin','grov'].includes(k))setup='twint';
   if(S[2]>.35&&['grov','evo','minimal'].includes(k))setup='tri';
-  if(S[3]>.3&&['short','step','grov'].includes(k))setup='quad';
+  if(S[3]>.3&&['step','grov'].includes(k))setup='quad';
   out.setup=setup;
   const wc=peso<65?0:peso<=80?1:2,wv=tam<=1?0:tam<=2?1:2;
   out.finSize=setup==='single'?(peso>85?'10"':'9"')+' central':['XS','S','M','L','XL'][wc+wv];
@@ -1235,7 +1242,7 @@ let GID=0;
 const BXP=['Rema fácil','Estável','Rápida','Vira fácil','Onda grande'];
 const PN=Object.fromEntries(KEYS.map(k=>[k,ARCH[k].n]));
 const PL={soft:'Prancha de espuma para aprender',long:'Prancha longa',longp:'Prancha longa esportiva',minimal:'Prancha média-grande',mid:'Prancha média e arredondada',evo:'Pranchinha com mais volume',fish:'Prancha curta e larga',grov:'Pranchinha larga para onda pequena',twin:'Prancha curta de duas quilhas',softp:'Prancha de espuma curta',short:'Pranchinha',step:'Pranchinha para onda grande',gun:'Prancha para onda gigante'};
-const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Entre a prancha de escolinha e a pranchinha. Rema fácil, entra cedo na onda e desliza bem.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha curta e fina dos surfistas experientes. Responde rápido, mas exige remada e técnica.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
+const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Entre a prancha de escolinha e a pranchinha. Rema fácil, entra cedo na onda e desliza bem.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha padrão de quem já surfa: curta, triquilha e rápida de responder. A litragem certa para você é o que faz ela remar bem.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
 /* ilustrações dos tipos (geradas por IA, sem marca) em img/tipos/<tipo>.webp; tipo sem imagem cai no desenho */
 const TIMG=new Set(['mid','short','soft','long','longp','minimal','evo','fish','twin','softp','step','gun','grov','short-round','short-roundpin','evo-round','evo-roundpin','mid-round','longp-round']);
 /* variante pela rabeta escolhida pelo motor (ex.: short-roundpin.webp); sem variante, usa a do tipo */
