@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Regressão do motor do RACKET DNA (rodada 12: dor atual × histórico, degrau dos 60 anos, neutralidade de evidência).
-   Uso: node racket/tools/regressao.mjs [--base git:origin/main | --base arquivo.html] [--json saida.json] [--atualizar]
+   Uso: node racket/tools/regressao.mjs [--base git:origin/main | --base arquivo.html] [--cand arquivo.html] [--json saida.json] [--atualizar]
    - Roda os MESMOS perfis fixos (gerados aqui, deterministas) na versão candidata (racket/index.html) e, se pedido, na base.
    - Catálogo e desempate fixos: o motor ordena pelo score bruto inteiro e, no empate, pela ordem do CATALOG.
    - Testes (falham com código 1):
@@ -76,7 +76,7 @@ async function rodar(html,P=PERFIS){
 const comEvid=(html,fn)=>{const m=html.match(/const EVID=(\{.*?\});\n/);const E=JSON.parse(m[1]);fn(E);return html.replace(m[0],'const EVID='+JSON.stringify(E)+';\n')};
 const igual=(x,y)=>JSON.stringify(x.all)===JSON.stringify(y.all);
 
-const cand=fs.readFileSync(path.join(raiz,'racket/index.html'),'utf8');
+const cand=opt('--cand')?lerHtml(opt('--cand')):fs.readFileSync(path.join(raiz,'racket/index.html'),'utf8');
 const C=await rodar(cand);const byId=Object.fromEntries(C.res.map(x=>[x.id,x]));
 const T=[];const teste=(nome,ok,det='')=>{T.push({nome,ok,det});console.log(`${ok?'ok  ':'FALHA'} ${nome}${det?' · '+det:''}`)};
 const get=(a,d,k)=>byId[`${a}|${d}|${k}`];
@@ -132,6 +132,7 @@ if(opt('--base')){const B=await rodar(lerHtml(opt('--base')));rel.base=mudou(C,B
     console.log(`  ${g.padEnd(30)} top1 ${J.filter(([x,y])=>x.top3[0][0]!==y.top3[0][0]).length}/${J.length} · top3 ${J.filter(([x,y])=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(y.top3.map(t=>t[0]).sort())).length}/${J.length}`)}
   for(const id of ['caso_idade_60_av_muito_forte_sem_dor','caso_dor_59_av_forte_historico_forte']){const x=byId[id],y=B.res.find(r=>r.id===id);
     console.log(`  ${id}\n    base  ${y.top3.map(t=>`${t[1]} (${t[2]})`).join(' · ')}\n    cand  ${x.top3.map(t=>`${t[1]} (${t[2]})`).join(' · ')}`)}
+  rel.perfis=C.res.map((x,j)=>({id:x.id,base:B.res[j].top3,cand:x.top3}));
   rel.casos=Object.fromEntries(['caso_idade_60_av_muito_forte_sem_dor','caso_dor_59_av_forte_historico_forte'].map(id=>[id,{base:B.res.find(r=>r.id===id).top3,cand:byId[id].top3}]));}
 if(opt('--json'))fs.writeFileSync(opt('--json'),JSON.stringify({testes:T,relatorios:rel,cand:C.res.map(x=>({id:x.id,top3:x.top3}))},null,1));
 const f=T.filter(t=>!t.ok).length;console.log(`\n${T.length-f}/${T.length} testes ok`);process.exit(f?1:0);
