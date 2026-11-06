@@ -838,6 +838,13 @@ function litragem(a,H,lvl){
     return v};
   return {GF,rng:L0.rng,vols:Object.fromEntries(KEYS.map(k=>[k,volOf(k)]))};
 }
+/* biquilha, groveler e fish do intermediário para cima: a pranchinha da pessoa com alguns litros a mais (PESOS.meio).
+   Muda vols no lugar. Usada pelo engine() e pela calculadora de litragem. */
+function meioPranchinha(vols,peso,lvl){
+  if(lvl<2)return vols;const M=PESOS.meio,cap=peso*PESOS.transicao.capPerf;
+  ['twin','grov','fish'].forEach(k=>{vols[k]=Math.min(vols.short+M[k][1],Math.max(vols.short,cap))});
+  return vols;
+}
 /* prancha atual de referência para a transição: medidas digitadas ou, sem elas, a referência do tipo para o peso */
 function refAtual(a,peso,alt){
   const ak=a.atual_k||ATUAL_K[a.atual_mod||0];if(!ak)return null;
@@ -893,7 +900,8 @@ function engine(a,long,over){
   // regra de coach (nov/2026): biquilha, groveler e fish são a pranchinha da pessoa mais curta e com mais litros
   // (maloreira/groveler 2–3" menor e ~1 L a mais; biquilha 3" menor e 2–3 L a mais; fish 4" menor e ~3 L a mais). Vale do intermediário para cima.
   if(lvl>=2){const sd=dims('short',vols.short,peso,alt),M=P.meio;
-    [['twin',M.twin],['grov',M.grov],['fish',M.fish]].forEach(([k,[dl,add]])=>{vols[k]=Math.min(vols.short+add,Math.max(vols.short,peso*P.transicao.capPerf));fixL[k]=Math.max(ARCH[k].L[0],sd.L-dl)})}
+    meioPranchinha(vols,peso,lvl);
+    [['twin',M.twin],['grov',M.grov],['fish',M.fish]].forEach(([k,[dl]])=>{fixL[k]=Math.max(ARCH[k].L[0],sd.L-dl)})}
   FIXL=fixL;
   // 4. modelo
   const sc={};
@@ -1278,7 +1286,7 @@ const LVD=['ainda com espuma ou empurrão do professor','já pega espuma sozinho
 /* tipos mais comuns no 1º lugar do teste em cada nível (3.000 perfis de surf/tools/vies.mjs, nov/2026); o primeiro é o padrão */
 const CALC_TIPOS=[['minimal','soft','long','mid','evo'],['mid','minimal','twin','longp','evo'],['mid','grov','fish','longp','twin'],['grov','fish','mid','short','evo'],['twin','grov','short','longp','step']];
 const qOpts=id=>Q.find(q=>q.id===id).o;
-function calcLitragem(o){const H=(LV[o.lvl].min+LV[o.lvl].max)/2;return litragem({peso:o.peso,altura:o.alt,fis:o.fis,idade:o.idade,_lvl:o.lvl},H,o.lvl)}
+function calcLitragem(o){const H=(LV[o.lvl].min+LV[o.lvl].max)/2,R=litragem({peso:o.peso,altura:o.alt,fis:o.fis,idade:o.idade,_lvl:o.lvl},H,o.lvl);meioPranchinha(R.vols,o.peso,o.lvl);return R}
 function calcTipoOpts(){const lv=+$('#cNivel').value,cur=$('#cTipo').value,def=CALC_TIPOS[lv][0];
   $('#cTipo').innerHTML=`<option value="auto">Não sei · ${esc(PN[def])}</option>`+KEYS.map(k=>`<option value="${k}">${esc(PN[k])}</option>`).join('');
   $('#cTipo').value=cur&&cur!=='auto'?cur:'auto';$('#cTipoH').textContent='Cada tipo pede uma litragem diferente para o mesmo surfista. Sem escolher, usamos '+PN[def]+', o tipo que o teste mais indica no nível '+LV[lv].n+'.';$('#cNivelH').textContent='Escolha pelo que você faz na onda, não pelo tempo de surf. '+LV[lv].n+': '+LVD[lv]+'.'}
