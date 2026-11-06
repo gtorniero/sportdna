@@ -1,3 +1,4 @@
+import {saleMeasurement} from './measurement.mjs';
 import {redeemPromo} from './promos.mjs';
 import StripeClient from 'stripe';
 import {sendReport} from './email.mjs';
@@ -32,8 +33,9 @@ async function rate(request,env) {
  // Buckets contain salted IP hashes, not the original addresses.
  await env.DB.prepare('DELETE FROM rate_limits WHERE id < ?').bind((bucket-144)+':').run();
 }
-function publicOrder(o) {
- return {id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:'BRL',mode:o.mode,state:o.state,
+async function publicOrder(o) {
+ const measurement=await saleMeasurement(o);
+ return {...(measurement?{measurement}:{}),id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:'BRL',mode:o.mode,state:o.state,
   checkoutUrl:o.checkout_url||null,pixCode:o.pix_code||null,pixImage:o.pix_image||null};
 }
 async function refresh(o,env,force=false) {
