@@ -26,6 +26,8 @@ Base de evidências de reviews do RACKET DNA. Fica neste repositório, sem outro
 |---|---|
 | `bruto/lote1-chatgpt-2026-11-06.csv` | 75 reviews (Pro Staff 97, Blade 98, Clash 100, Speed, EZONE 100), coletadas pelo ChatGPT/Codex com página aberta; CSV `;`, 18 colunas. SHA-256 `af8723270c1c295b19cb6f95b4a36e3d7834cf4f05f2441b619966b6ca427064` |
 | `bruto/pr93-snippets-2026-11.json` | 1.028 registros da PR #93, tirados de resumos de busca (`base: snippet`). Só para deduplicar URL e mapear lacunas; não alimenta nota |
+| `bruto/triagem-codex-2026-11-06.json` | Triagem do Codex: 518 URLs, 327 páginas consultadas, 220 com 3+ atributos. `ids_candidatos` NÃO é mapeamento confirmado; atributos podem ser de um testador só. SHA-256 `595beb4b264bbcef9914738a541582b84419a25b5b237751f29e1483edf9b1dc` |
+| `bruto/conferencia-gui-2026-11-06.json` | Conferência manual do Gui na TennisAddict (ids 162, 163, 164): precisão B/B/A e potência C/C/D, escala original em letras |
 | `bruto/lote2-claude-paginas-*.jsonl` | Coleta com páginas abertas pela sessão auxiliar (quando houver) |
 | `derivado/reviews.json` | Gerado por `racket/tools/reviews.py`: schema abaixo, grupos de duplicata, quarentena e elegibilidade |
 | `derivado/cobertura.md` | Contagens por família, geração, fonte independente e país; lacunas |
@@ -36,4 +38,6 @@ Base de evidências de reviews do RACKET DNA. Fica neste repositório, sem outro
 ## Como o motor usa (branch `claude/racket-revisao-motor`)
 - Nenhuma review isolada favorece nem exclui uma raquete. Um sinal de review só mexe no ranking quando há pelo menos duas famílias de fonte independentes concordando no mesmo sentido; sem isso, o efeito é zero.
 - Ausência de review não é penalizada.
+- Famílias de fonte: Tennis Warehouse (TWD, inclui TW Europe e Tennis Only), sites da rodada 1 (RV, agregado sem URL: conta como UMA família) e cada publicação do EVID, identificada pelo domínio da URL.
+- Triagem só entra depois de confirmados geração, variante e painel na página (mapeamento pelo título é "provável", não confirmado).
 - Testes em `racket/tools/regressao.mjs`: remoção de fonte e invariância a evidência isolada.

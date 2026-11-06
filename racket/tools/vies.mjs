@@ -79,7 +79,7 @@ console.log('Nunca no top 3: '+(cat.filter((r,i)=>!m3[i]).map(r=>r.name).join(',
 console.log('Mais frequentes no top 3: '+cat.map((r,i)=>[r.name,m3[i]]).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([n,v])=>`${n} ${pct(v/N)}`).join(' · '));
 /* contraindicações */
 const J=(a,k)=>a.arm&&a.arm!=='no'&&(a.joint||[]).includes(k);
-const forte=a=>a.arm!=='no'&&(a.pain==='3'||a.lim==='3');
+const forte=a=>a.arm==='now'&&(a.pain==='3'||a.lim==='3'); /* rodada 12: dor forte = atual */
 const regras=[
   /* rigidez: evidência fraca (docs/racket/ciencia.md, tema 1); conta como ressalva, não como contraindicação séria */
   ['Dor (atual ou passada) e RA ≥ 68 *',(a,r)=>a.arm!=='no'&&r.ra>=68,1],
@@ -90,7 +90,9 @@ const regras=[
   ['Ombro e SW ≥ 328',(a,r)=>J(a,'shoulder')&&r.sw>=328],
   ['Iniciante e cabeça ≤ 98',(a,r)=>a.lvl==='beg'&&r.head<=98],
   ['Iniciante e SW ≥ 326 ou ≥ 310 g',(a,r)=>a.lvl==='beg'&&(r.sw>=326||r.wt>=310)],
-  ['Força baixa ou 60+ anos e ≥ 310 g',(a,r)=>(a.str==='low'||+a.age>=60)&&r.wt>=310],
+  /* rodada 12: separadas. "60+ com força não baixa" deixou de ser regra do motor; segue medida para mostrar o efeito */
+  ['Força baixa e ≥ 310 g',(a,r)=>a.str==='low'&&r.wt>=310],
+  ['60+ anos (força não baixa) e ≥ 310 g',(a,r)=>a.str!=='low'&&+a.age>=60&&r.wt>=310],
   ['Não iniciante e cabeça ≥ 110',(a,r)=>a.lvl!=='beg'&&r.head>=110],
 ];
 console.log('\nContraindicação                       pódios  em 1º');

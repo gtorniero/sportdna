@@ -47,10 +47,18 @@ def norm_url(u):
     u = (u or '').strip().lower().split('#')[0].split('?')[0].rstrip('/')
     return re.sub(r'^https?://(www\.)?', '', u)
 
-def familia_fonte(site):
+DOMINIO_FAMILIA = {'tennis-warehouse.com': 'Tennis Warehouse', 'tenniswarehouse-europe.com': 'Tennis Warehouse', 'tennisonly.com.au': 'Tennis Warehouse',
+    'twu.tennis-warehouse.com': 'Tennis Warehouse', 'tennisaddict.fr': 'TennisAddict', 'tenniscompanion.org': 'TennisCompanion', 'tennisnerd.net': 'Tennisnerd',
+    'tennis.com': 'Tennis.com', 'tennismagazin.de': 'tennis MAGAZIN', 'tennisexpress.com': 'Tennis Express', 'supertennis.tv': 'SuperTennis',
+    'fabioferro.blog': 'Fabio Ferro', 'ubitennis.com': 'Ubitennis', 'emporiodotenista.com.br': 'Empório do Tenista'}
+
+def familia_fonte(site, url=None):
+    """Família de fonte = publicação. Pelo domínio da URL quando conhecido (o mesmo site com nomes diferentes é uma família só)."""
+    d = re.sub(r'^https?://(www\.)?', '', (url or '').lower()).split('/')[0]
+    if d in DOMINIO_FAMILIA: return DOMINIO_FAMILIA[d]
     s = (site or '').lower()
     if 'tennis warehouse' in s or 'tw europe' in s or 'tennis only' in s: return 'Tennis Warehouse'
-    return (site or '').split(' (')[0].strip()
+    return (site or d).split(' (')[0].strip()
 
 def num(x):
     try: return float(str(x).replace(',', '.'))
@@ -66,7 +74,7 @@ def lote1():
             out.append(dict(
                 arquivo_bruto='bruto/lote1-chatgpt-2026-11-06.csv', linha_bruta=i, model_id=r['modelo'], variant_id=r['versão revisada'],
                 ano_publicacao=int(r['ano']) if r['ano'].strip() else None, verificado_em='2026-11-06 (ChatGPT/Codex, página aberta)',
-                url_canonica=r['URL'].strip(), site=r['site'], familia_fonte=familia_fonte(r['site']), pais=r['país'],
+                url_canonica=r['URL'].strip(), site=r['site'], familia_fonte=familia_fonte(r['site'], r['URL']), pais=r['país'],
                 geografia='mercado' if r['país'] in MERCADOS else 'excecao', revisor_id=r['nível do testador'] or None,
                 nivel_revisor=(re.search(r'NTRP [\d.]+( a [\w.]+)?', r['nível do testador']) or [None])[0],
                 tipo='laboratorio' if lab else r['tipo'],
@@ -86,25 +94,96 @@ def lote2():
         for i, l in enumerate(open(os.path.join(BR, fn), encoding='utf-8'), start=1):
             if not l.strip(): continue
             o = json.loads(l); o['arquivo_bruto'] = 'bruto/' + fn; o['linha_bruta'] = i
-            o.setdefault('familia_fonte', familia_fonte(o.get('site')))
+            o['familia_fonte'] = familia_fonte(o.get('site'), o.get('url_canonica'))
             out.append(o)
     return out
 
+LETRAS = {'A': 1.0, 'B': .75, 'C': .5, 'D': .25, 'E': 0.0}   # TennisAddict: conversão derivada e explícita
+ATR_TRIAGEM = {'power': ['power', 'puissance', 'potenza', 'leistung'], 'control': ['control', 'précision', 'precision', 'kontrolle', 'controllo'],
+               'spin': ['topspin', 'spin', "prise d'effet", 'effet'], 'comfort': ['comfort', 'confort', 'komfort', 'comfort'],
+               'maneuver': ['maneuverability', 'maniabilité', 'manövrierbarkeit', 'maneggevolezza'], 'stability': ['stability', 'stabilité', 'stabilität', 'stabilità'],
+               'overall': ['overall', 'note globale', 'gesamt']}
+VARIANTE_TOKENS = ['lite', 'team', 'ul', 'l', 'sl', 'pro', 'tour', 'plus', '+', 'elite', 'mp', '16x19', '18x20', '16x20', '18x16', '16x18', '18x19']
+
+def toks(x, pares=True):
+    x = (x or '').lower().replace('×', 'x').replace('-', ' ').replace('_', ' ').replace('/', ' ')
+    L = re.findall(r'[a-z0-9+]+(?:x[0-9]+)?', x)
+    return set(L) | ({a + b for a, b in zip(L, L[1:])} if pares else set())   # "t fight" também vale como "tfight"
+
+def confirmar_titulo(titulo, url, cands, C):
+    """Mapeamento PROVÁVEL pelo título/URL: o candidato precisa ter todos os tokens do nome no título, o ano do catálogo
+    (ou nenhum ano conflitante) e nenhum token de variante a mais. Único → provável; senão ambíguo. Não substitui ler a página."""
+    t = toks(titulo) | toks(url); anos = set(re.findall(r'20[12][0-9]', (titulo or '') + ' ' + (url or '')))
+    ok = []
+    for i in cands:
+        r = C[i]; nome = toks(r['brand'] + ' ' + re.sub(r'\b(\d+) g\b', r'\1g', r['model']).replace('ª', ''), pares=False) - {'geração', 'gera'}
+        nome = {x for x in nome if x not in ('8', 'v1')} | ({str(r['wt'])} if re.search(r'\b\d{3} ?g\b', r['model']) else set())
+        pad = {x for x in nome if re.fullmatch(r'\d\dx\d\d', x)}
+        tpad = {x for x in t if re.fullmatch(r'\d\dx\d\d', x)}
+        if tpad and not (pad & tpad): continue          # título informa outro padrão
+        if not (nome - {str(r['wt'])} - pad) <= t: continue
+        if anos and str(r.get('year')) not in anos: continue
+        extra = {v for v in VARIANTE_TOKENS if v in t and v not in nome}
+        if extra: continue
+        ok.append(i)
+    return ok[0] if len(ok) == 1 else None, ok
+
 def para01(v, esc):
     if v is None: return None
+    if esc == 'letras': return LETRAS.get(str(v).strip().upper())
     if esc == 'sentimento': return (max(-2, min(2, v)) + 2) / 4
     e = {'10': 10, '100': 100, '20': 20, '5': 5}.get(str(esc))
     return None if not e else v / e
 
+def catalogo():
+    s = open(HTML, encoding='utf-8').read()
+    return json.loads(re.search(r'const CATALOG=/\*CATALOG\*/(\[.*?\]);\n', s).group(1))
+
+def triagem(C):
+    p = os.path.join(BR, 'triagem-codex-2026-11-06.json')
+    if not os.path.exists(p): return []
+    d = json.load(open(p, encoding='utf-8')); out = []
+    conf = json.load(open(os.path.join(BR, 'conferencia-gui-2026-11-06.json'), encoding='utf-8'))['registros'] if os.path.exists(os.path.join(BR, 'conferencia-gui-2026-11-06.json')) else []
+    for i, f in enumerate(d['fontes'], start=1):
+        bruto = f.get('atributos_brutos_para_conferencia') or {}
+        vals = {}
+        for k, nomes in ATR_TRIAGEM.items():
+            for nk, nv in bruto.items():
+                if nk.strip().lower() in nomes: vals[k] = nv
+        letras = any(str(v).strip().upper() in LETRAS for v in vals.values())
+        nums = [num(v) for v in vals.values() if num(v) is not None]
+        esc = 'letras' if letras else ('100' if nums and max(nums) > 20 else ('20' if nums and max(nums) > 10 else ('10' if nums else None)))
+        cid, ok = confirmar_titulo(f.get('titulo'), f['url'], f.get('ids_candidatos') or [], C)
+        site = re.sub(r'^https?://(www\.)?', '', f['url']).split('/')[0]
+        rec = dict(arquivo_bruto='bruto/triagem-codex-2026-11-06.json', linha_bruta=i, model_id=(C[cid].get('fam') if cid is not None else None) or '(não confirmado)',
+                   variant_id=f.get('titulo'), ano_publicacao=None, verificado_em='2026-11-06 (Codex: página consultada, leitura não certificada)' if f.get('pagina_consultada') else None,
+                   url_canonica=f['url'], site=site, familia_fonte=familia_fonte(site, f['url']),
+                   pais=None, geografia=None, revisor_id=None, nivel_revisor=None, tipo='playtest', metodo_nota='publicada' if vals else 'nenhuma',
+                   escala_original=esc, notas_originais={k: (v if letras else num(v)) for k, v in vals.items()} or None, indices_laboratorio=None,
+                   sentimento_interpretado=None, anotador=None, notas_evidencia='triagem-codex; ids candidatos ' + ','.join(map(str, f.get('ids_candidatos') or [])) + (f'; provável pelo título: {cid}' if cid is not None else f'; título compatível com {ok}' if ok else '; título não confirma nenhum candidato'),
+                   base='triagem', catalogo_provavel=cid, painel_confirmado=False)
+        # conferência humana (Gui): confirma versão e as notas citadas, só elas
+        for g in conf:
+            if g['catalogo_id'] in (f.get('ids_candidatos') or []) and g['site'].lower() in site and cid == g['catalogo_id']:
+                m = {'precisao': 'control', 'potencia': 'power'}
+                rec2 = dict(rec); rec2.update(linha_bruta=f'{i} + conferencia-gui', base='pagina', verificado_em='2026-11-06 (conferido pelo Gui na página)',
+                            model_id=C[g['catalogo_id']].get('fam'), variant_id=g['modelo_catalogo'] + ' ' + g['geracao'], escala_original='letras',
+                            notas_originais={m[k]: v for k, v in g['notas_originais'].items()}, painel_confirmado=True, geografia='mercado', pais='França',
+                            notas_evidencia='conferência manual do Gui (só precisão e potência); demais atributos seguem na triagem')
+                rec2['_ids'] = [g['catalogo_id']]; out.append(rec2)
+        out.append(rec)
+    return out
+
 def gerar():
-    R = lote1() + lote2()
+    C = catalogo()
+    R = lote1() + lote2() + triagem(C)
     snip = json.load(open(os.path.join(BR, 'pr93-snippets-2026-11.json'), encoding='utf-8'))['reviews']
     u93 = {norm_url(x.get('url')) for x in snip}
     # grupos de duplicata: mesma URL normalizada, ou texto da TW em espelho (mesmo código de review no nome da página)
     def chave(r):
         u = norm_url(r['url_canonica'])
         m = re.search(r'racquet_reviews/([a-z0-9]+)review', u)
-        return ('tw:' + m.group(1)) if m else u
+        return (('tw:' + m.group(1)) if m else u) + ('#conf' if str(r.get('linha_bruta','')).endswith('conferencia-gui') else '')
     grupos = collections.defaultdict(list)
     for r in R: grupos[chave(r)].append(r)
     for g, L in grupos.items():
@@ -119,10 +198,12 @@ def gerar():
         ids = []
         for fam, rx, cid in VERSOES:
             if r['model_id'] == fam and re.search(rx, r['variant_id'] or ''): ids = cid
+        if r.get('_ids'): ids = r.pop('_ids')
         r['catalogo_ids'] = ids
         q = next((m for uu, m in QUARENTENA.items() if uu in u), None)
         if r.get('duplicata_de'): r['elegibilidade'], r['motivo'] = 'excluido', 'duplicata'
         elif q: r['elegibilidade'], r['motivo'] = 'quarentena', q
+        elif r.get('base') == 'triagem': r['elegibilidade'], r['motivo'] = 'triagem', 'aguarda conferência de geração, variante e painel na página'
         elif r.get('base') != 'pagina': r['elegibilidade'], r['motivo'] = 'so_contexto', 'resumo de busca, página não aberta'
         elif r['metodo_nota'] == 'laboratorio': r['elegibilidade'], r['motivo'] = 'so_contexto', 'índice de laboratório, não é nota de quadra'
         elif not ids: r['elegibilidade'], r['motivo'] = 'so_contexto', 'geração/versão fora do catálogo atual ou não explicitada'
@@ -173,6 +254,25 @@ def cobertura(R, media_fonte, u93, snip):
     for f, rs in sorted(by.items()):
         u = [r for r in rs if not r.get('duplicata_de')]
         L.append(f'| {f} | {len(rs)} | {len({r["familia_fonte"] for r in u})} | {sum(r["elegibilidade"]=="elegivel" for r in rs)} | {"; ".join(sorted({r["variant_id"] for r in rs}))[:300]} |')
+    C = catalogo(); RAW = open(HTML, encoding='utf-8').read()
+    TWD = json.loads(re.search(r'const TWD=(\{.*?\});\n', RAW).group(1)); RV = json.loads(re.search(r'const RV=(\{.*?\});\n', RAW).group(1))
+    eleg = collections.defaultdict(set); prov = collections.defaultdict(list)
+    for r in R:
+        if r['elegibilidade'] == 'elegivel':
+            for i in r['catalogo_ids']: eleg[i].add(r['familia_fonte'])
+        if r['elegibilidade'] == 'triagem' and r.get('catalogo_provavel') is not None: prov[r['catalogo_provavel']].append(r)
+    fams = lambda i: len(eleg[i]) + (1 if str(i) in TWD else 0) + (1 if str(i) in RV else 0)
+    n2 = sum(fams(i) >= 2 for i in range(len(C))); n1 = sum(fams(i) == 1 for i in range(len(C))); n0 = sum(fams(i) == 0 for i in range(len(C)))
+    L += ['', '## Por versão do catálogo (183)', '',
+          f'- Famílias de fonte que o motor vê hoje (TW, sites da rodada 1 e EVID): 2 ou mais em {n2} versões, 1 em {n1}, nenhuma em {n0}.',
+          '- Só versões com 2+ famílias concordando podem ter nota mexida por review; as demais ficam neutras (sem bônus nem penalidade).',
+          f'- Triagem do Codex com mapeamento provável pelo título: {len(prov)} versões; {sum(any(len(x.get("notas_originais") or {})>=3 for x in v) for v in prov.values())} com página de 3+ atributos. Não entram no motor até conferência de geração, variante e painel.', '',
+          '| id | Versão | TW | Sites r1 | Elegíveis (famílias) | Triagem provável (páginas · com 3+ atributos) |', '|---|---|---|---|---|---|']
+    for i, r in enumerate(C):
+        L.append(f'| {i} | {r["brand"]} {r["model"]} | {"sim" if str(i) in TWD else ""} | {"sim" if str(i) in RV else ""} | {", ".join(sorted(eleg[i]))} | {len(prov[i])} · {sum(len(x.get("notas_originais") or {})>=3 for x in prov[i])} |')
+    L += ['', '## Lacunas: nenhuma família de fonte e nenhuma página provável na triagem', '']
+    lac = [f'{i} {C[i]["brand"]} {C[i]["model"]}' for i in range(len(C)) if fams(i) == 0 and not prov[i]]
+    L += [f'- {len(lac)} versões: ' + '; '.join(lac)]
     L += ['', '## Quarentena e exclusões', '']
     for r in R:
         if r['elegibilidade'] in ('quarentena', 'excluido'):
