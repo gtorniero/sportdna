@@ -61,8 +61,8 @@ Onde massa e SW entram hoje:
 | Regra | Onde | Decisão | Por quê | Situação |
 |---|---|---|---|---|
 | "Dor forte" acionada pelo histórico | `dorForte`, alvo, zona, penalidade, corda, aviso | **corrigir** | Histórico virava dor atual | implementado; T1 a T5 |
-| Limites de RA da zona: forte 60, hoje cotovelo 62, hoje 63, passado 66, nenhuma 72 | `zona.raMax` | **testar** (são de produto) | Não há ponto de corte clínico de RA. Hoje só desenham a faixa do mapa; a zona que conta no ranking usa só peso e SW | só auditado; nenhum limite novo foi criado |
-| Penalidades de RA: hoje 62/65, passado 66, forte 60 | `pen.raHoje`, `pen.raPassado`, `pen.raForte` | **testar** | Mesma ressalva. "Passado 66" continua valendo para todo histórico, forte ou leve, sem diferença numérica | só auditado |
+| Limites de RA da zona: forte 60, hoje cotovelo 62, hoje 63, passado ou nenhuma 72 | `zona.raMax` | **testar** (são de produto) | Não há ponto de corte clínico de RA. Hoje só desenham a faixa do mapa; a zona que conta no ranking usa só peso e SW | histórico usa a mesma faixa visual de quem está sem dor atual |
+| Penalidades de RA: hoje 62/65, forte 60 | `pen.raHoje`, `pen.raForte` | **testar** | A rigidez só gera esta penalidade com dor atual | removido o desconto acima de 66 RA para histórico assintomático |
 | Raquete leve (< 275 g) para quem tem ou teve dor | `pen.bracoLeve` | **testar** | Direção do modelo de impacto, sem desfecho clínico | só auditado |
 | Bônus de raquete amigável ao braço (hoje/passado) | `placar.braco` | **testar** | Índice de braço é construção de produto | só auditado |
 | Aviso de "dor forte ou em tratamento" e orientação profissional | `painNote` | **manter** | Correto para dor atual que limita | implementado: só com dor atual. Histórico ganhou texto próprio |

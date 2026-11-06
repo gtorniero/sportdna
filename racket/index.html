@@ -802,7 +802,7 @@ const PESOS={
   /* Faixas ideais do mapa e das barras (zones e alargamento em compute). Origem: regra (rodadas 3 e 4) */
   zona:{
     swBase:305,swFaixa:30,swTeto:{beg:312,int:320,adv_int:326},swTetoPadrao:336,swOmbro:318,swAtual:4,
-    raMax:{forte:60,hojeCotovelo:62,hoje:63,passado:66,nenhuma:72},raMin:54,raLargura:9,
+    raMax:{forte:60,hojeCotovelo:62,hoje:63,nenhuma:72},raMin:54,raLargura:9,
     cabecaPref:{'98':[95,98],'100':[99,101],'104':[102,107]},cabecaNivel:{beg:[100,107],adv:[97,100],padrao:[98,102]},
     balMax:{punho:325,rede:325,padrao:335},balLargura:14,
     peso:8,sw:6,
@@ -814,7 +814,6 @@ const PESOS={
     bracoIndiceMin:8,
     swBorda:.6, /* rodada 8: 1,2 → 0,6 */
     raHoje:{limCotovelo:62,limOutras:65,cotovelo:3,semArticulacao:2.5,outras:1.8}, /* rodada 6: 2,2/1,8/1,2 → 3/2,5/1,8, para o orçamento não empurrar quadro rígido */
-    raPassado:{lim:66,peso:1.6},
     raForte:{lim:60,peso:1.5}, /* penalidade suave: a evidência que liga RA a cotovelo é fraca (docs/racket/ciencia.md, tema 1); sem bloqueio */
     bolaPesada:{sw:315,peso:.3},
     punho:{bal:330,peso:.8}, /* mantido: ciencia.md, tema 8 */
@@ -1204,7 +1203,7 @@ function zones(T,tw){
   const P=PESOS.zona;const k=T.stability/(T.stability+T.maneuver);
   let sw=Math.round(P.swBase+k*P.swFaixa); sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao); if(J('shoulder'))sw=Math.min(sw,P.swOmbro); const c=curRacket(); if(c&&A.feel==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&A.feel==='light')sw=Math.max(sw,c.sw+P.swAtual);
   const sev=dorForte();
-  const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):A.arm==='past'?P.raMax.passado:P.raMax.nenhuma;
+  const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):P.raMax.nenhuma;
   const raMin=Math.max(P.raMin,raMax-P.raLargura);
   const hd=(P.cabecaPref[A.headp]||(A.lvl==='beg'?P.cabecaNivel.beg:A.lvl==='adv'?P.cabecaNivel.adv:P.cabecaNivel.padrao)).slice();
   const balMax=J('wrist')?P.balMax.punho:ST('net')||ST('netc')?P.balMax.rede:P.balMax.padrao;
@@ -1218,7 +1217,6 @@ function penalties(r,c,tw){
   if(ZZ&&r.sw>ZZ.sw[1])add((r.sw-ZZ.sw[1])*P.swBorda,`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`);
   if(ZZ&&r.sw<ZZ.sw[0])add((ZZ.sw[0]-r.sw)*P.swBorda,`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`);
   {const el=J('elbow')||!(A.joint||[]).length,lim=el?P.raHoje.limCotovelo:P.raHoje.limOutras;if(A.arm==='now'&&r.ra>lim)add((r.ra-lim)*(J('elbow')?P.raHoje.cotovelo:el?P.raHoje.semArticulacao:P.raHoje.outras),`Rigidez ${r.ra} RA alta para quem tem dor hoje`)}
-  if(A.arm==='past'&&r.ra>P.raPassado.lim)add((r.ra-P.raPassado.lim)*P.raPassado.peso,`Rigidez ${r.ra} RA acima do limite para quem já teve dor`);
   if(dorForte()&&r.ra>P.raForte.lim)add((r.ra-P.raForte.lim)*P.raForte.peso,`Rigidez ${r.ra} RA alta para dor forte`);
   if(A.opp==='heavy'&&r.sw<P.bolaPesada.sw)add((P.bolaPesada.sw-r.sw)*P.bolaPesada.peso,'Pouca massa para bola pesada');
   if(J('wrist')&&r.bal>P.punho.bal)add((r.bal-P.punho.bal)*P.punho.peso,`Balanço ${r.bal} mm pesado na cabeça para o punho`);
@@ -1548,7 +1546,7 @@ function whyItems(r,c){
   const out=[];
   if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: dentro da faixa de peso que calculamos para a sua força e o seu nível.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para a sua força e o seu nível.`);
-  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, do tipo que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':(A.arm==='now'?': dentro do limite para quem tem dor hoje':': dentro do limite para quem já teve dor')}.${r.tech?` Tem tecnologia de conforto (${esc(r.tech)}).`:''}`);
+  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, do tipo que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':(A.arm==='now'?': dentro do limite para quem tem dor hoje':'')}.${r.tech?` Tem tecnologia de conforto (${esc(r.tech)}).`:''}`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
   if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
   if(J('wrist')&&r.bal<=325)out.push(`Balanço de ${r.bal} mm, leve na cabeça: menos alavanca sobre o punho.`);
@@ -1559,7 +1557,7 @@ function whyItems(r,c){
 function why(r,c,T){
   const out=[];const ranked=KEYS.map(k=>({k,d:Math.abs(r.ix[k]-T[k]),t:T[k]})).filter(x=>x.t>=6).sort((a,b)=>a.d-b.d);
   ranked.slice(0,2).forEach(x=>out.push(`${LBL[x.k]} ${dec(r.ix[x.k])} para um alvo de ${dec(x.t)}: o índice que o seu jogo mais pede.`));
-  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':(A.arm==='now'?': dentro do limite para quem tem dor hoje':': dentro do limite para quem já teve dor')}.${r.tech?` Tem tecnologia de conforto (${r.tech}).`:''}`);
+  if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':(A.arm==='now'?': dentro do limite para quem tem dor hoje':'')}.${r.tech?` Tem tecnologia de conforto (${r.tech}).`:''}`);
   if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: na faixa ideal de peso e swingweight para você.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para sua força e seu nível.`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);

@@ -58,15 +58,16 @@ const lerHtml=v=>v.startsWith('git:')?execSync(`git show ${v.slice(4)}:racket/in
 async function rodar(html,P=PERFIS){
   const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);if(u==='/racket/'||u==='/racket/index.html'){s.writeHead(200,{'content-type':'text/html; charset=utf-8'});return s.end(html)}
     const f=path.join(raiz,u.endsWith('/')?u+'index.html':u);if(!f.startsWith(raiz)||!fs.existsSync(f)){s.writeHead(404);return s.end()}s.end(fs.readFileSync(f))});
-  await new Promise(r=>srv.listen(0,r));const b=await chromium.launch();const pg=await b.newPage();
+  await new Promise(r=>srv.listen(0,'127.0.0.1',r));const b=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE_PATH});const pg=await b.newPage();
   await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g/,r=>r.abort());
-  await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
+  await pg.goto(`http://127.0.0.1:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
   const out=await pg.evaluate(P=>{const H=window.__RK,{A,compute,RK,PESOS}=H;
     const res=P.map(pr=>{Object.keys(A).forEach(k=>delete A[k]);let a=JSON.parse(JSON.stringify(pr.a));if(H.cleanAnswers)a=H.cleanAnswers(a);Object.assign(A,a);
       const R=compute();const all={};R.all.forEach(x=>{all[x.r.id]=x.raw});
       const st=H.stringSetup?H.stringSetup(R.ranked[0].r):null;const pn=H.painNote?(H.painNote(false).match(/<strong>([^<]*)/)||[,''])[1]:null;
       const pesada=H.penalties?RK.filter(r=>r.wt>=310&&H.penalties(r,null,R.tw).out.some(o=>/^Pesada/.test(o[1]))).length:null;
-      return {id:pr.id,tw:R.tw,ra:R.Z.ra,top3:R.ranked.slice(0,3).map(x=>[x.r.id,x.r.name,x.raw,x.fit,x.promo?1:0]),all,
+      const penaltyAt = ra => H.penalties?.({...RK[0],ra},null,R.tw).p;
+      return {raDelta:penaltyAt(70)-penaltyAt(66),id:pr.id,tw:R.tw,ra:R.Z.ra,top3:R.ranked.slice(0,3).map(x=>[x.r.id,x.r.name,x.raw,x.fit,x.promo?1:0]),all,
         forte:H.dorForte?H.dorForte():null,aviso:pn,corda:st?[st.s,st.steps[0][1]]:null,conflito:A.painConflito||null,pesada}});
     const fam=H.familias?RK.filter(r=>r.q).map(r=>({id:r.id,q:r.q,a:H.familias(r.id).map(f=>f.a)})):null;const nenhuma=H.familias?RK.filter(r=>!H.familias(r.id).length).map(r=>r.id):null;
     return {res,fam,nenhuma,semRev:RK.some(r=>r.semRev),semReview:PESOS.match.semReview??null,raMax:PESOS.zona.raMax}},P);
@@ -82,7 +83,7 @@ const get=(a,d,k)=>byId[`${a}|${d}|${k}`];
 console.log(`RACKET DNA · regressão · ${PERFIS.length} perfis · catálogo ${Object.keys(C.res[0].all).length} raquetes`);
 {let n=0,bad=[];for(const a of IDADES)for(const k in CAP){const g=['D1_passado_leve_antigo','D2_passado_forte_antigo','D7_passado_forte','D8_passado_leve'].map(d=>get(a,d,k));n++;if(!g.every(x=>igual(x,g[0])))bad.push(`${a}|${k}`)}
  teste('T1 histórico forte = histórico leve (forma nova e antiga)',!bad.length,`${n-bad.length}/${n} grupos${bad.length?' · falhou '+bad.slice(0,3).join(', '):''}`)}
-{const L=C.res.filter(x=>/\|D(1|2|7|8)_/.test(x.id));const bad=L.filter(x=>x.forte||x.ra[1]!==C.raMax.passado||!/^Histórico/.test(x.aviso||'')||(x.corda&&x.corda[1]===48));
+{const L=C.res.filter(x=>/\|D(1|2|7|8)_/.test(x.id));const bad=L.filter(x=>x.forte||x.raDelta!==0||x.ra[1]!==C.raMax.nenhuma||!/^Histórico/.test(x.aviso||'')||(x.corda&&x.corda[1]===48));
  teste('T2 histórico não aciona dor atual (rigidez da zona, aviso, corda)',!bad.length,`${L.length-bad.length}/${L.length}`)}
 {const L=C.res.filter(x=>/\|D3_/.test(x.id));const bad=L.filter(x=>x.forte||x.conflito!=='tratamento'||!igual(x,byId[x.id.replace('D3_passado_tratamento_antigo','D1_passado_leve_antigo')]));
  teste('T3 código antigo contraditório: marcado para revisão, regras de histórico',!bad.length,`${L.length-bad.length}/${L.length}`)}
