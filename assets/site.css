@@ -168,6 +168,7 @@ main:focus{outline:none}
 .hero-txt .chooser h2{font-size:clamp(1.4rem,2.4vw,1.8rem)}
 .hero-txt .tile{padding:10px 14px 10px 10px}
 .hero-txt .tile .tn b{font-size:1.1rem}
+.hero{overflow-x:clip}
 .fan{margin:0;display:grid;gap:14px;min-width:0}
 .fan-stage{position:relative;width:100%;max-width:600px;margin:0 auto;aspect-ratio:1/.92}
 .fcard{position:absolute;top:6%;width:41%;border-radius:18px;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;box-shadow:0 30px 60px -28px rgba(0,0,0,.55)}

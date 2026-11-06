@@ -38,7 +38,7 @@ const AREAS = {
     price:[["R$ 19,99","Relatório completo"]],
     engine:{title:"Não é palpite. É um motor calibrado com 379 recomendações de especialistas.",
       lede:"Indicações de especialistas em português, inglês e espanhol viraram perfis do questionário e rodaram no motor. Os pesos foram ajustados e conferidos em casos guardados à parte, com travas para não piorar a segurança do braço nem estourar o seu orçamento.",
-      stats:[["670","avaliações de testadores e de sites especializados"],["45","variáveis cruzadas: respostas, ficha técnica e índices"],["21","estudos científicos sobre raquete e braço"],["379","recomendações de especialistas, em 3 idiomas"],["3.000","perfis simulados para conferir segurança e viés"],["62","raquetes com specs medidas"]],
+      stats:[["670","avaliações de testadores e de sites especializados"],["44","variáveis cruzadas: respostas, ficha técnica e índices"],["21","estudos científicos sobre raquete e braço"],["379","recomendações de especialistas, em 3 idiomas"],["3.000","perfis simulados para conferir segurança e viés"],["62","raquetes com specs medidas"]],
       steps:[["Seu corpo e o seu braço","Idade, força, medida da mão e dor no braço definem a faixa de peso e quanto conforto a raquete precisa ter."],["Seu jogo","Nível, frequência, estilo, topspin, swing e onde você erra viram um perfil ideal em seis atributos: potência, controle, spin, conforto, manobra e estabilidade."],["62 raquetes disputam o seu perfil","Peso, balanço, swingweight, rigidez, cabeça e padrão de cada raquete viram índices, comparados com o seu perfil ideal."],["Travas de segurança e orçamento","Raquete leve demais para quem sente o braço, pesada demais para quem tem pouca força e preço acima do seu orçamento perdem pontos."],["Corda, tensão e grip","A corda, a espessura e a tensão para o seu jogo, e como medir o grip."]],
       sources:"Fontes da calibração: Tennisnerd, Tennis Warehouse, The Tennis Tribe, TennisHack, Too Many Rackets, Tennis Express, Tênis Recreativo, InnerTenis, Universo do Tenista e Brasil Tênis, entre 74 fontes. Nenhuma marca paga para aparecer."},
     gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
@@ -91,11 +91,11 @@ document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
-  board:"Exemplo de relatório do SURF DNA: prancha ideal evolution (allround), pranchinha com mais volume, com DNA Score de 96%, medidas de 6 pés e 2 polegadas por 19 e 3/4 por 2 e 1/2 polegadas e 34,2 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, construção em epóxi (EPS) e curva do bico de 4 e 1/4 polegadas.",
+  board:"Exemplo de relatório do SURF DNA: prancha ideal evolution (allround) com DNA Score de 96%, medidas de 6 pés e 2 polegadas por 19 e 3/4 por 2 e 1/2 polegadas e 34,2 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, epóxi (EPS) e curva do bico de 4 e 1/4 polegadas.",
   tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Vomero 18, com DNA Score de 96%. Máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, R$ 949,99 e custo de R$ 1,70 por km. Abaixo, Por que combina, bem amortecido e dentro do orçamento, e a ficha técnica, com durabilidade de 560 km e troca em cerca de 4 meses."};
 function reportFrame(k, h){
   const a = AREAS[k];
-  return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"tenis"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
+  return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"run"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
   <button type="button" class="shot" data-zoom="${k}" style="--h:${h||460}px" aria-label="Ampliar relatório de exemplo do ${a.name}" aria-describedby="rd-${k}-${h||460}"><img src="${SHOTS[k]||""}" alt="" width="1000" height="${k==='racket'?1943:1985}" loading="lazy" decoding="async"></button>
   <span class="zoom" aria-hidden="true">Ampliar ↗</span><p class="sr-only" id="rd-${k}-${h||460}">${REPORT_DESC[k]}</p></div>`;
 }
@@ -114,8 +114,8 @@ const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/index.html"><span c
 const CARDS={
   racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, nível intermediário, hexágono com conforto 9,2 e potência 8,5"],
           produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: Head Boom MP, 295 g, cabeça de 100 pol², 61 RA, padrão 16x19, DNA 95%, escolhida entre 62 raquetes"]},
-  board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA 96%"],
-         produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Mid-length egg, 6 pés e 11 polegadas por 19 7/8 polegadas, 38,7 litros, rabeta round, quilhas 2+1, DNA 96%, escolhida entre 13 tipos de prancha"]},
+  board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA Score 96%"],
+         produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Evolution allround, 6 pés e 2 polegadas por 19 3/4 polegadas, 34,2 litros, rabeta round, triquilha, DNA 96%, escolhida entre 13 tipos de prancha"]},
   tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
          produto:["assets/cards/tenis-produto.webp","Card do tênis do RUN DNA: Nike Vomero 18, máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, 560 km de durabilidade, R$ 949,99, DNA 96%, escolhido entre 212 tênis"]}};
 const cardImg=(k,t,cls)=>`<img class="${cls||""}" src="${CARDS[k][t][0]}" alt="${CARDS[k][t][1]}" width="720" height="1280" loading="lazy" decoding="async">`;
@@ -149,7 +149,7 @@ const conceitoSec = ()=>`<section class="band" id="conceito"><div class="wrap">
     <div class="steps">
       <div class="step"><span class="n">PASSO 1</span><h3>Responda o teste</h3><p>Corpo, nível, frequência, histórico de dor e o que você sente hoje no equipamento atual. Sem cadastro.</p></div>
       <div class="step"><span class="n">PASSO 2</span><h3>Veja a análise grátis</h3><p>Seu perfil, as especificações ideais e o grau de confiança do resultado, antes de pagar qualquer coisa.</p></div>
-      <div class="step"><span class="n">PASSO 3</span><h3>Desbloqueie o relatório</h3><p>Os finalistas com marca e modelo, comparados com o que você já tem, num relatório como o exemplo abaixo.</p></div>
+      <div class="step"><span class="n">PASSO 3</span><h3>Desbloqueie o relatório</h3><p>Os finalistas revelados, com a ficha técnica e a comparação com o que você já tem, num relatório como o exemplo abaixo.</p></div>
     </div>
     <h3 class="eng-h" style="margin-top:40px">O que tem por trás dos três testes</h3>
     <div class="eng-stats home-stats">${[["2.451","reviews e avaliações lidas, de testadores e de clientes","a-tenis"],["1.035","casos reais e indicações de especialistas na calibração","a-racket"],["62","estudos científicos por trás das regras","a-board"],["274","tênis e raquetes com ficha técnica, mais 13 tipos de prancha","a-tenis"],["11.000","perfis simulados para conferir segurança e viés","a-racket"],["0","marcas pagando para aparecer no resultado","a-board"]].map(([v,l,c])=>`<div class="${c}"><b>${v}</b><span>${l}</span></div>`).join("")}</div>
@@ -182,7 +182,7 @@ function home(){
       <div class="chooser">
         <h2>Escolher meu esporte</h2>
         <div class="tiles">${ORDER.map((k,i)=>{const a=AREAS[k];return `<a class="tile ${a.cls}${i===0?" sel":""}" href="${a.quiz}">${ICON[k](52)}<span class="tn"><b>${a.w1} DNA</b><span>${a.sport}</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a>`}).join("")}</div>
-        <p>Teste grátis e sem cadastro.</p>
+        <p>Teste e prévia grátis, sem cadastro. Relatório completo a partir de R$ 9,99.</p>
       </div>
     </div>
     <figure class="fan">
@@ -226,7 +226,7 @@ function hub(k){
       <div class="row"><a class="btn btn-area" href="${a.quiz}">Fazer o teste grátis <span class="arr">→</span></a><button class="btn btn-ghost" type="button" data-scroll="relatorio">Ver o relatório</button></div>
       <div class="facts">${a.facts.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")}</div>
     </div>
-    ${true ? reportFrame(k, 440) : `<div class="calc ${a.cls}"><div class="eyebrow">Variáveis do teste</div>${vars(a)}<p class="soon">Relatório de exemplo em breve.</p></div>`}
+    ${reportFrame(k, 440)}
   </div></section>
   ${a.engine?engineSec(a):""}
   ${k==="board"?`<section style="padding-block:28px 0"><div class="wrap">${TOOLBOX}</div></section>`:""}
@@ -316,7 +316,7 @@ function article(id){
     if(b.t==="spec") return `<div class="spec"><div class="cap">${esc(b.caption||"Referência")}</div><div class="tw" tabindex="0" role="region" aria-label="${esc(b.caption||'Tabela de referência')}"><table>${b.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join("")}</table></div></div>`;
     return "";
   }).join("");
-  const references=(x.sources||[]).length ? `<section class="prose"><h2>Fontes e critérios</h2><ul>${x.sources.map(s=>`<li><a href="${esc(s.url)}" rel="noopener">${esc(s.title)}</a></li>`).join('')}</ul><p>Conteúdo educativo da equipe SPORT DNA. Não substitui avaliação na água com professor ou shaper.</p></section>` : '';
+  const references=(x.sources||[]).length ? `<section class="prose"><h2>Fontes e critérios</h2><ul>${x.sources.map(s=>`<li><a href="${esc(s.url)}" rel="noopener">${esc(s.title)}</a></li>`).join('')}</ul><p>Conteúdo educativo da equipe SPORT DNA. ${a.key==="board"?"Não substitui avaliação na água com professor ou shaper.":"Não substitui avaliação de médico ou fisioterapeuta em caso de dor."}</p></section>` : '';
   const preferred=(x.related||[]).map(id=>list.find(y=>y.id===id)).filter(Boolean);
   const related = [...new Set(preferred.concat(list.filter(y=>y!==x && y.cat===x.cat),list.filter(y=>y!==x && y.cat!==x.cat)))].slice(0,3);
   return `<div class="${a.cls}"><article class="article"><div class="wrap">
@@ -361,25 +361,29 @@ function privacy(){
       <p>O SPORT DNA é um projeto da Beyond the Work com três testes de equipamento: RACKET DNA (raquete de tênis), SURF DNA (prancha de surf) e RUN DNA (tênis de corrida).</p>
       <h2>Suas respostas</h2>
       <ul>
-        <li>As respostas dos testes são processadas no seu próprio navegador. Não temos conta de usuário nem banco de dados com elas.</li>
-        <li>O RACKET DNA guarda no seu navegador o último resultado e o que você liberou, para você voltar depois. Para apagar, limpe os dados do site no navegador.</li>
-        <li>Google Analytics e Pixel da Meta só são carregados após sua escolha de cookies opcionais. Medimos páginas públicas e início e conclusão dos testes apenas por esporte. As tags não recebem respostas, peso, idade, dor, condições físicas, e-mail, códigos de resultado ou conteúdo do relatório.</li>
-        <li>Rótulos de campanha e identificadores de clique válidos podem ser usados para atribuir visitas. Recusar não impede o uso do site. Você pode alterar sua escolha em Preferências de cookies, no rodapé; ela vale por até 180 dias. Ao revogar, interrompemos novas coletas opcionais e removemos os cookies opcionais acessíveis ao site. Dados já recebidos pelos fornecedores não são apagados automaticamente.</li>
-        <li>Google e Meta podem processar identificadores do navegador e informações técnicas, como IP e dispositivo, em outros países. Consulte as políticas do Google e da Meta. Simulações e pagamentos de teste não geram compras nos pixels.</li>
+        <li>As respostas dos testes são processadas no seu próprio navegador. Não temos conta de usuário nem banco de dados com elas, e elas não são enviadas para criar o pagamento.</li>
+        <li>O RACKET DNA guarda no seu navegador o último resultado e o que você liberou, para você voltar depois. Durante o pagamento, os três testes guardam as respostas no navegador até você fechar a aba, para mostrar o relatório quando o pagamento for confirmado. Para apagar, limpe os dados do site no navegador.</li>
       </ul>
-      <h2>Contato e e-mail</h2>
+      <h2>Cookies e medição</h2>
       <ul>
-        <li>Quando você compra ou usa um código promocional, o e-mail informado é usado para identificar o acesso. O envio do relatório por e-mail só acontece quando você solicita; o conteúdo é enviado ao nosso servidor e ao serviço de e-mail Resend, exclusivamente para o endereço confirmado da compra. Não guardamos o texto do relatório no banco de dados; guardamos o controle de reenvio.</li>
-        <li>No SURF DNA, o resumo para o coach só sai se você mesmo mandar, pelo WhatsApp ou pelo Instagram, depois de autorizar.</li>
+        <li>Google Analytics e Pixel da Meta só são carregados se você aceitar os cookies opcionais. Medimos visitas às páginas públicas e o início e a conclusão dos testes, apenas por esporte. As ferramentas não recebem respostas, peso, idade, dor, condições físicas, e-mail, códigos de resultado nem o conteúdo do relatório.</li>
+        <li>Rótulos de campanha e identificadores de clique válidos podem ser usados para atribuir visitas. Recusar não impede o uso do site. Você pode mudar sua escolha em Preferências de cookies, no rodapé; ela vale por até 180 dias. Ao revogar, interrompemos novas coletas opcionais e removemos os cookies opcionais acessíveis ao site. Dados já recebidos pelos fornecedores não são apagados automaticamente.</li>
+        <li>Google e Meta podem processar identificadores do navegador e informações técnicas, como IP e dispositivo, em outros países. Consulte as políticas do Google e da Meta.</li>
       </ul>
       <h2>Pagamento</h2>
-      <p>O checkout oferece cartão pelo Stripe e Pix pelo Mercado Pago. Em produção há cobrança real, no valor exibido antes de escolher o meio de pagamento. Os dados de cartão são informados no checkout do Stripe. Para o Pix, o e-mail é encaminhado ao Mercado Pago. Nosso banco registra identificador do pedido, produto, valor, situação do pagamento e o resumo criptográfico do token de acesso. As respostas do teste ficam no navegador e não são enviadas para criar o pagamento. Ambientes de teste são identificados como tal.</p>
+      <p>O relatório é pago uma vez, no valor exibido antes de você escolher o meio de pagamento: cartão pelo Stripe ou Pix pelo Mercado Pago. Os dados do cartão são digitados no checkout do Stripe e não passam pelo SPORT DNA. Para o Pix, o e-mail que você informa é repassado ao Mercado Pago. Nosso banco de dados registra o identificador do pedido, o produto, o valor, a situação do pagamento e um resumo criptográfico do código de acesso.</p>
+      <h2>E-mail e envio do relatório</h2>
+      <ul>
+        <li>O e-mail da compra é o que você informa no checkout do Stripe ou no Pix. Ao usar um código promocional, guardamos o e-mail junto com o resgate do código.</li>
+        <li>O relatório só é enviado por e-mail quando você pede. Nesse caso, o texto do relatório passa pelo nosso servidor e pelo serviço de e-mail Resend e vai só para o e-mail da compra. Não guardamos o texto do relatório; guardamos apenas o registro do envio.</li>
+        <li>No SURF DNA, a mensagem para o surf coach só sai se você abrir o WhatsApp e apertar enviar.</li>
+      </ul>
       <h2>Serviços de terceiros</h2>
-      <p>Para carregar fontes e algumas bibliotecas, o navegador acessa o Google Fonts e o cdnjs (Cloudflare). Esses serviços podem registrar o endereço IP de quem acessa, como qualquer site.</p>
+      <p>As fontes do site vêm do Google Fonts. O servidor de pagamento e de envio do relatório roda na Cloudflare. Esses serviços podem registrar o endereço IP de quem acessa, como qualquer site.</p>
       <h2>Links de afiliado</h2>
       <ul>
         <li>Nenhuma marca ou loja paga para aparecer no resultado. O ranking é calculado antes e sem olhar para comissão.</li>
-        <li>Alguns links de compra podem ser de afiliado, por exemplo pela rede Awin. Se você comprar por eles, a loja pode nos pagar uma comissão, sem custo extra para você.</li>
+        <li>Quando um link de compra for de afiliado, por exemplo pela rede Awin, a loja pode nos pagar uma comissão, sem custo extra para você.</li>
         <li>Links de afiliado aparecem só depois da recomendação e são marcados como tal.</li>
         <li>Fotos de produto, quando houver, têm crédito da marca ou da loja.</li>
       </ul>

@@ -34,7 +34,7 @@ window.ML_ARTICLES.push(
   area: "raquete",
   cat: "escolher",
   title: "Peso e balanço: o que significa head light, head heavy e swingweight",
-  dek: "Entenda como a distribuição de massa muda a sensação da raquete e escolha a combinação que combina com o seu golpe.",
+  dek: "Entenda como a distribuição de massa muda a sensação da raquete e escolha o equilíbrio certo para o seu golpe.",
   level: "Intermediário",
   minutes: 3,
   tags: ["peso", "balanço", "swingweight"],

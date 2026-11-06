@@ -165,6 +165,8 @@ footer{border-top:1px solid var(--line);padding-block:32px;color:var(--muted);fo
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .btw{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
 .btw svg{width:30px;height:30px}
+footer .f-links a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}
+footer .btw{min-height:44px}
 .btw small{display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .btw b{font-family:"Sora",system-ui,sans-serif;font-weight:600;font-size:15px;letter-spacing:-.0375em}
 </style>
@@ -179,7 +181,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <meta property="og:description" content="Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.">
 <meta property="og:url" content="https://sportdna.com.br/ferramentas/litragem/">
 <meta property="og:image" content="https://sportdna.com.br/assets/reports/board.webp">
-<meta property="og:image:alt" content="Exemplo de relatório SPORT DNA">
+<meta property="og:image:alt" content="Exemplo de relatório do SURF DNA">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sportdna.com.br/#organization","name":"SPORT DNA","url":"https://sportdna.com.br/"},{"@type":"WebSite","@id":"https://sportdna.com.br/#website","name":"SPORT DNA","url":"https://sportdna.com.br/","inLanguage":"pt-BR"},{"@type":"WebPage","@id":"https://sportdna.com.br/ferramentas/litragem/#webpage","url":"https://sportdna.com.br/ferramentas/litragem/","name":"Calculadora de litragem de prancha de surf | SPORT DNA","description":"Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.","inLanguage":"pt-BR","isPartOf":{"@id":"https://sportdna.com.br/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://sportdna.com.br/"},{"@type":"ListItem","position":2,"name":"Calculadora de litragem de prancha de surf | SPORT DNA","item":"https://sportdna.com.br/ferramentas/litragem/"}]}]}</script>
 <link rel="icon" type="image/svg+xml" href="../../assets/brand/svg/surfdna-icone.svg">
@@ -206,7 +208,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <section class="hero"><div class="wrap">
     <span class="tag"><i></i>Ferramenta grátis · Surf</span>
     <h1>Calculadora de <span class="hl">litragem</span> de prancha</h1>
-    <p>Quantos litros a sua prancha deve ter? Mova os controles e veja a faixa certa para o seu peso, o seu nível e o tipo de prancha. Mesma fórmula do SURF DNA, ajustada com casos reais de surfistas, lojas, revistas e atletas.</p>
+    <p>Quantos litros a sua prancha deve ter? Mova os controles e veja a faixa certa para o seu peso, o seu nível e o tipo de prancha. Mesma base de cálculo do SURF DNA, ajustada com casos reais de surfistas, lojas, revistas e atletas.</p>
   </div></section>
 
   <div class="wrap tool">
@@ -322,10 +324,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 <footer><div class="wrap">
   <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem">© 2026 SPORT DNA. Conteúdo educativo; a litragem final depende também do shape.</span>
-  <span class="btw">
+  <nav class="f-links" aria-label="Rodapé"><a href="../../privacidade/">Privacidade e afiliados</a></nav>
+  <a class="btw" href="https://www.beyondthework.com.br" target="_blank" rel="noopener" aria-label="Um projeto Beyond the Work">
     <svg viewBox="0 0 120 120" aria-hidden="true"><line x1="46" y1="34" x2="110" y2="34" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><line x1="28" y1="60" x2="110" y2="60" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><line x1="10" y1="86" x2="110" y2="86" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg>
     <span><small>Um projeto</small><b>Beyond the Work</b></span>
-  </span>
+  </a>
 </div></footer>
 
 <script>
@@ -452,5 +455,6 @@ $('copy').addEventListener('click',()=>{
 readHash();renderOpts();update();
 })();
 </script>
+<script src="/assets/measurement.js"></script>
 </body>
 </html>
