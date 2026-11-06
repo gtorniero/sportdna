@@ -842,7 +842,9 @@ const PESOS={
     confBase:68,confPorResposta:1,confGap:.8,confMin:70,confMax:97
   },
   /* Aprovação dos testadores (r.q). Origem: reviews (rodada 2); versão leve sem TW herda parte da do modelo-pai (rodada 6) */
-  aprovacao:{tw:15,twTeto:6,twN:12,sites:2.5,sitesTeto:3,herdaPai:.7},
+  aprovacao:{tw:15,twTeto:6,twN:12,sites:2.5,sitesTeto:3,herdaPai:.7,
+    /* rodada 11: versão com outro padrão ou peso longe do pai é outra raquete na mão; herda menos */
+    herdaPadrao:.4,herdaFolga:10,herdaQueda:25},
   /* Índices: tecnologia de amortecimento vale pouco (rodada 6: conforto .08 → .03, braço .12 → .04; a diferença do braço foi para a massa, .24 → .32). Ciência: ciencia.md, temas 2 e 4 */
   indice:{tecConforto:.03,tecBraco:.04,massaBraco:.32},
   /* Menores de 14 anos: o catálogo é adulto (rodada 6) */
@@ -878,7 +880,7 @@ const brTag=r=>r.br==='d'?'<span class="brtag d">Difícil de achar no Brasil</sp
 RK.forEach(r=>{r.br=r.lojas===0?'d':r.lojas===1?'p':'';r.ix=idx(r);const v=RV[r.id],t=TWD[r.id];r.ntw=t?t.n:0;r.nrev=(v?v.n:0)+r.ntw;const G=PESOS.aprovacao;r.q=t&&t.a!=null?cl(t.a*G.tw,-G.twTeto,G.twTeto)*Math.min(1,t.n/G.twN):v&&v.o!=null?cl(v.o*G.sites,-G.sitesTeto,G.sitesTeto):0});
 /* versões leves sem review da TW herdam parte da aprovação do modelo-pai (mesma marca) */
 const PAI={'Pure Aero Lite':'Pure Aero','Pure Drive Team':'Pure Drive','Pure Drive Lite':'Pure Drive','Speed MP L':'Speed MP','Speed Team':'Speed MP','Boom Team':'Boom MP','Extreme Team':'Extreme MP','Blade 100L v9':'Blade 98 16x19 v9','Clash 100L v3':'Clash 100 v3','Clash 108 v3':'Clash 100 v3','Ultra 100L v5':'Ultra 100 v5','EZONE 100L':'EZONE 100','VCORE 100L 8ª geração':'VCORE 100 8ª geração','Pure Drive 107':'Pure Drive'};
-RK.forEach(r=>{const v=RV[r.id];if(TWD[r.id]||(v&&v.o!=null))return;const pai=r.parent!=null&&RK[r.parent].fam===r.fam?RK[r.parent]:RK.find(x=>x.brand===r.brand&&x.model===PAI[r.model]);if(pai&&TWD[pai.id]){r.q=Math.round(pai.q*PESOS.aprovacao.herdaPai*100)/100;r.qPai=pai.id}});
+RK.forEach(r=>{const v=RV[r.id];if(TWD[r.id]||(v&&v.o!=null))return;const pai=r.parent!=null&&RK[r.parent].fam===r.fam?RK[r.parent]:RK.find(x=>x.brand===r.brand&&x.model===PAI[r.model]);if(pai&&TWD[pai.id]){const G=PESOS.aprovacao,k=G.herdaPai*(pai.pat===r.pat?1:G.herdaPadrao)*cl(1-Math.max(0,Math.abs(pai.wt-r.wt)-G.herdaFolga)/G.herdaQueda,0,1);r.q=Math.round(pai.q*k*100)/100;r.qPai=pai.id}});
 /* sem nenhuma avaliação (própria, de sites ou herdada do mesmo molde): só a ficha técnica sustenta a nota */
 RK.forEach(r=>{const v=RV[r.id];r.semRev=!TWD[r.id]&&!(v&&v.n)&&r.qPai==null});
 /* versões novas herdam a lista de profissionais da linha */
