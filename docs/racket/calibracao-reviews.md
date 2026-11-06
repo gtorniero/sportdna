@@ -5,6 +5,92 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 11: reviews de 10 países e consenso por família (nov/2026)
+
+### Coleta
+- 1.028 reviews de 80 das 81 famílias, em `dados/reviews-paises.json`.
+  - 35 famílias com 15 ou mais, 59 com 8 ou mais.
+  - Países: EUA 298, Japão 283, sites sem país (Tennisnerd, Mijnracket etc.) 243, França 81, Reino Unido 54, Alemanha 30, Espanha 18, Austrália 13, Itália 6, Brasil 1, Argentina 1.
+- Método: 8 pesquisas em 2 rodadas, só por busca na web.
+  - Os sites de review não abrem nesta sessão, então tudo vem do resumo do resultado (`base: "snippet"`).
+  - Nota por atributo só quando o resumo trazia; o resto é sentimento de −2 a +2. 174 entradas não têm nota nenhuma.
+  - Cópias da Tennis Warehouse (TW Europe, Tennis Only) contam uma vez.
+- Abaixo de 15 por falta de review publicada: linhas de entrada (Boost, Evo, Boom 107, Instinct 107/110), versões Team (Speed 105, Gravity 104, Radical 102, Extreme 105), Blade 101, Vostra V1 99/V9/V10, Black Ace 97/105.
+- Ultra Power 100: nenhuma review especializada.
+
+### Concordância com a Tennis Warehouse (40 famílias com as duas fontes, Spearman)
+| Atributo | ρ | Escala → TW |
+|---|---|---|
+| Potência | 0,82 | 0,44 |
+| Controle | 0,74 | 0,35 |
+| Conforto | 0,64 | 0,46 |
+| Estabilidade | 0,45 | 0,37 |
+| Manobra | 0,32 | 0,24 |
+| Spin | 0,30 | 0,30 |
+| Aprovação geral | 0,47 | 0,78 |
+
+Os sites concordam com a TW em potência, controle e conforto. Em spin e manobra o sinal é mais fraco, e o peso cai junto pela regressão.
+
+### O que mudou no motor
+- `RVF`: perfil e aprovação por família, na escala da TW. Gerado por `racket/tools/consenso.py`.
+- Perfil: TW e sites se somam. Uma review de site vale `consenso.perfil` = 0,5 testador da TW.
+  - A versão sem playtest próprio recebe a correção do molde como deslocamento (`consenso.offset`). A diferença de peso, swingweight e manobra entre versões continua.
+- Aprovação: média da TW com a dos sites. Uma review de site com nota geral vale `consenso.aprov` = 0,25 testador.
+  - Antes, a nota da TW decidia sozinha. A TF40 305 ganhava; a Pro Staff 97 v14, com aprovação baixa na TW, perdia.
+- Herança do modelo-pai: só quando a família não tem consenso. Versão com outro padrão herda 40%, e cai mais quando o peso fica mais de 10 g longe do pai (`herdaPadrao`, `herdaFolga`, `herdaQueda`).
+- Família com consenso deixa de levar `match.semReview`.
+- Avaliações no método: 670 → 1.698 (TW 551 + sites da rodada 1 119 + rodada 11 1.028).
+
+### Medição (`calibrar.mjs`, 299 casos com modelo do catálogo, 100 na parte de teste)
+| | Antes total | Depois total | Antes teste | Depois teste |
+|---|---|---|---|---|
+| Top 1 | 13,0% | 14,0% | 15,0% | 17,0% |
+| Top 3 | 32,4% | 32,1% | 31,0% | 32,0% |
+| Top 10 | 57,5% | 57,2% | 61,0% | 58,0% |
+| MRR | 0,272 | 0,283 | 0,281 | 0,305 |
+| Algum indicado no top 3 | 39,5% | 40,5% | 40,0% | 44,0% |
+
+Variantes testadas (perfil/aprovação/deslocamento), MRR no teste:
+- 0,25/0,25/sim: 0,280.
+- 1/1/sim: 0,285.
+- 0,5/1/sim: 0,282.
+- 0,5/0,5/não: 0,298.
+- 1/0,5/sim: 0,275.
+- **0,5/0,25/sim: 0,305 (escolhida).**
+
+As diferenças entre variantes cabem no ruído de 100 casos; escolhemos a de melhor MRR no teste.
+
+Marcas no nosso top 3 contra o 1º indicado pelos especialistas:
+| Marca | Antes | Depois | Especialistas |
+|---|---|---|---|
+| Babolat | 13,9% | 19,7% | 30,1% |
+| Wilson | 16,8% | 17,5% | 28,1% |
+| Head | 22,7% | 15,6% | 23,7% |
+
+### Segurança e cobertura (`vies.mjs --realista`, 3.000 perfis, semente 12345)
+| | Antes | Depois |
+|---|---|---|
+| Dor forte/tratamento com pódio RA > 60 | 220 | 173 |
+| Pódios com 2+ contraindicações (todas as regras) | 193 | 168 |
+| Pódios com 2+ sérias | 127 | 131 |
+| 1ª acima do orçamento | 5,2% | 3,4% |
+| Modelos já em 1º / no top 3 (de 183) | 134 / 157 | 139 / 172 |
+| Tecnifibre em 1º | 5,0% | 1,4% |
+| Babolat em 1º | 20,4% | 30,9% |
+| Prince em 1º | 13,1% | 19,4% |
+
+- Exemplo pronto: Phantom 100X 290 g 96% · Clash 100 v3 96% · Boom MP 92%. Antes: Boom MP, Clash 100 v3, Black Ace 300.
+- Imagens atualizadas: `assets/reports/racket.webp` e `assets/cards/racket-produto.webp`.
+
+### Leitura e próximos passos
+- O ganho de acerto é pequeno: MRR +0,02 no teste e top 3 igual. O ganho real é de equilíbrio e segurança:
+  - a aprovação deixa de depender de um site só;
+  - Babolat e Wilson sobem na direção dos especialistas;
+  - há menos raquete rígida para quem tem dor.
+- Prince (19% dos 1º lugares contra 4% dos especialistas) e ProKennex (10% contra 0%) continuam super-indicadas. Vêm da busca por conforto (Phantom 290 e Black Ace) e não da aprovação.
+- Iniciante continua o ponto fraco: top 3 de 7,7%. As escolhas dos especialistas para iniciante vão de 225 g (Ti S6) a 300 g. Próxima rodada: revisar o alvo de iniciante com a pesquisa de biomecânica.
+- Dados para melhorar: abrir as páginas (hoje só resumos), reviews do Brasil e da Argentina, e notas por atributo nas famílias de entrada.
+
 ## Rodada 10: versões de cada linha (nov/2026)
 
 Catálogo de 62 para 183 raquetes (81 famílias, 46 com 2+ versões). Detalhe e fichas em `catalogo-versoes.md`.
