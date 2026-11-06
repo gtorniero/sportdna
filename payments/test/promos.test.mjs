@@ -14,7 +14,7 @@ test('free report uses server authorization, exact product and bearer; no paymen
  const body={id,token,product:'racket-report',email:'guest@example.com',codigo:'WRONG-CODE'};
  assert.equal((await worker.fetch(request(body),env)).status,400);
  body.codigo='BTW-TEST-FRIENDS';let r=await worker.fetch(request(body),env);assert.equal(r.status,200);const result=await r.json();assert.equal(result.state,'paid');assert.equal(result.amount,0);assert.equal(result.provider,'promo');
- r=await worker.fetch(new Request('https://api.example/orders/'+id,{headers:{Origin:origin,Authorization:'Bearer '+token}}),env);assert.equal(r.status,200);assert.equal((await r.json()).state,'paid');
+ r=await worker.fetch(new Request('https://api.example/orders/'+id,{headers:{Origin:origin,Authorization:'Bearer '+token}}),env);assert.equal(r.status,200);const status=await r.json();assert.equal(status.state,'paid');assert.equal(status.measurement,undefined);
  assert.equal((await worker.fetch(request({...body,product:'surf-report'}),env)).status,409);
  assert.equal((await worker.fetch(request({...body,token:'2'.repeat(64)}),env)).status,409);
 });
