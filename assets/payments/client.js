@@ -95,7 +95,7 @@
     busy=true;body.querySelectorAll('button').forEach(b=>b.disabled=true);message('Preparando pagamento…');
     try{
      const current=get();const p=current?.app===app.name&&current.product===product&&current.provider===provider?current:{id:crypto.randomUUID(),token:random(),app:app.name,product,provider,answers:app.snapshot()};
-     save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,...(provider==='mercadopago'?{email:email.value}:{})})});
+     save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:email.value}:{})})});
      try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
     }catch(e){message(e.message);body.querySelectorAll('button').forEach(b=>b.disabled=false)}finally{busy=false}
    };body.append(button);
