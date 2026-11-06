@@ -268,6 +268,7 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .vs{font-family:var(--f-display);font-weight:800;color:var(--muted)}
 footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
 footer .sd-cookie-link{opacity:1!important;color:var(--muted)}
+footer p{margin:0 0 6px}footer a{color:var(--muted);text-decoration:underline;display:inline-block;min-height:24px;padding:4px 0}footer .ft1 a{padding:0;min-height:0}
 /* Pix modal */
 .modal{position:fixed;inset:0;background:rgba(5,22,29,.62);display:grid;place-items:center;padding:16px;z-index:50}
 .sheet{background:var(--surface);color:var(--ink);border-radius:20px;max-width:440px;width:100%;max-height:calc(100dvh - 32px);overflow:auto;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
@@ -607,7 +608,7 @@ details.more[open]>summary{margin-bottom:10px}
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Laboratório de raquetes</p>
         <h1>A raquete certa para o seu jogo e para o seu braço.</h1>
-        <p class="lead">Responda <span id="nQ">24 a 29</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
+        <p class="lead">Responda <span id="nQ">19 a 28</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
         <div class="row">
           <button class="btn btn-go" id="start" type="button">Descobrir minha raquete</button>
           <button class="btn btn-ghost" id="duelGo" type="button">Comparar duas raquetes</button>
@@ -635,7 +636,7 @@ details.more[open]>summary{margin-bottom:10px}
       <p class="bnlead">Cruzamos as suas respostas com as specs medidas de <span data-n="rk">62</span> raquetes e com o que testadores escreveram sobre elas. Depois conferimos o ranking contra a escolha de especialistas e simulamos milhares de jogadores para barrar recomendações arriscadas.</p>
       <ul class="bnlist">
         <li><b data-n="rev">670</b><span>avaliações de testadores e sites lidas</span></li>
-        <li><b data-n="var">45</b><span>variáveis cruzadas para cada raquete</span></li>
+        <li><b data-n="var">44</b><span>variáveis cruzadas para cada raquete</span></li>
         <li><b data-n="estudos">21</b><span>estudos científicos sobre braço e equipamento</span></li>
         <li><b data-n="casos">379</b><span>casos de especialistas, em 3 idiomas</span></li>
         <li><b data-n="perfis">3.000</b><span>perfis simulados em cada teste de segurança</span></li>
@@ -651,8 +652,8 @@ details.more[open]>summary{margin-bottom:10px}
     <div class="erra">
       <div><p class="eyebrow">Por que é fácil errar</p><h2>Raquete não é uma escolha. São seis.</h2><p class="muted" style="margin-top:8px;max-width:62ch">Modelo, cabeça, grip, corda, espessura e tensão. Cada uma muda potência, controle e o quanto chega de vibração no braço, e uma decisão errada anula as outras certas.</p></div>
       <div class="bignums">
-        <div class="bn hl"><b id="nVar">45</b><span>fatores lidos para cada raquete: <span id="nVarQ">29</span> respostas suas, 9 especificações medidas e 7 índices por raquete</span></div>
-        <div class="bn"><b id="nCross">2.790</b><span>comparações entre você e o catálogo a cada teste</span></div>
+        <div class="bn hl"><b id="nVar">44</b><span>fatores lidos para cada raquete: <span id="nVarQ">28</span> respostas suas, 9 especificações medidas e 7 índices por raquete</span></div>
+        <div class="bn"><b id="nCross">2.728</b><span>comparações entre você e o catálogo a cada teste</span></div>
         <div class="bn"><b id="nComb">94.860</b><span>combinações de raquete, grip, corda, espessura e tensão. O seu setup é uma delas.</span></div>
       </div>
       <div class="decs" aria-label="As decisões e o número de opções de cada uma">
@@ -670,7 +671,7 @@ details.more[open]>summary{margin-bottom:10px}
         <div class="mist"><h4>Errar o grip</h4><p>Um cabo do tamanho da sua mão deixa você segurar sem apertar demais, o que costuma ser mais confortável. Cabo grosso demais trava o punho.</p></div>
         <div class="mist"><h4>Poliéster duro, tensão alta, troca atrasada</h4><p>Combinação que costuma deixar o jogo mais desconfortável para o cotovelo. A corda perde elasticidade muito antes de arrebentar.</p></div>
         <div class="mist"><h4>Cabeça grande para “perdoar”</h4><p>Mais ponto doce também é mais saída de bola. Para quem já tem swing longo, a bola vai longa.</p></div>
-        <div class="mist"><h4>Confiar na ficha da caixa</h4><p>A mesma raquete varia até 7 g e o swingweight nem aparece na embalagem. Aqui usamos specs medidas.</p></div>
+        <div class="mist"><h4>Confiar na ficha da caixa</h4><p>A mesma raquete varia até 7 g e o swingweight nem aparece na embalagem. Aqui o swingweight e a rigidez vêm de medições independentes.</p></div>
       </div>
     </div>
   </section>
@@ -679,7 +680,7 @@ details.more[open]>summary{margin-bottom:10px}
   <section id="duelSec" hidden>
     <div class="panel duel">
       <div class="phead"><div><p class="eyebrow" id="duelBadge">1 comparação grátis</p><h2>Uma contra a outra</h2></div><button class="btn btn-ghost btn-sm" id="duelBack" type="button">Voltar</button></div>
-      <p class="muted" style="margin-top:-8px">Escolha duas raquetes. Comparamos os 6 atributos que todo mundo olha e mostramos a posição de cada uma no ranking das <span class="nRk2">58</span> do catálogo.</p>
+      <p class="muted" style="margin-top:-8px">Escolha duas raquetes. Comparamos os 6 atributos que todo mundo olha e mostramos a posição de cada uma no ranking das <span class="nRk2">62</span> do catálogo.</p>
       <div class="dsel"><select id="dA" aria-label="Raquete 1"></select><button class="btn btn-ghost btn-sm vs" id="dSwap" type="button" aria-label="Inverter">⇄</button><select id="dB" aria-label="Raquete 2"></select></div>
       <button class="btn btn-go" id="dGo" type="button" style="align-self:flex-start">Comparar</button>
       <div id="duelOut"></div>
@@ -690,7 +691,7 @@ details.more[open]>summary{margin-bottom:10px}
   <!-- QUIZ -->
   <section id="quiz" hidden>
     <div class="qtop">
-      <div class="pmeta"><span id="psec">Perfil</span><span id="pcount">1 de 30</span></div>
+      <div class="pmeta"><span id="psec">Perfil</span><span id="pcount">0%</span></div>
       <div class="pbar" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="100" id="pbarW"><i id="pfill"></i></div>
       <div class="secdots" id="steps"></div>
     </div>
@@ -718,7 +719,9 @@ details.more[open]>summary{margin-bottom:10px}
 
   </main>
   <footer>
-    RACKET DNA é um teste da família SPORT DNA. Protótipo. Especificações medidas encordoadas (swingweight e rigidez) e de fábrica sem corda (peso e balanço), da geração atual de cada modelo; confira modelo a modelo antes da compra. Preços em reais consultados em lojas brasileiras (out/2026); raquete sem loja no Brasil tem estimativa de importada (dólar a R$ 5,20). Confira na loja antes de comprar. Os índices são métricas internas. Equipamento adequado ajuda, mas não substitui a avaliação de um profissional de saúde.
+    <p class="ft1">RACKET DNA · by SPORT DNA · Um projeto <a href="https://www.beyondthework.com.br/" target="_blank" rel="noopener">Beyond the Work</a></p>
+    <p class="ft2">Especificações de fábrica e preços de referência no Brasil; confira o modelo antes de comprar. Nenhuma marca paga para aparecer. Não substitui avaliação de médico ou fisioterapeuta em caso de dor.</p>
+    <a href="../privacidade/">Privacidade</a><span aria-hidden="true"> · </span>
   </footer>
 </div>
 <div id="modalRoot"></div>
@@ -929,7 +932,7 @@ const Q=[
  {s:3,id:'style',multi:2,scale:['Mais básico','Mais avançado'],t:'Como você joga?',h:'Escolha até 2. Do jogo mais básico (esquerda) ao mais avançado (direita).',o:[['keep','Mantenho a bola em jogo','Ainda estou firmando os golpes'],['cnt','Devolvo tudo','Consistência e contra-ataque'],['agg','Ataco do fundo','Busco a bola vencedora da linha de base'],['all','Jogo completo','Fundo e rede conforme o ponto'],['netc','Subo quando a bola deixa','Fecho o ponto no voleio, a batida antes de a bola quicar'],['net','Saque e voleio','Saco e já corro para a rede']]},
  {s:3,id:'opp',t:'Como é a bola dos seus adversários?',o:[['soft','Mais lenta','Bola sem peso, você que gera'],['mix','Variada','Às vezes lenta, às vezes forte'],['heavy','Pesada e rápida','A raquete às vezes treme']]},
  {s:3,id:'miss',t:'Onde você mais erra?',o:[['short','Bola curta, sem peso'],['long','Bola longa, para fora'],['net','Na rede'],['frame','Pego fora do centro','A raquete torce na mão']]},
- {s:4,id:'cur',type:'select',t:'Qual a sua raquete atual?',h:'Se não estiver na lista, escolha "Outra". Com ela, fazemos o diagnóstico da sua raquete.'},
+ {s:4,id:'cur',type:'select',t:'Qual a sua raquete atual?',h:'Se não estiver na lista, escolha "Minha raquete não está na lista". Com ela, fazemos o diagnóstico da sua raquete.'},
  {s:4,id:'curAge',if:()=>A.cur&&A.cur!=='none',t:'Há quanto tempo você usa essa raquete?',o:[['0','Menos de 1 ano'],['1','1 a 3 anos'],['3','Mais de 3 anos']]},
  {s:4,id:'feel',if:()=>A.cur!=='none',t:'Como você sente sua raquete hoje?',o:[['light','Leve demais','Treme contra bola pesada'],['ok','No ponto'],['heavy','Pesada demais','Cansa ou chega atrasado']]},
  {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é o conforto do braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
@@ -1402,7 +1405,7 @@ function renderPreview(){
     <p class="eyebrow">O que está por trás</p>
     <div class="kpis">
       <div class="kpi"><b>${RK.length}</b><span>raquetes do catálogo comparadas com o seu jogo</span></div>
-      <div class="kpi"><b>${top[0].r.nrev||'—'}</b><span>avaliações de testadores por trás da 1ª</span></div>
+      <div class="kpi"><b>${top[0].r.nrev||'—'}</b><span>avaliações de testadores e sites sobre a 1ª</span></div>
       <div class="kpi"><b>${RES.tw} g</b><span>peso ideal sem corda</span></div>
       <div class="kpi"><b>${curFit?mask(curFit.fit+'%'):'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
     </div>
@@ -1464,7 +1467,7 @@ function pix(t){
       <input type="email" id="pxE" placeholder="voce@email.com" style="width:100%">`}
       <div class="status" style="margin:14px 0 6px"><span class="pulse"></span><span>Aguardando pagamento…</span></div>
       <button class="btn btn-go" id="pxOk" type="button" style="width:100%">Simular pagamento aprovado</button>
-      <p class="note" style="margin-top:8px">Protótipo: nenhum valor é cobrado e o e-mail não é enviado nem guardado.</p>
+      <p class="note" style="margin-top:8px">Este código Pix não é válido e nenhum valor é cobrado. O e-mail não é enviado nem guardado.</p>
     </div></div></div>`;
   let left=600;pixTimer=setInterval(()=>{left--;const e=$('#pxTm');if(!e){clearInterval(pixTimer);return}e.textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');if(left<=0){clearInterval(pixTimer);e.textContent='expirado'}},1000);
   $('#pxX').onclick=closeModal;
@@ -1527,7 +1530,7 @@ function attention(r){
   const out=[];
   if(!inZone(r)){const z=ZZ,fora=[r.wt<z.wt[0]||r.wt>z.wt[1]?`peso ${r.wt} g (ideal ${z.wt[0]}–${z.wt[1]})`:'',r.sw<z.sw[0]||r.sw>z.sw[1]?`swingweight ${r.sw} (ideal ${z.sw[0]}–${z.sw[1]})`:''].filter(Boolean).join(' e ');
     const b=RES.ranked.find(x=>inZone(x.r)&&x.r.id!==r.id);
-    out.push(`Fica fora da faixa ideal de peso e swingweight: ${fora}. ${b?`A melhor dentro dela, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás${b.pen&&b.pen[0]?` (${b.pen[0][1].charAt(0).toLowerCase()+b.pen[0][1].slice(1)})`:''}.`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
+    out.push(`Fica fora da faixa ideal de peso e swingweight: ${fora}. ${b?`A melhor dentro dela, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás.${b.pen&&b.pen[0]?` Motivo: ${b.pen[0][1].replace(/\.$/,'')}.`:''}`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
   {const d=r.wt-RES.tw;if(Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
   if(r.br==='d')out.push('Difícil de achar no Brasil: em geral, só importando ou em loja especializada. Confira antes de se apegar.');
   if(r.br==='p')out.push('Pouca oferta no Brasil: vale ligar para a loja antes de ir.');
@@ -1573,7 +1576,7 @@ function tensWhy(st){const x=st.steps.slice(1).map(s=>s[0].charAt(0).toLowerCase
 function archetype(){
   const SN={keep:'Jogador consistente',agg:'Atacante de fundo',cnt:'Contra-atacador',all:'Jogador completo',netc:'Jogador ofensivo',net:'Atacante de rede'};const sa=[].concat(A.style||[]);const st=sa.length>1?(sa.includes('net')||sa.includes('netc')?(sa.includes('agg')?'Atacante que fecha na rede':'Jogador de rede'):sa.includes('agg')&&sa.includes('all')?'Atacante completo':SN[sa[0]]):SN[sa[0]]||'Jogador';
   const sp={low:'de bola reta',mid:'de topspin moderado',high:'de muito topspin'}[A.spin]||'';
-  return (st+' '+sp).trim();
+  return (/ que /.test(st)&&sp?st+', '+sp:st+' '+sp).trim();
 }
 function racketHead(x){
   const r=x.r;
@@ -1697,7 +1700,7 @@ function saveBox(){
   persist();const code=encode({a:A});
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="svT"><div class="sheet">
     <div class="phead"><h3 id="svT">Resultado salvo</h3><button class="btn btn-ghost btn-sm" id="svX" type="button">Fechar</button></div>
-    <p class="muted">Ele fica guardado neste navegador. Para abrir em outro aparelho ou mandar para alguém, use este código na página inicial, em "Tenho um código de resultado". O código carrega suas respostas, não o pagamento.</p>
+    <p class="muted">Ele fica guardado neste navegador. Para abrir em outro aparelho ou mandar para alguém, use este código na página inicial, em "Já fiz o teste: retomar ou abrir um código". O código carrega suas respostas, não o pagamento.</p>
     <div class="codebox" id="svC">${code}</div>
     <button class="btn btn-pri" id="svCp" type="button">Copiar código</button></div></div>`;
   $('#svX').onclick=closeModal;$('.modal').addEventListener('click',e=>{if(e.target.classList.contains('modal'))closeModal()});
@@ -1720,7 +1723,7 @@ function tradeChips(x,top){
 function pBar(v,T,c){return `<div class="pb"><i style="width:${v*10}%"></i>${T!=null?`<s style="left:${T*10}%"></s>`:''}${c!=null?`<u style="left:${c*10}%"></u>`:''}</div>`}
 function transition(r,c){
   const w=[];const dw=c?r.wt-c.wt:0,ds=c?r.sw-c.sw:0,dra=c?r.ra-c.ra:0;
-  w.push(['Semana 1','Adaptação',`Só trocas de bola, 2 sessões de até 1 hora. ${Math.abs(dw)>=10||Math.abs(ds)>=8?`A massa mudou (${dw>0?'+':''}${dw} g, swingweight ${ds>0?'+':''}${ds}): prepare o golpe um pouco ${ds>0?'mais cedo':'mais tarde'} que de costume.`:'Peso e balanço parecidos com o que você usa: a adaptação tende a ser rápida.'}`]);
+  w.push(['Semana 1','Adaptação',`Só trocas de bola, 2 sessões de até 1 hora. ${Math.abs(dw)>=10||Math.abs(ds)>=8?`A massa mudou (${dw>0?'+':''}${dw} g, swingweight ${ds>0?'+':''}${ds}): prepare o golpe um pouco ${ds>0?'mais cedo':'mais tarde'} que de costume.`:(c?'Peso e balanço parecidos com o que você usa: a adaptação tende a ser rápida.':'Raquete nova pede algumas sessões até o golpe se acostumar ao peso e ao balanço.')}`]);
   w.push(['Semana 2','Saque e rede','Inclua saque e voleio. Repare se a bola sai longa (tensão baixa demais) ou curta (alta demais), mas não mexa ainda.']);
   w.push(['Semana 3','Jogo','Jogue sets. Anote 3 coisas: profundidade, controle no ataque e como o braço acordou no dia seguinte.']);
   w.push(['Semana 4','Ajuste fino',`Hora de calibrar a corda: bola longa, suba 2 lb; sem profundidade ou com desconforto, desça 2 lb. Um ajuste por vez.${dra>=4&&A.arm!=='no'?' A nova é mais firme que a sua: se o braço reclamar, desça a tensão antes de qualquer outra mudança.':''}`]);
@@ -1741,7 +1744,7 @@ function pdfPages(){
    <div class="hero"><div class="hl">
      <p class="ey">A raquete que mais encaixa no seu jogo</p><p class="hb">${esc(r.brand)}${r.year?' · '+r.year:''}</p><h1>${esc(r.model)}</h1>
      <p class="hp">${precoTxt(r)}${r.usd?'':' novo'}${r.br==='d'?' · difícil de achar no Brasil':r.br==='p'?' · pouca oferta no Brasil':' · fácil de achar no Brasil'}</p>
-     <div class="hs"><div><b class="big">${w.fit}<small>%</small></b><span>DNA Score</span></div><div><b>${conf}%</b><span>Confiança</span></div><div><b>${ranked[0].fit-ranked[1].fit}</b><span>pts à frente da 2ª</span></div></div>
+     <div class="hs"><div><b class="big">${w.fit}<small>%</small></b><span>DNA Score</span></div><div><b>${conf}%</b><span>Confiança</span></div><div>${ranked[0].fit-ranked[1].fit?`<b>${ranked[0].fit-ranked[1].fit}</b><span>${ranked[0].fit-ranked[1].fit===1?'ponto':'pontos'} à frente da 2ª</span>`:`<b>=</b><span>empatada com a 2ª</span>`}</div></div>
      ${PROS[r.id]?`<p class="hpro"><span>Quem joga com a linha ${esc(PROS[r.id].l.replace(/^\S+ /,''))}</span>${PROS[r.id].p.slice(0,4).map(p=>`${p[0]?p[0]+' ':''}${esc(p[1])}${p[2]?'*':''}`).join(' · ')}</p>`:''}
    </div></div>
    <h2 class="st">Seu setup completo</h2>
@@ -1931,7 +1934,7 @@ async function shareCard(){
     if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],text:txt});return}
     if(navigator.share){await navigator.share({text:txt});return}
   }catch(e){if(e&&e.name==='AbortError')return}
-  try{await navigator.clipboard.writeText(txt);toast('Texto copiado. Use "Salvar imagem" para o card.')}catch(e){downloadCard()}
+  try{await navigator.clipboard.writeText(txt);toast('Texto copiado. Use "Salvar card" para baixar a imagem.')}catch(e){downloadCard()}
 }
 function showCard(cv,out='#cardOut'){$(out).innerHTML=`<img class="cardimg" alt="Card do DNA de jogo" src="${cv.toDataURL('image/png')}"><p class="note">Toque e segure (ou clique com o botão direito) para salvar a imagem.</p>`}
 
