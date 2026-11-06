@@ -95,6 +95,8 @@ def lote2():
             if not l.strip(): continue
             o = json.loads(l); o['arquivo_bruto'] = 'bruto/' + fn; o['linha_bruta'] = i
             o['familia_fonte'] = familia_fonte(o.get('site'), o.get('url_canonica'))
+            e = str(o.get('escala_original') or '')
+            o['escala_original'] = 'letras' if e.startswith('letras') else (e.replace('.0', '') or ('sentimento' if o.get('sentimento_interpretado') else None))
             out.append(o)
     return out
 
@@ -103,7 +105,7 @@ ATR_TRIAGEM = {'power': ['power', 'puissance', 'potenza', 'leistung'], 'control'
                'spin': ['topspin', 'spin', "prise d'effet", 'effet'], 'comfort': ['comfort', 'confort', 'komfort', 'comfort'],
                'maneuver': ['maneuverability', 'maniabilité', 'manövrierbarkeit', 'maneggevolezza'], 'stability': ['stability', 'stabilité', 'stabilität', 'stabilità'],
                'overall': ['overall', 'note globale', 'gesamt']}
-VARIANTE_TOKENS = ['lite', 'team', 'ul', 'l', 'sl', 'pro', 'tour', 'plus', '+', 'elite', 'mp', '16x19', '18x20', '16x20', '18x16', '16x18', '18x19']
+VARIANTE_TOKENS = ['lite', 'team', 'ul', 'l', 'sl', 'pro', 'tour', 'plus', '+', 'elite', 'mp', 'xl', 'ls', 'd', 'h', 's']  # padrão de corda tem checagem própria
 
 def toks(x, pares=True):
     x = (x or '').lower().replace('×', 'x').replace('-', ' ').replace('_', ' ').replace('/', ' ')
@@ -120,7 +122,7 @@ def confirmar_titulo(titulo, url, cands, C):
         nome = {x for x in nome if x not in ('8', 'v1')} | ({str(r['wt'])} if re.search(r'\b\d{3} ?g\b', r['model']) else set())
         pad = {x for x in nome if re.fullmatch(r'\d\dx\d\d', x)}
         tpad = {x for x in t if re.fullmatch(r'\d\dx\d\d', x)}
-        if tpad and not (pad & tpad): continue          # título informa outro padrão
+        if tpad and pad and not (pad & tpad): continue  # título informa outro padrão
         if not (nome - {str(r['wt'])} - pad) <= t: continue
         if anos and str(r.get('year')) not in anos: continue
         extra = {v for v in VARIANTE_TOKENS if v in t and v not in nome}
@@ -175,7 +177,8 @@ def triagem(C):
     return out
 
 def gerar():
-    C = catalogo()
+    global CAT
+    C = catalogo(); CAT = C
     R = lote1() + lote2() + triagem(C)
     snip = json.load(open(os.path.join(BR, 'pr93-snippets-2026-11.json'), encoding='utf-8'))['reviews']
     u93 = {norm_url(x.get('url')) for x in snip}
@@ -198,6 +201,13 @@ def gerar():
         ids = []
         for fam, rx, cid in VERSOES:
             if r['model_id'] == fam and re.search(rx, r['variant_id'] or ''): ids = cid
+        if r['arquivo_bruto'].startswith('bruto/lote2') and not ids:
+            # lote 2: versão lida na página; confirma dentro da família (nome, ano, sem token de variante a mais)
+            cands = [i for i, c in enumerate(CAT) if (c.get('fam') or c['brand'] + ' ' + c['model']) == r.get('model_id')]
+            texto = ' '.join(str(x) for x in [(r.get('model_id') or '').split(' ')[0], r.get('variant_id'), r.get('geracao'), r.get('massa_g') and f"{r['massa_g']}g", r.get('padrao')] if x)
+            cid, _ = confirmar_titulo(texto, r.get('url_canonica'), cands, CAT)
+            ids = [cid] if cid is not None else []
+            if re.search(r'comparativ|\bvs\.?\b|, | e ', r.get('variant_id') or ''): ids = []; r['_comparativa'] = 1
         if r.get('_ids'): ids = r.pop('_ids')
         r['catalogo_ids'] = ids
         q = next((m for uu, m in QUARENTENA.items() if uu in u), None)
@@ -205,7 +215,9 @@ def gerar():
         elif q: r['elegibilidade'], r['motivo'] = 'quarentena', q
         elif r.get('base') == 'triagem': r['elegibilidade'], r['motivo'] = 'triagem', 'aguarda conferência de geração, variante e painel na página'
         elif r.get('base') != 'pagina': r['elegibilidade'], r['motivo'] = 'so_contexto', 'resumo de busca, página não aberta'
+        elif 'testador individual' in (r.get('notas_evidencia') or '').lower(): r['elegibilidade'], r['motivo'] = 'so_contexto', 'nota de um testador, não do painel'
         elif r['metodo_nota'] == 'laboratorio': r['elegibilidade'], r['motivo'] = 'so_contexto', 'índice de laboratório, não é nota de quadra'
+        elif r.pop('_comparativa', None): r['elegibilidade'], r['motivo'] = 'so_contexto', 'comparativa de várias versões (peso total 1; não vira nota de uma versão)'
         elif not ids: r['elegibilidade'], r['motivo'] = 'so_contexto', 'geração/versão fora do catálogo atual ou não explicitada'
         elif not r['notas_normalizadas_0a1']: r['elegibilidade'], r['motivo'] = 'so_contexto', 'sem nota nem sentimento por atributo'
         else: r['elegibilidade'], r['motivo'] = 'elegivel', ''

@@ -28,7 +28,7 @@ Base de evidências de reviews do RACKET DNA. Fica neste repositório, sem outro
 | `bruto/pr93-snippets-2026-11.json` | 1.028 registros da PR #93, tirados de resumos de busca (`base: snippet`). Só para deduplicar URL e mapear lacunas; não alimenta nota |
 | `bruto/triagem-codex-2026-11-06.json` | Triagem do Codex: 518 URLs, 327 páginas consultadas, 220 com 3+ atributos. `ids_candidatos` NÃO é mapeamento confirmado; atributos podem ser de um testador só. SHA-256 `595beb4b264bbcef9914738a541582b84419a25b5b237751f29e1483edf9b1dc` |
 | `bruto/conferencia-gui-2026-11-06.json` | Conferência manual do Gui na TennisAddict (ids 162, 163, 164): precisão B/B/A e potência C/C/D, escala original em letras |
-| `bruto/lote2-claude-paginas-*.jsonl` | Coleta com páginas abertas pela sessão auxiliar (quando houver) |
+| `bruto/lote2-claude-paginas-2026-11-06.jsonl` | Sessão auxiliar com rede liberada para os sites de review: 273 registros, todos com página aberta (HTTP 200, hora UTC), commit `42730f8` da branch `claude/racket-revisao-reviews` (lote parcial; a coleta continua). TW marcada como painel |
 | `derivado/reviews.json` | Gerado por `racket/tools/reviews.py`: schema abaixo, grupos de duplicata, quarentena e elegibilidade |
 | `derivado/cobertura.md` | Contagens por família, geração, fonte independente e país; lacunas |
 

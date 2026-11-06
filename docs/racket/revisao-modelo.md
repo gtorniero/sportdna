@@ -107,6 +107,7 @@ Onde massa e SW entram hoje:
 | Herança de aprovação do modelo-pai para versões leves | `PAI`, `parent` | **retirar** | Passava nota de uma versão para outra (97L, 100L etc.) | implementado |
 | Sites da rodada 1 (RV) | `RV` | **manter como UMA família** | É agregado sem URL; não dá para saber quantas fontes independentes há dentro | só auditado |
 | Lote 1 do ChatGPT (75) | `docs/racket/dados/reviews/` | **incorporar com critério** | Camada bruta imutável. 25 registros elegíveis (página aberta, mesma geração do catálogo, fora da TW, incluindo a conferência do Gui), 1 em quarentena, 52 só como contexto | implementado: entram só como direção (EVID) |
+| Lote 2 da sessão auxiliar (273, página aberta) | idem | **incorporar com critério** | 109 elegíveis (versão confirmada dentro da família); 33 comparativas ficam só como contexto; TW nova não substitui o TWD antigo (mesma família) | implementado; trocar o TWD pelas notas novas de painel é o próximo passo |
 | Triagem do Codex (518) | idem | **triagem** | ID candidato não confirma geração; atributos podem ser de um testador | implementado: preservada e mapeada pelo título (221 prováveis), sem entrar no motor até conferir painel e geração |
 | Remover uma fonte inteira | `regressao.mjs` | **monitorar** | A TW ainda é a fonte que mais mexe no ranking. Sem ela, o top 1 muda em 104 de 218 perfis | relatório na regressão |
 

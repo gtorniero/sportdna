@@ -24,6 +24,19 @@
    }
   }
  },
+ "111": {
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 0,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
+   }
+  }
+ },
  "118": {
   "Tennis.com": {
    "a": null,
@@ -46,6 +59,30 @@
     "maneuver": -1,
     "power": -1,
     "stability": 1
+   }
+  },
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 0,
+    "control": 1,
+    "maneuver": 0,
+    "power": 0,
+    "spin": -1,
+    "stability": 0
+   }
+  }
+ },
+ "121": {
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 0,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
    }
   }
  },
@@ -85,6 +122,17 @@
     "stability": 1
    }
   },
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
+   }
+  },
   "Tennisnerd": {
    "a": null,
    "d": {
@@ -112,6 +160,17 @@
     "maneuver": 1,
     "power": 1,
     "spin": -1,
+    "stability": -1
+   }
+  },
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
     "stability": -1
    }
   },
