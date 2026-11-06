@@ -226,7 +226,7 @@ Resultado: 0 perfis em 11 das 13 regras. Sobram 76 (0,6%) avançados de 55 kg co
 
 ## Rodada 18: regras do coach para o quiver (5/nov/2026)
 Observação do coach: o app encurtava demais (pranchinha atual 5'10" virava 5'7") e a biquilha saía maior e com menos litros que a pranchinha, o contrário do que se faz num quiver.
-- **Quiver a partir da pranchinha** (do intermediário para cima, `PESOS.meio`): marulheira/groveler 2,5" mais curta e +1 L; biquilha 3" mais curta e +2,5 L; fish 4" mais curta e +3 L, sempre a partir da pranchinha calculada para a pessoa. Nunca abaixo do comprimento mínimo do tipo, e o volume não passa de 0,58 L/kg (o mesmo teto da transição).
+- **Quiver a partir da pranchinha** (do intermediário para cima, `PESOS.meio`): maloreira/groveler 2,5" mais curta e +1 L; biquilha 3" mais curta e +2,5 L; fish 4" mais curta e +3 L, sempre a partir da pranchinha calculada para a pessoa. Nunca abaixo do comprimento mínimo do tipo, e o volume não passa de 0,58 L/kg (o mesmo teto da transição).
 - **Pranchinha não desce de comprimento:** quem já anda de pranchinha (ou step-up) recebe no máximo 1" a menos que a atual, em qualquer nível.
 - **Pouco volume encurta pouco:** quando a litragem é baixa, a pranchinha perde no máximo 1" e os outros tipos 2"; o resto sai da largura e da espessura.
 - Exemplo (72 kg, 1,75 m, avançado, pranchinha atual 5'10" 30 L): pranchinha 5'11" 28,7 L · biquilha 5'8" 31,2 L · groveler 5'9" 29,7 L · fish 5'7" 31,7 L.

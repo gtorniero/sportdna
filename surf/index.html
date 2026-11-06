@@ -888,7 +888,7 @@ function engine(a,long,over){
      vols.short=Math.min(v,Math.max(vols.short,peso*P.transicao.capPerf));
      if(ak==='evo'||ak==='step'||ak==='mid')vols[ak]=Math.min(Math.max(vols[ak],a.atual_V-(inc===2?An.descerGrande:An.descer)),a.atual_V+An.subir)}}
   // regra de coach (nov/2026): biquilha, groveler e fish são a pranchinha da pessoa mais curta e com mais litros
-  // (marulheira/groveler 2–3" menor e ~1 L a mais; biquilha 3" menor e 2–3 L a mais; fish 4" menor e ~3 L a mais). Vale do intermediário para cima.
+  // (maloreira/groveler 2–3" menor e ~1 L a mais; biquilha 3" menor e 2–3 L a mais; fish 4" menor e ~3 L a mais). Vale do intermediário para cima.
   if(lvl>=2){const sd=dims('short',vols.short,peso,alt),M=P.meio;
     [['twin',M.twin],['grov',M.grov],['fish',M.fish]].forEach(([k,[dl,add]])=>{vols[k]=Math.min(vols.short+add,Math.max(vols.short,peso*P.transicao.capPerf));fixL[k]=Math.max(ARCH[k].L[0],sd.L-dl)})}
   FIXL=fixL;
