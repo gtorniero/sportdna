@@ -5,6 +5,29 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 10: versões de cada linha (nov/2026)
+
+Catálogo de 62 para 183 raquetes (81 famílias, 46 com 2+ versões). Detalhe e fichas em `catalogo-versoes.md`.
+
+Mudanças no motor:
+- Ranking com uma linha por família (a melhor versão); as outras versões ficam anotadas no relatório e no ranking.
+- Herança de aprovação só dentro do mesmo molde (mesma família).
+- Novo peso `match.semReview` = 6: raquete sem nenhuma avaliação (própria, de sites ou herdada) perde 6 pontos por incerteza. Sem ele, raquetes novas sem review (EZONE 105, Instinct PWR 110, VCORE 95) ocupavam o pódio de quase todo iniciante.
+- `calibrar.mjs` conta o indicado pela família (o ranking mostra uma linha por família).
+
+Casos de especialistas, só os 268 casos que já existiam:
+| Versão | Top 1 | Top 3 | Top 10 | MRR |
+|---|---|---|---|---|
+| Publicado (62 raquetes) | 16,8% | 36,6% | 63,1% | 0,312 |
+| 183 raquetes, sem `semReview` | 13,4% | 32,8% | 57,1% | 0,271 |
+| **183 raquetes, `semReview` 6 (publicado)** | **14,6%** | **34,7%** | **60,4%** | **0,287** |
+
+O acaso no top 3 cai de 4,8% para 1,6% com o catálogo maior, e os guias só escolhem entre os modelos que conhecem; a queda de 1,9 ponto no top 3 é o custo de ter três vezes mais opções.
+
+500 perfis simulados: raquetes diferentes em 1º de 39 para 73; maior fatia de 16% para 9%; 1ª dentro da faixa ideal de 91% para 95%; mediana do DNA Score da 1ª igual (94).
+
+Limite: iniciante continua o grupo mais fraco contra os especialistas (top 3 5%). Os guias indicam 270 a 300 g para iniciante adulto; o motor prefere 260 a 275 g com cabeça grande. Próxima rodada.
+
 ## Rodada 9: questionário mais curto e orçamento em 3 faixas (nov/2026)
 
 ### O que mudou
