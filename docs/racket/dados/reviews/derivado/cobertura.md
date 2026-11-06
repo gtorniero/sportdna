@@ -1,15 +1,15 @@
 # Cobertura das reviews (gerado por `racket/tools/reviews.py`)
 
-- Registros brutos: 869 (elegivel 134, excluido 228, quarentena 1, so_contexto 210, triagem 296).
-- Famílias de fonte independentes (sem duplicatas): 13.
-- Notas publicadas: 393 · interpretadas (sentimento): 126 · laboratório: 1.
-- Fora dos 10 mercados (exceção geográfica): 97.
-- URLs também presentes nos resumos de busca da #93: 359 (a #93 tem 1028 registros, 923 URLs, nenhum com página aberta).
+- Registros brutos: 884 (elegivel 133, excluido 220, quarentena 5, so_contexto 228, triagem 298).
+- Famílias de fonte independentes (sem duplicatas): 14.
+- Notas publicadas: 397 · interpretadas (sentimento): 133 · laboratório: 1.
+- Fora dos 10 mercados (exceção geográfica): 107.
+- URLs também presentes nos resumos de busca da #93: 362 (a #93 tem 1028 registros, 923 URLs, nenhum com página aberta).
 - Média de nota geral por fonte (3+ notas numéricas): Tennis Warehouse 0.840, TennisCompanion 0.854
 
 | Família | Registros | Fontes independentes | Elegíveis p/ motor | Gerações/versões registradas |
 |---|---|---|---|---|
-| (não confirmado) | 297 | 5 | 0 | # BABOLAT Pure Aero Rafa RH6 [2023]; # BABOLAT Pure Aero Rafa [2023]; # BABOLAT Pure Drive 98 [2025]; # BABOLAT Pure Strike 100 16×20 Gen4; # Babolat Pure Aero Racquet Review; # Babolat Pure Aero Rafa Review; # Babolat Pure Drive Review (2025); # Babolat Pure Drive Tour Racquet Review; # Breakdown;  |
+| (não confirmado) | 298 | 6 | 0 | # BABOLAT Pure Aero Rafa RH6 [2023]; # BABOLAT Pure Aero Rafa [2023]; # BABOLAT Pure Drive 98 [2025]; # BABOLAT Pure Strike 100 16×20 Gen4; # Babolat Pure Aero Racquet Review; # Babolat Pure Aero Rafa Review; # Babolat Pure Drive Review (2025); # Babolat Pure Drive Tour Racquet Review; # Breakdown;  |
 | Babolat Evo Aero | 3 | 2 | 0 | Evo Aero (2023); Evo Aero Lite (2023) |
 | Babolat Evo Drive | 1 | 1 | 0 | # Schläger-Test: Babolat Evo Drive |
 | Babolat Evo Drive Tour | 1 | 1 | 0 | Evo Drive Tour (2023) |
@@ -23,33 +23,33 @@
 | Dunlop CX 200 | 7 | 3 | 0 | # DUNLOP CX 200 / CX 200 LS; # Dunlop CX 200 2024 Racquet Review; # Dunlop CX 200 Review; Dunlop CX 200 (18×20) Limited Edition Review - Tennisnerd.net; Dunlop CX 200 18x20 Limited Edition Review |
 | Dunlop CX 200 Tour | 9 | 3 | 2 | # Dunlop CX 200 Tour 16x19 Racquet Review; # Dunlop Srixon CX 200 Tour 16x19 Racquet Review; CX 200 Tour (2021); CX 200 Tour (2024); CX 200 Tour 16x19 (2024); CX 200 Tour 18x20 (2024); Dunlop CX 200 Tour 16x19 2024 Racquet Review; Dunlop CX 200 Tour 18x20 Racquet Review |
 | Dunlop CX 400 | 3 | 3 | 0 | # Schläger-Test: Dunlop CX 400 Tour; Dunlop CX 400 Tour Racqut Review; Dunlop CX 400 Tour Review - Tennisnerd.net |
-| Dunlop FX 500 | 7 | 4 | 0 | # Schläger-Test: Dunlop FX 500; # Schläger-Test: Dunlop FX 500 Lite; Dunlop FX 500 Review; FX 500 (2023); FX 500 (2026); FX 500 v2 (2023) |
+| Dunlop FX 500 | 8 | 4 | 0 | # Schläger-Test: Dunlop FX 500; # Schläger-Test: Dunlop FX 500 Lite; Dunlop FX 500 Review; FX 500 (2023); FX 500 (2026); FX 500 e FX 500 Tour (2020, comparativo); FX 500 v2 (2023) |
 | Dunlop FX 500 Tour | 1 | 1 | 0 | Dunlop FX 500 Tour Racquet Review |
 | Dunlop SX 300 | 3 | 2 | 0 | # Dunlop SX 300 Racquet Review; # Schläger-Test: Dunlop SX 300 LS; Dunlop SX 300 2025 Tennis Racquet Review |
-| Dunlop SX 300 Tour | 1 | 0 | 0 | Dunlop SX 300 Tour 2025 Racquet Review |
-| Head Boom | 11 | 4 | 2 | # HEAD Boom MP [2026]; Boom MP (2022); Boom MP 2026; Boom MP e Boom Pro 2026 (comparativo); Boom Pro 2024; Boom Pro 2026; Head Boom MP 2026 Review; Head Boom Pro 2026 Racquet Review |
-| Head Extreme | 17 | 4 | 3 | # Head Extreme MP [2026]; Extreme MP 2024; Extreme MP 2026; Extreme MP Auxetic (2022); Extreme MP XL 2026; Extreme MP, MP XL e Pro 2026 (comparativo); Extreme Pro 2024; Extreme Pro 2026; Extreme Tour Auxetic (2022); Graphene 360+ Extreme MP; Graphene 360+ Extreme MP/S/Tour (comparativo); Head Extrem |
+| Dunlop SX 300 Tour | 1 | 1 | 0 | Dunlop SX 300 Tour 2025 Racquet Review |
+| Head Boom | 12 | 4 | 2 | # HEAD Boom MP [2026]; Boom MP (2022); Boom MP 2022; Boom MP 2026; Boom MP e Boom Pro 2026 (comparativo); Boom Pro 2024; Boom Pro 2026; Head Boom MP 2026 Review; Head Boom Pro 2026 Racquet Review |
+| Head Extreme | 18 | 4 | 3 | # Head Extreme MP [2026]; Extreme MP 2024; Extreme MP 2026; Extreme MP Auxetic (2022); Extreme MP XL 2026; Extreme MP e Tour Nite (2021, comparativo); Extreme MP, MP XL e Pro 2026 (comparativo); Extreme Pro 2024; Extreme Pro 2026; Extreme Tour Auxetic (2022); Graphene 360+ Extreme MP; Graphene 360+  |
 | Head Extreme 105 | 1 | 1 | 0 | Extreme Team (2022) |
-| Head Gravity | 16 | 5 | 4 | # Schläger-Test: HEAD Gravity MP; Gravity Auxetic MP/Pro (2023, comparativo); Gravity MP 2025; Gravity MP XL 2025; Gravity Pro 2025; Gravity Tour 2025; Gravity Tour 98 (2025); Head Gravity MP 2025 Racquet Review; Head Gravity Pro 2025 Racquet Review; Head Gravity Tour 2025 Review |
+| Head Gravity | 18 | 5 | 4 | # Schläger-Test: HEAD Gravity MP; Gravity 2021 (Pro, Tour, MP; comparativo); Gravity Auxetic MP/Pro (2023, comparativo); Gravity MP 2025; Gravity MP XL 2025; Gravity Pro 2023; Gravity Pro 2025; Gravity Tour 2025; Gravity Tour 98 (2025); Head Gravity MP 2025 Racquet Review; Head Gravity Pro 2025 Racq |
 | Head Instinct | 10 | 3 | 1 | # Head Graphene Touch Instinct MP; # Head Graphene XT Instinct MP; # Head Instinct MP 2025 Racquet Review; Graphene 360 Instinct MP; Instinct MP (2021, Graphene 360+); Instinct MP 2022; Instinct MP 2025; Tennis Warehouse - Head Graphene XT Instinct MP Racquet Review; Tennis Warehouse - Head YOUTEK G |
 | Head Prestige | 13 | 4 | 4 | # Head Youtek IG Prestige MP; Head Prestige MP 2023 Racquet Review; Head Prestige MP L 2023 Racquet Review; Head Prestige Pro 2023 Racquet Review; Prestige 2021 (comparativo da linha); Prestige 2023 (comparativo da linha); Prestige MP 2023; Prestige MP L 2023; Prestige Pro 16x19 2023; Prestige Pro 2 |
 | Head Prestige 95 | 4 | 3 | 1 | Head Prestige Tour 2023 Racquet Review; Prestige Tour; Prestige Tour 2023 |
 | Head Radical | 14 | 6 | 4 | # HEAD Radical MP Auxetic 2.0 (2025); Head Radical MP 2025 Review; Head Radical Pro 2025 Racquet Review; Radical Auxetic 2023 (comparativo da linha); Radical MP 18x20 (2023); Radical MP 2025; Radical MP e Pro 2025 (comparativo); Radical Pro 2025; Radical Tour 2025; Schläger-Test: HEAD Radical MP - t |
-| Head Speed | 30 | 7 | 4 | # HEAD Speed MP Review; # HEAD Speed Pro 2026 Review & Test:; # Head Speed MP Black Racquet Review; # Head Speed Pro; # [Padel – HEAD] Speed Pro et Speed Pro X; Head Speed MP 2026 Review; Head Speed Pro 2026 Racquet Review; MP 2022; MP 2024; MP 2026 (Legend no teste); MP Auxetic 2022 / Black; Pro 20 |
+| Head Speed | 31 | 7 | 3 | # HEAD Speed MP Review; # HEAD Speed Pro 2026 Review & Test:; # Head Speed MP Black Racquet Review; # Head Speed Pro; # [Padel – HEAD] Speed Pro et Speed Pro X; Head Speed MP 2026 Review; Head Speed Pro 2026 Racquet Review; MP 2022; MP 2024; MP 2026 (Legend no teste); MP Auxetic 2022 / Black; Pro 20 |
 | Head Speed 97 | 3 | 3 | 2 | Speed Tour (2026); Speed Tour 2026 |
 | Prince Phantom 100P | 6 | 2 | 1 | Phantom 100P (2020); Phantom 100P (2024); Phantom 100P e 93P (2020, comparativo); Phantom Pro 100P (2018); Prince Phantom 100P 2024 Racquet Review |
 | Prince Phantom 100X | 13 | 2 | 4 | # Prince Phantom 100X 290g Racquet Review; O3 Phantom 100X 310 g (2025); Phantom 100X 18x20 (2024); Phantom 100X 290 g (2024); Phantom 100X 305 16x18 e 290 (2020); Phantom 100X 305 g (2024); Phantom 2024 (comparativo da linha; favorita 100X 305); Prince O3 Phantom 100X (310g); Prince Phantom 100X 18 |
 | Prince Phantom 107 | 4 | 1 | 1 | Phantom 107G (2024); Phantom 107G (Textreme, 2020); Prince Phantom 107G 2024 Racquet Review |
-| Prince Ripstick 100 | 7 | 3 | 1 | # PRINCE Ripstick 100 (300g); # Prince Ripstick 100 300g Tennis Racquet Review; Prince Ripstick 100 300g Tennis Racquet Review; Ripstick 100 (2021, primeiras impressões); Ripstick 100 300 g (2021); Ripstick 100 300 g (2025) |
-| Prince Tour 100 | 18 | 3 | 2 | # PRINCE TEXTREME TOUR 100P; # PRINCE TOUR 100 (290G); # Prince Tour 100P; ATS Textreme Tour 100 290 (2022); ATS Textreme Tour 100 310 (2022); ATS Textreme Tour 100P (2022); Prince ATS Textreme Tour 100P Racquet Review - Tennis Warehouse; Prince Tour 100 290g 2026 Racquet Review; Prince Tour 100 290 |
-| Prince Tour 98 | 5 | 1 | 1 | ATS Textreme Tour 98 (2022); Prince Tour 2026 (100 290, 100 310, 98; comparativo); Prince Tour 98 2026 Racquet Review; Tennis Warehouse - Prince Tour 98 Racquet Review; Tour 98 (2026) |
+| Prince Ripstick 100 | 8 | 3 | 1 | # Prince Ripstick 100 300g Tennis Racquet Review; Prince Ripstick 100 300g Tennis Racquet Review; Ripstick 100 (2021, primeiras impressões); Ripstick 100 300 g (2021); Ripstick 100 300 g (2025) |
+| Prince Tour 100 | 19 | 3 | 2 | # PRINCE TEXTREME TOUR 100P; # PRINCE TOUR 100 (290G); # Prince Tour 100P; ATS Textreme Tour 100 290 (2022); ATS Textreme Tour 100 310 (2022); ATS Textreme Tour 100P (2022); Prince ATS Textreme Tour 100P Racquet Review - Tennis Warehouse; Prince Tour 100 290g 2026 Racquet Review; Prince Tour 100 290 |
+| Prince Tour 98 | 5 | 2 | 1 | ATS Textreme Tour 98 (2022); Prince Tour 2026 (100 290, 100 310, 98; comparativo); Prince Tour 98 2026 Racquet Review; Tennis Warehouse - Prince Tour 98 Racquet Review; Tour 98 (2026) |
 | ProKennex Black Ace 100 | 8 | 1 | 0 | # ProKennex Black Ace 300 Racquet Review; Black Ace 300 (2021); Black Ace 300 (2025); Black Ace 315 (2020); Black Ace 315 (2025); ProKennex Black Ace (315) Racquet Review; ProKennex Black Ace 315 Racquet Review - Tennis Warehouse |
 | ProKennex Black Ace 105 | 1 | 1 | 0 | Black Ace 105 (2022) |
 | ProKennex Black Ace 97 | 2 | 2 | 1 | Black Ace Pro 97 (2025) |
 | ProKennex Ki Q+ Tour | 6 | 2 | 2 | Ki Q+ Tour (2019); Ki Q+ Tour (2023); Ki Q+ Tour 305 g 16x19 (2026); Ki Q+ Tour Pro 305 g 18x20 (2026); Ki Q+ Tour Pro 315 (2019); ProKennex Ki Q+ Tour Pro (305g) 18x20 Review |
-| Tecnifibre TF40 | 17 | 3 | 1 | # TECNIFIBRE TF-40 305 16M; # Tecnifibre TF40 305 16x19 Racquet Review; TF40 2022 305 16x19, 305 18x20, 315 16x19, 315 18x20 (comparativo); TF40 2024 (comparativo da linha); TF40 290 (2024); TF40 290 16x19 (2024); TF40 305 16x19 (2022); TF40 305 18x20 (2019); TF40 305 18x20 (2022); TF40 315 16x19 (2 |
+| Tecnifibre TF40 | 18 | 3 | 1 | # TECNIFIBRE TF-40 305 16M; # Tecnifibre TF40 305 16x19 Racquet Review; TF40 2022 305 16x19, 305 18x20, 315 16x19, 315 18x20 (comparativo); TF40 2024 (comparativo da linha); TF40 290 (2024); TF40 290 16x19 (2024); TF40 305 16x19 (2022); TF40 305 18x20 (2019); TF40 305 18x20 (2022); TF40 315 16x19 (2 |
 | Tecnifibre TFight 100 | 9 | 4 | 3 | # Schläger-Test: Tecnifibre T-Fight 300; # Tecnifibre TFight 300 Racquet Review; # Tecnifibre Tfight 300 Review; TFight 300 (2025); TFight 300 ID (2025); TFight 300 e 300S (comparativo); Tecnifibre TFight 300 Racquet Review |
-| Tecnifibre TFight 98 | 17 | 4 | 7 | TFight 300 e 300S (comparativo); TFight 300S (2025); TFight 305 Isoflex (2022); TFight 305S (2025); TFight 315S (2025); Tecnifibre TFight 300S 2025; Tecnifibre TFight 300S Racquet Review; Tecnifibre TFight 305S; Tecnifibre TFight 305S 2025; Tecnifibre TFight 315S Review; Test avis raquette tennis TE |
+| Tecnifibre TFight 98 | 18 | 4 | 8 | TFight 300 e 300S (comparativo); TFight 300S (2025); TFight 305 Isoflex (2022); TFight 305S (2025); TFight 315S (2025); Tecnifibre TFight 300S 2025; Tecnifibre TFight 300S Racquet Review; Tecnifibre TFight 305S; Tecnifibre TFight 305S 2025; Tecnifibre TFight 315S Review; Test avis raquette tennis TE |
 | Volkl V1 Classic | 1 | 1 | 0 | V1 Classic (2023) |
 | Volkl Vostra V1 102 | 3 | 1 | 1 | V-Sense V1 MP (2017); Volkl Vostra V1 MP Racquet Review; Vostra V1 MP |
 | Volkl Vostra V1 99 | 2 | 1 | 1 | Volkl Vostra V1 Pro Racquet Review; Vostra V1 Pro |
@@ -57,9 +57,9 @@
 | Volkl Vostra V8 | 3 | 1 | 2 | Volkl Vostra V8 300g Tennis Racquet Review; Vostra V8 300 g; Vostra V8 315 g |
 | Volkl Vostra V9 | 8 | 2 | 3 | Volkl Vostra V9 290g Racquet Review; Volkl Vostra V9 305g Tennis Racquet Review; Vostra V9 290 g; Vostra V9 305 g |
 | Wilson Blade 100 | 9 | 3 | 3 | # Wilson Blade 100 v9 Racquet Review; Blade 100 Pro v10; Blade 100 v10; Blade 100 v9; Blade 100L v7; Blade Pro 100 v10; Wilson Blade 100 v10 Review: A More Accessible Blade?; Wilson Blade 100 v9 Racquet Review |
-| Wilson Blade 104 | 6 | 3 | 2 | Blade 104 v7; Blade 104 v9; Wilson Blade 104 v9 Racquet Review |
-| Wilson Blade 98 | 35 | 8 | 12 | 16x19 (teste 2012); 18x20 (teste 2014); Blade 98 16x19 v10; Blade 98 16x19 v7 vs v8 (comparativo); Blade 98 16x19 v8 vs v9 (comparativo); Blade 98 16x19 v9; Blade 98 18x20 v10; Blade 98 v7; Blade 98S v9; Blade Pro 98 18x20 v9; Blade v10 (98 16x19, 18x20, 100 e 104, comparativo); Wilson Blade 98 16/1 |
-| Wilson Burn 100 | 6 | 2 | 2 | Burn 100 v4; Burn 100 v5; Burn 100S (2015); Burn 100S Countervail (v3); Wilson Burn 100 V5 Review - Tennisnerd.net |
+| Wilson Blade 104 | 7 | 3 | 2 | Blade 104 v7; Blade 104 v8; Blade 104 v9; Wilson Blade 104 v9 Racquet Review |
+| Wilson Blade 98 | 36 | 8 | 12 | 16x19 (teste 2012); 18x20 (teste 2014); Blade 98 16x19 v10; Blade 98 16x19 v7 vs v8 (comparativo); Blade 98 16x19 v8 vs v9 (comparativo); Blade 98 16x19 v9; Blade 98 18x20 v10; Blade 98 Countervail (v6); Blade 98 v7; Blade 98S v9; Blade Pro 98 18x20 v9; Blade v10 (98 16x19, 18x20, 100 e 104, compara |
+| Wilson Burn 100 | 7 | 2 | 2 | Burn 100 v4; Burn 100 v5; Burn 100S (2015); Burn 100S Countervail (v3); Burn Countervail (100S, 100, 95; comparativo); Wilson Burn 100 V5 Review - Tennisnerd.net |
 | Wilson Clash 100 | 27 | 8 | 8 | 100 295g (geração não explicitada - teste impresso 2022); 100 Pro v3 305g; 100L 280g (teste 2020); 100UL (teste 2020); Clash 100 Pro v1 (revisitada); Clash 100 Pro v2; Clash 100 Pro v3; Clash 100 v3; Clash v2 (comparativo da linha); Wilson Clash 100 Pro v3 Racquet Review; Wilson Clash 100 v3 Review; |
 | Wilson Clash 108 | 1 | 1 | 0 | Clash 108 v2 |
 | Wilson Pro Staff 100 | 4 | 2 | 3 | Pro Staff Six.One 100 v14; Pro Staff X v14; Wilson Pro Staff Six.One 100 v14 Racquet Review |
@@ -67,12 +67,12 @@
 | Wilson RF 01 | 13 | 4 | 2 | # WILSON RF 01; # Wilson Pro Staff 85 Young Roger Federer RF 01 2024 TennisAddict 01; # Wilson RF 01 Pro Racquet Review; RF 01; RF 01 Future; RF 01 Pro; RF 01, RF 01 Pro e Future (comparativo); Wilson RF 01 Future Racquet Review; Wilson RF 01 Pro Racquet Review; Wilson RF 01 Racquet Review |
 | Wilson Shift 99 | 7 | 4 | 2 | Shift 99 300 e Shift 99 Pro 315 v1 (comparativo); Shift 99 300 g v1; Shift 99 300 v1; Shift 99 Pro 315 g v1; Shift 99 Pro 315 v1; Shift 99 v1 (primeiras impressões) |
 | Wilson Ultra 100 | 8 | 4 | 1 | Ultra 100 v3; Ultra 100 v4; Ultra 100 v5; Ultra 100 v5 e Ultra 99 Pro v5 (comparativo); Wilson Ultra 100 v5 Racquet Review |
-| Wilson Ultra 99 | 8 | 4 | 2 | Ultra 100 v5 e Ultra 99 Pro v5 (comparativo); Ultra 99 Pro v5; Wilson Ultra Pro 99 v5; Wilson Ultra V5 Review – Ultra 100 and Ultra 99 Pro - Tennisnerd.net |
+| Wilson Ultra 99 | 8 | 5 | 1 | Ultra 100 v5 e Ultra 99 Pro v5 (comparativo); Ultra 99 Pro v5; Wilson Ultra Pro 99 v5; Wilson Ultra V5 Review – Ultra 100 and Ultra 99 Pro - Tennisnerd.net |
 | Wilson Ultra Pro 97 | 5 | 3 | 3 | Ultra Pro 97 16x19 v4; Ultra Pro 97 18x20 v4; Ultra Pro 97 v3; Ultra Pro v4 |
 | Yonex EZONE 100 | 29 | 8 | 6 | # YONEX EZONE 100; # YONEX EZONE 100L; # Yonex EZONE 100 Racquet Review; # Yonex Ezone 100 Review (2025); 100 300g (teste 2023); 100L 285g (teste 2023); 100SL 270g (teste 2023); 2022 (primeiras impressões); 285g (teste 2018); 300g (2017); 300g (2020); 300g (2022); 300g (teste 2018); 300g 2022 (teste |
 | Yonex EZONE 98 | 17 | 5 | 3 | # YONEX EZONE 98; # YONEX EZone 98 [2025]; EZONE 100 e EZONE 98 2022 (comparativo); EZONE 98 (2020); EZONE 98 (2022); EZONE 98 (2025); EZONE 98 Tour (2020); EZONE 98 Tour (2022); EZONE 98 Tour (2025); EZONE 98+ (2025); Yonex EZONE 98 (2025) Racquet Review; Yonex Ezone 98 2025 Review; Yonex Ezone 98  |
 | Yonex Percept 100 | 14 | 5 | 5 | # YONEX Percept 100 (2023); # YONEX Percept 100L [2023]; Percept 100; Percept 100D; Yonex Percept 100 Racquet Review; Yonex Percept 100D Racquet Review; Yonex Percept 100D Review - Tennisnerd.net |
-| Yonex Percept 97 | 17 | 6 | 6 | # YONEX Percept 97 (2023); # Yonex Percept 97 Review; Percept 97; Percept 97D; Percept 97D (2ª geração, 2026); Percept 97H; Yonex Percept 97 racquet Review; Yonex Percept 97D Racquet Review; Yonex Percept 97D Review - Tennisnerd.net; Yonex Percept 97H Racquet Review; Yonex Percept 97H Review - Tenni |
+| Yonex Percept 97 | 18 | 6 | 6 | # YONEX Percept 97 (2023); # Yonex Percept 97 Review; Percept 97; Percept 97 (2023); Percept 97D; Percept 97D (2ª geração, 2026); Percept 97H; Yonex Percept 97 racquet Review; Yonex Percept 97D Racquet Review; Yonex Percept 97D Review - Tennisnerd.net; Yonex Percept 97H Racquet Review; Yonex Percept |
 | Yonex VCORE 100 | 6 | 3 | 2 | VCORE 100 8ª geração; VCORE 100+ 8ª geração; VCORE 100S; VCORE 2021 (98 e 100, comparativo); VCORE 2023 (comparativo da linha) |
 | Yonex VCORE 95 | 3 | 2 | 1 | VCORE 95 (2018); VCORE 95 (2023, 7ª geração); VCORE 95 8ª geração |
 | Yonex VCORE 98 | 9 | 3 | 3 | VCORE 2021 (98 e 100, comparativo); VCORE 2023 (comparativo da linha); VCORE 98 (2018); VCORE 98 8ª geração; VCORE 98 Tour (2024, 7ª geração); VCORE 98 Tour 8ª geração; VCORE 98+ (2021); VCORE 98+ 8ª geração |
@@ -81,7 +81,7 @@
 
 - Famílias de fonte distintas com dado elegível por versão (TW antiga ou nova conta uma vez; sites da rodada 1; EVID): 2 ou mais em 61 versões, 1 em 42, nenhuma em 80.
 - Só versões com 2+ famílias concordando podem ter nota mexida por review; as demais ficam neutras (sem bônus nem penalidade).
-- Triagem do Codex com mapeamento provável pelo título: 54 versões; 37 com página de 3+ atributos. Não entram no motor até conferência de geração, variante e painel.
+- Triagem do Codex com mapeamento provável pelo título: 55 versões; 38 com página de 3+ atributos. Não entram no motor até conferência de geração, variante e painel.
 
 | id | Versão | TW | Sites r1 | Elegíveis (famílias) | Triagem provável (páginas · com 3+ atributos) |
 |---|---|---|---|---|---|
@@ -97,7 +97,7 @@
 | 9 | Babolat Boost Drive |  |  |  | 0 · 0 |
 | 10 | Head Speed MP | sim | sim | Tennis Warehouse | 2 · 1 |
 | 11 | Head Speed MP L |  |  |  | 0 · 0 |
-| 12 | Head Speed Pro | sim | sim | Tennis Warehouse, Tennis.com, TennisCompanion | 2 · 0 |
+| 12 | Head Speed Pro | sim | sim | Tennis Warehouse, Tennis.com | 2 · 0 |
 | 13 | Head Speed Team |  |  |  | 0 · 0 |
 | 14 | Head Gravity MP | sim | sim | Tennis Warehouse | 1 · 0 |
 | 15 | Head Gravity Pro | sim | sim | Tennis Warehouse | 0 · 0 |
@@ -132,11 +132,11 @@
 | 44 | Yonex VCORE 98 8ª geração | sim | sim | Tennis Warehouse | 0 · 0 |
 | 45 | Yonex VCORE 100 8ª geração | sim | sim | Tennis Warehouse | 0 · 0 |
 | 46 | Yonex VCORE 100L 8ª geração |  |  |  | 0 · 0 |
-| 47 | Yonex Percept 97 | sim | sim | Tennis Warehouse, Tennis.com, Tennisnerd | 2 · 2 |
+| 47 | Yonex Percept 97 | sim | sim | Tennis Warehouse, Tennis.com, Tennisnerd | 1 · 1 |
 | 48 | Yonex Percept 100 | sim | sim | Tennis Warehouse, Tennis.com, Tennisnerd | 2 · 2 |
 | 49 | Prince Phantom 100X 290 g | sim | sim | Tennis Warehouse | 0 · 0 |
 | 50 | Prince Tour 100 290 g | sim | sim | Tennis Warehouse | 0 · 0 |
-| 51 | Prince Ripstick 100 300 g | sim | sim | Tennis Warehouse | 2 · 2 |
+| 51 | Prince Ripstick 100 300 g | sim | sim | Tennis Warehouse | 1 · 1 |
 | 52 | Tecnifibre TF40 305 16x19 | sim | sim |  | 2 · 2 |
 | 53 | Tecnifibre TFight 300 | sim | sim | Tennis Warehouse, Tennisnerd | 3 · 2 |
 | 54 | Dunlop CX 200 | sim | sim |  | 3 · 2 |
@@ -206,7 +206,7 @@
 | 118 | Wilson Clash 100 Pro v3 |  |  | Tennis Warehouse, Tennis.com, Tennisnerd | 0 · 0 |
 | 119 | Wilson Clash 100UL v3 |  |  |  | 0 · 0 |
 | 120 | Wilson Ultra 100UL v5 |  |  |  | 0 · 0 |
-| 121 | Wilson Ultra 99 Pro v5 |  |  | Tennis Warehouse, TennisCompanion | 0 · 0 |
+| 121 | Wilson Ultra 99 Pro v5 |  |  | Tennis Warehouse | 0 · 0 |
 | 122 | Wilson Ultra Pro 97 16x19 v4 |  |  | Tennis Warehouse, Tennisnerd | 0 · 0 |
 | 123 | Wilson Ultra Pro 97 18x20 v4 |  |  | Tennis Warehouse | 0 · 0 |
 | 124 | Wilson Shift 99 Pro v1 315 g |  |  | Tennis Warehouse | 0 · 0 |
@@ -250,14 +250,14 @@
 | 162 | Tecnifibre TF40 290 16x19 |  |  | TennisAddict | 0 · 0 |
 | 163 | Tecnifibre TFight 300S |  |  | Tennis Warehouse, TennisAddict | 1 · 1 |
 | 164 | Tecnifibre TFight 305S |  |  | Tennis Warehouse, Tennis.com, TennisAddict, Tennisnerd | 2 · 0 |
-| 165 | Tecnifibre TFight 315S |  |  | Tennis Warehouse | 0 · 0 |
+| 165 | Tecnifibre TFight 315S |  |  | Tennis Warehouse, Tennisnerd | 0 · 0 |
 | 166 | Dunlop CX 200 LS |  |  |  | 1 · 1 |
 | 167 | Dunlop CX 200 18x20 Limited |  |  |  | 2 · 0 |
 | 168 | Dunlop CX 200 Tour 18x20 |  |  | Tennis Warehouse | 0 · 0 |
 | 169 | Dunlop CX 200 OS |  |  |  | 0 · 0 |
 | 170 | Dunlop CX 400 Tour |  |  |  | 3 · 0 |
 | 171 | Dunlop CX 400 |  |  |  | 0 · 0 |
-| 172 | Dunlop SX 300 Tour |  |  |  | 0 · 0 |
+| 172 | Dunlop SX 300 Tour |  |  |  | 1 · 1 |
 | 173 | Dunlop SX 300 LS |  |  |  | 1 · 0 |
 | 174 | Dunlop SX 300 Lite |  |  |  | 0 · 0 |
 | 175 | Dunlop FX 500 Tour |  |  |  | 1 · 0 |
@@ -271,23 +271,19 @@
 
 ## Lacunas: nenhuma família de fonte e nenhuma página provável na triagem
 
-- 63 versões: 3 Babolat Pure Aero Lite; 6 Babolat Pure Drive Lite; 9 Babolat Boost Drive; 11 Head Speed MP L; 13 Head Speed Team; 31 Wilson Blade 100L v9; 34 Wilson Clash 100L v3; 37 Wilson Ultra 100L v5; 46 Yonex VCORE 100L 8ª geração; 59 Babolat Boost Aero; 60 Babolat Pure Drive 107; 61 Wilson Ultra Power 100; 66 Babolat Pure Drive Super Lite; 69 Babolat Pure Strike Team; 72 Babolat Evo Drive Lite; 73 Babolat Evo Drive Tour; 74 Babolat Evo Aero; 75 Babolat Evo Aero Lite; 76 Babolat Boost Strike; 78 Head Speed MP UL 2026; 79 Head Speed Elite 2026; 80 Head Gravity MP L 2025; 82 Head Gravity Team 2025; 84 Head Boom MP L 2026; 85 Head Boom MP UL 2026; 87 Head Radical Team 2025; 88 Head Radical Team L 2025; 90 Head Extreme MP L 2026; 95 Head Instinct Team 2025; 96 Head Instinct Team L 2025; 97 Head Instinct PWR 110 2025; 98 Wilson Pro Staff 97L v14; 99 Wilson Pro Staff 97UL v14; 102 Wilson Pro Staff Team v14; 105 Wilson RF 01 Future; 112 Wilson Blade 100L v10; 113 Wilson Blade 100UL v10; 115 Wilson Blade 100UL v9; 116 Wilson Blade 101L v9; 117 Wilson Blade 104 v10; 119 Wilson Clash 100UL v3; 120 Wilson Ultra 100UL v5; 125 Wilson Shift 99L v1 285 g; 126 Wilson Burn 100S v6; 127 Wilson Burn 100LS v6; 129 Yonex EZONE 98L; 130 Yonex EZONE 100SL; 132 Yonex EZONE 105; 135 Yonex VCORE 98L 8ª geração; 137 Yonex VCORE 100D 8ª geração; 143 Volkl Vostra V8 285 g; 149 Volkl V1 Classic 2025; 158 Prince Ripstick 100 280 g; 159 Tecnifibre TF40 305 18x20; 160 Tecnifibre TF40 315 16x19; 161 Tecnifibre TF40 315 18x20; 169 Dunlop CX 200 OS; 171 Dunlop CX 400; 172 Dunlop SX 300 Tour; 174 Dunlop SX 300 Lite; 176 Dunlop FX 500 LS; 180 ProKennex Black Ace 285; 181 ProKennex Black Ace 315
+- 62 versões: 3 Babolat Pure Aero Lite; 6 Babolat Pure Drive Lite; 9 Babolat Boost Drive; 11 Head Speed MP L; 13 Head Speed Team; 31 Wilson Blade 100L v9; 34 Wilson Clash 100L v3; 37 Wilson Ultra 100L v5; 46 Yonex VCORE 100L 8ª geração; 59 Babolat Boost Aero; 60 Babolat Pure Drive 107; 61 Wilson Ultra Power 100; 66 Babolat Pure Drive Super Lite; 69 Babolat Pure Strike Team; 72 Babolat Evo Drive Lite; 73 Babolat Evo Drive Tour; 74 Babolat Evo Aero; 75 Babolat Evo Aero Lite; 76 Babolat Boost Strike; 78 Head Speed MP UL 2026; 79 Head Speed Elite 2026; 80 Head Gravity MP L 2025; 82 Head Gravity Team 2025; 84 Head Boom MP L 2026; 85 Head Boom MP UL 2026; 87 Head Radical Team 2025; 88 Head Radical Team L 2025; 90 Head Extreme MP L 2026; 95 Head Instinct Team 2025; 96 Head Instinct Team L 2025; 97 Head Instinct PWR 110 2025; 98 Wilson Pro Staff 97L v14; 99 Wilson Pro Staff 97UL v14; 102 Wilson Pro Staff Team v14; 105 Wilson RF 01 Future; 112 Wilson Blade 100L v10; 113 Wilson Blade 100UL v10; 115 Wilson Blade 100UL v9; 116 Wilson Blade 101L v9; 117 Wilson Blade 104 v10; 119 Wilson Clash 100UL v3; 120 Wilson Ultra 100UL v5; 125 Wilson Shift 99L v1 285 g; 126 Wilson Burn 100S v6; 127 Wilson Burn 100LS v6; 129 Yonex EZONE 98L; 130 Yonex EZONE 100SL; 132 Yonex EZONE 105; 135 Yonex VCORE 98L 8ª geração; 137 Yonex VCORE 100D 8ª geração; 143 Volkl Vostra V8 285 g; 149 Volkl V1 Classic 2025; 158 Prince Ripstick 100 280 g; 159 Tecnifibre TF40 305 18x20; 160 Tecnifibre TF40 315 16x19; 161 Tecnifibre TF40 315 18x20; 169 Dunlop CX 200 OS; 171 Dunlop CX 400; 174 Dunlop SX 300 Lite; 176 Dunlop FX 500 LS; 180 ProKennex Black Ace 285; 181 ProKennex Black Ace 315
 
 ## Quarentena e exclusões
 
 - Yonex EZONE 100 · 300g (teste 2018) · TennisAddict: quarentena (conforto 2.2/20 publicado; destoa das outras notas da mesma review) — https://tennisaddict.fr/tests/yonex-ezone-100-2018/
-- Yonex EZONE 98 · EZONE 100 e EZONE 98 2022 (comparativo) · Tennisnerd: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/yonex-ezone-2022-review-100-or-98/26131
-- Yonex VCORE 100 · VCORE 2021 (98 e 100, comparativo) · Tennisnerd: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/yonex-vcore-2021-racquets-review/23724
-- Yonex VCORE 100 · VCORE 2023 (comparativo da linha) · Tennisnerd: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/yonex-vcore-2023-review/28514
-- Prince Tour 98 · Prince Tour 2026 (100 290, 100 310, 98; comparativo) · Tennisnerd: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/prince-tour-2026-racquet-review-the-return-of-a-classic/65936
-- Wilson Ultra 99 · Ultra 100 v5 e Ultra 99 Pro v5 (comparativo) · Tennisnerd: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/wilson-ultra-v5-review-ultra-100-and-ultra-99-pro/48888
-- Tecnifibre TFight 98 · TFight 300 e 300S (comparativo) · Tennis.com: excluido (duplicata) — https://www.tennis.com/news/articles/racquet-review-tecnifibre-t-fight-300-and-300s
-- (não confirmado) · Babolat Pure Aero 2026 Racquet Review · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/BPAR26review.html
+- ProKennex Black Ace 100 · Black Ace 300 (2025) · Tennis Warehouse: quarentena (tabela e texto da página trazem números diferentes) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/PKBACreview.html
+- Head Boom · Boom Pro 2024 · Tennisnerd: quarentena (tabela e texto da página trazem números diferentes) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/head-boom-pro-2024-review/36307
+- Head Speed · Speed Pro 2026 · TennisCompanion: quarentena (tabela e texto da página trazem números diferentes) — https://tenniscompanion.org/head-speed-pro-2026/
+- Wilson Ultra 99 · Ultra 99 Pro v5 · TennisCompanion: quarentena (tabela e texto da página trazem números diferentes) — https://tenniscompanion.org/wilson-ultra-99-pro-v5/
 - (não confirmado) · # Tech Specs · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/BPDWreview.html?lang=en
 - (não confirmado) · Babolat Pure Strike 2024 Review - Tennisnerd.net · tennisnerd.net: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/babolat-pure-strike-2024-review/34847
 - Head Speed · Head Speed MP 2026 Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HSPMP6review.html
 - Head Speed · # HEAD Speed MP Review · tennisnerd.net: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/head-speed-mp-review-2/31958
-- (não confirmado) · Review - Tennis Warehouse · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/SPDMBreview.html
 - Head Speed · Head Speed Pro 2026 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HSPDP6review.html
 - Head Speed · # HEAD Speed Pro 2026 Review & Test: · tenniscompanion.org: excluido (duplicata) — https://tenniscompanion.org/head-speed-pro-2026/
 - (não confirmado) · Head Speed Pro 2024 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HSPDPLreview.html
@@ -297,6 +293,7 @@
 - (não confirmado) · Head Gravity MP XL 2025 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HGMPXLreview.html
 - Head Gravity · Head Gravity MP 2025 Racquet Review · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/HGMPGreview.html
 - Head Gravity · Head Gravity Pro 2025 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HGPRRreview.html
+- (não confirmado) · # Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HGPRreview.html
 - Head Boom · Head Boom MP 2026 Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HBOMP6review.html
 - (não confirmado) · # HEAD Boom 2026 Review – Controlled Power Gets Smarter (and Slightly Firmer) · tennisnerd.net: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/head-boom-2026-review-controlled-power-gets-smarter-and-slightly-firmer/64495
 - Head Boom · Head Boom Pro 2026 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HBOOP6review.html
@@ -379,7 +376,6 @@
 - Tecnifibre TFight 100 · # Tecnifibre Tfight 300 Review · tennisnerd.net: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/tecnifibre-tfight-300-review/44921
 - Tecnifibre TFight 100 · # Tecnifibre TFight 300 Racquet Review · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/TF30STreview.html
 - Dunlop CX 200 Tour · Dunlop CX 200 Tour 16x19 2024 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/DCX2T6review.html
-- Dunlop SX 300 Tour · Dunlop SX 300 Tour 2025 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/DSXTRreview.html
 - Dunlop FX 500 · Dunlop FX 500 Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/DF500review.html
 - Babolat Pure Aero · Babolat Pure Aero Plus 2026 Review · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/BPAPLRreview.html?lang=en
 - Babolat Pure Drive 98 · Babolat Pure Drive 98 2025 · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/PD98Rreview.html
@@ -390,6 +386,7 @@
 - Head Gravity · Head Gravity Tour 2025 Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HGTRRreview.html
 - (não confirmado) · # Tech Specs · tennisonly.com.au: excluido (duplicata) — https://www.tennisonly.com.au/learning_center/racquet_reviews/HGTRRreview.html
 - (não confirmado) · # Tech Specs · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/HGTRRreview.html?lang=en
+- (não confirmado) · # Head Boom MP 2022 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/BOOMMreview.html
 - Head Radical · Head Radical Pro 2025 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/HPRRreview.html
 - (não confirmado) · # Tech Specs · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/HPRRreview.html
 - (não confirmado) · HEAD Radical Racquet Review (Pro and MP, Auxetic 2.0) - Tennisnerd.net · tennisnerd.net: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/head-radical-racquet-review-pro-and-mp-auxetic-2-0/45446
@@ -439,7 +436,6 @@
 - (não confirmado) · Yonex VCORE 100+ 8th Gen Racquet Review · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/VC1P8Greview.html
 - Yonex Percept 97 · Yonex Percept 97H Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/PERC9Hreview.html
 - Yonex Percept 100 · Yonex Percept 100D Review - Tennisnerd.net · tennisnerd.net: excluido (duplicata) — https://www.tennisnerd.net/gear/racquets/racquet-reviews/yonex-percept-100d-review/32135
-- (não confirmado) · Yonex Percept 100 Racquet Review · padelwarehouse.com: excluido (duplicata) — https://www.padelwarehouse.com/learning_center/racquet_reviews/PERMreview.html
 - (não confirmado) · Volkl Vostra 8 315g Racquet Review · pickleballwarehouse.com: excluido (duplicata) — https://www.pickleballwarehouse.com/learning_center/racquet_reviews/VOSV8Hreview.html
 - Volkl Vostra V10 · Volkl Vostra V10 300g Racquet Review · padelwarehouse.com: excluido (duplicata) — https://www.padelwarehouse.com/learning_center/racquet_reviews/VOSV10review.html
 - Volkl Vostra V10 · Volkl Vostra V10 320g Racquet Review · pickleballwarehouse.com: excluido (duplicata) — https://www.pickleballwarehouse.com/learning_center/racquet_reviews/VOSV1Breview.html
@@ -477,13 +473,11 @@
 - Tecnifibre TFight 98 · Test avis raquette tennis TECNIFIBRE T-Fight 305S (2025) · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/tecnifibre-t-fight-305s-2025/
 - Tecnifibre TFight 98 · Tecnifibre TFight 315S Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/TF315Sreview.html
 - Tecnifibre TFight 98 · Tecnifibre TFight 315S Review · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/TF315Sreview.html
-- (não confirmado) · Dunlop CX 200 2024 Racquet Review · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/DCX2Sreview.html
 - Dunlop CX 200 · Dunlop CX 200 18x20 Limited Edition Review · pickleballwarehouse.com: excluido (duplicata) — https://www.pickleballwarehouse.com/learning_center/racquet_reviews/CX28LEreview.html
 - (não confirmado) · Dunlop CX 200 Tour 18x20 Racquet Review · tennis-warehouse.com: excluido (duplicata) — https://www.tennis-warehouse.com/learning_center/racquet_reviews/DCX2T8review.html
 - Dunlop CX 200 Tour · Dunlop CX 200 Tour 18x20 Racquet Review · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/DCX2T8review.html?lang=en
 - Dunlop CX 200 Tour · Dunlop CX 200 Tour 18x20 Racquet Review · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/DCX2T8review.html
 - (não confirmado) · Review - Tennis Warehouse Europe · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/D400Treview.html
-- (não confirmado) · Dunlop SX 300 2025 Tennis Racquet Review · tenniswarehouse-europe.com: excluido (duplicata) — https://www.tenniswarehouse-europe.com/learning_center/racquet_reviews/DSX3Rreview.html?lang=en
 - (não confirmado) · ProKennex Ki Q+ Tour 16x19 Review · padelwarehouse.com: excluido (duplicata) — https://www.padelwarehouse.com/learning_center/racquet_reviews/QT16Sreview.html
 - (não confirmado) · ProKennex Ki Q+ Tour 16x19 Review · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/QT16Sreview.html
 - ProKennex Ki Q+ Tour · ProKennex Ki Q+ Tour Pro (305g) 18x20 Review · racquetreviews.com: excluido (duplicata) — https://www.racquetreviews.com/learning_center/racquet_reviews/QT18Sreview.html
@@ -499,7 +493,9 @@
 - (não confirmado) · # Schläger-Test 2023: Yonex Ezone 100 · tennismagazin.de: excluido (duplicata) — https://www.tennismagazin.de/testbericht/schlaeger-test-2023-yonex-ezone-100/
 - Yonex EZONE 100 · # YONEX EZONE 100 · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/yonex-ezone-100-3/
 - (não confirmado) · # Schläger-Test 2023: Yonex Ezone 100L · tennismagazin.de: excluido (duplicata) — https://www.tennismagazin.de/produkte/schlaeger-test-2023-yonex-ezone-100l/
+- Yonex Percept 97 · # YONEX Percept 97 (2023) · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/yonex-percept-97-2023
 - Prince Tour 100 · # PRINCE TOUR 100 (290G) · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/prince-tour-100-290g/
+- (não confirmado) · # PRINCE Ripstick 100 (300g) · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/prince-ripstick-100-300g/
 - Wilson RF 01 · # WILSON RF 01 · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/wilson-rf-01/
 - (não confirmado) · # WILSON CLASH 100UL · tennisaddict.fr: excluido (duplicata) — https://tennisaddict.fr/tests/wilson-clash-100ul/
 - (não confirmado) · # Schläger-Test 2023: Yonex Ezone 100 SL · tennismagazin.de: excluido (duplicata) — https://www.tennismagazin.de/produkte/schlaeger-test-2023-yonex-ezone-100-sl/

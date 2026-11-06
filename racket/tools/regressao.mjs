@@ -16,6 +16,7 @@
      T10 nenhuma aprovação vem de uma família só
      T11 ausência de review não penaliza
      T12 snapshot: top 3 de cada perfil igual ao registrado em docs/racket/dados/regressao/esperado.json (--atualizar regrava)
+     T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
    Simulação não é validação de qualidade: estes testes só garantem que as regras fazem o que dizem. */
 import {createRequire} from 'module';import fs from 'fs';import path from 'path';import url from 'url';import http from 'http';import {execSync} from 'child_process';
@@ -109,10 +110,20 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  const E=JSON.parse(fs.readFileSync(ESPERADO,'utf8')).top3;const dif=snap.filter(([id,t])=>JSON.stringify(E[id])!==JSON.stringify(t));
  teste('T12 snapshot do top 3',!dif.length,`${snap.length-dif.length}/${snap.length} iguais${dif.length?' · primeiro diferente: '+dif[0][0]:''}`)}
 
+/* T13: proveniência e não-transferência nos dados de reviews (docs/racket/dados/reviews/derivado/reviews.json) */
+{const D=JSON.parse(fs.readFileSync(path.join(raiz,'docs/racket/dados/reviews/derivado/reviews.json'),'utf8')).registros;const bad=[];
+ D.forEach(r=>{const g=String(r.geracao||'')+' '+String(r.variant_id||'');
+   if(r.elegibilidade==='elegivel'&&r.base!=='pagina')bad.push('elegível sem página aberta: '+r.url_canonica);
+   if(/ripstick-100-300g|prince-ripstick-review-first/.test(r.url_canonica)&&((r.catalogo_ids||[]).length||r.catalogo_provavel!=null))bad.push('Ripstick 2021 ligada ao catálogo');
+   if(/conferido/.test(r.verificado_em||'')&&!/Codex/.test(r.verificado_em))bad.push('conferência sem autoria do Codex');
+   if(r.elegibilidade==='elegivel'&&r.metodo_nota==='laboratorio')bad.push('laboratório como nota de quadra');
+   if(r.elegibilidade==='elegivel'&&/testador individual/i.test(r.notas_evidencia||''))bad.push('testador individual elegível')});
+ teste('T13 proveniência: elegível só com página aberta; geração 2021 não vai para 2025; autoria da conferência',!bad.length,`${D.length} registros${bad.length?' · '+bad.slice(0,2).join(' | '):''}`)}
+
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});
 console.log('\nRemoção de fonte (sensibilidade, não é teste):');
-for(const [nome,fn] of [['sem Tennis Warehouse (TWD)',h=>h.replace(/const TWD=\{.*?\};\n/,'const TWD={};\n')],['sem sites da rodada 1 (RV)',h=>h.replace(/const RV=\{.*?\};\n/,'const RV={};\n')],['sem EVID (lote 1)',h=>h.replace(/const EVID=\{.*?\};\n/,'const EVID={};\n')]]){
+for(const [nome,fn] of [['sem Tennis Warehouse (TWD)',h=>h.replace(/const TWD=\{.*?\};\n/,'const TWD={};\n')],['sem sites da rodada 1 (RV)',h=>h.replace(/const RV=\{.*?\};\n/,'const RV={};\n')],['sem EVID (fontes novas: lote 1, lote 2 e conferências)',h=>h.replace(/const EVID=\{.*?\};\n/,'const EVID={};\n')]]){
   const X=await rodar(fn(cand));rel[nome]=mudou(X,C);console.log(`  ${nome}: top 1 muda em ${rel[nome].top1}, composição do top 3 em ${rel[nome].top3}, alguma nota em ${rel[nome].score} de ${X.res.length} perfis`)}
 if(opt('--base')){const B=await rodar(lerHtml(opt('--base')));rel.base=mudou(C,B);
   console.log(`\nBase (${opt('--base')}) × candidata: top 1 muda em ${rel.base.top1}, composição do top 3 em ${rel.base.top3}, alguma nota em ${rel.base.score} de ${C.res.length} perfis`);

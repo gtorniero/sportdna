@@ -1,0 +1,14 @@
+{
+ "origem": "Busca do usuário, mensagem de 06/11/2026 (sessão Claude). Páginas NÃO abertas por Claude: a rede desta sessão recusa esses hosts (proxy 403). Verificação: informada pelo usuário.",
+ "registros": [
+  {"model_id": "Prince Ripstick 100", "variant_id": "Ripstick 100 300 g (2021)", "geracao": "2021", "massa_g": 300, "site": "TennisAddict",
+   "url_canonica": "https://tennisaddict.fr/tests/prince-ripstick-100-300g/", "tipo": "playtest", "metodo_nota": "publicada", "escala_original": "letras",
+   "notas_originais": {"power": "A", "control": "C", "comfort": "A", "maneuver": "D", "spin": "A"},
+   "outras_notas_originais": {"tolerancia": "A", "toque": "C"},
+   "notas_evidencia": "potência A, precisão C, conforto A, tolerância A, manobra D, toque C, efeito A (escala original). Mesma URL e mesmas letras da triagem do Codex."},
+  {"model_id": "Prince Ripstick 100", "variant_id": "Ripstick 100 (2021, primeiras impressões)", "geracao": "2021", "site": "Tennisnerd",
+   "url_canonica": "https://www.tennisnerd.net/gear/racquets/prince-ripstick-review-first-impressions/24046", "tipo": "playtest", "metodo_nota": "nenhuma",
+   "notas_originais": null,
+   "notas_evidencia": "primeira impressão; corda Caviar 1.24 a 55 lb; potência e spin fáceis, menor controle em golpes planos. Sem nota publicada."}
+ ]
+}

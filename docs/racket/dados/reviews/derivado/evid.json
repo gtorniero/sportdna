@@ -60,30 +60,6 @@
     "power": -1,
     "stability": 1
    }
-  },
-  "TennisCompanion": {
-   "a": null,
-   "d": {
-    "comfort": 0,
-    "control": 1,
-    "maneuver": 0,
-    "power": 0,
-    "spin": -1,
-    "stability": 0
-   }
-  }
- },
- "121": {
-  "TennisCompanion": {
-   "a": null,
-   "d": {
-    "comfort": 0,
-    "control": 0,
-    "maneuver": 0,
-    "power": 0,
-    "spin": 0,
-    "stability": 0
-   }
   }
  },
  "162": {

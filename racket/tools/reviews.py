@@ -141,6 +141,25 @@ def catalogo():
     s = open(HTML, encoding='utf-8').read()
     return json.loads(re.search(r'const CATALOG=/\*CATALOG\*/(\[.*?\]);\n', s).group(1))
 
+def errata():
+    p = os.path.join(BR, 'errata-2026-11-06.json')
+    return json.load(open(p, encoding='utf-8'))['correcoes'] if os.path.exists(p) else []
+
+QUEM_CONFERIU = '2026-11-06 (conferido pelo Codex no site original, a pedido do Gui)'
+
+def complemento():
+    """Registros informados pelo usuário em mensagem; Claude não abriu as páginas (rede desta sessão recusa esses hosts)."""
+    p = os.path.join(BR, 'complemento-usuario-2026-11-06.json')
+    if not os.path.exists(p): return []
+    out = []
+    for i, o in enumerate(json.load(open(p, encoding='utf-8'))['registros'], start=1):
+        o = dict(o); o.update(arquivo_bruto='bruto/complemento-usuario-2026-11-06.json', linha_bruta=i, base='informado_pelo_usuario',
+                              verificado_em='informado pelo usuário em 06/11/2026; página não aberta por Claude (proxy 403)',
+                              familia_fonte=familia_fonte(o.get('site'), o.get('url_canonica')), geografia='excecao' if 'tennisnerd' in o['url_canonica'] else 'mercado',
+                              pais=None, ano_publicacao=None, revisor_id=None, nivel_revisor=None, indices_laboratorio=None, sentimento_interpretado=None, anotador=None)
+        out.append(o)
+    return out
+
 def triagem(C):
     p = os.path.join(BR, 'triagem-codex-2026-11-06.json')
     if not os.path.exists(p): return []
@@ -156,22 +175,24 @@ def triagem(C):
         nums = [num(v) for v in vals.values() if num(v) is not None]
         esc = 'letras' if letras else ('100' if nums and max(nums) > 20 else ('20' if nums and max(nums) > 10 else ('10' if nums else None)))
         cid, ok = confirmar_titulo(f.get('titulo'), f['url'], f.get('ids_candidatos') or [], C)
+        er = next((e for e in errata() if e.get('url') and norm_url(e['url']) == norm_url(f['url'])), None)
+        if er and cid in (er.get('nao_mapear_para') or []): cid, ok = None, []
         site = re.sub(r'^https?://(www\.)?', '', f['url']).split('/')[0]
         rec = dict(arquivo_bruto='bruto/triagem-codex-2026-11-06.json', linha_bruta=i, model_id=(C[cid].get('fam') if cid is not None else None) or '(não confirmado)',
                    variant_id=f.get('titulo'), ano_publicacao=None, verificado_em='2026-11-06 (Codex: página consultada, leitura não certificada)' if f.get('pagina_consultada') else None,
                    url_canonica=f['url'], site=site, familia_fonte=familia_fonte(site, f['url']),
                    pais=None, geografia=None, revisor_id=None, nivel_revisor=None, tipo='playtest', metodo_nota='publicada' if vals else 'nenhuma',
                    escala_original=esc, notas_originais={k: (v if letras else num(v)) for k, v in vals.items()} or None, indices_laboratorio=None,
-                   sentimento_interpretado=None, anotador=None, notas_evidencia='triagem-codex; ids candidatos ' + ','.join(map(str, f.get('ids_candidatos') or [])) + (f'; provável pelo título: {cid}' if cid is not None else f'; título compatível com {ok}' if ok else '; título não confirma nenhum candidato'),
+                   sentimento_interpretado=None, anotador=None, notas_evidencia=(f'errata: geração {er["depois"]}, não mapeia para {er["nao_mapear_para"]}; ' if er else '') + 'triagem-codex; ids candidatos ' + ','.join(map(str, f.get('ids_candidatos') or [])) + (f'; provável pelo título: {cid}' if cid is not None else f'; título compatível com {ok}' if ok else '; título não confirma nenhum candidato'),
                    base='triagem', catalogo_provavel=cid, painel_confirmado=False)
-        # conferência humana (Gui): confirma versão e as notas citadas, só elas
+        # conferência no site original (Codex, a pedido do Gui; ver bruto/errata-2026-11-06.json): confirma versão e as notas citadas, só elas
         for g in conf:
             if g['catalogo_id'] in (f.get('ids_candidatos') or []) and g['site'].lower() in site and cid == g['catalogo_id']:
                 m = {'precisao': 'control', 'potencia': 'power'}
-                rec2 = dict(rec); rec2.update(linha_bruta=f'{i} + conferencia-gui', base='pagina', verificado_em='2026-11-06 (conferido pelo Gui na página)',
+                rec2 = dict(rec); rec2.update(linha_bruta=f'{i} + conferencia-gui', base='pagina', verificado_em=QUEM_CONFERIU,
                             model_id=C[g['catalogo_id']].get('fam'), variant_id=g['modelo_catalogo'] + ' ' + g['geracao'], escala_original='letras',
                             notas_originais={m[k]: v for k, v in g['notas_originais'].items()}, painel_confirmado=True, geografia='mercado', pais='França',
-                            notas_evidencia='conferência manual do Gui (só precisão e potência); demais atributos seguem na triagem')
+                            notas_evidencia='conferido no site original pelo Codex, a pedido do Gui (só precisão e potência); URL já constava da PR #93: enriquecimento, não URL nova; demais atributos seguem na triagem')
                 rec2['_ids'] = [g['catalogo_id']]; out.append(rec2)
         out.append(rec)
     return out
@@ -179,20 +200,31 @@ def triagem(C):
 def gerar():
     global CAT
     C = catalogo(); CAT = C
-    R = lote1() + lote2() + triagem(C)
+    R = lote1() + lote2() + triagem(C) + complemento()
     snip = json.load(open(os.path.join(BR, 'pr93-snippets-2026-11.json'), encoding='utf-8'))['reviews']
     u93 = {norm_url(x.get('url')) for x in snip}
     # grupos de duplicata: mesma URL normalizada, ou texto da TW em espelho (mesmo código de review no nome da página)
     def chave(r):
         u = norm_url(r['url_canonica'])
         m = re.search(r'racquet_reviews/([a-z0-9]+)review', u)
-        return (('tw:' + m.group(1)) if m else u) + ('#conf' if str(r.get('linha_bruta','')).endswith('conferencia-gui') else '')
+        # mesma URL em famílias diferentes (artigo que cobre duas linhas) = um registro por família, mesmo artigo
+        return (('tw:' + m.group(1)) if m else u) + '|' + str(r.get('model_id') or '') + ('#conf' if str(r.get('linha_bruta','')).endswith('conferencia-gui') else '')
     grupos = collections.defaultdict(list)
     for r in R: grupos[chave(r)].append(r)
     for g, L in grupos.items():
         for j, r in enumerate(L):
             r['grupo_duplicado'] = g
             r['duplicata_de'] = None if j == 0 else L[0]['arquivo_bruto'] + ':' + str(L[0]['linha_bruta'])
+    # triagem: família ainda não confirmada; se a mesma página já entrou por outro lote, é duplicata dela
+    so_url = lambda r: chave(r).split('|')[0]
+    vistos = {}
+    for r in R:
+        if r['arquivo_bruto'].startswith('bruto/triagem') or r.get('duplicata_de'): continue
+        vistos.setdefault(so_url(r), r)
+    for r in R:
+        if r['arquivo_bruto'].startswith('bruto/triagem') and not r.get('duplicata_de') and not str(r.get('linha_bruta', '')).endswith('conferencia-gui'):
+            o = vistos.get(so_url(r))
+            if o is not None: r['duplicata_de'] = o['arquivo_bruto'] + ':' + str(o['linha_bruta'])
     for r in R:
         u = norm_url(r['url_canonica'])
         r['tambem_na_pr93_snippet'] = u in u93
@@ -213,7 +245,9 @@ def gerar():
         q = next((m for uu, m in QUARENTENA.items() if uu in u), None)
         if r.get('duplicata_de'): r['elegibilidade'], r['motivo'] = 'excluido', 'duplicata'
         elif q: r['elegibilidade'], r['motivo'] = 'quarentena', q
+        elif 'INCONSIST' in (r.get('notas_evidencia') or '').upper(): r['elegibilidade'], r['motivo'] = 'quarentena', 'tabela e texto da página trazem números diferentes'
         elif r.get('base') == 'triagem': r['elegibilidade'], r['motivo'] = 'triagem', 'aguarda conferência de geração, variante e painel na página'
+        elif r.get('base') == 'informado_pelo_usuario': r['elegibilidade'], r['motivo'] = 'so_contexto', 'informado pelo usuário, página não aberta por Claude' + ('; geração 2021, catálogo tem 2025: não transfere' if r.get('geracao') == '2021' else '')
         elif r.get('base') != 'pagina': r['elegibilidade'], r['motivo'] = 'so_contexto', 'resumo de busca, página não aberta'
         elif 'testador individual' in (r.get('notas_evidencia') or '').lower(): r['elegibilidade'], r['motivo'] = 'so_contexto', 'nota de um testador, não do painel'
         elif r['metodo_nota'] == 'laboratorio': r['elegibilidade'], r['motivo'] = 'so_contexto', 'índice de laboratório, não é nota de quadra'
