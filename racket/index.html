@@ -303,6 +303,8 @@ details.panel>summary.cmpsum::-webkit-details-marker{display:none}
 details.cmpbox[open] .cmpgo{background:transparent;color:var(--muted);border:1px solid var(--line)}details.cmpbox[open] .cmpgo::before{content:'Fechar';}details.cmpbox[open] .cmpgo{font-size:0}details.cmpbox[open] .cmpgo::before{font-size:14px}
 @media (max-width:520px){summary.cmpsum{flex-wrap:wrap}.cmpgo{width:100%;text-align:center}.cmptxt b{font-size:18px}}
 details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:24px;padding:4px 0}
+.editbox p{margin:0}
+.altsnote{margin:4px 0 0}
 .whypara{font-size:17px;line-height:1.55;margin:0;max-width:70ch}
 .herocol{display:flex;flex-direction:column;gap:18px;min-width:0}.homecard{min-height:0}
 .cardpair{display:flex;justify-content:center;align-items:flex-start;padding:6px 0 10px}.cardpair .cardimg{width:50%;max-width:220px}.cardpair .cardimg+.cardimg{transform:rotate(3deg) translateY(14px);margin-left:-14px}.herocard .cardimg{max-width:300px}
@@ -876,7 +878,9 @@ const brTag=r=>r.br==='d'?'<span class="brtag d">Difícil de achar no Brasil</sp
 RK.forEach(r=>{r.br=r.lojas===0?'d':r.lojas===1?'p':'';r.ix=idx(r);const v=RV[r.id],t=TWD[r.id];r.ntw=t?t.n:0;r.nrev=(v?v.n:0)+r.ntw;const G=PESOS.aprovacao;r.q=t&&t.a!=null?cl(t.a*G.tw,-G.twTeto,G.twTeto)*Math.min(1,t.n/G.twN):v&&v.o!=null?cl(v.o*G.sites,-G.sitesTeto,G.sitesTeto):0});
 /* versões leves sem review da TW herdam parte da aprovação do modelo-pai (mesma marca) */
 const PAI={'Pure Aero Lite':'Pure Aero','Pure Drive Team':'Pure Drive','Pure Drive Lite':'Pure Drive','Speed MP L':'Speed MP','Speed Team':'Speed MP','Boom Team':'Boom MP','Extreme Team':'Extreme MP','Blade 100L v9':'Blade 98 16x19 v9','Clash 100L v3':'Clash 100 v3','Clash 108 v3':'Clash 100 v3','Ultra 100L v5':'Ultra 100 v5','EZONE 100L':'EZONE 100','VCORE 100L 8ª geração':'VCORE 100 8ª geração','Pure Drive 107':'Pure Drive'};
-RK.forEach(r=>{const v=RV[r.id];if(TWD[r.id]||(v&&v.o!=null))return;const pai=RK.find(x=>x.brand===r.brand&&x.model===PAI[r.model]);if(pai&&TWD[pai.id]){r.q=Math.round(pai.q*PESOS.aprovacao.herdaPai*100)/100;r.qPai=pai.id}});
+RK.forEach(r=>{const v=RV[r.id];if(TWD[r.id]||(v&&v.o!=null))return;const pai=r.parent!=null?RK[r.parent]:RK.find(x=>x.brand===r.brand&&x.model===PAI[r.model]);if(pai&&TWD[pai.id]){r.q=Math.round(pai.q*PESOS.aprovacao.herdaPai*100)/100;r.qPai=pai.id}});
+/* família = mesmo molde em pesos/padrões diferentes (Pro Staff 97, 97L, 97UL...) */
+const famOf=r=>r.fam||(r.brand+' '+r.model);
 const RANGE=k=>{const v=RK.map(r=>r[k]);return [Math.min(...v),Math.max(...v)]};
 
 document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if(!b)return;const t=b.dataset.back;if(t==='quiz'){step=STEPS.length-1;show('quiz');renderQs()}else{if(t==='preview')renderPreview();show(t)}});
@@ -1004,8 +1008,8 @@ function field(q){
       if(toks.length&&!res.length){const bg=w=>{const o=new Set();for(let i=0;i<w.length-1;i++)o.add(w.slice(i,i+2));return o};const qb=bg(t.replace(/ /g,''));
         res=IDX.map(x=>{const kb=bg(x.k.replace(/ /g,''));let c=0;qb.forEach(g=>{if(kb.has(g))c++});return {r:x.r,sc:2*c/(qb.size+Math.min(kb.size,qb.size+6))}}).filter(x=>x.sc>.35).sort((a,b)=>b.sc-a.sc).slice(0,6).map(x=>x.r);}
       hi=Math.min(hi,Math.max(0,res.length-1));
-      list.innerHTML=(s0&&!toks.length?`<div class="ropt sel" role="option" aria-selected="true"><span>✓ <b>${esc(s0.name)}</b></span>${brTag(s0)}</div><p class="note" style="padding:6px 8px">Para trocar, digite outro modelo acima.</p>`:!toks.length?'<p class="bh">Mais comuns</p>':'')+
-        (s0&&!toks.length?'':res.length?res.map((r,i)=>`<div class="ropt${i===hi&&toks.length?' hi':''}" role="option" data-v="${r.id}" aria-selected="${A.cur===String(r.id)}"><span><span class="muted">${esc(r.brand)}</span> ${mark(r.model,t.replace(norm(r.brand),'').trim()||t)}</span>${brTag(r)}</div>`).join(''):`<p class="muted" style="padding:10px 4px">Nada com “${esc(find.value)}”. Tente só o modelo (ex.: <i>speed</i>) ou escolha “Minha raquete não está na lista”.</p>`);
+      list.innerHTML=(s0&&!toks.length?`<div class="ropt sel" role="option" aria-selected="true"><span>✓ <b>${esc(s0.name)}</b> <span class="muted">· ${s0.wt} g</span></span>${brTag(s0)}</div><p class="note" style="padding:6px 8px">${RK.filter(x=>x!==s0&&famOf(x)===famOf(s0)).length?'A mesma linha tem outras versões; confira o peso escrito no cabo ou na etiqueta. ':''}Para trocar, digite outro modelo acima.</p>`:!toks.length?'<p class="bh">Mais comuns</p>':'')+
+        (s0&&!toks.length?'':res.length?res.map((r,i)=>`<div class="ropt${i===hi&&toks.length?' hi':''}" role="option" data-v="${r.id}" aria-selected="${A.cur===String(r.id)}"><span><span class="muted">${esc(r.brand)}</span> ${mark(r.model,t.replace(norm(r.brand),'').trim()||t)} <span class="muted">· ${r.wt} g</span></span>${brTag(r)}</div>`).join(''):`<p class="muted" style="padding:10px 4px">Nada com “${esc(find.value)}”. Tente só o modelo (ex.: <i>speed</i>) ou escolha “Minha raquete não está na lista”.</p>`);
       list.querySelectorAll('[data-v]').forEach(el=>el.onclick=()=>pick(el.dataset.v));
     };
     find.addEventListener('input',()=>{hi=0;draw()});
@@ -1058,8 +1062,8 @@ document.addEventListener('keydown',e=>{
 function missing(){return VQ().filter(q=>q.s===step&&!q.opt&&!answered(q))}
 function show(id){['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
 
-$('#start').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
-$('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
+$('#start').addEventListener('click',()=>{editing=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
+$('#example').addEventListener('click',()=>{editing=false;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
 $('#home').addEventListener('click',()=>show('landing'));$('#home').addEventListener('keydown',e=>{if(e.key==='Enter')show('landing')});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}go(-1)});
 $('#next').addEventListener('click',()=>{
@@ -1088,6 +1092,7 @@ function duelHTML(a,b,withFit){const TL=[];
   <p class="note" style="margin-top:8px">Índices de 0 a 10 calculados a partir das specs medidas. # é a posição no ranking do catálogo naquele atributo.</p></div></div>`;
 }
 function fillSel(sel,v){sel.innerHTML=optList(v)}
+let editLeft=0,editing=false;
 let cmpPaid=!window.SportDNAPayments?.enabled&&LS.get('rm_cmp')==='1';
 const duelFree=()=>+(LS.get('rm_duel_n')||0)<1;
 const duelOpen=()=>cmpPaid||tier>=2;
@@ -1241,6 +1246,8 @@ function compute(){
   if(!ranked[0].inZ){const j=ranked.findIndex(x=>x.inZ&&(!x.caro||ranked[0].caro));if(j>0&&ranked[0].fit-ranked[j].fit<=M.promoverZona){const z=ranked.splice(j,1)[0];z.fit=ranked[0].fit;z.promo=true;ranked.unshift(z)}}
   /* escala do DNA: a melhor para o seu perfil fica entre 90 e 96; as demais caem 0,8 ponto por ponto de diferença */
   {const R0=ranked[0].fit,lift=v=>cl(Math.round(M.escalaTopo-(R0-v)*M.escalaPasso-Math.max(0,M.escalaRef-R0)*M.escalaRefPeso),M.min,M.escalaMax);all.forEach(x=>{x.raw=x.fit;x.fit=lift(x.fit)})}
+  /* cada família aparece uma vez, na versão que mais combina; as outras versões ficam anotadas */
+  {const seen=new Map(),uniq=[];ranked.forEach(x=>{const f=famOf(x.r);if(seen.has(f)){seen.get(f).alts.push(x)}else{x.alts=[];seen.set(f,x);uniq.push(x)}});ranked.splice(0,ranked.length,...uniq)}
   const curFit=c?all.find(x=>x.r.id===c.id):null;
   if(curFit){const seen=new Set();curFit.pen=curFit.pen.filter(p=>{if(/sua atual|à sua atual|no Brasil/.test(p[1])||p[0]<1)return false;const k=p[1].split(' ')[0];if(seen.has(k))return false;seen.add(k);return true})}
   const answered=Q.filter(q=>vis(q)&&A[q.id]&&(!q.multi||A[q.id].length)).length;
@@ -1256,8 +1263,9 @@ function runAnalysis(){
   const steps=['Lendo seu perfil físico e o histórico do braço','Traduzindo swing, saque e estilo em especificações','Cruzando com '+RK.length+' raquetes, uma a uma','Ajustando conforto, peso, balanço e orçamento','Escolhendo corda e tensão'];
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
   const lis=[...ul.children];const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  RES=compute();tier=0;persist();
-  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else{renderPreview();show('preview')}};
+  /* edição depois de pago: refaz o relatório sem novo pagamento, uma vez */
+  const ed=editing&&tier>=2;RES=compute();if(ed){editing=false;editLeft=0}else tier=0;persist();
+  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(ed){renderReport();show('report');toast('Relatório refeito com as respostas corrigidas.')}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
 
@@ -1476,7 +1484,7 @@ function pix(t){
     setTimeout(()=>{
       if(isCmp){$('#pxBody').innerHTML=`<div class="okbig">✓</div><h3 style="text-align:center">Pagamento confirmado</h3><p class="muted" style="text-align:center">Comparador liberado.</p>`;
         setTimeout(()=>{closeModal();cmpPaid=true;LS.set('rm_cmp','1');renderDuel()},900);return}
-      tier=Math.max(tier,t);persist();renderReport();show('report');
+      tier=Math.max(tier,t);editLeft=1;persist();renderReport();show('report');
       $('#pxBody').innerHTML=`<div class="okbig">✓</div><h3 style="text-align:center">Pagamento confirmado</h3><p class="muted" style="text-align:center">Seu relatório está liberado.</p>
         <button class="btn btn-go" type="button" id="pxPdf" style="width:100%;margin-top:14px">Baixar relatório em PDF (A4)</button>
         <button class="btn btn-ghost" type="button" id="pxSee" style="width:100%;margin-top:8px">Ver relatório na tela</button>`;
@@ -1587,6 +1595,10 @@ function fichaRows(r){
   return [['Raquete','',esc(r.name)],['Ano','',r.year||'—'],['Preço novo','',precoTxt(r)],['Peso sem corda','wt',r.wt+' g'],['Balanço sem corda','bal',r.bal+' mm'],['Swingweight','sw',String(r.sw)],['Rigidez','ra',r.ra+' RA'],['Cabeça','head',r.head+' pol²'],['Padrão de cordas','pat',r.pat.replace('x','×')]]
     .concat(r.tech?[['Tecnologia','',esc(r.tech)]]:[]).concat([['No Brasil','',BR[r.br]||'Fácil de achar']]);
 }
+/* outras versões (pesos/padrões) da mesma família, com o DNA de cada uma */
+function altsNote(x){const L=(x.alts||[]).slice(0,3);if(!L.length)return '';
+  return `<p class="note altsnote">Também existe em outra versão: ${L.map(a=>`<strong>${esc(a.r.model)}</strong> (${a.r.wt} g${a.r.pat!==x.r.pat?', '+a.r.pat.replace('x','×'):''}) · DNA ${a.fit}%`).join('; ')}.</p>`}
+const altsTag=x=>x.alts&&x.alts.length?` · também em ${x.alts.slice(0,2).map(a=>a.r.wt+' g').join(' e ')}`:'';
 function renderReport(){
   const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);const full=tier>=2;
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
@@ -1600,7 +1612,7 @@ function renderReport(){
   h+=`<section class="panel winner" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
     ${racketHead(w)}
     <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
-    <p class="hero2">${heroText(w,T)}</p></section>`;
+    <p class="hero2">${heroText(w,T)}</p>${altsNote(w)}</section>`;
   /* 2. Por que combina */
   const rv=(REVQ[r.id]||[]).slice(0,3);
   h+=`<section class="panel" id="r-por"><h2 class="sec">Por que combina</h2>
@@ -1622,7 +1634,7 @@ function renderReport(){
       <div class="altl">${ranked.slice(1,3).map((x,i)=>`<div class="altc"><div style="min-width:0"><p class="eyebrow">${i+2}º lugar · ${esc(x.r.brand)}${x.r.year?' · '+x.r.year:''}</p><h3>${esc(x.r.model)}</h3><p class="mono specline">${x.r.wt} g · SW ${x.r.sw} · ${x.r.ra} RA · ${x.r.head} pol² · ${x.r.pat.replace('x','×')}</p><p class="note" style="margin-top:2px">Novo: ${precoTxt(x.r)} ${brTag(x.r)}</p><div class="pcs">${tradeChips(x,top3)}</div></div><div style="text-align:right"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>`).join('')}</div>
       <details class="more"><summary>Ver o ranking dos 10 e o mapa do catálogo</summary>
         <h3 style="margin-bottom:10px">Ranking dos 10 melhores</h3>
-        <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div>
+        <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}${altsTag(x)}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div>
         <div class="phead" style="margin-top:22px"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
         <p class="note">Cada ponto é uma das ${RK.length} raquetes do catálogo. Os números são o seu top 10, na ordem do ranking.${c?' O anel laranja é a sua atual.':''}</p>
       </details></section>`;
@@ -1663,11 +1675,13 @@ function renderReport(){
     <div class="foldin"><div class="row"><button class="btn btn-pri btn-sm" type="button" id="fichaCp" aria-label="Copiar ficha técnica">Copiar</button></div>
     <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fr.map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
     <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></div></details></section>`})()}
+  ${full&&editLeft>0?`<div class="panel editbox"><h2 class="sec">Errou alguma resposta?</h2><p>Você pode corrigir as respostas uma vez, por exemplo a versão exata da sua raquete atual. O relatório é refeito na hora, sem novo pagamento.</p><button class="btn btn-ghost" type="button" id="editAns" style="align-self:flex-start">Editar respostas</button></div>`:''}
   <div class="row">${full?'<button class="btn btn-go" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>`;
   const R=$('#report');R.innerHTML=h;
   wireSeg(R);
   const up=$('#up');if(up)up.onclick=()=>pix(2);
-  $('#again').onclick=()=>{step=0;show('quiz');renderQs()};
+  $('#again').onclick=()=>{editing=false;step=0;show('quiz');renderQs()};
+  if($('#editAns'))$('#editAns').onclick=()=>{editing=true;step=0;show('quiz');renderQs();toast('Corrija o que precisar. No fim, o relatório é refeito sem novo pagamento.')};
   R.querySelector('[data-save]').onclick=saveBox;
   R.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>downloadPDF(b));
   $('#dlCard').onclick=()=>downloadCard();if($('#dlRacket'))$('#dlRacket').onclick=downloadRacketCard;$('#shareCard').onclick=shareCard;previewCard();
@@ -1994,7 +2008,7 @@ async function drawRacketCard(d=racketCardData()){
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
 window.SportDNAPayments?.register({name:'racket',snapshot:()=>JSON.parse(JSON.stringify(A)),
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(answers));RES=Object.keys(A).length?compute():null},
- unlock:product=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;persist();renderReport();show('report')}}});
+ unlock:product=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;editLeft=1;persist();renderReport();show('report')}}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();
 </script>
