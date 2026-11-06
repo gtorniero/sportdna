@@ -38,7 +38,8 @@
    const order=await api('/orders/'+pending.id,{headers:{Authorization:'Bearer '+pending.token}});
    if(order.product!==pending.product||order.mode!==config.mode||!validAmount(order))throw new Error('Produto ou valor diferente da oferta. Nenhum acesso foi liberado; consulte o suporte antes de pagar.');
    if(order.state==='paid'){
-    app.restore(pending.answers);app.unlock(pending.product);close();emailButton(pending);return true;
+    app.restore(pending.answers);app.unlock(pending.product);close();emailButton(pending);
+    try{await window.SportDNAMeasure?.purchase?.(order)}catch{/* Medição opcional não bloqueia acesso. */}return true;
    }
    if(['invalid','revoked','expired'].includes(order.state)){message('O pagamento não foi aprovado. Nenhum acesso foi liberado.');return false}
    message('Aguardando confirmação do pagamento…');
@@ -94,7 +95,8 @@
     busy=true;body.querySelectorAll('button').forEach(b=>b.disabled=true);message('Preparando pagamento…');
     try{
      const current=get();const p=current?.app===app.name&&current.product===product&&current.provider===provider?current:{id:crypto.randomUUID(),token:random(),app:app.name,product,provider,answers:app.snapshot()};
-     save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,...(provider==='mercadopago'?{email:email.value}:{})})});pendingPanel(order);
+     save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,...(provider==='mercadopago'?{email:email.value}:{})})});
+     try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
     }catch(e){message(e.message);body.querySelectorAll('button').forEach(b=>b.disabled=false)}finally{busy=false}
    };body.append(button);
   }
