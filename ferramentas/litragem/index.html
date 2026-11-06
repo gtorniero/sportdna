@@ -208,7 +208,7 @@ footer .btw{min-height:44px}
   <section class="hero"><div class="wrap">
     <span class="tag"><i></i>Ferramenta grátis · Surf</span>
     <h1>Calculadora de <span class="hl">litragem</span> de prancha</h1>
-    <p>Quantos litros a sua prancha deve ter? Mova os controles e veja a faixa certa para o seu peso, o seu nível e o tipo de prancha. Mesma base de cálculo do SURF DNA, ajustada com casos reais de surfistas, lojas, revistas e atletas.</p>
+    <p>Quantos litros a sua prancha deve ter? Mova os controles e veja a faixa certa para o seu peso, o seu nível e o tipo de prancha. Mesma conta do SURF DNA, ajustada com casos reais de surfistas, lojas, revistas e atletas.</p>
   </div></section>
 
   <div class="wrap tool">
@@ -334,26 +334,37 @@ footer .btw{min-height:44px}
 <script>
 (function(){
 /* espelho de litragem() em surf/index.html — manter igual
-   (LV[].gf e rng, MODF, ARCH[].ref, PESOS.vol, dimsFixed() do soft; altura fixa em 175 cm, o padrão do motor;
-   onda no padrão do motor, meio metro a 1 m) */
+   Copiado em nov/2026: LV[].gf e rng, MODF, ARCH[].ref, PESOS.vol (piso de 0,34 L/kg, desconto de condicionamento
+   e flutuação limitado a 6% e zerado no avançado), dimsFixed() do soft e, do engine(), a regra que tira biquilha,
+   groveler e fish da pranchinha (PESOS.meio, transicao.capPerf) do intermediário para cima.
+   Fica de fora, porque esta página não pergunta: nível declarado (faixa de profissional), prancha atual (âncora e
+   transição), ondas (padrão do motor: meio metro a 1 m), dores, piscina. Altura fixa em 175 cm, o padrão do motor. */
 const LITRAGEM={
   gf:[[1.0,0.8],[0.58,0.47],[0.45,0.41],[0.41,0.385],[0.40,0.37]],rng:[1,2,2,1.5,1],
   modf:{soft:1,minimal:1.8,mid:1.25,evo:1.1,fish:1.06,grov:1.10,twin:1.0,short:1,step:1.11},
   ref:{soft:[78,96,23,3.5],minimal:[56,90,22,3],mid:[48,86,21.5,2.875],evo:[40,76,21,2.75],fish:[37,68,21.25,2.625],grov:[32,68,20.5,2.5],twin:[32,70,20.25,2.5],short:[28,72,19.25,2.375],step:[32,76,19.5,2.5]},
   fixo:{soft:[84,108]},alt:175,tam:1,
-  vol:{idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],fis:[1.08,1.03,1,0.97],pesoModelo:[0.15,0.5,1,1,1],ondaStep:[0,0,0,1,2],ondaOutros:[0.5,0,0,0,0],epoxi:-1,refExp:0.9,refMin:0.75,refMax:1.3}
+  vol:{pisoLkg:0.34,descMax:0.94,idade:[1,1,1.01,1.03,1.05],freq:[1.03,1.01,1,1],flut:[1.08,1,0.95],fis:[1.08,1.03,1,0.97],pesoModelo:[0.15,0.5,1,1,1],ondaStep:[0,0,0,1,2],ondaOutros:[0.5,0,0,0,0],epoxi:-1,refExp:0.9,refMin:0.75,refMax:1.3},
+  meio:{twin:2.5,grov:1,fish:3},capPerf:0.58
 };
 const clampL=(x,a,b)=>Math.max(a,Math.min(b,x));
 /* o: peso, lv (0–4), pos (0–1 dentro do nível), k (tipo), flut, fis, idade, freq, eps (epóxi) */
 function litragemSite(o){
-  const X=LITRAGEM,V=X.vol,g=X.gf[o.lv],GF=g[0]-(g[0]-g[1])*o.pos,mw=V.pesoModelo[o.lv],k=o.k;
-  if(X.fixo[k]){const [V0,L0,W0,T0]=X.ref[k],[a,b]=X.fixo[k],t=clampL(((X.alt-155)/45)*0.5+((o.peso-55)/45)*0.5,0,1),L=a+(b-a)*t,sc=Math.pow(clampL(o.peso/78,0.75,1.35),0.35);
-    return {v:V0/(L0*W0*T0)*L*(W0*sc)*(T0*Math.pow(sc,0.8)),GF,fixo:true}}
-  let v=o.peso*GF*(1+(X.modf[k]-1)*mw)*V.flut[o.flut]*V.idade[o.idade]*V.freq[o.freq]*V.fis[o.fis];
-  v+=(k==='step')?V.ondaStep[X.tam]:V.ondaOutros[X.tam];
-  if(o.eps)v+=V.epoxi;
-  const raw=v,rv=X.ref[k][0]*Math.pow(o.peso/75,V.refExp);v=clampL(v,rv*V.refMin,rv*V.refMax);
-  return {v,raw,GF,fixo:false};
+  const X=LITRAGEM,V=X.vol,g=X.gf[o.lv],GF=g[0]-(g[0]-g[1])*o.pos,mw=V.pesoModelo[o.lv];
+  const fisF=V.fis[o.fis],desc=o.lv>=4?1:Math.max(V.descMax,Math.min(1,fisF)*Math.min(1,V.flut[o.flut]));
+  const body=V.idade[o.idade]*V.freq[o.freq]*Math.max(1,fisF),flutM=desc*Math.max(1,V.flut[o.flut]);
+  const um=(k,eps)=>{
+    if(X.fixo[k]){const [V0,L0,W0,T0]=X.ref[k],[a,b]=X.fixo[k],t=clampL(((X.alt-155)/45)*0.5+((o.peso-55)/45)*0.5,0,1),L=a+(b-a)*t,sc=Math.pow(clampL(o.peso/78,0.75,1.35),0.35);
+      const v=V0/(L0*W0*T0)*L*(W0*sc)*(T0*Math.pow(sc,0.8));return {v,raw:v,fixo:true}}
+    let v=o.peso*GF*(1+(X.modf[k]-1)*mw)*flutM*body;
+    v+=(k==='step')?V.ondaStep[X.tam]:V.ondaOutros[X.tam];
+    if(eps)v+=V.epoxi;
+    const raw=v,rv=X.ref[k][0]*Math.pow(o.peso/75,V.refExp);v=clampL(v,rv*V.refMin,rv*V.refMax);
+    v=Math.max(v,o.peso*V.pisoLkg);
+    return {v,raw,fixo:false}};
+  /* do intermediário para cima, biquilha, groveler e fish saem da pranchinha da pessoa, com um pouco mais de litros */
+  if(o.lv>=2&&X.meio[o.k]!==undefined){const s=um('short',false).v;return {v:Math.min(s+X.meio[o.k],Math.max(s,o.peso*X.capPerf)),raw:null,GF,fixo:false,meio:s}}
+  return Object.assign(um(o.k,o.eps),{GF,flutM,body});
 }
 const LV=[
   {n:'Primeiras ondas',d:'Ainda com espuma ou empurrão',rng:1},
@@ -389,7 +400,7 @@ function tipoOf(k,lv){const key=k==='auto'?AUTO[lv]:k;return TIPOS.find(t=>t.k==
 function calc(o){
   const t=tipoOf(o.tipo,o.lv),L=LV[o.lv];
   const r=litragemSite({peso:o.peso,lv:o.lv,pos:POS[o.pos][1],k:t.k,flut:o.flut,fis:o.fis,idade:o.idade,freq:o.freq,eps:o.mat===1&&t.k!=='soft'});
-  return {v:r.v,raw:r.raw,lo:r.v-L.rng,hi:r.v+L.rng,GF:r.GF,t,fixo:r.fixo};
+  return Object.assign({},r,{lo:r.v-L.rng,hi:r.v+L.rng,t});
 }
 
 function seg(id,arr,key,cls){
@@ -432,8 +443,10 @@ function update(){
   $('byLevel').innerHTML=all.map((r,i)=>bar(LV[i].n,r.t.n,r,i===S.lv)).join('')+axis;
   $('byType').innerHTML=tps.map(x=>`<button type="button" data-k="tipo" data-v="${x.t.k}" aria-pressed="${x.t.k===r.t.k}" aria-label="Usar ${x.t.n} no cálculo: ${Math.round(x.r.lo)} a ${Math.round(x.r.hi)} litros" style="all:unset;cursor:pointer;display:block">${bar(x.t.n,'',x.r,x.t.k===r.t.k)}</button>`).join('')+axis;
   {const f2=x=>x.toFixed(2).replace('.',','),V=LITRAGEM.vol;
+   const rc=(r.flutM||1)*Math.max(1,LITRAGEM.vol.fis[S.fis]);
    $('formula').textContent=r.fixo?`${r.t.n}: a litragem vem do tamanho padrão da prancha para ${S.peso} kg ≈ ${dec(r.v)} L`:
-   `${S.peso} kg × ${r.GF.toFixed(3).replace('.',',')} (fator ${LV[S.lv].n.toLowerCase()}) × ${f2(1+(r.t.m-1)*mwOf(S.lv))} (${r.t.n.toLowerCase()}) × ${f2(FLUT[S.flut][1])} (remada) × ${f2(V.idade[S.idade])} (idade) × ${f2(V.freq[S.freq])} (frequência) × ${f2(FIS[S.fis][1])} (condicionamento) ${MAT[S.mat][1]?'− 1 L (EPS) ':''}${Math.abs(r.raw-r.v)>0.05?`= ${dec(r.raw)} L, limitado a ${dec(r.v)} L para esse tipo`:`≈ ${dec(r.v)} L`}`}
+   r.meio!=null?`${r.t.n}: a sua pranchinha (${dec(r.meio)} L) com um pouco mais de litros, como fazem os shapers ≈ ${dec(r.v)} L`:
+   `${S.peso} kg × ${r.GF.toFixed(3).replace('.',',')} (fator ${LV[S.lv].n.toLowerCase()}) × ${f2(1+(r.t.m-1)*mwOf(S.lv))} (${r.t.n.toLowerCase()}) × ${f2(rc)} (remada e condicionamento) × ${f2(V.idade[S.idade])} (idade) × ${f2(V.freq[S.freq])} (frequência) ${MAT[S.mat][1]?'− 1 L (EPS) ':''}${Math.abs(r.raw-r.v)>0.05?`= ${dec(r.raw)} L, ajustado para ${dec(r.v)} L (limites do tipo e mínimo de 0,34 L por kg)`:`≈ ${dec(r.v)} L`}`}
   try{history.replaceState(null,'','#'+[S.peso,S.lv,S.pos,S.tipo,S.flut].join('-'))}catch(e){}
 }
 function readHash(){
