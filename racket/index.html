@@ -980,9 +980,11 @@ const Q=[
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],painPast:'2',painAgo:'2y',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'other',keep:'none',issue:'late',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
-$('#nQ').textContent=Q.filter(q=>!q.if).length+' a '+Q.length;
+/* contador: menor e maior caminho reais (dor atual e histórico não aparecem juntos; "o que manter" só com raquete do catálogo) */
+const contaCaminhos=()=>{const guard={...A},ns=[];for(const arm of ['no','past','now'])for(const cur of ['none','other','0'])for(const lvl of ['beg','adv']){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm,cur,lvl});ns.push(Q.filter(q=>!q.if||q.if()).length)}Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return [Math.min(...ns),Math.max(...ns)]};
+{const [mn,mx]=contaCaminhos();$('#nQ').textContent=mn+' a '+mx}
 const NVAR=Q.length+9+7;
 /* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
    casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
@@ -1070,7 +1072,10 @@ function field(q){
   return fs;
 }
 /* depois de responder: atualiza perguntas condicionais e rola para a próxima sem resposta */
+/* rodada 13: resposta de pergunta que ficou oculta sai de A (ex.: "o que atrapalha" depois de escolher "sem raquete") */
+function purgeHidden(){for(let n=0;n<5;n++){let mudou=false;Q.forEach(q=>{if(q.if&&A[q.id]!=null&&!q.if()){delete A[q.id];mudou=true}});if(!mudou)break}if(A.arm!=='past')delete A.painConflito}
 function refresh(q){
+  purgeHidden();
   const ids=VQ().filter(x=>x.s===step).map(x=>x.id).join();
   if(ids!==refresh.last){const y=window.scrollY;renderQs(true);window.scrollTo(0,y)}
   progress();
@@ -1165,7 +1170,7 @@ function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;
      contraditório: não escolhemos um estado pela pessoa; fica marcado e o relatório pede para revisar. */
   if(a.arm==='past'&&(a.pain!=null||a.lim!=null)){if(a.painPast==null&&a.pain!=null){a.painPast=String(a.pain);a.painMigrado=1}if(String(a.lim)==='3')a.painConflito='tratamento';delete a.pain;delete a.lim}
   if(a.arm==='no'){delete a.pain;delete a.lim;delete a.painPast;delete a.painAgo;delete a.painMigrado;delete a.painConflito}if(a.budget!=null&&!['1400','2000','99999'].includes(String(a.budget))){const b=+a.budget;a.budget=!(b>0)?'99999':b<=1400?'1400':b<=2000?'2000':'99999'}return a}
-function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));tier=window.SportDNAPayments?.enabled?0:o.t||0}
+function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));purgeHidden();tier=window.SportDNAPayments?.enabled?0:o.t||0}
 if(LS.get('rm_last'))$('#resumeBox').hidden=false;
 $('#resume').addEventListener('click',()=>{try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}});
 $('#codeGo').addEventListener('click',()=>{try{loadAnswers(decode($('#codeIn').value));$('#codeErr').hidden=true;RES=compute();renderPreview();show('preview')}catch(e){$('#codeErr').hidden=false}});
@@ -1210,7 +1215,9 @@ function targetWeight(){
   w+=cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max); if(J('shoulder'))w+=P.ombro;
   const c=curRacket();
   /* partir da raquete atual: sem queixa de peso, o ideal fica a até atual.passo g dela (troca perceptível, não um salto) */
-  if(c&&P.atual)w=c.wt+cl(w-c.wt,-P.atual.passo,P.atual.passo);
+  /* com queixa de peso (atrasado/treme) vale só a regra da queixa: a âncora não puxa na direção contrária */
+  const queixaPeso=feelOf()==='heavy'||feelOf()==='light';
+  if(c&&P.atual&&!queixaPeso)w=c.wt+cl(w-c.wt,-P.atual.passo,P.atual.passo);
   if(feelOf()==='heavy')w=Math.min(w,(c?c.wt:w)+P.sensacaoPesada); if(feelOf()==='light')w=Math.max(w,(c?c.wt:w)+P.sensacaoLeve);
   if(A.arm==='now')w=Math.max(w,P.dorHojeMin);
   /* raquete adulta mais leve do catálogo tem 260 g: abaixo disso a zona ficaria vazia */
@@ -1222,7 +1229,12 @@ function targetWeight(){
 const dorForte=()=>A.arm==='now'&&(A.pain==='3'||A.lim==='3');
 function zones(T,tw){
   const P=PESOS.zona;const k=T.stability/(T.stability+T.maneuver);
-  let sw=Math.round(P.swBase+k*P.swFaixa); sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao); if(J('shoulder'))sw=Math.min(sw,P.swOmbro); const c=curRacket(); if(c&&P.swAtualPasso)sw=c.sw+cl(sw-c.sw,-P.swAtualPasso,P.swAtualPasso); if(c&&feelOf()==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&feelOf()==='light')sw=Math.max(sw,c.sw+P.swAtual);
+  let sw=Math.round(P.swBase+k*P.swFaixa); const c=curRacket();
+  /* ordem (rodada 13): parte da atual (±swAtualPasso), aplica o teto do nível, a queixa e, por último, o teto de ombro, que nada desfaz */
+  if(c&&P.swAtualPasso&&feelOf()!=='heavy'&&feelOf()!=='light')sw=c.sw+cl(sw-c.sw,-P.swAtualPasso,P.swAtualPasso);
+  sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao);
+  if(c&&feelOf()==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&feelOf()==='light')sw=Math.max(sw,c.sw+P.swAtual);
+  if(J('shoulder'))sw=Math.min(sw,P.swOmbro);
   const sev=dorForte();
   const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):P.raMax.nenhuma;
   const raMin=Math.max(P.raMin,raMax-P.raLargura);
@@ -1238,7 +1250,7 @@ function penalties(r,c,tw){
      um desvio sozinho custa o mesmo de antes; os dois juntos não somam por inteiro. A zona (±2) saiu do placar pelo mesmo motivo. */
   {const G=P.massa,tol=semRef()?G.tolPesoAmplo:G.tolPeso,dd=Math.abs(r.wt-tw),hv=r.wt>tw;
    const ew=Math.max(0,dd-tol),es=ZZ?Math.max(0,r.sw-ZZ.sw[1],ZZ.sw[0]-r.sw)/G.swPorGrama:0,e=Math.hypot(ew,es);
-   if(e>0)add(e*G.peso,ew>=es*1.0?(dd>P.pesoLonge?`Peso de ${r.wt} g, longe do ideal para você (${tw} g): ${dd} g ${hv?'acima':'abaixo'}`:`Peso de ${r.wt} g, ${dd} g ${hv?'acima':'abaixo'} do ideal (${tw} g)`):(r.sw>ZZ.sw[1]?`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`:`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`))}
+   if(e>0)add(e*G.peso,ew>=es*1.0?(semRef()?`Peso de ${r.wt} g, fora da faixa de ${ZZ.wt[0]} a ${ZZ.wt[1]} g para começar`:dd>P.pesoLonge?`Peso de ${r.wt} g, longe do ideal para você (${tw} g): ${dd} g ${hv?'acima':'abaixo'}`:`Peso de ${r.wt} g, ${dd} g ${hv?'acima':'abaixo'} do ideal (${tw} g)`):(r.sw>ZZ.sw[1]?`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`:`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`))}
   {const el=J('elbow')||!(A.joint||[]).length,lim=el?P.raHoje.limCotovelo:P.raHoje.limOutras;if(A.arm==='now'&&r.ra>lim)add((r.ra-lim)*(J('elbow')?P.raHoje.cotovelo:el?P.raHoje.semArticulacao:P.raHoje.outras),`Rigidez ${r.ra} RA alta para quem tem dor hoje`)}
   if(dorForte()&&r.ra>P.raForte.lim)add((r.ra-P.raForte.lim)*P.raForte.peso,`Rigidez ${r.ra} RA alta para dor forte`);
   if(A.opp==='heavy'&&r.sw<P.bolaPesada.sw)add((P.bolaPesada.sw-r.sw)*P.bolaPesada.peso,'Pouca massa para bola pesada');
@@ -1282,8 +1294,7 @@ let RES=null,tier=0,ZZ=null;
 const inZone=r=>!!ZZ&&r.wt>=ZZ.wt[0]&&r.wt<=ZZ.wt[1]&&r.sw>=ZZ.sw[0]&&r.sw<=ZZ.sw[1];
 function compute(){
   /* resposta de pergunta que ficou oculta (ex.: mudou o nível depois) não entra na conta */
-  ['swing','spin','string','tens','pain','lim','painPast','painAgo'].forEach(id=>{const q=Q.find(x=>x.id===id);if(q&&q.if&&!q.if())delete A[id]});
-  if(A.arm!=='past')delete A.painConflito;
+  purgeHidden();
   const M=PESOS.match,L=PESOS.zona.alargar;
   const T=target(),tw=targetWeight(),c=curRacket();ZZ=zones(T,tw);
   /* a zona do mapa precisa ter raquete de verdade: alarga aos poucos até caber pelo menos 3 do catálogo */
@@ -1309,7 +1320,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
+if(/[?&]teste\b/.test(location.search))window.__RK={contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1595,7 +1606,7 @@ function attention(r){
   if(!inZone(r)){const z=ZZ,fora=[r.wt<z.wt[0]||r.wt>z.wt[1]?`peso ${r.wt} g (ideal ${z.wt[0]}–${z.wt[1]})`:'',r.sw<z.sw[0]||r.sw>z.sw[1]?`swingweight ${r.sw} (ideal ${z.sw[0]}–${z.sw[1]})`:''].filter(Boolean).join(' e ');
     const b=RES.ranked.find(x=>inZone(x.r)&&x.r.id!==r.id);
     out.push(`Fica fora da faixa ideal de peso e swingweight: ${fora}. ${b?`A melhor dentro dela, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás.${b.pen&&b.pen[0]?` Motivo: ${b.pen[0][1].replace(/\.$/,'')}.`:''}`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
-  {const d=r.wt-RES.tw;if(Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
+  {const d=r.wt-RES.tw;if(!semRef()&&Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
   if(r.br==='d')out.push('Difícil de achar no Brasil: em geral, só importando ou em loja especializada. Confira antes de se apegar.');
   if(r.br==='p')out.push('Pouca oferta no Brasil: vale ligar para a loja antes de ir.');
   if(r.ra>=68)out.push(`Quadro rígido (${r.ra} RA). Se a dor no braço voltar, use corda macia e tensão baixa.`);
