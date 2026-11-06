@@ -29,17 +29,19 @@ test('all displayed products exactly match server amounts and names',()=>{
 for(const [id,price] of [['racket-report','19,99'],['surf-report','19,99'],['run-report','9,99'],['racket-comparator','4,99']]){
  test(`checkout identifies ${id} and its full one-time price before a provider is selected`,()=>{
   const {context,nodes}=environment();assert.equal(context.window.SportDNAPayments.open(id),true);
-  const text=nodes.find(x=>x.id==='payment-product-summary').textContent;
-  assert.ok(text.includes(catalog[id].name));assert.ok(text.includes(price));assert.ok(text.includes('pagamento único'));
+  assert.equal(nodes.find(x=>x.id==='payment-product-summary').textContent,catalog[id].name);
+  assert.ok(nodes.find(x=>x.id==='payment-product-price').textContent.includes(price));
+  assert.ok(nodes.some(x=>x.textContent==='Pagamento único, sem assinatura'));
  });
 }
-test('unknown product is handled without falling back to the legacy simulated checkout',()=>{const {context,nodes}=environment();assert.equal(context.window.SportDNAPayments.open('unknown'),true);assert.equal(nodes.filter(x=>x.tag==='button'&&x.textContent==='Cartão — Stripe').length,0);assert.ok(nodes.find(x=>x.id==='paymentStatus').textContent.includes('Atualize a página'))});
+test('unknown product is handled without falling back to the legacy simulated checkout',()=>{const {context,nodes}=environment();assert.equal(context.window.SportDNAPayments.open('unknown'),true);assert.equal(nodes.filter(x=>x.tag==='button'&&x.provider).length,0);assert.ok(nodes.find(x=>x.id==='paymentStatus').textContent.includes('Atualize a página'))});
 
 test('a provider order with a different amount never offers a payment link',async()=>{
  const {context,nodes}=environment();
  context.fetch=async(_url,options)=>({ok:true,json:async()=>({...JSON.parse(options.body),amount:2499,currency:'BRL',mode:'live',state:'pending',checkoutUrl:'https://checkout.stripe.com/test'})});
  context.window.SportDNAPayments.open('racket-report');
- await nodes.find(x=>x.tag==='button'&&x.textContent==='Cartão — Stripe').onclick();
+ nodes.find(x=>x.tag==='button'&&x.provider==='stripe').onclick();
+ await nodes.find(x=>x.id==='paymentGo').onclick();
  assert.ok(nodes.find(x=>x.id==='paymentStatus').textContent.includes('valor retornado é diferente'));
  assert.equal(nodes.filter(x=>x.tag==='a').length,0);
 });
