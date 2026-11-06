@@ -79,7 +79,7 @@
 
 ## Por versão do catálogo (183)
 
-- Famílias de fonte que o motor vê hoje (TW, sites da rodada 1 e EVID): 2 ou mais em 61 versões, 1 em 42, nenhuma em 80.
+- Famílias de fonte distintas com dado elegível por versão (TW antiga ou nova conta uma vez; sites da rodada 1; EVID): 2 ou mais em 61 versões, 1 em 42, nenhuma em 80.
 - Só versões com 2+ famílias concordando podem ter nota mexida por review; as demais ficam neutras (sem bônus nem penalidade).
 - Triagem do Codex com mapeamento provável pelo título: 54 versões; 37 com página de 3+ atributos. Não entram no motor até conferência de geração, variante e painel.
 

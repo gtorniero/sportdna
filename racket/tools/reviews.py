@@ -273,10 +273,10 @@ def cobertura(R, media_fonte, u93, snip):
         if r['elegibilidade'] == 'elegivel':
             for i in r['catalogo_ids']: eleg[i].add(r['familia_fonte'])
         if r['elegibilidade'] == 'triagem' and r.get('catalogo_provavel') is not None: prov[r['catalogo_provavel']].append(r)
-    fams = lambda i: len(eleg[i]) + (1 if str(i) in TWD else 0) + (1 if str(i) in RV else 0)
+    fams = lambda i: len(eleg[i] | ({'Tennis Warehouse'} if str(i) in TWD else set()) | ({'sites rodada 1'} if str(i) in RV else set()))  # famílias distintas
     n2 = sum(fams(i) >= 2 for i in range(len(C))); n1 = sum(fams(i) == 1 for i in range(len(C))); n0 = sum(fams(i) == 0 for i in range(len(C)))
     L += ['', '## Por versão do catálogo (183)', '',
-          f'- Famílias de fonte que o motor vê hoje (TW, sites da rodada 1 e EVID): 2 ou mais em {n2} versões, 1 em {n1}, nenhuma em {n0}.',
+          f'- Famílias de fonte distintas com dado elegível por versão (TW antiga ou nova conta uma vez; sites da rodada 1; EVID): 2 ou mais em {n2} versões, 1 em {n1}, nenhuma em {n0}.',
           '- Só versões com 2+ famílias concordando podem ter nota mexida por review; as demais ficam neutras (sem bônus nem penalidade).',
           f'- Triagem do Codex com mapeamento provável pelo título: {len(prov)} versões; {sum(any(len(x.get("notas_originais") or {})>=3 for x in v) for v in prov.values())} com página de 3+ atributos. Não entram no motor até conferência de geração, variante e painel.', '',
           '| id | Versão | TW | Sites r1 | Elegíveis (famílias) | Triagem provável (páginas · com 3+ atributos) |', '|---|---|---|---|---|---|']
