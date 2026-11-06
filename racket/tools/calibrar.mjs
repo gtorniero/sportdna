@@ -76,11 +76,14 @@ const out=await pg.evaluate(({entradas,PES,AJ})=>{
   const porModelo=new Map(RK.map(r=>[r.model,r]));
   const roda=e=>{
     Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(e.a)));
-    const R=compute();const ordem=R.ranked.map(x=>x.r.id);
+    /* o ranking mostra uma linha por família (mesmo molde em pesos diferentes): o indicado conta pela família */
+    const fam=r=>r.fam||(r.brand+' '+r.model);
+    const R=compute();const ordem=R.ranked.map(x=>x.r.id),ordemF=R.ranked.map(x=>fam(x.r));
     const ids=e.rec.map(m=>porModelo.get(m)).filter(Boolean).map(r=>r.id);
     const sem=e.rec.filter(m=>!porModelo.has(m));
-    const pos=ids.length?ordem.indexOf(ids[0])+1:0;
-    const melhor=ids.length?Math.min(...ids.map(i=>ordem.indexOf(i)+1)):0;
+    const posF=i=>ordemF.indexOf(fam(RK[i]))+1;
+    const pos=ids.length?posF(ids[0]):0;
+    const melhor=ids.length?Math.min(...ids.map(posF)):0;
     return {...e,ids,sem,pos,melhor,top3:ordem.slice(0,3)};
   };
   const tudo=()=>entradas.map(roda);
