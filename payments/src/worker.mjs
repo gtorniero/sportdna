@@ -1,3 +1,4 @@
+import {probeMeta} from './meta-probe.mjs';
 import {bindEmail} from './meta-capi.mjs';
 import {runMeta,metaRoute,captureCheckout} from './meta-adapter.mjs';
 import {saleMeasurement} from './measurement.mjs';
@@ -169,4 +170,4 @@ const app = {async fetch(request,env) {
  }catch(e){return new Response(JSON.stringify({error:e.status?e.message:'Não foi possível confirmar o pagamento. Consulte novamente.'}),{status:e.status||503,headers})}
 }};
 
-export default {...app,async fetch(request,env,ctx){const route=await metaRoute(request,env);if(route)return route;const response=await app.fetch(request,env,ctx);ctx?.waitUntil(runMeta(env));return response},async scheduled(_event,env,ctx){ctx.waitUntil(runMeta(env))}};
+export default {...app,async fetch(request,env,ctx){const route=await metaRoute(request,env);if(route)return route;const response=await app.fetch(request,env,ctx);ctx?.waitUntil(runMeta(env));return response},async scheduled(_event,env,ctx){ctx.waitUntil(Promise.all([runMeta(env),probeMeta(env,'sportdna')]))}};
