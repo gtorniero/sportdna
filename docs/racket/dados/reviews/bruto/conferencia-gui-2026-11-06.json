@@ -1,0 +1,10 @@
+{
+ "origem": "Conferência manual do Gui na TennisAddict, mensagem de 06/11/2026 (sessão Claude), sobre o lote triagem-codex-2026-11-06.json",
+ "escala": "letras da TennisAddict (A a E), como publicadas; nenhuma conversão aqui",
+ "registros": [
+  {"catalogo_id": 162, "modelo_catalogo": "Tecnifibre TF40 290 16x19", "geracao": "2024", "site": "TennisAddict", "notas_originais": {"precisao": "B", "potencia": "C"}},
+  {"catalogo_id": 163, "modelo_catalogo": "Tecnifibre TFight 300S", "geracao": "2025", "site": "TennisAddict", "notas_originais": {"precisao": "B", "potencia": "C"}},
+  {"catalogo_id": 164, "modelo_catalogo": "Tecnifibre TFight 305S", "geracao": "2025", "site": "TennisAddict", "notas_originais": {"precisao": "A", "potencia": "D"}}
+ ],
+ "observacao": "As URLs exatas não vieram na mensagem; o vínculo com as páginas da triagem é feito por catalogo_id e site em racket/tools/reviews.py."
+}

@@ -5,6 +5,53 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 12: dor atual × histórico, sem degrau dos 60 e neutralidade de evidência (nov/2026, branch de revisão)
+Branch `claude/racket-revisao-motor`, sobre `main` `aa10ad2`. Sem PR, merge ou deploy. Detalhes regra por regra em `docs/racket/revisao-modelo.md`; testes em `racket/tools/regressao.mjs`; dados em `docs/racket/dados/reviews/`.
+
+**O que mudou:**
+- **Dor:** "dor forte" só com dor atual; o histórico tem perguntas próprias e não tem limite novo; códigos antigos contraditórios ficam marcados para revisão.
+- **Idade:** saiu a penalidade extra aos 60.
+- **Reviews:**
+  - review só mexe na nota com 2+ famílias de fonte concordando;
+  - saíram a penalidade por ausência de review e a herança do modelo-pai;
+  - ficha marca campo estimado.
+
+Simulação não é validação. Os números abaixo mostram efeito, não qualidade.
+
+**Casos de especialistas** (`calibrar.mjs`, 299 casos, 100 no teste):
+
+| | main total | branch total | main teste | branch teste |
+|---|---|---|---|---|
+| Top 1 | 13,0% | 11,4% | 15,0% | 12,0% |
+| Top 3 | 32,4% | 31,1% | 32,0% | 33,0% |
+| Top 10 | 57,5% | 55,2% | 61,0% | 60,0% |
+| MRR | 0,270 | 0,251 | 0,281 | 0,270 |
+| Algum indicado no top 3 | 39,1% | 38,8% | 42,0% | 45,0% |
+| Com dor no braço, top 3 | 59,5% | 52,4% | | |
+
+- Dor e idade sozinhas: números idênticos ao main (os casos não têm 60+ nem histórico de dor).
+- Toda a variação vem da regra de evidência. Os pesos do motor foram calibrados com a aprovação da TW agindo sozinha, então parte da perda no total é esperada. Na parte de teste a diferença cabe no ruído de 100 casos.
+
+**Segurança e cobertura** (`vies.mjs --realista`, 3.000 perfis, semente 12345):
+- Os perfis sorteados não são idênticos entre as versões: a branch tem duas perguntas novas de histórico e o sorteio anda junto.
+- "Dor forte" medida como dor atual nas duas versões.
+
+| | main | branch |
+|---|---|---|
+| Dor forte atual e pódio com RA > 60 (pódios / em 1º) | 103 / 44 | 115 / 34 |
+| Dor (atual ou passada) e RA ≥ 68 | 4 / 0 | 17 / 7 |
+| Dor no braço e < 275 g | 51 / 35 | 56 / 41 |
+| Força baixa e ≥ 310 g | 35 / 30 | 47 / 37 |
+| 60+ (força não baixa) e ≥ 310 g | 37 / 26 | 105 / 68 |
+| Iniciante e cabeça ≤ 98 | 40 / 16 | 31 / 12 |
+| Pódios com 1+ contraindicação séria | 228 (7,6%) | 298 (9,9%) |
+| 1ª acima do orçamento | 5,6% | 2,7% |
+| Modelos em 1º / no top 3 (de 183) | 130 / 157 | 142 / 170 |
+
+- O salto em "60+ e ≥ 310 g" é o efeito pretendido de tirar o degrau. Precisa de teste em quadra, não de outra regra.
+- As altas em "força baixa e ≥ 310 g" (a penalidade não mudou) e em "dor e RA ≥ 68" são efeitos colaterais da regra de evidência: perfis que antes eram puxados pela aprovação da TW sozinha agora dependem só da ficha. Ficam como **risco aberto** antes de qualquer merge.
+- O exemplo pronto muda para Black Ace 300 · Phantom 100X 290 g · Boom MP. As imagens do relatório não foram refeitas porque nada vai ao ar nesta branch.
+
 ## Rodada 10: versões de cada linha (nov/2026)
 
 Catálogo de 62 para 183 raquetes (81 famílias, 46 com 2+ versões). Detalhe e fichas em `catalogo-versoes.md`.

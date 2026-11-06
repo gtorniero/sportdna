@@ -1,0 +1,22 @@
+{
+ "origem": "Mensagem do usuário em 06/11/2026 (sessão Claude). A camada bruta não é editada; o derivado aplica esta errata.",
+ "correcoes": [
+  {
+   "arquivo": "bruto/conferencia-gui-2026-11-06.json",
+   "campo": "origem / quem conferiu",
+   "antes": "Conferência manual do Gui na TennisAddict",
+   "depois": "Conferido pelo Codex no site original (TennisAddict), a pedido do Gui. Não é conferência manual do Gui.",
+   "observacao": "As três URLs (ids 162, 163, 164) já constavam da PR #93: é enriquecimento de registros existentes, zero URLs novas. O nome do arquivo bruto fica como está (imutável)."
+  },
+  {
+   "url": "https://tennisaddict.fr/tests/prince-ripstick-100-300g/",
+   "campo": "geração",
+   "depois": "2021",
+   "observacao": "Informado pelo usuário: é a Ripstick 100 300 g de 2021. Não liga às versões do catálogo (2025, ids 51 e 158).",
+   "nao_mapear_para": [
+    51,
+    158
+   ]
+  }
+ ]
+}
