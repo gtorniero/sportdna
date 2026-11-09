@@ -1,3 +1,6 @@
+import {probeMeta} from './meta-probe.mjs';
+import {bindEmail} from './meta-capi.mjs';
+import {runMeta,metaRoute,captureCheckout} from './meta-adapter.mjs';
 import {saleMeasurement} from './measurement.mjs';
 import {redeemPromo} from './promos.mjs';
 import StripeClient from 'stripe';
@@ -45,6 +48,7 @@ async function refresh(o,env,force=false) {
  if(!force&&Date.now()-o.checked_at<5000) return o;
  const value=o.provider==='stripe'?await stripe(env).checkout.sessions.retrieve(o.provider_id,{expand:['payment_intent.latest_charge']}):await mp(env,'/'+encodeURIComponent(o.provider_id));
  const state=o.provider==='stripe'?stripeState(value,o):mpState(value,o);
+ if(state==='paid'&&env.META_CAPI_ENABLED==='true'&&env.META_EMAIL_MATCHING==='true'){try{await bindEmail(env.DB,'sportdna',o.id,o.provider==='stripe'?value.customer_details?.email:value.payer?.email)}catch{console.warn('meta_match_capture_failed')}}
  // Always fail closed; a stale paid flag must not survive a mismatched provider response.
  await env.DB.prepare('UPDATE orders SET state=?,checked_at=? WHERE id=?').bind(state,Date.now(),o.id).run();
  return {...o,state,recipientEmail:o.provider==='stripe'?value.customer_details?.email:value.payer?.email};
@@ -54,6 +58,7 @@ async function create(request,env) {
  const product=catalog[b.product];if(!product||!['stripe','mercadopago'].includes(b.provider)||!uuid.test(b.id)||!tokenFormat.test(b.token)) fail(400,'Produto ou pedido inválido.');
  ready(env,b.provider);await rate(request,env);
  if(b.provider==='mercadopago'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email||'')) fail(400,'Informe seu e-mail para o Pix.');
+ await captureCheckout(env,b.id,b.meta);
  const hash=await digest(b.token);
  let existing=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first();
  if(existing) {
@@ -88,6 +93,7 @@ async function redeem(request,env){
  const b=await readJson(request);
  if(!catalog[b.product]||!uuid.test(b.id)||!tokenFormat.test(b.token))fail(400,'Pedido inválido.');
  ready(env,'promo');await rate(request,env);
+ await captureCheckout(env,b.id,b.meta);
  const hash=await digest(b.token);
  const existing=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first();
  if(existing){if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!=='promo'||existing.mode!==env.PAYMENTS_MODE)fail(409,'Pedido já utilizado.');return publicOrder(existing);}
@@ -142,7 +148,7 @@ async function webhook(request,env,provider) {
  }
  return {received:true};
 }
-export default {async fetch(request,env) {
+const app = {async fetch(request,env) {
  // Explicit live bindings never fall back to sandbox credentials.
  if(env.PAYMENTS_MODE==='live') env={...env,STRIPE_KEY:env.STRIPE_LIVE_KEY,STRIPE_WEBHOOK_SECRET:env.STRIPE_LIVE_WEBHOOK_SECRET,MP_TOKEN:env.MP_LIVE_TOKEN,MP_WEBHOOK_SECRET:env.MP_LIVE_WEBHOOK_SECRET};
  const origin=request.headers.get('Origin'),url=new URL(request.url);
@@ -163,3 +169,5 @@ export default {async fetch(request,env) {
   return new Response(JSON.stringify(value),{headers});
  }catch(e){return new Response(JSON.stringify({error:e.status?e.message:'Não foi possível confirmar o pagamento. Consulte novamente.'}),{status:e.status||503,headers})}
 }};
+
+export default {...app,async fetch(request,env,ctx){const route=await metaRoute(request,env);if(route)return route;const response=await app.fetch(request,env,ctx);ctx?.waitUntil(runMeta(env));return response},async scheduled(_event,env,ctx){ctx.waitUntil(Promise.all([runMeta(env),probeMeta(env,'sportdna')]))}};

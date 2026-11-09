@@ -1,0 +1,222 @@
+{
+ "106": {
+  "TennisAddict": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": 1,
+    "maneuver": 1,
+    "power": -1,
+    "spin": -1,
+    "stability": 1
+   }
+  }
+ },
+ "108": {
+  "Tennisnerd": {
+   "a": null,
+   "d": {
+    "control": 1,
+    "maneuver": -1,
+    "power": -1,
+    "spin": -1,
+    "stability": 1
+   }
+  }
+ },
+ "111": {
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 0,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
+   }
+  }
+ },
+ "118": {
+  "Tennis.com": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": -1,
+    "maneuver": -1,
+    "power": 1,
+    "spin": -1,
+    "stability": 1
+   }
+  }
+ },
+ "12": {
+  "Tennis.com": {
+   "a": null,
+   "d": {
+    "comfort": -1,
+    "control": 1,
+    "maneuver": -1,
+    "power": -1,
+    "stability": 1
+   }
+  }
+ },
+ "162": {
+  "TennisAddict": {
+   "a": null,
+   "d": {
+    "control": 1,
+    "power": -1
+   }
+  }
+ },
+ "163": {
+  "TennisAddict": {
+   "a": null,
+   "d": {
+    "control": 1,
+    "power": -1
+   }
+  }
+ },
+ "164": {
+  "TennisAddict": {
+   "a": null,
+   "d": {
+    "control": 1,
+    "power": -1
+   }
+  }
+ },
+ "30": {
+  "Tennis.com": {
+   "a": null,
+   "d": {
+    "comfort": -1,
+    "control": 1,
+    "stability": 1
+   }
+  },
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
+   }
+  },
+  "Tennisnerd": {
+   "a": null,
+   "d": {
+    "control": 1,
+    "power": -1,
+    "spin": 1
+   }
+  }
+ },
+ "33": {
+  "Tennis.com": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": -1,
+    "maneuver": 1,
+    "power": 0,
+    "stability": 0
+   }
+  },
+  "TennisAddict": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "maneuver": 1,
+    "power": 1,
+    "spin": -1,
+    "stability": -1
+   }
+  },
+  "TennisCompanion": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": 0,
+    "maneuver": 0,
+    "power": 0,
+    "spin": 0,
+    "stability": -1
+   }
+  },
+  "Tennisnerd": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": -1,
+    "maneuver": 1,
+    "power": 1,
+    "spin": 1,
+    "stability": -1
+   }
+  }
+ },
+ "38": {
+  "TennisCompanion": {
+   "a": 1,
+   "d": {
+    "comfort": 0,
+    "control": 1,
+    "maneuver": -1,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
+   }
+  },
+  "Tennisnerd": {
+   "a": null,
+   "d": {
+    "comfort": 1,
+    "control": 1,
+    "maneuver": 1,
+    "power": -1,
+    "stability": 1
+   }
+  }
+ },
+ "42": {
+  "Tennis Express": {
+   "a": null,
+   "d": {
+    "comfort": -1,
+    "control": -1,
+    "maneuver": 1,
+    "power": 1,
+    "spin": 1,
+    "stability": 1
+   }
+  },
+  "Tennis.com": {
+   "a": null,
+   "d": {
+    "comfort": -1,
+    "control": -1,
+    "maneuver": 1,
+    "power": 1,
+    "stability": -1
+   }
+  },
+  "TennisCompanion": {
+   "a": 0,
+   "d": {
+    "comfort": 0,
+    "control": -1,
+    "maneuver": 1,
+    "power": 0,
+    "spin": 0,
+    "stability": 0
+   }
+  }
+ }
+}
