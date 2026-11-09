@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Regressão do motor do RACKET DNA (rodada 12: dor atual × histórico, degrau dos 60 anos, neutralidade de evidência).
-   Uso: node racket/tools/regressao.mjs [--base git:origin/main | --base arquivo.html] [--json saida.json] [--atualizar]
+   Uso: node racket/tools/regressao.mjs [--base git:origin/main | --base arquivo.html] [--cand arquivo.html] [--json saida.json] [--atualizar]
    - Roda os MESMOS perfis fixos (gerados aqui, deterministas) na versão candidata (racket/index.html) e, se pedido, na base.
    - Catálogo e desempate fixos: o motor ordena pelo score bruto inteiro e, no empate, pela ordem do CATALOG.
    - Testes (falham com código 1):
@@ -17,6 +17,8 @@
      T11 ausência de review não penaliza
      T12 snapshot: top 3 de cada perfil igual ao registrado em docs/racket/dados/regressao/esperado.json (--atualizar regrava)
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
+     T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
+     T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
    Simulação não é validação de qualidade: estes testes só garantem que as regras fazem o que dizem. */
 import {createRequire} from 'module';import fs from 'fs';import path from 'path';import url from 'url';import http from 'http';import {execSync} from 'child_process';
@@ -67,16 +69,18 @@ async function rodar(html,P=PERFIS){
       const st=H.stringSetup?H.stringSetup(R.ranked[0].r):null;const pn=H.painNote?(H.painNote(false).match(/<strong>([^<]*)/)||[,''])[1]:null;
       const pesada=H.penalties?RK.filter(r=>r.wt>=310&&H.penalties(r,null,R.tw).out.some(o=>/^Pesada/.test(o[1]))).length:null;
       const penaltyAt = ra => H.penalties?.({...RK[0],ra},null,R.tw).p;
-      return {raDelta:penaltyAt(70)-penaltyAt(66),id:pr.id,tw:R.tw,ra:R.Z.ra,top3:R.ranked.slice(0,3).map(x=>[x.r.id,x.r.name,x.raw,x.fit,x.promo?1:0]),all,
+      const rot=H.penalties?RK.map(r=>H.penalties(r,null,R.tw).out.map(o=>o[1])).flat().filter(t=>/Peso de/.test(t)):[];
+      return {raDelta:penaltyAt(70)-penaltyAt(66),id:pr.id,tw:R.tw,ra:R.Z.ra,zsw:R.Z.sw,rotPeso:[...new Set(rot)].slice(0,40),top3:R.ranked.slice(0,3).map(x=>[x.r.id,x.r.name,x.raw,x.fit,x.promo?1:0]),all,
         forte:H.dorForte?H.dorForte():null,aviso:pn,corda:st?[st.s,st.steps[0][1]]:null,conflito:A.painConflito||null,pesada}});
     const fam=H.familias?RK.filter(r=>r.q).map(r=>({id:r.id,q:r.q,a:H.familias(r.id).map(f=>f.a)})):null;const nenhuma=H.familias?RK.filter(r=>!H.familias(r.id).length).map(r=>r.id):null;
-    return {res,fam,nenhuma,semRev:RK.some(r=>r.semRev),semReview:PESOS.match.semReview??null,raMax:PESOS.zona.raMax}},P);
+    const caminhos=H.contaCaminhos?H.contaCaminhos():null,ex=H.EXAMPLE?JSON.parse(JSON.stringify(H.EXAMPLE)):null;
+    return {res,fam,nenhuma,caminhos,ex,semRev:RK.some(r=>r.semRev),semReview:PESOS.match.semReview??null,raMax:PESOS.zona.raMax}},P);
   await b.close();srv.close();return out;
 }
 const comEvid=(html,fn)=>{const m=html.match(/const EVID=(\{.*?\});\n/);const E=JSON.parse(m[1]);fn(E);return html.replace(m[0],'const EVID='+JSON.stringify(E)+';\n')};
 const igual=(x,y)=>JSON.stringify(x.all)===JSON.stringify(y.all);
 
-const cand=fs.readFileSync(path.join(raiz,'racket/index.html'),'utf8');
+const cand=opt('--cand')?lerHtml(opt('--cand')):fs.readFileSync(path.join(raiz,'racket/index.html'),'utf8');
 const C=await rodar(cand);const byId=Object.fromEntries(C.res.map(x=>[x.id,x]));
 const T=[];const teste=(nome,ok,det='')=>{T.push({nome,ok,det});console.log(`${ok?'ok  ':'FALHA'} ${nome}${det?' · '+det:''}`)};
 const get=(a,d,k)=>byId[`${a}|${d}|${k}`];
@@ -121,6 +125,25 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
    if(r.elegibilidade==='elegivel'&&/testador individual/i.test(r.notas_evidencia||''))bad.push('testador individual elegível')});
  teste('T13 proveniência: elegível só com página aberta; geração 2021 não vai para 2025; autoria da conferência',!bad.length,`${D.length} registros${bad.length?' · '+bad.slice(0,2).join(' | '):''}`)}
 
+/* T14–T18 (rodada 13): respostas ocultas, teto de SW com raquete conhecida, EXAMPLE, contador público e textos do iniciante */
+{const EX=[];for(const k in CAP){const a={...BASE,...CAP[k],age:'40',arm:'no'};
+   EX.push({id:`limpo|${k}`,a:{...a,cur:'none'}},{id:`sujo|${k}`,a:{...a,cur:'none',issue:'late',keep:'control',feel:'heavy',curAge:'3'}},
+           {id:`limpoOutra|${k}`,a:{...a,cur:'other',issue:'none'}},{id:`sujoOutra|${k}`,a:{...a,cur:'other',issue:'none',keep:'control'}})}
+ /* SW alto conhecido: Pure Aero Rafa Origin (id 63, SW 371) e Percept 97H (id 140) com ombro e por nível */
+ for(const [id,cur] of [['rafa','63'],['97H','140']])for(const lvl of ['beg','int','adv_int'])for(const om of [0,1])
+   EX.push({id:`sw|${id}|${lvl}|${om?'ombro':'sem'}`,a:{...BASE,lvl,str:'mid',cond:'2',years:'3',swing:'mid',spin:'mid',age:'40',cur,issue:'none',keep:'none',arm:om?'now':'no',...(om?{joint:['shoulder'],pain:'1',lim:'0'}:{})}});
+ const X=await rodar(cand,EX);const g=id=>X.res.find(x=>x.id===id);
+ const bad=Object.keys(CAP).flatMap(k=>[igual(g('limpo|'+k),g('sujo|'+k))?null:k,igual(g('limpoOutra|'+k),g('sujoOutra|'+k))?null:k+'/outra']).filter(Boolean);
+ teste('T14 resposta oculta não muda nota (perfil sujo = perfil limpo)',!bad.length,`${Object.keys(CAP).length*2} pares${bad.length?' · diferentes: '+bad.join(', '):''}`);
+ const TETO={beg:312,int:320,adv_int:326},OMBRO=318;const swb=X.res.filter(x=>x.id.startsWith('sw|')).filter(x=>{const lvl=x.id.split('|')[2],cen=(x.zsw[0]+x.zsw[1])/2;return cen>TETO[lvl]||(x.id.endsWith('ombro')&&cen>OMBRO)});
+ teste('T15 raquete conhecida de SW alto respeita teto de nível e de ombro',!swb.length,`${X.res.filter(x=>x.id.startsWith('sw|')).length} casos (Rafa Origin SW 371, Percept 97H)${swb.length?' · acima: '+swb.map(x=>x.id+' '+x.zsw).join(', '):''}`);}
+{const ex=C.ex;const X=await rodar(cand,[{id:'ex',a:ex}]);const B=opt('--base')?await rodar(lerHtml(opt('--base')),[{id:'ex',a:ex}]):null;
+ const r=X.res[0],cen=(r.zsw[0]+r.zsw[1])/2,cw=310,csw=328; /* EXAMPLE.cur é a Head Speed Pro (310 g, SW 328), definida na carga do app */
+ teste('T16 EXAMPLE no formato novo mantém o efeito de "pesada" contra a raquete atual',!ex.feel&&!ex.curAge&&ex.issue==='late'&&r.tw<=cw-10&&cen<=csw-4&&(!B||B.res[0].tw===r.tw),`peso ideal ${r.tw} g (atual ${cw} g)${B?`, main ${B.res[0].tw} g`:''}; centro do SW ${cen} (atual ${csw})`)}
+{const site=fs.readFileSync(path.join(raiz,'assets/site.js'),'utf8').match(/\["([^"]+)","perguntas"\]/);const cam=C.caminhos;
+ teste('T17 contador público = caminhos reais = site',!!cam&&!!site&&site[1]===`${cam[0]} a ${cam[1]}`,`app ${cam&&cam.join(' a ')} · site ${site&&site[1]}`)}
+{const L=C.res.filter(x=>/K1_ini_fraco/.test(x.id));const bad=L.filter(x=>x.rotPeso.some(t=>/ideal/.test(t)));
+ teste('T18 iniciante sem referência: penalidade de peso fala em faixa, não em ideal único',!bad.length,`${L.length} perfis${bad.length?' · ex.: '+bad[0].rotPeso.find(t=>/ideal/.test(t)):''}`)}
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});
 console.log('\nRemoção de fonte (sensibilidade, não é teste):');
@@ -132,6 +155,7 @@ if(opt('--base')){const B=await rodar(lerHtml(opt('--base')));rel.base=mudou(C,B
     console.log(`  ${g.padEnd(30)} top1 ${J.filter(([x,y])=>x.top3[0][0]!==y.top3[0][0]).length}/${J.length} · top3 ${J.filter(([x,y])=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(y.top3.map(t=>t[0]).sort())).length}/${J.length}`)}
   for(const id of ['caso_idade_60_av_muito_forte_sem_dor','caso_dor_59_av_forte_historico_forte']){const x=byId[id],y=B.res.find(r=>r.id===id);
     console.log(`  ${id}\n    base  ${y.top3.map(t=>`${t[1]} (${t[2]})`).join(' · ')}\n    cand  ${x.top3.map(t=>`${t[1]} (${t[2]})`).join(' · ')}`)}
+  rel.perfis=C.res.map((x,j)=>({id:x.id,base:B.res[j].top3,cand:x.top3}));
   rel.casos=Object.fromEntries(['caso_idade_60_av_muito_forte_sem_dor','caso_dor_59_av_forte_historico_forte'].map(id=>[id,{base:B.res.find(r=>r.id===id).top3,cand:byId[id].top3}]));}
 if(opt('--json'))fs.writeFileSync(opt('--json'),JSON.stringify({testes:T,relatorios:rel,cand:C.res.map(x=>({id:x.id,top3:x.top3}))},null,1));
 const f=T.filter(t=>!t.ok).length;console.log(`\n${T.length-f}/${T.length} testes ok`);process.exit(f?1:0);

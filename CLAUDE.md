@@ -26,7 +26,8 @@ Leia `docs/padrao-relatorio-pdf.md` e a pasta `docs/<app>/` do seu app antes de 
 - Identidade: siga o manual em `docs/identidade-visual.pdf` e os arquivos em `assets/brand/`. Marca-mãe SPORT DNA: símbolo do anel de esportes (um arco por esporte) com o S branco no preto; logotipo SPORTDNA sem espaço, DNA em cinza. Apps com o equipamento no azul-petróleo #0E4D64 (RACKET #DDF247, SURF #6CCFF6, RUN #FF8A3D). Nomes sempre em maiúsculas nos logos; no seletor de esporte, só a primeira letra ("Racket DNA"). Títulos em Archivo, texto em DM Sans, logos em Syne. Footer com assinatura "Um projeto Beyond the Work".
 - Textos em português do Brasil, diretos, sem jargão. Nenhuma marca paga para aparecer no resultado; afiliado só depois da recomendação e declarado.
 - Acessibilidade WCAG 2.2 AA é requisito: siga `docs/acessibilidade.md` e rode o axe antes de abrir o pull request (meta: zero violações).
-- Pagamento ainda é simulado. Especificações de catálogo são aproximadas até a revisão por professores.
+- Pagamento é real na Cloudflare; o nome legado `sportdna-payments-test` não indica ambiente de testes. Nunca liberar relatório por falha no carregamento do checkout. Especificações de catálogo continuam sujeitas à revisão.
+- Hospedagem atual: Cloudflare. Não reativar GitHub Pages. Leia `docs/reconciliacao-2026-11-09.md` antes de publicar.
 
 ## Testar
 

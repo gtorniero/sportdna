@@ -797,7 +797,9 @@ const PESOS={
     altura:{ref:175,porCm:.25,min:-8,max:6},corpo:{ref:75,porKg:.15,min:-6,max:5},
     ombro:-8,
     sensacaoPesada:-10,sensacaoLeve:8,
-    dorHojeMin:280,adultoMin:258,idadeAdulto:14
+    dorHojeMin:280,adultoMin:258,idadeAdulto:14,
+    /* rodada 13 (hipótese de produto, testar em quadra): com raquete atual conhecida e sem queixa de peso, o ideal fica a até 10 g dela */
+    atual:{passo:10}
   },
   /* Faixas ideais do mapa e das barras (zones e alargamento em compute). Origem: regra (rodadas 3 e 4) */
   zona:{
@@ -806,13 +808,22 @@ const PESOS={
     cabecaPref:{'98':[95,98],'100':[99,101],'104':[102,107]},cabecaNivel:{beg:[100,107],adv:[97,100],padrao:[98,102]},
     balMax:{punho:325,rede:325,padrao:335},balLargura:14,
     peso:8,sw:6,
+    /* rodada 13: iniciante sem raquete de referência vê faixa larga (as fontes dão 250–312 g para iniciante, sem número único).
+       ±15 g tirou casos de iniciante do top 3 em calibrar.mjs; ±12 g não piorou nenhum indicador de iniciante frente ao main */
+    pesoAmplo:12,swAmplo:8,
+    /* com raquete atual conhecida, o SW ideal fica a até 8 da atual (≈2,5% de SW é o que jogadores percebem, Brody) */
+    swAtualPasso:8,
     alargar:{vezes:20,minimo:3,peso:2,sw:1}
   },
   /* Penalidades (penalties). Origem: regra + segurança; rigidez da rodada 3; borda da zona da rodada 4 */
   pen:{
-    pesoTolerancia:8,pesoLonge:15,pesoAcimaLonge:.7,pesoDivisor:3,pesoDivisorBraco:6,pesoBorda:1.2,
+    /* rodada 13: peso e SW num termo só; 1 g fora da tolerância = 2 de SW fora da faixa (equivale ao 1,2 e 0,6 de antes) */
+    massa:{tolPeso:8,tolPesoAmplo:12,swPorGrama:2,peso:1.2},
+    /* rodada 13: o que a pessoa quer manter da atual */
+    manter:{folga:.5,peso:3},
+    pesoLonge:15, /* rodada 13: pesoTolerancia, pesoAcimaLonge, pesoDivisor(Braco) e pesoBorda viraram massa (o máximo deles já era sempre 1,2/g) */
     bracoIndiceMin:8,
-    swBorda:.6, /* rodada 8: 1,2 → 0,6 */
+    /* rodada 13: swBorda (0,6) virou massa.swPorGrama */
     raHoje:{limCotovelo:62,limOutras:65,cotovelo:3,semArticulacao:2.5,outras:1.8}, /* rodada 6: 2,2/1,8/1,2 → 3/2,5/1,8, para o orçamento não empurrar quadro rígido */
     raForte:{lim:60,peso:1.5}, /* penalidade suave: a evidência que liga RA a cotovelo é fraca (docs/racket/ciencia.md, tema 1); sem bloqueio */
     bolaPesada:{sw:315,peso:.3},
@@ -840,7 +851,7 @@ const PESOS={
   },
   /* Match Score (compute). Origem: rodadas 3 a 5 */
   match:{
-    base:93,porDist:11,distRuim:1.3,distRuimPeso:3,pen:.8,aprovacaoAlcance:1.2,zona:2, /* rodada 8: zona 4 → 2 */min:30,max:98,
+    base:93,porDist:11,distRuim:1.3,distRuimPeso:3,pen:.8,aprovacaoAlcance:1.2,/* rodada 13: zona saiu do placar (já está no termo de massa); segue no mapa e na promoção */min:30,max:98,
     promoverZona:10,
     escalaTopo:96,escalaPasso:.8,escalaRef:92,escalaRefPeso:.3,escalaMax:97,
     confBase:68,confPorResposta:1,confGap:.8,confMin:70,confMax:97
@@ -956,8 +967,8 @@ const Q=[
  {s:3,id:'opp',t:'Como é a bola dos seus adversários?',o:[['soft','Mais lenta','Bola sem peso, você que gera'],['mix','Variada','Às vezes lenta, às vezes forte'],['heavy','Pesada e rápida','A raquete às vezes treme']]},
  {s:3,id:'miss',t:'Onde você mais erra?',o:[['short','Bola curta, sem peso'],['long','Bola longa, para fora'],['net','Na rede'],['frame','Pego fora do centro','A raquete torce na mão']]},
  {s:4,id:'cur',type:'select',t:'Qual a sua raquete atual?',h:'Se não estiver na lista, escolha "Minha raquete não está na lista". Com ela, fazemos o diagnóstico da sua raquete.'},
- {s:4,id:'curAge',if:()=>A.cur&&A.cur!=='none',t:'Há quanto tempo você usa essa raquete?',o:[['0','Menos de 1 ano'],['1','1 a 3 anos'],['3','Mais de 3 anos']]},
- {s:4,id:'feel',if:()=>A.cur!=='none',t:'Como você sente sua raquete hoje?',o:[['light','Leve demais','Treme contra bola pesada'],['ok','No ponto'],['heavy','Pesada demais','Cansa ou chega atrasado']]},
+ {s:4,id:'keep',if:()=>!!curRacket(),t:'O que você quer manter da sua raquete?',h:'A nova não deve perder nisso.',o:[['none','Nada em especial'],['comfort','O conforto no braço'],['control','O controle','A bola vai onde você mira'],['maneuver','A leveza para mexer rápido'],['power','A potência'],['stability','A firmeza contra bola pesada'],['spin','O efeito (spin)']]},
+ {s:4,id:'issue',if:()=>A.cur!=='none',t:'O que mais atrapalha com ela em quadra?',o:[['none','Nada, ela vai bem'],['late','Chego atrasado na bola','Ou ela cansa o braço no fim do jogo'],['twist','Treme ou torce em bola pesada'],['depth','Falta profundidade','Mesmo quando acerto no meio da corda'],['long','A bola sai longa ou sem direção'],['arm','Incomoda o braço depois de jogar']]},
  {s:4,id:'why',t:'Por que você quer trocar?',o:[['broken','Quebrou ou está velha','Quero algo parecido, só que melhor'],['pain','Dor no braço','Prioridade é o conforto do braço'],['level','Subi de nível','A atual ficou limitada'],['feel','Quero outra sensação','Mais potência, controle ou spin'],['first','É a minha primeira raquete boa']]},
  {s:4,id:'want',multi:2,t:'O que você quer ganhar com a troca?',h:'Escolha até 2.',o:[['power','Mais potência','A bola sai mais forte com o mesmo esforço'],['control','Mais controle','A bola vai mais onde você mira'],['comfort','Mais conforto','Menos vibração chegando ao braço'],['spin','Mais spin','Mais efeito: a bola gira mais e cai dentro'],['maneuver','Mais leveza na mão','Raquete mais rápida de mexer, na rede e na defesa'],['stability','Mais estabilidade','Não treme contra bola forte']]},
  {s:5,id:'string',if:()=>A.lvl==='adv_int'||A.lvl==='adv',t:'Qual corda você usa hoje?',o:[['?','Não sei / a que veio'],['poly','Poliéster','Dura, a mais comum entre quem tem topspin'],['multi','Multifilamento ou sintético','Mais macia'],['gut','Tripa natural','A mais macia e mais cara'],['hyb','Híbrido','Duas cordas diferentes, uma em cada direção']]},
@@ -969,9 +980,11 @@ const Q=[
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],pain:'2',lim:'1',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'',curAge:'3',feel:'heavy',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],painPast:'2',painAgo:'2y',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'other',keep:'none',issue:'late',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
-$('#nQ').textContent=Q.filter(q=>!q.if).length+' a '+Q.length;
+/* contador: menor e maior caminho reais (dor atual e histórico não aparecem juntos; "o que manter" só com raquete do catálogo) */
+const contaCaminhos=()=>{const guard={...A},ns=[];for(const arm of ['no','past','now'])for(const cur of ['none','other','0'])for(const lvl of ['beg','adv']){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm,cur,lvl});ns.push(Q.filter(q=>!q.if||q.if()).length)}Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return [Math.min(...ns),Math.max(...ns)]};
+{const [mn,mx]=contaCaminhos();$('#nQ').textContent=mn+' a '+mx}
 const NVAR=Q.length+9+7;
 /* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
    casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
@@ -1021,7 +1034,7 @@ function field(q){
       <div class="combo"><input class="qsearch" id="q_find" type="text" role="combobox" aria-expanded="true" aria-controls="rlist" aria-autocomplete="list" placeholder="Ex.: speed, pure aero, blade 98…" autocomplete="off" spellcheck="false"><div class="rlist" id="rlist" role="listbox"></div></div>
       <div class="row" style="gap:8px;margin-top:4px"><button type="button" class="chipbtn" data-v="none">Não tenho raquete</button><button type="button" class="chipbtn" data-v="other">Minha raquete não está na lista</button></div>`;
     const list=fs.querySelector('#rlist'),find=fs.querySelector('#q_find');let hi=0,res=[];
-    const pick=v=>{A.cur=String(v);if(v==='none'||v==='other'){delete A.curAge}refresh(q)};
+    const pick=v=>{A.cur=String(v);if(v==='none'||v==='other'){delete A.keep}refresh(q)};
     const mark=(txt,t)=>{if(!t)return esc(txt);const i=norm(txt).indexOf(t.split(' ')[0]);return i<0?esc(txt):esc(txt.slice(0,i))+'<mark>'+esc(txt.slice(i,i+t.split(' ')[0].length))+'</mark>'+esc(txt.slice(i+t.split(' ')[0].length))};
     const draw=()=>{
       const t=norm(find.value),toks=t?t.split(' '):[];const s0=sel();
@@ -1059,7 +1072,10 @@ function field(q){
   return fs;
 }
 /* depois de responder: atualiza perguntas condicionais e rola para a próxima sem resposta */
+/* rodada 13: resposta de pergunta que ficou oculta sai de A (ex.: "o que atrapalha" depois de escolher "sem raquete") */
+function purgeHidden(){for(let n=0;n<5;n++){let mudou=false;Q.forEach(q=>{if(q.if&&A[q.id]!=null&&!q.if()){delete A[q.id];mudou=true}});if(!mudou)break}if(A.arm!=='past')delete A.painConflito}
 function refresh(q){
+  purgeHidden();
   const ids=VQ().filter(x=>x.s===step).map(x=>x.id).join();
   if(ids!==refresh.last){const y=window.scrollY;renderQs(true);window.scrollTo(0,y)}
   progress();
@@ -1147,12 +1163,14 @@ const encode=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=
 const decode=s=>JSON.parse(decodeURIComponent(escape(atob(s.trim()))));
 /* códigos antigos: perguntas que saíram (mão dominante, backhand) são ignoradas; orçamento das 4 faixas antigas vai para a faixa nova */
 function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;
+  /* rodada 13: "como sente" virou "o que atrapalha" (pesada → chega atrasado; leve → treme); "há quanto tempo" saiu */
+  if(a.feel&&a.issue==null)a.issue={heavy:'late',light:'twist',ok:'none'}[a.feel]||undefined;delete a.feel;delete a.curAge;
   /* rodada 12: códigos antigos perguntavam intensidade e limitação também a quem marcou "já tive, hoje não".
      A intensidade antiga vira histórico (marcada como migrada). "Em tratamento ou parado" junto com "hoje não" é
      contraditório: não escolhemos um estado pela pessoa; fica marcado e o relatório pede para revisar. */
   if(a.arm==='past'&&(a.pain!=null||a.lim!=null)){if(a.painPast==null&&a.pain!=null){a.painPast=String(a.pain);a.painMigrado=1}if(String(a.lim)==='3')a.painConflito='tratamento';delete a.pain;delete a.lim}
   if(a.arm==='no'){delete a.pain;delete a.lim;delete a.painPast;delete a.painAgo;delete a.painMigrado;delete a.painConflito}if(a.budget!=null&&!['1400','2000','99999'].includes(String(a.budget))){const b=+a.budget;a.budget=!(b>0)?'99999':b<=1400?'1400':b<=2000?'2000':'99999'}return a}
-function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));tier=window.SportDNAPayments?.enabled?0:o.t||0}
+function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));purgeHidden();tier=window.SportDNAPayments?.enabled?0:o.t||0}
 if(LS.get('rm_last'))$('#resumeBox').hidden=false;
 $('#resume').addEventListener('click',()=>{try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}});
 $('#codeGo').addEventListener('click',()=>{try{loadAnswers(decode($('#codeIn').value));$('#codeErr').hidden=true;RES=compute();renderPreview();show('preview')}catch(e){$('#codeErr').hidden=false}});
@@ -1166,14 +1184,14 @@ const ST=k=>[].concat(A.style||[]).includes(k);const stW=()=>[].concat(A.style||
 const addT=(T,m,s=1)=>{if(m)Object.keys(m).forEach(k=>T[k]+=m[k]*s)};
 function target(){
   const P=PESOS.alvo;const T={};KEYS.forEach(k=>T[k]=P.base);
-  const want=A.want||[];
+  const want=wants();
   addT(T,P.nivel[A.lvl]);addT(T,P.forca[A.str]);addT(T,P.folego[A.cond]);addT(T,P.swing[A.swing]);addT(T,P.erro[A.miss]);
   T.spin=(P.spin[A.spin]||P.spin.semResposta)+(A.miss==='net'?P.spin.erroNaRede:0);
   addT(T,P.dor[A.arm]);
   Object.keys(P.articulacao).forEach(j=>{if(J(j))addT(T,P.articulacao[j])});
   const AG=+A.age||P.idade.padrao; if(AG>=P.idade.maduro)addT(T,P.idade.maduroAlvo); if(AG>=P.idade.senior)addT(T,P.idade.seniorAlvo); if(AG<P.idade.jovem)addT(T,P.idade.jovemAlvo);
   {const w=stW();['keep','cnt','agg','all','netc','net'].forEach(s=>{if(ST(s))addT(T,P.estilo[s],w)})}
-  addT(T,P.sensacao[A.feel]);
+  addT(T,P.sensacao[feelOf()]);
   if(A.arm==='now'&&A.pain==='3')addT(T,P.dorForte); if(A.arm==='now'&&A.lim==='3')addT(T,P.emTratamento);
   addT(T,P.anos[A.years]);addT(T,P.saque[A.serve]);addT(T,P.adversario[A.opp]);addT(T,P.motivo[A.why]);
   want.forEach(k=>T[k]+=P.quer[k]); if(want.includes('control'))T.power-=P.querControleTiraPotencia; if(want.includes('power'))T.control-=P.querPotenciaTiraControle;
@@ -1182,6 +1200,12 @@ function target(){
   return T;
 }
 function curRacket(){return A.cur&&A.cur!=='other'&&A.cur!=='none'?RK[+A.cur]:null}
+/* rodada 13: a queixa em quadra vira sensação (atrasado = pesada; treme = leve) ou um ganho pedido, sem contar duas vezes */
+const feelOf=()=>({late:'heavy',twist:'light',none:'ok'})[A.issue];
+const ISSUE_WANT={depth:'power',long:'control',arm:'comfort'};
+const wants=()=>[...new Set([...(A.want||[]),...(ISSUE_WANT[A.issue]?[ISSUE_WANT[A.issue]]:[])])];
+/* iniciante sem raquete de referência no catálogo: faixas largas, sem número único */
+const semRef=()=>A.lvl==='beg'&&!curRacket();
 function targetWeight(){
   const P=PESOS.peso;
   let w=P.nivel[A.lvl]||P.padrao;
@@ -1190,7 +1214,11 @@ function targetWeight(){
   w+=P.folego[A.cond]||0;
   w+=cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max); if(J('shoulder'))w+=P.ombro;
   const c=curRacket();
-  if(A.feel==='heavy')w=Math.min(w,(c?c.wt:w)+P.sensacaoPesada); if(A.feel==='light')w=Math.max(w,(c?c.wt:w)+P.sensacaoLeve);
+  /* partir da raquete atual: sem queixa de peso, o ideal fica a até atual.passo g dela (troca perceptível, não um salto) */
+  /* com queixa de peso (atrasado/treme) vale só a regra da queixa: a âncora não puxa na direção contrária */
+  const queixaPeso=feelOf()==='heavy'||feelOf()==='light';
+  if(c&&P.atual&&!queixaPeso)w=c.wt+cl(w-c.wt,-P.atual.passo,P.atual.passo);
+  if(feelOf()==='heavy')w=Math.min(w,(c?c.wt:w)+P.sensacaoPesada); if(feelOf()==='light')w=Math.max(w,(c?c.wt:w)+P.sensacaoLeve);
   if(A.arm==='now')w=Math.max(w,P.dorHojeMin);
   /* raquete adulta mais leve do catálogo tem 260 g: abaixo disso a zona ficaria vazia */
   if(AG>=P.idadeAdulto)w=Math.max(w,P.adultoMin);
@@ -1201,21 +1229,28 @@ function targetWeight(){
 const dorForte=()=>A.arm==='now'&&(A.pain==='3'||A.lim==='3');
 function zones(T,tw){
   const P=PESOS.zona;const k=T.stability/(T.stability+T.maneuver);
-  let sw=Math.round(P.swBase+k*P.swFaixa); sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao); if(J('shoulder'))sw=Math.min(sw,P.swOmbro); const c=curRacket(); if(c&&A.feel==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&A.feel==='light')sw=Math.max(sw,c.sw+P.swAtual);
+  let sw=Math.round(P.swBase+k*P.swFaixa); const c=curRacket();
+  /* ordem (rodada 13): parte da atual (±swAtualPasso), aplica o teto do nível, a queixa e, por último, o teto de ombro, que nada desfaz */
+  if(c&&P.swAtualPasso&&feelOf()!=='heavy'&&feelOf()!=='light')sw=c.sw+cl(sw-c.sw,-P.swAtualPasso,P.swAtualPasso);
+  sw=Math.min(sw,P.swTeto[A.lvl]||P.swTetoPadrao);
+  if(c&&feelOf()==='heavy')sw=Math.min(sw,c.sw-P.swAtual); if(c&&feelOf()==='light')sw=Math.max(sw,c.sw+P.swAtual);
+  if(J('shoulder'))sw=Math.min(sw,P.swOmbro);
   const sev=dorForte();
   const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):P.raMax.nenhuma;
   const raMin=Math.max(P.raMin,raMax-P.raLargura);
   const hd=(P.cabecaPref[A.headp]||(A.lvl==='beg'?P.cabecaNivel.beg:A.lvl==='adv'?P.cabecaNivel.adv:P.cabecaNivel.padrao)).slice();
   const balMax=J('wrist')?P.balMax.punho:ST('net')||ST('netc')?P.balMax.rede:P.balMax.padrao;
-  return {wt:[tw-P.peso,tw+P.peso],sw:[sw-P.sw,sw+P.sw],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
+  const pw=semRef()?P.pesoAmplo:P.peso,ps=semRef()?P.swAmplo:P.sw;
+  return {wt:[tw-pw,tw+pw],sw:[sw-ps,sw+ps],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
 }
 function penalties(r,c,tw){
-  const P=PESOS.pen;const want=A.want||[];const out=[];let p=0;const add=(v,why)=>{if(v>0){p+=v;out.push([v,why])}};
+  const P=PESOS.pen;const want=wants();const out=[];let p=0;const add=(v,why)=>{if(v>0){p+=v;out.push([v,why])}};
   const armOk=A.arm!=='no'&&r.ix.arm>=P.bracoIndiceMin&&r.wt>tw;
-  const dd=Math.abs(r.wt-tw),hv=r.wt>tw,tol=P.pesoTolerancia;
-  if(dd>tol)add(Math.max(hv&&dd>P.pesoLonge?(dd-tol)*P.pesoAcimaLonge:(dd-tol)/(armOk&&dd<=P.pesoLonge?P.pesoDivisorBraco:P.pesoDivisor),(dd-tol)*P.pesoBorda),dd>P.pesoLonge?`Peso de ${r.wt} g, longe do ideal para você (${tw} g): ${dd} g ${hv?'acima':'abaixo'}`:`${hv?'Mais pesada':'Mais leve'} que o ideal: ${r.wt} g para ${tw} g`);
-  if(ZZ&&r.sw>ZZ.sw[1])add((r.sw-ZZ.sw[1])*P.swBorda,`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`);
-  if(ZZ&&r.sw<ZZ.sw[0])add((ZZ.sw[0]-r.sw)*P.swBorda,`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`);
+  /* rodada 13: peso e swingweight medem a mesma coisa (massa a acelerar). Um termo só, pela hipotenusa dos excessos:
+     um desvio sozinho custa o mesmo de antes; os dois juntos não somam por inteiro. A zona (±2) saiu do placar pelo mesmo motivo. */
+  {const G=P.massa,tol=semRef()?G.tolPesoAmplo:G.tolPeso,dd=Math.abs(r.wt-tw),hv=r.wt>tw;
+   const ew=Math.max(0,dd-tol),es=ZZ?Math.max(0,r.sw-ZZ.sw[1],ZZ.sw[0]-r.sw)/G.swPorGrama:0,e=Math.hypot(ew,es);
+   if(e>0)add(e*G.peso,ew>=es*1.0?(semRef()?`Peso de ${r.wt} g, fora da faixa de ${ZZ.wt[0]} a ${ZZ.wt[1]} g para começar`:dd>P.pesoLonge?`Peso de ${r.wt} g, longe do ideal para você (${tw} g): ${dd} g ${hv?'acima':'abaixo'}`:`Peso de ${r.wt} g, ${dd} g ${hv?'acima':'abaixo'} do ideal (${tw} g)`):(r.sw>ZZ.sw[1]?`Swingweight ${r.sw}: mais massa no golpe do que o seu braço acelera bem (até ${ZZ.sw[1]})`:`Swingweight ${r.sw}: leve demais para a estabilidade que você precisa`))}
   {const el=J('elbow')||!(A.joint||[]).length,lim=el?P.raHoje.limCotovelo:P.raHoje.limOutras;if(A.arm==='now'&&r.ra>lim)add((r.ra-lim)*(J('elbow')?P.raHoje.cotovelo:el?P.raHoje.semArticulacao:P.raHoje.outras),`Rigidez ${r.ra} RA alta para quem tem dor hoje`)}
   if(dorForte()&&r.ra>P.raForte.lim)add((r.ra-P.raForte.lim)*P.raForte.peso,`Rigidez ${r.ra} RA alta para dor forte`);
   if(A.opp==='heavy'&&r.sw<P.bolaPesada.sw)add((P.bolaPesada.sw-r.sw)*P.bolaPesada.peso,'Pouca massa para bola pesada');
@@ -1229,8 +1264,9 @@ function penalties(r,c,tw){
   if(A.lvl==='adv'&&r.head>104)add(P.cabecaAvancado,'Cabeça grande para o seu nível');
   if(r.head>=107&&r.head<110&&(A.lvl==='adv'||A.lvl==='adv_int'||A.headp!=='104'))add(P.cabeca107,'Cabeça de 107 pol² ou mais, pensada para mais saída de bola');
   if(r.head>=110&&A.lvl!=='beg')add(P.cabeca110,'Raquete de cabeça muito grande, feita para iniciantes');
-  if(c&&A.feel==='heavy'&&r.sw>c.sw-P.atualPesada.margem)add((r.sw-(c.sw-P.atualPesada.margem))*(armOk?P.atualPesada.pesoBraco:P.atualPesada.peso),r.sw>=c.sw?`Swingweight igual ou acima da sua atual, que já pesa`:`Swingweight só ${c.sw-r.sw} abaixo da sua atual, pouco para quem sente a raquete pesada`);
-  if(c&&A.feel==='light'&&r.sw<c.sw)add((c.sw-r.sw)*P.atualLeve,`Swingweight abaixo da sua atual, que já é leve`);
+  if(c&&A.keep&&A.keep!=='none'&&r.ix[A.keep]<c.ix[A.keep]-P.manter.folga)add(P.manter.peso,`Perde ${LBL[A.keep].toLowerCase()} em relação à sua atual, que você quer manter`);
+  if(c&&feelOf()==='heavy'&&r.sw>c.sw-P.atualPesada.margem)add((r.sw-(c.sw-P.atualPesada.margem))*(armOk?P.atualPesada.pesoBraco:P.atualPesada.peso),r.sw>=c.sw?`Swingweight igual ou acima da sua atual, que já pesa`:`Swingweight só ${c.sw-r.sw} abaixo da sua atual, pouco para quem sente a raquete pesada`);
+  if(c&&feelOf()==='light'&&r.sw<c.sw)add((c.sw-r.sw)*P.atualLeve,`Swingweight abaixo da sua atual, que já é leve`);
   {const O=P.orcamento,ac=r.price?r.price[0]/+A.budget-1:0;
   if(ac>0&&ac<=O.tolerancia)add(O.leve,`Preço um pouco acima do seu orçamento`);
   if(ac>O.tolerancia)add(O.acima+O.porFaixa*(ac-O.tolerancia)/O.faixa,`Preço ${Math.round(ac*100)}% acima do seu orçamento`);}
@@ -1243,7 +1279,7 @@ function penalties(r,c,tw){
   return {p,out:out.sort((a,b)=>b[0]-a[0])};
 }
 function score(r,T,tw,c){
-  const P=PESOS.placar,B=P.braco;const want=A.want||[];
+  const P=PESOS.placar,B=P.braco;const want=wants();
   /* o que o jogador mais pede pesa mais */
   let d=0,ws=0;KEYS.forEach(k=>{const wt=(want.includes(k)?P.pedido:1)*(1+Math.max(0,T[k]-P.alvoAlto)/P.alvoAltoDiv);d+=wt*Math.pow(r.ix[k]-T[k],2);ws+=wt});
   d=Math.sqrt(d/ws);
@@ -1258,8 +1294,7 @@ let RES=null,tier=0,ZZ=null;
 const inZone=r=>!!ZZ&&r.wt>=ZZ.wt[0]&&r.wt<=ZZ.wt[1]&&r.sw>=ZZ.sw[0]&&r.sw<=ZZ.sw[1];
 function compute(){
   /* resposta de pergunta que ficou oculta (ex.: mudou o nível depois) não entra na conta */
-  ['swing','spin','string','tens','pain','lim','painPast','painAgo'].forEach(id=>{const q=Q.find(x=>x.id===id);if(q&&q.if&&!q.if())delete A[id]});
-  if(A.arm!=='past')delete A.painConflito;
+  purgeHidden();
   const M=PESOS.match,L=PESOS.zona.alargar;
   const T=target(),tw=targetWeight(),c=curRacket();ZZ=zones(T,tw);
   /* a zona do mapa precisa ter raquete de verdade: alarga aos poucos até caber pelo menos 3 do catálogo */
@@ -1269,7 +1304,7 @@ function compute(){
   const dbest=Math.min(...all.filter(x=>!c||x.r.id!==c.id).map(x=>x.dist));
   /* aprovação dos testadores desempata entre as que já encaixam no seu perfil; não puxa raquete distante para o topo */
   /* peso e swingweight dentro da zona do mapa contam a favor; fora dela, contra (o mapa e o ranking dizem a mesma coisa) */
-  all.forEach(x=>{const g=cl(1-(x.dist-dbest)/M.aprovacaoAlcance,0,1);x.inZ=inZone(x.r);x.fit=cl(Math.round(M.base-M.porDist*(x.dist-dbest)-M.distRuimPeso*Math.max(0,dbest-M.distRuim)-x.p*M.pen+x.qb+x.qa*g+x.ob+(x.inZ?M.zona:-M.zona)),M.min,M.max)});
+  all.forEach(x=>{const g=cl(1-(x.dist-dbest)/M.aprovacaoAlcance,0,1);x.inZ=inZone(x.r);x.fit=cl(Math.round(M.base-M.porDist*(x.dist-dbest)-M.distRuimPeso*Math.max(0,dbest-M.distRuim)-x.p*M.pen+x.qb+x.qa*g+x.ob+0),M.min,M.max)});
   let ranked=all.filter(x=>!c||x.r.id!==c.id).sort((a,b)=>b.fit-a.fit);
   /* a recomendação fica sempre dentro da zona do mapa: a melhor da zona sobe para 1º se estiver até 10 pontos atrás */
   /* não promove raquete bem acima do orçamento se a 1ª cabe nele (rodada 6) */
@@ -1285,7 +1320,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
+if(/[?&]teste\b/.test(location.search))window.__RK={contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1294,7 +1329,13 @@ function runAnalysis(){
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
   const lis=[...ul.children];const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* edição depois de pago: refaz o relatório sem novo pagamento, uma vez */
-  const ed=(editing||revDor)&&tier>=2;RES=compute();if(ed){if(editing)editLeft=0;editing=false;revDor=false}else tier=0;persist();
+  const ed=(editing||revDor)&&tier>=2;
+  const revised=compute();
+  if(ed&&editing&&window.SportDNAPayments?.enabled&&!window.SportDNAPayments.saveRevision('racket-report')){
+    show('quiz');toast('Não foi possível salvar esta correção. Reabra seu relatório e tente novamente.');return;
+  }
+  RES=revised;
+  if(ed){if(editing)editLeft=0;editing=false;revDor=false}else tier=0;persist();
   let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(ed){renderReport();show('report');toast('Relatório refeito com as respostas corrigidas.')}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
@@ -1408,7 +1449,6 @@ function diagnosis(free=true){
   if(A.why==='pain'||A.arm!=='no')extra.push(`${gl('arm')} da sua: ${dec(c.ix.arm)} de 10 (${armTxt(c.ix.arm).toLowerCase()}).`);
   {const d=c.wt-RES.tw;if(Math.abs(d)>=6&&Math.abs(d)<=8)extra.push(`Peso: um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g), nada relevante.`)}
   if(A.restr==='zero'||A.restr==='never')extra.push('Corda que nunca é trocada perde tensão e endurece, e parte da dor e da falta de controle pode vir dela. Trocar a corda é o primeiro passo, com ou sem raquete nova.');
-  if(A.curAge==='3')extra.push('Com mais de 3 anos de uso, grip e corda provavelmente estão gastos. Parte da sensação ruim pode vir daí, não do quadro.');
   if(A.why==='broken'&&curFit.fit>=ranked[0].fit-6)extra.push('Ela ainda combina bem com você. Uma nova do mesmo modelo seria uma troca segura; a recomendação mostra se há algo melhor.');
   if(A.why==='level'&&c.ix.control<T.control-1)extra.push('Para o seu nível atual, ela entrega menos controle do que o seu jogo pede.');
   const jn=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
@@ -1445,7 +1485,7 @@ function renderPreview(){
     <div class="kpis">
       <div class="kpi"><b>${RK.length}</b><span>raquetes do catálogo comparadas com o seu jogo</span></div>
       <div class="kpi"><b>${top[0].r.nrev||'—'}</b><span>avaliações de testadores e sites sobre a 1ª</span></div>
-      <div class="kpi"><b>${RES.tw} g</b><span>peso ideal sem corda</span></div>
+      <div class="kpi"><b>${semRef()?`${RES.Z.wt[0]}–${RES.Z.wt[1]} g`:RES.tw+' g'}</b><span>${semRef()?'faixa para testar, sem corda':'peso ideal sem corda'}</span></div>
       <div class="kpi"><b>${curFit?mask(curFit.fit+'%'):'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
     </div>
   </div>
@@ -1545,6 +1585,7 @@ function heroText(x,T){const r=x.r;const lv={beg:'iniciante',int:'intermediário
 function whyItems(r,c){
   const out=[];
   if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: dentro da faixa de peso que calculamos para a sua força e o seu nível.`);
+  else if(semRef()&&r.wt>=RES.Z.wt[0]&&r.wt<=RES.Z.wt[1])out.push(`${r.wt} g sem corda: dentro da faixa larga de ${RES.Z.wt[0]} a ${RES.Z.wt[1]} g para começar. Teste duas raquetes dessa faixa antes de decidir.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para a sua força e o seu nível.`);
   if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, do tipo que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':(A.arm==='now'?': dentro do limite para quem tem dor hoje':'')}.${r.tech?` Tem tecnologia de conforto (${esc(r.tech)}).`:''}`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
@@ -1559,6 +1600,7 @@ function why(r,c,T){
   ranked.slice(0,2).forEach(x=>out.push(`${LBL[x.k]} ${dec(r.ix[x.k])} para um alvo de ${dec(x.t)}: o índice que o seu jogo mais pede.`));
   if(A.arm!=='no')out.push(`Rigidez de ${r.ra} RA${r.ra<=63?': quadro flexível, que quem sente o '+(J('elbow')?'cotovelo':'braço')+' costuma achar mais confortável':(A.arm==='now'?': dentro do limite para quem tem dor hoje':'')}.${r.tech?` Tem tecnologia de conforto (${r.tech}).`:''}`);
   if(inZone(r))out.push(`${r.wt} g e swingweight ${r.sw}: na faixa ideal de peso e swingweight para você.`);
+  else if(semRef()&&r.wt>=RES.Z.wt[0]&&r.wt<=RES.Z.wt[1])out.push(`${r.wt} g sem corda: dentro da faixa larga de ${RES.Z.wt[0]} a ${RES.Z.wt[1]} g para começar. Teste duas raquetes dessa faixa antes de decidir.`);
   else if(Math.abs(r.wt-RES.tw)<=8)out.push(`${r.wt} g sem corda, perto dos ${RES.tw} g calculados para sua força e seu nível.`);
   if(c&&r.sw<c.sw-3)out.push(`Swingweight ${r.sw} contra ${c.sw} da sua atual: mais fácil de acelerar e de chegar a tempo na bola.`);
   if(A.spin==='high'&&OPEN[r.pat]>=1)out.push(`Padrão ${r.pat.replace('x','×')} aberto: a corda morde mais a bola para o topspin.`);
@@ -1570,7 +1612,7 @@ function attention(r){
   if(!inZone(r)){const z=ZZ,fora=[r.wt<z.wt[0]||r.wt>z.wt[1]?`peso ${r.wt} g (ideal ${z.wt[0]}–${z.wt[1]})`:'',r.sw<z.sw[0]||r.sw>z.sw[1]?`swingweight ${r.sw} (ideal ${z.sw[0]}–${z.sw[1]})`:''].filter(Boolean).join(' e ');
     const b=RES.ranked.find(x=>inZone(x.r)&&x.r.id!==r.id);
     out.push(`Fica fora da faixa ideal de peso e swingweight: ${fora}. ${b?`A melhor dentro dela, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás.${b.pen&&b.pen[0]?` Motivo: ${b.pen[0][1].replace(/\.$/,'')}.`:''}`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
-  {const d=r.wt-RES.tw;if(Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
+  {const d=r.wt-RES.tw;if(!semRef()&&Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
   if(r.br==='d')out.push('Difícil de achar no Brasil: em geral, só importando ou em loja especializada. Confira antes de se apegar.');
   if(r.br==='p')out.push('Pouca oferta no Brasil: vale ligar para a loja antes de ir.');
   if(r.ra>=68)out.push(`Quadro rígido (${r.ra} RA). Se a dor no braço voltar, use corda macia e tensão baixa.`);
@@ -1600,7 +1642,7 @@ function stringSetup(r){
   else if(sensitive){s='Híbrido: poliéster macio 1,25 mm nas verticais e multifilamento 1,30 mm nas horizontais';base=49}
   else if(A.spin==='high'&&(A.lvl==='adv'||A.lvl==='adv_int')){s='Poliéster facetado 1,25 mm';base=49}
   else {s='Poliéster redondo 1,25 mm';base=48}
-  const want=A.want||[];const steps=[['Base para a corda indicada e o seu perfil',base]];const adj=(c,v,t)=>{if(c){base+=v;steps.push([t,v])}};
+  const want=wants();const steps=[['Base para a corda indicada e o seu perfil',base]];const adj=(c,v,t)=>{if(c){base+=v;steps.push([t,v])}};
   adj(want.includes('power'),-2,'Você quer mais potência');adj(want.includes('control')&&A.lvl!=='beg',2,'Você quer mais controle');adj(r.pat==='18x20',1,'Padrão fechado 18×20');adj(r.ra>=68&&A.arm!=='no',-1,'Quadro rígido com histórico de dor');adj(A.opp==='heavy',1,'Bola pesada dos adversários');adj(A.swing==='short'&&!want.includes('power'),-1,'Swing curto: corda solta ajuda a bola sair');
   if(false)base-=2;
   const kg=lb=>dec(lb*0.4536);
@@ -1633,8 +1675,13 @@ function fichaRows(r){
 function altsNote(x){const L=(x.alts||[]).slice(0,3);if(!L.length)return '';
   return `<p class="note altsnote">Também existe em outra versão: ${L.map(a=>`<strong>${esc(a.r.model)}</strong> (${a.r.wt} g${a.r.pat!==x.r.pat?', '+a.r.pat.replace('x','×'):''}) · DNA ${a.fit}%`).join('; ')}.</p>`}
 const altsTag=x=>x.alts&&x.alts.length?` · também em ${x.alts.slice(0,2).map(a=>a.r.wt+' g').join(' e ')}`:'';
+function closeRacketFit(current,best){
+  if(!current||current.fit<90||Math.abs(best.fit-current.fit)>3)return '';
+  return `Sua raquete atual já combina muito bem com seu jogo: ${current.fit}% contra ${best.fit}% da recomendada. A diferença é pequena. Se ela está confortável e atende ao seu jogo, faz sentido continuar com ela.`;
+}
 function renderReport(){
   const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);const full=tier>=2;
+  const fitNote=full?closeRacketFit(curFit,w):'';
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Atual × nova':'Perfil × nova';
@@ -1646,7 +1693,7 @@ function renderReport(){
   h+=`<section class="panel winner" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
     ${racketHead(w)}
     <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
-    <p class="hero2">${heroText(w,T)}</p>${altsNote(w)}</section>`;
+    <p class="hero2">${heroText(w,T)}</p>${fitNote?`<p class="hero2"><strong>${fitNote}</strong></p>`:''}${altsNote(w)}</section>`;
   /* 2. Por que combina */
   const rv=(REVQ[r.id]||[]).slice(0,3);
   h+=`<section class="panel" id="r-por"><h2 class="sec">Por que combina</h2>
@@ -1657,7 +1704,7 @@ function renderReport(){
   /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada) */
   h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Sua atual × a nova':'Seu perfil × a nova'}</h2>
     <p class="muted" style="margin-top:-8px">${c?`Sua ${esc(c.name)} × a ${esc(r.model)}`:`O seu perfil ideal × a ${esc(r.model)}. Informe a sua raquete no teste para ver a comparação com ela.`}</p>
-    ${c&&curFit?`<p>A sua ficou com DNA Score <strong>${curFit.fit}%</strong>, ${w.fit-curFit.fit} pontos abaixo da recomendada${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}
+    ${c&&curFit&&!fitNote?`<p>A sua ficou com DNA Score <strong>${curFit.fit}%</strong>, ${w.fit-curFit.fit} pontos abaixo da recomendada${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}
     ${viz('rp',series,T,r.ix,c?c.ix:null)}
     ${c?`<h3>O que você vai sentir</h3><table class="stack"><thead><tr><th scope="col">Item</th><th scope="col">Atual</th><th scope="col">Nova</th><th scope="col">O que você vai sentir</th></tr></thead><tbody>${feel(r,c).map(x=>`<tr><td>${x[0]}</td><td class="n" data-label="Atual">${x[1]}</td><td class="n" data-label="Nova">${x[2]}</td><td class="full">${x[3]}</td></tr>`).join('')}</tbody></table>`:''}
   </section>`;
@@ -1776,6 +1823,7 @@ function transition(r,c){
 }
 function pdfPages(){
   const {ranked,T,c,Z,curFit,conf,tw}=RES;const w=ranked[0],r=w.r,gs=gripSize(),st=stringSetup(r),st2=c?stringSetup(c):null;
+  const fitNote=closeRacketFit(curFit,w);
   const top=ranked.slice(0,3);const today=new Date().toLocaleDateString('pt-BR');const id=encode({a:A}).slice(-6).toUpperCase();
   const lvl={beg:'Iniciante',int:'Intermediário',adv_int:'Intermediário avançado',adv:'Avançado'}[A.lvl]||'';
   const arm=A.arm==='now'?'Dor no braço hoje':A.arm==='past'?'Já teve dor no braço'+({'3':' (forte)','2':' (moderada)','1':' (leve)'}[A.painPast]||''):'Sem dor no braço';
@@ -1795,9 +1843,9 @@ function pdfPages(){
    <h2 class="st">Seu setup completo</h2>
    <div class="tiles">${tiles.map(([l,v,s],i)=>`<div class="tile${i>1?' sg':''}"><span>${l}${i>1?' · sugestão':''}</span><b>${v}</b><em>${esc(s)}</em></div>`).join('')}</div>
    <div class="cols"><div><h2 class="st">Por que ela</h2><ol class="why">${why(r,c,T).slice(0,4).map(x=>`<li>${x}</li>`).join('')}</ol></div>
-   <div><h2 class="st">Quem é você em quadra</h2><p class="arch">${esc(archetype())}</p><div class="chips">${[lvl,arm,`Peso ideal ${tw} g`,c?'Usa '+esc(c.model):'Sem raquete atual no catálogo'].map(x=>`<span>${x}</span>`).join('')}</div>
+   <div><h2 class="st">Quem é você em quadra</h2><p class="arch">${esc(archetype())}</p><div class="chips">${[lvl,arm,semRef()?`Faixa para testar ${RES.Z.wt[0]}–${RES.Z.wt[1]} g`:`Peso ideal ${tw} g`,c?'Usa '+esc(c.model):'Sem raquete atual no catálogo'].map(x=>`<span>${x}</span>`).join('')}</div>
    <p class="small">Top 3 prioridades do seu jogo: ${KEYS.slice().sort((a,b)=>T[b]-T[a]).slice(0,3).map(k=>`<b>${LBL[k]}</b>`).join(' · ')}</p></div></div>
-   ${curFit?`<div class="swap"><div><span>Sua ${esc(c.model)}</span><b class="o">${curFit.fit}%</b></div><i>→</i><div><span>${esc(r.model)}</span><b>${w.fit}%</b></div><p><b>+${w.fit-curFit.fit} pontos de encaixe.</b> ${curFit.pen.slice(0,2).map(p=>p[1]).join('. ')}${curFit.pen.length?'.':''}</p></div>`:`<div class="swap"><p><b>Primeira raquete ou modelo fora do catálogo.</b> O ranking foi feito só pelo seu corpo e pelo seu jogo; refaça informando a sua atual para ver a comparação lado a lado.</p></div>`}
+   ${curFit?`<div class="swap"><div><span>Sua ${esc(c.model)}</span><b class="o">${curFit.fit}%</b></div><i>→</i><div><span>${esc(r.model)}</span><b>${w.fit}%</b></div><p>${fitNote||`<b>${w.fit-curFit.fit} pontos de diferença.</b> ${curFit.pen.slice(0,2).map(p=>p[1]).join('. ')}${curFit.pen.length?'.':''}`}</p></div>`:`<div class="swap"><p><b>Primeira raquete ou modelo fora do catálogo.</b> O ranking foi feito só pelo seu corpo e pelo seu jogo; refaça informando a sua atual para ver a comparação lado a lado.</p></div>`}
    ${foot}</section>`;
   /* página 2: jogo × raquete */
   const specRows=SPEC.map(s=>{const [a,b0]=RANGE(s.k);const b=b0===a?a+1:b0;const P=v=>cl((v-a)/(b-a)*100,0,100);const z=Z[s.k];const inZ=z&&r[s.k]>=z[0]&&r[s.k]<=z[1];
@@ -1845,7 +1893,7 @@ function pdfPages(){
   const p5=`<section class="pg">${head(4,'Ranking completo e como chegamos aqui')}
    <div class="cols c2"><div><h2 class="st">Top 10 para o seu perfil</h2><div class="rk5">${list.map(x=>{const isC=curFit&&x===curFit;return `<div class="r5${x===w?' w':''}${isC?' c':''}"><span>${isC?'—':ranked.indexOf(x)+1}</span><div><i style="width:${x.fit}%"></i><em>${esc(x.r.name)}${isC?' (sua)':''}</em></div><b>${x.fit}%</b></div>`}).join('')}</div></div>
    <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,ranked.slice(0,10)))}</div><p class="small">Cada ponto é uma raquete; os números são o seu top 10.</p></div></div>
-   ${curFit?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
+   ${curFit&&!fitNote?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
    <h2 class="st">Como chegamos aqui</h2>
    <div class="meth"><div><b>${RK.length}</b><span>raquetes atuais com specs medidas</span></div><div><b>${RES.answered}</b><span>respostas suas sobre corpo, braço e jogo</span></div><div><b>${fmt(NREV)}</b><span>avaliações de testadores e sites nos índices</span></div><div><b>${fmt(METODO.casos)}</b><span>casos de especialistas, em 3 idiomas, usados na calibração</span></div></div>
    <p class="small">O DNA Score compara o seu perfil ideal com cada raquete do catálogo e leva em conta o seu braço, o seu físico e a opinião de testadores. Sem patrocínio de marca.</p>
@@ -2042,7 +2090,7 @@ async function drawRacketCard(d=racketCardData()){
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
 window.SportDNAPayments?.register({name:'racket',snapshot:()=>JSON.parse(JSON.stringify(A)),
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(answers));RES=Object.keys(A).length?compute():null},
- unlock:product=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;editLeft=1;persist();renderReport();show('report')}}});
+ unlock:(product,revised)=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;editLeft=revised?0:1;persist();renderReport();show('report')}}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();
 </script>
