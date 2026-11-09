@@ -1,0 +1,17 @@
+{
+  "name": "sportdna-site",
+  "account_id": "d2ca7c19361590abf0b3d68158c5ade0",
+  "compatibility_date": "2026-11-06",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "sportdna.com.br", "custom_domain": true },
+    { "pattern": "www.sportdna.com.br", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./dist/site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": false }
+}
