@@ -1456,8 +1456,12 @@ let pixTimer=null,pixKey=null,pixFrom=null;
 function closeModal(){clearInterval(pixTimer);if(pixKey)document.removeEventListener('keydown',pixKey);pixKey=null;$('#modalRoot').innerHTML='';
   const rep=$('#report');let t=!rep.hidden?rep.querySelector('h2'):pixFrom&&document.contains(pixFrom)?pixFrom:null;
   if(t){if(t.tagName==='H2')t.setAttribute('tabindex','-1');try{t.focus({preventScroll:!rep.hidden})}catch(e){t.focus()}}pixFrom=null}
+/* sem o pagamento real carregado (rede, bloqueador), o site no ar não pode cair no Pix de teste: só no computador de desenvolvimento */
+const PAY_DEV=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+function payDown(){const d=document.createElement('dialog');d.setAttribute('aria-labelledby','pdT');d.style.cssText='border:0;border-radius:18px;padding:22px;max-width:420px;width:calc(100% - 24px);background:var(--bg,#fff);color:var(--ink,#111)';d.innerHTML='<h2 id="pdT" style="margin:0 0 8px;font-size:20px">Pagamento indisponível</h2><p style="margin:0 0 16px">Não conseguimos carregar o pagamento agora. Confira a conexão, atualize a página e tente de novo. Nenhum valor foi cobrado.</p><button type="button" class="btn btn-go" style="width:100%">Atualizar a página</button>';d.querySelector('button').onclick=()=>location.reload();d.addEventListener('close',()=>d.remove());document.body.append(d);d.showModal()}
 function pix(e){
   if(window.SportDNAPayments?.open('run-report'))return;
+  if(!PAY_DEV){payDown();return}
   pixFrom=e&&e.currentTarget||document.activeElement;
   const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RUNDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5909SPORT DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">
