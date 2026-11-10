@@ -121,3 +121,36 @@ test('revocation cancels a quiz waiting for a slow bridge, even if consent is la
  choose(b,'accept');b.ready();await settle();b.measure.screen('analysis');await settle();
  assert.deepEqual(quizEvents(b),['quiz_complete']);
 });
+
+test('RACKET offer/open/error are distinct from an order; bounded parameters only',async()=>{
+ const b=browser({path:'/racket/'});
+ await b.measure.offer('racket-report',{answers:{pain:'PRIVATE'},email:'PRIVATE'});
+ await b.measure.checkoutOpen('racket-report',{position:'preview_primary',email:'PRIVATE'});
+ await b.measure.checkoutError('racket-report',{position:'preview_primary',method:'pix',category:'network',message:'PRIVATE'});
+ const rows=events(b).filter(e=>e.event!=='page_view');
+ assert.deepEqual(rows.map(e=>e.event),['view_offer','checkout_open','checkout_error']);
+ assert.equal(rows[1].params.cta_position,'preview_primary');assert.equal(rows[2].params.error_category,'network');
+ assert(!JSON.stringify(rows).includes('PRIVATE'));assert(!rows.some(e=>e.event==='begin_checkout'||e.event==='purchase'));
+ await b.measure.checkoutError('racket-report',{category:'PRIVATE'});assert.equal(events(b).length,4);
+});
+test('offers exclude demo, test mode, wrong products, refusal and retroactive acceptance',async()=>{
+ const b=browser({path:'/racket/'});
+ for(const action of ['offer','checkoutOpen','checkoutError'])await b.measure[action]('racket-report',{example:true,category:'network'});
+ await b.measure.offer('surf-report');b.context.window.SPORTDNA_PAYMENTS={mode:'test'};await b.measure.offer('racket-report');
+ assert.deepEqual(events(b).map(e=>e.event),['page_view']);
+ const no=browser({path:'/racket/',choice:false});await no.measure.offer('racket-report');choose(no,'accept');await settle();
+ assert.equal(events(no).filter(e=>e.event==='view_offer').length,0);
+ await no.measure.checkoutOpen('racket-report');assert.equal(events(no).filter(e=>e.event==='checkout_open').length,1);
+ const slow=browser({path:'/racket/',autoReady:false});const queued=slow.measure.offer('racket-report');revoke(slow);await queued;
+ assert.equal(events(slow).length,0);
+});
+test('vendor filters RACKET offer fields and uses distinct Meta events',()=>{
+ const handlers={},parent={postMessage(){}},window={addEventListener(n,f){handlers[n]=f}};
+ vm.runInNewContext(vendor,{window,parent,location:{origin:'https://sportdna.com.br'},document:{createElement:()=>({}),head:{appendChild(){}}},URLSearchParams,Number});
+ const send=data=>handlers.message({origin:'https://sportdna.com.br',source:parent,data});send({type:'sd_init',analytics:true,marketing:true});
+ for(const event of ['view_offer','checkout_open','checkout_error'])send({type:'sd_measure',event,path:'/racket/',params:{sport:'racket',product:'racket-report',cta_position:'preview_primary',payment_type:'pix',error_category:'network',email:'PRIVATE',answers:{pain:'PRIVATE'}}});
+ assert.deepEqual(Array.from(window.fbq.queue.filter(e=>e[0]==='trackSingleCustom'),e=>e[2]),['OfferViewed','CheckoutOpened','CheckoutError']);
+ assert(!JSON.stringify(window.dataLayer).includes('PRIVATE'));assert(!JSON.stringify(window.fbq.queue).includes('PRIVATE'));
+ send({type:'sd_measure',event:'checkout_error',path:'/racket/',params:{sport:'racket',product:'racket-report',error_category:'PRIVATE'}});
+ assert.equal(window.dataLayer.filter(e=>e[0]==='event').length,3);
+});

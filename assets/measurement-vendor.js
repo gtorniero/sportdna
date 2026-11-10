@@ -38,7 +38,7 @@
       }
       return;
     }
-    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_complete', 'begin_checkout', 'purchase'].includes(d.event)) return;
+    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase'].includes(d.event)) return;
     const path = typeof d.path === 'string' ? safePath(d.path) : null;
     if (!path) return;
     const p = {};
@@ -47,6 +47,14 @@
     const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'};
     if (Object.hasOwn(products,raw.product)&&products[raw.product]===p.sport) p.product=raw.product;
     if (['pix','card'].includes(raw.payment_type)) p.payment_type = raw.payment_type;
+    if (['view_offer','checkout_open','checkout_error'].includes(d.event)) {
+      if(path!=='/racket/'||p.sport!=='racket'||!p.product)return;
+      if(['preview_primary','preview_details','comparator','other'].includes(raw.cta_position))p.cta_position=raw.cta_position;
+      if(d.event==='checkout_error'){
+        if(!['invalid_email','network','timeout','unavailable','rejected','invalid_response'].includes(raw.error_category))return;
+        p.error_category=raw.error_category;
+      }
+    }
     if (Number.isFinite(raw.value) && raw.value > 0 && raw.value < 10000 && raw.currency === 'BRL') { p.value = raw.value; p.currency = 'BRL'; }
     if (d.event === 'purchase') {
       if (!/^[a-f0-9]{64}$/.test(raw.transaction_id) || !p.value || !p.sport || !p.product) return;
@@ -65,7 +73,7 @@
       if (d.event === 'page_view') window.fbq('trackSingle', PIXEL, 'PageView', { page_category: path });
       else if (d.event === 'purchase') window.fbq('trackSingle', PIXEL, 'Purchase', { value:p.value, currency:'BRL' }, {eventID:p.transaction_id});
       else if (d.event === 'begin_checkout') window.fbq('trackSingle', PIXEL, 'InitiateCheckout', {value:p.value, currency:p.currency, content_category:p.product});
-      else window.fbq('trackSingleCustom', PIXEL, d.event === 'quiz_start' ? 'QuizStarted' : 'QuizCompleted', { page_category: path });
+      else window.fbq('trackSingleCustom', PIXEL, {quiz_start:'QuizStarted',quiz_complete:'QuizCompleted',view_offer:'OfferViewed',checkout_open:'CheckoutOpened',checkout_error:'CheckoutError'}[d.event], { page_category: path, ...p });
     }
     if (!analytics && marketing) { if(metaLoaded)done();else metaCallbacks.push(done); }
   });
