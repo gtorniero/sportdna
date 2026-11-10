@@ -29,17 +29,19 @@ test('all displayed products exactly match server amounts and names',()=>{
 for(const [id,price] of [['racket-report','19,99'],['surf-report','19,99'],['run-report','9,99'],['racket-comparator','4,99']]){
  test(`checkout identifies ${id} and its full one-time price before a provider is selected`,()=>{
   const {context,nodes}=environment();assert.equal(context.window.SportDNAPayments.open(id),true);
-  const text=nodes.find(x=>x.id==='payment-product-summary').textContent;
-  assert.ok(text.includes(catalog[id].name));assert.ok(text.includes(price));assert.ok(text.includes('pagamento único'));
+  assert.equal(nodes.find(x=>x.id==='payment-product-summary').textContent,catalog[id].name);
+  assert.ok(nodes.find(x=>x.id==='payment-product-price').textContent.includes(price));
+  assert.ok(nodes.some(x=>x.textContent==='Pagamento único, sem assinatura'));
  });
 }
-test('unknown product is handled without falling back to the legacy simulated checkout',()=>{const {context,nodes}=environment();assert.equal(context.window.SportDNAPayments.open('unknown'),true);assert.equal(nodes.filter(x=>x.tag==='button'&&x.textContent==='Cartão').length,0);assert.ok(nodes.find(x=>x.id==='paymentStatus').textContent.includes('Atualize a página'))});
+test('unknown product is handled without falling back to the legacy simulated checkout',()=>{const {context,nodes}=environment();assert.equal(context.window.SportDNAPayments.open('unknown'),true);assert.equal(nodes.filter(x=>x.tag==='button'&&x.provider).length,0);assert.ok(nodes.find(x=>x.id==='paymentStatus').textContent.includes('Atualize a página'))});
 
 test('a provider order with a different amount never offers a payment link',async()=>{
  const {context,nodes}=environment();
  context.fetch=async(_url,options)=>({ok:true,json:async()=>({...JSON.parse(options.body),amount:2499,currency:'BRL',mode:'live',state:'pending',checkoutUrl:'https://checkout.stripe.com/test'})});
  context.window.SportDNAPayments.open('racket-report');
- await nodes.find(x=>x.tag==='button'&&x.textContent==='Cartão').onclick();
+ nodes.find(x=>x.tag==='button'&&x.provider==='stripe').onclick();
+ await nodes.find(x=>x.id==='paymentGo').onclick();
  assert.ok(nodes.find(x=>x.id==='paymentStatus').textContent.includes('valor retornado é diferente'));
  assert.equal(nodes.filter(x=>x.tag==='a').length,0);
 });
@@ -49,11 +51,11 @@ test('accepted checkout and confirmed status call measurement hooks without expo
  const calls=[];let unlocked=0;
  const {context,nodes}=environment({unlock:()=>unlocked++,measure:{checkout:o=>calls.push(['checkout',o]),purchase:o=>calls.push(['purchase',o])}});
  let pending;context.fetch=async(_url,options)=>{if(options.method==='POST')pending=JSON.parse(options.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,amount:1999,provider:'stripe',currency:'BRL',mode:'live',state:options.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/fixture',measurement:{transaction_id:'a'.repeat(64),value:19.99,currency:'BRL',sport:'racket',product:'racket-report'}})}};
- context.window.SportDNAPayments.open('racket-report');await nodes.find(x=>x.tag==='button'&&x.textContent==='Cartão').onclick();await new Promise(setImmediate);
+ context.window.SportDNAPayments.open('racket-report');nodes.find(x=>x.tag==='button'&&x.provider==='stripe').onclick();await nodes.find(x=>x.id==='paymentGo').onclick();await new Promise(setImmediate);
  assert.deepEqual(calls.map(x=>x[0]),['checkout','purchase']);assert.equal(unlocked,1);assert(!JSON.stringify(calls).includes('answers'));
 });
 test('optional measurement failure cannot block the paid access',async()=>{
  let unlocked=0;const {context,nodes}=environment({unlock:()=>unlocked++,measure:{checkout(){throw Error('optional offline')},purchase(){throw Error('optional offline')}}});
  let pending;context.fetch=async(_url,options)=>{if(options.method==='POST')pending=JSON.parse(options.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,amount:1999,provider:'stripe',currency:'BRL',mode:'live',state:options.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/fixture'})}};
- context.window.SportDNAPayments.open('racket-report');await nodes.find(x=>x.tag==='button'&&x.textContent==='Cartão').onclick();await new Promise(setImmediate);assert.equal(unlocked,1);
+ context.window.SportDNAPayments.open('racket-report');nodes.find(x=>x.tag==='button'&&x.provider==='stripe').onclick();await nodes.find(x=>x.id==='paymentGo').onclick();await new Promise(setImmediate);assert.equal(unlocked,1);
 });

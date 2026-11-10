@@ -17,3 +17,7 @@ Recuperados também o entrypoint financeiro privado e a correção de data de co
 ## Verificação de 09/11
 
 Os 226 arquivos gerados pelo empacotador têm os mesmos hashes do pacote publicado. Passaram 53 testes do backend (incluem casos executados em mais de uma entrada), 16 de checkout/medição e o teste RPC financeiro isolado. O teste RPC utiliza Miniflare 4; para toolchains com Miniflare 5, fornecer `MINIFLARE_TEST_MODULE` apontando para uma instalação compatível. Sem chamadas de pagamento reais.
+
+## Atualização concorrente conciliada
+
+Após autorização de Gui, main recebeu #96 (checkout novo e bloqueio do fallback simulado em produção) e #104 (desativação Pages). Conciliados sobre a recuperação, preservando revisão SURF, medições e backend financeiro. Os 16 testes de checkout/medição passaram novamente. A nova interface de checkout precisa de publicação Cloudflare; a igualdade dos 226 hashes descrita acima se refere à recuperação anterior a esta atualização.
