@@ -1098,10 +1098,11 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Enter'){$('#next').click();e.preventDefault()}
 });
 function missing(){return VQ().filter(q=>q.s===step&&!q.opt&&!answered(q))}
-function show(id){['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
+let exampleSession=false;
+function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('racket-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
 
-$('#start').addEventListener('click',()=>{editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
-$('#example').addEventListener('click',()=>{editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
+$('#start').addEventListener('click',()=>{exampleSession=false;editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
+$('#example').addEventListener('click',()=>{exampleSession=true;editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
 $('#home').addEventListener('click',()=>show('landing'));$('#home').addEventListener('keydown',e=>{if(e.key==='Enter')show('landing')});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}go(-1)});
 $('#next').addEventListener('click',()=>{
@@ -1156,7 +1157,7 @@ $('#duelGo').addEventListener('click',()=>{const pa=RK.find(r=>/^pure aero$/i.te
 $('#dGo').addEventListener('click',renderDuel);
 $('#dSwap').addEventListener('click',()=>{const t=$('#dA').value;$('#dA').value=$('#dB').value;$('#dB').value=t});
 $('#duelBack').addEventListener('click',()=>show('landing'));
-$('#duelQuiz').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
+$('#duelQuiz').addEventListener('click',()=>{exampleSession=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
 
 /* ---------- Salvar / código ---------- */
 const encode=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=+$/,'');
@@ -1170,11 +1171,11 @@ function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;
      contraditório: não escolhemos um estado pela pessoa; fica marcado e o relatório pede para revisar. */
   if(a.arm==='past'&&(a.pain!=null||a.lim!=null)){if(a.painPast==null&&a.pain!=null){a.painPast=String(a.pain);a.painMigrado=1}if(String(a.lim)==='3')a.painConflito='tratamento';delete a.pain;delete a.lim}
   if(a.arm==='no'){delete a.pain;delete a.lim;delete a.painPast;delete a.painAgo;delete a.painMigrado;delete a.painConflito}if(a.budget!=null&&!['1400','2000','99999'].includes(String(a.budget))){const b=+a.budget;a.budget=!(b>0)?'99999':b<=1400?'1400':b<=2000?'2000':'99999'}return a}
-function loadAnswers(o){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));purgeHidden();tier=window.SportDNAPayments?.enabled?0:o.t||0}
+function loadAnswers(o){exampleSession=o.example===true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));purgeHidden();tier=window.SportDNAPayments?.enabled?0:o.t||0}
 if(LS.get('rm_last'))$('#resumeBox').hidden=false;
 $('#resume').addEventListener('click',()=>{try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}});
 $('#codeGo').addEventListener('click',()=>{try{loadAnswers(decode($('#codeIn').value));$('#codeErr').hidden=true;RES=compute();renderPreview();show('preview')}catch(e){$('#codeErr').hidden=false}});
-function persist(){LS.set('rm_last',encode({a:A,t:tier}))}
+function persist(){LS.set('rm_last',encode({a:A,t:tier,example:exampleSession}))}
 /* relatório: botão para revisar a etapa Braço (resposta antiga contraditória) */
 document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('[data-armstep]')){revDor=true;step=1;show('quiz');renderQs()}});
 
@@ -1469,13 +1470,19 @@ function renderPreview(){
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
         <p class="eyebrow">Análise concluída</p>
         <h2>Encontramos as 3 raquetes que mais combinam com o seu jogo.</h2>
+        <p style="margin:0"><strong>O relatório completo inclui:</strong></p>
+        <ul style="margin:0;padding-left:20px">
+          <li>Diagnóstico completo da sua raquete atual, quando informada.</li>
+          <li>Sugestão de corda, espessura e tensão.</li>
+          <li>Comparador ilimitado para colocar as raquetes lado a lado.</li>
+        </ul>
+        <button class="btn btn-go" type="button" data-buy="2" data-position="preview_primary" style="width:100%">Revelar minhas raquetes · R$ 19,99</button>
+        <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF.</p>
         <div class="fin">${top.map((x,i)=>`
         <div class="finrow"><span class="pos">${i+1}º</span>
           <div><span class="blur" aria-label="Modelo oculto até o desbloqueio">${x.r.brand.replace(/./g,'X')} ${x.r.model.replace(/[^ ]/g,'X')}</span><div class="meter"><i style="width:${x.fit}%"></i></div></div>
           <span class="pct">${x.fit}%</span></div>`).join('')}
       </div>
-        <button class="btn btn-go" type="button" data-buy="2" style="width:100%">Revelar minhas raquetes · R$ 19,99</button>
-        <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF.</p>
       </div>
       <figure class="rpeek"><img src="../assets/reports/racket.webp" alt="Prévia borrada de um relatório completo do RACKET DNA" loading="lazy"><figcaption>Relatório completo · 5 páginas em PDF</figcaption></figure>
     </div>
@@ -1509,13 +1516,13 @@ function renderPreview(){
         <li>Comparador ilimitado (sozinho sai R$ 4,99) e card para story</li>
         <li>Onde é fácil ou difícil de achar cada raquete no Brasil</li>
       </ul>
-      <button class="btn btn-go" type="button" data-buy="2" style="width:100%;margin-top:16px">Ver meu relatório</button>
+      <button class="btn btn-go" type="button" data-buy="2" data-position="preview_details" style="width:100%;margin-top:16px">Ver meu relatório</button>
     </div>
     <p class="note">O cálculo já foi feito: o pagamento só revela o resultado. Se houver link de compra, ele aparece depois, e a recomendação não muda por isso. Não gostou? Devolvemos em até 7 dias.</p>
     <div class="row"><button class="btn btn-ghost" type="button" id="redo">Refazer respostas</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>
   </div>`;
   wireSeg($('#preview'));previewCard('#cardPrev');$('#pvShare').onclick=shareCard;$('#pvDl').onclick=async()=>{const cv=await drawCard();const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const l=document.createElement('a');l.href=URL.createObjectURL(blob);l.download='racket-dna-dna.png';document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(l.href),4000);toast('Card salvo')};
-  $('#preview').querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>pix(+b.dataset.buy));
+  $('#preview').querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>pix(+b.dataset.buy,b.dataset.position));
   $('#redo').onclick=()=>{step=0;show('quiz');renderQs()};
   $('#preview').querySelector('[data-save]').onclick=saveBox;
 }
@@ -1532,8 +1539,8 @@ function closeModal(){clearInterval(pixTimer);$('#modalRoot').innerHTML=''}
 /* sem o pagamento real carregado (rede, bloqueador), o site no ar não pode cair no Pix de teste: só no computador de desenvolvimento */
 const PAY_DEV=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 function payDown(){const d=document.createElement('dialog');d.setAttribute('aria-labelledby','pdT');d.style.cssText='border:0;border-radius:18px;padding:22px;max-width:420px;width:calc(100% - 24px);background:var(--bg,#fff);color:var(--ink,#111)';d.innerHTML='<h2 id="pdT" style="margin:0 0 8px;font-size:20px">Pagamento indisponível</h2><p style="margin:0 0 16px">Não conseguimos carregar o pagamento agora. Confira a conexão, atualize a página e tente de novo. Nenhum valor foi cobrado.</p><button type="button" class="btn btn-go" style="width:100%">Atualizar a página</button>';d.querySelector('button').onclick=()=>location.reload();d.addEventListener('close',()=>d.remove());document.body.append(d);d.showModal()}
-function pix(t){
-  if(window.SportDNAPayments?.open(t==='cmp'?'racket-comparator':'racket-report'))return;
+function pix(t,position){
+  if(window.SportDNAPayments?.open(t==='cmp'?'racket-comparator':'racket-report',{position:position||(t==='cmp'?'comparator':'other'),example:t!=='cmp'&&exampleSession}))return;
   if(!PAY_DEV){payDown();return}
   const isCmp=t==='cmp';
   const price=isCmp?4.99:19.99;
@@ -1793,7 +1800,7 @@ function renderCmp(){
   <div class="tbl" style="margin-top:10px"><table><thead><tr><th>Item</th><th>${esc(a.model)}</th><th>${esc(b.model)}</th><th>Saindo da primeira para a segunda</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td><td class="n">${x[2]}</td><td>${x[3]}</td></tr>`).join('')}</tbody></table></div>`;
 }
 function saveBox(){
-  persist();const code=encode({a:A});
+  persist();const code=encode({a:A,example:exampleSession});
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="svT"><div class="sheet">
     <div class="phead"><h3 id="svT">Resultado salvo</h3><button class="btn btn-ghost btn-sm" id="svX" type="button">Fechar</button></div>
     <p class="muted">Ele fica guardado neste navegador. Para abrir em outro aparelho ou mandar para alguém, use este código na página inicial, em "Já fiz o teste: retomar ou abrir um código". O código carrega suas respostas, não o pagamento.</p>
