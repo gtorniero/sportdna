@@ -6,10 +6,12 @@
   let initialized = false;
   let analytics = false;
   let marketing = false;
+  let metaLoaded = false;
+  const metaCallbacks = [];
   const allowedPaths = new Set(['/', '/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/']);
   // Guias públicos são reduzidos a uma categoria; nenhum trecho arbitrário vira parâmetro.
   function safePath(path) { return allowedPaths.has(path) ? path : /^\/blog\/[a-z0-9-]+\/$/.test(path) ? '/blog/' : null; }
-  function script(src) { const s = document.createElement('script'); s.async = true; s.src = src; s.referrerPolicy = 'no-referrer'; document.head.appendChild(s); }
+  function script(src, onload) { const s = document.createElement('script'); s.async = true; s.src = src; s.referrerPolicy = 'no-referrer'; if(onload)s.onload=onload; document.head.appendChild(s); }
   function gtag() { window.dataLayer.push(arguments); }
   window.addEventListener('message', e => {
     if (e.origin !== location.origin || e.source !== parent || parent === window) return;
@@ -19,7 +21,8 @@
       analytics = d.analytics === true; marketing = d.marketing === true;
       if (analytics) {
         window.dataLayer = [];
-        gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+        const ads = marketing && d.googleAdsMeasurement === true ? 'granted' : 'denied';
+        gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: ads, ad_user_data: ads, ad_personalization: 'denied' });
         gtag('js', new Date());
         gtag('config', GA, { send_page_view: false, page_location: 'https://sportdna.com.br/', page_referrer: '', page_title: 'SPORT DNA', allow_google_signals: false, allow_ad_personalization_signals: false });
         script('https://www.googletagmanager.com/gtag/js?id=' + GA);
@@ -31,7 +34,7 @@
         fbq('set', 'autoConfig', false, PIXEL);
         fbq('consent', 'grant');
         fbq('init', PIXEL);
-        script('https://connect.facebook.net/en_US/fbevents.js');
+        script('https://connect.facebook.net/en_US/fbevents.js', () => { metaLoaded = true; for(const done of metaCallbacks.splice(0))done(); });
       }
       return;
     }
@@ -56,15 +59,15 @@
       const v = source.get(k); if (v && /^[a-z0-9_.-]{1,200}$/i.test(v)) query.set(k,v);
     }
     const suffix = query.size ? '?' + query.toString() : '';
-    const done = () => parent.postMessage({ type: 'sd_done', id: d.id }, location.origin);
-    if (analytics) gtag('event', d.event, { ...p, send_to: GA, page_location: 'https://www.sportdna.com.br' + path + suffix, page_referrer: '', page_title: 'SPORT DNA', transport_type: 'beacon', event_callback: done, event_timeout: 300 });
+    const done = () => parent.postMessage({ type: 'sd_done', id: d.id, queued: true }, location.origin);
+    if (analytics) gtag('event', d.event, { ...p, send_to: GA, page_location: 'https://www.sportdna.com.br' + path + suffix, page_referrer: '', page_title: 'SPORT DNA', transport_type: 'beacon', event_callback: done, event_timeout: 1500 });
     if (marketing) {
       if (d.event === 'page_view') window.fbq('trackSingle', PIXEL, 'PageView', { page_category: path });
       else if (d.event === 'purchase') window.fbq('trackSingle', PIXEL, 'Purchase', { value:p.value, currency:'BRL' }, {eventID:p.transaction_id});
       else if (d.event === 'begin_checkout') window.fbq('trackSingle', PIXEL, 'InitiateCheckout', {value:p.value, currency:p.currency, content_category:p.product});
       else window.fbq('trackSingleCustom', PIXEL, d.event === 'quiz_start' ? 'QuizStarted' : 'QuizCompleted', { page_category: path });
     }
-    if (!analytics) done();
+    if (!analytics && marketing) { if(metaLoaded)done();else metaCallbacks.push(done); }
   });
   if (parent !== window) parent.postMessage({ type: 'sd_ready' }, location.origin);
 })();

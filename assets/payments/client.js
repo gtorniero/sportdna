@@ -3,8 +3,10 @@
  const config=window.SPORTDNA_PAYMENTS||{mode:'off',api:''};
  const test=config.mode==='test';
  const enabled=['test','live'].includes(config.mode)&&(/^https:\/\/[a-z0-9.-]+(?::\d+)?$/.test(config.api)||/^http:\/\/127\.0\.0\.1:\d+$/.test(config.api));
- const key='sportdna-'+config.mode+'-checkout-v1';let app=null,dialog=null,timer=null,busy=false;
+ const key='sportdna-'+config.mode+'-checkout-v1';let app=null,dialog=null,timer=null,busy=false,verifiedOrder=null;
  const productInfo=product=>config.products?.[product];
+ const fieldStyle='box-sizing:border-box;display:block;width:100%;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;border:1.5px solid #6B7F87;border-radius:12px;background:var(--surface,#fff);color:var(--ink,#111);margin-top:6px';
+ const actionStyle='box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px';
  const money=amount=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(amount/100);
  function validAmount(order){
   const info=productInfo(order.product);
@@ -50,7 +52,10 @@
    const order=await api('/orders/'+pending.id,{headers:{Authorization:'Bearer '+pending.token}});
    if(order.product!==pending.product||order.mode!==config.mode||!validAmount(order))throw new Error('Produto ou valor diferente da oferta. Nenhum acesso foi liberado; consulte o suporte antes de pagar.');
    if(order.state==='paid'){
-    app.restore(pending.answers);app.unlock(pending.product);close();emailButton(pending);
+    const current=get();
+    if(current?.id!==pending.id)return false;
+    verifiedOrder=current.id;
+    app.restore(current.answers);app.unlock(current.product,current.revised===true);close();emailButton(current);
     try{await window.SportDNAMeasure?.purchase?.(order)}catch{/* Medição opcional não bloqueia acesso. */}return true;
    }
    if(['invalid','revoked','expired'].includes(order.state)){message('O pagamento não foi aprovado. Nenhum acesso foi liberado.');return false}
@@ -162,5 +167,10 @@
   };
   select('mercadopago');optBtns[0].focus();return true;
  }
- window.SportDNAPayments={enabled,open,register(options){app=options;if(!enabled)return;const p=get();if(p?.app===app.name){app.restore(p.answers);check().then(paid=>{if(!paid&&new URLSearchParams(location.search).has('payment'))pendingPanel({})})}}};
+ function saveRevision(product){
+  const pending=get();
+  if(!pending||pending.id!==verifiedOrder||pending.product!==product||pending.revised)return false;
+  try{save({...pending,answers:app.snapshot(),revised:true});return true}catch{return false}
+ }
+ window.SportDNAPayments={enabled,open,saveRevision,register(options){app=options;if(!enabled)return;const p=get();if(p?.app===app.name){app.restore(p.answers);check().then(paid=>{if(!paid&&new URLSearchParams(location.search).has('payment'))pendingPanel({})})}}};
 })();

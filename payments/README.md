@@ -2,7 +2,11 @@
 
 O frontend versionado usa `mode: live`. O Worker suporta `PAYMENTS_MODE=test` e `live`, com credenciais explícitas por ambiente. A ativação não comprova, por si só, que todos os produtos e provedores passaram pelo fluxo completo de produção. As evidências de 02/11 abaixo são históricas.
 
-## Cadastrado em 02/11/2026
+## Estado atual confirmado em 09/11/2026
+
+O serviço mantém o nome legado `sportdna-payments-test`, mas o frontend publicado usa cobrança real. A versão ativa é `8130c77b-b629-4a95-ab9b-bba3d53b2918`. `src/finance-entrypoint.mjs` preserva o handler de pagamentos e exporta o relatório `PaymentInsights` para o painel por service binding, sem rota HTTP pública. Não reaplicar as configurações de teste históricas abaixo sobre produção. Não recriar banco, segredos ou webhooks.
+
+## Histórico: cadastrado em 02/11/2026
 
 - Stripe Beyond the Work, contexto `acct_1UTVXV134hMOoEZV`, somente ambiente de teste.
 - RACKET R$ 19,99, SURF R$ 19,99, RUN R$ 9,99 e comparador RACKET R$ 4,99. Os IDs de preço de teste estão no catálogo do servidor, em `src/security.mjs`.
@@ -10,7 +14,7 @@ O frontend versionado usa `mode: live`. O Worker suporta `PAYMENTS_MODE=test` e 
 
 ## Arquitetura
 
-O site estático permanece no GitHub Pages. Um Worker separado cria pedidos e consulta os provedores; uma base D1 exclusiva guarda identificador do pedido, hash do token de acesso, produto, valor e estado. Stripe usa Checkout Sessions hospedado; Mercado Pago usa Pix via Orders API. Nenhuma resposta dos questionários é enviada ao servidor ou aos provedores. O e-mail é enviado ao Mercado Pago somente para criar o Pix.
+O site estático está no Worker `sportdna-site`, na Cloudflare. O GitHub Pages foi substituído em 07/11/2026. Um Worker separado cria pedidos e consulta os provedores; uma base D1 exclusiva guarda identificador do pedido, hash do token de acesso, produto, valor e estado. Stripe usa Checkout Sessions hospedado; Mercado Pago usa Pix via Orders API. Nenhuma resposta dos questionários é enviada ao servidor ou aos provedores. O e-mail é enviado ao Mercado Pago somente para criar o Pix.
 
 Preços pertencem ao catálogo do servidor, nunca ao navegador. A sessão não libera o relatório só porque o usuário voltou à página. A consulta exige token aleatório do pedido e confronta o pagamento com produto, valor, moeda/país, referência e ambiente. Webhooks têm assinatura verificada e consultam a API do provedor. Pagamentos pendentes, referências divergentes, notificações falsas e reembolsos não concedem acesso.
 
@@ -53,3 +57,7 @@ Documentação: [Stripe Checkout](https://docs.stripe.com/payments/accept-a-paym
 ## Escopo por produto
 
 Permissões legadas `quiddo`, `retrozap` e `sportdna` continuam válidas. Uma campanha exclusiva usa `sportdna:surf-report`, `sportdna:racket-report`, `sportdna:run-report` ou `sportdna:racket-comparator`. A autorização é validada no servidor antes de conceder acesso. O gestor do Quiddo oferece a seleção do produto. São liberações gratuitas; desativar impede novos resgates, sem revogar acessos anteriores.
+
+## Teste do relatório financeiro privado
+
+Após empacotar `src/finance-entrypoint.mjs` em `dist/finance-entrypoint.js`, executar `node test/finance-rpc.node.mjs` com Miniflare 4. Se a toolchain usar Miniflare 5, definir `MINIFLARE_TEST_MODULE` com o módulo de uma instalação Miniflare 4. O teste usa provedores simulados e banco temporário, sem cobranças.

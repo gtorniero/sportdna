@@ -1216,11 +1216,21 @@ document.getElementById('bbVar').textContent=CB.length;
 const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:['2'],imp:{rem:6,est:6,vel:8,man:6,ctl:4},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
 
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
+function scrollAfterAnswer(q, moveFocus=false){
+  const current=$(`#qs [data-q="${q.id}"]`);
+  if(!current||$('#quiz').hidden)return;
+  const target=current.nextElementSibling||$('#next');
+  if(moveFocus){
+    if(target.tagName==='FIELDSET')target.tabIndex=-1;
+    target.focus({preventScroll:true});
+  }
+  target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+}
 function renderQs(){
   renderSteps();
   const box=$('#qs');box.innerHTML='';
   Q.filter(q=>q.s===step&&(!q.cond||q.cond())).forEach(q=>{
-    const fs=document.createElement('fieldset');fs.className='q';
+    const fs=document.createElement('fieldset');fs.className='q';fs.dataset.q=q.id;
     if(q.type==='rate'){
       if(!A[q.id])A[q.id]=Object.assign({},IMPDEF);A[q.id].est=A[q.id].rem;
       fs.innerHTML=`<legend>${q.t}</legend><p class="help">${q.h}</p><div class="rates">${IMP.map(f=>`<div class="rt"><svg class="rti" viewBox="0 0 24 24" aria-hidden="true"><path d="${f[3]}"/></svg><div class="rtx"><label for="r_${f[0]}"><b>${f[1]}</b><span>${f[2]}</span></label><div class="rtr"><input type="range" id="r_${f[0]}" min="1" max="5" step="1" value="${Math.round(A[q.id][f[0]]/2)}"><output class="mono" id="ro_${f[0]}">${Math.round(A[q.id][f[0]]/2)}</output></div></div></div>`).join('')}</div><p class="imp-warn" id="impWarn" role="status" aria-live="polite"></p>`;
@@ -1246,6 +1256,8 @@ function renderQs(){
     }else if(q.type==='number'){
       fs.innerHTML=`<label class="ql" for="q_${q.id}">${q.t}</label>${q.h?`<p class="help">${q.h}</p>`:''}<input type="number" id="q_${q.id}" inputmode="numeric" min="${q.min}" max="${q.max}" step="${q.step}" placeholder="${q.ph}" style="width:180px">`;
       const inp=fs.querySelector('input');inp.value=A[q.id]||'';inp.addEventListener('input',()=>{A[q.id]=inp.value});
+      inp.addEventListener('change',()=>{if(inp.value&&inp.validity.valid)scrollAfterAnswer(q)});
+      inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(inp.value&&inp.reportValidity()){inp.blur();scrollAfterAnswer(q,true)}}});
     }else{
       fs.innerHTML=q.multi?`<legend>${q.t} <span class="multi-tag">${q.mtag||'Marque quantas quiser'}</span></legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts multi" role="group"></div><p class="mcount" id="mc_${q.id}" aria-live="polite"></p>`:`<legend>${q.t}</legend>${q.h?`<p class="help">${q.h}</p>`:''}<div class="opts single"></div>`;
       const mcount=()=>{const el=fs.querySelector('.mcount');if(!el)return;const n=(A[q.id]||[]).length;el.textContent=n?`${n} ${n===1?'item marcado':'itens marcados'}`:'Nenhum marcado ainda';};
@@ -1257,11 +1269,12 @@ function renderQs(){
         b.innerHTML=q.ladder?`<i class="lvbars" aria-hidden="true">${[0,1,2,3,4].map(j=>`<u class="${j<=oi?'on':''}"></u>`).join('')}</i><span>${esc(o[1])}</span><small>${esc(o[2])}</small>`:`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
         if(q.ladder){const si=q.o.findIndex(x=>x[0]===A[q.id]);if(si>=0&&oi<si)b.classList.add('reach')}
         b.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(o[0]):A[q.id]===o[0]);
-        b.addEventListener('click',()=>{
+        b.addEventListener('click',e=>{
           if(q.multi){if(q.id==='skills')A._skManual=true;let v=A[q.id]||[];v=v.includes(o[0])?v.filter(x=>x!==o[0]):q.none===o[0]?[o[0]]:[...v.filter(x=>x!==q.none),o[0]].slice(-q.multi);A[q.id]=v}
-          else{const was=A[q.id];A[q.id]=o[0];if(q.id==='nivel'&&!A._skManual)A.skills=SKN[+o[0]].slice();if(['motivo','atual_mod','muda','nivel','tam'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);const nb=document.getElementById(`o_${q.id}_${o[0]}`);if(nb)nb.focus({preventScroll:true});return}}
+          else{const was=A[q.id];A[q.id]=o[0];if(q.id==='nivel'&&!A._skManual)A.skills=SKN[+o[0]].slice();if(['motivo','atual_mod','muda','nivel','tam'].includes(q.id)&&was!==o[0]){const y=scrollY;renderQs();scrollTo(0,y);scrollAfterAnswer(q,e.detail===0);return}}
           g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',q.multi?(A[q.id]||[]).includes(qo[i][0]):A[q.id]===qo[i][0]));
           $('#err').hidden=true;mcount();
+          if(!q.multi)scrollAfterAnswer(q,e.detail===0);
         });
         g.appendChild(b);
       });
@@ -1269,14 +1282,14 @@ function renderQs(){
     }
     box.appendChild(fs);
   });
-  $('#back').textContent=step===0?'Início':'Voltar';
-  $('#next').textContent=step===STEPS.length-1?'Ver minha análise':'Continuar';
+  $('#back').textContent=step===0?(editBackup?'Cancelar edição':'Início'):'Voltar';
+  $('#next').textContent=step===STEPS.length-1?(editBackup?'Atualizar relatório':'Ver minha análise'):'Continuar';
 }
 function missing(){return Q.filter(q=>q.s===step&&!q.opt&&q.type!=='rate'&&(!q.cond||q.cond())).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.multi?!(v&&v.length):!v})}
 function show(id){['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 /* outro teste do zero: limpa as respostas e o relatório guardado nesta sessão do navegador */
-function newTest(){Object.keys(A).forEach(k=>delete A[k]);RES=null;tier=0;step=0;
+function newTest(){Object.keys(A).forEach(k=>delete A[k]);RES=null;tier=0;editLeft=0;editBackup=null;step=0;
   try{Object.keys(sessionStorage).filter(x=>/^sportdna-.*-checkout-v1:surf$/.test(x)).forEach(x=>sessionStorage.removeItem(x))}catch(e){}
   try{const u=new URL(location.href);if(u.searchParams.has('payment')){u.searchParams.delete('payment');history.replaceState(null,'',u)}}catch(e){}
   show('quiz');renderQs()}
@@ -1321,7 +1334,12 @@ $('#calcBack').addEventListener('click',()=>show('landing'));
 $('#calcTest').addEventListener('click',()=>{const pe=$('#cPeso').value,al=$('#cAlt').value;if(pe&&+pe>=35&&+pe<=140)A.peso=pe;if(al&&+al>=140&&+al<=210)A.altura=al;A.fis=$('#cFis').value;A.idade=$('#cIdade').value;step=0;show('quiz');renderQs()});
 
 $('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
-$('#back').addEventListener('click',()=>{if(step===0){show('landing');return}step--;renderQs()});
+$('#back').addEventListener('click',()=>{
+  if(step>0){step--;renderQs();return}
+  if(!editBackup){show('landing');return}
+  Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,editBackup);
+  editBackup=null;RES=compute();renderReport();show('report');
+});
 $('#next').addEventListener('click',()=>{
   const m=missing();
   if(m.length){$('#err').textContent='Falta responder: '+m.map(q=>q.t.replace('?','')).join(' · ');$('#err').hidden=false;return}
@@ -1340,7 +1358,7 @@ function conv(){const o={};Q.forEach(q=>{if(q.cond&&!q.cond())return;if(q.type==
   const im=o.imp||IMPDEF;o.flut=im.rem-im.man>=3||im.est-im.man>=4?0:im.man-im.rem>=3?2:1;const M={4:0,7:1,6:2,8:4,9:5};const man=(o.skills||[]).filter(x=>x in M).map(x=>M[x]);if(man.length)o.manobras=man;return o}
 
 /* ---------- análise ---------- */
-let RES=null,tier=0;
+let RES=null,tier=0,editLeft=0,editBackup=null;
 function compute(){
   const a=conv();const r=engine(a,false);MINL=r.minL||{};FIXL=r.fixL||{};const f0=r.fins[0],k=f0.k;
   const d=dims(k,f0.vol,r.peso,r.alt);r.d=d;const dc=decide(r,k);
@@ -1357,6 +1375,17 @@ function compute(){
   return Object.assign(r,{k,d,dc,ix:boardIdx(k,d,dc,r.peso),atual,atualRef});
 }
 function runAnalysis(){
+  if(editBackup){
+    const revised=compute();
+    const checkout=window.SportDNAPayments;
+    if(checkout?.enabled&&!checkout.saveRevision('surf-report')){
+      $('#err').textContent='Não foi possível salvar esta correção. Reabra seu relatório e tente novamente.';
+      $('#err').hidden=false;
+      return;
+    }
+    RES=revised;editLeft=0;editBackup=null;renderReport();show('report');
+    return;
+  }
   show('analysis');
   const steps=['Lendo seu peso, altura e idade','Calculando seu nível pelo que você já faz na onda','Cruzando seu estilo com os '+KEYS.length+' tipos de prancha','Calculando litragem e medidas para o seu mar',A.motivo!=='0'&&A.atual_mod&&A.atual_mod!=='0'?'Comparando com a sua prancha atual':'Montando a sua prévia'];
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
@@ -1373,7 +1402,7 @@ const BXP=['Rema fácil','Estável','Rápida','Vira fácil','Onda grande'];
 const PRL=i=>i===0?'Remada e estabilidade':BXP[i],N5=v=>Math.round(v/2);
 const PN=Object.fromEntries(KEYS.map(k=>[k,ARCH[k].n]));
 const PL={soft:'Prancha de espuma para aprender',long:'Prancha longa',longp:'Prancha longa esportiva',minimal:'Prancha média-grande',mid:'Prancha média e arredondada',evo:'Pranchinha com mais volume',fish:'Prancha curta e larga',grov:'Pranchinha larga para onda pequena',twin:'Prancha curta de duas quilhas',softp:'Prancha de espuma curta',short:'Pranchinha',step:'Pranchinha para onda grande',gun:'Prancha para onda gigante'};
-const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Entre a prancha de escolinha e a pranchinha. Rema fácil, entra cedo na onda e desliza bem.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha padrão de quem já surfa: curta, triquilha e rápida de responder. A litragem certa para você é o que faz ela remar bem.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
+const PD={soft:'Macia, grande e larga. Boia muito e é a forma mais rápida de ficar de pé.',long:'Acima de 9 pés (2,75 m). Boia muito, desliza em qualquer marola e permite andar sobre ela.',longp:'Longa como um longboard, mas aceita curvas fortes na parede da onda.',minimal:'Entre 7 e 8 pés, larga e grossa. A ponte entre a escolinha e as primeiras curvas.',mid:'Para um surf de linha, com curvas mais longas na parede da onda. O volume extra em relação a uma pranchinha típica dá mais flutuação, facilita a remada e ajuda a entrar mais cedo na onda.',evo:'Formato de pranchinha com mais espuma para remar. Boa para aprender as primeiras manobras.',fish:'Curta, larga e com rabeta em V. Ganha velocidade sozinha em onda fraca.',grov:'Pranchinha encurtada e larga para dias pequenos.',twin:'Curta, solta e rápida, com duas quilhas. Faz curvas longas.',softp:'Curta e de espuma. Divertida, quase indestrutível, boa para viagem.',short:'A prancha padrão de quem já surfa: curta, triquilha e rápida de responder. A litragem certa para você é o que faz ela remar bem.',step:'Um pouco maior que a pranchinha, para entrar cedo em onda grande.',gun:'Longa e fina, para ondas gigantes.'};
 /* ilustrações dos tipos (geradas por IA, sem marca) em img/tipos/<tipo>.webp; tipo sem imagem cai no desenho */
 const TIMG=new Set(['mid','short','soft','long','longp','minimal','evo','fish','twin','softp','step','gun','grov','short-round','short-roundpin','evo-round','evo-roundpin','mid-round','longp-round']);
 /* variante pela rabeta escolhida pelo motor (ex.: short-roundpin.webp); sem variante, usa a do tipo */
@@ -1495,7 +1524,7 @@ function pix(){
     $('#pxBody').innerHTML=`<div class="status" style="justify-content:center;padding:28px 0"><span class="pulse"></span><span>Confirmando com o banco…</span></div>`;
     setTimeout(()=>{
       if(!$('#pxBody'))return;
-      tier=2;renderReport();show('report');
+      tier=2;editLeft=1;renderReport();show('report');
       $('#pxBody').innerHTML=`<div class="okbig">✓</div><h3 style="text-align:center">Pagamento confirmado</h3><p class="muted" style="text-align:center">Seu relatório está liberado.</p>
         <button class="btn btn-go" type="button" id="pxPdf" style="width:100%;margin-top:14px">Baixar relatório em PDF (A4)</button>
         <button class="btn btn-ghost" type="button" id="pxSee" style="width:100%;margin-top:8px">Ver relatório na tela</button>
@@ -1625,7 +1654,7 @@ function briefing(r,c){
 }
 function matchSection(r){
   return `<section class="panel smatch" id="seuMatch" aria-labelledby="smT">
-  <div class="smhead"><div><p class="eyebrow">Seu DNA</p><h2 id="smT">Faça sua prancha com um especialista</h2><p class="muted" style="margin-top:6px;max-width:60ch">Juntamos tudo o que você respondeu e a prancha que calculamos numa mensagem pronta. O ${COACH.nome.split(' ')[0]} avalia o resultado, traz a experiência de campo para refinar as medidas e fecha com você modelo, shaper e encomenda.</p></div></div>
+  <div class="smhead"><div><p class="eyebrow">Seu DNA</p><h2 id="smT">Faça sua prancha com um especialista</h2><p class="muted" style="margin-top:6px;max-width:60ch"><strong>Encomende sua prancha direto com a fábrica, sem intermediários.</strong> O especialista ajuda você a buscar melhores condições de preço, refina as medidas e indica o modelo e o shaper. Seu resultado já vai pronto na mensagem.</p></div></div>
   <div class="coach">
     <img class="cfoto" src="${COACH.foto}" alt="Gustavo Lucas, surf coach" width="112" height="112">
     <div class="cinfo">
@@ -1678,7 +1707,7 @@ function whyV(r,max){
   return out.slice(0,max||out.length).join('');
 }
 /* ---------- relatório pago: esqueleto comum SPORT DNA (resultado, por que, atual × nova, alternativas, comparador, guia, DNA, ficha) ---------- */
-const RSEC=[['r-resultado','Resultado'],['r-porque','Por que combina'],['r-troca',null],['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica']];
+const RSEC=[['r-resultado','Resultado'],...(COACH_ON?[['seuMatch','Especialista']]:[]),['r-porque','Por que combina'],['r-troca',null],['r-alt','Alternativas'],['r-cmp','Comparador'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica'],['r-guia','Guia de compra']];
 function reportNav(r){
   return `<nav class="rnav" aria-label="Seções do relatório">
     <div class="rnav-top"><button class="btn btn-ghost btn-sm" type="button" id="rBack" aria-label="Voltar para a prévia">← Voltar</button><button class="btn btn-ghost btn-sm" type="button" id="rHome" aria-label="Início do SURF DNA">Início</button><button class="btn btn-ghost btn-sm" type="button" id="rNew">Fazer outro teste</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
@@ -1714,6 +1743,16 @@ function behaviorChart(r){
     return `<div class="pb"><span class="pbl">${l}</span><div class="pbt"><i class="pbar" style="width:${a[i]*10}%"></i>${b?`<b class="pbm" style="left:${b[i]*10}%"></b>`:''}</div><span class="pbd mono ${b?(dv>0.25?'up':dv<-0.25?'dn':''):''}">${b?(Math.abs(dv)<0.25?'igual':(dv>0?'+':'−')+dec1(Math.abs(dv))):dec1(a[i])}</span></div>`}).join('')}</div>
   <p class="note">${b?'<span class="key k1"></span>Nova prancha <span class="key k2"></span>Sua atual · notas de 0 a 10; à direita, a diferença':'Notas de 0 a 10 da prancha nova'}</p>`;
 }
+function closeBoardFit(r){
+  if(!r.atual)return '';
+  const current=rankAll(r).find(x=>x.k===r.atual.k);
+  const best=r.fins[0].fit;
+  if(!current||current.fit<90||Math.abs(best-current.fit)>3)return '';
+  const outside=Math.abs(r.atual.d.V-r.d.V)>r.rng;
+  const measured=r.atual.soV;
+  const advice=outside?'Vale olhar a diferença de litragem antes de decidir.':measured?'Se ela está funcionando bem no seu mar, faz sentido continuar com ela.':'Confira a litragem real antes de decidir se vale trocar.';
+  return `O tipo da sua prancha atual já combina muito bem com seu surf: ${current.fit}% contra ${best}% da recomendada. A diferença no DNA Score é pequena. ${advice}`;
+}
 function trocaSec(r){
   const c=r.atual;
   if(!c)return `<section class="panel rsec" id="r-troca" aria-labelledby="h-troca"><div><h2 id="h-troca">Como ela se comporta</h2><p class="muted">${r.atualRef?'Sem as medidas da sua prancha atual, mostramos só a nova.':'Você não informou uma prancha atual, então mostramos só a nova.'}</p></div>${behaviorChart(r)}</section>`;
@@ -1741,7 +1780,7 @@ function cmpPanel(r){
   return `<section class="panel rsec" id="r-cmp" aria-labelledby="h-cmp"><details class="fold"><summary><span><h2 id="h-cmp" class="fh">Comparador</h2><small>Escolha duas pranchas e veja, na mesma escala, o que muda no formato, nas medidas e no comportamento.</small></span></summary>
   <div class="foldin"><div class="cmpsel">${sel('cmpA',a,'Prancha A')}${sel('cmpB',b,'Prancha B')}</div><div id="cmpOut" style="display:flex;flex-direction:column;gap:16px">${compareHTML(r,a,b)}</div></div></details></section>`;
 }
-/* 7 · guia de compra */
+/* guia de compra */
 /* faixa de comprimento: até o intermediário avançado, puxada para cima (é mais fácil errar para menor) · rodada 13 */
 const faixaL=r=>r.lvl<=3?[r.d.L-1,r.d.L+3]:[r.d.L-2,r.d.L+2];
 function guiaSec(r){
@@ -1750,12 +1789,12 @@ function guiaSec(r){
     ['Na loja',[`Procure primeiro pelos litros: de ${lo} a ${hi} L. Vêm escritos no fundo, junto das medidas.`,(r.lvl<=3?`Depois o comprimento: de ${ftin(faixaL(r)[0])} a ${ftin(faixaL(r)[1])}. Na dúvida, fique com a maior: no seu nível, errar para menor custa mais ondas.`:`Depois o comprimento: perto de ${ftin(d.L)}, 2" para mais ou para menos.`),'Escolha pelo tipo e pelas medidas, não pela marca.']],
     ['O que perguntar',['Quantos litros ela tem? É PU ou epóxi?','As quilhas vêm junto? Dá para trocar se não servir?']],
     ['Usada ou nova',['Usada custa menos e serve bem enquanto você evolui.','Fuja de rachaduras, amassados fundos e manchas escuras ou amareladas (água dentro). Aperte o deck no pé de trás: não pode afundar fácil.','Nova vale quando você quer material e medidas exatos.']],
-    ['Quando encomendar ao shaper',['Quando a loja não tem os seus litros e medidas, ou você quer escolher o material.',`Leve a <a href="#r-ficha" data-jump>ficha técnica</a> do fim deste relatório e pergunte o prazo.`]]
+    ['Quando encomendar ao shaper',['Quando a loja não tem os seus litros e medidas, ou você quer escolher o material.',`Leve a <a href="#r-ficha" data-jump>ficha técnica</a> deste relatório e pergunte o prazo.`]]
   ];
   return `<section class="panel rsec" id="r-guia" aria-labelledby="h-guia"><div><h2 id="h-guia">Guia de compra</h2><p class="muted">Como achar a sua prancha na loja ou mandar fazer. Nenhuma marca paga para aparecer aqui.</p></div>
   <div class="guia">${G.map(([t,L])=>`<div class="gcard"><h3>${t}</h3><ul>${L.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div></section>`;
 }
-/* 8 · seu DNA: os dois cards e os botões */
+/* seu DNA: os dois cards e os botões */
 function dnaSec(r){
   return `<section class="panel rsec" id="r-dna" aria-labelledby="h-dna"><div><h2 id="h-dna">Seu DNA</h2><p class="dnaarch" id="cardArch">${esc(archetype(r))}</p><p class="muted">Dois cards prontos para o story do Instagram ou o status do WhatsApp: o seu jeito de surfar e a sua prancha. E o seu parceiro de surf, pega onda como você?</p></div>
   <div class="dnacards">
@@ -1763,7 +1802,7 @@ function dnaSec(r){
     <figure class="dnac"><div id="cardBoard" class="cardwrap" aria-label="Card da sua prancha"></div><figcaption>A prancha do seu surf</figcaption><div class="row"><button class="btn btn-go btn-sm" type="button" id="shareBoard" aria-label="Compartilhar card da prancha">Compartilhar</button><button class="btn btn-ghost btn-sm" type="button" id="dlBoard" aria-label="Salvar card da prancha">Salvar</button></div></figure>
   </div><p class="note" id="cardMsg" aria-live="polite"></p></section>`;
 }
-/* 9 · ficha técnica no fim (SURF): as 17 variáveis numa tabela só, com Copiar */
+/* ficha técnica (SURF): as 17 variáveis numa tabela só, com Copiar */
 function fichaGroups(r){
   const d=r.d,dc=r.dc;
   return [
@@ -1784,12 +1823,14 @@ function renderReport(){
   const r=RES,k=r.k,d=r.d,dc=r.dc,w=r.fins[0];
   let h=reportNav(r);
   /* 1 · seu resultado */
+  const fitNote=closeBoardFit(r);
   h+=`<section class="rsec rgrp" id="r-resultado" aria-labelledby="h-res">
   <div class="panel winner">
     <div class="whead"><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><p class="eyebrow">Seu resultado</p><h2 id="h-res">${PN[k]}</h2><span class="tech">Em palavras simples: <b>${PL[k]}</b>${dc.variant?` · versão <b>${dc.variant}</b>`:''}</span></div>
       <div class="fitbox"><div class="fitring" style="--p:${w.fit}"><b>${w.fit}%</b></div><span class="fitl">DNA Score</span></div></div>
     <p class="sline"><span class="mono">${ftin(d.L)} × ${frac(d.W)} × ${frac(d.T)}</span> · <b class="mono">${dec1(d.V)} L</b></p>
     <p class="muted" style="font-size:16px;max-width:60ch">${PD[k]}</p>
+    ${fitNote?`<p class="muted" style="font-size:16px"><strong>${fitNote}</strong></p>`:''}
     ${TIMG.has(k)?timg(k,'hero',dc.tail):''}
   </div>
   <div class="panel">
@@ -1802,22 +1843,25 @@ function renderReport(){
       <div class="dlist">${detailRows(r).map(x=>`<div class="dr"><p class="drl"><b>${x[0]}</b> <span>${x[1]}</span></p><p class="drv">${esc(x[2])}</p><p class="drd">${esc(x[3])}</p></div>`).join('')}</div>
     </div>
   </div></section>`;
-  /* 2 · por que combina */
+  if(COACH_ON)h+=matchSection(r);
+  /* por que combina */
   h+=`<section class="panel rsec" id="r-porque" aria-labelledby="h-porque"><h2 id="h-porque">Por que combina</h2><div class="why-cards">${whyR(r)}</div>
     <div class="attn"><h3>Pontos de atenção</h3>${attR(r)}</div></section>`;
   h+=trocaSec(r);
   h+=altSec(r);
   h+=cmpPanel(r);
-  h+=guiaSec(r);
   h+=dnaSec(r);
-  if(COACH_ON)h+=matchSection(r);
   h+=fichaSec(r);
+  if(tier>=2&&editLeft>0)h+=`<section class="panel rsec" aria-labelledby="h-edit"><h2 id="h-edit">Errou alguma resposta?</h2><p>Você pode corrigir o questionário uma vez. O relatório é recalculado sem novo pagamento.</p><div><button class="btn btn-ghost" type="button" id="editAns">Editar respostas</button></div></section>`;
+  h+=guiaSec(r);
   h+=`<div class="rfoot"><button class="btn btn-pri" type="button" id="pdfBot">Baixar relatório em PDF (A4)</button><button class="btn btn-ghost" type="button" id="again">Fazer outro teste</button><span class="note pdfst" aria-live="polite"></span></div>`;
   $('#report').innerHTML=h;
   wireMatch(r);
   wireCmp(r);
   wireCards(r);
   $('#again').onclick=newTest;$('#rNew').onclick=newTest;
+  const edit=$('#editAns');
+  if(edit)edit.onclick=()=>{editBackup=JSON.parse(JSON.stringify(A));step=0;show('quiz');renderQs()};
   $('#rBack').onclick=()=>show('preview');
   $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
@@ -2036,7 +2080,8 @@ ${`  <div class="pbox s"><h3>Glossário</h3><div class="pgl">${[['Litragem','Vol
   <div class="p4wa"><span><b>WhatsApp</b> ${COACH.tel}</span><span>wa.me/${COACH.wa}</span><span>@${COACH.ig}</span></div></div></div>
   <div class="p4steps"><div><i>1</i><b>Mande o seu DNA</b><span>No relatório on-line, toque em “Entrar em contato pelo WhatsApp”. A mensagem já vai com tudo o que está abaixo.</span></div><div><i>2</i><b>Ele avalia e refina</b><span>Confere o resultado com o que vê na água: coaching em vídeo, análise por imagem ou aula no Litoral Norte de SP.</span></div><div><i>3</i><b>Modelo, shaper e encomenda</b><span>Indica o modelo e o shaper certos, direto da fábrica, com entrega em todo o Brasil.</span></div></div>
   <div class="pbox"><h3>Seu DNA de surf: o resumo que o ${COACH.nome.split(' ')[0]} recebe</h3><div class="p4dna">${B.map(([t2,rows])=>`<div class="p4grp${/Recomenda/.test(t2)?' rec':''}"><h4>${esc(t2)}</h4>${dl(/Recomenda/.test(t2)?rows.filter(([k2])=>k2!=='Finalistas'):rows)}</div>`).join('')}</div></div>`;
-  const atBox=at?`<div class="pbox s"><h3>Por que a sua atual ficou para trás</h3><p style="font-size:10.5px">${esc(behind)}</p></div>`:'';
+  const fitNote=closeBoardFit(r);
+  const atBox=at?`<div class="pbox s"><h3>Sua prancha atual</h3><p style="font-size:10.5px">${esc(fitNote||behind)}</p></div>`:'';
   return `<div class="pdfdoc" aria-hidden="true">${pdfPage(1,'Veredito',p1)}${pdfPage(2,'Seu surf × a prancha',p2+p2pod+atBox)}${pdfPage(3,'Setup e compra',p3+p3b,'lite')}${COACH_ON?pdfPage(4,'Seu especialista',p4):''}</div>`;
 }
 /* bibliotecas servidas pelo próprio site (nada de CDN: redes que bloqueiam CDN e o Safari continuam gerando o PDF) */
@@ -2109,7 +2154,7 @@ const k2slug=t=>t.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
 window.SportDNAPayments?.register({name:'surf',snapshot:()=>JSON.parse(JSON.stringify(A)),
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers);RES=compute()},
- unlock:()=>{tier=2;renderReport();show('report')}});
+ unlock:(_product,revised)=>{tier=2;editLeft=revised?0:1;editBackup=null;renderReport();show('report')}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 })();
 </script>
