@@ -26,7 +26,7 @@
  const random=()=>[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join('');
  async function api(path,options={}) {
   const response=await fetch(config.api+path,{...options,headers:{'Content-Type':'application/json',...options.headers},cache:'no-store',signal:AbortSignal.timeout(18000)});
-  const data=await response.json();if(!response.ok) throw new Error(data.error||'Não foi possível confirmar o pagamento.');return data;
+  const data=await response.json();if(!response.ok){const error=new Error(data.error||'Não foi possível confirmar o pagamento.');error.category=response.status>=500?'unavailable':'rejected';throw error}return data;
  }
  function close(){clearTimeout(timer);if(dialog){dialog.close();dialog.remove();dialog=null}}
  /* visual do checkout: usa as cores de cada app (--pri, --ball, --surface…) */
@@ -104,10 +104,13 @@
   }
   const button=el('button','btn btn-ghost sp-sec','Já paguei: verificar agora');button.type='button';button.onclick=()=>{clearTimeout(timer);check()};body.append(button);check();
  }
- function open(product){
+ function open(product,options={}){
   if(!enabled)return false;
   if(!productInfo(product)){panel('Pagamento indisponível');message('Não conseguimos carregar esta oferta. Atualize a página antes de pagar.');return true;}
   const body=panel('Liberar o relatório');
+  const measurement={position:options.position,example:options.example===true};
+  try{void window.SportDNAMeasure?.checkoutOpen?.(product,measurement)}catch{/* Medição opcional. */}
+  function checkoutError(category,provider){try{void window.SportDNAMeasure?.checkoutError?.(product,{...measurement,category,method:provider==='stripe'?'card':'pix'})}catch{/* Medição opcional. */}}
   summary(body,product);
   const price=money(productInfo(product).amount);
   // 1) forma de pagamento: Pix já vem marcado (o mais usado no Brasil)
@@ -137,14 +140,14 @@
   function needEmail(text){err.textContent=text;field.hidden=false;email.setAttribute('aria-invalid','true');email.focus()}
   cta.onclick=async()=>{
    const provider=method;if(busy)return;
-   if(provider==='mercadopago'&&!emailOk()){needEmail('Digite um e-mail válido para gerar o Pix.');return}
+   if(provider==='mercadopago'&&!emailOk()){needEmail('Digite um e-mail válido para gerar o Pix.');checkoutError('invalid_email',provider);return}
    email.removeAttribute?.('aria-invalid');err.textContent='';
    busy=true;cta.disabled=true;message(provider==='mercadopago'?'Gerando o Pix…':'Abrindo o pagamento com cartão…');
    try{
     const current=get();const p=current?.app===app.name&&current.product===product&&current.provider===provider?current:{id:crypto.randomUUID(),token:random(),app:app.name,product,provider,answers:app.snapshot()};
     save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:email.value}:{})})});
     try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
-   }catch(e){message(e.message);cta.disabled=false}finally{busy=false}
+   }catch(e){checkoutError(e.category||(['TimeoutError','AbortError'].includes(e.name)?'timeout':e.name==='TypeError'?'network':'invalid_response'),provider);message(e.message);cta.disabled=false}finally{busy=false}
   };
   // 4) código promocional, recolhido
   const det=document.createElement('details');const sum=document.createElement('summary');sum.innerHTML=ICON.tag+'<span>Tenho um código promocional</span>';det.append(sum);
