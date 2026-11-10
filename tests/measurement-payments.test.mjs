@@ -76,3 +76,48 @@ test('a failed acknowledgment can retry without deleting old purchase markers',a
  const retry=b.measure.purchase(o);await new Promise(setImmediate);const last=events(b).filter(x=>x.event==='purchase').at(-1);
  b.handlers.message({origin:'https://sportdna.com.br',source:b.frame().contentWindow,data:{type:'sd_done',id:last.id,queued:true}});await retry;assert.equal(b.stored.get('sd_sale_'+o.measurement.transaction_id),'1');
 });
+
+const quizEvents=b=>b.messages.filter(x=>x.type==='sd_measure'&&x.event.startsWith('quiz_')).map(x=>x.event);
+const settle=()=>new Promise(setImmediate);
+function choose(b,value){const banner=b.nodes.find(n=>n.id==='sd-consent'&&!n.removed);assert(banner,'consent banner');banner.listeners.click({target:{closest:()=>({dataset:{choice:value}})}})}
+function revoke(b){b.stored.set('sd_consent_v1',JSON.stringify({version:1,analytics:false,marketing:false,at:Date.now()}));b.handlers.storage({key:'sd_consent_v1'})}
+
+test('valid consent before the test: one start and one completion',async()=>{
+ const b=browser({path:'/racket/'});b.measure.screen('quiz');await settle();b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_start','quiz_complete']);
+});
+test('initial refusal throughout: no start and no completion',async()=>{
+ const b=browser({path:'/racket/',choice:false});b.measure.screen('quiz');await settle();b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),[]);
+});
+test('consent accepted only after the test started: completion without backfilling start',async()=>{
+ const b=browser({path:'/racket/',choice:false});b.measure.screen('quiz');await settle();assert.deepEqual(quizEvents(b),[]);
+ choose(b,'accept');await settle();b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_complete']);
+});
+test('revocation during the test: no completion after revocation',async()=>{
+ const b=browser({path:'/racket/'});b.measure.screen('quiz');await settle();revoke(b);b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_start']);
+});
+test('duplicate screen notifications do not create duplicate events',async()=>{
+ const b=browser({path:'/racket/'});b.measure.screen('quiz');b.measure.screen('quiz');await settle();b.measure.screen('analysis');b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_start','quiz_complete']);
+});
+test('standalone example or restored report in a fresh document is not a completed quiz',async()=>{
+ const b=browser({path:'/racket/'});b.measure.screen('analysis');await settle();b.measure.screen('preview');b.measure.screen('report');await settle();
+ assert.deepEqual(quizEvents(b),[]);
+});
+test('bridge readiness within the wait window preserves the start',async()=>{
+ const b=browser({path:'/racket/',autoReady:false});b.measure.screen('quiz');await settle();assert.deepEqual(quizEvents(b),[]);b.ready();await settle();b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_start','quiz_complete']);
+});
+test('consented quiz waits beyond two seconds for a slow bridge without losing start',async()=>{
+ const b=browser({path:'/racket/',autoReady:false});b.measure.screen('quiz');await new Promise(resolve=>setTimeout(resolve,2050));b.ready();await settle();b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_start','quiz_complete']);
+});
+
+test('revocation cancels a quiz waiting for a slow bridge, even if consent is later granted',async()=>{
+ const b=browser({path:'/racket/',autoReady:false});b.measure.screen('quiz');await settle();revoke(b);await settle();
+ choose(b,'accept');b.ready();await settle();b.measure.screen('analysis');await settle();
+ assert.deepEqual(quizEvents(b),['quiz_complete']);
+});
