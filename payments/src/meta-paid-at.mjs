@@ -25,7 +25,8 @@ export async function verifiedPaidAt(order,env,fetcher=fetch,now=Date.now()){
   key=env.STRIPE_LIVE_KEY;url='https://api.stripe.com/v1/checkout/sessions/'+order.provider_id+'?'+new URLSearchParams({'expand[0]':'payment_intent.latest_charge'});headers['Stripe-Version']='2026-09-30.endive';
  }else return null;
  try{
-  const r=await fetcher(url,{method:'GET',redirect:'error',headers:{...headers,Authorization:'Bearer '+key},signal:AbortSignal.timeout(10000)});
+  // Workers supports manual/follow only. Reject 3xx below without forwarding credentials.
+  const r=await fetcher(url,{method:'GET',redirect:'manual',headers:{...headers,Authorization:'Bearer '+key},signal:AbortSignal.timeout(10000)});
   if(!r.ok)return null;const text=await r.text();if(text.length>500000)return null;const data=JSON.parse(text);
   return order.provider==='stripe'?stripePaidAt(data,order,now):mpPaidAt(data,order,now);
  }catch{return null}
