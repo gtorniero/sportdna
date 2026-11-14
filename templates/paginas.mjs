@@ -420,7 +420,7 @@ export function paginas(h) {
   <div class="prose">${corpo}</div>
  </div></article>`;
  const precos = `<ul>
-   <li><b>RACKET DNA</b>, relatório completo da raquete de tênis: ${h.price('racket-report')}. Inclui o comparador de raquetes, que também é vendido sozinho por ${h.price('racket-comparator')}.</li>
+   <li><b>RACKET DNA</b>, relatório completo da raquete de tênis: ${h.price('racket-report')}. Inclui o comparador de raquetes e um reteste grátis, uma vez, em até 90 dias depois do pagamento. O comparador avulso (${h.price('racket-comparator')}) não é mais vendido; quem já comprou continua com acesso.</li>
    <li><b>SURF DNA</b>, relatório completo da prancha de surf: ${h.price('surf-report')}.</li>
    <li><b>RUN DNA</b>, relatório completo do tênis de corrida: ${h.price('run-report')}.</li>
   </ul>`;
