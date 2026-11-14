@@ -432,17 +432,17 @@ table.cmpt{min-width:0}table.cmpt th:first-child{width:28%}table.cmpt tr.df td{b
 .p1top{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:16px;align-items:center}
 .p1top .pl{font-size:12.5px;color:var(--muted)}.p1top .pl b{color:var(--ink)}
 .pscore{text-align:center;font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.p4hero{background:#0E4D64;color:#fff;border-radius:14px;padding:16px 18px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start}
+.p4hero{background:#0E4D64;color:#fff;border-radius:14px;padding:13px 18px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start}
 .p4hero img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #6CCFF6}
 .p4hero h3{color:#fff;font-size:19px;letter-spacing:-.02em}.p4hero .tg{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6CCFF6;margin-top:2px}
 .p4hero p{font-size:10.5px;line-height:1.5;color:rgba(255,255,255,.9);margin-top:6px}.p4hero .pc{font-size:10px}.p4hero .pc b{color:#fff}
 .p4chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.p4chips span{background:#6CCFF6;color:#0B2530;border-radius:99px;padding:3px 9px;font-size:9.5px;font-weight:700}
 .p4wa{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11px;font-weight:700;color:#6CCFF6}.p4wa b{color:#fff}
 .p4hero .p4parc{font-size:9.5px;line-height:1.45;color:#fff;margin-top:9px;border-left:2px solid #6CCFF6;padding-left:7px}
-.p4steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.p4steps div{background:#E3F6FD;border-radius:11px;padding:10px 12px;display:flex;flex-direction:column;gap:3px}
+.p4steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.p4steps div{background:#E3F6FD;border-radius:11px;padding:8px 12px;display:flex;flex-direction:column;gap:3px}
 .p4steps i{font-style:normal;font-size:18px;font-weight:800;color:#0E4D64;font-family:Archivo,sans-serif}.p4steps b{font-size:11.5px;color:#0B2530}.p4steps span{font-size:10px;color:#0B2530;line-height:1.4}
-.p4dna{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px}.p4grp h4{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#0E4D64;margin:0 0 4px;font-weight:800}
-.p4grp dl{display:grid;grid-template-columns:minmax(80px,38%) minmax(0,1fr);gap:2px 8px;margin:0}.p4grp dt{font-size:9.5px;color:var(--muted)}.p4grp dd{margin:0;font-size:9.5px;font-weight:600;overflow-wrap:anywhere}
+.p4dna{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px}.p4grp h4{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#0E4D64;margin:0 0 4px;font-weight:800}
+.p4grp dl{display:grid;grid-template-columns:minmax(80px,38%) minmax(0,1fr);gap:2px 8px;margin:0}.p4grp dt{font-size:9.5px;line-height:1.35;color:var(--muted)}.p4grp dd{margin:0;font-size:9.5px;line-height:1.35;font-weight:600;overflow-wrap:anywhere}
 .p4grp.rec{grid-column:1/-1;background:#E3F6FD;border-radius:10px;padding:9px 11px}.p4grp.rec dl{grid-template-columns:repeat(2,minmax(70px,22%) minmax(0,28%))}
 .pcoach{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:start}.pcoach img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #6CCFF6}.pcoach p{font-size:10.5px;margin-top:4px}.pcoach .pcwa{color:#0E4D64;font-size:11px}
 .pimg{background:#E6F0F2;border-radius:12px;height:170px;display:flex;align-items:center;justify-content:center;overflow:hidden}.pimg img{height:100%;width:auto;max-width:100%;object-fit:contain}
@@ -2217,7 +2217,7 @@ function pdfHTML(r){
   const pod=[1,0,2].filter(i=>fins[i]).map(i=>{const x=fins[i],[L,C]=lead(x,i);return `<div class="ppc p${i+1}"><div><p class="pey">${i+1}º lugar</p><h3>${PN[x.k]}</h3><p class="pms">${ftin(x.d.L)} × ${frac(x.d.W)} × ${frac(x.d.T)} · ${dec1(x.d.V)} L</p></div>
     <div class="ptag"><span><em class="up">Lidera:</em> ${L[1]>0?L[0].toLowerCase():'nenhum índice sozinha'}</span><span><em class="dn">Cede:</em> ${C[1]<0?C[0].toLowerCase():'nada em relação às outras'}</span></div>
     <div class="ppri">${top3.map(([v,j])=>`<div><span>${BXP[j]}</span><span><u style="width:${v*10}%"></u><i style="width:${x.ix[j]*10}%"></i></span><b>${dec1(x.ix[j])}</b></div>`).join('')}</div>
-    <div class="blk" style="height:${[92,70,54][i]}px"><b>${x.fit}%</b><span>DNA Score</span></div></div>`}).join('');
+    <div class="blk" style="height:${[78,60,46][i]}px"><b>${x.fit}%</b><span>DNA Score</span></div></div>`}).join('');
   const p2pod=`<div class="pbox"><h3>O pódio</h3><p class="pnote">${gap<=3?`Empate técnico: o 1º e o 2º lugar estão a ${gap} ponto${gap===1?'':'s'}. As duas servem; a escolha fica pelo que cada uma lidera.`:`A ${PN[k].toLowerCase()} ficou ${gap} pontos à frente do 2º lugar.`} Barras: azul-claro é o que você pediu, escuro é o que a prancha entrega nas suas 3 prioridades.</p>
   <div class="ppod">${pod}</div></div>`;
   const atPos=at?R.findIndex(x=>x.k===at.k):-1;
