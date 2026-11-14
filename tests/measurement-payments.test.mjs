@@ -241,3 +241,15 @@ test('vendor maps the contact to GA4 generate_lead, Meta Contact and custom Cont
  send({type:'sd_measure',event:'generate_lead',path:'/surf/',params:{origem:'relatorio'}});
  assert.equal(window.dataLayer.filter(e=>e[0]==='event').length,1);assert.equal(window.fbq.queue.filter(e=>e[2]==='Contact').length,1);
 });
+test('buying guides: page view measured with the real path and the racket category; institutional pages stay out',()=>{
+ const guides=['/guias/racket/melhor-raquete-de-tenis/','/guias/racket/melhor-raquete-de-tenis-para-iniciante/','/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/'];
+ for(const path of guides){const b=browser({path,canonical:'https://sportdna.com.br'+path});assert.equal(events(b).filter(e=>e.event==='page_view').length,1,path);assert.equal(events(b)[0].path,path)}
+ for(const path of ['/sobre/','/contato/','/termos/','/como-ganhamos-dinheiro/','/guias/racket/outro/']){const b=browser({path});assert.equal(events(b).length,0,path)}
+ const handlers={},parent={postMessage(){}},window={addEventListener(n,f){handlers[n]=f}};
+ vm.runInNewContext(vendor,{window,parent,location:{origin:'https://sportdna.com.br'},document:{createElement:()=>({}),head:{appendChild(){}}},URLSearchParams,Number});
+ const send=data=>handlers.message({origin:'https://sportdna.com.br',source:parent,data});send({type:'sd_init',analytics:true,marketing:true});
+ for(const path of guides)send({type:'sd_measure',event:'page_view',path});
+ send({type:'sd_measure',event:'page_view',path:'/guias/racket/outro/'});
+ const views=Array.from(window.fbq.queue.filter(e=>e[2]==='PageView'),e=>Array.from(e));
+ assert.deepEqual(views.map(e=>e[3].page_path),guides);for(const e of views)assert.equal(e[3].content_category,'racket');
+});
