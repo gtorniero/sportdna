@@ -584,6 +584,27 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
   table.stk th,table.stk td{border:0;padding:2px 6px}
   table.stk td::before{content:attr(data-l) ": ";font-weight:700;color:var(--muted)}
 }
+
+/* nov/2026: progresso do questionário, medidas opcionais recolhidas, exemplo pronto e cartão de retomada */
+.qhead{display:flex;flex-direction:column;gap:10px}
+.qmeta{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:700}
+.qmeta #pcount{color:var(--muted);font-weight:600;white-space:nowrap}
+.qbar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pri),color-mix(in srgb,var(--pri) 55%,var(--ball)));border-radius:99px;transition:width .35s ease}
+@media (prefers-reduced-motion: reduce){.qbar i{transition:none}}
+.qhead .steps{gap:8px}
+.qhead .steps li{flex:0 0 auto;border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:13px}
+.qhead .steps li.on{background:var(--pri);border-color:var(--pri);color:var(--pri-ink)}
+.qhead .steps li.done{color:var(--ink);border-color:var(--line)}
+.bdfold summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;gap:10px;color:var(--pri);list-style:none}.bdfold summary::-webkit-details-marker{display:none}.bdfold summary::before{content:"+";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid currentColor;font-size:16px;line-height:1;flex:none}.bdfold[open] summary::before{content:"−"}
+.bdfold[open] summary{margin-bottom:6px}
+.exbox{border:2px solid var(--pri)}
+.exbox h2{font-size:clamp(22px,5vw,30px);margin:0}
+.resumecard{border:2px solid var(--pri);gap:12px}
+.resumecard h2{font-size:clamp(20px,4.6vw,26px);margin:0}
+.resumecard .pend{background:var(--soft);border-radius:12px;padding:12px 14px;margin:0}
+.resumecard .row .btn{flex:1 1 160px}
+.resumecard .rcx{background:none;border:0;padding:4px 0;min-height:24px;font:inherit;font-size:13px;color:var(--muted);text-decoration:underline;cursor:pointer;align-self:flex-start}
 </style>
 
 <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
@@ -599,6 +620,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
   <!-- LANDING -->
   <main id="conteudo" class="a11y-main" role="main">
   <section id="landing" style="display:flex;flex-direction:column;gap:28px">
+    <section id="resumeCard" class="panel resumecard" aria-labelledby="rcT" hidden></section>
     <div class="hero">
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Análise técnica independente</p>
@@ -674,7 +696,11 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
   <!-- QUIZ -->
   <section id="quiz" hidden>
     <div class="panel">
-      <ol class="steps" id="steps"></ol>
+      <div class="qhead">
+        <div class="qmeta"><span id="psec">1/5 · Seu corpo</span><span id="pcount">0% · ~3 min</span></div>
+        <div class="qbar" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pbarW"><i id="pfill"></i></div>
+        <ol class="steps" id="steps" aria-label="Etapas"></ol>
+      </div>
       <div class="qs" id="qs"></div>
       <p class="err" id="err" hidden></p>
       <div class="nav">
@@ -1234,7 +1260,15 @@ document.getElementById('bbVar').textContent=CB.length;
 })();
 const EXAMPLE={foam:'0',peso:'70',altura:'170',idade:'2',fis:'1',nivel:'1',tempo:'3',freq:'1',auto:'2',pass:'2',skills:['1','2','3','4','5'],objv:['2'],imp:{rem:6,est:6,vel:8,man:6,ctl:4},estilo:'0',tam:'1',forca:'0',motivo:'1',uso:'0',atual_mod:'10',atual_dim:{ft:'6',in:'2',l:'35'},muda:'2',incomoda:'0'};
 
-function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
+/* progresso (nov/2026), igual ao RACKET DNA: etapa, % respondido e tempo que falta (8 s por pergunta) */
+function qAnswered(q){const v=A[q.id];if(q.type==='rate'||q.type==='board')return q.s<step;if(q.type==='number'){const n=+v;return !!v&&n>=q.min&&n<=q.max}return q.multi?!!(v&&v.length):v!==undefined&&v!==''}
+function progress(){
+  const V=Q.filter(q=>!q.cond||q.cond());const done=V.filter(qAnswered).length;const pct=Math.round(done/V.length*100);
+  const left=Math.max(1,Math.round((V.length-done)*8/60));
+  $('#pfill').style.width=pct+'%';$('#pbarW').setAttribute('aria-valuenow',pct);$('#pbarW').setAttribute('aria-valuetext',`${pct}%, cerca de ${left} min para terminar`);
+  $('#psec').textContent=`${step+1}/${STEPS.length} · ${STEPS[step]}`;$('#pcount').textContent=`${pct}% · ~${left} min`;
+}
+function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}"${i===step?' aria-current="step"':''}>${i<step?'<span aria-hidden="true">✓ </span>':''}${s}${i<step?'<span class="a11y-sr"> (feita)</span>':''}</li>`).join('');progress()}
 function scrollAfterAnswer(q, moveFocus=false){
   const current=$(`#qs [data-q="${q.id}"]`);
   if(!current||$('#quiz').hidden)return;
@@ -1262,11 +1296,12 @@ function renderQs(){
       IMP.forEach(f=>{const el=fs.querySelector('#r_'+f[0]);el.addEventListener('input',()=>{A[q.id][f[0]]=2*el.value;if(f[0]==='rem')A[q.id].est=2*el.value;fs.querySelector('#ro_'+f[0]).textContent=el.value;mark(f[0])});el.addEventListener('change',warn)});IMP.forEach(f=>mark(f[0]));warn();
     }else if(q.type==='board'){
       const v=A[q.id]=A[q.id]||{};
-      fs.innerHTML=`<legend>${q.t} <span class="opt-tag">Opcional</span></legend><p class="help">${q.h}</p>
+      const open=!!(v.ft||v.in||v.l);
+      fs.innerHTML=`<legend>${q.t} <span class="opt-tag">Opcional</span></legend><details class="bdfold"${open?' open':''}><summary>Informar as medidas</summary><p class="help">${q.h}</p>
       <div class="bdim"><div class="bd"><label for="bd_ft">Comprimento</label><div class="bdu"><input id="bd_ft" type="number" inputmode="numeric" min="4" max="12" placeholder="6"><span>pés</span><input id="bd_in" type="number" inputmode="numeric" min="0" max="11" placeholder="0"><span>pol.</span></div></div>
       <div class="bd"><label for="bd_l">Litros</label><div class="bdu"><input id="bd_l" type="number" inputmode="decimal" min="15" max="120" step="0.1" placeholder="35"><span>L</span></div></div>
 </div>
-      <p class="note" id="bd_tip">Exemplo do que vem escrito: 6'0" x 19 1/2" x 2 1/2" · 32 L.</p>`;
+      <p class="note" id="bd_tip">Exemplo do que vem escrito: 6'0" x 19 1/2" x 2 1/2" · 32 L.</p></details>`;
       const ak=ATUAL_K[+A.atual_mod];
       [['bd_ft','ft'],['bd_in','in'],['bd_l','l']].forEach(([id,key])=>{const el=fs.querySelector('#'+id);el.value=v[key]||'';el.addEventListener('input',()=>{v[key]=el.value})});
       try{const e=engine(conv(),false),dd=dims(ak,e.volAll[ak],e.peso,e.alt);
@@ -1306,15 +1341,46 @@ function renderQs(){
 }
 function missing(){return Q.filter(q=>q.s===step&&!q.opt&&q.type!=='rate'&&(!q.cond||q.cond())).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.multi?!(v&&v.length):!v})}
 /* medição consentida: prévia com preço = oferta vista (exemplo pronto não conta), igual ao RACKET DNA */
-let exampleSession=false;
-function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;if(id==='quiz')exampleSession=false;['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('surf-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
+let exampleSession=false,exampleSig='';
+const stable=v=>Array.isArray(v)?'['+v.map(stable).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+stable(v[k])).join(',')+'}':JSON.stringify(v);
+/* relatório completo grátis só para as respostas do perfil fictício */
+const isExample=()=>exampleSession&&!!exampleSig&&stable(A)===exampleSig;
+function show(id){if(id==='landing')renderResume();const enteringPreview=id==='preview'&&$('#preview').hidden;if(id==='quiz')exampleSession=false;['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('surf-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 /* outro teste do zero: limpa as respostas e o relatório guardado nesta sessão do navegador */
+/* Resultado salvo neste aparelho (nov/2026): respostas e um resumo (tipo, litros, DNA), para o cartão de retomada.
+   O pagamento pendente vem do checkout (client.js). Nada aqui libera o relatório: só o servidor confirmando o pagamento. */
+const SF_LAST='sf_last_v1';
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+function saveLast(){try{if(!RES)return;store.set(SF_LAST,JSON.stringify({v:1,a:A,at:Date.now(),k:PN[RES.k],L:dec1(RES.d.V),fit:RES.fins[0].fit}))}catch(e){}}
+const hhmm=t=>new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+const dayTxt=t=>{const d=new Date(t),n=new Date();const y=new Date(n);y.setDate(n.getDate()-1);return d.toDateString()===n.toDateString()?'hoje':d.toDateString()===y.toDateString()?'ontem':'em '+d.toLocaleDateString('pt-BR')};
+function renderResume(){
+  const box=$('#resumeCard');if(!box)return;
+  let last=null;try{last=JSON.parse(store.get(SF_LAST)||'null')}catch(e){}
+  if(last&&(!last.a||typeof last.a!=='object'))last=null;
+  const pay=window.SportDNAPayments?.saved?.()||null;
+  if(!last&&!pay){box.hidden=true;box.innerHTML='';return}
+  const price=pay&&pay.amount?(pay.amount/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}):'';
+  let pend='',btn='';
+  if(pay&&pay.state==='pending'){
+    pend=`<p class="pend">${pay.provider==='mercadopago'?`Você gerou um Pix de ${price} ${dayTxt(pay.at)} às ${hhmm(pay.at)}.`:`Você abriu o pagamento com cartão de ${price} ${dayTxt(pay.at)} às ${hhmm(pay.at)}.`} Ele vale até ${dayTxt(pay.expires)==='hoje'?'hoje':'amanhã'} às ${hhmm(pay.expires)}. Se você já pagou, é só continuar: o relatório abre assim que o banco confirmar.</p>`;
+    btn=`<button class="btn btn-go" type="button" data-rc="pay">${pay.provider==='mercadopago'?'Continuar o Pix':'Continuar o pagamento'}</button>`;
+  }else if(pay&&pay.state==='paid'){pend=`<p class="pend">O seu relatório pago está guardado neste aparelho.</p>`;btn=`<button class="btn btn-go" type="button" data-rc="pay">Abrir meu relatório</button>`}
+  const head=last&&last.k?`<h2 id="rcT">${esc(last.k)}</h2><p class="muted" style="margin:0">${esc(String(last.L))} L · DNA ${+last.fit||''}%</p>`:`<h2 id="rcT">Seu último resultado</h2>`;
+  box.innerHTML=`<p class="eyebrow" style="margin:0">Seu resultado está salvo neste aparelho</p>${head}${pend}<div class="row">${btn}${last?`<button class="btn ${btn?'btn-ghost':'btn-go'}" type="button" data-rc="last">Ver resultado</button>`:''}</div><button class="rcx" type="button" data-rc="del">Apagar deste aparelho</button>`;
+  box.hidden=false;
+  box.querySelectorAll('[data-rc]').forEach(b=>b.onclick=async()=>{const k=b.dataset.rc;
+    if(k==='last'){try{exampleSession=false;Object.keys(A).forEach(x=>delete A[x]);Object.assign(A,last.a);RES=compute();tier=0;renderPreview();show('preview')}catch(e){box.hidden=true}return}
+    if(k==='pay'){b.disabled=true;try{await window.SportDNAPayments.resume()}finally{b.disabled=false}return}
+    if(k==='del'){store.del(SF_LAST);if(pay&&pay.state==='pending')window.SportDNAPayments?.forget?.();renderResume();$('#start').focus()}});
+}
 function newTest(){Object.keys(A).forEach(k=>delete A[k]);RES=null;tier=0;editLeft=0;editBackup=null;step=0;
   try{Object.keys(sessionStorage).filter(x=>/^sportdna-.*-checkout-v1:surf$/.test(x)).forEach(x=>sessionStorage.removeItem(x))}catch(e){}
   try{const u=new URL(location.href);if(u.searchParams.has('payment')){u.searchParams.delete('payment');history.replaceState(null,'',u)}}catch(e){}
   show('quiz');renderQs()}
 $('#start').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
+$('#qs').addEventListener('click',()=>requestAnimationFrame(progress));$('#qs').addEventListener('input',()=>requestAnimationFrame(progress));
 /* ---------- calculadora de litragem (grátis): usa litragem(), a mesma função do motor ---------- */
 const LVD=['ainda com espuma ou empurrão do professor','já pega espuma sozinho e fica de pé','anda na parede e faz as primeiras curvas','faz cavada, batida e rasgada','manobra forte em onda com força'];
 /* tipos mais comuns no 1º lugar do teste em cada nível (3.000 perfis de surf/tools/vies.mjs, nov/2026); o primeiro é o padrão */
@@ -1354,7 +1420,7 @@ $('#calcF').addEventListener('submit',e=>{e.preventDefault();calcRun()});
 $('#calcBack').addEventListener('click',()=>show('landing'));
 $('#calcTest').addEventListener('click',()=>{const pe=$('#cPeso').value,al=$('#cAlt').value;if(pe&&+pe>=35&&+pe<=140)A.peso=pe;if(al&&+al>=140&&+al<=210)A.altura=al;A.fis=$('#cFis').value;A.idade=$('#cIdade').value;step=0;show('quiz');renderQs()});
 
-$('#example').addEventListener('click',()=>{exampleSession=true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
+$('#example').addEventListener('click',()=>{exampleSession=true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));exampleSig=stable(A);runAnalysis()});
 $('#back').addEventListener('click',()=>{
   if(step>0){step--;renderQs();return}
   if(!editBackup){show('landing');return}
@@ -1411,8 +1477,8 @@ function runAnalysis(){
   const steps=['Lendo seu peso, altura e idade','Calculando seu nível pelo que você já faz na onda','Cruzando seu estilo com os '+KEYS.length+' tipos de prancha','Calculando litragem e medidas para o seu mar',A.motivo!=='0'&&A.atual_mod&&A.atual_mod!=='0'?'Comparando com a sua prancha atual':'Montando a sua prévia'];
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
   const lis=[...ul.children];const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  RES=compute();tier=0;
-  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else{renderPreview();show('preview')}};
+  RES=compute();tier=0;if(!exampleSession)saveLast();
+  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(isExample()){editLeft=0;renderReport();show('report')}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
 
@@ -1616,7 +1682,7 @@ function detailRows(r){
 /* ---------- comparar duas pranchas ---------- */
 function cmpOptions(r){
   const o=[['ideal','Sua prancha ideal · '+PN[r.k]]];
-  if(tier>=2)r.fins.slice(1).forEach((x,i)=>o.push(['fin'+(i+1),(i+2)+'º lugar · '+PN[x.k]]));
+  if(tier>=2||isExample())r.fins.slice(1).forEach((x,i)=>o.push(['fin'+(i+1),(i+2)+'º lugar · '+PN[x.k]]));
   if(r.atual)o.push(['atual','Sua prancha atual · '+r.atual.nome]);
   KEYS.forEach(k=>o.push(['k_'+k,PN[k]]));
   return o;
@@ -1789,9 +1855,9 @@ function whyV(r,max){
 }
 /* ---------- relatório pago: esqueleto comum SPORT DNA (resultado, por que, atual × nova, alternativas, comparador, guia, DNA, ficha) ---------- */
 const RSEC=[['r-resultado','Resultado'],...(COACH_ON?[['seuMatch','Especialista']]:[]),['r-porque','Por que combina'],['r-troca',null],['r-alt','Alternativas'],['r-cmp','Comparador'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica'],['r-guia','Guia de compra']];
-function reportNav(r){
+function reportNav(r,ex){
   return `<nav class="rnav" aria-label="Seções do relatório">
-    <div class="rnav-top"><button class="btn btn-ghost btn-sm" type="button" id="rBack" aria-label="Voltar para a prévia">← Voltar</button><button class="btn btn-ghost btn-sm" type="button" id="rHome" aria-label="Início do SURF DNA">Início</button><button class="btn btn-ghost btn-sm" type="button" id="rNew">Fazer outro teste</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
+    <div class="rnav-top">${ex?'':'<button class="btn btn-ghost btn-sm" type="button" id="rBack" aria-label="Voltar para a prévia">← Voltar</button>'}<button class="btn btn-ghost btn-sm" type="button" id="rHome" aria-label="Início do SURF DNA">Início</button><button class="btn btn-ghost btn-sm" type="button" id="rNew">Fazer outro teste</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
     <ul class="rchips">${RSEC.map(([id,l])=>`<li><a class="rchip" href="#${id}" data-jump>${l||(r.atual?'Atual × nova':'Comportamento')}</a></li>`).join('')}</ul>
   </nav>`;
 }
@@ -1900,9 +1966,16 @@ function fichaSec(r){
   <div class="foldin"><div class="row"><button class="btn btn-pri btn-sm" type="button" id="fcopy" aria-label="Copiar ficha técnica">Copiar</button><span class="note" id="fcopied" aria-live="polite"></span></div>
   <table class="ft"><caption class="a11y-sr">Ficha técnica: ${esc(PN[r.k])}</caption><tbody>${G.map(([g,rows])=>`<tr class="ftg"><th colspan="2" scope="colgroup">${g}</th></tr>${rows.map(x=>`<tr><th scope="row">${x[0]}</th><td>${esc(x[1])}</td></tr>`).join('')}`).join('')}</tbody></table></div></details></section>`;
 }
+/* faixa do exemplo pronto: perfil fictício, com o resumo dele */
+function exampleBanner(){
+  const lv=RES&&LV[RES.lvl]?LV[RES.lvl].n.toLowerCase():'';const d=EXAMPLE.atual_dim||{};
+  return `<section class="panel rsec exbox" aria-labelledby="exT"><p class="eyebrow">Exemplo pronto · perfil fictício</p><h2 id="exT">Este é o relatório completo que você recebe.</h2><p style="margin:0">Surfista de nível ${esc(lv)}, ${EXAMPLE.peso} kg e ${EXAMPLE.altura} cm${d.ft?`, que hoje usa uma prancha de ${d.ft}'${d.in||0}" e ${d.l} L`:''}. Nada borrado: role para ver tudo, das medidas às quilhas.</p><div class="row"><button class="btn btn-go" type="button" id="exMine">Fazer o meu teste · prévia grátis</button></div></section>`;
+}
 function renderReport(){
   const r=RES,k=r.k,d=r.d,dc=r.dc,w=r.fins[0];
-  let h=reportNav(r);
+  const ex=isExample();
+  let h=reportNav(r,ex);
+  if(ex)h+=exampleBanner();
   /* 1 · seu resultado */
   const fitNote=closeBoardFit(r);
   h+=`<section class="rsec rgrp" id="r-resultado" aria-labelledby="h-res">
@@ -1943,10 +2016,11 @@ function renderReport(){
   $('#again').onclick=newTest;$('#rNew').onclick=newTest;
   const edit=$('#editAns');
   if(edit)edit.onclick=()=>{editBackup=JSON.parse(JSON.stringify(A));step=0;show('quiz');renderQs()};
-  $('#rBack').onclick=()=>show('preview');
+  if($('#rBack'))$('#rBack').onclick=()=>show('preview');
+  if($('#exMine'))$('#exMine').onclick=newTest;
   $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
-  if(PDFC.key===pdfKey(r)&&PDFC.blob)pdfSay('');schedulePDF(r);
+  if(PDFC.key===pdfKey(r)&&PDFC.blob)pdfSay('');if(!ex)schedulePDF(r);
   const copy=(btn,txt,out)=>{const b=$(btn);if(b)b.onclick=()=>{navigator.clipboard.writeText(txt()).then(()=>{$(out).textContent='Ficha copiada.'},()=>{$(out).textContent='Não deu para copiar: selecione a tabela e copie.'})}};
   copy('#fcopy',()=>r._ficha,'#fcopied');
   /* chips de salto: rolam até a seção, abrem a parte recolhida e põem o foco no título */
@@ -2238,6 +2312,7 @@ window.SportDNAPayments?.register({name:'surf',snapshot:()=>JSON.parse(JSON.stri
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,answers);RES=compute()},
  unlock:(_product,revised)=>{tier=2;editLeft=revised?0:1;editBackup=null;renderReport();show('report')}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
+renderResume();
 })();
 </script>
 
