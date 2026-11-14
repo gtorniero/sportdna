@@ -5,6 +5,34 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 14: estilo em 4 opções, raquete atual empatada e comparador sem placar (nov/2026)
+**Estilo de jogo:**
+- A pergunta tinha 6 opções e até 2 escolhas, com sobreposição. Agora são 4 degraus na mesma régua "do mais básico ao mais avançado", com uma escolha:
+  - ainda estou firmando os golpes (`keep`);
+  - troco bola do fundo (`cnt`);
+  - ataco do fundo (`agg`);
+  - jogo completo (`all`), que é o último degrau.
+- "Subo quando a bola deixa" e "Saque e voleio" entram em jogo completo. Sai o teto de balanço específico de rede.
+- Pesos de `keep`, `cnt`, `agg` e `all` sem mudança.
+- Respostas antigas: `netc`/`net` → `all`; com 2 estilos, fica o mais avançado.
+- `calibrar.mjs`: casos "saque-voleio" agora apontam para `all`. Resultado: top 3 31,4% (igual); "algum indicado no top 3" 38,8% → 38,5% (1 caso).
+
+**Raquete atual empatada ou perto da recomendada** (até 3 pontos, com 90% ou mais):
+- No empate, o resumo diz que a atual empata, que não precisa trocar e que a troca muda a sensação, não o resultado.
+- Perto, diz "só N pontos de diferença".
+- Nos dois casos mostra o que muda na mão, pela ficha (peso, SW, balanço, rigidez, cabeça e padrão).
+
+**Comparador:**
+- Sai o placar: contagem de atributos vencidos, "X ganha em…", destaque de vencedora e posição no ranking do catálogo. Maior nem sempre é melhor para quem joga.
+- Com o teste feito, cada barra mostra o ideal da pessoa (marca lima), e o DNA Score de cada raquete fica com a explicação de que compara cada uma com o perfil, não uma com a outra.
+- O veredito vira "O que muda na mão".
+- Cores da marca: azul-petróleo para a primeira, tinta para a segunda, lima só para o ideal. Sai o verde-oliva (`--alt`).
+
+**Medição:**
+- `regressao.mjs`: 21/21. T19 (estilo), T20 (resumo de empate) e T21 (comparador sem placar) são novos.
+- Os 218 perfis ficam idênticos ao `main`. `calibrar.mjs` igual, salvo 1 caso de saque e voleio.
+- axe: 0 problemas no relatório com o comparador aberto e no comparador da página inicial.
+
 ## Rodada 12: dor atual × histórico, sem degrau dos 60 e neutralidade de evidência (nov/2026, branch de revisão)
 Branch `claude/racket-revisao-motor`, sobre `main` `aa10ad2`. Sem PR, merge ou deploy. Detalhes regra por regra em `docs/racket/revisao-modelo.md`; testes em `racket/tools/regressao.mjs`; dados em `docs/racket/dados/reviews/`.
 

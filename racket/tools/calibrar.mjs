@@ -32,7 +32,7 @@ const BRL={usd:5.2,eur:5.9};
 function resp(c){
   const f=c.perfil||{};const lvl={iniciante:'beg',intermediario:'int',avancado:'adv'}[f.nivel]||'int';
   const pri={controle:'control',conforto:'comfort',potencia:'power',spin:'spin'}[f.prioridade];
-  const est={baseline:'agg',agressivo:'agg','all-court':'all','saque-voleio':'net','contra-ataque':'cnt'}[f.estilo];
+  const est={baseline:'agg',agressivo:'agg','all-court':'all','saque-voleio':'all','contra-ataque':'cnt'}[f.estilo];
   const brl=f.orcamento_brl??(f.orcamento_usd!=null?f.orcamento_usd*BRL.usd:f.orcamento_eur!=null?f.orcamento_eur*BRL.eur:null);
   const a={
     age:String({adulto:35,senior:62,junior:14}[f.idade_faixa]||35),height:'175',weight:'75',

@@ -19,6 +19,8 @@
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
      T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
      T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
+     T19 estilo em 4 degraus (básico → completo) e compatibilidade · T20 resumo quando a raquete atual empata ou fica perto da recomendada
+     T21 comparador sem placar e nas cores da marca
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
    Simulação não é validação de qualidade: estes testes só garantem que as regras fazem o que dizem. */
 import {createRequire} from 'module';import fs from 'fs';import path from 'path';import url from 'url';import http from 'http';import {execSync} from 'child_process';
@@ -144,6 +146,21 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  teste('T17 contador público = caminhos reais = site',!!cam&&!!site&&site[1]===`${cam[0]} a ${cam[1]}`,`app ${cam&&cam.join(' a ')} · site ${site&&site[1]}`)}
 {const L=C.res.filter(x=>/K1_ini_fraco/.test(x.id));const bad=L.filter(x=>x.rotPeso.some(t=>/ideal/.test(t)));
  teste('T18 iniciante sem referência: penalidade de peso fala em faixa, não em ideal único',!bad.length,`${L.length} perfis${bad.length?' · ex.: '+bad[0].rotPeso.find(t=>/ideal/.test(t)):''}`)}
+/* T19–T20 (rodada 14): estilo em 4 opções e resumo quando a raquete atual empata ou fica perto da recomendada */
+{const X=await (async()=>{const html=cand;const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);if(u==='/racket/'){s.writeHead(200,{'content-type':'text/html; charset=utf-8'});return s.end(html)}const f=path.join(raiz,u);if(!fs.existsSync(f)){s.writeHead(404);return s.end()}s.end(fs.readFileSync(f))});
+  await new Promise(r=>srv.listen(0,r));const b=await chromium.launch();const pg=await b.newPage();await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g|googletag|google-analytics|facebook|doubleclick/,r=>r.abort());
+  await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
+  const o=await pg.evaluate(()=>{const H=window.__RK,RK=H.RK;const q=H.Q.find(x=>x.id==='style');
+    const leg=[[['keep'],'keep'],[['netc'],'all'],[['net'],'all'],[['agg','all'],'all'],[['agg','net'],'all'],[['keep','cnt'],'cnt'],['net','all'],['agg','agg']].map(([v,e])=>H.cleanAnswers({style:v}).style===e);
+    const r=(id,fit)=>({r:RK[id],fit});const pro=RK.find(x=>/Pro Staff 97 v14/.test(x.model)),cl=RK.find(x=>/^Clash 100 v3$/.test(x.model));
+    return {opcoes:q.o.map(x=>x[0]),multi:!!q.multi,scale:JSON.stringify(q.scale||null),leg,
+      duel:H.duelHTML(pro,cl,false),
+      empate:H.closeRacketFit(r(pro.id,95),r(cl.id,95)),perto:H.closeRacketFit(r(pro.id,93),r(cl.id,95)),longe:H.closeRacketFit(r(pro.id,90),r(cl.id,95)),igual:H.closeRacketFit(r(pro.id,95),r(pro.id,95))}});
+  await b.close();srv.close();return o})();
+ teste('T19 estilo: 4 degraus do básico ao jogo completo, uma escolha, com régua; respostas antigas viram um dos 4',JSON.stringify(X.opcoes)==='["keep","cnt","agg","all"]'&&!X.multi&&X.scale==='["Mais básico","Mais avançado"]'&&X.leg.every(Boolean),`${X.opcoes.join(', ')} · compatibilidade ${X.leg.filter(Boolean).length}/${X.leg.length}`);
+ teste('T21 comparador sem placar: sem "ganha em", sem contagem de vitórias, sem a cor fora da marca; com "o que muda na mão"',!/ganha em|tdots|tally|class="[^"]*\bwin\b|var\(--alt\)/.test(X.duel)&&/O que muda na mão/.test(X.duel),'Pro Staff 97 v14 × Clash 100 v3');
+ teste('T20 raquete atual empatada ou perto: resumo diz que empata e o que muda na mão',/empata/.test(X.empate)&&/não precisa trocar/.test(X.empate)&&/Na mão, a Clash 100 v3 seria/.test(X.empate)&&/só 2 pontos/.test(X.perto)&&X.longe===''&&/muito parecidas/.test(X.igual),X.empate.slice(0,160)+'…')}
+
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});
 console.log('\nRemoção de fonte (sensibilidade, não é teste):');
