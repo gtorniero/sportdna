@@ -211,7 +211,7 @@ select,input[type=number],input[type=text],input[type=email]{font:inherit;backgr
 .sb .zone{position:absolute;top:-1px;bottom:-1px;background:color-mix(in srgb,var(--ball) 55%,transparent);border:1px dashed color-mix(in srgb,var(--ink) 35%,transparent);border-radius:99px}
 .sb .dot{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;transform:translate(-9px,-50%);background:var(--pri);box-shadow:0 2px 6px rgba(0,0,0,.25),inset 0 -3px 0 rgba(0,0,0,.18)}
 .sb .dot.c{background:var(--surface);border:2.5px solid var(--cur);box-shadow:none;width:14px;height:14px;transform:translate(-7px,-50%)}
-.sb .dot.b{background:var(--alt)}
+.sb .dot.b{background:var(--surface);border:2.5px dashed var(--ink);box-shadow:none;width:14px;height:14px;transform:translate(-7px,-50%)}
 .sb .ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-family:var(--f-mono)}
 .sb .say{font-size:13px;color:var(--muted)}
 .scatter{width:100%;height:auto;display:block}
@@ -330,27 +330,22 @@ details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:
 .dsel{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
 .dsel select{width:100%}
 .dhead{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:end}
-.dhead .a{color:var(--pri)}.dhead .b{color:var(--alt);text-align:right}
+.dhead .a{color:var(--pri)}.dhead .b{color:var(--ink);text-align:right}
+.dhead .vs{font:700 22px var(--f-head,inherit);color:var(--muted);align-self:center}
 .dhead h3{font-size:clamp(18px,3vw,24px)}
 .score{font-family:var(--f-mono);font-weight:700;font-size:clamp(28px,6vw,44px);text-align:center;line-height:1}
-.tally{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
-.tdots{display:flex;gap:6px}
-.tdots i{width:16px;height:16px;border-radius:50%;background:var(--line)}
-.tdots i.a{background:var(--pri)}.tdots i.b{background:var(--alt)}.tdots i.t{background:transparent;border:2px dashed var(--muted)}
-.tally small{font-size:13px;color:var(--muted);font-weight:600}
-.tally small b{font-family:var(--f-body);font-variant-numeric:tabular-nums;font-size:26px;font-weight:700;vertical-align:-3px}.tally .ta{color:var(--pri)}.tally .tb{color:var(--alt)}
 .score small{display:block;font-family:var(--f-body);font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
 .drows{display:flex;flex-direction:column;gap:14px}
 .drow{display:grid;grid-template-columns:40px minmax(0,1fr) 120px minmax(0,1fr) 40px;align-items:center;gap:10px}
 .drow .v{font-weight:500;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
 .drow .v.r{text-align:right}
-.drow .v.w{color:var(--ink);font-weight:700}
 .drow .tl,.drow .tr2{height:6px;background:color-mix(in srgb,var(--line) 70%,transparent);border-radius:99px;position:relative}
 .drow .tl i,.drow .tr2 i{position:absolute;top:0;bottom:0;border-radius:99px;background:color-mix(in srgb,var(--muted) 45%,transparent)}
 .drow .tl i{right:0}.drow .tr2 i{left:0}
-.drow .tl.win i{background:var(--pri)}.drow .tr2.win i{background:var(--alt)}
-.drow .tl.win i::before,.drow .tr2.win i::after{content:"";position:absolute;top:50%;width:10px;height:10px;border-radius:50%;transform:translateY(-50%)}
-.drow .tl.win i::before{left:-3px;background:var(--pri)}.drow .tr2.win i::after{right:-3px;background:var(--alt)}
+.drow .tl i{background:var(--pri)}.drow .tr2 i{background:color-mix(in srgb,var(--ink) 38%,transparent)}
+.drow .idl{position:absolute;top:-5px;bottom:-5px;width:4px;border-radius:2px;background:var(--ball);box-shadow:0 0 0 1px var(--ball-ink)}
+.drow .tl .idl{right:calc(var(--p) - 2px)}.drow .tr2 .idl{left:calc(var(--p) - 2px)}
+.drow .mid small{color:var(--muted)}
 .drow .mid{text-align:center;display:flex;flex-direction:column;line-height:1.25}
 .drow .mid b{font-size:14px;font-weight:600}.drow .mid small{font-size:11.5px;color:var(--muted)}
 .verdict{background:var(--bg);border-radius:12px;padding:14px;font-size:15px}
@@ -817,7 +812,7 @@ const PESOS={
     dor:{past:{comfort:2},now:{comfort:4}},
     articulacao:{elbow:{comfort:1},shoulder:{maneuver:1.5,power:1},wrist:{comfort:.5,maneuver:1}},
     idade:{padrao:35,maduro:45,maduroAlvo:{comfort:1.5},senior:55,seniorAlvo:{maneuver:2.25},jovem:16,jovemAlvo:{maneuver:1}},
-    estilo:{doisEstilos:.7,keep:{power:1,comfort:.5,maneuver:.5},cnt:{control:1},agg:{power:1.125,spin:.5},all:{maneuver:1.5},netc:{maneuver:1,stability:.3},net:{maneuver:3,stability:.5}} /* rodada 8: net.maneuver 1,5 → 3 */,
+    estilo:{doisEstilos:.7,cnt:{control:1},agg:{power:1.125,spin:.5},all:{maneuver:1.5},net:{maneuver:3,stability:.5}} /* rodada 14: 4 estilos ("mantenho a bola" foi para cnt; "subo quando a bola deixa" foi para net) */ /* rodada 8: net.maneuver 1,5 → 3 */,
     sensacao:{heavy:{maneuver:2.5},light:{stability:2}},
     dorForte:{comfort:1.5},emTratamento:{comfort:1},
     anos:{'0':{power:1},'10':{control:.5}},
@@ -1003,7 +998,7 @@ const Q=[
  {s:2,id:'swing',if:()=>A.lvl&&A.lvl!=='beg',t:'Como é o seu swing (o movimento da raquete até a bola)?',h:'O tamanho e a velocidade do movimento até a bola. '+'<button type="button" class="gl" data-g="swing">Entenda</button>',o:[['short','Curto e compacto','Pouca preparação, bloqueia a bola'],['mid','Médio','Preparação moderada'],['long','Longo e rápido','Preparação ampla e aceleração forte']]},
  {s:2,id:'spin',if:()=>A.lvl&&A.lvl!=='beg',t:'Quanto topspin (efeito na bola) você usa?',h:'Topspin é o efeito em que a raquete sobe por trás da bola: ela gira para a frente, passa alta sobre a rede e cai rápido dentro da quadra. Se você bate a bola mais reta ou não sabe, escolha "Pouco".',o:[['low','Pouco','Bola mais reta, quase sem girar'],['mid','Médio','Bola com algum giro, passa a rede com folga'],['high','Muito','Bola alta e pesada, que quica alto no adversário']]},
  {s:2,id:'serve',t:'Como é o seu saque hoje?',h:'Seja sincero: isso muda a recomendação.',o:[['weak','Ainda inseguro','Faço dupla falta com frequência'],['push','Só coloco em jogo','Saque lento, quase empurrado'],['safe','Seguro','Raramente erro, mas não ganho ponto com ele'],['flat','Chapado e forte','Bola reta e rápida, sem efeito, para ganhar o ponto direto'],['kick','Com efeito','A bola faz curva (slice) ou quica alto (kick)'],['mix','Vario tudo','Reto ou com efeito, conforme o ponto']]},
- {s:3,id:'style',multi:2,scale:['Mais básico','Mais avançado'],t:'Como você joga?',h:'Escolha até 2. Do jogo mais básico (esquerda) ao mais avançado (direita).',o:[['keep','Mantenho a bola em jogo','Ainda estou firmando os golpes'],['cnt','Devolvo tudo','Consistência e contra-ataque'],['agg','Ataco do fundo','Busco a bola vencedora da linha de base'],['all','Jogo completo','Fundo e rede conforme o ponto'],['netc','Subo quando a bola deixa','Fecho o ponto no voleio, a batida antes de a bola quicar'],['net','Saque e voleio','Saco e já corro para a rede']]},
+ {s:3,id:'style',t:'Qual é o seu estilo de jogo?',h:'Escolha o que mais parece com você. Não tem estilo melhor ou pior: o seu nível é outra pergunta.',o:[['cnt','Defendo e devolvo tudo','Erro pouco e espero o erro do outro'],['agg','Ataco do fundo','Busco a bola vencedora da linha de base'],['all','Jogo completo','Fundo e rede, conforme o ponto'],['net','Busco a rede','Subo para fechar no voleio, inclusive saque e voleio']]},
  {s:3,id:'opp',t:'Como é a bola dos seus adversários?',o:[['soft','Mais lenta','Bola sem peso, você que gera'],['mix','Variada','Às vezes lenta, às vezes forte'],['heavy','Pesada e rápida','A raquete às vezes treme']]},
  {s:3,id:'miss',t:'Onde você mais erra?',o:[['short','Bola curta, sem peso'],['long','Bola longa, para fora'],['net','Na rede'],['frame','Pego fora do centro','A raquete torce na mão']]},
  {s:4,id:'cur',type:'select',t:'Qual a sua raquete atual?',h:'Se não estiver na lista, escolha "Minha raquete não está na lista". Com ela, fazemos o diagnóstico da sua raquete.'},
@@ -1020,7 +1015,7 @@ const Q=[
 const A={};
 let step=0;
 const vis=q=>!q.if||q.if();
-const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],painPast:'2',painAgo:'2y',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'other',keep:'none',issue:'late',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
+const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],painPast:'2',painAgo:'2y',lvl:'int',years:'3',freq:'2',style:'all',spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'other',keep:'none',issue:'late',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
 /* contador: menor e maior caminho reais (dor atual e histórico não aparecem juntos; "o que manter" só com raquete do catálogo) */
 /* iniciante, sem raquete e sem dor: o caminho mais curto; tempo pela mesma conta da barra de progresso (8 s por pergunta) */
@@ -1161,22 +1156,25 @@ $('#next').addEventListener('click',()=>{
 
 /* ---------- Duelo ---------- */
 const RANKS={};KEYS.forEach(k=>{RANKS[k]={};RK.forEach(r=>{RANKS[k][r.id]=1+RK.filter(x=>x.ix[k]>r.ix[k]).length})});
-function duelHTML(a,b,withFit){const TL=[];
-  let wa=0,wb=0;const A1=[],B1=[];
-  const rows=KEYS.map(k=>{const va=a.ix[k],vb=b.ix[k],d=va-vb,ta=d>=.3,tb=d<=-.3;TL.push(ta?'a':tb?'b':'t');if(ta){wa++;A1.push(LBL[k].toLowerCase())}if(tb){wb++;B1.push(LBL[k].toLowerCase())}
-    return `<div class="drow"><span class="v${ta?' w':''}">${dec(va)}</span><div class="tl${ta?' win':''}"><i style="width:${va*10}%"></i></div><div class="mid"><b>${gl(k,LBL[k])}</b><small>#${RANKS[k][a.id]} · #${RANKS[k][b.id]} de ${RK.length}</small></div><div class="tr2${tb?' win':''}"><i style="width:${vb*10}%"></i></div><span class="v r${tb?' w':''}">${dec(vb)}</span></div>`}).join('');
-  const tie=6-wa-wb;
-  const jn=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
-  const verdict=(wa||wb)?`${wa?`<b style="color:var(--pri)">${esc(a.model)}</b> ganha em ${jn(A1)}`:''}${wa&&wb?'; ':''}${wb?`<b style="color:var(--alt)">${esc(b.model)}</b> ganha em ${jn(B1)}`:''}${tie?`. Empate técnico em ${tie} ${tie>1?'atributos':'atributo'}`:''}.`:'Empate técnico nos 6 atributos: a diferença está na sensação, não nos números.';
+function duelHTML(a,b,withFit){
+  /* rodada 14: sem placar. Não existe "ganhou" atributo por atributo: maior nem sempre é melhor para quem joga.
+     Com o teste feito, cada barra mostra o seu ideal (lima) e o DNA Score de cada uma para você. */
+  const T=withFit&&RES?RES.T:null;
+  const rows=KEYS.map(k=>{const va=a.ix[k],vb=b.ix[k],t=T?`<em class="idl" style="--p:${T[k]*10}%" title="Seu ideal: ${dec(T[k])}"></em>`:'';
+    return `<div class="drow"><span class="v">${dec(va)}</span><div class="tl"><i style="width:${va*10}%"></i>${t}</div><div class="mid"><b>${gl(k,LBL[k])}</b>${T?`<small>seu ideal ${dec(T[k])}</small>`:''}</div><div class="tr2"><i style="width:${vb*10}%"></i>${t}</div><span class="v r">${dec(vb)}</span></div>`}).join('');
   const fa=withFit&&RES?RES.all.find(x=>x.r.id===a.id):null,fb=withFit&&RES?RES.all.find(x=>x.r.id===b.id):null;
+  const mao=diffMao(a,b);
+  const leitura=`<p class="verdict"><strong>O que muda na mão.</strong> ${mao.length?`Da ${esc(a.model)} para a ${esc(b.model)}: ${jnE(mao)}.`:'Na mão, as duas são muito parecidas.'} ${fa?`Para o seu jogo, a ${esc(a.model)} fica com ${fa.fit}% e a ${esc(b.model)} com ${fb.fit}%. O DNA Score compara cada uma com o seu perfil, não uma com a outra: uma raquete equilibrada pode servir melhor do que a que tem número maior em vários atributos.`:'Os números mostram como cada uma se comporta, não qual é melhor. Faça o teste para ver qual encaixa no seu jogo.'}</p>`;
   const sp=[['wt','wt',' g',0],['sw','sw','',0],['bal','bal',' mm',0],['ra','ra',' RA',0],['head','head',' pol²',0],['pat','pat','',1],['Preço no Brasil','price','',2]];
-  return `<div class="dhead"><div class="a"><p class="eyebrow">${esc(a.brand)}</p><h3>${esc(a.model)}</h3></div><div class="tally"><div class="tdots">${TL.map((x,i)=>`<i class="${x}" title="${LBL[KEYS[i]]}: ${x==='a'?esc(a.model):x==='b'?esc(b.model):'empate'}"></i>`).join('')}</div><small><b class="ta">${wa}</b> × <b class="tb">${wb}</b>${6-wa-wb?` · ${6-wa-wb} empate${6-wa-wb>1?'s':''}`:''}</small><small>em 6 atributos</small></div><div class="b"><p class="eyebrow">${esc(b.brand)}</p><h3>${esc(b.model)}</h3></div></div>
-  ${fa?`<div class="cmpfit"><div class="kpi"><b style="color:var(--pri)">${fa.fit}%</b><span>DNA Score para você</span></div><div class="kpi" style="text-align:right"><b style="color:var(--alt)">${fb.fit}%</b><span>DNA Score para você</span></div></div>`:''}
+  const series=[{name:a.model,v:a.ix,c:'var(--pri)',solid:true},{name:b.model,v:b.ix,c:'var(--ink)',dash:true}];if(T)series.unshift({name:'Seu ideal',v:T,c:'var(--ink)',ideal:true});
+  return `<div class="dhead"><div class="a"><p class="eyebrow">${esc(a.brand)}</p><h3>${esc(a.model)}</h3></div><div class="vs" aria-hidden="true">×</div><div class="b"><p class="eyebrow">${esc(b.brand)}</p><h3>${esc(b.model)}</h3></div></div>
+  ${fa?`<div class="cmpfit"><div class="kpi"><b>${fa.fit}%</b><span>DNA Score para você</span></div><div class="kpi" style="text-align:right"><b>${fb.fit}%</b><span>DNA Score para você</span></div></div>`:''}
   <div class="drows">${rows}</div>
-  <p class="verdict">${verdict}</p>
-  <div class="two"><div>${radar([{name:a.model,v:a.ix,c:'var(--pri)',solid:true},{name:b.model,v:b.ix,c:'var(--alt)',dash:true}])}</div>
-  <div><div class="tbl"><table class="dspec" style="min-width:0"><thead><tr><th>Ficha</th><th style="color:var(--pri)">${esc(a.model)}</th><th style="color:var(--alt)">${esc(b.model)}</th></tr></thead><tbody>${sp.map(([l,k,u,t])=>{const x=a[k],y=b[k];const fx=t===1?x.replace('x','×'):t===2?(x?(a.usd?'~':'')+'R$ '+fmt(x[0]):'—'):x+u,fy=t===1?y.replace('x','×'):t===2?(y?(b.usd?'~':'')+'R$ '+fmt(y[0]):'—'):y+u;return `<tr><td>${GLOS[l]?gl(l):l}</td><td>${fx}</td><td>${fy}</td></tr>`}).join('')}<tr><td>${gl('pro','Profissionais na linha')}</td><td style="font-family:var(--f-body)">${PROS[a.id]?PROS[a.id].p.slice(0,3).map(p=>esc(p[1])).join(', '):'—'}</td><td style="font-family:var(--f-body)">${PROS[b.id]?PROS[b.id].p.slice(0,3).map(p=>esc(p[1])).join(', '):'—'}</td></tr><tr><td>No Brasil</td><td>${a.br==='d'?'Difícil':a.br==='p'?'Pouca oferta':'Fácil'}</td><td>${b.br==='d'?'Difícil':b.br==='p'?'Pouca oferta':'Fácil'}</td></tr><tr><td>${gl('rev','Avaliações na base')}</td><td>${a.nrev||'—'}</td><td>${b.nrev||'—'}</td></tr><tr><td>${gl('arm')}</td><td class="${a.ix.arm>b.ix.arm+.2?'w':''}">${dec(a.ix.arm)}</td><td class="${b.ix.arm>a.ix.arm+.2?'w':''}">${dec(b.ix.arm)}</td></tr></tbody></table></div>
-  <p class="note" style="margin-top:8px">Índices de 0 a 10 calculados a partir das specs medidas. # é a posição no ranking do catálogo naquele atributo.</p></div></div>`;
+  ${T?'<p class="note" style="margin:0">Marca lima: o seu ideal em cada atributo. Perto dela é melhor para você, esteja o número alto ou baixo.</p>':''}
+  ${leitura}
+  <div class="two"><div>${radar(series)}</div>
+  <div><div class="tbl"><table class="dspec" style="min-width:0"><thead><tr><th>Ficha</th><th style="color:var(--pri)">${esc(a.model)}</th><th>${esc(b.model)}</th></tr></thead><tbody>${sp.map(([l,k,u,t])=>{const x=a[k],y=b[k];const fx=t===1?x.replace('x','×'):t===2?(x?(a.usd?'~':'')+'R$ '+fmt(x[0]):'—'):x+u,fy=t===1?y.replace('x','×'):t===2?(y?(b.usd?'~':'')+'R$ '+fmt(y[0]):'—'):y+u;return `<tr><td>${GLOS[l]?gl(l):l}</td><td>${fx}</td><td>${fy}</td></tr>`}).join('')}<tr><td>${gl('pro','Profissionais na linha')}</td><td style="font-family:var(--f-body)">${PROS[a.id]?PROS[a.id].p.slice(0,3).map(p=>esc(p[1])).join(', '):'—'}</td><td style="font-family:var(--f-body)">${PROS[b.id]?PROS[b.id].p.slice(0,3).map(p=>esc(p[1])).join(', '):'—'}</td></tr></tbody></table></div>
+  <p class="note" style="margin-top:8px">Índices de 0 a 10 calculados a partir das specs medidas.</p></div></div>`;
 }
 function fillSel(sel,v){sel.innerHTML=optList(v)}
 let editLeft=0,editing=false,revDor=false,retesting=false,retestInfo=null; /* revDor: revisar resposta antiga contraditória de dor não gasta a edição nem o pagamento */
@@ -1211,6 +1209,9 @@ const encode=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=
 const decode=s=>JSON.parse(decodeURIComponent(escape(atob(s.trim()))));
 /* códigos antigos: perguntas que saíram (mão dominante, backhand) são ignoradas; orçamento das 4 faixas antigas vai para a faixa nova */
 function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;
+  /* rodada 14: estilo antigo (6 opções, até 2) vira um dos 4. Dois estilos que somam fundo e rede = jogo completo */
+  if(a.style!=null&&typeof a.style!=='string'||['keep','netc'].includes(a.style)){const m={keep:'cnt',netc:'net'};const v=[...new Set([].concat(a.style||[]).map(x=>m[x]||x))].filter(x=>['cnt','agg','all','net'].includes(x));
+    a.style=v.length<2?v[0]:v.includes('all')||(v.includes('net')&&v.some(x=>x!=='net'))?'all':v[0];if(!a.style)delete a.style}
   /* rodada 13: "como sente" virou "o que atrapalha" (pesada → chega atrasado; leve → treme); "há quanto tempo" saiu */
   if(a.feel&&a.issue==null)a.issue={heavy:'late',light:'twist',ok:'none'}[a.feel]||undefined;delete a.feel;delete a.curAge;
   /* rodada 12: códigos antigos perguntavam intensidade e limitação também a quem marcou "já tive, hoje não".
@@ -1269,7 +1270,7 @@ function target(){
   addT(T,P.dor[A.arm]);
   Object.keys(P.articulacao).forEach(j=>{if(J(j))addT(T,P.articulacao[j])});
   const AG=+A.age||P.idade.padrao; if(AG>=P.idade.maduro)addT(T,P.idade.maduroAlvo); if(AG>=P.idade.senior)addT(T,P.idade.seniorAlvo); if(AG<P.idade.jovem)addT(T,P.idade.jovemAlvo);
-  {const w=stW();['keep','cnt','agg','all','netc','net'].forEach(s=>{if(ST(s))addT(T,P.estilo[s],w)})}
+  {const w=stW();['cnt','agg','all','net'].forEach(s=>{if(ST(s))addT(T,P.estilo[s],w)})}
   addT(T,P.sensacao[feelOf()]);
   if(A.arm==='now'&&A.pain==='3')addT(T,P.dorForte); if(A.arm==='now'&&A.lim==='3')addT(T,P.emTratamento);
   addT(T,P.anos[A.years]);addT(T,P.saque[A.serve]);addT(T,P.adversario[A.opp]);addT(T,P.motivo[A.why]);
@@ -1318,7 +1319,7 @@ function zones(T,tw){
   const raMax=sev?P.raMax.forte:A.arm==='now'?(J('elbow')?P.raMax.hojeCotovelo:P.raMax.hoje):P.raMax.nenhuma;
   const raMin=Math.max(P.raMin,raMax-P.raLargura);
   const hd=(P.cabecaPref[A.headp]||(A.lvl==='beg'?P.cabecaNivel.beg:A.lvl==='adv'?P.cabecaNivel.adv:P.cabecaNivel.padrao)).slice();
-  const balMax=J('wrist')?P.balMax.punho:ST('net')||ST('netc')?P.balMax.rede:P.balMax.padrao;
+  const balMax=J('wrist')?P.balMax.punho:ST('net')?P.balMax.rede:P.balMax.padrao;
   const pw=semRef()?P.pesoAmplo:P.peso,ps=semRef()?P.swAmplo:P.sw;
   return {wt:[tw-pw,tw+pw],sw:[sw-ps,sw+ps],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
 }
@@ -1399,7 +1400,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
+if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1474,10 +1475,10 @@ const SPEC=[
 function specBars(main,cur,Z,alt){
   return `<div class="sbars">${SPEC.map(s=>{const [a,b0]=RANGE(s.k);const b=b0===a?a+1:b0;const P=v=>cl((v-a)/(b-a)*100,0,100);
     const z=Z&&Z[s.k];
-    return `<div class="sb"><div class="lab"><span>${gl(s.k,s.l)}</span><b>${main[s.k]}${s.u}${alt?` <span style="color:var(--alt)">· ${alt[s.k]}${s.u}</span>`:''}${cur&&!alt?` <span class="muted">· sua ${cur[s.k]}${s.u}</span>`:''}</b></div>
+    return `<div class="sb"><div class="lab"><span>${gl(s.k,s.l)}</span><b>${main[s.k]}${s.u}${alt?` <span>· ${alt[s.k]}${s.u}</span>`:''}${cur&&!alt?` <span class="muted">· sua ${cur[s.k]}${s.u}</span>`:''}</b></div>
       <div class="tr">${z?`<i class="zone" style="left:${P(z[0])}%;width:${Math.max(2,P(z[1])-P(z[0]))}%"></i>`:''}${cur?`<i class="dot c" style="left:${P(cur[s.k])}%"></i>`:''}${alt?`<i class="dot b" style="left:${P(alt[s.k])}%"></i>`:''}<i class="dot" style="left:${P(main[s.k])}%"></i></div>
       <div class="ends"><span>${a} · ${s.lo}</span><span>${s.hi} · ${b0}</span></div></div>`}).join('')}</div>
-    <div class="legend"><span><i style="background:var(--pri);height:10px;width:10px;border-radius:50%"></i>${alt?esc(main.model):'Recomendada'}</span>${alt?`<span><i style="background:var(--alt);height:10px;width:10px;border-radius:50%"></i>${esc(alt.model)}</span>`:''}${cur&&!alt?'<span><i class="ring"></i>Sua atual</span>':''}${Z?'<span><i style="background:var(--ball);height:10px;width:16px"></i>Sua faixa ideal</span>':''}</div>`;
+    <div class="legend"><span><i style="background:var(--pri);height:10px;width:10px;border-radius:50%"></i>${alt?esc(main.model):'Recomendada'}</span>${alt?`<span><i style="background:transparent;border:2px dashed var(--ink);height:10px;width:10px;border-radius:50%"></i>${esc(alt.model)}</span>`:''}${cur&&!alt?'<span><i class="ring"></i>Sua atual</span>':''}${Z?'<span><i style="background:var(--ball);height:10px;width:16px"></i>Sua faixa ideal</span>':''}</div>`;
 }
 /* mapa peso × swingweight */
 /* mapa do catálogo: cada raquete é uma bolinha; o top 10 aparece numerado, na ordem do ranking */
@@ -1780,7 +1781,7 @@ function stringSetup(r){
 /* motivo da tensão em palavras, sem a conta ajuste por ajuste */
 function tensWhy(st){const x=st.steps.slice(1).map(s=>s[0].charAt(0).toLowerCase()+s[0].slice(1));return 'Faixa pensada para a corda indicada e o seu perfil'+(x.length?', considerando também: '+x.join('; '):'')+'.'}
 function archetype(){
-  const SN={keep:'Jogador consistente',agg:'Atacante de fundo',cnt:'Contra-atacador',all:'Jogador completo',netc:'Jogador ofensivo',net:'Atacante de rede'};const sa=[].concat(A.style||[]);const st=sa.length>1?(sa.includes('net')||sa.includes('netc')?(sa.includes('agg')?'Atacante que fecha na rede':'Jogador de rede'):sa.includes('agg')&&sa.includes('all')?'Atacante completo':SN[sa[0]]):SN[sa[0]]||'Jogador';
+  const SN={cnt:'Contra-atacador',agg:'Atacante de fundo',all:'Jogador completo',net:'Jogador de rede'};const sa=[].concat(A.style||[]);const st=SN[sa[0]]||'Jogador';
   const sp={low:'de bola reta',mid:'de topspin moderado',high:'de muito topspin'}[A.spin]||'';
   return (/ que /.test(st)&&sp?st+', '+sp:st+' '+sp).trim();
 }
@@ -1800,9 +1801,22 @@ function fichaRows(r){
 function altsNote(x){const L=(x.alts||[]).slice(0,3);if(!L.length)return '';
   return `<p class="note altsnote">Também existe em outra versão: ${L.map(a=>`<strong>${esc(a.r.model)}</strong> (${a.r.wt} g${a.r.pat!==x.r.pat?', '+a.r.pat.replace('x','×'):''}) · DNA ${a.fit}%`).join('; ')}.</p>`}
 const altsTag=x=>x.alts&&x.alts.length?` · também em ${x.alts.slice(0,2).map(a=>a.r.wt+' g').join(' e ')}`:'';
+/* rodada 14: o que muda na mão da raquete a para a b, pela ficha (sem dizer qual é melhor) */
+function diffMao(a,b){const d=[];
+  if(Math.abs(b.wt-a.wt)>=5)d.push(`${Math.abs(b.wt-a.wt)} g mais ${b.wt>a.wt?'pesada':'leve'}`);
+  if(Math.abs(b.sw-a.sw)>=5)d.push(b.sw>a.sw?'mais firme contra bola pesada, um pouco mais lenta de mexer':'mais rápida de mexer, um pouco menos firme contra bola pesada');
+  if(Math.abs(b.bal-a.bal)>=6)d.push(b.bal<a.bal?'mais leve na cabeça':'mais peso na cabeça');
+  if(Math.abs(b.ra-a.ra)>=3)d.push(b.ra<a.ra?'impacto mais macio':'impacto mais firme, com mais saída de bola');
+  if(Math.abs(b.head-a.head)>=2)d.push(b.head>a.head?'ponto doce maior':'ponto doce menor, mais precisa');
+  if(a.pat!==b.pat&&OPEN[a.pat]!=null&&OPEN[b.pat]!=null&&OPEN[a.pat]!==OPEN[b.pat])d.push(OPEN[b.pat]>OPEN[a.pat]?`padrão ${b.pat.replace('x','×')} mais aberto, com mais spin`:`padrão ${b.pat.replace('x','×')} mais fechado, com mais controle`);
+  return d}
+const jnE=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
 function closeRacketFit(current,best){
-  if(!current||current.fit<90||Math.abs(best.fit-current.fit)>3)return '';
-  return `Sua raquete atual já combina muito bem com seu jogo: ${current.fit}% contra ${best.fit}% da recomendada. A diferença é pequena. Se ela está confortável e atende ao seu jogo, faz sentido continuar com ela.`;
+  if(!current||current.fit<90||best.fit-current.fit>3)return '';
+  const a=current.r,b=best.r,d=diffMao(a,b),jn=jnE;
+  const mao=d.length?`Na mão, a ${esc(b.model)} seria ${jn(d)}.`:`Na mão, as duas são muito parecidas.`;
+  if(current.fit>=best.fit)return `Sua raquete atual empata com a recomendada: ${current.fit}% contra ${best.fit}%. Ela já é uma das melhores para o seu jogo e você não precisa trocar. ${mao} Se trocar, a mudança é de sensação, não de resultado.`;
+  return `Sua raquete atual já combina muito bem com o seu jogo: ${current.fit}% contra ${best.fit}% da recomendada, só ${best.fit-current.fit} ${best.fit-current.fit>1?'pontos':'ponto'} de diferença. ${mao} Se ela está confortável, faz sentido continuar com ela.`;
 }
 /* reteste grátis: uma vez, até 90 dias depois do pagamento, com as respostas preenchidas */
 const dataBR=t=>new Date(t).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
@@ -1928,11 +1942,7 @@ addEventListener('resize',rbarH);
 const topKeys=()=>KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,2);
 function optList(sel){const by={};RK.forEach(r=>{(by[r.brand]=by[r.brand]||[]).push(r)});return Object.keys(by).sort().map(b=>`<optgroup label="${esc(b)}">${by[b].map(r=>`<option value="${r.id}"${r.id===sel?' selected':''}>${esc(r.name)}</option>`).join('')}</optgroup>`).join('')}
 function renderCmp(){
-  const a=RK[+$('#cmpA').value],b=RK[+$('#cmpB').value];$('#cmpOut').innerHTML=duelHTML(a,b,true);return;const fa=RES.all.find(x=>x.r.id===a.id),fb=RES.all.find(x=>x.r.id===b.id);
-  const rows=feel(b,a);
-  $('#cmpOut').innerHTML=`<div class="cmpfit" style="margin-top:6px"><div class="kpi"><b style="color:var(--pri)">${fa.fit}%</b><span>${esc(a.name)}</span></div><div class="kpi"><b style="color:var(--alt)">${fb.fit}%</b><span>${esc(b.name)}</span></div></div>
-  <div class="two" style="margin-top:6px"><div>${radar([{name:a.model,v:a.ix,c:'var(--pri)',solid:true},{name:b.model,v:b.ix,c:'var(--alt)',dash:true}])}</div><div>${specBars(a,null,null,b)}</div></div>
-  <div class="tbl" style="margin-top:10px"><table><thead><tr><th>Item</th><th>${esc(a.model)}</th><th>${esc(b.model)}</th><th>Saindo da primeira para a segunda</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td><td class="n">${x[2]}</td><td>${x[3]}</td></tr>`).join('')}</tbody></table></div>`;
+  const a=RK[+$('#cmpA').value],b=RK[+$('#cmpB').value];$('#cmpOut').innerHTML=duelHTML(a,b,true);
 }
 function saveBox(){
   persist();const code=encode({a:A,example:exampleSession});
