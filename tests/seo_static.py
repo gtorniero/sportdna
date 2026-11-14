@@ -166,7 +166,7 @@ class GuidesAndTrust(unittest.TestCase):
     self.assertIn(f'window.ML_DATE={{"published":"{d["published"]}","modified":"{d["modified"]}"}}',text)
     art=next(g for g in Page(text).json[0]['@graph'] if g['@type']=='Article');self.assertEqual(art['author'],{'@id':CONFIG['siteUrl']+'#organization'})
  def test_footer_links_everywhere(self):
-  pages=[(ROOT/(r or '')/'index.html') for k,r in CONFIG['routes'].items() if k!='conceito']+[ROOT/'ferramentas/litragem/index.html',ROOT/'404.html']
+  pages=[(ROOT/(r or '')/'index.html') for k,r in CONFIG['routes'].items() if k!='conceito']+[ROOT/'ferramentas/litragem/index.html',ROOT/'404.html']+[ROOT/app/'index.html' for app in ['racket','surf','run']]
   for f in pages:
    with self.subTest(page=str(f.relative_to(ROOT))):
     text=f.read_text()
