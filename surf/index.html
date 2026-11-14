@@ -1854,7 +1854,7 @@ function whyV(r,max){
   return out.slice(0,max||out.length).join('');
 }
 /* ---------- relatório pago: esqueleto comum SPORT DNA (resultado, por que, atual × nova, alternativas, comparador, guia, DNA, ficha) ---------- */
-const RSEC=[['r-resultado','Resultado'],...(COACH_ON?[['seuMatch','Especialista']]:[]),['r-porque','Por que combina'],['r-troca',null],['r-alt','Alternativas'],['r-cmp','Comparador'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica'],['r-guia','Guia de compra']];
+const RSEC=[['r-resultado','Resultado'],['r-alt','Alternativas'],...(COACH_ON?[['seuMatch','Especialista']]:[]),['r-porque','Por que combina'],['r-troca',null],['r-cmp','Comparador'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica'],['r-guia','Guia de compra']];
 function reportNav(r,ex){
   return `<nav class="rnav" aria-label="Seções do relatório">
     <div class="rnav-top">${ex?'':'<button class="btn btn-ghost btn-sm" type="button" id="rBack" aria-label="Voltar para a prévia">← Voltar</button>'}<button class="btn btn-ghost btn-sm" type="button" id="rHome" aria-label="Início do SURF DNA">Início</button><button class="btn btn-ghost btn-sm" type="button" id="rNew">Fazer outro teste</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
@@ -1997,12 +1997,13 @@ function renderReport(){
       <div class="dlist">${detailRows(r).map(x=>`<div class="dr"><p class="drl"><b>${x[0]}</b> <span>${x[1]}</span></p><p class="drv">${esc(x[2])}</p><p class="drd">${esc(x[3])}</p></div>`).join('')}</div>
     </div>
   </div></section>`;
+  /* 2º e 3º lugar logo depois do resultado: às vezes a melhor para a pessoa é uma delas (pedido do Gui, nov/2026) */
+  h+=altSec(r);
   if(COACH_ON)h+=matchSection(r);
   /* por que combina */
   h+=`<section class="panel rsec" id="r-porque" aria-labelledby="h-porque"><h2 id="h-porque">Por que combina</h2><div class="why-cards">${whyR(r)}</div>
     <div class="attn"><h3>Pontos de atenção</h3>${attR(r)}</div></section>`;
   h+=trocaSec(r);
-  h+=altSec(r);
   h+=cmpPanel(r);
   h+=dnaSec(r);
   h+=fichaSec(r);
