@@ -19,7 +19,7 @@ class Page(HTMLParser):
 class SEO(unittest.TestCase):
  def test_all_canonical_pages_and_links(self):
   tree=ET.parse(ROOT/'sitemap.xml');urls=[x.text for x in tree.findall('.//{*}loc')]
-  self.assertEqual(len(urls),69);self.assertEqual(len(set(urls)),len(urls))
+  self.assertEqual(len(urls),76);self.assertEqual(len(set(urls)),len(urls))
   titles=set();descriptions=set()
   for url in urls:
    with self.subTest(url=url):
@@ -93,7 +93,7 @@ class SEO(unittest.TestCase):
     graph=p.json[0]['@graph'];types=[g['@type'] for g in graph]
     self.assertIn('Organization',types);self.assertIn('WebSite',types)
     if rel:self.assertIn('BreadcrumbList',types)
-    if rel.startswith('blog/') and rel!='blog/':
+    if rel.startswith('blog/') and rel!='blog/' or rel in GUIDES:
      art=next(g for g in graph if g['@type']=='Article');self.assertEqual(art['datePublished'],dates[rel]['published']);self.assertEqual(art['dateModified'],dates[rel]['modified'])
     if rel in ['racket/','surf/','run/']:
      product=next(g for g in graph if g['@type']=='Product');offer=product['offers']
@@ -111,4 +111,84 @@ class SEO(unittest.TestCase):
    self.assertRegex((ROOT/rel).read_text(),r'<meta name="robots" content="noindex')
   for rel in ['apps/racket/','apps/board/','apps/tenis/','tenis/']:
    self.assertRegex((ROOT/rel/'index.html').read_text(),r'<link rel="canonical" href="https://sportdna\.com\.br/(racket|surf|run)/">')
+GUIDES=['guias/racket/melhor-raquete-de-tenis/','guias/racket/melhor-raquete-de-tenis-para-iniciante/','guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']
+TRUST=['sobre/','contato/','termos/','como-ganhamos-dinheiro/']
+def br(d):return '/'.join(reversed(d.split('-')))
+def visible(html):return re.sub(r'\s+',' ',re.sub(r'<[^>]+>','',html).replace('&amp;','&')).strip()
+class GuidesAndTrust(unittest.TestCase):
+ def test_routes_sitemap_and_package(self):
+  locs=[x.text for x in ET.parse(ROOT/'sitemap.xml').findall('.//{*}loc')]
+  package=(ROOT/'scripts/package-site.mjs').read_text()
+  for rel in GUIDES+TRUST:
+   with self.subTest(rel=rel):
+    self.assertIn(rel,CONFIG['routes'].values());self.assertIn(CONFIG['siteUrl']+rel,locs)
+    self.assertIn("'"+rel.split('/')[0]+"'",package)
+  self.assertIn("'ads.txt'",package)
+ def test_guides_structured_data_and_content(self):
+  dates=json.loads((ROOT/'seo.dates.json').read_text())
+  for rel in GUIDES:
+   with self.subTest(rel=rel):
+    text=(ROOT/rel/'index.html').read_text();p=Page(text);graph=p.json[0]['@graph'];types=[g['@type'] for g in graph]
+    for t in ['Article','ItemList','FAQPage','BreadcrumbList']:self.assertIn(t,types)
+    art=next(g for g in graph if g['@type']=='Article');self.assertEqual(art['author'],{'@id':CONFIG['siteUrl']+'#organization'})
+    title=re.search(r'<title>(.*?)</title>',text).group(1)
+    self.assertLessEqual(len(title),60)
+    # FAQPage só com as perguntas e respostas visíveis
+    faq=next(g for g in graph if g['@type']=='FAQPage')
+    shown=re.findall(r'<details><summary>(.*?)</summary><p>(.*?)</p></details>',re.search(r'<div class="faq">(.*?)</div>',text,re.S).group(1),re.S)
+    self.assertEqual([(q['name'],q['acceptedAnswer']['text']) for q in faq['mainEntity']],[(visible(q),visible(a)) for q,a in shown])
+    items=next(g for g in graph if g['@type']=='ItemList')['itemListElement']
+    for it in items:self.assertIn(it['name'],text)
+    # assinatura e datas visíveis, iguais às do JSON-LD
+    d=dates[rel];self.assertIn(f'Publicado em <time datetime="{d["published"]}">{br(d["published"])}</time>',text);self.assertIn(f'Atualizado em <time datetime="{d["modified"]}">{br(d["modified"])}</time>',text)
+    self.assertIn('Equipe SPORT DNA',text);self.assertIn('Nenhuma marca paga para aparecer',text)
+    self.assertGreaterEqual(text.count('href="../../../racket/"'),3,'CTA para o teste')
+    self.assertIn('window.ML_STATIC=true',text)
+  hub=(ROOT/GUIDES[0]/'index.html').read_text()
+  self.assertTrue(re.search(r'<title>Melhor raquete de tênis',hub));self.assertIn('Descubra a sua em 3 minutos',hub)
+  for rel in GUIDES[1:]:self.assertIn('href="../../../guias/racket/melhor-raquete-de-tenis/"',(ROOT/rel/'index.html').read_text(),rel)
+ def test_guide_specs_come_from_the_racket_catalog(self):
+  app=(ROOT/'racket/index.html').read_text()
+  catalog=json.loads(re.search(r'const CATALOG=/\*CATALOG\*/(.*?);\n',app).group(1));by={f"{r['brand']} {r['model']}":r for r in catalog}
+  for rel in GUIDES:
+   text=(ROOT/rel/'index.html').read_text()
+   for name,specs in re.findall(r'<p class="nm"><b>(.*?)</b>.*?<ul class="specs"[^>]*>(.*?)</ul>',text,re.S):
+    with self.subTest(rel=rel,name=name):
+     r=by[name.replace('&amp;','&')];chips=re.findall(r'<li>(.*?)</li>',specs)
+     self.assertEqual([c.rstrip('*') for c in chips],[f"{r['wt']} g",f"{r['head']} pol²",f"{r['ra']} RA",r['pat'],f"SW {r['sw']}",f"{r['bal']} mm"])
+ def test_bylines_on_every_article(self):
+  dates=json.loads((ROOT/'seo.dates.json').read_text())
+  for key,rel in CONFIG['routes'].items():
+   if not key.startswith('a-'):continue
+   with self.subTest(rel=rel):
+    text=(ROOT/rel/'index.html').read_text();d=dates[rel]
+    self.assertIn(f'Por <a href="../../sobre/" data-go="sobre">Equipe SPORT DNA</a> · Publicado em <time datetime="{d["published"]}">{br(d["published"])}</time> · Atualizado em <time datetime="{d["modified"]}">{br(d["modified"])}</time>',text)
+    self.assertIn(f'window.ML_DATE={{"published":"{d["published"]}","modified":"{d["modified"]}"}}',text)
+    art=next(g for g in Page(text).json[0]['@graph'] if g['@type']=='Article');self.assertEqual(art['author'],{'@id':CONFIG['siteUrl']+'#organization'})
+ def test_footer_links_everywhere(self):
+  pages=[(ROOT/(r or '')/'index.html') for k,r in CONFIG['routes'].items() if k!='conceito']+[ROOT/'ferramentas/litragem/index.html',ROOT/'404.html']
+  for f in pages:
+   with self.subTest(page=str(f.relative_to(ROOT))):
+    text=f.read_text()
+    for slug in ['sobre/','contato/','termos/','como-ganhamos-dinheiro/','privacidade/']:self.assertRegex(text,r'href="[^"]*'+re.escape(slug)+'"',slug)
+ def test_trust_pages(self):
+  prices={k:int(v) for k,v in re.findall(r"'([a-z]+-(?:report|comparator))':Object.freeze\(\{name:'[^']+',amount:(\d+)\}",(ROOT/'assets/payments/config.js').read_text())}
+  money=lambda c:'R$ '+('%.2f'%(c/100)).replace('.',',')
+  termos=(ROOT/'termos/index.html').read_text()
+  for product,cents in prices.items():self.assertIn(money(cents),termos,product)
+  for must in ['artigo 49 do Código de Defesa do Consumidor','7 dias','Mercado Pago','Stripe','hi@sportdna.com.br','69.746.447/0001-00']:self.assertIn(must,termos)
+  sobre=(ROOT/'sobre/index.html').read_text();self.assertIn('69.746.447/0001-00',sobre);self.assertIn('Nenhuma marca, loja ou fabricante paga',sobre)
+  self.assertIn('"@type":"AboutPage"',sobre);self.assertIn('"@type":"ContactPage"',(ROOT/'contato/index.html').read_text())
+  privacy_email=set(re.findall(r'mailto:([^"]+)"',(ROOT/'privacidade/index.html').read_text()))
+  self.assertEqual(set(re.findall(r'mailto:([^"]+)"',(ROOT/'contato/index.html').read_text())),privacy_email)
+  ganhos=(ROOT/'como-ganhamos-dinheiro/index.html').read_text()
+  for must in ['surf coach parceiro','Gustavo Lucas','comissão','Isso não muda as medidas','depois da recomendação','não exibe anúncios hoje']:self.assertIn(must,ganhos)
+ def test_ads_txt_and_no_ads_loaded(self):
+  self.assertEqual((ROOT/'ads.txt').read_text(),'google.com, pub-4039247360984618, DIRECT, f08c47fec0942fa0\n')
+  privacy=(ROOT/'privacidade/index.html').read_text()
+  self.assertIn('id="anuncios"',privacy);self.assertIn('Hoje o SPORT DNA não exibe anúncios',privacy);self.assertIn('https://adssettings.google.com/',privacy)
+  for f in list(ROOT.glob('**/*.html'))+list(ROOT.glob('assets/**/*.js')):
+   if 'node_modules' in f.parts or 'dist' in f.parts:continue
+   text=f.read_text(errors='ignore')
+   self.assertNotIn('pagead2.googlesyndication.com',text,str(f));self.assertNotIn('adsbygoogle',text,str(f))
 if __name__=='__main__':unittest.main(verbosity=2)

@@ -7,7 +7,7 @@ const ROOT=path.resolve(__dirname,'..');
  const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
  const config=JSON.parse(fs.readFileSync(path.join(ROOT,'seo.config.json'),'utf8'));
  const base=process.env.TEST_BASE_URL||'http://127.0.0.1:8000/sportdna-release/';
- const routes=['','surf/','racket/','tenis/','blog/',config.routes['a-prancha-16'],config.routes['a-prancha-17'],config.routes['a-prancha-02'],'apps/board/','apps/racket/','apps/tenis/','ferramentas/litragem/'];
+ const routes=['','surf/','racket/','tenis/','blog/',config.routes['a-prancha-16'],config.routes['a-prancha-17'],config.routes['a-prancha-02'],'apps/board/','apps/racket/','apps/tenis/','ferramentas/litragem/',config.routes['melhor-raquete'],config.routes['raquete-iniciante'],config.routes['raquete-cotovelo'],config.routes['sobre'],config.routes['termos'],config.routes['como-ganhamos-dinheiro'],config.routes['contato']];
  const results=[];
  for(const width of [1280,390,320]){
   const context=await browser.newContext({viewport:{width,height:900}});
