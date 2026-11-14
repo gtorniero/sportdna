@@ -8,7 +8,7 @@ Find your DNA. Testes que cruzam seu corpo, nível e estilo com a ficha técnica
 
 Mais 59 guias em `content/`, lidos pela home (`index.html`).
 
-Site estático: abra `index.html` com um servidor local (`python3 -m http.server`) ou publique a raiz no GitHub Pages ou na Vercel.
+Site estático: abra `index.html` com um servidor local (`python3 -m http.server`). A publicação é na Cloudflare (`node scripts/package-site.mjs` + `wrangler.site.jsonc`); não usar GitHub Pages.
 
 Um projeto Beyond the Work.
 
@@ -23,6 +23,7 @@ As páginas públicas têm conteúdo no HTML antes de executar JavaScript. Os li
 - `assets/site.css` e `assets/site.js`: identidade visual, componentes e interações existentes.
 - `content/*.js`: artigos; `sources`, `related` e `seoTitle` são campos opcionais.
 - `seo.config.json`: domínio de publicação e mapa estável de URLs. Não renomeie uma URL existente ao mudar o título.
+- `seo.dates.json`: data de publicação e de modificação de cada página (lastmod do sitemap e datas dos artigos). O build só troca a data de modificação quando o conteúdo da página muda; `SEO_TODAY=AAAA-MM-DD` fixa a data do build.
 - `scripts/build-seo.mjs`: gera home, páginas de esporte, blog, artigos, privacidade, sitemap e 404; atualiza metadata dos apps e da calculadora.
 
 Depois de editar os arquivos de origem, execute com Node.js 18 ou superior:

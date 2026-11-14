@@ -1,6 +1,8 @@
 (function(){
 const A = (window.ML_ARTICLES||[]).slice();
 const SHOTS = window.ML_SHOTS||{};
+// Altura real das imagens de assets/reports/ (largura 1000): evita salto de layout enquanto carregam.
+const SHOT_H = {racket:1899, board:1985, tenis:1832};
 const CATS = {escolher:"Como escolher", importancia:"Por que importa", evolucao:"Evolução", tecnologia:"Tecnologia"};
 
 /* ---------- Logos (identidades oficiais) ---------- */
@@ -87,7 +89,7 @@ const appLockup = (k,s=34) => `${ICON[k](s)}<span class="wm"><span class="wordma
 document.getElementById("brandHome").innerHTML = labLockup(34);
 document.getElementById("footBrand").innerHTML = labLockup(28);
 document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${ICON[k](24)}${AREAS[k].w1} DNA</a>`).join("") + `<span class="sep" aria-hidden="true"></span><a href="#blog" data-go="blog">Blog</a><a href="#conceito" data-go="conceito">Como funciona</a>`;
-document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/index.html">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
+document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
@@ -96,7 +98,7 @@ const REPORT_DESC={
 function reportFrame(k, h){
   const a = AREAS[k];
   return `<div class="report ${a.cls}"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">sportdna.com.br/${({racket:"racket",board:"surf",tenis:"run"})[k]}/relatorio</span><span class="pill">${a.name}</span></div>
-  <button type="button" class="shot" data-zoom="${k}" style="--h:${h||460}px" aria-label="Ampliar relatório de exemplo do ${a.name}" aria-describedby="rd-${k}-${h||460}"><img src="${SHOTS[k]||""}" alt="" width="1000" height="${k==='racket'?1943:1985}" loading="lazy" decoding="async"></button>
+  <button type="button" class="shot" data-zoom="${k}" style="--h:${h||460}px" aria-label="Ampliar relatório de exemplo do ${a.name}" aria-describedby="rd-${k}-${h||460}"><img src="${SHOTS[k]||""}" alt="" width="1000" height="${SHOT_H[k]}" loading="lazy" decoding="async"></button>
   <span class="zoom" aria-hidden="true">Ampliar ↗</span><p class="sr-only" id="rd-${k}-${h||460}">${REPORT_DESC[k]}</p></div>`;
 }
 function acard(x){
@@ -110,7 +112,7 @@ function acard(x){
 function vars(a){
   return `<div class="vars"><div><span class="vl">Você informa</span><p>${a.vin.join(" · ")}</p></div><div><span class="vl">A gente calcula</span><ul>${a.vout.map(c=>`<li>${c}</li>`).join("")}</ul></div></div>`;
 }
-const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/index.html"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
+const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
 const CARDS={
   racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, nível intermediário, hexágono com conforto 9,2 e potência 8,5"],
           produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: Head Boom MP, 295 g, cabeça de 100 pol², 61 RA, padrão 16x19, DNA 95%, escolhida entre 62 raquetes"]},
@@ -337,7 +339,7 @@ function article(id){
       <div class="side">
         ${a.key==="board"?TOOLBOX.replace('class="toolbox"','class="toolbox mini"'):""}
         <div class="cta-box">
-          ${true?`<button type="button" class="thumb" data-zoom="${a.key}" aria-label="Ampliar relatório de exemplo do ${a.name}"><img src="${SHOTS[a.key]||""}" alt="" width="1000" height="${a.key==='racket'?1943:1985}" loading="lazy" decoding="async"></button>`:""}
+          ${true?`<button type="button" class="thumb" data-zoom="${a.key}" aria-label="Ampliar relatório de exemplo do ${a.name}"><img src="${SHOTS[a.key]||""}" alt="" width="1000" height="${SHOT_H[a.key]}" loading="lazy" decoding="async"></button>`:""}
           <div class="in">
             <div class="lockup">${MARK[a.key](32)}<span class="wordmark">${a.w1} <em>DNA</em></span></div>
             <p>${a.q}</p>

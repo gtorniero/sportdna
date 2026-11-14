@@ -162,6 +162,7 @@ window.ML_ARTICLES.push(
   area: "prancha",
   cat: "escolher",
   title: "Quilhas: como escolher a configuração para a onda do seu pico",
+  seoTitle: "Quilhas de prancha: como escolher a configuração",
   dek: "Single, biquilha, triquilha ou quadriquilha, e sistemas FCS ou Futures: entenda o que muda e como combinar com as ondas que você surfa.",
   level: "Intermediário",
   minutes: 3,
