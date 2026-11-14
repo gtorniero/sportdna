@@ -362,7 +362,7 @@ function midCta(x,a,sections){
   const text=rule[1].replace("{n}",a.facts[0][0]);
   const href=rule[3]||a.quiz;
   const sport={racket:"racket",board:"surf",tenis:"run"}[a.key];
-  return {after:i,html:`<aside class="mid-cta" aria-label="${tool?"Ferramenta grátis":"Teste "+a.name}"><div class="lockup">${MARK[a.key](30)}<span class="wordmark">${tool?"Ferramenta grátis":`${a.w1} <em>DNA</em>`}</span></div><p>${esc(text)}</p><a class="btn btn-area" href="${href}" data-de="artigo_meio" data-a="${x.id}" data-sport="${sport}">${esc(rule[2])}${tool||rule[2].length>22?"":" · grátis"} <span class="arr" aria-hidden="true">→</span></a><small>${tool?"Medida da mão em cm · sem cadastro":`${a.facts[1][0]} ${a.facts[1][1]} · prévia grátis, sem cadastro`}</small></aside>`};
+  return {after:i,html:`<aside class="mid-cta" aria-label="${tool?"Ferramenta grátis":"Teste "+a.name}"><div class="lockup">${MARK[a.key](30)}<span class="wordmark">${a.w1} <em>DNA</em></span></div><p>${esc(text)}</p><a class="btn btn-area" href="${href}" data-de="artigo_meio" data-a="${x.id}" data-sport="${sport}">${esc(rule[2])}${tool||rule[2].length>22?"":" · grátis"} <span class="arr" aria-hidden="true">→</span></a><small>${tool?"Ferramenta grátis · medida da mão em cm · sem cadastro":`${a.facts[1][0]} ${a.facts[1][1]} · prévia grátis, sem cadastro`}</small></aside>`};
 }
 function article(id){
   const x = A.find(y=>y.id===id); if(!x) return null;
