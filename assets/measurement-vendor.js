@@ -2,6 +2,9 @@
 (() => {
   'use strict';
   const GA = 'G-BL3GWV6MGQ';
+  // Google Ads (mesma conta das campanhas de busca): só com aceite de análise e de anúncios, sem personalização.
+  const ADS = 'AW-18547334686';
+  let adsTag = false;
   const PIXEL = '1109514848506414';
   const SITE = 'https://sportdna.com.br';
   let initialized = false;
@@ -23,6 +26,9 @@
   }
   function script(src, onload) { const s = document.createElement('script'); s.async = true; s.src = src; s.referrerPolicy = 'no-referrer'; if(onload)s.onload=onload; document.head.appendChild(s); }
   function gtag() { window.dataLayer.push(arguments); }
+  // A tag do Google Ads ignora page_location: ela lê o caminho da página principal (sem a query).
+  // Só roda quando esse caminho é uma página pública medida (início, testes, guias, blog, calculadora).
+  function topPublic() { try { return !!safePath(parent.location.pathname); } catch { return false; } }
   window.addEventListener('message', e => {
     if (e.origin !== location.origin || e.source !== parent || parent === window) return;
     const d = e.data;
@@ -39,6 +45,11 @@
         gtag('js', new Date());
         gtag('config', GA, { send_page_view: false, page_location: SITE + '/', page_referrer: '', page_title: 'SPORT DNA', allow_google_signals: false, allow_ad_personalization_signals: false });
         script('https://www.googletagmanager.com/gtag/js?id=' + GA);
+        // Tag do Google Ads: liga o clique do anúncio (gclid) à visita e à compra. Sem aceite de anúncios, nem carrega.
+        if (adsTag === false && d.marketing === true && d.googleAdsMeasurement === true && topPublic()) {
+          adsTag = true;
+          gtag('config', ADS, { send_page_view: false, page_title: 'SPORT DNA', allow_ad_personalization_signals: false });
+        }
       }
       if (marketing) {
         const fbq = function() { fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments); };
@@ -57,6 +68,7 @@
       const ads = a && m && d.googleAdsMeasurement === true ? 'granted' : 'denied';
       if (analytics) gtag('consent', 'update', { analytics_storage: a ? 'granted' : 'denied', ad_storage: ads, ad_user_data: ads, ad_personalization: 'denied' });
       if (marketing && !m && window.fbq) window.fbq('consent', 'revoke');
+      if (adsTag && !(a && m && d.googleAdsMeasurement === true)) adsTag = 'off';
       analytics = a; marketing = m;
       return;
     }
@@ -109,6 +121,8 @@
     const referrer = typeof d.referrer === 'string' && /^https?:\/\/[a-z0-9.-]{1,253}(?::\d{1,5})?\/$/i.test(d.referrer) ? d.referrer : '';
     const done = () => parent.postMessage({ type: 'sd_done', id: d.id, queued: true }, location.origin);
     if (analytics) gtag('event', d.event, { ...p, send_to: GA, page_location: SITE + path + suffix, page_referrer: referrer, page_title: 'SPORT DNA', transport_type: 'beacon', event_callback: done, event_timeout: 1500 });
+    // Google Ads: só o pedido criado e a compra, com valor, moeda e o ID irreversível; nada do teste nem do produto.
+    if (adsTag === true && analytics && ['begin_checkout','purchase'].includes(d.event) && topPublic()) gtag('event', d.event, { send_to: ADS, page_title: 'SPORT DNA', ...(p.value ? { value: p.value, currency: 'BRL' } : {}), ...(p.transaction_id ? { transaction_id: p.transaction_id } : {}) });
     if (marketing && d.event !== 'quiz_step') {
       // Toda chamada leva a página real e a área, porque a Meta só enxerga /medicao.html.
       const page = { page_path: path, content_category: area(path, p.sport) };
