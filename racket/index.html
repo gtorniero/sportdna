@@ -598,6 +598,30 @@ details.more[open]>summary{margin-bottom:10px}
 .pdfroot .prc .qh span{font-size:9.5px;color:#4A6570;font-weight:600}.pdfroot .prl{display:flex;flex-wrap:wrap;gap:4px}.pdfroot .prl span{background:#0B2530;color:#fff;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:600}.pdfroot .prc.win .prl span{background:#DDF247;color:#0B2530}
 .pdfroot .hpro span{display:block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;font-weight:700;margin-bottom:3px}
 .pdfroot .pfit{font-size:26px!important;margin-top:0!important}.pdfroot .pc3 h3{min-height:0!important}.pdfroot .pc3{padding:10px 12px!important}.pdfroot .mini3 div{margin-top:2px!important}.pdfroot .pq{padding:8px 11px!important}.pdfroot .qrow{margin-bottom:6px!important}.pdfroot .prc{padding:7px 10px!important}
+
+/* primeira tela (nov/2026): botão principal inteiro, dois secundários lado a lado, linha do iniciante e selos */
+.cta2{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.cta2b{display:flex;gap:12px;flex-wrap:wrap}
+.begin{margin:0;font-size:15px;color:var(--muted)}.begin b{color:var(--ink)}
+.trust{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.trust li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+@media (max-width:560px){.cta2{display:grid;grid-template-columns:minmax(0,1fr)}.cta2 #start{width:100%}.cta2b{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.cta2b .btn{padding:12px 10px}}
+/* cartão de retomada: resultado salvo e pagamento pendente */
+.resumecard{border:2px solid var(--pri);gap:12px}
+.resumecard h2{font-size:clamp(20px,4.6vw,26px);margin:0}
+.resumecard .pend{background:var(--soft);border-radius:12px;padding:12px 14px;margin:0}
+.resumecard .row .btn{flex:1 1 160px}
+.resumecard .rcx{background:none;border:0;padding:4px 0;min-height:24px;font:inherit;font-size:13px;color:var(--muted);text-decoration:underline;cursor:pointer;align-self:flex-start}
+/* exemplo pronto e ficha ideal grátis */
+.exbox{border:2px solid var(--pri)}
+.exbox h2{font-size:clamp(22px,5vw,30px);margin:0}
+.ficha4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.ficha4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ficha4 .kpi b{font-size:clamp(20px,5.4vw,26px)}
+.fconf{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:14px}
+.fconf b{font-family:var(--f-mono);font-size:30px;font-variant-numeric:tabular-nums}
+.fconf span{font-size:14px;color:var(--muted)}
+.gratis{background:var(--ball);color:var(--ball-ink);font-size:12px;font-weight:800;letter-spacing:.06em;border-radius:999px;padding:4px 10px}
+
 </style>
 
 <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
@@ -607,23 +631,32 @@ details.more[open]>summary{margin-bottom:10px}
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>
       <span>RACKET DNA<small>by SPORT DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Pagamento único · cartão ou Pix</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Prévia grátis · relatório R$ 19,99</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
   <main id="conteudo" class="a11y-main" role="main">
   <section id="landing" style="display:flex;flex-direction:column;gap:28px">
+    <section id="resumeCard" class="panel resumecard" aria-labelledby="rcT" hidden></section>
     <div class="hero">
       <div style="display:flex;flex-direction:column;gap:18px">
         <p class="eyebrow">Laboratório de raquetes</p>
         <h1>A raquete certa para o seu jogo e para o seu braço.</h1>
-        <p class="lead">Responda <span id="nQ">19 a 28</span> perguntas sobre seu corpo, seu jogo e sua raquete atual. Você vê uma prévia do resultado antes de decidir pelo relatório completo.</p>
-        <div class="row">
+        <p class="lead">Corpo, nível e jogo cruzados com <b><span data-n="rk">183</span> raquetes medidas</b>. Você vê a prévia grátis e só paga se quiser o relatório.</p>
+        <div class="cta2">
           <button class="btn btn-go" id="start" type="button">Descobrir minha raquete</button>
-          <button class="btn btn-ghost" id="duelGo" type="button">Comparar duas raquetes</button>
-          <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
+          <div class="cta2b">
+            <button class="btn btn-ghost" id="example" type="button" aria-describedby="exNote">Ver um exemplo</button>
+            <button class="btn btn-ghost" id="duelGo" type="button" aria-label="Comparar duas raquetes">Comparar duas</button>
+          </div>
         </div>
-        <p class="note">Você vê o diagnóstico antes de pagar · leva uns 5 minutos</p>
+        <p class="note sr-only" id="exNote">Relatório completo de um perfil fictício</p>
+        <p class="begin"><b>Iniciante e sem raquete?</b> São <span id="nBeg">19</span> perguntas, cerca de <span id="tBeg">3</span> min. Quem já joga responde até <span id="nQ">28</span>.</p>
+        <ul class="trust" aria-label="Por que confiar">
+          <li><span aria-hidden="true">✓</span> <span data-n="rev">670</span> avaliações lidas</li>
+          <li><span aria-hidden="true">✓</span> Nenhuma marca paga</li>
+          <li><span aria-hidden="true">✓</span> Sem cadastro</li>
+        </ul>
         <details>
           <summary class="note" style="cursor:pointer;min-height:24px">Já fiz o teste: retomar ou abrir um código</summary>
           <div id="resumeBox" class="resume" style="margin-top:8px" hidden>
@@ -990,8 +1023,10 @@ const vis=q=>!q.if||q.if();
 const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',joint:['elbow'],painPast:'2',painAgo:'2y',lvl:'int',years:'3',freq:'2',style:['agg','all'],spin:'mid',swing:'mid',serve:'flat',opp:'mix',miss:'short',cur:'other',keep:'none',issue:'late',why:'pain',want:['comfort','power'],string:'poly',tens:'54',restr:'6m',budget:'2000'};
 (function(){const sp=RK.find(r=>/speed pro/i.test(r.model));EXAMPLE.cur=sp?String(sp.id):'other'})();
 /* contador: menor e maior caminho reais (dor atual e histórico não aparecem juntos; "o que manter" só com raquete do catálogo) */
+/* iniciante, sem raquete e sem dor: o caminho mais curto; tempo pela mesma conta da barra de progresso (8 s por pergunta) */
+const caminhoIniciante=()=>{const guard={...A};Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm:'no',cur:'none',lvl:'beg'});const n=Q.filter(q=>!q.if||q.if()).length;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return n};
 const contaCaminhos=()=>{const guard={...A},ns=[];for(const arm of ['no','past','now'])for(const cur of ['none','other','0'])for(const lvl of ['beg','adv']){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm,cur,lvl});ns.push(Q.filter(q=>!q.if||q.if()).length)}Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return [Math.min(...ns),Math.max(...ns)]};
-{const [mn,mx]=contaCaminhos();$('#nQ').textContent=mn+' a '+mx}
+{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#tBeg').textContent=Math.max(1,Math.round(nb*8/60))}
 const NVAR=Q.length+9+7;
 /* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
    casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
@@ -1105,11 +1140,17 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Enter'){$('#next').click();e.preventDefault()}
 });
 function missing(){return VQ().filter(q=>q.s===step&&!q.opt&&!answered(q))}
-let exampleSession=false;
-function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('racket-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
+let exampleSession=false,exampleSig='';
+/* respostas iguais com chaves em qualquer ordem */
+const stable=v=>Array.isArray(v)?'['+v.map(stable).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+stable(v[k])).join(',')+'}':JSON.stringify(v);
+/* o relatório completo grátis vale só para as respostas do perfil fictício, nunca para respostas editadas a partir dele */
+const isExample=()=>exampleSession&&!!exampleSig&&stable(A)===exampleSig;
+function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(id==='landing')renderResume();if(enteringPreview)window.SportDNAMeasure?.offer?.('racket-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
 
 $('#start').addEventListener('click',()=>{exampleSession=false;editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
-$('#example').addEventListener('click',()=>{exampleSession=true;editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
+$('#example').addEventListener('click',()=>{exampleSession=true;editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));purgeHidden();exampleSig=stable(A);runAnalysis()});
+/* do exemplo para o próprio teste: começa do zero */
+document.addEventListener('click',e=>{if(!e.target.closest||!e.target.closest('[data-mytest]'))return;exampleSession=false;exampleSig='';editing=false;revDor=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()});
 $('#home').addEventListener('click',()=>show('landing'));$('#home').addEventListener('keydown',e=>{if(e.key==='Enter')show('landing')});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}go(-1)});
 $('#next').addEventListener('click',()=>{
@@ -1180,9 +1221,40 @@ function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;
   if(a.arm==='no'){delete a.pain;delete a.lim;delete a.painPast;delete a.painAgo;delete a.painMigrado;delete a.painConflito}if(a.budget!=null&&!['1400','2000','99999'].includes(String(a.budget))){const b=+a.budget;a.budget=!(b>0)?'99999':b<=1400?'1400':b<=2000?'2000':'99999'}return a}
 function loadAnswers(o){exampleSession=o.example===true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(o.a||o));purgeHidden();tier=window.SportDNAPayments?.enabled?0:o.t||0}
 if(LS.get('rm_last'))$('#resumeBox').hidden=false;
-$('#resume').addEventListener('click',()=>{try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}});
+function resumeLast(){try{loadAnswers(decode(LS.get('rm_last')));RES=compute();renderPreview();if(tier){renderReport();show('report')}else show('preview')}catch(e){toast('Não foi possível retomar')}}
+$('#resume').addEventListener('click',resumeLast);
+/* Cartão de retomada (nov/2026): quem volta vê no topo o resultado salvo neste aparelho e o pagamento pendente.
+   Nada aqui libera o relatório: "Continuar o pagamento" reabre o Pix ou o cartão, e só o servidor confirmando o pagamento libera. */
+const hhmm=t=>new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+const dayTxt=t=>{const d=new Date(t),n=new Date();const same=(a,b)=>a.toDateString()===b.toDateString();const y=new Date(n);y.setDate(n.getDate()-1);return same(d,n)?'hoje':same(d,y)?'ontem':'em '+d.toLocaleDateString('pt-BR')};
+function renderResume(){
+  const box=$('#resumeCard');if(!box)return;
+  let last=null;try{const o=decode(LS.get('rm_last')||'');if(o&&o.example!==true)last=o}catch(e){}
+  let sum=null;try{sum=JSON.parse(LS.get('rm_last_sum')||'null')}catch(e){}
+  const pay=window.SportDNAPayments?.saved?.()||null;
+  if(!last&&!pay){box.hidden=true;box.innerHTML='';return}
+  const price=pay&&pay.amount?(pay.amount/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}):'';
+  const what=pay?.product==='racket-comparator'?' do comparador':'';
+  let pend='',btn='';
+  if(pay&&pay.state==='pending'){
+    pend=`<p class="pend">${pay.provider==='mercadopago'?`Você gerou um Pix${what} de ${price} ${dayTxt(pay.at)} às ${hhmm(pay.at)}.`:`Você abriu o pagamento${what} com cartão de ${price} ${dayTxt(pay.at)} às ${hhmm(pay.at)}.`} Ele vale até ${dayTxt(pay.expires)==='hoje'?'hoje':'amanhã'} às ${hhmm(pay.expires)}. Se você já pagou, é só continuar: o relatório abre assim que o banco confirmar.</p>`;
+    btn=`<button class="btn btn-go" type="button" data-rc="pay">${pay.provider==='mercadopago'?'Continuar o Pix':'Continuar o pagamento'}</button>`;
+  }else if(pay&&pay.state==='paid'){
+    pend=`<p class="pend">O seu relatório pago está guardado neste aparelho.</p>`;
+    btn=`<button class="btn btn-go" type="button" data-rc="pay">Abrir meu relatório</button>`;
+  }
+  const head=sum&&sum.arch?`<h2 id="rcT">${esc(sum.arch)}</h2>${Array.isArray(sum.fits)&&sum.fits.length===3?`<p class="muted" style="margin:0">Suas 3 raquetes: DNA de ${sum.fits[0]}%, ${sum.fits[1]}% e ${sum.fits[2]}%</p>`:''}`:`<h2 id="rcT">Seu último resultado</h2>`;
+  box.innerHTML=`<p class="eyebrow" style="margin:0">Seu resultado está salvo neste aparelho</p>${head}${pend}<div class="row">${btn}${last?`<button class="btn ${btn?'btn-ghost':'btn-go'}" type="button" data-rc="last">Ver resultado</button>`:''}</div><button class="rcx" type="button" data-rc="del">Apagar deste aparelho</button>`;
+  box.hidden=false;
+  box.querySelectorAll('[data-rc]').forEach(b=>b.onclick=async()=>{const k=b.dataset.rc;
+    if(k==='last')return resumeLast();
+    if(k==='pay'){b.disabled=true;try{await window.SportDNAPayments.resume()}finally{b.disabled=false}return}
+    if(k==='del'){try{localStorage.removeItem('rm_last');localStorage.removeItem('rm_last_sum')}catch(e){}if(pay&&pay.state==='pending')window.SportDNAPayments?.forget?.();$('#resumeBox').hidden=true;renderResume();$('#start').focus();toast('Apagado deste aparelho')}});
+}
 $('#codeGo').addEventListener('click',()=>{try{loadAnswers(decode($('#codeIn').value));$('#codeErr').hidden=true;RES=compute();renderPreview();show('preview')}catch(e){$('#codeErr').hidden=false}});
-function persist(){LS.set('rm_last',encode({a:A,t:tier,example:exampleSession}))}
+function persist(){if(exampleSession)return;LS.set('rm_last',encode({a:A,t:tier,example:false}));
+  /* resumo para o cartão de retomada: perfil e as 3 notas, sem marca nem modelo */
+  try{if(RES)LS.set('rm_last_sum',JSON.stringify({v:1,arch:archetype(),fits:RES.ranked.slice(0,3).map(x=>x.fit),at:Date.now()}))}catch(e){}}
 /* relatório: botão para revisar a etapa Braço (resposta antiga contraditória) */
 document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('[data-armstep]')){revDor=true;step=1;show('quiz');renderQs()}});
 
@@ -1344,7 +1416,7 @@ function runAnalysis(){
   }
   RES=revised;
   if(ed){if(editing)editLeft=0;editing=false;revDor=false}else tier=0;persist();
-  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(ed){renderReport();show('report');toast('Relatório refeito com as respostas corrigidas.')}else{renderPreview();show('preview')}};
+  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(ed){renderReport();show('report');toast('Relatório refeito com as respostas corrigidas.')}else if(isExample()){editLeft=0;renderReport();show('report')}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
 
@@ -1468,6 +1540,34 @@ function diagnosis(free=true){
   <div><p class="eyebrow" style="margin-bottom:6px">O que pesa contra</p><ul class="why">${contra.map((x,i)=>`<li>${free&&i>0?mask(x+'.'):x+'.'}</li>`).join('')}</ul></div></div>
   ${extra.length?`<p class="muted">${extra.join(' ')}</p>`:''}${free?'<p class="note" style="margin:0">A nota da sua raquete e a outra metade do diagnóstico estão no relatório, junto com a comparação lado a lado.</p>':''}</div>`;
 }
+/* Teste A/B (nov/2026): metade de quem chega pela primeira vez vê a ficha ideal grátis na prévia.
+   FICHA_GRATIS_PCT = 50 roda o teste; 100 mostra a ficha para todos; 0 volta à prévia antiga para todos.
+   Com 0 ou 100 o grupo sai do aparelho e a medição para de mandar ab_ficha. Leitura: docs/racket/ab-ficha-gratis.md */
+const FICHA_GRATIS_PCT=50;
+const AB_KEY='sd_ab_ficha_v1';
+const abFicha=(()=>{
+  if(FICHA_GRATIS_PCT>=100||FICHA_GRATIS_PCT<=0){try{localStorage.removeItem(AB_KEY)}catch(e){}return FICHA_GRATIS_PCT>=100?'ficha':'controle'}
+  const q=new URLSearchParams(location.search).get('ab');/* conferência: ?ab=ficha ou ?ab=controle */
+  if(q==='ficha'||q==='controle'){LS.set(AB_KEY,q);return q}
+  const v=LS.get(AB_KEY);if(v==='ficha'||v==='controle')return v;if(v==='fora')return 'controle';
+  /* quem já fez o teste antes do A/B fica fora da comparação (vê a prévia antiga e não entra na conta) */
+  if(LS.get('rm_last')){LS.set(AB_KEY,'fora');return 'controle'}
+  const g=Math.random()*100<FICHA_GRATIS_PCT?'ficha':'controle';LS.set(AB_KEY,g);return g;
+})();
+/* ficha ideal: as faixas que o motor já calcula (sem pesos nem fórmula) e a confiança do resultado */
+function fichaGratis(){
+  const {Z,conf,answered}=RES;const f=(a,u='')=>a[0]===a[1]?a[0]+u:`${a[0]}–${a[1]}${u}`;
+  return `<section class="panel" aria-labelledby="fgT"><div class="phead"><h2 class="eyebrow" id="fgT" style="margin:0">Sua ficha ideal</h2><span class="gratis">GRÁTIS</span></div>
+    <p style="margin:0">É isso que a raquete precisa ter para o seu jogo e o seu braço. Leve para a loja ou compare com a sua.</p>
+    <div class="ficha4">
+      <div class="kpi"><b>${f(Z.wt,' g')}</b><span>peso sem corda</span></div>
+      <div class="kpi"><b>${f(Z.head)}</b><span>cabeça (pol²)</span></div>
+      <div class="kpi"><b>${f(Z.sw)}</b><span>${gl('sw','swingweight')}</span></div>
+      <div class="kpi"><b>${f(Z.bal)}</b><span>${gl('bal','balanço')} (mm)</span></div>
+    </div>
+    <div class="fconf"><b>${conf}%</b><span>confiança do resultado, com ${answered} respostas. ${RK.length} raquetes e ${fmt(NREV)} avaliações na base.</span></div>
+    <p class="note" style="margin:0">Quais modelos cabem nessa ficha, a corda e a tensão ficam no relatório.</p></section>`;
+}
 function renderPreview(){
   const {ranked,conf,T,curFit,c}=RES;const top=ranked.slice(0,3);
   const BB=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="quiz">← Voltar às respostas</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button></div>`;
@@ -1494,7 +1594,7 @@ function renderPreview(){
       <figure class="rpeek"><img src="../assets/reports/racket.webp" alt="Prévia borrada de um relatório completo do RACKET DNA" loading="lazy"><figcaption>Relatório completo · 5 páginas em PDF</figcaption></figure>
     </div>
   </div>
-  <div class="panel">
+  ${abFicha==='ficha'?fichaGratis():`<div class="panel">
     <p class="eyebrow">O que está por trás</p>
     <div class="kpis">
       <div class="kpi"><b>${RK.length}</b><span>raquetes do catálogo comparadas com o seu jogo</span></div>
@@ -1502,7 +1602,7 @@ function renderPreview(){
       <div class="kpi"><b>${semRef()?`${RES.Z.wt[0]}–${RES.Z.wt[1]} g`:RES.tw+' g'}</b><span>${semRef()?'faixa para testar, sem corda':'peso ideal sem corda'}</span></div>
       <div class="kpi"><b>${curFit?mask(curFit.fit+'%'):'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
     </div>
-  </div>
+  </div>`}
   <div class="panel">
     <div class="two" style="align-items:center">
       <div id="cardPrev" class="cardwrap herocard" aria-label="Seu DNA de jogo em card"></div>
@@ -1697,16 +1797,25 @@ function closeRacketFit(current,best){
   if(!current||current.fit<90||Math.abs(best.fit-current.fit)>3)return '';
   return `Sua raquete atual já combina muito bem com seu jogo: ${current.fit}% contra ${best.fit}% da recomendada. A diferença é pequena. Se ela está confortável e atende ao seu jogo, faz sentido continuar com ela.`;
 }
+/* faixa do exemplo pronto: deixa claro que é um perfil fictício, com o resumo dele */
+function exampleBanner(){
+  const lv={beg:'iniciante',int:'intermediário',adv_int:'intermediário avançado',adv:'avançado'}[EXAMPLE.lvl]||'';
+  const jt={elbow:'no cotovelo',wrist:'no punho',shoulder:'no ombro'}[(EXAMPLE.joint||[])[0]]||'no braço';
+  const cur=EXAMPLE.cur&&EXAMPLE.cur!=='other'&&EXAMPLE.cur!=='none'?RK[+EXAMPLE.cur]:null;
+  const who=`Jogador ${lv} de ${EXAMPLE.age} anos${EXAMPLE.arm==='past'?', já teve dor '+jt:''}${cur?' e joga com uma '+esc(cur.name):''}.`;
+  return `<section class="panel exbox" aria-labelledby="exT"><p class="eyebrow">Exemplo pronto · perfil fictício</p><h2 id="exT">Este é o relatório completo que você recebe.</h2><p style="margin:0">${who} Nada borrado: role para ver tudo, do resultado à corda e à tensão.</p><div class="row"><button class="btn btn-go" type="button" data-mytest>Fazer o meu teste · prévia grátis</button><button class="btn btn-ghost" type="button" data-pdf>Ver as 5 páginas em PDF</button></div></section>`;
+}
 function renderReport(){
-  const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);const full=tier>=2;
+  const {ranked,T,c,Z,curFit}=RES;const w=ranked[0];const r=w.r;const gs=gripSize();const st=stringSetup(r);const ex=isExample();const full=tier>=2||ex;
   const fitNote=full?closeRacketFit(curFit,w):'';
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Atual × nova':'Perfil × nova';
   const chips=[['r-res','Resultado'],['r-por','Por que combina'],['r-atual',cmpName]].concat(full?[['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
   const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Baixar PDF</button>':'';
-  let h=`<div class="rbar"><div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
+  let h=`<div class="rbar"><div class="backbar">${ex?'<button class="btn btn-ghost btn-sm" type="button" data-mytest>Fazer o meu teste</button>':'<button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button>'}<button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
   <nav class="rchips" aria-label="Seções do relatório">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
+  if(ex)h+=exampleBanner();
   /* 1. Seu resultado */
   h+=`<section class="panel winner" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
     ${racketHead(w)}
@@ -1739,7 +1848,7 @@ function renderReport(){
       </details></section>`;
     /* 6. Comparador (recolhido) */
     h+=`<section id="r-cmp" aria-label="Comparador"><details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Comparar duas raquetes</b><span>A recomendada contra a sua ou contra qualquer outra das ${RK.length}, atributo por atributo, com o DNA Score de cada uma.</span></span><span class="cmpgo" aria-hidden="true">Comparar</span></summary>
-      <div class="cmpsel"><select id="cmpA" aria-label="Raquete A">${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Raquete B">${optList(c?c.id:ranked[1].r.id)}</select></div>
+      <div class="cmpsel"><select id="cmpA" aria-label="Raquete A"${ex?' disabled':''}>${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Raquete B"${ex?' disabled':''}>${optList(c?c.id:ranked[1].r.id)}</select></div>${ex?`<p class="note">No exemplo, a comparação fica fixa. No seu relatório, você compara quaisquer duas das ${RK.length}.</p>`:''}
       <div id="cmpOut"></div></details></section>`;
     /* 7. Guia de compra: corda e tensão + grip */
     const polyTip=A.string==='poly'&&A.arm!=='no'&&!/Poliéster perde/.test(st.rs);
@@ -1775,13 +1884,13 @@ function renderReport(){
     <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fr.map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
     <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></div></details></section>`})()}
   ${full&&editLeft>0?`<div class="panel editbox"><h2 class="sec">Errou alguma resposta?</h2><p>Você pode corrigir as respostas uma vez, por exemplo a versão exata da sua raquete atual. O relatório é refeito na hora, sem novo pagamento.</p><button class="btn btn-ghost" type="button" id="editAns" style="align-self:flex-start">Editar respostas</button></div>`:''}
-  <div class="row">${full?'<button class="btn btn-go" type="button" data-pdf>Baixar relatório em PDF (A4)</button>':''}<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>`;
+  <div class="row">${full?`<button class="btn btn-go" type="button" data-pdf>${ex?'Baixar o PDF do exemplo (A4)':'Baixar relatório em PDF (A4)'}</button>`:''}${ex?'<button class="btn btn-ghost" type="button" data-mytest>Fazer o meu teste · prévia grátis</button>':'<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button>'}</div>`;
   const R=$('#report');R.innerHTML=h;
   wireSeg(R);
   const up=$('#up');if(up)up.onclick=()=>pix(2);
-  $('#again').onclick=()=>{editing=false;revDor=false;step=0;show('quiz');renderQs()};
+  if($('#again'))$('#again').onclick=()=>{editing=false;revDor=false;step=0;show('quiz');renderQs()};
   if($('#editAns'))$('#editAns').onclick=()=>{editing=true;step=0;show('quiz');renderQs();toast('Corrija o que precisar. No fim, o relatório é refeito sem novo pagamento.')};
-  R.querySelector('[data-save]').onclick=saveBox;
+  const sv=R.querySelector('[data-save]');if(sv)sv.onclick=saveBox;
   R.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>downloadPDF(b));
   $('#dlCard').onclick=()=>downloadCard();if($('#dlRacket'))$('#dlRacket').onclick=downloadRacketCard;$('#shareCard').onclick=shareCard;previewCard();
   if(full){const f=()=>renderCmp();$('#cmpA').onchange=f;$('#cmpB').onchange=f;$('#cmp').addEventListener('toggle',()=>{if($('#cmp').open&&!$('#cmpOut').innerHTML)f()})}
@@ -1793,7 +1902,7 @@ function renderReport(){
     t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
     const f=fd?fd.querySelector('summary'):t.querySelector('h2,summary');if(f){if(f.tagName==='H2'&&!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');try{f.focus({preventScroll:true})}catch(_){f.focus()}}});
   requestAnimationFrame(rbarH);
-  if(full)prebuildPDF();
+  if(full&&!ex)prebuildPDF();
 }
 function rbarH(){const b=$('#report .rbar');if(b&&b.offsetHeight)$('#report').style.setProperty('--rbar',b.offsetHeight+'px')}
 addEventListener('resize',rbarH);
@@ -1846,7 +1955,7 @@ function pdfPages(){
   const lvl={beg:'Iniciante',int:'Intermediário',adv_int:'Intermediário avançado',adv:'Avançado'}[A.lvl]||'';
   const arm=A.arm==='now'?'Dor no braço hoje':A.arm==='past'?'Já teve dor no braço'+({'3':' (forte)','2':' (moderada)','1':' (leve)'}[A.painPast]||''):'Sem dor no braço';
   const head=(n,t)=>`<div class="ph"><span class="pbrand">RACKET DNA</span><span>${t}</span><span>${n} / 5</span></div>`;
-  const foot=`<div class="pf"><span>Relatório pessoal · ${today} · #${id}</span><span>Índices RACKET DNA calculados de specs medidas + avaliações públicas. Não substitui teste em quadra.</span></div>`;
+  const foot=`<div class="pf"><span>${isExample()?'Exemplo pronto · perfil fictício':'Relatório pessoal'} · ${today} · #${id}</span><span>Índices RACKET DNA calculados de specs medidas + avaliações públicas. Não substitui teste em quadra.</span></div>`;
   const series=[{name:'Seu ideal',v:T,c:'#0B2530',ideal:true},{name:r.model,v:r.ix,c:'#0E4D64',solid:true}];if(c)series.push({name:'Sua atual',v:c.ix,c:'#E07A1F',dash:true});
   const radarSVG=hexify(radar(series).split('<div class="legend">')[0]).replace(/fill-opacity="\.5"/,'fill-opacity=".55"');
   const tiles=[['Raquete',esc(r.name),`${r.head} pol² · ${r.pat.replace('x','×')} · ${r.wt} g`],['Grip',gs?'L'+gs.g:'Meça a mão',gs?gs.src:'Palma até a ponta do anelar, em cm'],['Corda',st.s.split(':')[0].replace(/ \d,\d\d mm.*$/,''),STR_EX(st.s)],['Espessura',(st.s.match(/1,\d\d mm/)||['1,25 mm'])[0],'Mais fina: mais spin e toque; mais grossa: dura mais'],['Tensão',`${st.lb[0]}–${st.lb[1]} lb`,`${st.kg[0]}–${st.kg[1]} kg · centro em ${st.base} lb`],['Troca da corda',st.swap||'a cada 2 a 3 meses','Pelo seu ritmo de jogo']];
@@ -2110,6 +2219,7 @@ window.SportDNAPayments?.register({name:'racket',snapshot:()=>JSON.parse(JSON.st
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(answers));RES=Object.keys(A).length?compute():null},
  unlock:(product,revised)=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;editLeft=revised?0:1;persist();renderReport();show('report')}}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
+renderResume();
 })();
 </script>
 
