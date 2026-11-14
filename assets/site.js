@@ -52,7 +52,7 @@ const AREAS = {
     facts:[["13","tipos de prancha"],["3 min","de teste"],["R$ 19,99","relatório"]],
     vin:["Peso, altura e idade","Tempo e frequência de surf","O que já faz na onda","Estilo","Flutuação preferida","Tamanho e força da onda","Papel no quiver","Prancha atual"],
     vout:["Tipo de shape","Comprimento","Largura e espessura","Litragem","Rabeta e bordas","Fundo e rocker","Quilhas","Construção"],
-    inside:[["Tipo de prancha com DNA Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."]],
+    inside:[["Tipo de prancha com DNA Score","O shape que combina com seu estilo e seu nível."],["Medidas e litragem","Comprimento, largura, espessura e litros calculados para você."],["Deck e fundo desenhados","Rabeta, quilhas, fundo e construção no desenho da prancha."],["Guia para a loja ou o shaper","Faixas aceitáveis para comprar nova, usada ou sob medida."],["Especialista para fazer a prancha","No fim, fale com o Gustavo Lucas, surf coach com acesso direto às fábricas. Ele indica modelo e shaper e encomenda a prancha com você. Parceria declarada."]],
     price:[["Grátis","Prévia com a litragem"],["R$ 19,99","Relatório completo"]],
     engine:{title:"Não é palpite. É um motor calibrado com 422 casos reais de surf.",
       lede:"Cada caso (review de loja, teste de revista, prancha de atleta, tabela de marca, relato de fórum) virou um perfil do questionário e rodou no motor. O que errava foi ajustado e conferido em casos guardados à parte.",
@@ -93,7 +93,7 @@ document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
-  board:"Exemplo de relatório do SURF DNA: prancha ideal evolution (allround) com DNA Score de 96%, medidas de 6 pés e 2 polegadas por 19 e 3/4 por 2 e 1/2 polegadas e 34,2 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, epóxi (EPS) e curva do bico de 4 e 1/4 polegadas.",
+  board:"Exemplo de relatório do SURF DNA: prancha ideal evolution (allround) com DNA Score de 96%, medidas de 6 pés e 2 polegadas por 19 e 3/4 por 2 e 1/2 polegadas e 34,2 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, epóxi (EPS) e curva do bico de 4 e 1/4 polegadas. Abaixo, começa a seção Faça sua prancha com um especialista.",
   tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Vomero 18, com DNA Score de 96%. Máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, R$ 949,99 e custo de R$ 1,70 por km. Abaixo, Por que combina, bem amortecido e dentro do orçamento, e a ficha técnica, com durabilidade de 560 km e troca em cerca de 4 meses."};
 function reportFrame(k, h){
   const a = AREAS[k];
@@ -382,9 +382,10 @@ function privacy(){
         <li>visitas às páginas públicas (início, páginas dos testes, guias, artigos do blog, calculadora de litragem e esta página), com o endereço da página e só o domínio do site de onde você veio;</li>
         <li>início e conclusão do teste, apenas com o esporte;</li>
         <li>as etapas da compra: quando a prévia com o preço aparece, quando o checkout abre, o tipo de erro se ele falhar, o pedido criado (produto, valor e Pix ou cartão) e a compra confirmada (produto, valor e um identificador irreversível da transação);</li>
+        <li>no SURF DNA, o toque no botão de WhatsApp do especialista parceiro, só com o lugar do botão (prévia ou relatório);</li>
         <li>os parâmetros de campanha e de clique de anúncio que vierem no endereço (explicados abaixo).</li>
       </ul>
-      <p>Eles não recebem suas respostas, medidas, idade, dor, condições físicas, resultado, conteúdo do relatório, código de acesso nem seu e-mail em texto aberto.</p>
+      <p>Eles não recebem suas respostas, medidas, idade, dor, condições físicas, resultado, conteúdo do relatório, código de acesso, a mensagem para o especialista, o código SURF DNA nem seu e-mail em texto aberto.</p>
       <p><b>Compra confirmada pelo nosso servidor.</b> Se você aceitou antes de pagar, nosso servidor pode avisar a Meta que a compra foi confirmada: identificador irreversível da transação, valor e moeda, os identificadores de anúncio do navegador (cookies _fbp e _fbc) e, quando a correspondência por e-mail está ligada, o e-mail da compra protegido por hash SHA-256. Hash é pseudonimização, não anonimização: a Meta consegue comparar esse código com e-mails que ela já conhece. Dados da fila e do hash saem do nosso banco em até sete dias; fica só o registro mínimo que evita contar a mesma compra duas vezes. Recusar não impede a compra.</p>
       <p><b>O que Google e Meta fazem com isso.</b> Eles podem ligar essas visitas e compras à sua conta no Google, no Facebook ou no Instagram, conforme as regras deles, e processar identificadores do navegador e dados técnicos, como IP e aparelho, em outros países. No Google, os anúncios personalizados e os Google Signals ficam desligados; o modo de consentimento do Google começa negado e só muda com o seu aceite. Consulte as políticas de privacidade do Google e da Meta.</p>
       <h3>Parâmetros de campanha</h3>
@@ -395,6 +396,7 @@ function privacy(){
         <li><b>sd_consent_v1</b> e <b>btw_capi_choice_v1</b>: guardam a sua escolha. Depois de 180 dias, perguntamos de novo.</li>
         <li><b>Pagamento em andamento</b> (armazenamento da sessão): respostas e pedido, até você fechar a aba.</li>
         <li><b>RACKET DNA</b> (armazenamento local): último resultado e o que você liberou.</li>
+        <li><b>Código SURF DNA</b> (armazenamento da sessão): o código de referência do seu resultado, que vai na mensagem para o especialista, até você fechar a aba.</li>
       </ul>
       <p>De medição, só com o seu aceite:</p>
       <ul>
@@ -410,7 +412,7 @@ function privacy(){
         <li>O relatório é pago uma vez, no valor exibido antes de você escolher o meio de pagamento: cartão pelo Stripe ou Pix pelo Mercado Pago.</li>
         <li>No cartão, o Stripe pede o seu e-mail no checkout dele. No Pix, o e-mail que você informa é repassado ao Mercado Pago. Não guardamos esse e-mail no nosso banco; quando precisamos dele, consultamos o Stripe ou o Mercado Pago.</li>
         <li>O relatório só é enviado por e-mail quando você pede. Nesse caso, o texto do relatório passa pelo nosso servidor e pelo serviço de e-mail Resend e vai só para o e-mail da compra. Não guardamos o texto do relatório.</li>
-        <li>No SURF DNA, a mensagem para o surf coach só sai se você abrir o WhatsApp e apertar enviar.</li>
+        <li>No SURF DNA, a mensagem para o especialista parceiro só sai se você abrir o WhatsApp e apertar enviar. Ela leva as suas respostas (na prévia grátis, sem a prancha calculada) e um código de referência que não identifica você.</li>
       </ul>
       <h2>Com quem compartilhamos</h2>
       <ul>
@@ -435,6 +437,7 @@ function privacy(){
         <li>Nenhuma marca ou loja paga para aparecer no resultado. O ranking é calculado antes e sem olhar para comissão.</li>
         <li>Quando um link de compra for de afiliado, por exemplo pela rede Awin, a loja pode nos pagar uma comissão, sem custo extra para você.</li>
         <li>Links de afiliado aparecem só depois da recomendação e são marcados como tal.</li>
+        <li>No SURF DNA, o especialista parceiro (Gustavo Lucas, surf coach) pode nos pagar uma comissão quando a prancha é encomendada com ele. Isso não muda as medidas recomendadas, que são calculadas antes e sem marca.</li>
         <li>Fotos de produto, quando houver, têm crédito da marca ou da loja.</li>
       </ul>
       <h2>Saúde</h2>

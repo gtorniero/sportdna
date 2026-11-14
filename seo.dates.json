@@ -321,13 +321,13 @@
  },
  "guias/surf/": {
   "published": "2026-11-01",
-  "modified": "2026-11-06",
-  "hash": "ae3992e41d0c4bdc"
+  "modified": "2026-11-14",
+  "hash": "d688e546e28f8fe5"
  },
  "privacidade/": {
   "published": "2026-11-01",
   "modified": "2026-11-14",
-  "hash": "2fbcf26b93181f97"
+  "hash": "fe37581913637af4"
  },
  "racket/": {
   "published": "2026-11-02",
@@ -341,7 +341,7 @@
  },
  "surf/": {
   "published": "2026-11-02",
-  "modified": "2026-11-09",
-  "hash": "fd9fe3e9afb5066f"
+  "modified": "2026-11-14",
+  "hash": "cc4131669fe6b379"
  }
 }

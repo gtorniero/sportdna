@@ -59,7 +59,7 @@
       analytics = a; marketing = m;
       return;
     }
-    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase'].includes(d.event)) return;
+    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase', 'generate_lead'].includes(d.event)) return;
     const path = typeof d.path === 'string' ? safePath(d.path) : null;
     if (!path) return;
     const p = {};
@@ -75,6 +75,11 @@
         if(!['invalid_email','network','timeout','unavailable','rejected','invalid_response','client'].includes(raw.error_category))return;
         p.error_category=raw.error_category;
       }
+    }
+    // Contato com o especialista parceiro: só o esporte da própria página e o lugar do botão.
+    if (d.event === 'generate_lead') {
+      if (!p.sport || path !== '/' + p.sport + '/' || !['previa', 'relatorio'].includes(raw.origem)) return;
+      p.origem = raw.origem;
     }
     if (Number.isFinite(raw.value) && raw.value > 0 && raw.value < 10000 && raw.currency === 'BRL') { p.value = raw.value; p.currency = 'BRL'; }
     if (d.event === 'purchase') {
@@ -100,6 +105,11 @@
       else if (d.event === 'purchase') window.fbq('trackSingle', PIXEL, 'Purchase', { value:p.value, currency:'BRL', ...item, ...page }, {eventID:p.transaction_id});
       // content_category do InitiateCheckout continua sendo o produto, como já era.
       else if (d.event === 'begin_checkout') window.fbq('trackSingle', PIXEL, 'InitiateCheckout', {value:p.value, currency:p.currency, ...item, page_path:path, content_category:p.product});
+      // Contato: personalizado ContatoEspecialista e, ao lado, o padrão Contact.
+      else if (d.event === 'generate_lead') {
+        window.fbq('trackSingleCustom', PIXEL, 'ContatoEspecialista', { page_category: path, ...p, ...page });
+        window.fbq('trackSingle', PIXEL, 'Contact', { ...page, origem: p.origem });
+      }
       else {
         window.fbq('trackSingleCustom', PIXEL, {quiz_start:'QuizStarted',quiz_complete:'QuizCompleted',view_offer:'OfferViewed',checkout_open:'CheckoutOpened',checkout_error:'CheckoutError'}[d.event], { page_category: path, ...p, ...page });
         // Eventos padrão ao lado dos personalizados, que continuam iguais.
