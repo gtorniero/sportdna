@@ -7,10 +7,15 @@
 
 ## Rodada 14: estilo em 4 opções, raquete atual empatada e comparador sem placar (nov/2026)
 **Estilo de jogo:**
-- A pergunta tinha 6 opções numa régua "do básico ao avançado", com saque e voleio na ponta e escolha de até 2. Agora são 4 estilos, sem régua (nível é outra pergunta) e com uma escolha: defendo e devolvo tudo (`cnt`), ataco do fundo (`agg`), jogo completo (`all`) e busco a rede (`net`).
-- "Mantenho a bola em jogo" entrou em `cnt`. "Subo quando a bola deixa" entrou em `net`.
-- Pesos de `cnt`, `agg`, `all` e `net` sem mudança. São os 4 estilos que os casos de especialistas já usavam.
-- Respostas antigas: `keep` → `cnt`, `netc` → `net`. Dois estilos que somam fundo e rede → `all`.
+- A pergunta tinha 6 opções e até 2 escolhas, com sobreposição. Agora são 4 degraus na mesma régua "do mais básico ao mais avançado", com uma escolha:
+  - ainda estou firmando os golpes (`keep`);
+  - troco bola do fundo (`cnt`);
+  - ataco do fundo (`agg`);
+  - jogo completo (`all`), que é o último degrau.
+- "Subo quando a bola deixa" e "Saque e voleio" entram em jogo completo. Sai o teto de balanço específico de rede.
+- Pesos de `keep`, `cnt`, `agg` e `all` sem mudança.
+- Respostas antigas: `netc`/`net` → `all`; com 2 estilos, fica o mais avançado.
+- `calibrar.mjs`: casos "saque-voleio" agora apontam para `all`. Resultado: top 3 31,4% (igual); "algum indicado no top 3" 38,8% → 38,5% (1 caso).
 
 **Raquete atual empatada ou perto da recomendada** (até 3 pontos, com 90% ou mais):
 - No empate, o resumo diz que a atual empata, que não precisa trocar e que a troca muda a sensação, não o resultado.
@@ -25,7 +30,7 @@
 
 **Medição:**
 - `regressao.mjs`: 21/21. T19 (estilo), T20 (resumo de empate) e T21 (comparador sem placar) são novos.
-- Os 218 perfis e `calibrar.mjs` ficam idênticos ao `main`.
+- Os 218 perfis ficam idênticos ao `main`. `calibrar.mjs` igual, salvo 1 caso de saque e voleio.
 - axe: 0 problemas no relatório com o comparador aberto e no comparador da página inicial.
 
 ## Rodada 12: dor atual × histórico, sem degrau dos 60 e neutralidade de evidência (nov/2026, branch de revisão)
