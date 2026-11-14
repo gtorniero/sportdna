@@ -89,7 +89,9 @@ const appLockup = (k,s=34) => `${ICON[k](s)}<span class="wm"><span class="wordma
 document.getElementById("brandHome").innerHTML = labLockup(34);
 document.getElementById("footBrand").innerHTML = labLockup(28);
 document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${ICON[k](24)}${AREAS[k].w1} DNA</a>`).join("") + `<span class="sep" aria-hidden="true"></span><a href="#blog" data-go="blog">Blog</a><a href="#conceito" data-go="conceito">Como funciona</a>`;
-document.getElementById("footLinks").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${AREAS[k].name}</a>`).join("") + `<a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/">Calculadora de litragem</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
+document.getElementById("footTests").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${AREAS[k].name}</a>`).join("");
+document.getElementById("footGuides").innerHTML = `<a href="#melhor-raquete" data-go="melhor-raquete">Melhor raquete de tênis</a><a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/">Calculadora de litragem</a>`;
+document.getElementById("footLinks").innerHTML = `<a href="#sobre" data-go="sobre">Sobre</a><a href="#como-ganhamos-dinheiro" data-go="como-ganhamos-dinheiro">Como ganhamos dinheiro</a><a href="#contato" data-go="contato">Contato</a><a href="#termos" data-go="termos">Termos de uso</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
   racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
@@ -232,6 +234,7 @@ function hub(k){
   </div></section>
   ${a.engine?engineSec(a):""}
   ${k==="board"?`<section style="padding-block:28px 0"><div class="wrap">${TOOLBOX}</div></section>`:""}
+  ${k==="racket"?`<section style="padding-block:28px 0"><div class="wrap">${BUY_GUIDES}</div></section>`:""}
   <nav class="subnav" aria-label="Nesta página"><div class="wrap">
     ${a.engine?`<button type="button" data-scroll="motor">O motor</button>`:""}
     <button type="button" data-scroll="relatorio">O relatório</button>
@@ -304,6 +307,22 @@ function fillLib(){
 }
 
 /* ---------- ARTICLE ---------- */
+/* Assinatura e datas: o build grava window.ML_DATE ({published, modified}, AAAA-MM-DD) em cada artigo. */
+const dataBR = d => d.split("-").reverse().join("/");
+function byline(d, soAtualizado){
+  if(!d) return "";
+  const at = `Atualizado em <time datetime="${d.modified}">${dataBR(d.modified)}</time>`;
+  return `<span class="byline">${soAtualizado?at:`Por <a href="#sobre" data-go="sobre">Equipe SPORT DNA</a> · Publicado em <time datetime="${d.published}">${dataBR(d.published)}</time> · ${at}`}</span>`;
+}
+/* Guias de compra do RACKET DNA: links a partir da página do app e dos artigos de raquete */
+const GUIDES = {
+  "melhor-raquete":["Melhor raquete de tênis 2026","Os modelos por perfil, com ficha técnica e preço no Brasil."],
+  "raquete-iniciante":["Melhor raquete de tênis para iniciante","Peso, cabeça e balanço que perdoam erros, e os modelos para quem começa."],
+  "raquete-cotovelo":["Raquete de tênis para dor no cotovelo","O que os estudos dizem e os modelos para braço sensível."]};
+const GUIDE_FOR = {"raquete-01":["raquete-iniciante","melhor-raquete"],"raquete-10":["raquete-iniciante","melhor-raquete"],"raquete-16":["raquete-iniciante","melhor-raquete"],"raquete-06":["raquete-cotovelo","melhor-raquete"],"raquete-12":["raquete-cotovelo","melhor-raquete"],"raquete-14":["raquete-cotovelo","melhor-raquete"]};
+const guideCard = k => `<a class="gcard" href="#${k}" data-go="${k}"><b>${GUIDES[k][0]}</b><span>${GUIDES[k][1]}</span><i aria-hidden="true">→</i></a>`;
+const guideLinks = id => `<aside class="guide-box" aria-label="Guias de compra"><div class="eyebrow">Guia de compra</div>${(GUIDE_FOR[id]||["melhor-raquete"]).map(guideCard).join("")}</aside>`;
+const BUY_GUIDES = `<div class="buy-guides"><div class="eyebrow">Guias de compra</div><div class="bg-grid">${Object.keys(GUIDES).map(guideCard).join("")}</div></div>`;
 function article(id){
   const x = A.find(y=>y.id===id); if(!x) return null;
   const a = ar(x); const list = byArea(a.key); const i = list.indexOf(x);
@@ -328,9 +347,9 @@ function article(id){
         <header class="art-head">
           <div class="meta">${ICON[a.key](24)}<span class="chip area">${a.sport}</span><span class="chip">${CATS[x.cat]}</span></div>
           <h1>${esc(x.title)}</h1><p class="dek">${esc(x.dek)}</p>
-          <div class="by"><span>Nível: ${esc(x.level)}</span><span>${x.minutes} min de leitura</span><span>${x.tags.map(t=>"#"+esc(t)).join(" ")}</span></div>
+          <div class="by">${byline(window.ML_DATE)}<span>Nível: ${esc(x.level)}</span><span>${x.minutes} min de leitura</span><span>${x.tags.map(t=>"#"+esc(t)).join(" ")}</span></div>
         </header>
-        <div class="prose">${body}</div>${references}
+        <div class="prose">${body}</div>${references}${a.key==="racket"?guideLinks(x.id):""}
         <div class="pn">
           ${prev?`<a href="#a-${prev.id}" data-go="a-${prev.id}"><small>← Anterior</small><b>${esc(prev.title)}</b></a>`:"<span></span>"}
           ${next?`<a class="next" href="#a-${next.id}" data-go="a-${next.id}"><small>Próximo →</small><b>${esc(next.title)}</b></a>`:""}
@@ -421,6 +440,7 @@ function privacy(){
         <li><b>Cloudflare</b>: hospeda o site e o servidor de pagamento.</li>
         <li><b>Google Fonts</b>: entrega as fontes do site.</li>
         <li><b>Google</b> e <b>Meta</b>: só com o seu aceite, como descrito acima.</li>
+        <li><b>Google AdSense</b>: só quando os anúncios nos artigos estiverem ativos, como descrito abaixo. Hoje não estão.</li>
       </ul>
       <p>Como qualquer site, esses serviços podem registrar o endereço IP de quem acessa. Não vendemos dados.</p>
       <h2>Por quanto tempo</h2>
@@ -440,6 +460,13 @@ function privacy(){
         <li>No SURF DNA, o especialista parceiro (Gustavo Lucas, surf coach) pode nos pagar uma comissão quando a prancha é encomendada com ele. Isso não muda as medidas recomendadas, que são calculadas antes e sem marca.</li>
         <li>Fotos de produto, quando houver, têm crédito da marca ou da loja.</li>
       </ul>
+      <h2 id="anuncios">Anúncios do Google nos artigos, quando ativos</h2>
+      <p>Hoje o SPORT DNA não exibe anúncios. Quando exibir, eles vão aparecer só nos artigos do blog e nos guias, nunca nos testes, nas prévias, no pagamento ou nos relatórios. Antes de ligar, atualizamos esta página e o aviso de cookies.</p>
+      <ul>
+        <li>Os anúncios serão servidos pelo Google AdSense. O Google e outros fornecedores usam cookies de terceiros para mostrar anúncios com base nas suas visitas a este e a outros sites.</li>
+        <li>Anúncios personalizados só com o seu aceite. Mesmo os anúncios não personalizados usam cookies ou identificadores para limitar quantas vezes você vê o mesmo anúncio, medir resultados de forma agregada e combater fraude e abuso.</li>
+        <li>Você pode desligar a personalização nas <a href="https://adssettings.google.com/" rel="noopener">configurações de anúncios do Google</a> e saber mais em <a href="https://policies.google.com/technologies/ads?hl=pt-BR" rel="noopener">como o Google usa cookies em publicidade</a>.</li>
+      </ul>
       <h2>Saúde</h2>
       <p>O conteúdo é educativo. Em caso de dor ou lesão, procure um profissional de saúde.</p>
       <h2>Mudanças nesta política</h2>
@@ -449,7 +476,7 @@ function privacy(){
     </div>
   </div></article>`;
 }
-if(window.ML_BUILD){ window.ML_BUILD_API={home,hub,library,article,privacy,fillHub,fillLib,AREAS}; return; }
+if(window.ML_BUILD){ window.ML_BUILD_API={home,hub,library,article,privacy,fillHub,fillLib,byline,AREAS,ICON,MARK,SHOT_H}; return; }
 const root = window.ML_ROOT || "./";
 function publicLinks(scope){
   scope.querySelectorAll('a[data-go]').forEach(a=>{a.href=root+(window.ML_ROUTES[a.dataset.go]||'');});
@@ -531,7 +558,8 @@ function legacyRoute(){
   return false;
 }
 window.addEventListener("hashchange",legacyRoute);
-if(!legacyRoute()){ render(window.ML_VIEW || 'inicio'); if(location.hash==='#conceito') requestAnimationFrame(()=>document.getElementById('conceito')?.scrollIntoView()); }
+// Guias de compra e páginas institucionais já chegam prontas no HTML: nada a renderizar.
+if(!legacyRoute()){ if(window.ML_STATIC){ setNav(window.ML_VIEW); firstRender=false; } else { render(window.ML_VIEW || 'inicio'); if(location.hash==='#conceito') requestAnimationFrame(()=>document.getElementById('conceito')?.scrollIntoView()); } }
 })();
 
 // A mesma medição consentida em todas as páginas públicas geradas.

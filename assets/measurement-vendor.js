@@ -10,13 +10,13 @@
   let metaLoaded = false;
   const metaCallbacks = [];
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
-  const allowedPaths = new Set(['/', '/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/', '/ferramentas/litragem/']);
+  const allowedPaths = new Set(['/', '/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/', '/ferramentas/litragem/', '/guias/racket/melhor-raquete-de-tenis/', '/guias/racket/melhor-raquete-de-tenis-para-iniciante/', '/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
   // Artigos entram pelo próprio caminho; a página principal só envia caminhos publicados (canonical igual ao endereço).
   function safePath(path) { return allowedPaths.has(path) || /^\/blog\/[a-z0-9-]{1,140}\/$/.test(path) ? path : null; }
   // Área da página para a Meta: o pixel roda em /medicao.html, então o caminho real vai como parâmetro.
   function area(path, sport) {
     if (sport) return sport;
-    const m = /^\/(?:guias\/)?(racket|surf|run)\/$/.exec(path);
+    const m = /^\/(?:guias\/)?(racket|surf|run)\/(?:[a-z0-9-]+\/)?$/.exec(path);
     if (m) return m[1];
     return path === '/ferramentas/litragem/' ? 'surf' : path === '/' ? 'home' : path === '/privacidade/' ? 'privacidade' : 'blog';
   }

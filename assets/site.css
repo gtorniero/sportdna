@@ -372,6 +372,13 @@ footer a{text-decoration:none}
 footer a:hover{color:var(--ink)}
 .disc{font-size:.84rem;max-width:44em;margin-top:12px}
 footer .f-base{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.75rem}
+/* Rodapé em três colunas: testes, guias e institucional (o botão de medição entra no fim de #footLinks) */
+footer .wrap>div:first-child{flex:1 1 300px;max-width:460px}
+footer .f-nav{display:grid;grid-template-columns:repeat(3,minmax(150px,auto));gap:22px 44px}
+footer .f-h{margin:0 0 10px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink)}
+footer .f-list{display:flex;flex-direction:column;align-items:flex-start;gap:6px;flex-wrap:nowrap}
+footer .f-list a{padding-block:2px}
+@media (max-width:760px){footer .f-nav{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}}
 .btw{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
 .btw:hover{color:var(--ink)}
 .btw-sym{width:30px;height:30px;flex:none}
@@ -403,3 +410,74 @@ footer .f-base{display:flex;justify-content:space-between;align-items:center;gap
 .more-guides[open]>summary::after{content:"−"}
 .more-guides>summary:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 .more-guides[open]>summary{margin-bottom:20px}
+
+/* Assinatura e datas dos artigos e guias */
+.art-head .by .byline{flex-basis:100%;color:var(--ink)}
+.byline a{text-decoration:underline;text-underline-offset:2px}
+
+/* Guias de compra: links a partir da página do RACKET DNA e dos artigos de raquete */
+.guide-box{max-width:68ch;margin-top:36px;display:grid;gap:10px}
+.gcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;align-items:center;padding:14px 18px;border:1.5px solid var(--line);border-left:6px solid var(--area);border-radius:12px;background:var(--surface);text-decoration:none}
+.gcard:hover{border-color:var(--ink);border-left-color:var(--area)}
+.gcard b{font-family:var(--f-display);font-size:1.05rem;line-height:1.25}
+.gcard span{grid-column:1;color:var(--muted);font-size:.92rem;line-height:1.45}
+.gcard i{grid-row:1/span 2;grid-column:2;font-style:normal;font-family:var(--f-mono)}
+.bg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+@media (max-width:860px){.bg-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Páginas de guia (melhor raquete, iniciante, cotovelo) */
+.guia .selo{max-width:68ch;margin:22px 0 0;padding:12px 16px;border-radius:12px;background:color-mix(in srgb,var(--area) 30%,var(--surface));font-size:.95rem;line-height:1.5}
+.guia .selo a{text-decoration:underline;text-underline-offset:2px}
+.prose h3{font-size:1.2rem;font-weight:700;margin:1.5em 0 .45em}
+.prose .resumo{border:1.5px solid var(--ink);border-radius:var(--r);padding:20px 22px;margin:1.6em 0;background:var(--surface)}
+.prose .resumo h2{margin:0 0 .5em;font-size:1.3rem}
+.prose .resumo ul{margin-bottom:18px}
+.perfil{border-top:1px solid var(--line);margin-top:30px;padding-top:2px}
+.perfil h3{margin-top:1em}
+.perfil .quem{margin-bottom:.4em}
+.prose .perfil .zona,.prose .perfil .exemplo{font-size:.92rem;line-height:1.55;color:var(--muted);margin-bottom:.6em}
+.prose .rk-picks{list-style:none;padding:0;margin:14px 0;display:grid;gap:12px}
+.prose .rk-pick{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:start;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0}
+.rk-pick .pos{font-family:var(--f-mono);font-weight:700;font-size:.9rem;width:40px;height:40px;border-radius:50%;background:var(--area);color:var(--ink-on-color);display:grid;place-items:center}
+.rk-pick .nm{margin:0 0 8px;font-family:var(--f-display);font-size:1.12rem;line-height:1.25}
+.rk-pick .yr{font-family:var(--f-body);font-size:.85rem;color:var(--muted);font-weight:500}
+.prose .specs{list-style:none;padding:0;margin:0 0 8px;display:flex;flex-wrap:wrap;gap:6px}
+.prose .specs li{margin:0;font-family:var(--f-mono);font-size:.78rem;line-height:1.4;padding:3px 8px;border-radius:6px;background:var(--sunk)}
+.prose .rk-pick .why{margin:0 0 6px;font-size:.98rem;line-height:1.55}
+.prose .rk-pick .preco{margin:0;font-size:.92rem}
+.rk-pick .preco span{color:var(--muted)}
+.cmp{margin:1.4em 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.cmp .tw{overflow-x:auto}
+.cmp table{border-collapse:collapse;width:100%;font-size:.88rem;line-height:1.4}
+.cmp th,.cmp td{padding:10px 8px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.cmp th:first-child{padding-left:14px}.cmp td:last-child{padding-right:14px}
+.cmp thead th{border-top:0;background:var(--sunk);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.cmp td{font-family:var(--f-mono);font-size:.8rem;white-space:nowrap}
+.cmp td:last-child{white-space:normal;min-width:118px}
+.cmp tbody th{min-width:150px}
+.cmp .perf{display:block;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:2px}
+.cmp.ev td{font-family:var(--f-body);font-size:.88rem;white-space:normal}
+.cmp.ev td:nth-child(2){min-width:260px}
+.prose .cmp .exemplo{padding:8px 12px;margin:0;font-size:.85rem;color:var(--muted);border-top:1px solid var(--line)}
+.guia .spec th{padding:10px 16px;border-top:1px solid var(--line);text-align:left;font-size:.9rem}
+.guia .spec thead th{border-top:0;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);white-space:nowrap}
+.guia .spec td{font-family:var(--f-mono);font-size:.84rem;white-space:nowrap;text-align:left}
+.faq{display:grid;gap:10px;margin:1em 0 1.6em}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.faq summary{cursor:pointer;font-weight:700;padding:12px 18px;min-height:44px;display:flex;align-items:center;gap:10px;list-style:none;line-height:1.4}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";font-family:var(--f-mono);flex:none}
+.faq details[open] summary::before{content:"−"}
+.prose .faq details p{margin:0;padding:0 18px 16px 40px}
+.meio-cta{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between;border:1.5px dashed var(--muted);border-radius:var(--r);padding:18px 20px;margin:2em 0}
+.prose .meio-cta p{margin:0;flex:1 1 260px}
+.guia-cta{background:#0E4D64;color:#fff;border-radius:var(--r);padding:26px 24px;margin:2.4em 0}
+.prose .guia-cta h2{margin:0 0 .4em;color:#fff}
+.prose .guia-cta p{color:#C7E2E7;margin:0 0 16px}
+.prose .guia-cta .miudo{font-size:.88rem;margin:14px 0 0}
+.aviso{border-left:4px solid var(--ink);background:var(--surface);border-radius:0 12px 12px 0;padding:14px 18px;margin:0 0 1.4em}
+.prose .aviso p{margin:0}
+.toc a{display:inline-block;padding:2px 0;text-decoration:none;color:inherit}
+.toc a:hover{color:var(--ink);text-decoration:underline}
+.inst .prose{max-width:72ch}
+.prose .contato-email{font-family:var(--f-display);font-size:1.5rem;font-weight:700}

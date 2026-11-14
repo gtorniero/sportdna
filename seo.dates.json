@@ -304,44 +304,79 @@
   "modified": "2026-10-23",
   "hash": "91448d6e4b50a37e"
  },
+ "como-ganhamos-dinheiro/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "e6ba2f52730be0ca"
+ },
+ "contato/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "bcd3c77832538464"
+ },
  "ferramentas/litragem/": {
   "published": "2026-10-24",
-  "modified": "2026-11-06",
-  "hash": "61e0903cf2ee482d"
+  "modified": "2026-11-14",
+  "hash": "5a17d62e86fc3fb6"
  },
  "guias/racket/": {
   "published": "2026-11-01",
-  "modified": "2026-11-06",
-  "hash": "5a4507aba7319b83"
+  "modified": "2026-11-14",
+  "hash": "50dde2c54ca3f32a"
+ },
+ "guias/racket/melhor-raquete-de-tenis-para-iniciante/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "437136121bb65fae"
+ },
+ "guias/racket/melhor-raquete-de-tenis/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "eab773d0956ff198"
+ },
+ "guias/racket/raquete-de-tenis-para-dor-no-cotovelo/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "a6294ab5af3b266b"
  },
  "guias/run/": {
   "published": "2026-11-01",
-  "modified": "2026-11-06",
-  "hash": "c0da28ef63baf6e0"
+  "modified": "2026-11-14",
+  "hash": "4e261ec2e41ebf09"
  },
  "guias/surf/": {
   "published": "2026-11-01",
   "modified": "2026-11-14",
-  "hash": "d688e546e28f8fe5"
+  "hash": "af1dff32b92e751a"
  },
  "privacidade/": {
   "published": "2026-11-01",
   "modified": "2026-11-14",
-  "hash": "fe37581913637af4"
+  "hash": "6e96d100640502bb"
  },
  "racket/": {
   "published": "2026-11-02",
-  "modified": "2026-11-10",
-  "hash": "0def040df53a9fd3"
+  "modified": "2026-11-14",
+  "hash": "2a05222877ab5fd0"
  },
  "run/": {
   "published": "2026-11-02",
-  "modified": "2026-11-09",
-  "hash": "eca948a36c699139"
+  "modified": "2026-11-14",
+  "hash": "16c4ef9b5404ea38"
+ },
+ "sobre/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "dc141698b3c92bef"
  },
  "surf/": {
   "published": "2026-11-02",
   "modified": "2026-11-14",
   "hash": "cc4131669fe6b379"
+ },
+ "termos/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "989b02ae4dfc1ce6"
  }
 }

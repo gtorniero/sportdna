@@ -8,7 +8,7 @@ const KEY='sd_consent_v1';let consent=null,frame=null,ready=false,last='',active
 const store={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
 const host=/^(www\.)?sportdna\.com\.br$/.test(location.hostname);
 const path=location.pathname;
-const allowed=new Set(['/','/racket/','/surf/','/run/','/blog/','/privacidade/','/guias/racket/','/guias/surf/','/guias/run/','/ferramentas/litragem/']);
+const allowed=new Set(['/','/racket/','/surf/','/run/','/blog/','/privacidade/','/guias/racket/','/guias/surf/','/guias/run/','/ferramentas/litragem/','/guias/racket/melhor-raquete-de-tenis/','/guias/racket/melhor-raquete-de-tenis-para-iniciante/','/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
 // Artigo do blog entra com o próprio caminho só quando é a página publicada (canonical igual ao endereço).
 // Endereço inexistente em /blog/ continua reduzido a /blog/: nenhum trecho arbitrário vira parâmetro.
 function canonicalPath(){try{const href=document.querySelector?.('link[rel="canonical"]')?.getAttribute('href');return href?new URL(href,'https://sportdna.com.br/').pathname:null}catch{return null}}
