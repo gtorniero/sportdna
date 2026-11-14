@@ -10,7 +10,7 @@
   let metaLoaded = false;
   const metaCallbacks = [];
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
-  const allowedPaths = new Set(['/', '/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/', '/ferramentas/litragem/', '/guias/racket/melhor-raquete-de-tenis/', '/guias/racket/melhor-raquete-de-tenis-para-iniciante/', '/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
+  const allowedPaths = new Set(['/', '/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/', '/ferramentas/litragem/', '/ferramentas/grip/', '/guias/racket/melhor-raquete-de-tenis/', '/guias/racket/melhor-raquete-de-tenis-para-iniciante/', '/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
   // Artigos entram pelo próprio caminho; a página principal só envia caminhos publicados (canonical igual ao endereço).
   function safePath(path) { return allowedPaths.has(path) || /^\/blog\/[a-z0-9-]{1,140}\/$/.test(path) ? path : null; }
   // Área da página para a Meta: o pixel roda em /medicao.html, então o caminho real vai como parâmetro.
@@ -18,6 +18,7 @@
     if (sport) return sport;
     const m = /^\/(?:guias\/)?(racket|surf|run)\/(?:[a-z0-9-]+\/)?$/.exec(path);
     if (m) return m[1];
+    if (path === '/ferramentas/grip/') return 'racket';
     return path === '/ferramentas/litragem/' ? 'surf' : path === '/' ? 'home' : path === '/privacidade/' ? 'privacidade' : 'blog';
   }
   function script(src, onload) { const s = document.createElement('script'); s.async = true; s.src = src; s.referrerPolicy = 'no-referrer'; if(onload)s.onload=onload; document.head.appendChild(s); }
@@ -59,7 +60,7 @@
       analytics = a; marketing = m;
       return;
     }
-    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase', 'generate_lead'].includes(d.event)) return;
+    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_step', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase', 'generate_lead'].includes(d.event)) return;
     const path = typeof d.path === 'string' ? safePath(d.path) : null;
     if (!path) return;
     const p = {};
@@ -68,6 +69,17 @@
     const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'};
     if (has(products,raw.product)&&products[raw.product]===p.sport) p.product=raw.product;
     if (['pix','card'].includes(raw.payment_type)) p.payment_type = raw.payment_type;
+    // Contexto de lista fechada: grupo do A/B da ficha grátis (só RACKET) e de onde veio o clique para o teste.
+    if (p.sport === 'racket' && ['controle', 'ficha'].includes(raw.ab_ficha)) p.ab_ficha = raw.ab_ficha;
+    if (p.sport && ['artigo_meio', 'artigo_fim', 'grip', 'litragem', 'guia'].includes(raw.cta_origem)) {
+      p.cta_origem = raw.cta_origem;
+      if (/^(raquete|prancha|tenis)-\d{2}$/.test(raw.cta_artigo || '')) p.cta_artigo = raw.cta_artigo;
+    }
+    // Etapa do questionário: número da etapa e total, nada mais.
+    if (d.event === 'quiz_step') {
+      if (!p.sport || path !== '/' + p.sport + '/' || !Number.isInteger(raw.step) || !Number.isInteger(raw.steps_total) || raw.step < 1 || raw.steps_total > 20 || raw.step > raw.steps_total) return;
+      p.step = raw.step; p.steps_total = raw.steps_total;
+    }
     if (['view_offer','checkout_open','checkout_error'].includes(d.event)) {
       if(!p.sport||path!=='/'+p.sport+'/'||!p.product)return;
       if(['preview_primary','preview_details','comparator','other'].includes(raw.cta_position))p.cta_position=raw.cta_position;
@@ -97,7 +109,7 @@
     const referrer = typeof d.referrer === 'string' && /^https?:\/\/[a-z0-9.-]{1,253}(?::\d{1,5})?\/$/i.test(d.referrer) ? d.referrer : '';
     const done = () => parent.postMessage({ type: 'sd_done', id: d.id, queued: true }, location.origin);
     if (analytics) gtag('event', d.event, { ...p, send_to: GA, page_location: SITE + path + suffix, page_referrer: referrer, page_title: 'SPORT DNA', transport_type: 'beacon', event_callback: done, event_timeout: 1500 });
-    if (marketing) {
+    if (marketing && d.event !== 'quiz_step') {
       // Toda chamada leva a página real e a área, porque a Meta só enxerga /medicao.html.
       const page = { page_path: path, content_category: area(path, p.sport) };
       const item = p.product ? { content_ids: [p.product], content_type: 'product', num_items: 1 } : {};
@@ -117,7 +129,7 @@
         if (d.event === 'view_offer') window.fbq('trackSingle', PIXEL, 'ViewContent', { ...(p.value ? { value: p.value, currency: 'BRL' } : {}), ...item, ...page });
       }
     }
-    if (!analytics && marketing) { if(metaLoaded)done();else metaCallbacks.push(done); }
+    if (!analytics && marketing) { if (d.event === 'quiz_step') done(); else if(metaLoaded)done();else metaCallbacks.push(done); }
   });
   if (parent !== window) parent.postMessage({ type: 'sd_ready' }, location.origin);
 })();

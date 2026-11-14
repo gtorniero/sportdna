@@ -21,8 +21,26 @@
   left.append(name,note);box.append(left,price);body.append(box);
  }
 
- const get=()=>{try{return JSON.parse(sessionStorage.getItem(key+':'+app?.name)||'null')}catch{return null}};
- const save=x=>sessionStorage.setItem(key+':'+app?.name,JSON.stringify(x));
+ /* Pedido guardado no aparelho (localStorage) e na aba (sessionStorage).
+    - Não pago: vale 24 h, o mesmo prazo do pedido no servidor. Quem fecha a aba e volta encontra o Pix ou o cartão pendente.
+    - Pago: vale 1 dia, ou o que o app pedir em keepPaidDays (o RACKET guarda 90 dias para o reteste grátis).
+    A cópia da aba marca "esta é a aba do pagamento": só ela reabre o relatório sozinha ao recarregar.
+    Em outra visita o app mostra o cartão de retomada (saved) e a pessoa escolhe (resume).
+    Nada aqui libera relatório: só check(), com o servidor dizendo "pago", chama unlock. */
+ const DAY=86400000;
+ const local=(()=>{try{return localStorage}catch{return null}})(),session=(()=>{try{return sessionStorage}catch{return null}})();
+ const slot=()=>key+':'+app?.name;
+ const days=(v,min,max,def)=>{const n=Number(v);return Number.isFinite(n)&&n>=min?Math.min(n,max):def};
+ const keepPaid=()=>days(app?.keepPaidDays,1,365,1)*DAY;
+ const alive=x=>{if(!x||typeof x!=='object'||typeof x.id!=='string'||typeof x.token!=='string')return false;const now=Date.now();if(Number.isFinite(x.paidAt))return now-x.paidAt<keepPaid();return !Number.isFinite(x.at)||now-x.at<DAY};
+ const read=store=>{try{const x=JSON.parse(store?.getItem(slot())||'null');if(x&&!alive(x)){store.removeItem(slot());return null}return x}catch{return null}};
+ const get=()=>read(local)||read(session);
+ const tab=()=>!!read(session);
+ const save=x=>{const v=JSON.stringify({...x,at:Number.isFinite(x.at)?x.at:Date.now()});let ok=false;for(const store of [local,session]){try{store.setItem(slot(),v);ok=true}catch{}}if(!ok)throw new TypeError('storage')};
+ const forget=()=>{for(const store of [local,session]){try{store?.removeItem(slot())}catch{}}};
+ // Respostas iguais com chaves em qualquer ordem: um pedido pendente só é reaproveitado para as mesmas respostas.
+ const stable=v=>Array.isArray(v)?'['+v.map(stable).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+stable(v[k])).join(',')+'}':JSON.stringify(v);
+ const retestInfo=x=>{const d=days(app?.retestDays,1,365,0);if(!d||!Number.isFinite(x?.paidAt))return null;const until=x.paidAt+d*DAY;return {until,used:x.retested===true,available:x.retested!==true&&Date.now()<until}};
  const random=()=>[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join('');
  // AbortSignal.timeout só existe a partir do Safari 16 (iPhone 6s/7 param no iOS 15) e crypto.randomUUID a partir do 15.4: sem elas o pedido nem saía do navegador.
  const uuid=()=>{if(typeof crypto.randomUUID==='function')return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=b[6]&15|64;b[8]=b[8]&63|128;const h=[...b].map(x=>x.toString(16).padStart(2,'0')).join('');return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20)};
@@ -64,12 +82,16 @@
    const order=await api('/orders/'+pending.id,{headers:{Authorization:'Bearer '+pending.token}});
    if(order.product!==pending.product||order.mode!==config.mode||!validAmount(order))throw new Error('Produto ou valor diferente da oferta. Nenhum acesso foi liberado; consulte o suporte antes de pagar.');
    if(order.state==='paid'){
-    const current=get();
+    let current=get();
     if(current?.id!==pending.id)return false;
+    // A compra só é medida perto do pagamento (24 h): abrir de novo semanas depois não vira outra Purchase.
+    const fresh=!Number.isFinite(current.paidAt)||Date.now()-current.paidAt<DAY;
+    if(!Number.isFinite(current.paidAt)){current={...current,paidAt:Date.now()};try{save(current)}catch{}}
     verifiedOrder=current.id;
-    app.restore(current.answers);app.unlock(current.product,current.revised===true);close();emailButton(current);
-    try{await window.SportDNAMeasure?.purchase?.(order)}catch{/* Medição opcional não bloqueia acesso. */}return true;
+    app.restore(current.answers);app.unlock(current.product,current.revised===true,{retested:current.retested===true,retest:retestInfo(current)});close();emailButton(current);
+    if(fresh)try{await window.SportDNAMeasure?.purchase?.(order)}catch{/* Medição opcional não bloqueia acesso. */}return true;
    }
+   if(['invalid','revoked','expired'].includes(order.state)&&!Number.isFinite(pending.paidAt))forget();
    if(['invalid','revoked','expired'].includes(order.state)){message('O pagamento não foi aprovado. Nenhum acesso foi liberado.');return false}
    message('Aguardando confirmação do pagamento…');
    if(dialog?.open)timer=setTimeout(check,6000);return false;
@@ -157,7 +179,7 @@
    email.removeAttribute?.('aria-invalid');err.textContent='';
    busy=true;cta.disabled=true;message(provider==='mercadopago'?'Gerando o Pix…':'Abrindo o pagamento com cartão…');
    try{
-    const current=get();const p=current?.app===app.name&&current.product===product&&current.provider===provider?current:{id:uuid(),token:random(),app:app.name,product,provider,answers:app.snapshot()};
+    const current=get(),answers=app.snapshot();const p=current?.app===app.name&&current.product===product&&current.provider===provider&&!Number.isFinite(current.paidAt)&&stable(current.answers)===stable(answers)?current:{id:uuid(),token:random(),app:app.name,product,provider,answers,at:Date.now()};
     save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:mail()}:{})})});
     try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
    }catch(e){
@@ -187,10 +209,36 @@
   };
   select('mercadopago');optBtns[0].focus();return true;
  }
- function saveRevision(product){
+ /* kind 'edit': a correção única logo depois do pagamento (já existia).
+    kind 'retest': refazer o teste uma vez dentro de retestDays depois do pagamento (RACKET: 90 dias), sem novo pagamento.
+    As duas só valem para o pedido que o servidor acabou de confirmar como pago nesta página (verifiedOrder). */
+ function saveRevision(product,kind='edit'){
   const pending=get();
-  if(!pending||pending.id!==verifiedOrder||pending.product!==product||pending.revised)return false;
+  if(!pending||pending.id!==verifiedOrder||pending.product!==product)return false;
+  if(kind==='retest'){if(!retestInfo(pending)?.available)return false;try{save({...pending,answers:app.snapshot(),retested:true,retestAt:Date.now()});return true}catch{return false}}
+  if(pending.revised)return false;
   try{save({...pending,answers:app.snapshot(),revised:true});return true}catch{return false}
  }
- window.SportDNAPayments={enabled,open,saveRevision,register(options){app=options;if(!enabled)return;const p=get();if(p?.app===app.name){app.restore(p.answers);check().then(paid=>{if(!paid&&new URLSearchParams(location.search).has('payment'))pendingPanel({})})}}};
+ // Resumo do pedido guardado para o cartão "Seu resultado está salvo" (sem token nem id).
+ function saved(){
+  const p=get();if(!enabled||!app||p?.app!==app.name)return null;
+  const paid=Number.isFinite(p.paidAt),at=Number.isFinite(p.at)?p.at:Date.now();
+  return {product:p.product,provider:p.provider,state:paid?'paid':'pending',at,paidAt:paid?p.paidAt:null,expires:paid?p.paidAt+keepPaid():at+DAY,amount:productInfo(p.product)?.amount??null,answers:JSON.parse(JSON.stringify(p.answers||{})),retest:retestInfo(p)};
+ }
+ // Retomar pelo cartão: pago abre o relatório (depois de o servidor confirmar); pendente reabre o Pix ou o cartão.
+ async function resume(){
+  const p=get();if(!enabled||!app||p?.app!==app.name)return false;
+  try{session?.setItem(slot(),JSON.stringify(p))}catch{}
+  app.restore(p.answers);
+  if(Number.isFinite(p.paidAt)){panel('Abrindo o seu relatório');message('Conferindo o pagamento…');return check()}
+  panel('Retomar o pagamento');message('Conferindo o pedido…');
+  try{
+   const order=await api('/orders/'+p.id,{headers:{Authorization:'Bearer '+p.token}});
+   if(order.product!==p.product||order.mode!==config.mode||!validAmount(order))throw new Error('Produto ou valor diferente da oferta. Nenhum acesso foi liberado; consulte o suporte antes de pagar.');
+   if(order.state==='paid')return check();
+   if(['invalid','revoked','expired'].includes(order.state)){forget();message('Este pagamento expirou e nada foi cobrado. Para liberar o relatório, gere um novo na prévia.');return false}
+   pendingPanel(order);return false;
+  }catch(e){message(e.message);return false}
+ }
+ window.SportDNAPayments={enabled,open,saveRevision,saved,resume,forget,register(options){app=options;if(!enabled)return;const p=get();if(p?.app!==app.name)return;const back=new URLSearchParams(location.search).has('payment');if(!tab()&&!back)return;app.restore(p.answers);check().then(paid=>{if(!paid&&back)pendingPanel({})})}};
 })();

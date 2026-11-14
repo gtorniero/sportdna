@@ -40,8 +40,8 @@ const AREAS = {
     price:[["R$ 19,99","Relatório completo"]],
     engine:{title:"Não é palpite. É um motor calibrado com 379 recomendações de especialistas.",
       lede:"Indicações de especialistas em português, inglês e espanhol viraram perfis do questionário e rodaram no motor. Os pesos foram ajustados e conferidos em casos guardados à parte, com travas para não piorar a segurança do braço nem estourar o seu orçamento.",
-      stats:[["670","avaliações de testadores e de sites especializados"],["44","variáveis cruzadas: respostas, ficha técnica e índices"],["21","estudos científicos sobre raquete e braço"],["379","recomendações de especialistas, em 3 idiomas"],["3.000","perfis simulados para conferir segurança e viés"],["62","raquetes com specs medidas"]],
-      steps:[["Seu corpo e o seu braço","Idade, força, medida da mão e dor no braço definem a faixa de peso e quanto conforto a raquete precisa ter."],["Seu jogo","Nível, frequência, estilo, topspin, swing e onde você erra viram um perfil ideal em seis atributos: potência, controle, spin, conforto, manobra e estabilidade."],["62 raquetes disputam o seu perfil","Peso, balanço, swingweight, rigidez, cabeça e padrão de cada raquete viram índices, comparados com o seu perfil ideal."],["Travas de segurança e orçamento","Raquete leve demais para quem sente o braço, pesada demais para quem tem pouca força e preço acima do seu orçamento perdem pontos."],["Corda, tensão e grip","A corda, a espessura e a tensão para o seu jogo, e como medir o grip."]],
+      stats:[["670","avaliações de testadores e de sites especializados"],["44","variáveis cruzadas: respostas, ficha técnica e índices"],["21","estudos científicos sobre raquete e braço"],["379","recomendações de especialistas, em 3 idiomas"],["3.000","perfis simulados para conferir segurança e viés"],["183","raquetes com specs medidas"]],
+      steps:[["Seu corpo e o seu braço","Idade, força, medida da mão e dor no braço definem a faixa de peso e quanto conforto a raquete precisa ter."],["Seu jogo","Nível, frequência, estilo, topspin, swing e onde você erra viram um perfil ideal em seis atributos: potência, controle, spin, conforto, manobra e estabilidade."],["183 raquetes disputam o seu perfil","Peso, balanço, swingweight, rigidez, cabeça e padrão de cada raquete viram índices, comparados com o seu perfil ideal."],["Travas de segurança e orçamento","Raquete leve demais para quem sente o braço, pesada demais para quem tem pouca força e preço acima do seu orçamento perdem pontos."],["Corda, tensão e grip","A corda, a espessura e a tensão para o seu jogo, e como medir o grip."]],
       sources:"Fontes da calibração: Tennisnerd, Tennis Warehouse, The Tennis Tribe, TennisHack, Too Many Rackets, Tennis Express, Tênis Recreativo, InnerTenis, Universo do Tenista e Brasil Tênis, entre 74 fontes. Nenhuma marca paga para aparecer."},
     gloss:[["RA","Índice de rigidez do aro. Quanto maior, mais potência e mais vibração no braço."],["Swingweight","Quanto a raquete pesa no balanço. Define estabilidade e esforço."],["Head light","Balanço com mais massa no cabo. Mais manobrável na rede."],["Padrão de cordas","16x19 dá mais spin; 18x20 dá mais controle."],["Grip","Circunferência do cabo. O errado força o antebraço."],["Tensão","Mais alta dá controle; mais baixa dá potência e conforto."]]},
   board:{key:"board", name:"SURF DNA", w1:"Surf", sport:"Prancha de surf", cls:"a-board",
@@ -78,6 +78,10 @@ const AREAS = {
     gloss:[["Drop","Diferença de altura entre calcanhar e antepé, em mm."],["Stack","Altura total de espuma sob o pé."],["PEBA","Espuma leve e muito responsiva, comum em tênis de prova."],["Placa de carbono","Lâmina rígida na entressola que muda a mecânica da passada."],["Rocker","Curvatura da sola que ajuda a rolar do apoio à impulsão."],["Cabedal","A parte de cima do tênis, que segura o pé."]]}
 };
 const ORDER = ["racket","board","tenis"];
+/* Números da home somados dos apps: catálogos vêm dos facts; reviews = RACKET (soma de nrev do catálogo, 670) + RUN (1.755, contador do app).
+   Conferido em 14/11/2026. Mudou um catálogo? Atualize o facts e o número sai certo aqui. */
+const nBR = n => Number(n).toLocaleString("pt-BR");
+const HOME_NUM = {fichas:nBR(Number(AREAS.racket.facts[0][0])+Number(AREAS.tenis.facts[0][0])), reviews:nBR(670+1755)};
 const DATA2KEY = {raquete:"racket", prancha:"board", tenis:"tenis"};
 const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -90,11 +94,11 @@ document.getElementById("brandHome").innerHTML = labLockup(34);
 document.getElementById("footBrand").innerHTML = labLockup(28);
 document.getElementById("nav").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${ICON[k](24)}${AREAS[k].w1} DNA</a>`).join("") + `<span class="sep" aria-hidden="true"></span><a href="#blog" data-go="blog">Blog</a><a href="#conceito" data-go="conceito">Como funciona</a>`;
 document.getElementById("footTests").innerHTML = ORDER.map(k=>`<a href="${AREAS[k].quiz}">${AREAS[k].name}</a>`).join("");
-document.getElementById("footGuides").innerHTML = `<a href="#melhor-raquete" data-go="melhor-raquete">Melhor raquete de tênis</a><a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/">Calculadora de litragem</a>`;
+document.getElementById("footGuides").innerHTML = `<a href="#melhor-raquete" data-go="melhor-raquete">Melhor raquete de tênis</a><a href="#blog" data-go="blog">Blog</a><a href="ferramentas/litragem/">Calculadora de litragem</a><a href="ferramentas/grip/">Tamanho do grip</a>`;
 document.getElementById("footLinks").innerHTML = `<a href="#sobre" data-go="sobre">Sobre</a><a href="#como-ganhamos-dinheiro" data-go="como-ganhamos-dinheiro">Como ganhamos dinheiro</a><a href="#contato" data-go="contato">Contato</a><a href="#termos" data-go="termos">Termos de uso</a><a href="#privacidade" data-go="privacidade">Privacidade e afiliados</a>`;
 
 const REPORT_DESC={
-  racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, Head Boom MP com DNA Score de 95%, 295 g, balanço de 315 mm, swingweight 316, 61 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.670 a R$ 1.990, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção e a comparação com a Head Speed Pro atual, que tem DNA Score de 75%.",
+  racket:"Exemplo de relatório do RACKET DNA: em Seu resultado, ProKennex Black Ace 300 com DNA Score de 94%, 300 g, balanço de 321 mm, swingweight 324, 55 RA, cabeça de 100 polegadas quadradas e padrão 16x19, de R$ 1.950 a R$ 2.200, para um atacante completo de topspin moderado, nível intermediário. Depois, Por que combina, trechos de testadores, pontos de atenção com o histórico de dor no braço e a comparação com a Head Speed Pro atual, que tem DNA Score de 81%.",
   board:"Exemplo de relatório do SURF DNA: prancha ideal evolution (allround) com DNA Score de 96%, medidas de 6 pés e 2 polegadas por 19 e 3/4 por 2 e 1/2 polegadas e 34,2 litros, com a ilustração da prancha, o desenho das 3 medidas e os detalhes: rabeta round, triquilha (thruster), fundo plano para single concave, epóxi (EPS) e curva do bico de 4 e 1/4 polegadas. Abaixo, começa a seção Faça sua prancha com um especialista.",
   tenis:"Exemplo de relatório do RUN DNA: tênis ideal Nike Vomero 18, com DNA Score de 96%. Máximo amortecimento, 298 g, 43 mm de espuma, drop de 10 mm, R$ 949,99 e custo de R$ 1,70 por km. Abaixo, Por que combina, bem amortecido e dentro do orçamento, e a ficha técnica, com durabilidade de 560 km e troca em cerca de 4 meses."};
 function reportFrame(k, h){
@@ -115,9 +119,10 @@ function vars(a){
   return `<div class="vars"><div><span class="vl">Você informa</span><p>${a.vin.join(" · ")}</p></div><div><span class="vl">A gente calcula</span><ul>${a.vout.map(c=>`<li>${c}</li>`).join("")}</ul></div></div>`;
 }
 const TOOLBOX=`<a class="toolbox" href="ferramentas/litragem/"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Calculadora de litragem de prancha</b><span>Peso, nível e tipo de prancha: veja quantos litros você precisa em segundos.</span></span><span class="tb-go">Calcular →</span></a>`;
+const GRIPBOX=`<a class="toolbox tb-racket" href="ferramentas/grip/"><span class="tb-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11m0-6.5V4a1.5 1.5 0 0 1 3 0v7m0-5.5a1.5 1.5 0 0 1 3 0V12m0-4.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-5-2.7L4 15.6a1.5 1.5 0 0 1 2.5-1.7L8 16"/></svg></span><span class="tb-tx"><small>Ferramenta grátis</small><b>Qual o tamanho do seu grip?</b><span>Meça a mão com uma régua e veja se o seu cabo é L1, L2, L3, L4 ou L5, em 1 minuto.</span></span><span class="tb-go">Medir →</span></a>`;
 const CARDS={
   racket:{perfil:["assets/cards/racket-perfil.webp","Card de DNA de jogo do RACKET DNA: Atacante completo de topspin moderado, nível intermediário, hexágono com conforto 9,2 e potência 8,5"],
-          produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: Head Boom MP, 295 g, cabeça de 100 pol², 61 RA, padrão 16x19, DNA 95%, escolhida entre 62 raquetes"]},
+          produto:["assets/cards/racket-produto.webp","Card da raquete do RACKET DNA: ProKennex Black Ace 300, 300 g, cabeça de 100 pol², 55 RA, padrão 16x19, DNA 94%, escolhida entre 183 raquetes"]},
   board:{perfil:["assets/cards/board-perfil.webp","Card de DNA de surf do SURF DNA: Surfista de linha de onda pequena, nível intermediário, DNA Score 96%"],
          produto:["assets/cards/board-produto.webp","Card da prancha do SURF DNA: Evolution allround, 6 pés e 2 polegadas por 19 3/4 polegadas, 34,2 litros, rabeta round, triquilha, DNA 96%, escolhida entre 13 tipos de prancha"]},
   tenis:{perfil:["assets/cards/tenis-perfil.webp","Card de corredor do RUN DNA: Corredor Constante, meia maratona, 20 a 40 km por semana, DNA 96%"],
@@ -156,7 +161,7 @@ const conceitoSec = ()=>`<section class="band" id="conceito"><div class="wrap">
       <div class="step"><span class="n">PASSO 3</span><h3>Desbloqueie o relatório</h3><p>Os finalistas revelados, com a ficha técnica e a comparação com o que você já tem, num relatório como o exemplo abaixo.</p></div>
     </div>
     <h3 class="eng-h" style="margin-top:40px">O que tem por trás dos três testes</h3>
-    <div class="eng-stats home-stats">${[["2.451","reviews e avaliações lidas, de testadores e de clientes","a-tenis"],["1.035","casos reais e indicações de especialistas na calibração","a-racket"],["62","estudos científicos por trás das regras","a-board"],["274","tênis e raquetes com ficha técnica, mais 13 tipos de prancha","a-tenis"],["11.000","perfis simulados para conferir segurança e viés","a-racket"],["0","marcas pagando para aparecer no resultado","a-board"]].map(([v,l,c])=>`<div class="${c}"><b>${v}</b><span>${l}</span></div>`).join("")}</div>
+    <div class="eng-stats home-stats">${[[HOME_NUM.reviews,"reviews e avaliações lidas, de testadores e de clientes","a-tenis"],["1.035","casos reais e indicações de especialistas na calibração","a-racket"],["62","estudos científicos por trás das regras","a-board"],[HOME_NUM.fichas,`tênis (${AREAS.tenis.facts[0][0]}) e raquetes (${AREAS.racket.facts[0][0]}) com ficha técnica, mais ${AREAS.board.facts[0][0]} tipos de prancha`,"a-tenis"],["11.000","perfis simulados para conferir segurança e viés","a-racket"],["0","marcas pagando para aparecer no resultado","a-board"]].map(([v,l,c])=>`<div class="${c}"><b>${v}</b><span>${l}</span></div>`).join("")}</div>
     <div class="principles">
       <div class="principle"><span class="ck">✓</span><div><b>Análise antes de pagar</b><span>Você vê o raciocínio inteiro. Só os finalistas ficam ocultos.</span></div></div>
       <div class="principle"><span class="ck">✓</span><div><b>Nenhuma marca no comando</b><span>Ninguém paga para aparecer no resultado. Mesmas respostas, mesmo resultado.</span></div></div>
@@ -182,7 +187,7 @@ function home(){
     <div class="hero-txt">
       <div class="eyebrow">SPORT DNA · Find your DNA</div>
       <h1>O equipamento certo muda o seu <span class="hl">jogo</span>.</h1>
-      <p class="lede">Você responde algumas perguntas sobre seu corpo, seu nível e seu estilo. A gente cruza com a ficha técnica de cada equipamento e entrega um relatório que explica o porquê de cada escolha.</p>
+      <p class="lede">Responda algumas perguntas e veja qual equipamento combina com o seu corpo, o seu nível e o seu estilo, com o porquê de cada escolha.</p>
       <div class="chooser">
         <h2>Escolher meu esporte</h2>
         <div class="tiles">${ORDER.map((k,i)=>{const a=AREAS[k];return `<a class="tile ${a.cls}${i===0?" sel":""}" href="${a.quiz}">${ICON[k](52)}<span class="tn"><b>${a.w1} DNA</b><span>${a.sport}</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a>`}).join("")}</div>
@@ -197,7 +202,7 @@ function home(){
 
   ${MOB_HOME()?areasSec()+conceitoSec():conceitoSec()+areasSec()}
 
-  <section style="padding-top:0"><div class="wrap a-board">${TOOLBOX}</div></section>
+  <section style="padding-top:0"><div class="wrap tools2"><div class="a-board">${TOOLBOX}</div><div class="a-racket">${GRIPBOX}</div></div></section>
   <section id="modelo" style="padding-top:0"><div class="wrap" id="modelBox">${modelSec()}</div></section>
 
   <section><div class="wrap">
@@ -234,7 +239,7 @@ function hub(k){
   </div></section>
   ${a.engine?engineSec(a):""}
   ${k==="board"?`<section style="padding-block:28px 0"><div class="wrap">${TOOLBOX}</div></section>`:""}
-  ${k==="racket"?`<section style="padding-block:28px 0"><div class="wrap">${BUY_GUIDES}</div></section>`:""}
+  ${k==="racket"?`<section style="padding-block:28px 0"><div class="wrap">${GRIPBOX}</div></section><section style="padding-block:28px 0"><div class="wrap">${BUY_GUIDES}</div></section>`:""}
   <nav class="subnav" aria-label="Nesta página"><div class="wrap">
     ${a.engine?`<button type="button" data-scroll="motor">O motor</button>`:""}
     <button type="button" data-scroll="relatorio">O relatório</button>
@@ -323,14 +328,51 @@ const GUIDE_FOR = {"raquete-01":["raquete-iniciante","melhor-raquete"],"raquete-
 const guideCard = k => `<a class="gcard" href="#${k}" data-go="${k}"><b>${GUIDES[k][0]}</b><span>${GUIDES[k][1]}</span><i aria-hidden="true">→</i></a>`;
 const guideLinks = id => `<aside class="guide-box" aria-label="Guias de compra"><div class="eyebrow">Guia de compra</div>${(GUIDE_FOR[id]||["melhor-raquete"]).map(guideCard).join("")}</aside>`;
 const BUY_GUIDES = `<div class="buy-guides"><div class="eyebrow">Guias de compra</div><div class="bg-grid">${Object.keys(GUIDES).map(guideCard).join("")}</div></div>`;
+/* Convite para o teste no meio do artigo, ligado ao assunto da seção (nov/2026).
+   Fica no fim da primeira seção cujo título casa com uma regra do esporte (nunca depois da última);
+   sem regra, no fim da seção do meio. Um artigo pode trocar tudo com o campo opcional cta:{after,x,b,href}.
+   O clique grava a origem (sd_de, 30 min nesta aba) para a medição comparar artigo → início do teste. */
+const MID_CTA = {
+  racket:[
+    [/grip|cabo|overgrip/i,"Qual é o seu grip? Meça a mão com uma régua e veja o tamanho do cabo, de L1 a L5, em 1 minuto.","Medir o meu grip","ferramentas/grip/"],
+    [/peso|balanço|swingweight|twistweight|estabilidade/i,"Qual é a sua faixa de peso? O RACKET DNA calcula pelo seu corpo, nível e histórico de dor no braço, e mostra as raquetes que cabem nela.","Calcular a minha faixa"],
+    [/cabeça/i,"Qual cabeça combina com o seu swing? O RACKET DNA cruza o seu nível e o seu jogo com as {n} raquetes do catálogo.","Descobrir a minha raquete"],
+    [/corda|tensão|poliéster|tripa|sintétic|híbrid/i,"Qual corda e tensão para o seu braço? O RACKET DNA sugere corda, espessura e tensão para a raquete nova e para a sua.","Fazer o teste"],
+    [/rigidez|lesõ|dor|braço|equipamento/i,"Sente o braço? O RACKET DNA pesa a dor e a rigidez de cada raquete antes de indicar o modelo.","Fazer o teste"],
+    [/nível|fase|iniciante|evolu|profissional|amador|feixe|tamanho/i,"Qual raquete combina com o seu jogo hoje? O RACKET DNA cruza as suas respostas com {n} raquetes medidas.","Descobrir a minha raquete"]],
+  board:[
+    [/litr|volume|peso|condicionamento/i,"Quantos litros para você? O SURF DNA calcula tipo, medidas e litragem pelo seu nível, pelo seu peso e pelo seu mar.","Calcular a minha prancha"],
+    [/comprimento|largura|espessura|medida|tamanho/i,"Quais medidas para você? O SURF DNA calcula comprimento, largura, espessura e litros pelo seu corpo e pelo que você já faz na onda.","Calcular a minha prancha"],
+    [/rabeta|borda|quilha|fundo|rocker|construç|epóxi|PU\b/i,"Qual rabeta, fundo e quilhas para o seu surf? O SURF DNA desenha a prancha inteira para o seu nível e o seu mar.","Desenhar a minha prancha"],
+    [/fish|mid|tipo|degrau|quiver|shortboard|groveler|caminho|sessão/i,"Qual tipo combina com o seu surf? {n} tipos de prancha disputam o seu perfil no SURF DNA.","Descobrir a minha prancha"]],
+  tenis:[
+    [/drop|stack|espuma|amortec/i,"Quanto amortecimento e que drop para você? O RUN DNA cruza peso, ritmo e km por semana com {n} tênis medidos.","Descobrir o meu tênis"],
+    [/pisada|pronaç|estabilidade/i,"Precisa de estabilidade? O RUN DNA é neutro por padrão e só indica estabilidade quando você relata desconforto.","Descobrir o meu tênis"],
+    [/encaixe|largo|largura|forma|tamanho|numeração|cabedal|amarr/i,"Qual tênis veste o seu pé? O RUN DNA considera a largura do pé e mostra versões largas quando existem.","Descobrir o meu tênis"],
+    [/troca|vida útil|quilometragem|durab|rotação/i,"Quando trocar o seu? O relatório do RUN DNA calcula a data de troca pela sua quilometragem semanal.","Descobrir o meu tênis"],
+    [/prova|ritmo|treino|rodagem|maratona|objetivo|fase|placa|carbono/i,"Qual tênis para o seu objetivo? O RUN DNA monta a escolha pelo seu treino e pela sua prova.","Descobrir o meu tênis"]]
+};
+function midCta(x,a,sections){
+  const n=sections.length;if(n<2)return null;
+  let i=-1,rule=null;
+  if(x.cta){i=sections.findIndex(h=>h.startsWith(x.cta.after||""));rule=[null,x.cta.x,x.cta.b,x.cta.href]}
+  else for(let j=0;j<n-1&&i<0;j++){const r=(MID_CTA[a.key]||[]).find(r=>r[0].test(sections[j]));if(r){i=j;rule=r}}
+  if(i<0||i>=n-1){i=Math.floor((n-1)/2);rule=[null,a.q,"Fazer o teste"]}
+  const tool=rule[3]==="ferramentas/grip/";
+  const text=rule[1].replace("{n}",a.facts[0][0]);
+  const href=rule[3]||a.quiz;
+  const sport={racket:"racket",board:"surf",tenis:"run"}[a.key];
+  return {after:i,html:`<aside class="mid-cta" aria-label="${tool?"Ferramenta grátis":"Teste "+a.name}"><div class="lockup">${MARK[a.key](30)}<span class="wordmark">${tool?"Ferramenta grátis":`${a.w1} <em>DNA</em>`}</span></div><p>${esc(text)}</p><a class="btn btn-area" href="${href}" data-de="artigo_meio" data-a="${x.id}" data-sport="${sport}">${esc(rule[2])}${tool?"":" · grátis"} <span class="arr" aria-hidden="true">→</span></a><small>${tool?"Medida da mão em cm · sem cadastro":`${a.facts[1][0]} ${a.facts[1][1]} · prévia grátis, sem cadastro`}</small></aside>`};
+}
 function article(id){
   const x = A.find(y=>y.id===id); if(!x) return null;
   const a = ar(x); const list = byArea(a.key); const i = list.indexOf(x);
   const prev = list[i-1], next = list[i+1];
   let hn = 0; const heads = [];
+  const mid = midCta(x, a, x.body.filter(b=>b.t==="h").map(b=>b.x));
   const body = x.body.map(b=>{
     if(b.t==="p") return `<p>${esc(b.x)}</p>`;
-    if(b.t==="h"){ hn++; heads.push(b.x); return `<h2 id="${x.id}-s${hn}">${esc(b.x)}</h2>`; }
+    if(b.t==="h"){ hn++; heads.push(b.x); return `${mid&&hn===mid.after+2?mid.html:""}<h2 id="${x.id}-s${hn}">${esc(b.x)}</h2>`; }
     if(b.t==="ul") return `<ul>${b.items.map(it=>`<li>${esc(it)}</li>`).join("")}</ul>`;
     if(b.t==="tip") return `<div class="tip"><b>Dica</b><div>${esc(b.x)}</div></div>`;
     if(b.t==="quote") return `<blockquote>${esc(b.x)}</blockquote>`;
@@ -356,13 +398,13 @@ function article(id){
         </div>
       </div>
       <div class="side">
-        ${a.key==="board"?TOOLBOX.replace('class="toolbox"','class="toolbox mini"'):""}
+        ${a.key==="board"?TOOLBOX.replace('class="toolbox"','class="toolbox mini"'):a.key==="racket"?GRIPBOX.replace('class="toolbox tb-racket"','class="toolbox tb-racket mini"'):""}
         <div class="cta-box">
           ${true?`<button type="button" class="thumb" data-zoom="${a.key}" aria-label="Ampliar relatório de exemplo do ${a.name}"><img src="${SHOTS[a.key]||""}" alt="" width="1000" height="${SHOT_H[a.key]}" loading="lazy" decoding="async"></button>`:""}
           <div class="in">
             <div class="lockup">${MARK[a.key](32)}<span class="wordmark">${a.w1} <em>DNA</em></span></div>
             <p>${a.q}</p>
-            <a class="btn btn-area" href="${a.quiz}">Fazer o teste grátis <span class="arr">→</span></a>
+            <a class="btn btn-area" href="${a.quiz}" data-de="artigo_fim" data-a="${x.id}" data-sport="${{racket:"racket",board:"surf",tenis:"run"}[a.key]}">Fazer o teste grátis <span class="arr">→</span></a>
           </div>
         </div>
         ${heads.length?`<div class="toc"><div class="eyebrow">Neste guia</div><ol>${heads.map((h,j)=>`<li><button type="button" data-anchor="${x.id}-s${j+1}">${esc(h)}</button></li>`).join("")}</ol></div>`:""}
@@ -398,8 +440,9 @@ function privacy(){
       <p>Sem o seu aceite, o Google Analytics e o Pixel da Meta não carregam, nenhum cookie de medição é gravado e nada é enviado a eles. Os testes funcionam igual.</p>
       <p>Se você toca em <b>Aceitar</b>, a medição roda num quadro separado da página, que não tem acesso às suas respostas. O Google Analytics e a Meta passam a receber:</p>
       <ul>
-        <li>visitas às páginas públicas (início, páginas dos testes, guias, artigos do blog, calculadora de litragem e esta página), com o endereço da página e só o domínio do site de onde você veio;</li>
-        <li>início e conclusão do teste, apenas com o esporte;</li>
+        <li>visitas às páginas públicas (início, páginas dos testes, guias, artigos do blog, calculadora de litragem, medidor de grip e esta página), com o endereço da página e só o domínio do site de onde você veio;</li>
+        <li>início e conclusão do teste e o número de cada etapa aberta (só o Google Analytics recebe as etapas), apenas com o esporte, nunca a pergunta ou a resposta;</li>
+        <li>de onde veio o clique para o teste (convite no meio ou no fim de um artigo, a calculadora ou o medidor de grip) e, no RACKET DNA, qual versão da prévia você viu, quando estamos comparando duas;</li>
         <li>as etapas da compra: quando a prévia com o preço aparece, quando o checkout abre, o tipo de erro se ele falhar, o pedido criado (produto, valor e Pix ou cartão) e a compra confirmada (produto, valor e um identificador irreversível da transação);</li>
         <li>no SURF DNA, o toque no botão de WhatsApp do especialista parceiro, só com o lugar do botão (prévia ou relatório);</li>
         <li>os parâmetros de campanha e de clique de anúncio que vierem no endereço (explicados abaixo).</li>
@@ -536,6 +579,8 @@ let lbOpener=null;
 function openLB(k){ lbOpener=document.activeElement; const im=document.getElementById("lbImg"); im.src = root+(SHOTS[k]||""); im.alt = REPORT_DESC[k]; document.getElementById("lbCap").textContent = AREAS[k].name+" · relatório de exemplo"; lb.hidden=false; lb.scrollTop=0; document.getElementById("lbClose").focus(); }
 function closeLB(){ lb.hidden=true; if(lbOpener&&lbOpener.isConnected) lbOpener.focus(); }
 document.addEventListener("click", e=>{
+  // Origem do clique para o teste (lista fechada, sem dado pessoal): a medição só usa com aceite.
+  const de = e.target.closest("[data-de]"); if(de){ try{ sessionStorage.setItem("sd_de", JSON.stringify({de:de.dataset.de, a:de.dataset.a||"", sport:de.dataset.sport||"", at:Date.now()})); }catch(_){} }
   if(!lb.hidden){ if(e.target.id==="lbClose"||e.target===lb) closeLB(); return; }
   if(e.target.closest(".skip")){ e.preventDefault(); const h=app.querySelector("h1")||app; h.setAttribute("tabindex","-1"); h.focus(); return; }
   const z = e.target.closest("[data-zoom]"); if(z){ openLB(z.dataset.zoom); return; }

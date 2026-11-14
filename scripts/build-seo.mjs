@@ -158,18 +158,20 @@ for(const pg of PAGES){
 }
 // Existing interactive pages retain their engines and layouts; only metadata changes.
 const strip=html=>html.replace(/<!-- SEO_START -->[\s\S]*?<!-- SEO_END -->\n?/g,'');
-for(const app of ['board','racket','tenis','litragem']){
- const route=app==='litragem'?'ferramentas/litragem/':APP_ROUTE[app];
+const TOOLS={litragem:'ferramentas/litragem/',grip:'ferramentas/grip/'};
+for(const app of ['board','racket','tenis','litragem','grip']){
+ const tool=!!TOOLS[app];
+ const route=tool?TOOLS[app]:APP_ROUTE[app];
  let html=strip(read(route+'index.html'));
  // Remove inherited document titles from the body; keep SVG titles untouched.
  html=html.replace(/(<body[^>]*>\s*)<title>[^<]*<\/title>/, '$1');
  html=html.replace(/<head>([\s\S]*?)<\/head>/,(_,head)=>'<head>'+head.replace(/<title>.*?<\/title>/s,'').replace(/<meta name="description"[^>]*>/,'')+'</head>');
  const url=absolute(route),date=stamp(route,html);
- const name=app==='litragem'?'Calculadora de litragem':api.AREAS[app].name;
- const title=app==='litragem'?'Calculadora de litragem de prancha de surf | SPORT DNA':({board:'Teste: qual prancha de surf escolher? | SURF DNA',racket:'Teste: qual raquete de tênis escolher? | RACKET DNA',tenis:'Teste: qual tênis de corrida escolher? | RUN DNA'}[app]);
- const description=app==='litragem'?'Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.':({board:`Faça o teste SURF DNA para explorar tipos, medidas e volume de prancha. Prévia grátis e relatório completo por ${price('surf-report')}.`,racket:`Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por ${price('racket-report')}.`,tenis:`Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Prévia grátis e relatório completo por ${price('run-report')}.`}[app]);
+ const name=app==='litragem'?'Calculadora de litragem':app==='grip'?'Tamanho do grip':api.AREAS[app].name;
+ const title=app==='grip'?'Tamanho do grip da raquete: meça a mão | SPORT DNA':app==='litragem'?'Calculadora de litragem de prancha de surf | SPORT DNA':({board:'Teste: qual prancha de surf escolher? | SURF DNA',racket:'Teste: qual raquete de tênis escolher? | RACKET DNA',tenis:'Teste: qual tênis de corrida escolher? | RUN DNA'}[app]);
+ const description=app==='grip'?'Meça a mão com uma régua e descubra o grip da sua raquete de tênis, de L1 a L5, com polegadas e milímetros. Grátis e sem cadastro.':app==='litragem'?'Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.':({board:`Faça o teste SURF DNA para explorar tipos, medidas e volume de prancha. Prévia grátis e relatório completo por ${price('surf-report')}.`,racket:`Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por ${price('racket-report')}.`,tenis:`Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Prévia grátis e relatório completo por ${price('run-report')}.`}[app]);
  const extra=[];
- if(app==='litragem'){
+ if(tool){
   // FAQPage só com as perguntas visíveis na própria página.
   const faq=/<div class="faq">([\s\S]*?)<\/div>/.exec(html)?.[1]||'';
   const qa=[...faq.matchAll(/<details><summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)].map(m=>({'@type':'Question',name:text(m[1]),acceptedAnswer:{'@type':'Answer',text:text(m[2])}}));
@@ -178,7 +180,7 @@ for(const app of ['board','racket','tenis','litragem']){
   const product=REPORT[app],info=PRODUCTS[product];
   extra.push({'@type':'Product','@id':url+'#product',name:info.name,description:PRODUCT_TEXT[app],category:'Teste de equipamento esportivo',brand:{'@type':'Brand',name:'SPORT DNA'},image:absolute(`assets/reports/${app}.webp`),url,offers:{'@type':'Offer',url,price:(info.amount/100).toFixed(2),priceCurrency:'BRL',availability:'https://schema.org/InStock',seller:{'@id':ORG}}});
  }
- html=html.replace('</head>',`<!-- SEO_START -->\n${metadata({title,description,url,crumbs:[[app==='litragem'?name:'Teste '+name,url]],extra,date})}\n${icons(app==='litragem'?'../../':'../',{board:'surfdna-icone',racket:'racketdna-icone',tenis:'rundna-icone',litragem:'surfdna-icone'}[app])}\n<!-- SEO_END -->\n</head>`);
+ html=html.replace('</head>',`<!-- SEO_START -->\n${metadata({title,description,url,crumbs:[[tool?name:'Teste '+name,url]],extra,date})}\n${icons(tool?'../../':'../',{board:'surfdna-icone',racket:'racketdna-icone',tenis:'rundna-icone',litragem:'surfdna-icone',grip:'racketdna-icone'}[app])}\n<!-- SEO_END -->\n</head>`);
  // Replace legacy home hash links with canonical paths without changing app actions.
  html=html.replace(/href="\.\.\/\.\.\/(?:index\.html)?#(a-[^"\s]+|blog|board|racket|tenis|privacidade)"/g,(_,key)=>`href="../../${routes[key]||''}"`);
  write(route+'index.html',html);sitemap.push([url,date.modified]);

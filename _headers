@@ -1,0 +1,9 @@
+# Cabeçalhos dos arquivos estáticos (Workers Static Assets).
+# Quadro de medição: no-transform impede a Cloudflare de injetar o Web Analytics (RUM) nele.
+# Sem isso, cada visita com aceite contava duas páginas (a página real e /medicao).
+/medicao.html
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  X-Robots-Tag: noindex
+/medicao
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+  X-Robots-Tag: noindex
