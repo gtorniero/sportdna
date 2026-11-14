@@ -10,6 +10,7 @@ Segue `growth/consentimento-e-seo.md` e `growth/medicao-spec.md` (seções 1, 3 
 
 ## Medição
 - Consent Mode v2 no quadro `/medicao.html`: `default` negado nos quatro sinais, `update` no aceite e, ao recusar depois de aceitar, `update` negado e `fbq('consent','revoke')` antes de o quadro sair. Sem aceite o quadro nem é criado: não há pings sem cookie.
+- Contato com o especialista do SURF DNA (botão de WhatsApp na prévia ou no relatório): GA4 `generate_lead` com `origem` (`previa`/`relatorio`) e `sport`; Meta `ContatoEspecialista` (personalizado) e `Contact` (padrão). Mesmo aceite e mesmo quadro dos outros eventos.
 - Eventos personalizados com os mesmos nomes e momentos. Eventos padrão somados: `Lead` junto com `QuizCompleted` (`content_category` = racket/surf/run), `ViewContent` junto com `OfferViewed` (value, BRL, `content_ids`), `InitiateCheckout` e `Purchase` com `content_ids` (Purchase mantém o `eventID` igual ao da Conversions API).
 - Todo evento do pixel leva `page_path` e `content_category`, porque a Meta só enxerga `/medicao.html`.
 - GA4: `page_location` no domínio canônico (`https://sportdna.com.br`, antes `www`) e `page_referrer` só com a origem de quem trouxe a visita.

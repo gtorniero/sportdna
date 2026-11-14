@@ -212,3 +212,32 @@ test('vendor sends Meta standard events next to the unchanged custom events, alw
  send({type:'sd_measure',event:'view_offer',path:'/racket/',params:{sport:'surf',product:'surf-report',value:19.99,currency:'BRL'}});
  assert.equal(window.fbq.queue.filter(e=>e[2]==='ViewContent').length,1);
 });
+
+test('SURF specialist contact: generate_lead only with consent, bounded origin, no private fields',async()=>{
+ const b=browser({path:'/surf/'});
+ await b.measure.contact('previa');await b.measure.contact('relatorio');await b.measure.contact('PRIVATE');await b.measure.contact({text:'PRIVATE'});
+ const rows=events(b).filter(e=>e.event==='generate_lead');
+ assert.deepEqual(rows.map(e=>e.params.origem),['previa','relatorio']);
+ for(const e of rows){assert.equal(e.params.sport,'surf');assert.equal(e.path,'/surf/');assert.deepEqual(Object.keys(e.params).sort(),['origem','sport'])}
+ assert(!JSON.stringify(events(b)).includes('PRIVATE'));
+ const refused=browser({path:'/surf/',choice:false});await refused.measure.contact('previa');assert.equal(events(refused).length,0);
+ const slow=browser({path:'/surf/',autoReady:false});const queued=slow.measure.contact('previa');revoke(slow);await queued;assert.equal(events(slow).length,0);
+ const outside=browser({path:'/blog/'});await outside.measure.contact('previa');assert.equal(events(outside).filter(e=>e.event==='generate_lead').length,0);
+});
+test('vendor maps the contact to GA4 generate_lead, Meta Contact and custom ContatoEspecialista',()=>{
+ const handlers={},parent={postMessage(){}},window={addEventListener(n,f){handlers[n]=f}};
+ vm.runInNewContext(vendor,{window,parent,location:{origin:'https://sportdna.com.br'},document:{createElement:()=>({}),head:{appendChild(){}}},URLSearchParams,Number});
+ const send=data=>handlers.message({origin:'https://sportdna.com.br',source:parent,data});send({type:'sd_init',analytics:true,marketing:true});
+ send({type:'sd_measure',event:'generate_lead',path:'/surf/',params:{sport:'surf',origem:'previa',text:'PRIVATE',code:'SD-PRIVA'}});
+ const ga=window.dataLayer.filter(e=>e[0]==='event');assert.equal(ga.length,1);assert.equal(ga[0][1],'generate_lead');assert.equal(ga[0][2].origem,'previa');assert.equal(ga[0][2].sport,'surf');
+ const q=Array.from(window.fbq.queue.filter(e=>String(e[0]).startsWith('track')),e=>Array.from(e));
+ assert.deepEqual(q.map(e=>e[2]),['ContatoEspecialista','Contact']);
+ assert.equal(q[1][0],'trackSingle');assert.equal(q[1][3].origem,'previa');assert.equal(q[1][3].page_path,'/surf/');assert.equal(q[1][3].content_category,'surf');
+ assert.equal(q[0][0],'trackSingleCustom');assert.equal(q[0][3].origem,'previa');
+ assert(!JSON.stringify(window.dataLayer).includes('PRIVA'));assert(!JSON.stringify(window.fbq.queue).includes('PRIVA'));
+ // origem fora da lista, esporte trocado ou outra página: nada sai
+ send({type:'sd_measure',event:'generate_lead',path:'/surf/',params:{sport:'surf',origem:'PRIVATE'}});
+ send({type:'sd_measure',event:'generate_lead',path:'/racket/',params:{sport:'surf',origem:'relatorio'}});
+ send({type:'sd_measure',event:'generate_lead',path:'/surf/',params:{origem:'relatorio'}});
+ assert.equal(window.dataLayer.filter(e=>e[0]==='event').length,1);assert.equal(window.fbq.queue.filter(e=>e[2]==='Contact').length,1);
+});

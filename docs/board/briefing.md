@@ -17,7 +17,7 @@
 - Preço: R$ 19,99, plano único (decidido em 24/out/2026; substitui os dois planos de R$ 7,99 e R$ 14,90). Inclui a prancha ideal, as 17 variáveis, 2º e 3º lugares, comparador, guia de loja, ficha técnica, relatório em PDF e Seu Match.
 - Relatório em PDF A4 (5 páginas) no padrão de `docs/padrao-relatorio-pdf.md`, adaptado à prancha: veredito, seu surf × a prancha, pódio, ranking e método e, por último e com menos destaque, setup, adaptação e compra (nov/2026).
 - Guia "Como achar essa prancha numa loja" com faixas aceitáveis (comprimento ±2", largura ±1/4", espessura ±1/8", litragem ±1,5 L).
-- Consultor opcional (professor de surf parceiro, Gustavo Lucas): único app com parceiro de compra; pode receber comissão, declarado na página.
+- Consultor opcional (professor de surf parceiro, Gustavo Lucas): único app com parceiro de compra; pode receber comissão, declarado na página. Desde 14/nov/2026 aparece também na prévia grátis (só com as respostas, sem a prancha calculada), com código SURF DNA para atribuição; detalhes em `docs/board/seu-match-gustavo/README.md`.
 
 ## Concorrentes de referência
 - Magic Board Finder (independente, mais de 1.500 modelos, licencia o motor para lojas): o mais próximo.
