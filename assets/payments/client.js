@@ -24,9 +24,21 @@
  const get=()=>{try{return JSON.parse(sessionStorage.getItem(key+':'+app?.name)||'null')}catch{return null}};
  const save=x=>sessionStorage.setItem(key+':'+app?.name,JSON.stringify(x));
  const random=()=>[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join('');
+ // AbortSignal.timeout só existe a partir do Safari 16 (iPhone 6s/7 param no iOS 15) e crypto.randomUUID a partir do 15.4: sem elas o pedido nem saía do navegador.
+ const uuid=()=>{if(typeof crypto.randomUUID==='function')return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=b[6]&15|64;b[8]=b[8]&63|128;const h=[...b].map(x=>x.toString(16).padStart(2,'0')).join('');return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20)};
+ const deadline=ms=>{if(typeof AbortSignal.timeout==='function')return AbortSignal.timeout(ms);const c=new AbortController();setTimeout(()=>c.abort(),ms);return c.signal};
+ const fault=(message,category)=>Object.assign(new Error(message),{category});
+ // Mesma regra do servidor (payments/src/worker.mjs): sem ponto depois do @ o Pix seria recusado lá.
+ const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  async function api(path,options={}) {
-  const response=await fetch(config.api+path,{...options,headers:{'Content-Type':'application/json',...options.headers},cache:'no-store',signal:AbortSignal.timeout(18000)});
-  const data=await response.json();if(!response.ok){const error=new Error(data.error||'Não foi possível confirmar o pagamento.');error.category=response.status>=500?'unavailable':'rejected';throw error}return data;
+  let response;
+  try{response=await fetch(config.api+path,{...options,headers:{'Content-Type':'application/json',...options.headers},cache:'no-store',signal:deadline(18000)})}
+  catch(e){throw ['TimeoutError','AbortError'].includes(e?.name)?fault('O pagamento demorou para responder. Confira sua conexão e tente de novo.','timeout'):fault('Sem conexão com o pagamento. Confira sua internet e tente de novo.','network')}
+  // Erro do servidor pode vir sem JSON (página de erro da rede): status primeiro, texto em português sempre.
+  let data=null;try{data=await response.json()}catch{}
+  if(!response.ok)throw fault(typeof data?.error==='string'&&data.error?data.error:'Não foi possível confirmar o pagamento. Tente de novo em instantes.',response.status>=500?'unavailable':'rejected');
+  if(!data||typeof data!=='object')throw fault('Resposta inesperada do pagamento. Tente de novo em instantes.','invalid_response');
+  return data;
  }
  function close(){clearTimeout(timer);if(dialog){dialog.close();dialog.remove();dialog=null}}
  /* visual do checkout: usa as cores de cada app (--pri, --ball, --surface…) */
@@ -136,7 +148,8 @@
    field.hidden=provider!=='mercadopago'&&!promoOpen();err.textContent='';
    cta.textContent=provider==='mercadopago'?'Gerar Pix de '+price:'Pagar '+price+' com cartão';
   }
-  const emailOk=()=>!!email.value&&(typeof email.checkValidity!=='function'||email.checkValidity());
+  const mail=()=>String(email.value||'').trim();
+  const emailOk=()=>EMAIL.test(mail())&&(typeof email.checkValidity!=='function'||email.checkValidity());
   function needEmail(text){err.textContent=text;field.hidden=false;email.setAttribute('aria-invalid','true');email.focus()}
   cta.onclick=async()=>{
    const provider=method;if(busy)return;
@@ -144,10 +157,14 @@
    email.removeAttribute?.('aria-invalid');err.textContent='';
    busy=true;cta.disabled=true;message(provider==='mercadopago'?'Gerando o Pix…':'Abrindo o pagamento com cartão…');
    try{
-    const current=get();const p=current?.app===app.name&&current.product===product&&current.provider===provider?current:{id:crypto.randomUUID(),token:random(),app:app.name,product,provider,answers:app.snapshot()};
-    save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:email.value}:{})})});
+    const current=get();const p=current?.app===app.name&&current.product===product&&current.provider===provider?current:{id:uuid(),token:random(),app:app.name,product,provider,answers:app.snapshot()};
+    save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:mail()}:{})})});
     try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
-   }catch(e){checkoutError(e.category||(['TimeoutError','AbortError'].includes(e.name)?'timeout':e.name==='TypeError'?'network':'invalid_response'),provider);message(e.message);cta.disabled=false}finally{busy=false}
+   }catch(e){
+    // Falha de rede/servidor já vem classificada por api(); o resto é validação da resposta ou falha deste navegador.
+    const category=e.category||(e instanceof TypeError||e instanceof ReferenceError?'client':'invalid_response');
+    checkoutError(category,provider);message(category==='client'?'Não conseguimos abrir o pagamento neste navegador. Atualize a página ou tente em outro navegador.':e.message);cta.disabled=false
+   }finally{busy=false}
   };
   // 4) código promocional, recolhido
   const det=document.createElement('details');const sum=document.createElement('summary');sum.innerHTML=ICON.tag+'<span>Tenho um código promocional</span>';det.append(sum);
@@ -162,8 +179,8 @@
    if(!promo.value.trim()){message('Digite o código promocional.');promo.focus();return}
    busy=true;apply.disabled=true;cta.disabled=true;message('Conferindo o código…');
    try{
-    const p={id:crypto.randomUUID(),token:random(),app:app.name,product,provider:'promo',answers:app.snapshot()};
-    const order=await api('/promos/redeem',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,email:email.value,codigo:promo.value})});
+    const p={id:uuid(),token:random(),app:app.name,product,provider:'promo',answers:app.snapshot()};
+    const order=await api('/promos/redeem',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,email:mail(),codigo:promo.value})});
     if(order.state!=='paid'||order.provider!=='promo'||order.amount!==0)throw new Error('Código não confirmado.');
     save(p);await check();
    }catch(e){message(e.message)}finally{busy=false;apply.disabled=false;cta.disabled=false}
