@@ -19,7 +19,7 @@ class Page(HTMLParser):
 class SEO(unittest.TestCase):
  def test_all_canonical_pages_and_links(self):
   tree=ET.parse(ROOT/'sitemap.xml');urls=[x.text for x in tree.findall('.//{*}loc')]
-  self.assertEqual(len(urls),76);self.assertEqual(len(set(urls)),len(urls))
+  self.assertEqual(len(urls),77);self.assertEqual(len(set(urls)),len(urls))
   titles=set();descriptions=set()
   for url in urls:
    with self.subTest(url=url):
@@ -99,7 +99,7 @@ class SEO(unittest.TestCase):
      product=next(g for g in graph if g['@type']=='Product');offer=product['offers']
      self.assertEqual(offer['priceCurrency'],'BRL');self.assertEqual(offer['price'],'%.2f'%(int(prices[{'racket/':'racket-report','surf/':'surf-report','run/':'run-report'}[rel]])/100))
      self.assertIn('R$ '+offer['price'].replace('.',','),desc)
-    if rel=='ferramentas/litragem/':
+    if rel in ['ferramentas/litragem/','ferramentas/grip/']:
      faq=next(g for g in graph if g['@type']=='FAQPage');visible=re.findall(r'<details><summary>(.*?)</summary>',re.search(r'<div class="faq">(.*?)</div>',text,re.S).group(1))
      self.assertEqual([q['name'] for q in faq['mainEntity']],visible)
   # Teste e guia do mesmo esporte não disputam o mesmo título.
@@ -166,7 +166,7 @@ class GuidesAndTrust(unittest.TestCase):
     self.assertIn(f'window.ML_DATE={{"published":"{d["published"]}","modified":"{d["modified"]}"}}',text)
     art=next(g for g in Page(text).json[0]['@graph'] if g['@type']=='Article');self.assertEqual(art['author'],{'@id':CONFIG['siteUrl']+'#organization'})
  def test_footer_links_everywhere(self):
-  pages=[(ROOT/(r or '')/'index.html') for k,r in CONFIG['routes'].items() if k!='conceito']+[ROOT/'ferramentas/litragem/index.html',ROOT/'404.html']+[ROOT/app/'index.html' for app in ['racket','surf','run']]
+  pages=[(ROOT/(r or '')/'index.html') for k,r in CONFIG['routes'].items() if k!='conceito']+[ROOT/'ferramentas/litragem/index.html',ROOT/'ferramentas/grip/index.html',ROOT/'404.html']+[ROOT/app/'index.html' for app in ['racket','surf','run']]
   for f in pages:
    with self.subTest(page=str(f.relative_to(ROOT))):
     text=f.read_text()

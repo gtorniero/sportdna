@@ -7,7 +7,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const source = root;
 const target = join(root, 'dist', 'site');
 const directories = ['apps', 'assets', 'blog', 'como-ganhamos-dinheiro', 'contato', 'content', 'ferramentas', 'guias', 'privacidade', 'racket', 'run', 'sobre', 'surf', 'tenis', 'termos'];
-const files = ['index.html', '404.html', 'ads.txt', 'favicon.ico', 'medicao.html', 'robots.txt', 'sitemap.xml'];
+const files = ['index.html', '404.html', 'ads.txt', 'favicon.ico', 'medicao.html', 'robots.txt', 'sitemap.xml', '_headers'];
 const allowed = /\.(html|css|js|json|svg|png|jpe?g|webp|gif|ico|avif|woff2?|ttf|otf)$/i;
 if (existsSync(target)) rmSync(target, { recursive: true });
 mkdirSync(target, {recursive:true});
@@ -19,7 +19,7 @@ function copy(file) {
     for (const child of readdirSync(file)) copy(join(file, child));
     return;
   }
-  if (!allowed.test(name) && !['ads.txt', 'robots.txt', 'sitemap.xml'].includes(name)) return;
+  if (!allowed.test(name) && !['ads.txt', 'robots.txt', 'sitemap.xml', '_headers'].includes(name)) return;
   const destination = join(target, name);
   mkdirSync(dirname(destination), { recursive: true });
   cpSync(file, destination);

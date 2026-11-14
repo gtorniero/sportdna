@@ -263,7 +263,7 @@ export function paginas(h) {
   <p>O 16x19 é o mais comum. Padrões fechados como o 18x20 deixam a bola mais baixa e controlada. O padrão mais aberto ajuda um pouco no spin; o que mais gera spin é o seu golpe. <a ${go('a-raquete-04')}>Padrão de cordas e tensão</a>.</p>
   <h3>Rigidez (RA)</h3>
   <p>A escala RA mede quanto o aro flexiona: até 63 costuma ser chamada de flexível, de 64 a 67 de média e de 68 para cima de rígida. Quadro rígido devolve mais potência; quadro flexível costuma ser descrito como mais confortável por quem sente o cotovelo. <a ${go('a-raquete-12')}>Rigidez, RA e materiais</a>.</p>
-  <p>O grip, a espessura do cabo, não muda o ranking, mas precisa caber na sua mão para você segurar sem apertar demais. <a ${go('a-raquete-05')}>Como medir o grip</a>.</p>
+  <p>O grip, a espessura do cabo, não muda o ranking, mas precisa caber na sua mão para você segurar sem apertar demais. <a href="ferramentas/grip/">Meça o seu grip em 1 minuto</a> ou leia <a ${go('a-raquete-05')}>como medir o grip</a>.</p>
   <div class="spec"><div class="cap">O que o motor procura em cada nível (perfis de exemplo)</div><div class="tw" tabindex="0" role="region" aria-label="Faixas de especificação por nível"><table>
    <thead><tr><th scope="col">Nível</th><th scope="col">Peso sem corda</th><th scope="col">Swingweight</th><th scope="col">Cabeça</th></tr></thead>
    <tbody>${niveis.map(([t, k]) => {const z = PERFIS[k].zona; return `<tr><th scope="row">${t}</th><td>${faixa(z.peso, ' g')}</td><td>${faixa(z.sw)}</td><td>${faixa(z.cabeca, ' pol²')}</td></tr>`}).join('')}</tbody>
@@ -315,7 +315,7 @@ export function paginas(h) {
    <li><b>Balanço neutro ou levemente head light.</b> Nas raquetes mais leves, um pouco mais de peso na cabeça ajuda a gerar potência.</li>
    <li><b>Padrão 16x19.</b> O mais comum, com equilíbrio entre efeito, potência e conforto.</li>
    <li><b>Corda sintética ou multifilamento</b>, em tensão média. Deixe o poliéster para quando o golpe estiver formado.</li>
-   <li><b>Grip do tamanho da sua mão.</b> <a ${go('a-raquete-05')}>Veja como medir</a>.</li>
+   <li><b>Grip do tamanho da sua mão.</b> <a href="ferramentas/grip/">Meça o seu</a> ou <a ${go('a-raquete-05')}>veja como medir</a>.</li>
   </ul>
   <div class="spec"><div class="cap">O que o motor procura para iniciante (perfis de exemplo)</div><div class="tw" tabindex="0" role="region" aria-label="Faixas de especificação para iniciante"><table>
    <thead><tr><th scope="col">Perfil</th><th scope="col">Peso sem corda</th><th scope="col">Swingweight</th><th scope="col">Cabeça</th></tr></thead>
@@ -385,7 +385,7 @@ export function paginas(h) {
    <li><b>Peso de ${faixa(PERFIS.cotovelo.zona.peso, ' g')} sem corda</b> para o adulto com força na média. Com menos força, ${faixa(PERFIS.cotovelo_menos_forca.zona.peso, ' g')}.</li>
    <li><b>Cabeça de ${faixa(PERFIS.cotovelo.zona.cabeca, ' pol²')}.</b> Área de acerto que perdoa sem deixar a raquete lenta.</li>
    <li><b>Corda macia e tensão mais baixa.</b> Multifilamento ou tripa, na faixa de baixo da recomendada pelo fabricante.</li>
-   <li><b>Grip do tamanho da mão.</b> Um cabo do tamanho da sua mão deixa você segurar sem apertar demais, o que costuma ser mais confortável.</li>
+   <li><b>Grip do tamanho da mão.</b> Um cabo do tamanho da sua mão deixa você segurar sem apertar demais, o que costuma ser mais confortável. <a href="ferramentas/grip/">Meça o seu grip</a>.</li>
   </ul>
   <h2 id="modelos">Raquetes do catálogo para quem sente o cotovelo</h2>
   <p>As quatro primeiras colocadas do motor para três perfis com dor no cotovelo hoje, uma por linha de raquete.</p>

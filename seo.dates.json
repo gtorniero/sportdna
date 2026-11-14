@@ -1,8 +1,8 @@
 {
  "": {
   "published": "2026-10-23",
-  "modified": "2026-11-06",
-  "hash": "2ae24c9c5e54e072"
+  "modified": "2026-11-14",
+  "hash": "d753ab52b93be56e"
  },
  "blog/": {
   "published": "2026-11-01",
@@ -314,6 +314,11 @@
   "modified": "2026-11-14",
   "hash": "bcd3c77832538464"
  },
+ "ferramentas/grip/": {
+  "published": "2026-11-14",
+  "modified": "2026-11-14",
+  "hash": "cadc708e52ced941"
+ },
  "ferramentas/litragem/": {
   "published": "2026-10-24",
   "modified": "2026-11-14",
@@ -322,22 +327,22 @@
  "guias/racket/": {
   "published": "2026-11-01",
   "modified": "2026-11-14",
-  "hash": "50dde2c54ca3f32a"
+  "hash": "f8bf418d49983021"
  },
  "guias/racket/melhor-raquete-de-tenis-para-iniciante/": {
   "published": "2026-11-14",
   "modified": "2026-11-14",
-  "hash": "437136121bb65fae"
+  "hash": "8065f838b5ac940a"
  },
  "guias/racket/melhor-raquete-de-tenis/": {
   "published": "2026-11-14",
   "modified": "2026-11-14",
-  "hash": "eab773d0956ff198"
+  "hash": "793ced9c43db8fd5"
  },
  "guias/racket/raquete-de-tenis-para-dor-no-cotovelo/": {
   "published": "2026-11-14",
   "modified": "2026-11-14",
-  "hash": "a6294ab5af3b266b"
+  "hash": "d7ce22dac37fe5d4"
  },
  "guias/run/": {
   "published": "2026-11-01",
@@ -352,7 +357,7 @@
  "privacidade/": {
   "published": "2026-11-01",
   "modified": "2026-11-14",
-  "hash": "fe0fa80f2b4d8a9e"
+  "hash": "181a823b15ad8c2e"
  },
  "racket/": {
   "published": "2026-11-02",
