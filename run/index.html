@@ -383,6 +383,10 @@ details.rk:not([open]){gap:0}
 .prev{border-left:3px solid var(--ball);background:var(--bg);border-radius:0 8px 8px 0;padding:5px 9px;margin-bottom:4px}.prev p{font-size:10.5px}.prev span{font-size:9px;color:var(--muted)}.prev b{color:var(--ink)}
 .pdfdoc .legend{font-size:10px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* exemplo pronto (nov/2026) */
+.exbox{border:2px solid var(--pri);margin-bottom:8px}
+.exbox h2{font-size:clamp(22px,5vw,30px)}
 </style>
 
 <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
@@ -1046,11 +1050,14 @@ function renderQs(){
 }
 function missing(){return Q.filter(q=>q.s===step).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.opt?false:!v||(Array.isArray(v)&&!v.length)})}
 /* medição consentida: prévia com preço = oferta vista (exemplo pronto não conta), igual ao RACKET DNA */
-let exampleSession=false;
+let exampleSession=false,exampleSig='';
+const stable=v=>Array.isArray(v)?'['+v.map(stable).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+stable(v[k])).join(',')+'}':JSON.stringify(v);
+/* relatório completo grátis só para as respostas do perfil fictício (nov/2026) */
+const isExample=()=>exampleSession&&!!exampleSig&&stable(A)===exampleSig;
 function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;if(id==='quiz')exampleSession=false;['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('run-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 $('#start').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
-$('#example').addEventListener('click',()=>{exampleSession=true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,EXAMPLE);runAnalysis()});
+$('#example').addEventListener('click',()=>{exampleSession=true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));normA();exampleSig=stable(A);runAnalysis()});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}step--;renderQs()});
 $('#next').addEventListener('click',()=>{
   const m=missing();
@@ -1067,7 +1074,7 @@ function runAnalysis(){
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
   const lis=[...ul.children];const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   normA();RES=engine(conv(),true);
-  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else{renderPreview();show('preview')}};
+  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(isExample()){renderReport();show('report')}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
 function radarG(labels,series){
@@ -1227,8 +1234,12 @@ function fichaRows(r){
     ['Fonte',(m.fi?'specs da ficha da marca (sem medição de laboratório)':'specs de laboratório')+' · '+(m.nr?m.nr+(m.nr===1?' review lida':' reviews lidas')+(m.nc?` (${m.np} ${m.np===1?'profissional':'profissionais'}, ${m.nc} de ${m.nc===1?'cliente':'clientes'})`:''):'sem review independente ainda')]];
 }
 let navIO=null,navRO=null;
+/* faixa do exemplo pronto: perfil fictício, com o resumo dele */
+function exampleBanner(){
+  return `<section class="panel exbox" aria-labelledby="exT"><p class="eyebrow">Exemplo pronto · perfil fictício</p><h2 id="exT" style="margin:0">Este é o relatório completo que você recebe.</h2><p style="margin:0">Corredor de ${EXAMPLE.peso} kg que treina para meia maratona e hoje corre com um ${esc(EXAMPLE.atual)}. Nada borrado: role para ver tudo, do tênis ideal ao custo por km.</p><div class="row"><button class="btn btn-go" type="button" id="exMine">Fazer o meu teste · prévia grátis</button></div></section>`;
+}
 function renderReport(){
-  const r=RES,a=r.a,w=r.fins[0],m=w.m;
+  const r=RES,a=r.a,w=r.fins[0],m=w.m,ex=isExample();
   const cur=r.atual,hasAt=cur&&cur.m!==m,zone=zoneT(r);
   const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
   const sec=(id,title,body)=>`<section class="rsec" id="${id}" aria-labelledby="${id}-h"><h2 class="sech" id="${id}-h">${title}</h2>${body}</section>`;
@@ -1236,8 +1247,9 @@ function renderReport(){
   const att=attT(r).filter(x=>!/^Prove no fim do dia/.test(x)&&!/^Clientes relatam que veste/.test(x));
   /* 0. barra do relatório */
   let h=`<nav class="rnav" aria-label="Seções do relatório">
-    <div class="rnav-a"><button class="btn btn-ghost btn-sm" type="button" id="rBack">Voltar</button><button class="btn btn-ghost btn-sm" type="button" id="rHome">Início</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
+    <div class="rnav-a">${ex?'':'<button class="btn btn-ghost btn-sm" type="button" id="rBack">Voltar</button>'}<button class="btn btn-ghost btn-sm" type="button" id="rHome">Início</button><button class="btn btn-pri btn-sm" type="button" id="pdfTop">Baixar PDF</button><span class="note pdfst" aria-live="polite"></span></div>
     <ul class="rnav-c">${S.map(x=>`<li><a href="#${x[0]}">${x[1]}</a></li>`).join('')}</ul></nav>`;
+  if(ex)h+=exampleBanner();
   /* 1. seu resultado */
   h+=sec('r-res','Seu resultado',`<div class="panel winner">
     <div class="whead"><div style="min-width:0"><p class="eyebrow">Seu tênis ideal · ${esc(m.b)}</p><h3 class="pname">${esc(modelOf(m))}</h3><p class="muted mono" style="font-size:14px;margin-top:6px">${specLine(m)}</p></div>
@@ -1311,10 +1323,11 @@ function renderReport(){
   $('#fichaCp').onclick=async()=>{const t=`Ficha técnica · RUN DNA\n`+F.map(x=>x[0]+': '+x[1]).join('\n');
     try{await navigator.clipboard.writeText(t);$('#fichaSt').textContent='Ficha copiada.'}catch(e){$('#fichaSt').textContent='Não deu para copiar: selecione a tabela e copie.'}};
   $('#again').onclick=()=>{step=0;show('quiz');renderQs()};
-  $('#rBack').onclick=()=>{step=STEPS.length-1;show('quiz');renderQs()};
+  if($('#rBack'))$('#rBack').onclick=()=>{step=STEPS.length-1;show('quiz');renderQs()};
+  if($('#exMine'))$('#exMine').onclick=()=>{exampleSession=false;exampleSig='';Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()};
   $('#rHome').onclick=()=>show('landing');
   ['#pdfTop','#pdfBot'].forEach(id=>{$(id).onclick=()=>makePDF(r)});
-  pdfPrewarm(r);
+  if(!ex)pdfPrewarm(r);
   /* barra fixa: altura para o salto não esconder o título; chip da seção visível em destaque */
   // o relatório é montado ainda oculto: a altura da barra é medida quando ela aparece e a cada mudança de tamanho
   const nav=$('#report .rnav');
