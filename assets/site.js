@@ -36,7 +36,7 @@ const AREAS = {
     facts:[["183","raquetes no catálogo"],["19 a 28","perguntas"],["R$ 19,99","relatório"]],
     vin:["Idade e força","Dor no braço","Medida da mão","Nível e frequência","Estilo, topspin e swing","Onde você erra","Raquete atual e sensação","Orçamento e corda"],
     vout:["Peso","Balanço","Swingweight","Rigidez (RA)","Cabeça","Padrão","Corda e tensão","Grip"],
-    inside:[["Raquete ideal com DNA Score","Marca, modelo e as seis especificações que importam."],["Índice Conforto no braço","Rigidez, peso e balanço avaliados para quem sente o braço."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."]],
+    inside:[["Raquete ideal com DNA Score","Marca, modelo e as seis especificações que importam."],["Índice Conforto no braço","Rigidez, peso e balanço avaliados para quem sente o braço."],["Comparação com a sua raquete","A diferença traduzida em sensação: mais solta, mais macia."],["Corda, tensão e grip","Para a nova raquete e para a que você já tem."],["Comparador e reteste","Comparador ilimitado, reteste grátis em 90 dias e 7 dias para desistir."]],
     price:[["R$ 19,99","Relatório completo"]],
     engine:{title:"Não é palpite. É um motor calibrado com 379 recomendações de especialistas.",
       lede:"Indicações de especialistas em português, inglês e espanhol viraram perfis do questionário e rodaram no motor. Os pesos foram ajustados e conferidos em casos guardados à parte, com travas para não piorar a segurança do braço nem estourar o seu orçamento.",
