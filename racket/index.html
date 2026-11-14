@@ -1179,19 +1179,18 @@ function duelHTML(a,b,withFit){const TL=[];
   <p class="note" style="margin-top:8px">Índices de 0 a 10 calculados a partir das specs medidas. # é a posição no ranking do catálogo naquele atributo.</p></div></div>`;
 }
 function fillSel(sel,v){sel.innerHTML=optList(v)}
-let editLeft=0,editing=false,revDor=false; /* revDor: revisar resposta antiga contraditória de dor não gasta a edição nem o pagamento */
+let editLeft=0,editing=false,revDor=false,retesting=false,retestInfo=null; /* revDor: revisar resposta antiga contraditória de dor não gasta a edição nem o pagamento */
 let cmpPaid=!window.SportDNAPayments?.enabled&&LS.get('rm_cmp')==='1';
 const duelFree=()=>+(LS.get('rm_duel_n')||0)<1;
 const duelOpen=()=>cmpPaid||tier>=2;
 function duelBadge(){$('#duelBadge').textContent=duelOpen()?'Comparador liberado':duelFree()?'1 comparação grátis':'Comparação grátis usada'}
+/* Produto único (nov/2026): o comparador não é mais vendido sozinho; ilimitado, ele vem no relatório.
+   Compras antigas do comparador continuam valendo (unlock 'racket-comparator' no adaptador do checkout). */
+const REPORT_PITCH=`<ul><li>As 3 raquetes que mais encaixam no seu jogo, com o ranking dos 10</li><li>Comparador ilimitado entre as ${RK.length} raquetes, com o DNA Score de cada uma para você</li><li>Corda e tensão para a nova e para a sua raquete atual</li><li>Reteste grátis em 90 dias e garantia de 7 dias</li></ul>`;
 function duelLock(){
-  $('#duelOut').innerHTML=`<div class="single" style="padding:8px 0"><p class="eyebrow">Você já usou a comparação grátis</p><h3 style="margin:6px 0 10px">Compare quantas raquetes quiser</h3>
-  <div class="plans" style="margin-top:6px">
-    <div class="plan"><h3>Comparador</h3><span class="price">R$ 4,99</span><ul><li>Comparações ilimitadas entre as ${RK.length} raquetes</li><li>6 atributos, ranking no catálogo e ficha lado a lado</li></ul><button class="btn btn-pri" type="button" data-cmp>Liberar comparador</button></div>
-    <div class="plan best"><span class="ribbon">Melhor custo</span><h3>Relatório completo</h3><span class="price">R$ 19,99</span><ul><li>Comparador ilimitado incluído</li><li>As raquetes que mais encaixam no seu jogo, com diagnóstico da sua atual</li><li>Sugestão de corda e tensão</li></ul><button class="btn btn-go" type="button" data-rep>Fazer o teste</button></div>
-  </div></div>`;
-  $('#duelOut [data-cmp]').onclick=()=>pix('cmp');
-  $('#duelOut [data-rep]').onclick=()=>{Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()};
+  $('#duelOut').innerHTML=`<div class="single" style="padding:8px 0"><p class="eyebrow">Você já usou a comparação grátis</p><h3 style="margin:6px 0 10px">Compare quantas raquetes quiser no relatório</h3>
+  <div class="plan best" style="max-width:520px"><h3>Relatório RACKET DNA</h3><span class="price">R$ 19,99</span>${REPORT_PITCH}<button class="btn btn-go" type="button" data-rep>Fazer o teste · prévia grátis</button></div></div>`;
+  $('#duelOut [data-rep]').onclick=()=>{exampleSession=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()};
 }
 function renderDuel(){
   if(!duelOpen()&&!duelFree()){duelLock();duelBadge();return}
@@ -1199,7 +1198,7 @@ function renderDuel(){
   if(a.id===b.id){toast('Escolha duas raquetes diferentes');return}
   if(!duelOpen())LS.set('rm_duel_n',String(+(LS.get('rm_duel_n')||0)+1));
   $('#duelOut').innerHTML=duelHTML(a,b,!!RES);duelBadge();
-  if(!duelOpen())$('#duelOut').insertAdjacentHTML('beforeend',`<div class="lock" style="margin-top:14px"><h3>Essa foi a sua comparação grátis</h3><p class="muted">Para comparar outras raquetes: comparador ilimitado por R$ 4,99, ou incluído no relatório completo (R$ 19,99).</p><button class="btn btn-pri" type="button" id="dUnlock">Liberar comparador · R$ 4,99</button></div>`),$('#dUnlock').onclick=()=>pix('cmp');
+  if(!duelOpen())$('#duelOut').insertAdjacentHTML('beforeend',`<div class="lock" style="margin-top:14px"><h3>Essa foi a sua comparação grátis</h3><p class="muted">No relatório completo (R$ 19,99) o comparador é ilimitado e mostra o DNA Score de cada raquete para o seu jogo. Antes de pagar, você vê a prévia grátis.</p><button class="btn btn-go" type="button" id="dUnlock">Fazer o teste · prévia grátis</button></div>`),$('#dUnlock').onclick=()=>{exampleSession=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()};
 }
 $('#duelGo').addEventListener('click',()=>{const pa=RK.find(r=>/^pure aero$/i.test(r.model))||RK[0],pb=RK.find(r=>/^speed mp$/i.test(r.model))||RK[1];fillSel($('#dA'),pa.id);fillSel($('#dB'),pb.id);$('#duelOut').innerHTML='';duelBadge();if(!duelOpen()&&!duelFree())duelLock();document.querySelectorAll('.nRk2').forEach(e=>e.textContent=RK.length);show('duelSec')});
 $('#dGo').addEventListener('click',renderDuel);
@@ -1240,7 +1239,7 @@ function renderResume(){
     pend=`<p class="pend">${pay.provider==='mercadopago'?`Você gerou um Pix${what} de ${price} ${dayTxt(pay.at)} às ${hhmm(pay.at)}.`:`Você abriu o pagamento${what} com cartão de ${price} ${dayTxt(pay.at)} às ${hhmm(pay.at)}.`} Ele vale até ${dayTxt(pay.expires)==='hoje'?'hoje':'amanhã'} às ${hhmm(pay.expires)}. Se você já pagou, é só continuar: o relatório abre assim que o banco confirmar.</p>`;
     btn=`<button class="btn btn-go" type="button" data-rc="pay">${pay.provider==='mercadopago'?'Continuar o Pix':'Continuar o pagamento'}</button>`;
   }else if(pay&&pay.state==='paid'){
-    pend=`<p class="pend">O seu relatório pago está guardado neste aparelho.</p>`;
+    pend=`<p class="pend">O seu relatório pago está guardado neste aparelho.${pay.retest?.available?` Reteste grátis até ${new Date(pay.retest.until).toLocaleDateString('pt-BR')}.`:''}</p>`;
     btn=`<button class="btn btn-go" type="button" data-rc="pay">Abrir meu relatório</button>`;
   }
   const head=sum&&sum.arch?`<h2 id="rcT">${esc(sum.arch)}</h2>${Array.isArray(sum.fits)&&sum.fits.length===3?`<p class="muted" style="margin:0">Suas 3 raquetes: DNA de ${sum.fits[0]}%, ${sum.fits[1]}% e ${sum.fits[2]}%</p>`:''}`:`<h2 id="rcT">Seu último resultado</h2>`;
@@ -1409,14 +1408,19 @@ function runAnalysis(){
   const ul=$('#alist');ul.innerHTML=steps.map(s=>`<li>${s}</li>`).join('');
   const lis=[...ul.children];const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* edição depois de pago: refaz o relatório sem novo pagamento, uma vez */
-  const ed=(editing||revDor)&&tier>=2;
+  const ed=(editing||revDor||retesting)&&tier>=2;
   const revised=compute();
   if(ed&&editing&&window.SportDNAPayments?.enabled&&!window.SportDNAPayments.saveRevision('racket-report')){
     show('quiz');toast('Não foi possível salvar esta correção. Reabra seu relatório e tente novamente.');return;
   }
+  /* reteste: só com o pedido pago confirmado pelo servidor nesta página e dentro do prazo (client.js confere) */
+  if(ed&&retesting&&window.SportDNAPayments?.enabled&&!window.SportDNAPayments.saveRevision('racket-report','retest')){
+    retesting=false;show('quiz');toast('Não foi possível usar o reteste. Reabra seu relatório e tente novamente.');return;
+  }
+  const wasRetest=ed&&retesting;if(wasRetest){retesting=false;if(retestInfo)retestInfo={...retestInfo,used:true,available:false}}
   RES=revised;
-  if(ed){if(editing)editLeft=0;editing=false;revDor=false}else tier=0;persist();
-  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(ed){renderReport();show('report');toast('Relatório refeito com as respostas corrigidas.')}else if(isExample()){editLeft=0;renderReport();show('report')}else{renderPreview();show('preview')}};
+  if(ed){if(editing)editLeft=0;editing=false;revDor=false}else{tier=0;retesting=false}persist();
+  let i=0;const tick=()=>{if(i<lis.length){lis[i].className='ok';i++;$('#abar').style.width=(i/lis.length*100)+'%';setTimeout(tick,reduce?0:380)}else if(ed){renderReport();show('report');toast(wasRetest?'Relatório novo pronto, com as respostas de hoje.':'Relatório refeito com as respostas corrigidas.')}else if(isExample()){editLeft=0;renderReport();show('report')}else{renderPreview();show('preview')}};
   $('#abar').style.width='0';tick();
 }
 
@@ -1584,7 +1588,7 @@ function renderPreview(){
           <li>Comparador ilimitado para colocar as raquetes lado a lado.</li>
         </ul>
         <button class="btn btn-go" type="button" data-buy="2" data-position="preview_primary" style="width:100%">Revelar minhas raquetes · R$ 19,99</button>
-        <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF.</p>
+        <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF. Comparador incluído, reteste grátis em 90 dias e garantia de 7 dias.</p>
         <div class="fin">${top.map((x,i)=>`
         <div class="finrow"><span class="pos">${i+1}º</span>
           <div><span class="blur" aria-label="Modelo oculto até o desbloqueio">${x.r.brand.replace(/./g,'X')} ${x.r.model.replace(/[^ ]/g,'X')}</span><div class="meter"><i style="width:${x.fit}%"></i></div></div>
@@ -1620,12 +1624,13 @@ function renderPreview(){
         <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>
         <li>Diagnóstico completo da sua raquete atual</li>
         <li>Sugestão de corda, espessura e tensão para a nova e para a sua</li>
-        <li>Comparador ilimitado (sozinho sai R$ 4,99) e card para story</li>
+        <li>Comparador ilimitado entre as ${RK.length} raquetes e card para story</li>
+        <li>Reteste grátis em 90 dias: o seu jogo mudou, você refaz e recebe o relatório novo</li>
         <li>Onde é fácil ou difícil de achar cada raquete no Brasil</li>
       </ul>
       <button class="btn btn-go" type="button" data-buy="2" data-position="preview_details" style="width:100%;margin-top:16px">Ver meu relatório</button>
     </div>
-    <p class="note">O cálculo já foi feito: o pagamento só revela o resultado. Se houver link de compra, ele aparece depois, e a recomendação não muda por isso. Não gostou? Devolvemos em até 7 dias.</p>
+    <p class="note"><strong>Garantia de 7 dias:</strong> não gostou, devolvemos o valor pago, como prevê o artigo 49 do Código de Defesa do Consumidor (<a href="../termos/" style="color:inherit">termos</a>). O cálculo já foi feito: o pagamento só revela o resultado. Se houver link de compra, ele aparece depois, e a recomendação não muda por isso.</p>
     <div class="row"><button class="btn btn-ghost" type="button" id="redo">Refazer respostas</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>
   </div>`;
   wireSeg($('#preview'));previewCard('#cardPrev');$('#pvShare').onclick=shareCard;$('#pvDl').onclick=async()=>{const cv=await drawCard();const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const l=document.createElement('a');l.href=URL.createObjectURL(blob);l.download='racket-dna-dna.png';document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(l.href),4000);toast('Card salvo')};
@@ -1752,6 +1757,8 @@ function feel(r,c){
   rows.push(['Padrão',c.pat.replace('x','×'),r.pat.replace('x','×'),c.pat===r.pat?'Mesmo padrão':OPEN[r.pat]>OPEN[c.pat]?'Mais aberto: mais spin':'Mais fechado: mais controle']);
   return rows;
 }
+/* quadro médio do catálogo para a raquete que a pessoa usa e não está na lista */
+const QUADRO_MEDIO={pat:'16x19',ra:65,head:100};
 function stringSetup(r){
   let s,base;const sensitive=A.arm==='now'||(A.arm!=='no'&&(J('wrist')||J('elbow')));
   const sev=dorForte();
@@ -1796,6 +1803,14 @@ const altsTag=x=>x.alts&&x.alts.length?` · também em ${x.alts.slice(0,2).map(a
 function closeRacketFit(current,best){
   if(!current||current.fit<90||Math.abs(best.fit-current.fit)>3)return '';
   return `Sua raquete atual já combina muito bem com seu jogo: ${current.fit}% contra ${best.fit}% da recomendada. A diferença é pequena. Se ela está confortável e atende ao seu jogo, faz sentido continuar com ela.`;
+}
+/* reteste grátis: uma vez, até 90 dias depois do pagamento, com as respostas preenchidas */
+const dataBR=t=>new Date(t).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+function retestBox(){
+  const r=retestInfo;
+  if(!r)return '';/* sem o prazo vindo do checkout (pagamento confirmado nesta página), nada de botão */
+  if(!r.available)return `<div class="panel editbox"><h2 class="sec">Reteste grátis</h2><p>${r.used?'Você já usou o reteste deste relatório.':'O prazo do reteste deste relatório terminou em '+dataBR(r.until)+'.'}</p></div>`;
+  return `<div class="panel editbox"><h2 class="sec">Reteste grátis até ${dataBR(r.until)}</h2><p>Seu jogo mudou, você subiu de nível ou trocou de raquete? Refaça o teste com as suas respostas já preenchidas e receba o relatório novo, sem pagar de novo. Vale uma vez.</p><button class="btn btn-ghost" type="button" id="retestGo" style="align-self:flex-start">Refazer o teste grátis</button></div>`;
 }
 /* faixa do exemplo pronto: deixa claro que é um perfil fictício, com o resumo dele */
 function exampleBanner(){
@@ -1856,8 +1871,9 @@ function renderReport(){
     h+=`<section class="panel" id="r-guia"><h2 class="sec">Guia de compra</h2>
       <div style="display:flex;flex-direction:column;gap:12px"><h3>Sugestão de corda e tensão</h3><p class="note" style="margin-top:-6px">Ponto de partida, não regra: corda é gosto pessoal. Use a sugestão no primeiro encordoamento e ajuste pela sensação.</p>
       <table class="stack"><thead><tr><th scope="col">Para</th><th scope="col">Corda</th><th scope="col">Tensão</th><th scope="col">Trocar</th></tr></thead><tbody>
-      ${strRow(r,esc(r.model)+' (nova)',st)}${c?strRow(c,esc(c.model)+' (a sua)',stringSetup(c)):''}
+      ${strRow(r,esc(r.model)+' (nova)',st)}${c?strRow(c,esc(c.model)+' (a sua)',stringSetup(c)):A.cur==='other'?strRow(null,'A sua (fora do catálogo)',stringSetup(QUADRO_MEDIO)):''}
       </tbody></table>
+      ${!c&&A.cur==='other'?'<p class="note" style="margin-top:-4px">Sem a ficha da sua raquete, a linha dela parte de um quadro médio (16×19, rigidez 65 RA). Se ela for 18×20, suba 1 lb; se for bem rígida e você sente o braço, desça 1 lb.</p>':''}
       <p class="muted">${tensWhy(st)}</p>
       ${st.vs?`<p><strong>${st.vs}</strong></p>`:''}${st.rs?`<p class="muted">${st.rs}</p>`:''}
       <p class="note">Comece pelo meio da faixa. Bola indo longa: suba 2 lb no próximo encordoamento. Sem profundidade ou com dor: desça 2 lb.${polyTip?' Poliéster perde tensão rápido e endurece; com histórico de dor, não passe do prazo de troca.':''}</p></div>
@@ -1883,12 +1899,15 @@ function renderReport(){
     <div class="foldin"><div class="row"><button class="btn btn-pri btn-sm" type="button" id="fichaCp" aria-label="Copiar ficha técnica">Copiar</button></div>
     <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fr.map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
     <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></div></details></section>`})()}
+  ${tier>=2&&!ex?retestBox():''}
   ${full&&editLeft>0?`<div class="panel editbox"><h2 class="sec">Errou alguma resposta?</h2><p>Você pode corrigir as respostas uma vez, por exemplo a versão exata da sua raquete atual. O relatório é refeito na hora, sem novo pagamento.</p><button class="btn btn-ghost" type="button" id="editAns" style="align-self:flex-start">Editar respostas</button></div>`:''}
+  ${tier>=2&&!ex?'<p class="note"><strong>Garantia de 7 dias:</strong> não gostou, devolvemos o valor pago (artigo 49 do Código de Defesa do Consumidor). Escreva para <a href="mailto:hi@sportdna.com.br" style="color:inherit">hi@sportdna.com.br</a> com o e-mail da compra.</p>':''}
   <div class="row">${full?`<button class="btn btn-go" type="button" data-pdf>${ex?'Baixar o PDF do exemplo (A4)':'Baixar relatório em PDF (A4)'}</button>`:''}${ex?'<button class="btn btn-ghost" type="button" data-mytest>Fazer o meu teste · prévia grátis</button>':'<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button>'}</div>`;
   const R=$('#report');R.innerHTML=h;
   wireSeg(R);
   const up=$('#up');if(up)up.onclick=()=>pix(2);
   if($('#again'))$('#again').onclick=()=>{editing=false;revDor=false;step=0;show('quiz');renderQs()};
+  if($('#retestGo'))$('#retestGo').onclick=()=>{retesting=true;editing=false;revDor=false;step=0;show('quiz');renderQs();toast('Suas respostas estão preenchidas. Mude o que mudou no seu jogo.')};
   if($('#editAns'))$('#editAns').onclick=()=>{editing=true;step=0;show('quiz');renderQs();toast('Corrija o que precisar. No fim, o relatório é refeito sem novo pagamento.')};
   const sv=R.querySelector('[data-save]');if(sv)sv.onclick=saveBox;
   R.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>downloadPDF(b));
@@ -2215,9 +2234,9 @@ async function drawRacketCard(d=racketCardData()){
 /* ---------- Hero ---------- */
 
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
-window.SportDNAPayments?.register({name:'racket',snapshot:()=>JSON.parse(JSON.stringify(A)),
+window.SportDNAPayments?.register({name:'racket',keepPaidDays:90,retestDays:90,snapshot:()=>JSON.parse(JSON.stringify(A)),
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(answers));RES=Object.keys(A).length?compute():null},
- unlock:(product,revised)=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{tier=2;editLeft=revised?0:1;persist();renderReport();show('report')}}});
+ unlock:(product,revised,info)=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{exampleSession=false;tier=2;editLeft=revised?0:1;retestInfo=info?.retest||null;persist();renderReport();show('report')}}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 renderResume();
 })();
