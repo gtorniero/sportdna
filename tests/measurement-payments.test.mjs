@@ -6,14 +6,14 @@ const source=readFileSync(new URL('../assets/measurement.js',import.meta.url),'u
 const vendor=readFileSync(new URL('../assets/measurement-vendor.js',import.meta.url),'utf8');
 const config=readFileSync(new URL('../assets/payments/config.js',import.meta.url),'utf8');
 const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'};
-function browser({path='/surf/',choice=true,stored=new Map(),autoReady=true,ack=true}={}){
+function browser({path='/surf/',choice=true,stored=new Map(),autoReady=true,ack=true,canonical=null,referrer=''}={}){
  const handlers={},nodes=[],messages=[];let frame;
  if(!stored.has('sd_consent_v1'))stored.set('sd_consent_v1',JSON.stringify({version:1,analytics:choice,marketing:choice,at:Date.now()}));
  const window={addEventListener(n,f){handlers[n]=f}};
  class Element{constructor(tag){this.tag=tag;this.style={};this.children=[];this.id='';this.listeners={};nodes.push(this);if(tag==='iframe'){frame=this;this.contentWindow={postMessage:data=>{messages.push(data);if(data.type==='sd_measure'&&data.id&&ack)handlers.message({origin:location.origin,source:this.contentWindow,data:{type:'sd_done',id:data.id,queued:true}})}}}}append(...children){this.children.push(...children);for(const child of children)if(child.tag==='iframe'&&autoReady)ready()}appendChild(child){this.append(child)}remove(){this.removed=true}setAttribute(){}addEventListener(n,f){this.listeners[n]=f}querySelector(){return null}}
  const location={hostname:'sportdna.com.br',pathname:path,origin:'https://sportdna.com.br',search:'?utm_source=qa&utm_term=private%40example.invalid&email=private%40example.invalid#private'};
- const document={cookie:'',head:new Element('head'),body:new Element('body'),createElement:t=>new Element(t),getElementById:id=>nodes.find(n=>n.id===id&&!n.removed)||null,querySelectorAll:()=>[]};
- const context={window,document,location,URLSearchParams,Date,Number,Map,Set,Object,Promise,setTimeout,clearTimeout,MutationObserver:class{observe(){}},localStorage:{getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v)}};
+ const document={cookie:'',referrer,head:new Element('head'),body:new Element('body'),createElement:t=>new Element(t),getElementById:id=>nodes.find(n=>n.id===id&&!n.removed)||null,querySelectorAll:()=>[],querySelector:s=>s.includes('canonical')&&canonical?{getAttribute:()=>canonical}:null};
+ const context={window,document,location,URL,URLSearchParams,Date,Number,Map,Set,Object,Promise,setTimeout,clearTimeout,MutationObserver:class{observe(){}},localStorage:{getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v)}};
  const ready=()=>handlers.message({origin:location.origin,source:frame.contentWindow,data:{type:'sd_ready'}});
  vm.createContext(context);vm.runInContext(config,context);vm.runInContext(source,context);
  return {measure:window.SportDNAMeasure,messages,stored,handlers,ready,frame:()=>frame,context,nodes};
@@ -153,4 +153,62 @@ test('vendor filters RACKET offer fields and uses distinct Meta events',()=>{
  assert(!JSON.stringify(window.dataLayer).includes('PRIVATE'));assert(!JSON.stringify(window.fbq.queue).includes('PRIVATE'));
  send({type:'sd_measure',event:'checkout_error',path:'/racket/',params:{sport:'racket',product:'racket-report',error_category:'PRIVATE'}});
  assert.equal(window.dataLayer.filter(e=>e[0]==='event').length,3);
+});
+
+test('consent bar: Aceitar is the primary choice, Recusar the same-size secondary, link to the measurement section',()=>{
+ const b=browser({path:'/racket/',stored:new Map()});b.stored.delete('sd_consent_v1');
+ const fresh=browser({path:'/racket/',stored:new Map([['sd_consent_v1','null']])});
+ const bar=fresh.nodes.find(n=>n.id==='sd-consent'&&!n.removed);assert(bar,'bar shown without a choice');
+ assert.match(bar.innerHTML,/class="sd-sec" data-choice="reject">Recusar<\/button><button type="button" class="sd-pri" data-choice="accept">Aceitar<\/button>/);
+ assert.match(bar.innerHTML,/href="\/privacidade\/#medicao">Saiba mais</);
+ const css=fresh.nodes.find(n=>n.id==='sd-consent-css').textContent;assert.match(css,/#sd-consent button\{[^}]*min-height:44px/);
+ assert.equal(fresh.nodes.find(n=>n.id==='sd-cookie-status').innerHTML.includes('Medição desligada'),true);
+ assert.equal(events(fresh).length,0,'nothing measured before a choice');
+ choose(fresh,'accept');assert.equal(fresh.nodes.find(n=>n.id==='sd-cookie-status').innerHTML.includes('Medição ligada'),true);assert(!fresh.nodes.some(n=>n.id==='sd-consent'&&!n.removed));
+ assert.equal(fresh.stored.get('btw_capi_choice_v1'),'yes');
+ fresh.measure.preferences();choose(fresh,'reject');assert.equal(fresh.stored.get('btw_capi_choice_v1'),'no');assert.equal(JSON.parse(fresh.stored.get('sd_consent_v1')).marketing,false);
+ assert.equal(fresh.nodes.find(n=>n.id==='sd-cookie-status').innerHTML.includes('Medição desligada'),true);
+ assert(fresh.messages.some(m=>m.type==='sd_consent'&&m.analytics===false&&m.marketing===false),'revocation reaches Consent Mode before teardown');
+});
+test('blog articles keep their own path only when it is the published canonical page; calculator is measured',async()=>{
+ const article='/blog/litragem-como-entender-o-volume-da-prancha/';
+ const ok=browser({path:article,canonical:'https://sportdna.com.br'+article});assert.equal(events(ok)[0].path,article);
+ const missing=browser({path:'/blog/nome-de-alguem/'});assert.equal(events(missing)[0].path,'/blog/');
+ const calc=browser({path:'/ferramentas/litragem/'});assert.equal(events(calc)[0].path,'/ferramentas/litragem/');
+ const ref=browser({path:'/',referrer:'https://www.google.com/search?q=private'});assert.equal(events(ref)[0].referrer,'https://www.google.com/');
+ const self=browser({path:'/',referrer:'https://sportdna.com.br/racket/'});assert.equal(events(self)[0].referrer,'');
+});
+test('SURF and RUN offers use their own product and price; other sports stay excluded',async()=>{
+ for(const [sport,product,value] of [['surf','surf-report',19.99],['run','run-report',9.99],['racket','racket-report',19.99]]){
+  const b=browser({path:'/'+sport+'/'});await b.measure.offer(product,{example:false});await b.measure.checkoutOpen(product);
+  const rows=events(b).filter(e=>e.event!=='page_view');assert.deepEqual(rows.map(e=>e.event),['view_offer','checkout_open'],sport);
+  assert.equal(rows[0].params.value,value);assert.equal(rows[0].params.currency,'BRL');
+  await b.measure.offer(sport==='run'?'surf-report':'run-report');assert.equal(events(b).filter(e=>e.event==='view_offer').length,1);
+ }
+});
+test('vendor sends Meta standard events next to the unchanged custom events, always with the real page',()=>{
+ const handlers={},parent={postMessage(){}},window={addEventListener(n,f){handlers[n]=f}};
+ vm.runInNewContext(vendor,{window,parent,location:{origin:'https://sportdna.com.br'},document:{createElement:()=>({}),head:{appendChild(){}}},URLSearchParams,Number});
+ const send=data=>handlers.message({origin:'https://sportdna.com.br',source:parent,data});send({type:'sd_init',analytics:true,marketing:true});
+ const tx='b'.repeat(64);
+ send({type:'sd_measure',event:'page_view',path:'/surf/'});
+ send({type:'sd_measure',event:'quiz_start',path:'/surf/',params:{sport:'surf'}});
+ send({type:'sd_measure',event:'quiz_complete',path:'/surf/',params:{sport:'surf'}});
+ send({type:'sd_measure',event:'view_offer',path:'/surf/',params:{sport:'surf',product:'surf-report',value:19.99,currency:'BRL'}});
+ send({type:'sd_measure',event:'checkout_open',path:'/surf/',params:{sport:'surf',product:'surf-report',value:19.99,currency:'BRL'}});
+ send({type:'sd_measure',event:'begin_checkout',path:'/surf/',params:{sport:'surf',product:'surf-report',value:19.99,currency:'BRL',payment_type:'pix'}});
+ send({type:'sd_measure',event:'purchase',path:'/surf/',params:{sport:'surf',product:'surf-report',value:19.99,currency:'BRL',payment_type:'pix',transaction_id:tx}});
+ const q=Array.from(window.fbq.queue.filter(e=>String(e[0]).startsWith('track')),e=>Array.from(e));
+ const name=e=>e[0]==='trackSingleCustom'?e[2]:e[2];
+ assert.deepEqual(q.map(name),['PageView','QuizStarted','QuizCompleted','Lead','OfferViewed','ViewContent','CheckoutOpened','InitiateCheckout','Purchase']);
+ const by=n=>q.find(e=>e[2]===n)[3];
+ for(const e of q)assert.equal(e[3].page_path,'/surf/',e[2]);
+ assert.equal(JSON.stringify(by('Lead')),JSON.stringify({content_category:'surf',page_path:'/surf/'}));
+ assert.equal(by('ViewContent').value,19.99);assert.equal(by('ViewContent').currency,'BRL');assert.deepEqual(Array.from(by('ViewContent').content_ids),['surf-report']);assert.equal(by('ViewContent').content_category,'surf');
+ assert.equal(by('InitiateCheckout').content_category,'surf-report','existing InitiateCheckout category kept');assert.deepEqual(Array.from(by('InitiateCheckout').content_ids),['surf-report']);
+ const purchase=q.find(e=>e[2]==='Purchase');assert.equal(purchase[3].value,19.99);assert.deepEqual(Array.from(purchase[3].content_ids),['surf-report']);assert.equal(purchase[4].eventID,tx);
+ assert.equal(by('QuizCompleted').content_category,'surf');
+ // Oferta de outro esporte na página errada continua fora.
+ send({type:'sd_measure',event:'view_offer',path:'/racket/',params:{sport:'surf',product:'surf-report',value:19.99,currency:'BRL'}});
+ assert.equal(window.fbq.queue.filter(e=>e[2]==='ViewContent').length,1);
 });
