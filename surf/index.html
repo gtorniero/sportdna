@@ -684,7 +684,7 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
   <footer>
     <p>SURF DNA · by SPORT DNA · Um projeto <a href="https://www.beyondthework.com.br/" target="_blank" rel="noopener">Beyond the Work</a></p>
     <p class="fnote">Medidas e litragem de referência; confira com a loja ou o shaper. Nenhuma marca paga para aparecer. Surfe dentro do seu limite.</p>
-    <a href="../privacidade/">Privacidade</a><span aria-hidden="true"> · </span>
+    <a href="../guias/surf/">Como escolher prancha de surf</a><span aria-hidden="true"> · </span><a href="../privacidade/">Privacidade</a><span aria-hidden="true"> · </span>
   </footer>
 </div>
 <div id="modalRoot"></div>
@@ -1286,7 +1286,9 @@ function renderQs(){
   $('#next').textContent=step===STEPS.length-1?(editBackup?'Atualizar relatório':'Ver minha análise'):'Continuar';
 }
 function missing(){return Q.filter(q=>q.s===step&&!q.opt&&q.type!=='rate'&&(!q.cond||q.cond())).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.multi?!(v&&v.length):!v})}
-function show(id){['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
+/* medição consentida: prévia com preço = oferta vista (exemplo pronto não conta), igual ao RACKET DNA */
+let exampleSession=false;
+function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;if(id==='quiz')exampleSession=false;['landing','calc','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('surf-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 /* outro teste do zero: limpa as respostas e o relatório guardado nesta sessão do navegador */
 function newTest(){Object.keys(A).forEach(k=>delete A[k]);RES=null;tier=0;editLeft=0;editBackup=null;step=0;
@@ -1333,7 +1335,7 @@ $('#calcF').addEventListener('submit',e=>{e.preventDefault();calcRun()});
 $('#calcBack').addEventListener('click',()=>show('landing'));
 $('#calcTest').addEventListener('click',()=>{const pe=$('#cPeso').value,al=$('#cAlt').value;if(pe&&+pe>=35&&+pe<=140)A.peso=pe;if(al&&+al>=140&&+al<=210)A.altura=al;A.fis=$('#cFis').value;A.idade=$('#cIdade').value;step=0;show('quiz');renderQs()});
 
-$('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
+$('#example').addEventListener('click',()=>{exampleSession=true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,JSON.parse(JSON.stringify(EXAMPLE)));runAnalysis()});
 $('#back').addEventListener('click',()=>{
   if(step>0){step--;renderQs();return}
   if(!editBackup){show('landing');return}
@@ -1501,7 +1503,7 @@ const PAY_DEV=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 function payDown(){const d=document.createElement('dialog');d.setAttribute('aria-labelledby','pdT');d.style.cssText='border:0;border-radius:18px;padding:22px;max-width:420px;width:calc(100% - 24px);background:var(--bg,#fff);color:var(--ink,#111)';d.innerHTML='<h2 id="pdT" style="margin:0 0 8px;font-size:20px">Pagamento indisponível</h2><p style="margin:0 0 16px">Não conseguimos carregar o pagamento agora. Confira a conexão, atualize a página e tente de novo. Nenhum valor foi cobrado.</p><button type="button" class="btn btn-go" style="width:100%">Atualizar a página</button>';d.querySelector('button').onclick=()=>location.reload();d.addEventListener('close',()=>d.remove());document.body.append(d);d.showModal()}
 function pix(){
   if(tier>=2&&RES){show('report');return}
-  if(window.SportDNAPayments?.open('surf-report'))return;
+  if(window.SportDNAPayments?.open('surf-report',{example:exampleSession}))return;
   if(!PAY_DEV){payDown();return}
   const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-SURFDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865406'+PRICE.toFixed(2)+'5802BR5909SPORT DNA6009SAO PAULO6304SIMU';
   $('#modalRoot').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pxT"><div class="sheet">

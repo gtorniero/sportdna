@@ -488,7 +488,7 @@ details.rk:not([open]){gap:0}
   <footer>
     <p class="fsig">RUN DNA · by SPORT DNA · <a href="https://www.beyondthework.com.br" target="_blank" rel="noopener">Um projeto Beyond the Work<span class="a11y-sr"> (abre em nova aba)</span></a></p>
     <p>Preços de referência no Brasil, que mudam com promoções. Nenhuma marca paga para aparecer no resultado. Não substitui avaliação de médico ou fisioterapeuta em caso de dor.</p>
-    <p class="flinks"><a href="../privacidade/">Privacidade</a><span aria-hidden="true"> · </span></p>
+    <p class="flinks"><a href="../guias/run/">Como escolher tênis de corrida</a><span aria-hidden="true"> · </span><a href="../privacidade/">Privacidade</a><span aria-hidden="true"> · </span></p>
   </footer>
 </div>
 <div id="modalRoot"></div>
@@ -1038,10 +1038,12 @@ function renderQs(){
   $('#next').textContent=step===STEPS.length-1?'Ver minha análise':'Continuar';
 }
 function missing(){return Q.filter(q=>q.s===step).filter(q=>{const v=A[q.id];if(q.type==='number'){const n=+v;return !v||n<q.min||n>q.max}return q.opt?false:!v||(Array.isArray(v)&&!v.length)})}
-function show(id){['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});window.scrollTo({top:0,behavior:'smooth'})}
+/* medição consentida: prévia com preço = oferta vista (exemplo pronto não conta), igual ao RACKET DNA */
+let exampleSession=false;
+function show(id){const enteringPreview=id==='preview'&&$('#preview').hidden;if(id==='quiz')exampleSession=false;['landing','duelSec','quiz','analysis','preview','report'].forEach(s=>{$('#'+s).hidden=s!==id});if(enteringPreview)window.SportDNAMeasure?.offer?.('run-report',{example:exampleSession});window.scrollTo({top:0,behavior:'smooth'})}
 document.getElementById('brandHome').addEventListener('click',e=>{e.preventDefault();show('landing')});
 $('#start').addEventListener('click',()=>{step=0;show('quiz');renderQs()});
-$('#example').addEventListener('click',()=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,EXAMPLE);runAnalysis()});
+$('#example').addEventListener('click',()=>{exampleSession=true;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,EXAMPLE);runAnalysis()});
 $('#back').addEventListener('click',()=>{if(step===0){show('landing');return}step--;renderQs()});
 $('#next').addEventListener('click',()=>{
   const m=missing();
@@ -1460,7 +1462,7 @@ function closeModal(){clearInterval(pixTimer);if(pixKey)document.removeEventList
 const PAY_DEV=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 function payDown(){const d=document.createElement('dialog');d.setAttribute('aria-labelledby','pdT');d.style.cssText='border:0;border-radius:18px;padding:22px;max-width:420px;width:calc(100% - 24px);background:var(--bg,#fff);color:var(--ink,#111)';d.innerHTML='<h2 id="pdT" style="margin:0 0 8px;font-size:20px">Pagamento indisponível</h2><p style="margin:0 0 16px">Não conseguimos carregar o pagamento agora. Confira a conexão, atualize a página e tente de novo. Nenhum valor foi cobrado.</p><button type="button" class="btn btn-go" style="width:100%">Atualizar a página</button>';d.querySelector('button').onclick=()=>location.reload();d.addEventListener('close',()=>d.remove());document.body.append(d);d.showModal()}
 function pix(e){
-  if(window.SportDNAPayments?.open('run-report'))return;
+  if(window.SportDNAPayments?.open('run-report',{example:exampleSession}))return;
   if(!PAY_DEV){payDown();return}
   pixFrom=e&&e.currentTarget||document.activeElement;
   const code='00020126580014BR.GOV.BCB.PIX0136SIMULACAO-RUNDNA-'+Date.now().toString(36).toUpperCase()+'5204000053039865404'+PRICE.toFixed(2)+'5802BR5909SPORT DNA6009SAO PAULO6304SIMU';
