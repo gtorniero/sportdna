@@ -74,4 +74,41 @@ class SEO(unittest.TestCase):
    text=(ROOT/f'{app}/index.html').read_text()
    self.assertIn('R$ '+price,text)
   self.assertIn('isCmp?4.99:19.99',(ROOT/'racket/index.html').read_text())
+ def test_lastmod_titles_social_and_schema(self):
+  tree=ET.parse(ROOT/'sitemap.xml');entries=tree.findall('.//{*}url')
+  dates=json.loads((ROOT/'seo.dates.json').read_text())
+  self.assertIn('Sitemap: '+CONFIG['siteUrl']+'sitemap.xml',(ROOT/'robots.txt').read_text())
+  prices={k:v for k,v in re.findall(r"'([a-z]+-report)':Object.freeze\(\{name:'[^']+',amount:(\d+)\}",(ROOT/'assets/payments/config.js').read_text())}
+  for e in entries:
+   url=e.find('{*}loc').text;rel=url.removeprefix(CONFIG['siteUrl'])
+   with self.subTest(url=url):
+    self.assertRegex(e.find('{*}lastmod').text,r'^\d{4}-\d{2}-\d{2}$');self.assertEqual(e.find('{*}lastmod').text,dates[rel]['modified'])
+    text=(ROOT/rel/'index.html').read_text();p=Page(text)
+    title=re.search(r'<title>(.*?)</title>',text).group(1).replace('&amp;','&');self.assertLessEqual(len(title),60,title)
+    desc=next(a['content'] for t,a in p.tags if t=='meta' and a.get('name')=='description');self.assertLessEqual(len(desc),160,desc)
+    meta={a.get('property') or a.get('name'):a.get('content') for t,a in p.tags if t=='meta'}
+    self.assertEqual((meta['og:image:width'],meta['og:image:height'],meta['og:image:type']),('1200','630','image/jpeg'))
+    self.assertTrue((ROOT/meta['og:image'].removeprefix(CONFIG['siteUrl'])).exists())
+    self.assertEqual(meta['twitter:card'],'summary_large_image');self.assertEqual(meta['twitter:image'],meta['og:image'])
+    graph=p.json[0]['@graph'];types=[g['@type'] for g in graph]
+    self.assertIn('Organization',types);self.assertIn('WebSite',types)
+    if rel:self.assertIn('BreadcrumbList',types)
+    if rel.startswith('blog/') and rel!='blog/':
+     art=next(g for g in graph if g['@type']=='Article');self.assertEqual(art['datePublished'],dates[rel]['published']);self.assertEqual(art['dateModified'],dates[rel]['modified'])
+    if rel in ['racket/','surf/','run/']:
+     product=next(g for g in graph if g['@type']=='Product');offer=product['offers']
+     self.assertEqual(offer['priceCurrency'],'BRL');self.assertEqual(offer['price'],'%.2f'%(int(prices[{'racket/':'racket-report','surf/':'surf-report','run/':'run-report'}[rel]])/100))
+     self.assertIn('R$ '+offer['price'].replace('.',','),desc)
+    if rel=='ferramentas/litragem/':
+     faq=next(g for g in graph if g['@type']=='FAQPage');visible=re.findall(r'<details><summary>(.*?)</summary>',re.search(r'<div class="faq">(.*?)</div>',text,re.S).group(1))
+     self.assertEqual([q['name'] for q in faq['mainEntity']],visible)
+  # Teste e guia do mesmo esporte não disputam o mesmo título.
+  for test,guide in [('racket/','guias/racket/'),('surf/','guias/surf/'),('run/','guias/run/')]:
+   t1=re.search(r'<title>(.*?)</title>',(ROOT/test/'index.html').read_text()).group(1);t2=re.search(r'<title>(.*?)</title>',(ROOT/guide/'index.html').read_text()).group(1)
+   self.assertTrue(t1.startswith('Teste:'));self.assertIn('guia completo',t2)
+ def test_non_content_pages_are_not_indexed(self):
+  for rel in ['medicao.html','404.html']:
+   self.assertRegex((ROOT/rel).read_text(),r'<meta name="robots" content="noindex')
+  for rel in ['apps/racket/','apps/board/','apps/tenis/','tenis/']:
+   self.assertRegex((ROOT/rel/'index.html').read_text(),r'<link rel="canonical" href="https://sportdna\.com\.br/(racket|surf|run)/">')
 if __name__=='__main__':unittest.main(verbosity=2)
