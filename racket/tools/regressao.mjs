@@ -19,6 +19,7 @@
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
      T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
      T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
+     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15)
      T19 estilo em 4 degraus (básico → completo) e compatibilidade · T20 resumo quando a raquete atual empata ou fica perto da recomendada
      T21 comparador sem placar e nas cores da marca
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
@@ -141,7 +142,8 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  teste('T15 raquete conhecida de SW alto respeita teto de nível e de ombro',!swb.length,`${X.res.filter(x=>x.id.startsWith('sw|')).length} casos (Rafa Origin SW 371, Percept 97H)${swb.length?' · acima: '+swb.map(x=>x.id+' '+x.zsw).join(', '):''}`);}
 {const ex=C.ex;const X=await rodar(cand,[{id:'ex',a:ex}]);const B=opt('--base')?await rodar(lerHtml(opt('--base')),[{id:'ex',a:ex}]):null;
  const r=X.res[0],cen=(r.zsw[0]+r.zsw[1])/2,cw=310,csw=328; /* EXAMPLE.cur é a Head Speed Pro (310 g, SW 328), definida na carga do app */
- teste('T16 EXAMPLE no formato novo mantém o efeito de "pesada" contra a raquete atual',!ex.feel&&!ex.curAge&&ex.issue==='late'&&r.tw<=cw-10&&cen<=csw-4&&(!B||B.res[0].tw===r.tw),`peso ideal ${r.tw} g (atual ${cw} g)${B?`, main ${B.res[0].tw} g`:''}; centro do SW ${cen} (atual ${csw})`)}
+ /* rodada 15: "pesada" pede ao menos 15 g e 10 de SW abaixo da atual; o peso ideal pode mudar 1–2 g frente ao main pelo termo de corpo */
+ teste('T16 EXAMPLE no formato novo mantém o efeito de "pesada" contra a raquete atual',!ex.feel&&!ex.curAge&&ex.issue==='late'&&r.tw<=cw-15&&cen<=csw-10&&(!B||Math.abs(B.res[0].tw-r.tw)<=3),`peso ideal ${r.tw} g (atual ${cw} g)${B?`, main ${B.res[0].tw} g`:''}; centro do SW ${cen} (atual ${csw})`)}
 {const site=fs.readFileSync(path.join(raiz,'assets/site.js'),'utf8').match(/\["([^"]+)","perguntas"\]/);const cam=C.caminhos;
  teste('T17 contador público = caminhos reais = site',!!cam&&!!site&&site[1]===`${cam[0]} a ${cam[1]}`,`app ${cam&&cam.join(' a ')} · site ${site&&site[1]}`)}
 {const L=C.res.filter(x=>/K1_ini_fraco/.test(x.id));const bad=L.filter(x=>x.rotPeso.some(t=>/ideal/.test(t)));
@@ -160,6 +162,26 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  teste('T19 estilo: 4 degraus do básico ao jogo completo, uma escolha, com régua; respostas antigas viram um dos 4',JSON.stringify(X.opcoes)==='["keep","cnt","agg","all"]'&&!X.multi&&X.scale==='["Mais básico","Mais avançado"]'&&X.leg.every(Boolean),`${X.opcoes.join(', ')} · compatibilidade ${X.leg.filter(Boolean).length}/${X.leg.length}`);
  teste('T21 comparador sem placar: sem "ganha em", sem contagem de vitórias, sem a cor fora da marca; com "o que muda na mão"',!/ganha em|tdots|tally|class="[^"]*\bwin\b|var\(--alt\)/.test(X.duel)&&/O que muda na mão/.test(X.duel),'Pro Staff 97 v14 × Clash 100 v3');
  teste('T20 raquete atual empatada ou perto: resumo diz que empata e o que muda na mão',/empata/.test(X.empate)&&/não precisa trocar/.test(X.empate)&&/Na mão, a Clash 100 v3 seria/.test(X.empate)&&/só 2 pontos/.test(X.perto)&&X.longe===''&&/muito parecidas/.test(X.igual),X.empate.slice(0,160)+'…')}
+
+/* T22–T24 (rodada 15): iniciante e raquete atual pesada; marcas marginais; casos-guia */
+{const X=await (async()=>{const html=cand;const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);if(u==='/racket/'){s.writeHead(200,{'content-type':'text/html; charset=utf-8'});return s.end(html)}const f=path.join(raiz,u);if(!fs.existsSync(f)){s.writeHead(404);return s.end()}s.end(fs.readFileSync(f))});
+  await new Promise(r=>srv.listen(0,r));const b=await chromium.launch();const pg=await b.newPage();await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g|googletag|google-analytics|facebook|doubleclick/,r=>r.abort());
+  await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
+  const o=await pg.evaluate(()=>{const H=window.__RK,{A,RK,compute}=H;const set=a=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,H.cleanAnswers(JSON.parse(JSON.stringify(a))))};
+    const mp=RK.find(r=>r.name==='Head Speed MP'),ps=RK.find(r=>r.name==='Wilson Pro Staff 97 v14');
+    const B={age:'35',height:'163',weight:'60',str:'mid',cond:'2',arm:'no',lvl:'beg',years:'0',freq:'2',serve:'push',style:'keep',opp:'mix',miss:'net',why:'feel',want:[],restr:'3m',imp:'yes',budget:'99999',keep:'none'};
+    const out=[];for(const cur of [mp,ps])for(const issue of ['none','late','turn','twist','depth','long','arm'])for(const hold of [undefined,'end','mid','thick','thin']){
+      set({...B,cur:String(cur.id),issue,...(hold?{hold}:{})});const R=compute();out.push({id:`${cur.name}|${issue}|${hold||'-'}`,tw:R.tw,top:R.ranked.slice(0,3).map(x=>[x.r.name,x.r.wt,x.r.head,x.r.brand])})}
+    set({...B,cur:String(mp.id),issue:'none',hold:'mid'});const mid=compute();set({...B,cur:String(mp.id),issue:'late'});const late=compute();
+    const marg=[];for(const lvl of ['beg','int','adv_int','adv'])for(const imp of ['yes','no'])for(const want of [[],['comfort'],['control']]){set({...B,lvl,imp,want,cur:'none',swing:'mid',spin:'mid',str:'mid'});marg.push(...compute().ranked.slice(0,3).filter(x=>['ProKennex','Volkl'].includes(x.r.brand)).map(x=>x.r.name))}
+    return {out,midTw:mid.tw,lateTw:late.tw,marg}});
+  await b.close();srv.close();return o})();
+ const ruim=X.out.filter(x=>x.tw>282||x.top.some(t=>t[1]>290||t[2]<100));
+ teste('T22 iniciante com raquete atual de 300–315 g: nenhuma resposta leva o ideal acima de 282 g nem põe raquete de 290 g+ ou cabeça < 100 no top 3',!ruim.length,`${X.out.length} combinações (Speed MP e Pro Staff 97 × 7 queixas × 5 jeitos de segurar)${ruim.length?' · ex.: '+ruim[0].id+' '+ruim[0].tw+' g → '+ruim[0].top.map(t=>t[0]+' '+t[1]+' g').join(', '):''}`);
+ teste('T23 mão no meio do cabo vale como "pesada"',X.midTw===X.lateTw,`meio do cabo ${X.midTw} g · "ela pesa" ${X.lateTw} g`);
+ teste('T24 marca marginal no Brasil (ProKennex, Volkl) fora do top 3 em perfis típicos sem raquete',!X.marg.length,`24 perfis${X.marg.length?' · '+X.marg.join(', '):''}`)}
+{let ok=true,txt='';try{const o=execSync('node racket/tools/casos-guia.mjs',{cwd:raiz,maxBuffer:16<<20}).toString();txt=(o.match(/Resultado: .*/)||[''])[0]}catch(e){ok=false;txt=((e.stdout||'').toString().match(/Resultado: .*/)||['falhou'])[0]}
+ teste('T25 casos-guia (docs/racket/dados/casos-guia.json): todos ok',ok,txt)}
 
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});

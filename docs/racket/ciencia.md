@@ -163,6 +163,39 @@ Regra geral de texto: nenhum relatório promete prevenir, tratar ou curar lesão
 
 **Decisão:** adicionar ao relatório de quem marca dor um parágrafo curto dizendo que raquete é só uma parte: volume de jogo, técnica (especialmente o backhand) e fortalecimento contam mais, e que a dor que não passa pede avaliação de um profissional de saúde. Sem mudar o ranking.
 
+## 11. Iniciante, corpo, giro na mão e grip (rodada 15)
+Graus de evidência:
+- **[P]** revisado por pares;
+- **[R]** guia de loja, de fabricante ou de federação.
+
+Números de trechos de busca: algumas páginas não abriram na sessão. Conferir antes de virar coeficiente novo.
+
+- **Faixa por nível [R]:**
+  - Tennisnerd: iniciante 260–290 g, intermediário 285–305 g, cabeça 100–110 (https://tennisnerd.net/?p=34320).
+  - Tennis Australia: iniciante abaixo de 285 g (https://tennis.com.au/play/equipment/choosing-a-tennis-racquet).
+  - TW Europe: 270–290 g (https://blog.tenniswarehouse-europe.com/Learning_Center/Gear_Guides/Tennis_Rackets/How_to_pick_a_racket.html).
+  - Tennis Express: SW até 300 para iniciante e juvenil; 300–320 para intermediário (https://tennisexpress.com/blogs/news/how-to-choose-the-right-swing-weight-for-your-level).
+  - Wilson: cabeça de 105–110 para iniciante (https://www.wilson.com/en-us/explore/tennis/racket-advisor).
+  - e-tennis, categoria iniciante mulher: 255–280 g, cabeça 100–110 (https://e-tennis.com/tennis-racquets/level/beginner-women.html).
+- **Swingweight freia o golpe; o peso parado, não [P]:** Cross e Bower (2006), J Sports Sci 24:23–30. Velocidade da raquete ∝ SW^−0,27. Com o SW fixo, a massa não mudou a velocidade. Só 4 sujeitos.
+- **Mitchell, Jones e King (2000) [P]:** 12% a menos de massa e inércia deram cerca de 10% a mais de velocidade no saque. Cada jogador rende melhor numa faixa própria.
+- **Piso de peso [P/R]:** a raquete mais leve passou mais choque ao punho (Brody, citado em https://core.ac.uk/download/288380152.pdf). Piso prático: 255–260 g sem corda.
+- **Hennig, Rosenbaum e Milani (1992) [P]:**
+  - jogador menos hábil tem mais vibração no braço;
+  - batida fora do centro dá cerca de 3× a aceleração no braço;
+  - cabeça maior reduz essa vibração.
+  
+  Para iniciante, a cabeça maior protege mais que a massa.
+- **Giro na mão [R]:** vem de grip fino, de batida fora do centro (twistweight baixo) ou de quadro fino e leve demais. A cabeça larga sobe o twistweight (Tennisnerd). Em iniciante que acha a raquete pesada, giro não é motivo para subir peso.
+- **Mão no meio do cabo:** nenhuma fonte de fitting trata do assunto. Pela física, subir a mão encurta a alavanca e reduz o SW sentido. O motor trata como sinal de raquete pesada (inferência, não fonte).
+- **Grip [R/P]:**
+  - medida da prega da palma à ponta do anelar;
+  - L1 4 1/8 (104,8 mm) a L5 4 5/8 (117,5 mm);
+  - mulheres em geral L2, homens L3 (Wilson AU);
+  - entre dois tamanhos, o menor mais overgrip (LTA);
+  - Hatch (2006, n = 16) não achou efeito de ±1/4" no EMG do antebraço. Rossi (2014) achou um diâmetro ótimo que reduz a força de preensão. As duas evidências divergem.
+- **Sexo:** nenhum guia de fabricante ou loja usa para o peso; só como referência de grip. Um estudo transversal (AAPM&R) não achou associação de sexo, peso ou cabeça com cotovelo de tenista. Decisão: não perguntar.
+
 ## O que fica para a próxima rodada
 
 - Rodar a calibração com `dados/casos.json` (138 dos 200 casos têm pelo menos uma raquete do catálogo). Atenção: 19 modelos do catálogo nunca aparecem nos casos (ex.: Percept 97/100, Vostra, CX 200, Prestige MP, versões Team e Lite), então o acerto nesses fica sem referência.

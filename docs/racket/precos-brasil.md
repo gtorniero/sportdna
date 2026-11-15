@@ -77,3 +77,12 @@ Desde 25/out/2026 o app mostra preço de loja brasileira em R$, não mais conver
 - Geração não confirmada no anúncio: Pure Strike 100 e 98 (à venda só a 4ª geração), FX 500, SX 300, Extreme Team, TF40.
 - Uma oferta só: Vostra V8, Shift 99, Burn 100 v5, EZONE 100L, VCORE 100L, Prince Tour 100 e Ripstick 100, CX 200 (importada pela Amazon).
 - Percept 100 na Magalu a R$ 1.600 está bem abaixo das outras ofertas.
+
+## Presença de marca no Brasil (rodada 15, nov/2026)
+Pesquisa de lojas e distribuidores: Centauro, Netshoes, ProSpin, Casa do Tenista, Decathlon, Mercado Livre, Magalu, Amazon e sites das marcas. A contagem de lojas encontradas não é um censo.
+
+| Grupo | Marcas | Evidência | No motor |
+|---|---|---|---|
+| Principais | Wilson, Babolat, Head, Yonex | Distribuidor oficial ou presença em todas as grandes lojas (Wilson: Winners Brasil e parceria com a CBT; Babolat Brasil desde 1999; Head Brasil e lojas licenciadas). A Casa do Tenista cita só essas quatro. | sem ajuste |
+| Nicho | Tecnifibre, Prince, Dunlop, Solinco | Sobretudo ProSpin e Mercado Livre; nenhum distribuidor oficial encontrado | +2 (+3 com "prefiro achar aqui") |
+| Marginais | ProKennex, Volkl | Centauro marca ProKennex como importada; Volkl só em busca do Mercado Livre | +9 (+3 com "prefiro achar aqui"): fora do pódio |
