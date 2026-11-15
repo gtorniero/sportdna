@@ -1,0 +1,571 @@
+{
+ "sobre": "Casos-guia do RACKET DNA (rodada 15). Perfis reais ou típicos com o que é aceitável no top 3 e o que nunca pode aparecer. Rodar: node racket/tools/casos-guia.mjs [--base git:origin/main]. Nenhuma versão vai ao ar com caso falhando. Regras valem para cada raquete do top 3 (ou topN). cur é o nome do modelo no catálogo (marca + modelo). Regra geral (rodada 15): ProKennex e Volkl nunca no top 3 (marcas marginais no Brasil). Iniciante que prefere comprar no Brasil: só marcas principais (Wilson, Babolat, Head, Yonex).",
+ "casos": [
+  {
+   "id": "esposa-speedmp-pesada",
+   "desc": "Mulher, 60 kg, iniciante, força abaixo da média; Speed MP (300 g) pesada, segura no meio do cabo",
+   "a": {
+    "age": "35",
+    "height": "163",
+    "weight": "60",
+    "str": "low",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "weak",
+    "style": "keep",
+    "opp": "soft",
+    "miss": "net",
+    "cur": "Head Speed MP",
+    "keep": "none",
+    "issue": "late",
+    "hold": "mid",
+    "grip": "thick",
+    "why": "feel",
+    "want": [],
+    "restr": "zero",
+    "imp": "no",
+    "budget": "2000"
+   },
+   "regras": {
+    "pesoMax": 285,
+    "cabecaMin": 100,
+    "swMax": 318,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ]
+   }
+  },
+  {
+   "id": "esposa-speedmp-gira",
+   "desc": "Mesmo perfil; diz que a raquete gira na mão quando pega fora do centro",
+   "a": {
+    "age": "35",
+    "height": "163",
+    "weight": "60",
+    "str": "low",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "weak",
+    "style": "keep",
+    "opp": "soft",
+    "miss": "frame",
+    "cur": "Head Speed MP",
+    "keep": "none",
+    "issue": "turn",
+    "hold": "mid",
+    "why": "feel",
+    "want": [],
+    "restr": "zero",
+    "imp": "no",
+    "budget": "2000"
+   },
+   "regras": {
+    "pesoMax": 285,
+    "cabecaMin": 100,
+    "swMax": 318,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ]
+   }
+  },
+  {
+   "id": "esposa-speedmp-treme",
+   "desc": "Mesmo perfil, mas marcou 'leve: a bola forte empurra a raquete' (resposta que gerou a Speed Pro de 310 g)",
+   "a": {
+    "age": "35",
+    "height": "163",
+    "weight": "60",
+    "str": "mid",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "push",
+    "style": "keep",
+    "opp": "mix",
+    "miss": "net",
+    "cur": "Head Speed MP",
+    "keep": "none",
+    "issue": "twist",
+    "why": "feel",
+    "want": [],
+    "restr": "3m",
+    "imp": "no",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMax": 290,
+    "cabecaMin": 100,
+    "swMax": 320,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ],
+    "proibidos": [
+     "Pro Staff",
+     "Speed Pro",
+     "Gravity Pro"
+    ]
+   }
+  },
+  {
+   "id": "mulher-iniciante-sem-raquete",
+   "desc": "Mulher, 58 kg, 160 cm, iniciante, sem raquete, compra no Brasil",
+   "a": {
+    "age": "30",
+    "height": "160",
+    "weight": "58",
+    "str": "mid",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "1",
+    "serve": "weak",
+    "style": "keep",
+    "opp": "soft",
+    "miss": "net",
+    "cur": "none",
+    "why": "first",
+    "want": [],
+    "restr": "zero",
+    "imp": "no",
+    "budget": "1400"
+   },
+   "regras": {
+    "pesoMax": 285,
+    "cabecaMin": 100,
+    "swMax": 318,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ]
+   }
+  },
+  {
+   "id": "iniciante-conforto-brasil",
+   "desc": "Iniciante 70 kg que quer conforto e comprar no Brasil (antes saía Black Ace 285 em 1º)",
+   "a": {
+    "age": "40",
+    "height": "172",
+    "weight": "70",
+    "str": "mid",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "push",
+    "style": "keep",
+    "opp": "mix",
+    "miss": "net",
+    "cur": "none",
+    "why": "first",
+    "want": [
+     "comfort"
+    ],
+    "restr": "zero",
+    "imp": "no",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMax": 290,
+    "cabecaMin": 100,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ]
+   }
+  },
+  {
+   "id": "homem-iniciante-forte",
+   "desc": "Homem 85 kg, 183 cm, iniciante atlético, sem raquete",
+   "a": {
+    "age": "28",
+    "height": "183",
+    "weight": "85",
+    "str": "high",
+    "cond": "3",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "push",
+    "style": "cnt",
+    "opp": "mix",
+    "miss": "long",
+    "cur": "none",
+    "why": "first",
+    "want": [],
+    "restr": "zero",
+    "imp": "yes",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMin": 265,
+    "pesoMax": 300,
+    "cabecaMin": 100,
+    "swMax": 322,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "iniciante-62-anos",
+   "desc": "Iniciante de 62 anos, 72 kg, força abaixo da média",
+   "a": {
+    "age": "62",
+    "height": "170",
+    "weight": "72",
+    "str": "low",
+    "cond": "1",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "weak",
+    "style": "keep",
+    "opp": "soft",
+    "miss": "net",
+    "cur": "none",
+    "why": "first",
+    "want": [],
+    "restr": "zero",
+    "imp": "no",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMax": 285,
+    "cabecaMin": 100,
+    "swMax": 318,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ]
+   }
+  },
+  {
+   "id": "iniciante-cotovelo-hoje",
+   "desc": "Iniciante com dor moderada no cotovelo hoje",
+   "a": {
+    "age": "45",
+    "height": "175",
+    "weight": "78",
+    "str": "mid",
+    "cond": "2",
+    "arm": "now",
+    "joint": [
+     "elbow"
+    ],
+    "pain": "2",
+    "lim": "1",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "push",
+    "style": "keep",
+    "opp": "mix",
+    "miss": "net",
+    "cur": "none",
+    "why": "pain",
+    "want": [
+     "comfort"
+    ],
+    "restr": "never",
+    "imp": "yes",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMin": 265,
+    "pesoMax": 295,
+    "cabecaMin": 100,
+    "raMax": 66,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "juvenil-14",
+   "desc": "Juvenil de 14 anos, 50 kg, iniciante",
+   "a": {
+    "age": "14",
+    "height": "160",
+    "weight": "50",
+    "str": "mid",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "beg",
+    "years": "0",
+    "freq": "2",
+    "serve": "push",
+    "style": "keep",
+    "opp": "soft",
+    "miss": "net",
+    "cur": "none",
+    "why": "first",
+    "want": [],
+    "restr": "zero",
+    "imp": "no",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMax": 285,
+    "cabecaMin": 100,
+    "swMax": 318,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl",
+     "Tecnifibre",
+     "Prince",
+     "Dunlop",
+     "Solinco"
+    ]
+   }
+  },
+  {
+   "id": "mulher-int-clash100l-pesada",
+   "desc": "Mulher intermediária, 58 kg, Clash 100L (280 g) já pesada no fim do jogo",
+   "a": {
+    "age": "42",
+    "height": "162",
+    "weight": "58",
+    "str": "mid",
+    "cond": "1",
+    "arm": "no",
+    "lvl": "int",
+    "years": "3",
+    "freq": "2",
+    "swing": "mid",
+    "spin": "mid",
+    "serve": "safe",
+    "style": "cnt",
+    "opp": "mix",
+    "miss": "short",
+    "cur": "Wilson Clash 100L v3",
+    "keep": "comfort",
+    "issue": "late",
+    "why": "feel",
+    "want": [],
+    "restr": "6m",
+    "imp": "no",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMax": 285,
+    "cabecaMin": 100,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "int-pure-drive-feliz",
+   "desc": "Intermediário 78 kg, Pure Drive sem queixa, quer controle",
+   "a": {
+    "age": "38",
+    "height": "178",
+    "weight": "78",
+    "str": "mid",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "int",
+    "years": "3",
+    "freq": "2",
+    "swing": "mid",
+    "spin": "mid",
+    "serve": "safe",
+    "style": "agg",
+    "opp": "mix",
+    "miss": "long",
+    "cur": "Babolat Pure Drive",
+    "keep": "power",
+    "issue": "none",
+    "why": "feel",
+    "want": [
+     "control"
+    ],
+    "restr": "3m",
+    "imp": "no",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMin": 285,
+    "pesoMax": 310,
+    "cabecaMin": 98,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "avancado-pro-staff",
+   "desc": "Avançado 82 kg, forte, Pro Staff 97 sem queixa",
+   "a": {
+    "age": "30",
+    "height": "183",
+    "weight": "82",
+    "str": "high",
+    "cond": "3",
+    "arm": "no",
+    "lvl": "adv",
+    "years": "10",
+    "freq": "4",
+    "swing": "full",
+    "spin": "high",
+    "serve": "flat",
+    "style": "all",
+    "opp": "heavy",
+    "miss": "long",
+    "cur": "Wilson Pro Staff 97 v14",
+    "keep": "control",
+    "issue": "none",
+    "why": "broken",
+    "want": [],
+    "string": "poly",
+    "tens": "54",
+    "restr": "1m",
+    "imp": "yes",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMin": 300,
+    "cabecaMax": 100,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "intav-speedmp-leve",
+   "desc": "Intermediário avançado 80 kg, Speed MP leve em bola pesada",
+   "a": {
+    "age": "33",
+    "height": "180",
+    "weight": "80",
+    "str": "high",
+    "cond": "2",
+    "arm": "no",
+    "lvl": "adv_int",
+    "years": "10",
+    "freq": "2",
+    "swing": "full",
+    "spin": "high",
+    "serve": "flat",
+    "style": "agg",
+    "opp": "heavy",
+    "miss": "long",
+    "cur": "Head Speed MP",
+    "keep": "maneuver",
+    "issue": "twist",
+    "why": "level",
+    "want": [],
+    "string": "poly",
+    "tens": "52",
+    "restr": "3m",
+    "imp": "yes",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMin": 298,
+    "cabecaMax": 100,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "int-cotovelo-forte",
+   "desc": "Intermediário com dor forte no cotovelo hoje",
+   "a": {
+    "age": "50",
+    "height": "175",
+    "weight": "80",
+    "str": "mid",
+    "cond": "2",
+    "arm": "now",
+    "joint": [
+     "elbow"
+    ],
+    "pain": "3",
+    "lim": "2",
+    "lvl": "int",
+    "years": "10",
+    "freq": "2",
+    "swing": "mid",
+    "spin": "mid",
+    "serve": "safe",
+    "style": "cnt",
+    "opp": "mix",
+    "miss": "short",
+    "cur": "none",
+    "why": "pain",
+    "want": [
+     "comfort"
+    ],
+    "restr": "6m",
+    "imp": "yes",
+    "budget": "99999"
+   },
+   "regras": {
+    "pesoMin": 280,
+    "raMax": 63,
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  },
+  {
+   "id": "exemplo-brasil",
+   "desc": "Perfil do 'Ver um exemplo pronto' (compra no Brasil)",
+   "exemplo": true,
+   "regras": {
+    "marcasProibidas": [
+     "ProKennex",
+     "Volkl"
+    ]
+   }
+  }
+ ]
+}

@@ -5,6 +5,91 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 15: iniciante, raquete atual pesada e marcas de nicho (nov/2026)
+
+**Gatilho.** Teste real: mulher, 60 kg, iniciante, com uma Head Speed MP (300 g) que acha pesada. Ela segura no meio do cabo e diz que a raquete gira na mão. Recebeu uma Head Speed Pro de 310 g, depois a Gravity Pro e a Pro Staff 97. Peso ideal no relatório: 308 g. Num segundo teste, outra pessoa que quer comprar no Brasil viu a ProKennex Black Ace em 5º.
+
+**Causas no motor (main 242f80f).**
+1. "Treme ou torce em bola pesada" era lido como raquete leve demais: o ideal subia para atual + 8 g e o SW para atual + 4. Isso vinha depois do teto de iniciante e o desfazia.
+2. Não havia opção "ela pesa". O "chego atrasado" não fala em peso.
+3. Com raquete atual conhecida e sem queixa de peso, o ideal ficava a até 10 g dela, mesmo para iniciante.
+4. Iniciante só recebia penalidade: raquete de 315 g e cabeça 97 chegava ao top 3.
+5. "Pego fora do centro" somava estabilidade (massa) também para iniciante.
+6. Marca de nicho não pesava: ProKennex estava em 6,4% do nosso top 3 contra 0,6% das indicações de especialistas. Avaliação negativa forte (Black Ace 300, −3,5) era amortecida pelo peso de nível do iniciante (0,6).
+7. O peso do corpo quase não contava: 60 kg tirava 2 g.
+
+**Pesquisa (fontes em `docs/racket/ciencia.md`, tema 11, e `docs/racket/precos-brasil.md`, presença de marca).**
+- **Faixa de iniciante:** 255 a 290 g sem corda, cabeça de 100 a 110, SW até cerca de 312. Fontes: Tennisnerd 260–290, Tennis Australia < 285, TW Europe 270–290, e-tennis (iniciante mulher) 255–280.
+- **Swingweight, não peso parado, é o que freia o golpe** (Cross e Bower, 2006).
+- **Cabeça maior protege o braço do iniciante nas batidas fora do centro** mais do que massa (Hennig, 1992).
+- **Giro na mão em iniciante** vem de bola fora do centro ou de grip fino, não pede raquete mais pesada.
+- **Mão no meio do cabo** é a pessoa reduzindo o SW sozinha: sinal de raquete pesada.
+- **Sexo:** nenhum guia de fabricante ou loja pergunta para definir peso; só aparece como referência de grip. **Decisão: não perguntar.** Corpo, força e a queixa sobre a atual cobrem o efeito.
+- **Marcas no Brasil:**
+  - principais: Wilson, Babolat, Head e Yonex;
+  - nicho, quase só em loja especializada e no Mercado Livre: Tecnifibre, Prince, Dunlop e Solinco;
+  - marginais, importadas e quase sem loja: ProKennex e Volkl.
+
+**Mudanças.**
+- **Questionário:**
+  - "O que atrapalha" passa a ter as opções "Ela pesa", "Gira na mão" (nova, código `turn`) e "Ela é leve demais" (o código `twist` antigo, mesmo sentido de antes).
+  - Pergunta nova "Como ela fica na sua mão?" (`hold`): final do cabo, meio do cabo, cabo grosso ou cabo fino. Só aparece com raquete atual. O contador vai a 19 a 29 perguntas (site e guia atualizados).
+  - A força deixa de ser "comparada a quem joga com você", porque a comparação com os parceiros enviesa para "na média".
+- **Peso ideal:**
+  - corpo 0,5 g/kg, de −10 a +6 (era 0,15 g/kg, de −6 a +5);
+  - "pesada" ou mão no meio do cabo: atual − 15 g (era −10) e SW atual − 10 (era −4);
+  - iniciante não parte da atual;
+  - teto de iniciante por força (272/282/292 g) aplicado por último. Corpo até 65 kg, 55 anos ou mais ou sinal de pesada usam o teto de força baixa.
+- **Zona:**
+  - iniciante pequeno tem SW até 306;
+  - "Ela é leve demais" não sobe o SW de iniciante;
+  - "gira na mão" ou erro fora do centro pedem cabeça de 102 a 110 (iniciante) ou de 100 a 105 (intermediário).
+- **Grupo de iniciante:** fora dele (peso acima de 285/290/300 g por força, SW acima de 314/318/322, cabeça abaixo de 100 ou padrão 18×20), penalidade de 14 mais o excesso. Na prática, sai do top 10.
+- **Presença de marca:**
+  - marginal: +9 (+3 com "prefiro achar aqui");
+  - nicho: +2 (+3 com "prefiro achar aqui").
+- **Avaliação:** aprovação negativa vale inteira em qualquer nível. Com −2,5 ou menos, +6 de penalidade.
+- **Relatório:** conselho de grip pela resposta "como fica na mão" (um número abaixo, ou acima e overgrip) e orientação para segurar no final do cabo.
+- **Acessibilidade:** o peso da raquete marcada na lista (cinza sobre lima) não tinha contraste no tema escuro; corrigido.
+
+**Casos-guia (novo).** `racket/tools/casos-guia.mjs` lê `docs/racket/dados/casos-guia.json`: 15 perfis com o que pode e o que nunca pode aparecer no top 3. Incluem o perfil real que gerou a rodada, com "pesada", "gira" e "leve"; mulher iniciante; homem iniciante atlético; 62 anos; dor no cotovelo; juvenil; avançado; e o exemplo. Regra geral: ProKennex e Volkl nunca no top 3. Iniciante que compra no Brasil só vê as marcas principais. Resultado: **main 8/15, rodada 15 15/15.** A regressão roda os casos-guia como T25.
+
+**Medições.**
+
+| | main | rodada 15 |
+|---|---|---|
+| Top 3 do 1º indicado (299 casos) | 31,4% | **37,8%** |
+| MRR | 0,259 | **0,286** |
+| Algum indicado no top 3 | 38,5% | **43,8%** |
+| Parte de teste (100 casos) top 3 | 34,0% | **42,0%** |
+| Intermediário top 3 | 36,2% | 48,3% |
+| Com dor no braço top 3 | 59,5% | 71,4% |
+| Iniciante: nossas indicações que estão em alguma lista de especialista para iniciante | 39% | **43%** |
+| Iniciante: raquete acima de 290 g no top 3 (98 casos × 3) | 7 | **0** |
+| ProKennex no nosso top 3 (especialistas: 0,6%) | 6,4% | **0,6%** |
+
+- **Iniciante, top 3 do 1º indicado:** segue em 7,7%. Os especialistas divergem muito no 1º lugar: vai da Ti S6 de 225 g à Pure Drive de 300 g. Muitos indicam modelos fora do catálogo (Ti S6, O3 Legacy 120). Por isso a medida de iniciante passa a ser a do grupo.
+- **Regressão:** 25/25 (T22 a T25 são novos). Os 218 perfis fixos mudam o top 3 em 118. O snapshot foi atualizado (T12), com o motivo registrado aqui.
+- **Mudanças nos 218 perfis:**
+  - ProKennex de 63 para 3 aparições no top 3, só o avançado muito forte com dor;
+  - Tecnifibre de 12 para 1;
+  - Volkl de 7 para 0;
+  - Head de 108 para 174;
+  - Babolat de 41 para 69.
+- **Exemplo pronto:**
+  - antes: ProKennex Black Ace 300;
+  - agora: Head Boom MP (94%);
+  - a imagem `assets/reports/racket.webp` foi refeita.
+- **Interface:**
+  - questionário completo nos dois caminhos, sem erro;
+  - axe sem nenhuma violação na abertura, na etapa 1, na etapa 4 (pergunta nova), no relatório do exemplo e no comparador, nos dois temas.
+
+**Limitações.**
+- A medida contra especialistas é uma referência, não validação em quadra.
+- A faixa de iniciante vem de guias de loja e de federação (evidência de nível R). A física (Cross e Bower) tem só 4 sujeitos.
+- Os pesos da presença de marca são decisão de produto: a fonte são as lojas encontradas em nov/2026, não uma contagem completa.
+- **Próximo passo:** levar os casos-guia para 30–40 perfis revisados pelo Gui e por um professor. Medir a mão (grip) no questionário só se o relatório de grip pedir.
+
 ## Rodada 14: estilo em 4 opções, raquete atual empatada e comparador sem placar (nov/2026)
 **Estilo de jogo:**
 - A pergunta tinha 6 opções e até 2 escolhas, com sobreposição. Agora são 4 degraus na mesma régua "do mais básico ao mais avançado", com uma escolha:
