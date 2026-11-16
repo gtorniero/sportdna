@@ -5,6 +5,22 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 18: corpo pequeno sem desconto em dobro (nov/2026)
+
+**Gatilho.** O perfil real da rodada 15 (mulher iniciante, 1,60 m, 60 kg, Speed MP pesada, mão no meio do cabo) foi cruzado com as indicações de outra conversa do Claude: 265 a 285 g, cabeça de 100 a 105, versões "L" (Pure Drive Lite, Clash 100L, Boom MP L, EZONE 100L).
+- O motor dava ideal de 259 g e faixa de 251 a 267 g.
+- Altura (−4 g) e peso do corpo (−7,5 g) eram descontados separadamente, embora andem juntos.
+
+**Mudança** ("um pouco, mas não tanto", decisão do Gui):
+- Altura e peso, somados, descontam no máximo 8 g (antes, até 18).
+- A faixa de adulto iniciante não começa abaixo de 255 g, o piso das fontes (`docs/racket/ciencia.md`, tema 11).
+
+**Efeito:**
+- No perfil real: ideal de 259 para 262 g; faixa de 251–267 para 255–271 g. O top 5 não muda (Boost Drive, Evo Drive, Extreme Team, EZONE 105, Boost Aero); a Pure Drive Lite e a Ultra 100L sobem um pouco.
+- Calibração (392 casos): igual, porque os casos usam altura e peso médios.
+- 218 perfis fixos: o top 3 não muda em nenhum; a ordem muda em 5. O snapshot T12 foi atualizado.
+- Casos-guia 15/15; regressão 27/27.
+
 ## Rodada 17: o match da sua raquete grátis (nov/2026)
 
 **Pedido do Gui.** Destacar na prévia grátis o resultado da raquete atual, para anúncios do tipo "teste o match da sua raquete" (meio de funil). No relatório, deixar o top 10 e o mapa sempre à vista e recolher o guia de compra.
