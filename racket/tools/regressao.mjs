@@ -19,7 +19,7 @@
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
      T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
      T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
-     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15)
+     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual (rodada 17)
      T19 estilo em 4 degraus (básico → completo) e compatibilidade · T20 resumo quando a raquete atual empata ou fica perto da recomendada
      T21 comparador sem placar e nas cores da marca
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
@@ -182,6 +182,15 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  teste('T24 marca marginal no Brasil (ProKennex, Volkl) fora do top 3 em perfis típicos sem raquete',!X.marg.length,`24 perfis${X.marg.length?' · '+X.marg.join(', '):''}`)}
 {let ok=true,txt='';try{const o=execSync('node racket/tools/casos-guia.mjs',{cwd:raiz,maxBuffer:16<<20}).toString();txt=(o.match(/Resultado: .*/)||[''])[0]}catch(e){ok=false;txt=((e.stdout||'').toString().match(/Resultado: .*/)||['falhou'])[0]}
  teste('T25 casos-guia (docs/racket/dados/casos-guia.json): todos ok',ok,txt)}
+
+/* T26 (rodada 17): veredito da raquete atual, grátis na prévia */
+{const X=await (async()=>{const html=cand;const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);if(u==='/racket/'){s.writeHead(200,{'content-type':'text/html; charset=utf-8'});return s.end(html)}const f=path.join(raiz,u);if(!fs.existsSync(f)){s.writeHead(404);return s.end()}s.end(fs.readFileSync(f))});
+  await new Promise(r=>srv.listen(0,r));const b=await chromium.launch();const pg=await b.newPage();await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g|googletag|google-analytics|facebook|doubleclick/,r=>r.abort());
+  await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
+  const o=await pg.evaluate(()=>{const V=window.__RK.verdictAtual,b={fit:95},P=[[2,'x']];
+    return [V({fit:93,pen:P},b).k,V({fit:95,pen:[]},b).k,V({fit:88,pen:P},b).k,V({fit:84,pen:[]},b).k,V({fit:84,pen:P},b).k,V({fit:70,pen:P},b).k]});
+  await b.close();srv.close();return o})();
+ teste('T26 veredito da atual: aderente (90%+ e até 3 pontos), ajuste fino (85%+ e até 8, ou sem nada contra), trocar',JSON.stringify(X)===JSON.stringify(['fica','fica','fino','fino','trocar','trocar']),X.join(', '))}
 
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});

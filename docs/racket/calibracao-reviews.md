@@ -5,6 +5,35 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 17: o match da sua raquete grátis (nov/2026)
+
+**Pedido do Gui.** Destacar na prévia grátis o resultado da raquete atual, para anúncios do tipo "teste o match da sua raquete" (meio de funil). No relatório, deixar o top 10 e o mapa sempre à vista e recolher o guia de compra.
+
+**Prévia (grátis):**
+- O card da raquete atual vai para o topo, com o selo "Grátis" e destaque em lima.
+- O DNA Score da atual fica visível; antes era mascarado. O mesmo vale para o KPI da prévia.
+- Veredito novo (`verdictAtual`):
+
+| Veredito | Quando |
+|---|---|
+| Aderente: trocar só se quiser outra sensação | 90% ou mais e até 3 pontos da 1ª |
+| Ajuste fino | 85% ou mais e até 8 pontos; ou nada pesando contra e 80% ou mais |
+| Recomendamos trocar | o resto |
+
+- Continua grátis: onde ela acerta e o 1º ponto contra.
+- Fica para o relatório: o que falta e os demais pontos contra.
+
+**Relatório:**
+- O veredito aparece também em "Sua atual × a nova".
+- "Top 10 e mapa do catálogo" vira uma seção própria, sempre aberta, com atalho no menu.
+- O guia de compra fica recolhido; o atalho do menu abre a seção.
+
+**Testes:**
+- Regressão 26/26 (T26 novo: veredito); casos-guia 15/15.
+- Questionário completo sem erro.
+- Axe 0 violações na prévia, com os três vereditos nos dois temas, e no relatório do exemplo. O texto cinza dentro do card lima passou para a cor do texto principal, por contraste no tema escuro.
+- Imagem `assets/reports/racket.webp` refeita: o veredito aparece em "Sua atual × a nova".
+
 ## Rodada 16: lote 3 de reviews (ChatGPT, 15–16/11/2026)
 
 **O que entrou.** 5 partes, 148 linhas de 96 raquetes (`docs/racket/dados/reviews/bruto/lote3-*`, imutáveis). O importador `racket/tools/reviews.py` passa a ler o formato de 20 colunas.
