@@ -842,6 +842,8 @@ const PESOS={
     altura:{ref:175,porCm:.25,min:-8,max:6},
     /* rodada 15: peso do corpo passa a contar (era .15/kg, piso -6): 60 kg tira 7,5 g; 85 kg soma 5. Fit guides tratam corpo pequeno como sinal de raquete mais leve (docs/racket/ciencia.md, rodada 15) */
     corpo:{ref:75,porKg:.5,min:-10,max:6},
+    /* rodada 18: altura e peso andam juntos; somados, descontam no máximo 8 g (antes até 18). Perfil real: 1,60 m e 60 kg saía 259 g, abaixo do centro das fontes para mulher iniciante (~265) */
+    corpoTotalMin:-8,
     ombro:-8,
     /* rodada 15: "pesada" (ou mão no meio do cabo) pede ao menos 15 g a menos que a atual (era 10) */
     sensacaoPesada:-15,sensacaoLeve:8,
@@ -856,7 +858,7 @@ const PESOS={
   zona:{
     swBase:305,swFaixa:30,swTeto:{beg:312,int:320,adv_int:326},swTetoPadrao:336,swOmbro:318,swAtual:4,
     /* rodada 15: com "pesada" o SW ideal fica ao menos 10 abaixo da atual (era 4); iniciante com força baixa ou corpo leve tem teto 306 */
-    swAtualPesada:10,swTetoIniciantePequeno:306,
+    swAtualPesada:10,swTetoIniciantePequeno:306,pisoIniciante:255,
     /* rodada 15: "gira na mão" ou erro fora do centro pede cabeça maior (twistweight), não massa (Hennig 1992; Tennisnerd) */
     cabecaGira:{beg:[102,110],padrao:[100,105]},
     raMax:{forte:60,hojeCotovelo:62,hoje:63,nenhuma:72},raMin:54,raLargura:9,
@@ -1340,7 +1342,7 @@ function targetWeight(){
   const AG=+A.age||PESOS.alvo.idade.padrao,HT=+A.height||P.altura.ref,WT=+A.weight||P.corpo.ref;
   w+=P.forca[A.str]||0; if(AG>=PESOS.alvo.idade.senior)w+=P.senior; if(AG<PESOS.alvo.idade.jovem)w+=P.jovem;
   w+=P.folego[A.cond]||0;
-  w+=cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max); if(J('shoulder'))w+=P.ombro;
+  w+=Math.max(P.corpoTotalMin,cl((HT-P.altura.ref)*P.altura.porCm,P.altura.min,P.altura.max)+cl((WT-P.corpo.ref)*P.corpo.porKg,P.corpo.min,P.corpo.max)); if(J('shoulder'))w+=P.ombro;
   const c=curRacket();
   /* partir da raquete atual: sem queixa de peso, o ideal fica a até atual.passo g dela (troca perceptível, não um salto) */
   /* com queixa de peso (atrasado/treme) vale só a regra da queixa: a âncora não puxa na direção contrária */
@@ -1373,7 +1375,9 @@ function zones(T,tw){
   const hd=(P.cabecaPref[A.headp]||(giraNaMao()&&A.lvl!=='adv'?P.cabecaGira[A.lvl==='beg'?'beg':'padrao']:A.lvl==='beg'?P.cabecaNivel.beg:A.lvl==='adv'?P.cabecaNivel.adv:P.cabecaNivel.padrao)).slice();
   const balMax=J('wrist')?P.balMax.punho:P.balMax.padrao; /* rodada 14: o teto de balanço de quem buscava a rede saiu com a opção */
   const pw=semRef()?P.pesoAmplo:P.peso,ps=semRef()?P.swAmplo:P.sw;
-  return {wt:[tw-pw,tw+pw],sw:[sw-ps,sw+ps],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
+  /* rodada 18: faixa de adulto iniciante não começa abaixo de 255 g (abaixo disso a raquete passa mais choque ao braço; ciencia.md, tema 11) */
+  const pisoW=A.lvl==='beg'&&(+A.age||35)>=PESOS.peso.idadeAdulto?PESOS.zona.pisoIniciante:0;
+  return {wt:[Math.max(pisoW,tw-pw),Math.max(pisoW,tw-pw)+2*pw],sw:[sw-ps,sw+ps],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
 }
 function penalties(r,c,tw){
   const P=PESOS.pen;const want=wants();const out=[];let p=0;const add=(v,why)=>{if(v>0){p+=v;out.push([v,why])}};
