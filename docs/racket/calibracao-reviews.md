@@ -5,6 +5,46 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 17: o match da sua raquete grátis (nov/2026)
+
+**Pedido do Gui.** Destacar na prévia grátis o resultado da raquete atual, para anúncios do tipo "teste o match da sua raquete" (meio de funil). No relatório, deixar o top 10 e o mapa sempre à vista e recolher o guia de compra.
+
+**Prévia (grátis):**
+- O card da raquete atual vai para o topo, com o selo "Grátis" e destaque em lima.
+- O DNA Score da atual fica visível; antes era mascarado. O mesmo vale para o KPI da prévia.
+- Veredito novo (`verdictAtual`):
+
+| Veredito | Quando |
+|---|---|
+| Aderente: trocar só se quiser outra sensação | 90% ou mais e até 3 pontos da 1ª |
+| Ajuste fino | 85% ou mais e até 8 pontos; ou nada pesando contra e 80% ou mais |
+| Recomendamos trocar | o resto |
+
+- Continua grátis: onde ela acerta e o 1º ponto contra.
+- Fica para o relatório: o que falta e os demais pontos contra.
+
+**Ajuste do Gui (mesma rodada):**
+- A nota da atual volta a ficar borrada na prévia, assim como o KPI.
+- O veredito continua grátis, mas sem números, que permitiriam deduzir a nota. Os números aparecem no relatório.
+
+**Gerações anteriores.** 104 gerações antigas das linhas principais entram na busca da raquete atual como "geração anterior". Exemplos: Pure Drive 2018/2021, Pure Aero 2019/2023, Blade v7/v8, Clash v1/v2, Pro Staff 97 v13, Speed 2020/2022/2024, Gravity 2021/2023, EZONE 2020/2022, VCORE 7ª geração; VCORE Pro 97 e 100 apontam para Percept 97 e 100.
+- O cálculo usa a ficha da versão atual mais parecida da mesma linha (`GERACOES`, ligada pelo nome do catálogo).
+- A prévia e o relatório avisam: "geração anterior: usamos a ficha da X; peso, balanço e rigidez da sua podem variar um pouco".
+- Resposta salva sem raquete perde a geração antiga (`cleanAnswers`).
+- T27 confere que as 104 apontam para uma versão atual da mesma marca.
+- Nenhuma ficha antiga foi inventada: quando houver specs medidas das gerações antigas, elas podem virar raquetes próprias do catálogo.
+
+**Relatório:**
+- O veredito aparece também em "Sua atual × a nova".
+- "Top 10 e mapa do catálogo" vira uma seção própria, sempre aberta, com atalho no menu.
+- O guia de compra fica recolhido; o atalho do menu abre a seção.
+
+**Testes:**
+- Regressão 26/26 (T26 novo: veredito); casos-guia 15/15.
+- Questionário completo sem erro.
+- Axe 0 violações na prévia, com os três vereditos nos dois temas, e no relatório do exemplo. O texto cinza dentro do card lima passou para a cor do texto principal, por contraste no tema escuro.
+- Imagem `assets/reports/racket.webp` refeita: o veredito aparece em "Sua atual × a nova".
+
 ## Rodada 16: lote 3 de reviews (ChatGPT, 15–16/11/2026)
 
 **O que entrou.** 5 partes, 148 linhas de 96 raquetes (`docs/racket/dados/reviews/bruto/lote3-*`, imutáveis). O importador `racket/tools/reviews.py` passa a ler o formato de 20 colunas.
