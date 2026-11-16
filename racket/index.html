@@ -965,7 +965,10 @@ function idx(r){
     KEYS.forEach(k=>{if(rv.d[k]==null||!ok(k,rv.d[k]))return;const tgt=mu+1.8*rv.d[k];ix[k]=Math.round(cl(ix[k]+lam*(tgt-ix[k]),0,10)*10)/10});}
   return ix;
 }
-const brTag=r=>r.br==='d'?'<span class="brtag d">Difícil de achar no Brasil</span>':r.br==='p'?'<span class="brtag p">Pouca oferta no Brasil</span>':'';
+/* rodada 16: dor forte ou limitação grande no braço hoje (evita golpes ou em tratamento) */
+const braçoLimitado=()=>A.arm==='now'&&(A.pain==='3'||A.lim==='2'||A.lim==='3');
+const ehNicho=r=>PESOS.pen.nicho.marginal.includes(r.brand)||PESOS.pen.nicho.nicho.includes(r.brand);
+const brTag=r=>(ehNicho(r)?'<span class="brtag d">Marca de nicho no Brasil</span> ':'')+r.br==='d'?'<span class="brtag d">Difícil de achar no Brasil</span>':r.br==='p'?'<span class="brtag p">Pouca oferta no Brasil</span>':'';
 RK.forEach(r=>{r.br=r.lojas===0?'d':r.lojas===1?'p':'';r.ix=idx(r);const v=RV[r.id],t=TWD[r.id];r.ntw=t?t.n:0;r.nrev=(v?v.n:0)+r.ntw;const G=PESOS.aprovacao;r.q=t&&t.a!=null?cl(t.a*G.tw,-G.twTeto,G.twTeto)*Math.min(1,t.n/G.twN):v&&v.o!=null?cl(v.o*G.sites,-G.sitesTeto,G.sitesTeto):0;if(PESOS.evidencia.exigeCorroboracao&&!corrob(familias(r.id).map(x=>x.a),Math.sign(r.q)))r.q=0});
 /* rodada 12: saíram a herança de aprovação do modelo-pai (nota não passa entre versões) e a penalidade por não ter review (ausência não pesa) */
 /* versões novas herdam a lista de profissionais da linha */
@@ -1397,7 +1400,8 @@ function penalties(r,c,tw){
     if(ex.length)add(I.base+ex.reduce((s,x)=>s+x[0],0),`Fora do grupo de raquetes para iniciante: ${ex.map(x=>x[1]).join(', ')}`)}
   if(giraNaMao()&&A.lvl!=='adv'&&r.head<P.gira.cabeca)add(P.gira.peso,`Cabeça ${r.head} pol²: torce mais quando a bola pega fora do centro`);
   {const N=P.nicho,m=N.marginal.includes(r.brand),n=N.nicho.includes(r.brand);
-   if(m||n)add((m?N.pesoMarginal:N.pesoNicho)+(A.imp==='no'?N.brasil:0),m?`${r.brand} quase não é vendida no Brasil: pouca loja, assistência e reposição`:`${r.brand} é marca de nicho no Brasil: poucas lojas`)}
+   /* rodada 16: com dor forte ou limitação grande no braço hoje, a marca marginal pode voltar (o conforto pesa mais que a oferta); o relatório avisa que é nicho */
+   if(m||n)add((m?(braçoLimitado()?0:N.pesoMarginal):N.pesoNicho)+(A.imp==='no'?N.brasil:0),m?`${r.brand} quase não é vendida no Brasil: pouca loja, assistência e reposição`:`${r.brand} é marca de nicho no Brasil: poucas lojas`)}
   if(r.q<=P.reprovada.q)add(P.reprovada.peso,'Avaliação fraca entre os testadores');
   if(A.imp==='no'&&r.br==='d')add(P.dificilAchar,'Difícil de achar no Brasil');
   if(A.imp==='no'&&r.br==='p')add(P.poucaOferta,'Pouca oferta no Brasil');
@@ -1790,6 +1794,7 @@ function attention(r){
     out.push(`Fica fora da faixa ideal de peso e swingweight: ${fora}. ${b?`A melhor dentro dela, ${b.r.name}, ficou ${RES.ranked[0].fit-b.fit} pontos atrás.${b.pen&&b.pen[0]?` Motivo: ${b.pen[0][1].replace(/\.$/,'')}.`:''}`:'Nenhuma raquete do catálogo cai dentro dela para o seu perfil.'}`)}
   {const d=r.wt-RES.tw;if(!semRef()&&Math.abs(d)>=6&&Math.abs(d)<=8)out.push(`Um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g). Nada que atrapalhe; ${d>0?'um overgrip a mais equilibra a sensação':'3 a 5 g de chumbo às 3h e às 9h resolvem, se quiser'}.`)}
   if(r.br==='d')out.push('Difícil de achar no Brasil: em geral, só importando ou em loja especializada. Confira antes de se apegar.');
+  if(ehNicho(r))out.push(`${esc(r.brand)} é marca de nicho no Brasil: poucas lojas, assistência e reposição de peças mais difíceis.${PESOS.pen.nicho.marginal.includes(r.brand)&&braçoLimitado()?' Entrou porque o seu braço pede o máximo de conforto agora; se preferir uma marca fácil de achar, veja as alternativas.':''}`);
   {const c=curRacket(),n=gripNota();if(n)out.unshift(n);
    if(A.hold==='mid'&&c&&r.sw<c.sw&&r.wt<=c.wt)out.unshift(`Segure no final do cabo. Subir a mão diminui o peso que você sente, mas encurta o golpe. Com ${r.wt} g e swingweight ${r.sw} (a sua tem ${c.wt} g e ${c.sw}), dá para segurar no lugar certo.`)}
   if(r.br==='p')out.push('Pouca oferta no Brasil: vale ligar para a loja antes de ir.');

@@ -72,6 +72,15 @@
   - o 1º lugar muda em 31 perfis (em geral, a Prince Tour 100 dá lugar a Pure Drive, Speed MP L e Blade 104).
 - O exemplo pronto não muda (Head Boom MP). Casos-guia 15/15; regressão 25/25 com o snapshot T12 atualizado.
 
+**Marcas marginais com dor forte (decisão do Gui, 16/11).**
+- ProKennex e Volkl podem voltar ao top 3 só com dor forte ou limitação grande no braço hoje: intensidade "forte", ou limitação "evito golpes" ou "em tratamento". Nesse caso a penalidade de marca marginal zera; o "prefiro achar aqui" continua somando 3.
+- **No relatório,** toda marca de nicho ou marginal leva a etiqueta "Marca de nicho no Brasil". Em "Pontos de atenção" aparece um aviso de poucas lojas, assistência e reposição; para a marginal com dor forte, o aviso diz por que ela entrou e sugere ver as alternativas.
+- **Efeito:**
+  - 392 casos de especialista: iguais, porque os casos com dor usam intensidade moderada;
+  - 218 perfis fixos: o top 3 muda em 36, todos de dor forte;
+  - caso-guia de cotovelo forte: ProKennex Black Ace 300, Clash 100 Pro v3 e Black Ace Pro 97.
+- **Testes:** regressão 25/25 (snapshot T12 atualizado); casos-guia 15/15; questionário completo sem erro; axe 0 violações.
+
 **Pendente.** A conferência das páginas está numa sessão do ambiente "sportdna", com saída na branch `claude/racket-lote3-conferencia`. Ela está parada à espera de confirmação para abrir as páginas em lote. Quando o JSON chegar, rodar `python3 racket/tools/reviews.py` de novo: as linhas divergentes saem sozinhas.
 
 ## Rodada 15: iniciante, raquete atual pesada e marcas de nicho (nov/2026)
