@@ -11,7 +11,7 @@
    --json     grava o resultado de cada caso (posição do 1º indicado, nosso top 3)
    --trava    roda vies.mjs --realista com os pesos finais; se os pódios com 2+ contraindicações sérias ou a faixa até
               R$ 1.400 acima do orçamento piorarem em relação ao app atual, desfaz passos até não piorarem.
-   Sem arquivos, lê docs/racket/dados/casos.json, casos-pt.json e casos-es.json.
+   Sem arquivos, lê docs/racket/dados/casos.json, casos-pt.json, casos-es.json e casos-lote3.json (150 casos do ChatGPT, rodada 16).
    Abre racket/index.html?teste num Chromium (Playwright), converte cada caso em respostas do questionário,
    e mede, para o PRIMEIRO modelo de recomendados_catalogo: top 1, top 3, top 10 e MRR (1 ÷ posição no nosso ranking).
    Também mede "algum indicado no top 3" e compara as marcas do nosso top 3 com as indicadas pelos especialistas.
@@ -23,7 +23,7 @@ const raiz=path.resolve(path.dirname(url.fileURLToPath(import.meta.url)),'../..'
 const args=process.argv.slice(2);const flag=k=>args.includes(k);const opt=k=>{const i=args.indexOf(k);return i>=0?args[i+1]:null};
 const arquivos=args.filter((a,i)=>!a.startsWith('--')&&!['--pesos','--html','--saida','--json'].includes(args[i-1]));
 const HTML=opt('--html');
-const lista=arquivos.length?arquivos:['casos.json','casos-pt.json','casos-es.json'].map(f=>path.join(raiz,'docs/racket/dados',f));
+const lista=arquivos.length?arquivos:['casos.json','casos-pt.json','casos-es.json','casos-lote3.json'].map(f=>path.join(raiz,'docs/racket/dados',f));
 const casos=lista.flatMap(f=>{const d=JSON.parse(fs.readFileSync(f,'utf8'));return Array.isArray(d)?d:d.casos});
 const PES=(v=>!v?null:JSON.parse(fs.existsSync(v)?fs.readFileSync(v,'utf8'):v))(opt('--pesos'));
 

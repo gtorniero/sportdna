@@ -46,6 +46,32 @@
 - O lote 3 melhora o motor quando a TW pode valer sozinha. Mesmo assim, o top 3 fica abaixo da regra atual (38,1%), e a parte de teste cai de 42% para 38%.
 - Decisão: manter a corroboração. Os painéis novos passam a valer quando uma segunda fonte com nota concordar. Por isso as próximas coletas devem buscar fontes com nota por atributo para essas 35 versões.
 
+**Casos de especialistas novos (lote 3, parte 2 do prompt).**
+- 150 linhas do ChatGPT (`docs/racket/dados/casos-bruto/`, imutáveis), convertidas em `docs/racket/dados/casos-lote3.json`. São 93 casos com pelo menos uma raquete do catálogo. Ficam de fora as minirraquetes juvenis e os nomes que o catálogo não tem.
+- Esses casos nunca foram usados para ajustar o motor, então são um **teste fora da amostra**:
+
+| Versão do motor | Top 3 nos 93 casos novos | MRR |
+|---|---|---|
+| Rodada 14 (antes de 15/11) | 26,9% | 0,221 |
+| Rodada 15 | 33,3% | 0,258 |
+| Rodada 16 | 33,3% | 0,272 |
+
+- Confirmam o ganho da rodada 15 em dados novos.
+- Também mostram que a Prince aparecia em 8,6% do nosso top 3, contra 0% nos especialistas, e que a Babolat aparecia abaixo do que eles indicam.
+
+**Ajuste de marca (rodada 16).**
+- Nicho de 2 para 4 e marginal de 9 para 13. A marginal subiu para manter a distância: com nicho 4 e marginal 9, a Volkl voltava ao top 3 do avançado no caso-guia.
+- Os dois conjuntos de casos melhoram e nenhum indicador piora:
+  - casos antigos (299): top 3 de 38,1% para 40,1%; parte de teste de 42% para 46%;
+  - casos novos (93): top 3 igual; MRR de 0,258 para 0,272.
+- Base inteira, agora com 392 casos (o `calibrar.mjs` passa a ler também `casos-lote3.json`): top 3 38,5%, MRR 0,291, parte de teste 44,3%.
+- Nos 218 perfis fixos:
+  - a Prince sai de 109 para 83 aparições no top 3;
+  - a ProKennex sai de 3 para 0 e a Tecnifibre de 1 para 0;
+  - a Head sobe de 174 para 197;
+  - o 1º lugar muda em 31 perfis (em geral, a Prince Tour 100 dá lugar a Pure Drive, Speed MP L e Blade 104).
+- O exemplo pronto não muda (Head Boom MP). Casos-guia 15/15; regressão 25/25 com o snapshot T12 atualizado.
+
 **Pendente.** A conferência das páginas está numa sessão do ambiente "sportdna", com saída na branch `claude/racket-lote3-conferencia`. Ela está parada à espera de confirmação para abrir as páginas em lote. Quando o JSON chegar, rodar `python3 racket/tools/reviews.py` de novo: as linhas divergentes saem sozinhas.
 
 ## Rodada 15: iniciante, raquete atual pesada e marcas de nicho (nov/2026)

@@ -1,0 +1,3820 @@
+{
+ "meta": {
+  "origem": "ChatGPT, prompt da parte 2 (16/11/2026); convertido de docs/racket/dados/casos-bruto/ por Claude. Juvenis de minirraquete (3–9 anos) ficam fora do catálogo e não contam.",
+  "n": 150
+ },
+ "casos": [
+  {
+   "id": "l3-P001",
+   "idioma": "fr",
+   "fonte": "Instantennis",
+   "url": "https://instantennis.fr/comment-choisir-raquette-tennis/raquette-pour-debutant/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Vrai débutant",
+   "recomendados": [
+    "Pure Drive Lite ou Super Lite",
+    "Head Boom MP UL",
+    "EZONE 100SL",
+    "Babolat Boost Drive"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Vrai débutant",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P002",
+   "idioma": "fr",
+   "fonte": "Instantennis",
+   "url": "https://instantennis.fr/comment-choisir-raquette-tennis/raquette-pour-debutant/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "adulto",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Débutant adulte · reprise",
+   "recomendados": [
+    "Pure Drive Team",
+    "Clash 100L",
+    "Boom MP L"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Débutant adulte · reprise",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P003",
+   "idioma": "fr",
+   "fonte": "Instantennis",
+   "url": "https://instantennis.fr/comment-choisir-raquette-tennis/raquette-pour-debutant/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "En progression",
+   "recomendados": [
+    "Pure Drive standard",
+    "Boom MP",
+    "EZONE 100",
+    "Clash 100"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "En progression",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P004",
+   "idioma": "en",
+   "fonte": "Four Oh Club",
+   "url": "https://fourohclub.com/racquets/best-for-women",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "Committed beginners",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Committed beginners",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P005",
+   "idioma": "en",
+   "fonte": "Four Oh Club",
+   "url": "https://fourohclub.com/racquets/best-for-women",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "Seniors and slow swings",
+   "recomendados": [
+    "Wilson Hyper Hammer 5.3"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Seniors and slow swings",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P006",
+   "idioma": "en",
+   "fonte": "Four Oh Club",
+   "url": "https://fourohclub.com/racquets/best-for-women",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "Beginners and seniors",
+   "recomendados": [
+    "HEAD Ti S6"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Beginners and seniors",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P007",
+   "idioma": "en",
+   "fonte": "The Standard",
+   "url": "https://www.standard.co.uk/shopping/esbest/health-fitness/best-tennis-rackets-b1287766.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for beginners",
+   "recomendados": [
+    "Wilson Envy XP Lite tennis racket"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best for beginners",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P008",
+   "idioma": "en",
+   "fonte": "The Standard",
+   "url": "https://www.standard.co.uk/shopping/esbest/health-fitness/best-tennis-rackets-b1287766.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for kids",
+   "recomendados": [
+    "MANTIS CS 275 Phantom"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best for kids",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P009",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-tennis-racquets-for-women/63586",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "Best for Beginners",
+   "recomendados": [
+    "Wilson Clash 108"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Wilson Clash 108",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P010",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-tennis-racquets-for-women/63586",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "Best All-Around Intermediate",
+   "recomendados": [
+    "HEAD Speed MP"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "HEAD Speed MP",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P011",
+   "idioma": "en",
+   "fonte": "Tennisnerd",
+   "url": "https://www.tennisnerd.net/gear/racquets/best-tennis-racquets-for-women/63586",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": "feminino"
+   },
+   "categoria_original": "Best for Spin",
+   "recomendados": [
+    "Babolat Pure Aero 2026 (100 or 98 depending on level)"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best for Spin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P012",
+   "idioma": "pt",
+   "fonte": "Blog do Tenis BR",
+   "url": "https://blogdotenisbrasil.com.br/do-iniciante-ao-avancado-como-escolher-a-melhor-raquete-de-tenis-para-voce-em-2025/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Para Iniciantes",
+   "recomendados": [
+    "Wilson Clash 108",
+    "Babolat Boost Drive",
+    "Head Ti. Conquest"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Para Iniciantes",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P013",
+   "idioma": "pt",
+   "fonte": "Blog do Tenis BR",
+   "url": "https://blogdotenisbrasil.com.br/do-iniciante-ao-avancado-como-escolher-a-melhor-raquete-de-tenis-para-voce-em-2025/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Para Intermediários",
+   "recomendados": [
+    "Babolat Pure Drive",
+    "Wilson Blade 98",
+    "Head Radical MP"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Para Intermediários",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P014",
+   "idioma": "pt",
+   "fonte": "Blog do Tenis BR",
+   "url": "https://blogdotenisbrasil.com.br/do-iniciante-ao-avancado-como-escolher-a-melhor-raquete-de-tenis-para-voce-em-2025/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Para Avançados",
+   "recomendados": [
+    "Wilson Pro Staff 97",
+    "Yonex VCORE 95",
+    "Babolat Pure Aero VS"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Para Avançados",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P015",
+   "idioma": "en",
+   "fonte": "Weekend Tennis Co.",
+   "url": "https://weekendtennisco.com/best-tennis-racquets-for-tennis-elbow-arm-comfort-for-players-over-50-2026-guide/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Best Overall Comfort",
+   "recomendados": [
+    "Wilson Clash 100 V3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best Overall Comfort",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P016",
+   "idioma": "en",
+   "fonte": "Weekend Tennis Co.",
+   "url": "https://weekendtennisco.com/best-tennis-racquets-for-tennis-elbow-arm-comfort-for-players-over-50-2026-guide/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best Lightweight Power",
+   "recomendados": [
+    "Yonex EZONE 100L"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best Lightweight Power",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P017",
+   "idioma": "en",
+   "fonte": "Weekend Tennis Co.",
+   "url": "https://weekendtennisco.com/best-tennis-racquets-for-tennis-elbow-arm-comfort-for-players-over-50-2026-guide/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best Feel & Control",
+   "recomendados": [
+    "Yonex Percept 100"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best Feel & Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P018",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-fuer-anfaenger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "Einsteigerin",
+   "recomendados": [
+    "Babolat Evo Drive Lite"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Einsteigerin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P019",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-fuer-anfaenger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "masculino"
+   },
+   "categoria_original": "Einsteiger (Herren)",
+   "recomendados": [
+    "Head Boom MP L"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Einsteiger (Herren)",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P020",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-fuer-anfaenger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Gelegenheitsspieler",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Gelegenheitsspieler",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P021",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-fuer-anfaenger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Sportlicher Wiedereinsteiger",
+   "recomendados": [
+    "Wilson Clash 100 V3"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Sportlicher Wiedereinsteiger",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P022",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-senioren/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Testsieger Senioren",
+   "recomendados": [
+    "Wilson Clash 108 V3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Testsieger Senioren",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P023",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-senioren/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Viel Power",
+   "recomendados": [
+    "Yonex EZONE 110 (2025)"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Viel Power",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P024",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-senioren/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Für Ehrgeizige",
+   "recomendados": [
+    "Babolat Pure Drive 107"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Für Ehrgeizige",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P025",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-senioren/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Komfort-Tipp",
+   "recomendados": [
+    "Tecnifibre TF-X1 275 V2"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Komfort-Tipp",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P026",
+   "idioma": "de",
+   "fonte": "Ballzone (Áustria)",
+   "url": "https://www.ballzone.at/tennisschlaeger-senioren/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Preis-Tipp",
+   "recomendados": [
+    "Wilson Hyper Hammer Legacy OS"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Preis-Tipp",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P027",
+   "idioma": "en",
+   "fonte": "Honestly Tennis",
+   "url": "https://honestlytennis.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Best Overall for Elbows",
+   "recomendados": [
+    "Wilson Clash 100 V2"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Wilson Clash 100 V2",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P028",
+   "idioma": "en",
+   "fonte": "Honestly Tennis",
+   "url": "https://honestlytennis.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for Lighter/Senior Players",
+   "recomendados": [
+    "Yonex EZONE 100 L"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Yonex EZONE 100 L",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P029",
+   "idioma": "en",
+   "fonte": "Honestly Tennis",
+   "url": "https://honestlytennis.com/best-tennis-rackets-for-tennis-elbow/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best Feel & Control",
+   "recomendados": [
+    "Head Gravity MP"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Head Gravity MP",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P030",
+   "idioma": "it",
+   "fonte": "Tennis Open",
+   "url": "https://tennis-open.it/2025/10/21/migliori-racchette-tennis-principianti-2025/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Principiante assoluto",
+   "recomendados": [
+    "Head Ti.S6",
+    "Wilson Fusion XL"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Principiante assoluto",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P031",
+   "idioma": "it",
+   "fonte": "Tennis Open",
+   "url": "https://tennis-open.it/2025/10/21/migliori-racchette-tennis-principianti-2025/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Giocatore amatoriale",
+   "recomendados": [
+    "Babolat Boost Drive",
+    "Head Instinct Team L"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Giocatore amatoriale",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P032",
+   "idioma": "it",
+   "fonte": "Tennis Open",
+   "url": "https://tennis-open.it/2025/10/21/migliori-racchette-tennis-principianti-2025/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Chi vuole migliorare rapidamente",
+   "recomendados": [
+    "Wilson Clash 100UL",
+    "Dunlop CX 200 OS"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Chi vuole migliorare rapidamente",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P033",
+   "idioma": "fr",
+   "fonte": "Whichracket",
+   "url": "https://www.whichracket.com/guide/comparatif-raquettes-tennis-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Lifter / Topspin",
+   "recomendados": [
+    "Pure Aero",
+    "VCORE",
+    "EZone"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Lifter / Topspin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P034",
+   "idioma": "fr",
+   "fonte": "Whichracket",
+   "url": "https://www.whichracket.com/guide/comparatif-raquettes-tennis-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Joueur à plat",
+   "recomendados": [
+    "Wilson Blade",
+    "Head Gravity Pro"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Joueur à plat",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P035",
+   "idioma": "fr",
+   "fonte": "Whichracket",
+   "url": "https://www.whichracket.com/guide/comparatif-raquettes-tennis-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Jeu complet / polyvalent",
+   "recomendados": [
+    "Head Speed MP",
+    "Babolat Pure Drive",
+    "Wilson Clash"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Jeu complet / polyvalent",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P036",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://tennisnavi.jp/racket/ranking/racket-ranking/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "パワー・万能",
+   "recomendados": [
+    "バボラ ピュアドライブ（2024）"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "パワー・万能",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P037",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://tennisnavi.jp/racket/ranking/racket-ranking/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "スピンで攻める",
+   "recomendados": [
+    "バボラ ピュアアエロ（2025）"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "スピンで攻める",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P038",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://tennisnavi.jp/racket/ranking/racket-ranking/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "操作性・やさしい打感",
+   "recomendados": [
+    "ヨネックスEZONE 100（2025）"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "操作性・やさしい打感",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P039",
+   "idioma": "ja",
+   "fonte": "TENNIS MEDIA",
+   "url": "https://tennis-media.com/ladies-tennis-racket-recommended/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "これから始める・初心者の段階",
+   "recomendados": [
+    "ミューズ 107",
+    "ミューズ 100",
+    "Evo Aero Lite",
+    "Clash 100L"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "これから始める・初心者の段階",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P040",
+   "idioma": "ja",
+   "fonte": "TENNIS MEDIA",
+   "url": "https://tennis-media.com/ladies-tennis-racket-recommended/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": "feminino"
+   },
+   "categoria_original": "楽しみながら上達したい段階",
+   "recomendados": [
+    "ミューズ 100",
+    "Blade 100L"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "楽しみながら上達したい段階",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P041",
+   "idioma": "ja",
+   "fonte": "TENNIS MEDIA",
+   "url": "https://tennis-media.com/ladies-tennis-racket-recommended/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "競技・スクール上位を目指す段階",
+   "recomendados": [
+    "VCORE 100L",
+    "Pure Aero Team",
+    "Blade系"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "競技・スクール上位を目指す段階",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P042",
+   "idioma": "es",
+   "fonte": "BuscandoProfe",
+   "url": "https://www.buscandoprofe.com/blog/raquetas-de-tenis-para-principiantes",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Presupuesto 2026",
+   "recomendados": [
+    "Wilson Clash",
+    "Babolat Pure Drive lite",
+    "Head Speed"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Presupuesto 2026",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P043",
+   "idioma": "en",
+   "fonte": "Sturdy Racquets",
+   "url": "https://www.sturdyracquets.com.au/blogs/guide/the-best-tennis-racquets-for-advanced-players-a-2026-guide",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "contra-ataque",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best for Control",
+   "recomendados": [
+    "Tecnifibre TFight 315S"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best for Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P044",
+   "idioma": "en",
+   "fonte": "Sturdy Racquets",
+   "url": "https://www.sturdyracquets.com.au/blogs/guide/the-best-tennis-racquets-for-advanced-players-a-2026-guide",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best All-Rounder",
+   "recomendados": [
+    "Tecnifibre TFight 305S"
+   ],
+   "grupo": "avancado",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best All-Rounder",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P045",
+   "idioma": "en",
+   "fonte": "Sturdy Racquets",
+   "url": "https://www.sturdyracquets.com.au/blogs/guide/the-best-tennis-racquets-for-advanced-players-a-2026-guide",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Most Arm-Friendly",
+   "recomendados": [
+    "Wilson Clash 100 PRO v3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Most Arm-Friendly",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P046",
+   "idioma": "en",
+   "fonte": "Sturdy Racquets",
+   "url": "https://www.sturdyracquets.com.au/blogs/guide/the-best-tennis-racquets-for-advanced-players-a-2026-guide",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Best for Topspin",
+   "recomendados": [
+    "Babolat Pure Aero GEN9 (300g)"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Best for Topspin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P047",
+   "idioma": "en",
+   "fonte": "Racket & Rally",
+   "url": "https://racketandrally.com/tennis-rackets/best-for-beginners",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "adulto",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "First proper racket, adult",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "First proper racket, adult",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P048",
+   "idioma": "en",
+   "fonte": "Racket & Rally",
+   "url": "https://racketandrally.com/tennis-rackets/best-for-beginners",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Smallest budget, biggest margin",
+   "recomendados": [
+    "HEAD Titanium Ti.S6"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Smallest budget, biggest margin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P049",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-principiantes",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null,
+    "orcamento_eur": 150.0
+   },
+   "categoria_original": "Has jugado antes con raqueta prestada",
+   "recomendados": [
+    "Evo Drive",
+    "Boost Drive"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Evo Drive",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P050",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-principiantes",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Sientes molestias en codo desde las primeras semanas",
+   "recomendados": [
+    "Clash 100L v3",
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:36:07.492Z",
+   "citacao": "Clash 100L v3",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte01-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P051",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "All-Around Value",
+   "recomendados": [
+    "Head Titanium Ti.S6"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "All-Around Value",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P052",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "More Control",
+   "recomendados": [
+    "Babolat Boost Racquets"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "More Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P053",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "All-Around",
+   "recomendados": [
+    "Yonex EZONE 100 2025",
+    "Babolat Pure Drive 2025"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "All-Around",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P054",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Easy to Use",
+   "recomendados": [
+    "Wilson Clash 100 v3",
+    "Head Squared"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Easy to Use",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P055",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Spin",
+   "recomendados": [
+    "Babolat Pure Aero 98 2026",
+    "Yonex VCORE 98 8th Gen"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Spin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P056",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Power",
+   "recomendados": [
+    "Solinco Blackout 300 XTD v2 Camo",
+    "Yonex EZONE 98 2025"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Power",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P057",
+   "idioma": "en",
+   "fonte": "Tennis Warehouse",
+   "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_racquets/best_tennis_racquets.html",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Control",
+   "recomendados": [
+    "Head Speed Pro 2026",
+    "Wilson Blade 98 18x20 v10"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P058",
+   "idioma": "en",
+   "fonte": "Tennis Racket Ball",
+   "url": "https://tennisracketball.com/reviews/rackets/best-tennis-rackets-for-control/",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": "feminino"
+   },
+   "categoria_original": "Best for Women’s",
+   "recomendados": [
+    "Yonex EZONE 98"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Best for Women’s",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P059",
+   "idioma": "en",
+   "fonte": "Tennis Racket Ball",
+   "url": "https://tennisracketball.com/reviews/rackets/best-tennis-rackets-for-control/",
+   "ano": 2024,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best Intermediate",
+   "recomendados": [
+    "Wilson Blade 98 18×20 v8"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Best Intermediate",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P060",
+   "idioma": "en",
+   "fonte": "Tennis Racket Ball",
+   "url": "https://tennisracketball.com/reviews/rackets/best-tennis-rackets-for-control/",
+   "ano": 2024,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best for Control and Power",
+   "recomendados": [
+    "Head Gravity Pro 2021"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:46:28.034Z",
+   "citacao": "Head Gravity Pro 2021",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P061",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Spin",
+   "recomendados": [
+    "Babolat Pure Drive 107"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Spin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P062",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Control",
+   "recomendados": [
+    "Yonex EZONE 100L"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P063",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Power",
+   "recomendados": [
+    "Prince Textreme Beast 100"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Power",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P064",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Arm-Friendly",
+   "recomendados": [
+    "Wilson Burn 100ULS v5"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Arm-Friendly",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P065",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Tweener",
+   "recomendados": [
+    "HEAD Speed MP Lite"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Tweener",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P066",
+   "idioma": "en",
+   "fonte": "The Smarter Play",
+   "url": "https://thesmarterplay.com/sports/tennis/best-budget-tennis-rackets",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Budget King",
+   "recomendados": [
+    "Dunlop SX 300 Lite"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Budget King",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P067",
+   "idioma": "en",
+   "fonte": "Central Sports",
+   "url": "https://centralsports.co.uk/pages/best-tennis-rackets-uk-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Best for spin and modern topspin baseliners",
+   "recomendados": [
+    "Babolat Pure Aero 100",
+    "Yonex VCORE 98",
+    "Wilson Blade 98 v9"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Babolat Pure Aero 100",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P068",
+   "idioma": "en",
+   "fonte": "Central Sports",
+   "url": "https://centralsports.co.uk/pages/best-tennis-rackets-uk-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null,
+    "orcamento_eur": 140
+   },
+   "categoria_original": "Best budget tennis rackets under £120",
+   "recomendados": [
+    "Babolat Boost Drive",
+    "Wilson Clash 100L",
+    "Head Speed PWR",
+    "Babolat Pure Drive Lite"
+   ],
+   "grupo": "orcamento",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Babolat Boost Drive",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P069",
+   "idioma": "en",
+   "fonte": "RacketIQ",
+   "url": "https://getracketiq.com/guides/best-tennis-rackets-for-intermediate-players",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Best for the comfort-first player",
+   "recomendados": [
+    "Wilson Clash 100 v2"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Wilson Clash 100 v2",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P070",
+   "idioma": "en",
+   "fonte": "RacketIQ",
+   "url": "https://getracketiq.com/guides/best-tennis-rackets-for-intermediate-players",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for a flat hitter",
+   "recomendados": [
+    "Wilson Blade 100L v9"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Wilson Blade 100L v9",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P071",
+   "idioma": "en",
+   "fonte": "TennisAsk",
+   "url": "https://tennisask.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for Forgiving Hits",
+   "recomendados": [
+    "Wilson Intrigue SE 105 Tennis Racket"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Best for Forgiving Hits",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P072",
+   "idioma": "en",
+   "fonte": "TennisAsk",
+   "url": "https://tennisask.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for Lightweight Handling",
+   "recomendados": [
+    "HEAD Geo Speed Tennis Racquet"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Best for Lightweight Handling",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P073",
+   "idioma": "en",
+   "fonte": "TennisAsk",
+   "url": "https://tennisask.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best for Intermediate Players",
+   "recomendados": [
+    "HEAD Graphene XT Speed MP Racquet"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:46:51.108Z",
+   "citacao": "Best for Intermediate Players",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P074",
+   "idioma": "de",
+   "fonte": "Racketfreaks",
+   "url": "https://www.racketfreaks.de/die-besten-tennisschlaeger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Tennisschläger für Anfänger",
+   "recomendados": [
+    "Head Titanium Ti.S6",
+    "Prince O3 Legacy 120",
+    "Babolat Boost Rafa"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "Tennisschläger für Anfänger",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P075",
+   "idioma": "de",
+   "fonte": "Racketfreaks",
+   "url": "https://www.racketfreaks.de/die-besten-tennisschlaeger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Power & Spin:",
+   "recomendados": [
+    "Babolat Pure Drive 2025",
+    "Babolat Pure Aero 2023",
+    "Yonex VCORE 100"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "Power & Spin:",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P076",
+   "idioma": "de",
+   "fonte": "Racketfreaks",
+   "url": "https://www.racketfreaks.de/die-besten-tennisschlaeger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Control & Feel:",
+   "recomendados": [
+    "Prince ATS Textreme Tour 100 (290)",
+    "Head Gravity MP 2025",
+    "Tecnifibre TF40 290"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "Control & Feel:",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P077",
+   "idioma": "de",
+   "fonte": "Racketfreaks",
+   "url": "https://www.racketfreaks.de/die-besten-tennisschlaeger/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Armfreundlich:",
+   "recomendados": [
+    "Yonex EZONE 100 (2025)",
+    "Wilson Clash 100 v3",
+    "Dunlop CX 400 Tour"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "Armfreundlich:",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P078",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://www.tennisnavi.jp/racket/ranking/racket-senior/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "とにかく軽く芯を最大に広げたい",
+   "recomendados": [
+    "ヨネックスEZONE 115"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "とにかく軽く芯を最大に広げたい",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P079",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://www.tennisnavi.jp/racket/ranking/racket-senior/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "力を使わず楽に飛ばしたい",
+   "recomendados": [
+    "ヘッドPWR 110"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "力を使わず楽に飛ばしたい",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P080",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://www.tennisnavi.jp/racket/ranking/racket-senior/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "衝撃のマイルドさを最優先したい",
+   "recomendados": [
+    "プロケネックスKinetic Ki Q+20"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "衝撃のマイルドさを最優先したい",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P081",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://www.tennisnavi.jp/racket/ranking/racket-women/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": "feminino"
+   },
+   "categoria_original": "ボールを楽に飛ばしたい",
+   "recomendados": [
+    "バボラ ピュアドライブ チーム"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "ボールを楽に飛ばしたい",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P082",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://www.tennisnavi.jp/racket/ranking/racket-women/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": "feminino"
+   },
+   "categoria_original": "スピンで攻めたい競技志向",
+   "recomendados": [
+    "バボラ ピュアアエロ チーム"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "スピンで攻めたい競技志向",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P083",
+   "idioma": "ja",
+   "fonte": "テニスナビ",
+   "url": "https://www.tennisnavi.jp/racket/ranking/racket-women/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": "baixa",
+    "backhand": null,
+    "prioridade": null,
+    "sexo": "feminino"
+   },
+   "categoria_original": "力に自信がなく取り回し優先",
+   "recomendados": [
+    "ヘッド ブーム チーム2026"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:47:13.341Z",
+   "citacao": "力に自信がなく取り回し優先",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P084",
+   "idioma": "en",
+   "fonte": "Padel & Tennis",
+   "url": "https://www.padelandtennis.co.uk/guides/best-tennis-rackets-intermediate-advanced",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "baseline",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best power frame",
+   "recomendados": [
+    "Babolat Pure Aero (Gen 9)"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Best power frame",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P085",
+   "idioma": "en",
+   "fonte": "Padel & Tennis",
+   "url": "https://www.padelandtennis.co.uk/guides/best-tennis-rackets-intermediate-advanced",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best control frame",
+   "recomendados": [
+    "Wilson Blade 98 16×19 V10"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Best control frame",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P086",
+   "idioma": "en",
+   "fonte": "Padel & Tennis",
+   "url": "https://www.padelandtennis.co.uk/guides/best-tennis-rackets-intermediate-advanced",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best in-between",
+   "recomendados": [
+    "HEAD Gravity MP (2023)"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Best in-between",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P087",
+   "idioma": "es",
+   "fonte": "Selon",
+   "url": "https://selon.es/guias/mejores-raquetas-tenis",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Mejor en general",
+   "recomendados": [
+    "Wilson Fusion XL"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Mejor en general",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P088",
+   "idioma": "es",
+   "fonte": "Selon",
+   "url": "https://selon.es/guias/mejores-raquetas-tenis",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Mejor precio",
+   "recomendados": [
+    "HEAD Ti. Conquest"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Mejor precio",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P089",
+   "idioma": "es",
+   "fonte": "Selon",
+   "url": "https://selon.es/guias/mejores-raquetas-tenis",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Mejor si ya juegas",
+   "recomendados": [
+    "HEAD IG Challenge Team"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Mejor si ya juegas",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P090",
+   "idioma": "es",
+   "fonte": "A2ZCheck",
+   "url": "https://a2zcheck.com/es/racquets/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "adulto",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Mejor control",
+   "recomendados": [
+    "Wilson Blade 98 16x19 v9"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Mejor control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P091",
+   "idioma": "es",
+   "fonte": "A2ZCheck",
+   "url": "https://a2zcheck.com/es/racquets/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "adulto",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Mejor polivalente",
+   "recomendados": [
+    "Head Speed MP 2026"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Mejor polivalente",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P092",
+   "idioma": "es",
+   "fonte": "A2ZCheck",
+   "url": "https://a2zcheck.com/es/racquets/best-tennis-racquets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "adulto",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Mejor económica",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:49:44.639Z",
+   "citacao": "Mejor económica",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P093",
+   "idioma": "en",
+   "fonte": "Men's Health",
+   "url": "https://www.menshealth.com/technology-gear/g60652294/best-tennis-racket-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Overall",
+   "recomendados": [
+    "Wilson Hyper Hammer 5.3"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Best Overall",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P094",
+   "idioma": "en",
+   "fonte": "Men's Health",
+   "url": "https://www.menshealth.com/technology-gear/g60652294/best-tennis-racket-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Game-Improvement",
+   "recomendados": [
+    "Babolat Boost Strike"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Best Game-Improvement",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P095",
+   "idioma": "en",
+   "fonte": "Men's Health",
+   "url": "https://www.menshealth.com/technology-gear/g60652294/best-tennis-racket-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Oversize",
+   "recomendados": [
+    "Prince Thunder 110"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Best Oversize",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P096",
+   "idioma": "en",
+   "fonte": "Men's Health",
+   "url": "https://www.menshealth.com/technology-gear/g60652294/best-tennis-racket-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Most Comfortable",
+   "recomendados": [
+    "Wilson Clash 108 V2 Unstrung"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Most Comfortable",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P097",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Best for Arm Comfort",
+   "recomendados": [
+    "Wilson Clash 100L v3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Best for Arm Comfort",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P098",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Entry Level",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Best Entry Level",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P099",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-tennis-rackets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Starter Racket",
+   "recomendados": [
+    "Wilson Impact"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Best Starter Racket",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P100",
+   "idioma": "es",
+   "fonte": "Raquetados",
+   "url": "https://raquetados.com/mejores-raquetas-de-tenis-2025-guia-completa-espana/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Principiante",
+   "recomendados": [
+    "Wilson Ultra Power 105"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Principiante",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte02-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P101",
+   "idioma": "es",
+   "fonte": "Raquetados",
+   "url": "https://raquetados.com/mejores-raquetas-de-tenis-2025-guia-completa-espana/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Intermedio",
+   "recomendados": [
+    "Wilson Clash V3.0"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Intermedio",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P102",
+   "idioma": "es",
+   "fonte": "Raquetados",
+   "url": "https://raquetados.com/mejores-raquetas-de-tenis-2025-guia-completa-espana/",
+   "ano": 2025,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Avanzado",
+   "recomendados": [
+    "Babolat Pure Aero 2025"
+   ],
+   "grupo": "avancado",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Avanzado",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P103",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Mejor equilibrio todoterreno",
+   "recomendados": [
+    "Head Speed MP 2026"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Mejor equilibrio todoterreno",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P104",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "baseline",
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Mejor spin moderno",
+   "recomendados": [
+    "Babolat Pure Aero 2026"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Mejor spin moderno",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P105",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Mejor control con feedback",
+   "recomendados": [
+    "Wilson Blade 98 (16x19) v10"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Mejor control con feedback",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P106",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-potencia",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Juegas agresivo y quieres cerrar puntos más rápido",
+   "recomendados": [
+    "Wilson Burn 100 v5"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Wilson Burn 100 v5",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P107",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-potencia",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Quieres potencia pero tu brazo ya se quejó",
+   "recomendados": [
+    "Head Boom MP"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:50:25.403Z",
+   "citacao": "Head Boom MP",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P108",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-intermediate-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best for Power",
+   "recomendados": [
+    "Babolat Pure Drive 2025"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best for Power",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P109",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-intermediate-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Best for Spin",
+   "recomendados": [
+    "Babolat Pure Aero 100 2026"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best for Spin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P110",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-intermediate-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Most Arm-Friendly",
+   "recomendados": [
+    "Wilson Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Most Arm-Friendly",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P111",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-intermediate-tennis-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best for Control",
+   "recomendados": [
+    "Wilson Blade 100L v10"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best for Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P112",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-control-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "All-court precision",
+   "recomendados": [
+    "Wilson Blade 98 v10 16×19"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "All-court precision",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P113",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-control-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": "agressivo",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Aggressive ball-strikers",
+   "recomendados": [
+    "Wilson Pro Staff 97 v15"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Aggressive ball-strikers",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P114",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-control-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Traditional players’ feel",
+   "recomendados": [
+    "Head Prestige MP"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Traditional players’ feel",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P115",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-power-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best overall power racket",
+   "recomendados": [
+    "Babolat Pure Drive 2025"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best overall power racket",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P116",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-power-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best for flat hitters",
+   "recomendados": [
+    "Wilson Ultra 100 V5"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best for flat hitters",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P117",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-spin-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Spin with precision (advanced)",
+   "recomendados": [
+    "Babolat Pure Aero 98 2026"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Spin with precision (advanced)",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P118",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-spin-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Forgiving spin, smooth feel",
+   "recomendados": [
+    "Yonex VCORE 100 8th Gen"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Forgiving spin, smooth feel",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P119",
+   "idioma": "en",
+   "fonte": "Tennis Gear Guide",
+   "url": "https://tennisgearguide.co.uk/best-spin-rackets/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Controlled spin (advanced)",
+   "recomendados": [
+    "Yonex VCORE 98 8th Gen"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Controlled spin (advanced)",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P120",
+   "idioma": "en",
+   "fonte": "Padel & Tennis",
+   "url": "https://www.padelandtennis.co.uk/guides/best-tennis-rackets-beginners-uk",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best first racket",
+   "recomendados": [
+    "Wilson Ultra Power 103"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best first racket",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P121",
+   "idioma": "en",
+   "fonte": "Padel & Tennis",
+   "url": "https://www.padelandtennis.co.uk/guides/best-tennis-rackets-beginners-uk",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Kindest on the arm",
+   "recomendados": [
+    "Wilson Clash 100L V3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Kindest on the arm",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P122",
+   "idioma": "en",
+   "fonte": "Padel & Tennis",
+   "url": "https://www.padelandtennis.co.uk/guides/best-tennis-rackets-beginners-uk",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best to grow into",
+   "recomendados": [
+    "Babolat Pure Drive Lite (Gen 11)"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:50:41.211Z",
+   "citacao": "Best to grow into",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P123",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-spin",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Spin + control (16x20)",
+   "recomendados": [
+    "Head Gravity MP 2025"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Spin + control (16x20)",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P124",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-spin",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": "all-court",
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "El todoterreno del spin",
+   "recomendados": [
+    "VCORE 100 (2026)"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "El todoterreno del spin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P125",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-control",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Referencia de control intermedio",
+   "recomendados": [
+    "Blade 98 (16x19) v10"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Referencia de control intermedio",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P126",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-control",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Control clásico 18x19",
+   "recomendados": [
+    "Prestige MP 2023"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Control clásico 18x19",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P127",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-control",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "avancado",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Máxima sensación y feedback",
+   "recomendados": [
+    "Percept 97"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Máxima sensación y feedback",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P128",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-brazo-sensible",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "La referencia a 55 RA",
+   "recomendados": [
+    "Clash 100 v3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "La referencia a 55 RA",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P129",
+   "idioma": "es",
+   "fonte": "Racket Advisor",
+   "url": "https://www.racket-advisor.com/es/mejores-raquetas-de-tenis-para-brazo-sensible",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Máxima protección articular",
+   "recomendados": [
+    "Clash 100L v3"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Máxima protección articular",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P130",
+   "idioma": "en",
+   "fonte": "SportDeal.com",
+   "url": "https://www.sport-deal.com/tennis/best-tennis-rackets-for-beginners-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Overall",
+   "recomendados": [
+    "Wilson Clash 108 v3"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Overall",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P131",
+   "idioma": "en",
+   "fonte": "SportDeal.com",
+   "url": "https://www.sport-deal.com/tennis/best-tennis-rackets-for-beginners-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Value",
+   "recomendados": [
+    "Head Ti.S6 2026 Edition"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Value",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P132",
+   "idioma": "en",
+   "fonte": "SportDeal.com",
+   "url": "https://www.sport-deal.com/tennis/best-tennis-rackets-for-beginners-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "Best for Spin",
+   "recomendados": [
+    "Babolat Boost Aero 2026"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best for Spin",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P133",
+   "idioma": "en",
+   "fonte": "SportDeal.com",
+   "url": "https://www.sport-deal.com/tennis/best-tennis-rackets-for-beginners-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Most Comfortable",
+   "recomendados": [
+    "Yonex EZONE 108 2026"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Most Comfortable",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P134",
+   "idioma": "en",
+   "fonte": "SportDeal.com",
+   "url": "https://www.sport-deal.com/tennis/best-tennis-rackets-for-beginners-2026",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Budget Pick",
+   "recomendados": [
+    "Wilson Hyper Hammer 5.3 Stretch"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Budget Pick",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P135",
+   "idioma": "ja",
+   "fonte": "TENNIS MEDIA",
+   "url": "https://tennis-media.com/intermediate-tennis-racket-recommended/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "スピン・パワー型",
+   "recomendados": [
+    "ヨネックス VCORE 100",
+    "バボラ Pure Aero"
+   ],
+   "grupo": "intermediario",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "スピン・パワー型",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P136",
+   "idioma": "ja",
+   "fonte": "TENNIS MEDIA",
+   "url": "https://tennis-media.com/intermediate-tennis-racket-recommended/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "コントロール・総合型",
+   "recomendados": [
+    "ウイルソン BLADE 100 V10"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "コントロール・総合型",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P137",
+   "idioma": "ja",
+   "fonte": "TENNIS MEDIA",
+   "url": "https://tennis-media.com/intermediate-tennis-racket-recommended/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "intermediario",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "spin",
+    "sexo": null
+   },
+   "categoria_original": "軽量スピン型",
+   "recomendados": [
+    "バボラ Pure Aero Team"
+   ],
+   "grupo": "spin",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "軽量スピン型",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P138",
+   "idioma": "en",
+   "fonte": "Tennis With Hany",
+   "url": "https://tenniswithhany.com/blog/best-tennis-racquets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Best for Comfort and a Sore Arm",
+   "recomendados": [
+    "Wilson Clash 108"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best for Comfort and a Sore Arm",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P139",
+   "idioma": "en",
+   "fonte": "Tennis With Hany",
+   "url": "https://tenniswithhany.com/blog/best-tennis-racquets-for-beginners/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": "iniciante",
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Budget Racquet",
+   "recomendados": [
+    "Babolat Boost Drive"
+   ],
+   "grupo": "iniciante",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Budget Racquet",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P140",
+   "idioma": "en",
+   "fonte": "Aceify",
+   "url": "https://aceify.me/the-ace/best-tennis-rackets-2026-buying-guide-all-levels/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null,
+    "orcamento_usd": 150.0
+   },
+   "categoria_original": "Best Budget Tennis Rackets (Under $150)",
+   "recomendados": [
+    "Wilson Burn 100LS v5",
+    "Head Ti.S6",
+    "Babolat Boost Drive"
+   ],
+   "grupo": "orcamento",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Budget Tennis Rackets (Under $150)",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P141",
+   "idioma": "en",
+   "fonte": "Aceify",
+   "url": "https://aceify.me/the-ace/best-tennis-rackets-2026-buying-guide-all-levels/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "3–5 years",
+   "recomendados": [
+    "Babolat Ballfighter 19"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "3–5 years",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P142",
+   "idioma": "en",
+   "fonte": "Aceify",
+   "url": "https://aceify.me/the-ace/best-tennis-rackets-2026-buying-guide-all-levels/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "5–7 years",
+   "recomendados": [
+    "Wilson US Open 21"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "5–7 years",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P143",
+   "idioma": "en",
+   "fonte": "Aceify",
+   "url": "https://aceify.me/the-ace/best-tennis-rackets-2026-buying-guide-all-levels/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "junior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "7–9 years",
+   "recomendados": [
+    "Babolat Nadal Junior 23"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "7–9 years",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P144",
+   "idioma": "en",
+   "fonte": "Ali Shuttler",
+   "url": "https://alishuttler.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Overall",
+   "recomendados": [
+    "HEAD Speed PWR"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Overall",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P145",
+   "idioma": "en",
+   "fonte": "Ali Shuttler",
+   "url": "https://alishuttler.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "potencia",
+    "sexo": null
+   },
+   "categoria_original": "Best Power",
+   "recomendados": [
+    "Babolat Pure Drive 110"
+   ],
+   "grupo": "potencia",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Power",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P146",
+   "idioma": "en",
+   "fonte": "Ali Shuttler",
+   "url": "https://alishuttler.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Comfort Construction",
+   "recomendados": [
+    "Wilson Triad Five"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Comfort Construction",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P147",
+   "idioma": "en",
+   "fonte": "Ali Shuttler",
+   "url": "https://alishuttler.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": "controle",
+    "sexo": null
+   },
+   "categoria_original": "Best All-Round Control",
+   "recomendados": [
+    "Yonex EZONE 105"
+   ],
+   "grupo": "controle",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best All-Round Control",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P148",
+   "idioma": "en",
+   "fonte": "Ali Shuttler",
+   "url": "https://alishuttler.com/best-tennis-rackets-for-seniors/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": "senior",
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Best Ready-to-Play",
+   "recomendados": [
+    "Tecnifibre T-Fit 290 Power Max"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Best Ready-to-Play",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P149",
+   "idioma": "fr",
+   "fonte": "Tous Les Tops",
+   "url": "https://www.touslestops.fr/top/meilleures-raquettes-de-tennis/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": null,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": null,
+    "sexo": null
+   },
+   "categoria_original": "Meilleure polyvalence",
+   "recomendados": [
+    "Head Radical"
+   ],
+   "grupo": "geral",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Meilleure polyvalence",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  },
+  {
+   "id": "l3-P150",
+   "idioma": "fr",
+   "fonte": "Tous Les Tops",
+   "url": "https://www.touslestops.fr/top/meilleures-raquettes-de-tennis/",
+   "ano": 2026,
+   "perfil": {
+    "nivel": null,
+    "estilo": null,
+    "dor_braco": true,
+    "idade_faixa": null,
+    "forca": null,
+    "backhand": null,
+    "prioridade": "conforto",
+    "sexo": null
+   },
+   "categoria_original": "Meilleur confort",
+   "recomendados": [
+    "Wilson Clash"
+   ],
+   "grupo": "cotovelo",
+   "aberta_em": "2026-11-16T00:51:20.664Z",
+   "citacao": "Meilleur confort",
+   "arquivo_bruto": "lote3-chatgpt-casos-parte03-2026-11-16.csv"
+  }
+ ]
+}
