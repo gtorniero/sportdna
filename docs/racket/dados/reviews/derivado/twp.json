@@ -1,0 +1,457 @@
+{
+ "100": {
+  "a": -0.274,
+  "d": {
+   "comfort": 0.433,
+   "control": -0.067,
+   "maneuver": 0.333,
+   "power": -0.467,
+   "spin": -0.667,
+   "stability": 0.433
+  },
+  "fonte": "bruto/lote3-chatgpt-parte04-2026-11-16.csv:14",
+  "n": 3
+ },
+ "101": {
+  "a": -0.374,
+  "d": {
+   "comfort": -0.017,
+   "control": -0.717,
+   "maneuver": 0.083,
+   "power": 0.183,
+   "spin": 0.483,
+   "stability": -0.017
+  },
+  "fonte": "bruto/lote3-chatgpt-parte04-2026-11-16.csv:12",
+  "n": 3
+ },
+ "103": {
+  "a": 0.326,
+  "d": {
+   "comfort": -0.45,
+   "control": 0.35,
+   "maneuver": -0.05,
+   "power": 0.05,
+   "spin": -0.25,
+   "stability": 0.35
+  },
+  "fonte": "bruto/lote3-chatgpt-parte04-2026-11-16.csv:18",
+  "n": 3
+ },
+ "104": {
+  "a": 0.026,
+  "d": {
+   "comfort": 0.233,
+   "control": -0.267,
+   "maneuver": 0.433,
+   "power": -0.367,
+   "spin": -0.367,
+   "stability": 0.333
+  },
+  "fonte": "bruto/lote3-chatgpt-parte04-2026-11-16.csv:15",
+  "n": 3
+ },
+ "106": {
+  "a": -0.274,
+  "d": {
+   "comfort": 0.25,
+   "control": -0.05,
+   "maneuver": -0.05,
+   "power": -0.35,
+   "spin": 0.05,
+   "stability": 0.15
+  },
+  "fonte": "bruto/lote3-chatgpt-parte03-2026-11-16.csv:18",
+  "n": 3
+ },
+ "107": {
+  "a": 0.226,
+  "d": {
+   "comfort": 0.583,
+   "control": 0.283,
+   "maneuver": -0.317,
+   "power": -0.417,
+   "spin": -0.417,
+   "stability": 0.283
+  },
+  "fonte": "bruto/lote3-chatgpt-parte03-2026-11-16.csv:19",
+  "n": 3
+ },
+ "108": {
+  "a": -0.074,
+  "d": {
+   "comfort": 0.2,
+   "control": 0.8,
+   "maneuver": -0.3,
+   "power": -0.3,
+   "spin": -0.7,
+   "stability": 0.3
+  },
+  "fonte": "bruto/lote3-chatgpt-parte03-2026-11-16.csv:20",
+  "n": 3
+ },
+ "110": {
+  "a": 0.026,
+  "d": {
+   "comfort": 0.267,
+   "control": 0.267,
+   "maneuver": -0.333,
+   "power": -0.133,
+   "spin": -0.833,
+   "stability": 0.767
+  },
+  "fonte": "bruto/lote3-chatgpt-parte04-2026-11-16.csv:3",
+  "n": 3
+ },
+ "114": {
+  "a": 0.426,
+  "d": {
+   "comfort": -0.15,
+   "control": -0.05,
+   "maneuver": -0.05,
+   "power": 0.05,
+   "spin": 0.15,
+   "stability": 0.05
+  },
+  "fonte": "bruto/lote3-chatgpt-parte03-2026-11-16.csv:12",
+  "n": 3
+ },
+ "118": {
+  "a": 0.126,
+  "d": {
+   "comfort": 0.217,
+   "control": -0.483,
+   "maneuver": -0.083,
+   "power": 0.517,
+   "spin": 0.017,
+   "stability": -0.183
+  },
+  "fonte": "bruto/lote3-chatgpt-parte04-2026-11-16.csv:6",
+  "n": 3
+ },
+ "121": {
+  "a": 0.026,
+  "d": {
+   "comfort": -0.433,
+   "control": -0.233,
+   "maneuver": -0.333,
+   "power": 0.467,
+   "spin": 0.367,
+   "stability": 0.167
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:2",
+  "n": 3
+ },
+ "122": {
+  "a": -0.074,
+  "d": {
+   "comfort": 0.1,
+   "control": 0.3,
+   "maneuver": 0.2,
+   "power": -0.6,
+   "spin": 0.0,
+   "stability": 0.0
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:4",
+  "n": 3
+ },
+ "123": {
+  "a": -0.174,
+  "d": {
+   "comfort": 0.583,
+   "control": 0.583,
+   "maneuver": 0.383,
+   "power": -0.817,
+   "spin": -0.517,
+   "stability": -0.217
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:5",
+  "n": 3
+ },
+ "128": {
+  "a": 0.226,
+  "d": {
+   "comfort": 0.35,
+   "control": -0.05,
+   "maneuver": -0.55,
+   "power": 0.35,
+   "spin": -0.25,
+   "stability": 0.15
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:10",
+  "n": 3
+ },
+ "131": {
+  "a": 0.026,
+  "d": {
+   "comfort": 0.2,
+   "control": -0.3,
+   "maneuver": -0.7,
+   "power": 0.6,
+   "spin": -0.1,
+   "stability": 0.3
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:6",
+  "n": 3
+ },
+ "133": {
+  "a": 0.226,
+  "d": {
+   "comfort": 0.167,
+   "control": 0.267,
+   "maneuver": -0.133,
+   "power": -0.533,
+   "spin": 0.167,
+   "stability": 0.067
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:19",
+  "n": 3
+ },
+ "134": {
+  "a": 0.326,
+  "d": {
+   "comfort": 0.2,
+   "control": -0.3,
+   "maneuver": -0.9,
+   "power": 0.5,
+   "spin": 0.2,
+   "stability": 0.3
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:20",
+  "n": 3
+ },
+ "137": {
+  "a": 0.026,
+  "d": {
+   "comfort": 0.05,
+   "control": -0.35,
+   "maneuver": -0.15,
+   "power": 0.05,
+   "spin": 0.15,
+   "stability": 0.25
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:16",
+  "n": 3
+ },
+ "138": {
+  "a": -0.074,
+  "d": {
+   "comfort": 0.117,
+   "control": -0.483,
+   "maneuver": -0.983,
+   "power": 0.817,
+   "spin": 0.117,
+   "stability": 0.417
+  },
+  "fonte": "bruto/lote3-chatgpt-parte05-2026-11-16.csv:15",
+  "n": 3
+ },
+ "62": {
+  "a": 0.026,
+  "d": {
+   "comfort": -0.133,
+   "control": -0.433,
+   "maneuver": -0.233,
+   "power": 0.367,
+   "spin": 0.567,
+   "stability": -0.133
+  },
+  "fonte": "bruto/lote3-chatgpt-parte01-2026-11-15.csv:17",
+  "n": 3
+ },
+ "63": {
+  "a": -0.174,
+  "d": {
+   "comfort": 0.05,
+   "control": -0.15,
+   "maneuver": -2.65,
+   "power": 1.05,
+   "spin": 0.35,
+   "stability": 1.35
+  },
+  "fonte": "bruto/lote3-chatgpt-parte01-2026-11-15.csv:19",
+  "n": 3
+ },
+ "64": {
+  "a": 0.026,
+  "d": {
+   "comfort": -0.633,
+   "control": -0.533,
+   "maneuver": -0.033,
+   "power": 0.667,
+   "spin": 0.267,
+   "stability": 0.267
+  },
+  "fonte": "bruto/lote3-chatgpt-parte01-2026-11-15.csv:30",
+  "n": 3
+ },
+ "65": {
+  "a": -0.074,
+  "d": {
+   "comfort": -0.217,
+   "control": -0.917,
+   "maneuver": -0.117,
+   "power": 0.883,
+   "spin": 0.283,
+   "stability": 0.083
+  },
+  "fonte": "bruto/lote3-chatgpt-parte01-2026-11-15.csv:36",
+  "n": 3
+ },
+ "67": {
+  "a": 0.126,
+  "d": {
+   "comfort": -0.55,
+   "control": -0.15,
+   "maneuver": 0.05,
+   "power": 0.35,
+   "spin": 0.15,
+   "stability": 0.15
+  },
+  "fonte": "bruto/lote3-chatgpt-parte01-2026-11-15.csv:24",
+  "n": 3
+ },
+ "68": {
+  "a": -0.374,
+  "d": {
+   "comfort": -0.033,
+   "control": 0.067,
+   "maneuver": 0.267,
+   "power": -0.233,
+   "spin": 0.067,
+   "stability": -0.133
+  },
+  "fonte": "bruto/lote3-chatgpt-parte01-2026-11-15.csv:37",
+  "n": 3
+ },
+ "70": {
+  "a": -0.074,
+  "d": {
+   "comfort": 0.267,
+   "control": 0.567,
+   "maneuver": -0.233,
+   "power": -0.133,
+   "spin": -0.733,
+   "stability": 0.267
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:7",
+  "n": 3
+ },
+ "77": {
+  "a": 0.026,
+  "d": {
+   "comfort": -0.033,
+   "control": 0.067,
+   "maneuver": -0.033,
+   "power": -0.333,
+   "spin": 0.367,
+   "stability": -0.033
+  },
+  "fonte": "bruto/lote3-chatgpt-parte03-2026-11-16.csv:8",
+  "n": 4
+ },
+ "81": {
+  "a": 0.326,
+  "d": {
+   "comfort": 0.283,
+   "control": 0.383,
+   "maneuver": -0.017,
+   "power": -0.717,
+   "spin": 0.183,
+   "stability": -0.117
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:32",
+  "n": 3
+ },
+ "83": {
+  "a": -0.074,
+  "d": {
+   "comfort": 0.35,
+   "control": 0.05,
+   "maneuver": -0.15,
+   "power": -0.25,
+   "spin": -0.25,
+   "stability": 0.25
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:17",
+  "n": 3
+ },
+ "86": {
+  "a": -0.174,
+  "d": {
+   "comfort": -0.133,
+   "control": 0.367,
+   "maneuver": -0.433,
+   "power": 0.067,
+   "spin": -0.233,
+   "stability": 0.367
+  },
+  "fonte": "bruto/lote3-chatgpt-parte03-2026-11-16.csv:2",
+  "n": 3
+ },
+ "89": {
+  "a": 0.026,
+  "d": {
+   "comfort": -0.133,
+   "control": -0.233,
+   "maneuver": 0.167,
+   "power": 0.067,
+   "spin": -0.033,
+   "stability": 0.167
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:26",
+  "n": 3
+ },
+ "91": {
+  "a": 0.226,
+  "d": {
+   "comfort": -0.35,
+   "control": -0.25,
+   "maneuver": 0.15,
+   "power": 0.15,
+   "spin": 0.15,
+   "stability": 0.15
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:22",
+  "n": 3
+ },
+ "92": {
+  "a": -0.474,
+  "d": {
+   "comfort": 0.033,
+   "control": 0.133,
+   "maneuver": 0.533,
+   "power": -0.367,
+   "spin": 0.033,
+   "stability": -0.367
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:42",
+  "n": 3
+ },
+ "93": {
+  "a": -0.074,
+  "d": {
+   "comfort": 0.65,
+   "control": 0.55,
+   "maneuver": -0.25,
+   "power": -1.15,
+   "spin": 0.15,
+   "stability": 0.05
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:44",
+  "n": 3
+ },
+ "94": {
+  "a": 0.026,
+  "d": {
+   "comfort": 0.267,
+   "control": 0.367,
+   "maneuver": -0.433,
+   "power": -0.433,
+   "spin": -0.033,
+   "stability": 0.267
+  },
+  "fonte": "bruto/lote3-chatgpt-parte02-2026-11-15.csv:47",
+  "n": 3
+ }
+}

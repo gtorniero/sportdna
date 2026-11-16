@@ -1,5 +1,5 @@
 {
- "sobre": "Casos-guia do RACKET DNA (rodada 15). Perfis reais ou típicos com o que é aceitável no top 3 e o que nunca pode aparecer. Rodar: node racket/tools/casos-guia.mjs [--base git:origin/main]. Nenhuma versão vai ao ar com caso falhando. Regras valem para cada raquete do top 3 (ou topN). cur é o nome do modelo no catálogo (marca + modelo). Regra geral (rodada 15): ProKennex e Volkl nunca no top 3 (marcas marginais no Brasil). Iniciante que prefere comprar no Brasil: só marcas principais (Wilson, Babolat, Head, Yonex).",
+ "sobre": "Casos-guia do RACKET DNA (rodada 15). Perfis reais ou típicos com o que é aceitável no top 3 e o que nunca pode aparecer. Rodar: node racket/tools/casos-guia.mjs [--base git:origin/main]. Nenhuma versão vai ao ar com caso falhando. Regras valem para cada raquete do top 3 (ou topN). cur é o nome do modelo no catálogo (marca + modelo). Regra geral: ProKennex e Volkl nunca no top 3 (marcas marginais no Brasil), salvo dor forte ou limitação grande no braço hoje (rodada 16). Iniciante que prefere comprar no Brasil: só marcas principais (Wilson, Babolat, Head, Yonex).",
  "casos": [
   {
    "id": "esposa-speedmp-pesada",
@@ -516,7 +516,7 @@
   },
   {
    "id": "int-cotovelo-forte",
-   "desc": "Intermediário com dor forte no cotovelo hoje",
+   "desc": "Intermediário com dor forte no cotovelo hoje (dor forte com limitação: ProKennex e Volkl podem aparecer, com aviso de marca de nicho)",
    "a": {
     "age": "50",
     "height": "175",
@@ -550,10 +550,7 @@
    "regras": {
     "pesoMin": 280,
     "raMax": 63,
-    "marcasProibidas": [
-     "ProKennex",
-     "Volkl"
-    ]
+    "marcasProibidas": []
    }
   },
   {

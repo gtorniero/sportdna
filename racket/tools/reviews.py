@@ -50,7 +50,7 @@ def norm_url(u):
 DOMINIO_FAMILIA = {'tennis-warehouse.com': 'Tennis Warehouse', 'tenniswarehouse-europe.com': 'Tennis Warehouse', 'tennisonly.com.au': 'Tennis Warehouse',
     'twu.tennis-warehouse.com': 'Tennis Warehouse', 'tennisaddict.fr': 'TennisAddict', 'tenniscompanion.org': 'TennisCompanion', 'tennisnerd.net': 'Tennisnerd',
     'tennis.com': 'Tennis.com', 'tennismagazin.de': 'tennis MAGAZIN', 'tennisexpress.com': 'Tennis Express', 'supertennis.tv': 'SuperTennis',
-    'fabioferro.blog': 'Fabio Ferro', 'ubitennis.com': 'Ubitennis', 'emporiodotenista.com.br': 'Empório do Tenista'}
+    'fabioferro.blog': 'Fabio Ferro', 'tennis-torasan.com': 'Tennis Torasan', 'padelwarehouse.com': 'Tennis Warehouse', 'ubitennis.com': 'Ubitennis', 'emporiodotenista.com.br': 'Empório do Tenista'}
 
 def familia_fonte(site, url=None):
     """Família de fonte = publicação. Pelo domínio da URL quando conhecido (o mesmo site com nomes diferentes é uma família só)."""
@@ -106,6 +106,79 @@ ATR_TRIAGEM = {'power': ['power', 'puissance', 'potenza', 'leistung'], 'control'
                'maneuver': ['maneuverability', 'maniabilité', 'manövrierbarkeit', 'maneggevolezza'], 'stability': ['stability', 'stabilité', 'stabilität', 'stabilità'],
                'overall': ['overall', 'note globale', 'gesamt']}
 VARIANTE_TOKENS = ['lite', 'team', 'ul', 'l', 'sl', 'pro', 'tour', 'plus', '+', 'elite', 'mp', 'xl', 'ls', 'd', 'h', 's']  # padrão de corda tem checagem própria
+
+
+# ---------- lote 3 (ChatGPT, 15–16/11/2026): 20 colunas, nome do modelo = nome do catálogo ----------
+CONF3 = os.path.join(BR, 'conferencia-lote3-2026-11-16.json')
+def num3(x):
+    """Nota publicada; intervalo publicado (8～8.5) vira o ponto médio (derivação explícita, registrada em metodo_nota)."""
+    x = str(x or '').strip().replace('～', '~').replace('〜', '~').replace('７', '7').replace(',', '.')
+    if not x: return None, False
+    m = re.fullmatch(r'([\d.]+)\s*~\s*([\d.]+)', x)
+    if m: return (float(m.group(1)) + float(m.group(2))) / 2, True
+    if x.upper() in LETRAS: return x.upper(), False
+    try: return float(x.rstrip('.')), False
+    except Exception: return None, False
+
+def esc3(e):
+    e = (e or '').strip().lower()
+    return 'letras' if e.startswith('letras') else (e if e in ('10', '100', '20', '5') else None)
+
+def id3(modelo, versao, C):
+    """Versão do catálogo pelo nome (exato, ou nome + ano). Fica sem id quando a página diz outra geração,
+    não declara a geração, ou traz cabeça/padrão diferentes do catálogo."""
+    m = modelo.strip().lower(); cands = []
+    for i, c in enumerate(C):
+        n = (c['brand'] + ' ' + c['model']).lower()
+        if n == m or re.sub(r' (19|20)\d\d$', '', n) == m: cands.append(i)
+    if len(cands) != 1: return [], 'versão do catálogo ambígua ou ausente'
+    c = C[cands[0]]; v = (versao or '').lower()
+    gen = re.findall(r'\bv\d+\b|\d+ª', c['model'].lower())
+    gen_ok = bool(gen) and all(g in v for g in gen)
+    if re.search(r'geração de lançamento', v) and not gen: gen_ok = True   # linha de geração única no catálogo (ex.: RF 01)
+    if re.search(r'não declarad|nao declarad|não 20\d\d', v) and not gen_ok and not re.search(str(c.get('year') or 'x'), v):
+        return [], 'geração não declarada ou diferente na página'
+    anos = [int(a) for a in re.findall(r'\b(20[12]\d)\b', v)]
+    if anos and c.get('year') and all(abs(a - c['year']) > 1 for a in anos): return [], f'página é de {anos[0]}; catálogo é {c["year"]}'
+    cab = re.findall(r'(\d{2,3})\s*in²', v)
+    if cab and all(abs(int(x) - c['head']) > 1 for x in cab): return [], f'cabeça {cab[0]} na página; catálogo {c["head"]}'
+    pad = re.findall(r'\b(1[68]x(?:1[5-9]|20))\b', v)
+    if pad and c['pat'] not in pad: return [], f'padrão {pad[0]} na página; catálogo {c["pat"]}'
+    return cands, ''
+
+def lote3(C):
+    conf = {}
+    if os.path.exists(CONF3):
+        for o in json.load(open(CONF3, encoding='utf-8')):
+            conf[(os.path.basename(o.get('arquivo', '')), int(o.get('linha') or 0))] = o
+    out = []
+    for fn in sorted(os.listdir(BR)):
+        if not (fn.startswith('lote3-chatgpt-parte') and fn.endswith('.csv')): continue
+        with open(os.path.join(BR, fn), encoding='utf-8-sig') as f:
+            for i, r in enumerate(csv.DictReader(f, delimiter=';'), start=2):
+                esc = esc3(r['escala']); faixa = False; vals = {}
+                for k, col in zip(K + ['overall'], ['potência', 'controle', 'spin', 'conforto', 'manobrabilidade', 'estabilidade', 'nota geral']):
+                    v, fx = num3(r[col]); faixa |= fx
+                    if v is not None and (esc == 'letras') == isinstance(v, str): vals[k] = v
+                tipo = 'laboratorio' if r['tipo'].startswith('laborat') else r['tipo'].strip()
+                ids, motivo_id = id3(r['modelo'], r['versão revisada'], C)
+                nclientes = re.search(r'\((\d+) avalia', r['site'])
+                cf = conf.get((fn, i))
+                o = dict(arquivo_bruto='bruto/' + fn, linha_bruta=i, model_id=r['modelo'], variant_id=r['versão revisada'],
+                    ano_publicacao=int(r['ano']) if r['ano'].strip().isdigit() else None,
+                    verificado_em=(r['aberta em (data e hora)'] or '').strip() + ' (ChatGPT, página aberta)' + (f"; conferido por Claude em {cf.get('conferido_em')}" if cf and cf.get('aberta') else ''),
+                    url_canonica=r['URL'].strip(), site=r['site'], familia_fonte=familia_fonte(r['site'], r['URL']), pais=r['país'],
+                    geografia='mercado' if any(x in r['país'] for x in MERCADOS) else 'excecao', revisor_id=r['nível do testador'] or None,
+                    nivel_revisor=None, tipo=tipo,
+                    metodo_nota='laboratorio' if tipo == 'laboratorio' else ('publicada (intervalo → ponto médio)' if faixa else 'publicada'),
+                    escala_original=esc, notas_originais=None if (tipo == 'laboratorio' or not esc) else (vals or None),
+                    indices_laboratorio=vals if tipo == 'laboratorio' else None, sentimento_interpretado=None, anotador=None,
+                    notas_evidencia=' | '.join(x for x in [r['prós curtos'], r['contras curtos'], 'citação: ' + r['citação literal']] if x.strip()),
+                    base='pagina', _ids=ids, _motivo_id=motivo_id,
+                    _clientes=int(nclientes.group(1)) if (tipo == 'clientes' and nclientes) else (0 if tipo == 'clientes' else None),
+                    conferencia=cf)
+                out.append(o)
+    return out
 
 def toks(x, pares=True):
     x = (x or '').lower().replace('×', 'x').replace('-', ' ').replace('_', ' ').replace('/', ' ')
@@ -200,7 +273,7 @@ def triagem(C):
 def gerar():
     global CAT
     C = catalogo(); CAT = C
-    R = lote1() + lote2() + triagem(C) + complemento()
+    R = lote1() + lote2() + triagem(C) + complemento() + lote3(C)
     snip = json.load(open(os.path.join(BR, 'pr93-snippets-2026-11.json'), encoding='utf-8'))['reviews']
     u93 = {norm_url(x.get('url')) for x in snip}
     # grupos de duplicata: mesma URL normalizada, ou texto da TW em espelho (mesmo código de review no nome da página)
@@ -246,6 +319,12 @@ def gerar():
         if r.get('duplicata_de'): r['elegibilidade'], r['motivo'] = 'excluido', 'duplicata'
         elif q: r['elegibilidade'], r['motivo'] = 'quarentena', q
         elif 'INCONSIST' in (r.get('notas_evidencia') or '').upper(): r['elegibilidade'], r['motivo'] = 'quarentena', 'tabela e texto da página trazem números diferentes'
+        elif r.get('conferencia') and (r['conferencia'].get('notas_ok') is False or r['conferencia'].get('versao_ok') is False):
+            r['elegibilidade'], r['motivo'] = 'quarentena', 'conferência na página: ' + '; '.join(f"{d.get('campo')} {d.get('csv')}→{d.get('pagina')}" for d in (r['conferencia'].get('divergencias') or [])) or 'versão ou nota não bate'
+        elif r.get('_clientes') is not None and r['_clientes'] < 10:
+            r['elegibilidade'], r['motivo'] = 'so_contexto', f"avaliação de clientes com {r['_clientes']} notas (mínimo 10)"
+        elif r['arquivo_bruto'].startswith('bruto/lote3') and r.get('_motivo_id'):
+            r['elegibilidade'], r['motivo'] = 'so_contexto', r['_motivo_id']
         elif r.get('base') == 'triagem': r['elegibilidade'], r['motivo'] = 'triagem', 'aguarda conferência de geração, variante e painel na página'
         elif r.get('base') == 'informado_pelo_usuario': r['elegibilidade'], r['motivo'] = 'so_contexto', 'informado pelo usuário, página não aberta por Claude' + ('; geração 2021, catálogo tem 2025: não transfere' if r.get('geracao') == '2021' else '')
         elif r.get('base') != 'pagina': r['elegibilidade'], r['motivo'] = 'so_contexto', 'resumo de busca, página não aberta'
@@ -255,6 +334,7 @@ def gerar():
         elif not ids: r['elegibilidade'], r['motivo'] = 'so_contexto', 'geração/versão fora do catálogo atual ou não explicitada'
         elif not r['notas_normalizadas_0a1']: r['elegibilidade'], r['motivo'] = 'so_contexto', 'sem nota nem sentimento por atributo'
         else: r['elegibilidade'], r['motivo'] = 'elegivel', ''
+        for k in ('_motivo_id', '_clientes'): r.pop(k, None)
         r['registro_id'] = hashlib.sha1((r['arquivo_bruto'] + str(r['linha_bruta'])).encode()).hexdigest()[:10]
     # média da nota geral numérica por fonte (para direção da aprovação)
     ger = collections.defaultdict(list)
@@ -283,7 +363,25 @@ def gerar():
         for f, o in sorted(F.items()):
             EVID[str(cid)][f] = {'d': {k: sg(sum(v) / len(v), LIMIAR_FORMA) for k, v in sorted(o['d'].items())},
                                  'a': sg(sum(o['a']) / len(o['a']), LIMIAR_GERAL) if o['a'] else None}
-    return R, EVID, media_fonte, u93, snip
+    # TWP (rodada 16): painel da Tennis Warehouse do lote 3 para versões que o TWD não tem. Mesmo formato do TWD:
+    # d = nota do atributo − média da própria review (escala 10); a = nota geral − média das notas gerais dos painéis do lote;
+    # n = testadores declarados (mínimo 3, o painel típico da TW). Uma review por versão (a mais recente).
+    s_html = open(HTML, encoding='utf-8').read()
+    twd = json.loads(re.search(r'const TWD=(\{.*?\});\n', s_html).group(1))
+    pain = [r for r in R if r['elegibilidade'] == 'elegivel' and r['familia_fonte'] == 'Tennis Warehouse' and r['arquivo_bruto'].startswith('bruto/lote3')
+            and r['tipo'] == 'playtest' and all((r['notas_normalizadas_0a1'] or {}).get(k) is not None for k in K)]
+    ger = [r['notas_normalizadas_0a1']['overall'] * 10 for r in pain if r['notas_normalizadas_0a1'].get('overall') is not None]
+    mg = sum(ger) / len(ger) if ger else None
+    TWP = {}
+    for r in sorted(pain, key=lambda r: -(r.get('ano_publicacao') or 0)):
+        for cid in r['catalogo_ids']:
+            if str(cid) in twd or str(cid) in TWP: continue
+            n = {k: r['notas_normalizadas_0a1'][k] * 10 for k in K}; mu = sum(n.values()) / 6
+            o = r['notas_normalizadas_0a1'].get('overall')
+            nt = len(re.findall(r':', r.get('revisor_id') or ''))
+            TWP[str(cid)] = {'d': {k: round(n[k] - mu, 3) for k in K}, 'n': max(3, nt), 'a': round(o * 10 - mg, 3) if (o is not None and mg) else None,
+                             'fonte': r['arquivo_bruto'] + ':' + str(r['linha_bruta'])}
+    return R, EVID, media_fonte, u93, snip, TWP
 
 def cobertura(R, media_fonte, u93, snip):
     L = ['# Cobertura das reviews (gerado por `racket/tools/reviews.py`)', '']
@@ -326,20 +424,24 @@ def cobertura(R, media_fonte, u93, snip):
     return '\n'.join(L) + '\n'
 
 def main():
-    R, EVID, media_fonte, u93, snip = gerar()
+    R, EVID, media_fonte, u93, snip, TWP = gerar()
     os.makedirs(DV, exist_ok=True)
     out = {'reviews.json': json.dumps({'gerado_por': 'racket/tools/reviews.py', 'registros': R}, ensure_ascii=False, indent=1) + '\n',
            'evid.json': json.dumps(EVID, ensure_ascii=False, indent=1, sort_keys=True) + '\n',
+           'twp.json': json.dumps(TWP, ensure_ascii=False, indent=1, sort_keys=True) + '\n',
            'cobertura.md': cobertura(R, media_fonte, u93, snip)}
     s = open(HTML, encoding='utf-8').read()
     novo = 'const EVID=' + json.dumps(EVID, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + ';\n'
     s2 = re.sub(r'const EVID=\{.*?\};\n', lambda m: novo, s) if 'const EVID=' in s else s
+    twp = 'const TWP=' + json.dumps({k: {x: v[x] for x in ('d', 'n', 'a')} for k, v in TWP.items()}, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + ';\n'
+    if 'const TWP=' in s2: s2 = re.sub(r'const TWP=\{.*?\};\n', lambda m: twp, s2)
+    else: s2 = re.sub(r'(const TWD=\{.*?\};\n)', lambda m: m.group(1) + twp, s2)
     if '--checar' in sys.argv:
         ok = all(os.path.exists(os.path.join(DV, k)) and open(os.path.join(DV, k), encoding='utf-8').read() == v for k, v in out.items()) and s2 == s
         print('reviews derivadas em dia' if ok else 'DESATUALIZADO: rode python3 racket/tools/reviews.py'); sys.exit(0 if ok else 1)
     for k, v in out.items(): open(os.path.join(DV, k), 'w', encoding='utf-8').write(v)
     if s2 != s: open(HTML, 'w', encoding='utf-8').write(s2)
-    print(f'{len(R)} registros · {sum(r["elegibilidade"]=="elegivel" for r in R)} elegíveis · EVID para {len(EVID)} versões do catálogo')
+    print(f'{len(R)} registros · {sum(r["elegibilidade"]=="elegivel" for r in R)} elegíveis · EVID para {len(EVID)} versões do catálogo · TWP (painel TW novo) para {len(TWP)}')
 
 if __name__ == '__main__':
     main()
