@@ -5,6 +5,49 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 16: lote 3 de reviews (ChatGPT, 15–16/11/2026)
+
+**O que entrou.** 5 partes, 148 linhas de 96 raquetes (`docs/racket/dados/reviews/bruto/lote3-*`, imutáveis). O importador `racket/tools/reviews.py` passa a ler o formato de 20 colunas.
+
+**Regras de importação:**
+- **Versão do catálogo pelo nome exato.** A linha fica só como contexto quando a página:
+  - diz outra geração (ano a mais de 1 de distância);
+  - não declara a geração, sem um marcador que bata com o catálogo (v9, v14, 8ª);
+  - traz cabeça ou padrão diferentes da ficha.
+- **Clientes:** só com 10 ou mais avaliações.
+- **Laboratório:** fica separado, não entra como nota de quadra.
+- **Faixa publicada** ("8～8,5"): vira o ponto médio, com a derivação registrada em `metodo_nota`.
+- **Mesmo site com nomes diferentes:** conta como uma família (Tennis Torasan; Padel Warehouse = Tennis Warehouse).
+- **Conferência:** se `bruto/conferencia-lote3-2026-11-16.json` existir, a linha com nota ou versão divergente vai para quarentena automaticamente.
+
+**Resultado da importação:**
+- 53 linhas elegíveis no lote 3; 190 na base inteira.
+- EVID passa de 12 para 28 versões do catálogo.
+- **TWP (novo):** painel da Tennis Warehouse para 35 versões que o TWD não tinha.
+  - Mesmo formato do TWD: `d` é o atributo menos a média da própria review; `a` é a nota geral menos a média dos painéis do lote; `n` é o número de testadores, no mínimo 3.
+  - Entra no motor pelo TWD, com a mesma regra de corroboração.
+
+**Efeito:**
+- A regra da rodada 12 continua: uma review só mexe no índice com 2 famílias independentes concordando.
+- Com ela, mudam os índices de 5 raquetes: Clash 100 Pro v3, Blade 98 18×20 v9, Blade 98 16×19 v10, Pure Drive 98 e Boom Team.
+- Top 3 de 31,4% → 37,8% (rodada 15) → 38,1% (rodada 16); MRR 0,286 → 0,287; parte de teste igual (42%).
+- Os 218 perfis fixos mudam o top 3 em 5 casos; o 1º lugar não muda em nenhum. O snapshot T12 foi atualizado.
+- Casos-guia continuam 15/15. Regressão 25/25.
+
+**Teste à parte (não aplicado): painel da TW valendo sozinho, sem segunda fonte.**
+
+| | antes do lote 3 | com o lote 3 |
+|---|---|---|
+| Top 3 | 34,4% | 37,1% |
+| MRR | 0,286 | 0,299 |
+| Top 1 | 12,7% | 14,4% |
+
+- Mudam 73 índices.
+- O lote 3 melhora o motor quando a TW pode valer sozinha. Mesmo assim, o top 3 fica abaixo da regra atual (38,1%), e a parte de teste cai de 42% para 38%.
+- Decisão: manter a corroboração. Os painéis novos passam a valer quando uma segunda fonte com nota concordar. Por isso as próximas coletas devem buscar fontes com nota por atributo para essas 35 versões.
+
+**Pendente.** A conferência das páginas está numa sessão do ambiente "sportdna", com saída na branch `claude/racket-lote3-conferencia`. Ela está parada à espera de confirmação para abrir as páginas em lote. Quando o JSON chegar, rodar `python3 racket/tools/reviews.py` de novo: as linhas divergentes saem sozinhas.
+
 ## Rodada 15: iniciante, raquete atual pesada e marcas de nicho (nov/2026)
 
 **Gatilho.** Teste real: mulher, 60 kg, iniciante, com uma Head Speed MP (300 g) que acha pesada. Ela segura no meio do cabo e diz que a raquete gira na mão. Recebeu uma Head Speed Pro de 310 g, depois a Gravity Pro e a Pro Staff 97. Peso ideal no relatório: 308 g. Num segundo teste, outra pessoa que quer comprar no Brasil viu a ProKennex Black Ace em 5º.
