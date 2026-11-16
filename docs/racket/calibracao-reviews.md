@@ -23,6 +23,17 @@
 - Continua grátis: onde ela acerta e o 1º ponto contra.
 - Fica para o relatório: o que falta e os demais pontos contra.
 
+**Ajuste do Gui (mesma rodada):**
+- A nota da atual volta a ficar borrada na prévia, assim como o KPI.
+- O veredito continua grátis, mas sem números, que permitiriam deduzir a nota. Os números aparecem no relatório.
+
+**Gerações anteriores.** 104 gerações antigas das linhas principais entram na busca da raquete atual como "geração anterior". Exemplos: Pure Drive 2018/2021, Pure Aero 2019/2023, Blade v7/v8, Clash v1/v2, Pro Staff 97 v13, Speed 2020/2022/2024, Gravity 2021/2023, EZONE 2020/2022, VCORE 7ª geração; VCORE Pro 97 e 100 apontam para Percept 97 e 100.
+- O cálculo usa a ficha da versão atual mais parecida da mesma linha (`GERACOES`, ligada pelo nome do catálogo).
+- A prévia e o relatório avisam: "geração anterior: usamos a ficha da X; peso, balanço e rigidez da sua podem variar um pouco".
+- Resposta salva sem raquete perde a geração antiga (`cleanAnswers`).
+- T27 confere que as 104 apontam para uma versão atual da mesma marca.
+- Nenhuma ficha antiga foi inventada: quando houver specs medidas das gerações antigas, elas podem virar raquetes próprias do catálogo.
+
 **Relatório:**
 - O veredito aparece também em "Sua atual × a nova".
 - "Top 10 e mapa do catálogo" vira uma seção própria, sempre aberta, com atalho no menu.

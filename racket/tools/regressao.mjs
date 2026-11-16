@@ -19,7 +19,7 @@
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
      T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
      T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
-     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual (rodada 17)
+     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual · T27 gerações anteriores (rodada 17)
      T19 estilo em 4 degraus (básico → completo) e compatibilidade · T20 resumo quando a raquete atual empata ou fica perto da recomendada
      T21 comparador sem placar e nas cores da marca
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
@@ -189,7 +189,12 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
   await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
   const o=await pg.evaluate(()=>{const V=window.__RK.verdictAtual,b={fit:95},P=[[2,'x']];
     return [V({fit:93,pen:P},b).k,V({fit:95,pen:[]},b).k,V({fit:88,pen:P},b).k,V({fit:84,pen:[]},b).k,V({fit:84,pen:P},b).k,V({fit:70,pen:P},b).k]});
-  await b.close();srv.close();return o})();
+  const o2=await pg.evaluate(()=>{const H=window.__RK,G=H.GERACOES;const lin=t=>t.replace(/ (v\d+|20\d\d.*|\d+ª geração|7ª geração)$/,'').split(' ')[0];
+    const ruins=G.filter(g=>!g.to||g.to.brand!==g.brand).map(g=>g.name);
+    const c=H.cleanAnswers({cur:'none',curOld:'Babolat Pure Drive 2021'});return {n:G.length,ok:G.length>=100&&!ruins.length,ruins,limpa:!('curOld' in c)}});
+  globalThis.X2=o2;await b.close();srv.close();return o})();
+ const X2=globalThis.X2;
+ teste('T27 gerações anteriores: todas apontam para uma versão atual da mesma marca e linha; sem raquete, a geração antiga some',X2.ok&&X2.limpa,`${X2.n} gerações${X2.ruins.length?' · sem destino: '+X2.ruins.join(', '):''}`);
  teste('T26 veredito da atual: aderente (90%+ e até 3 pontos), ajuste fino (85%+ e até 8, ou sem nada contra), trocar',JSON.stringify(X)===JSON.stringify(['fica','fica','fino','fino','trocar','trocar']),X.join(', '))}
 
 /* ---------- relatórios ---------- */
