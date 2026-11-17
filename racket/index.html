@@ -271,6 +271,25 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .mini .panel{gap:10px}
 .fx{position:relative;flex:none;margin-right:6px;font-size:11px;font-weight:700;border-radius:99px;padding:1px 8px;white-space:nowrap;margin-left:6px}
 .fx-ideal{background:var(--ball);color:var(--ball-ink)}.fx-mboa{background:var(--soft);color:var(--ink)}.fx-boa{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.crad{display:flex;flex-direction:column;gap:10px}
+.crad svg{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 24px rgba(6,34,44,.25))}
+.crad .crp{transform-origin:230px 200px;animation:crgrow .7s cubic-bezier(.2,.8,.2,1) both}
+.crad .crs[data-s="1"] .crp{animation-delay:.12s}.crad .crs[data-s="2"] .crp{animation-delay:.22s}
+@keyframes crgrow{from{transform:scale(.15);opacity:0}to{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.crad .crp{animation:none}}
+.crad .crl.on{fill:#DDF247;fill-opacity:1}
+.crkeys{display:flex;flex-wrap:wrap;gap:6px}
+.crkeys button,.crleg button{font:600 13px "DM Sans",sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 12px;cursor:pointer;min-height:32px}
+.crkeys button[aria-pressed="true"]{background:#0E4D64;color:#FFFFFF;border-color:#0E4D64}
+.crout{margin:0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:14px}
+.crout b{font-family:Archivo,sans-serif}
+.crleg{display:flex;flex-wrap:wrap;gap:6px}
+.crleg button[aria-pressed="false"]{opacity:.5;text-decoration:line-through}
+.crleg i{display:inline-block;width:16px;height:10px;border-radius:3px;margin-right:7px;vertical-align:middle}
+.crleg i.ca{background:linear-gradient(135deg,#DDF247,#7FD0E6)}
+.crleg i.cb{height:0;border-top:3px dashed #3BA9C9;border-radius:0}
+.crleg i.ci{background:none;border:1.5px dashed var(--ink)}
+.promotag{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:99px;padding:3px 10px;white-space:nowrap}
 .freecard{background:color-mix(in srgb,var(--ball) 16%,var(--surface));border:2px solid var(--ball)}
 .freecard .eyebrow,.freecard .note,.freecard .gl,.freecard .muted{color:var(--ink)}
 .freebadge{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:3px 10px;margin:0 0 8px}
@@ -636,7 +655,7 @@ details.more[open]>summary{margin-bottom:10px}
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>
       <span>RACKET DNA<small>by SPORT DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Prévia grátis · relatório R$ 19,99</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Prévia grátis · relatório R$ 19,99 · preço de lançamento</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -1200,6 +1219,41 @@ $('#next').addEventListener('click',()=>{
 
 /* ---------- Duelo ---------- */
 const RANKS={};KEYS.forEach(k=>{RANKS[k]={};RK.forEach(r=>{RANKS[k][r.id]=1+RK.filter(x=>x.ix[k]>r.ix[k]).length})});
+/* rodada 21: hexágono do comparador no visual do card (fundo petróleo, anéis translúcidos, A em degradê lima → azul, B em contorno).
+   Interativo: tocar num atributo mostra os valores; a legenda liga e desliga cada série. */
+let crSeq=0;
+function cardRadar(series){
+  const id='cr'+(++crSeq),cx=230,cy=200,R=112,n=6;
+  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+Math.cos(a)*R*v/10,cy+Math.sin(a)*R*v/10]};
+  const poly=v=>KEYS.map((k,i)=>pt(i,typeof v==='number'?v:v[k]).map(z=>z.toFixed(1)).join(',')).join(' ');
+  const cor=s=>s.ideal?'#FFFFFF':s.b?'#7FD0E6':'#DDF247';
+  let g=`<defs><linearGradient id="${id}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E4D64"/><stop offset="1" stop-color="#06222C"/></linearGradient>
+    <radialGradient id="${id}fa" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#DDF247" stop-opacity=".92"/><stop offset="1" stop-color="#7FD0E6" stop-opacity=".62"/></radialGradient></defs>
+    <rect x="0" y="0" width="460" height="400" rx="26" fill="url(#${id}bg)"/>
+    <circle cx="420" cy="38" r="16" fill="#DDF247"/>`;
+  [10,7.5,5,2.5].forEach((v,i)=>{g+=`<polygon points="${poly(v)}" fill="#FFFFFF" fill-opacity="${i%2?.04:.08}" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="1.2"/>`});
+  KEYS.forEach((k,i)=>{const p=pt(i,10);g+=`<line x1="${cx}" y1="${cy}" x2="${p[0].toFixed(1)}" y2="${p[1].toFixed(1)}" stroke="#FFFFFF" stroke-opacity=".12"/>`});
+  series.forEach((s,si)=>{const c=cor(s);
+    g+=`<g class="crs" data-s="${si}"><polygon class="crp" points="${poly(s.v)}" fill="${s.ideal||s.b?'none':`url(#${id}fa)`}" stroke="${c}" stroke-width="${s.ideal?1.6:s.b?2.4:3}" ${s.ideal?'stroke-dasharray="5 5"':s.b?'stroke-dasharray="7 4"':''} stroke-linejoin="round"/>`+
+      (s.ideal?'':KEYS.map((k,i)=>{const q=pt(i,s.v[k]);return `<circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="${s.b?3.6:4.6}" fill="${s.b?'#06222C':c}" stroke="${c}" stroke-width="2"/>`}).join(''))+'</g>'});
+  KEYS.forEach((k,i)=>{const l=pt(i,12.7);const anc=Math.abs(l[0]-cx)<5?'middle':l[0]>cx?'start':'end';const y=l[1]+(l[1]<cy-60?-2:l[1]>cy+60?10:4);
+    g+=`<text class="crl" data-k="${k}" x="${l[0].toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anc}" font-size="13.5" font-weight="700" font-family="DM Sans, sans-serif" fill="#FFFFFF" fill-opacity=".9">${LBL[k]}</text>`});
+  const main=series.filter(s=>!s.ideal);
+  return `<div class="crad" id="${id}">
+    <svg viewBox="0 0 460 400" role="img" data-a11y="1" aria-label="Hexágono de índices de 0 a 10. ${series.map(s=>esc(s.name)+': '+KEYS.map(k=>LBL[k]+' '+dec(s.v[k])).join(', ')).join('. ')}.">${g}</svg>
+    <div class="crkeys" role="group" aria-label="Ver um atributo">${KEYS.map((k,i)=>`<button type="button" data-cra="${k}" aria-pressed="${i===0}">${LBL[k]}</button>`).join('')}</div>
+    <p class="crout" aria-live="polite">${crTxt(series,KEYS[0])}</p>
+    <div class="crleg" role="group" aria-label="Mostrar ou esconder no hexágono">${series.map((s,si)=>`<button type="button" data-crs="${si}" aria-pressed="true"><i class="${s.ideal?'ci':s.b?'cb':'ca'}"></i>${esc(s.name)}</button>`).join('')}</div>
+    <script type="application/json" class="crdata">${JSON.stringify(series.map(s=>({n:s.name,v:s.v,i:!!s.ideal}))).replace(/</g,'\\u003c')}<\/script></div>`;
+}
+function crTxt(series,k){return `<b>${LBL[k]}</b> ${series.map(s=>`<span>${esc(s.name)} <strong>${dec(s.v[k])}</strong></span>`).join('')}`}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-cra]'),sb=e.target.closest('[data-crs]');const box=(a||sb)&&(a||sb).closest('.crad');if(!box)return;
+  if(a){let ser=[];try{ser=JSON.parse(box.querySelector('.crdata').textContent).map(x=>({name:x.n,v:x.v,ideal:x.i}))}catch(err){}
+    box.querySelectorAll('[data-cra]').forEach(b=>b.setAttribute('aria-pressed',b===a));box.querySelector('.crout').innerHTML=crTxt(ser,a.dataset.cra);
+    box.querySelectorAll('.crl').forEach(t=>t.classList.toggle('on',t.dataset.k===a.dataset.cra))}
+  if(sb){const on=sb.getAttribute('aria-pressed')!=='true';sb.setAttribute('aria-pressed',on);const g=box.querySelector(`.crs[data-s="${sb.dataset.crs}"]`);if(g)g.style.display=on?'':'none'}
+});
 function duelHTML(a,b,withFit){
   /* rodada 14: sem placar. Não existe "ganhou" atributo por atributo: maior nem sempre é melhor para quem joga.
      Com o teste feito, cada barra mostra o seu ideal (lima) e o DNA Score de cada uma para você. */
@@ -1210,13 +1264,13 @@ function duelHTML(a,b,withFit){
   const mao=diffMao(a,b);
   const leitura=`<p class="verdict"><strong>O que muda na mão.</strong> ${mao.length?`Da ${esc(a.model)} para a ${esc(b.model)}: ${jnE(mao)}.`:'Na mão, as duas são muito parecidas.'} ${fa?`Para o seu jogo, a ${esc(a.model)} fica com ${fa.fit}% e a ${esc(b.model)} com ${fb.fit}%. O DNA Score compara cada uma com o seu perfil, não uma com a outra: uma raquete equilibrada pode servir melhor do que a que tem número maior em vários atributos.`:'Os números mostram como cada uma se comporta, não qual é melhor. Faça o teste para ver qual encaixa no seu jogo.'}</p>`;
   const sp=[['wt','wt',' g',0],['sw','sw','',0],['bal','bal',' mm',0],['ra','ra',' RA',0],['head','head',' pol²',0],['pat','pat','',1],['Preço no Brasil','price','',2]];
-  const series=[{name:a.model,v:a.ix,c:'var(--pri)',solid:true},{name:b.model,v:b.ix,c:'var(--ink)',dash:true}];if(T)series.unshift({name:'Seu ideal',v:T,c:'var(--ink)',ideal:true});
+  const series=[{name:a.model,v:a.ix},{name:b.model,v:b.ix,b:true}];if(T)series.push({name:'Seu ideal',v:T,ideal:true});
   return `<div class="dhead"><div class="a"><p class="eyebrow">${esc(a.brand)}</p><h3>${esc(a.model)}</h3></div><div class="vs" aria-hidden="true">×</div><div class="b"><p class="eyebrow">${esc(b.brand)}</p><h3>${esc(b.model)}</h3></div></div>
   ${fa?`<div class="cmpfit"><div class="kpi"><b>${fa.fit}%</b><span>DNA Score para você</span></div><div class="kpi" style="text-align:right"><b>${fb.fit}%</b><span>DNA Score para você</span></div></div>`:''}
   <div class="drows">${rows}</div>
   ${T?'<p class="note" style="margin:0">Marca lima: o seu ideal em cada atributo. Perto dela é melhor para você, esteja o número alto ou baixo.</p>':''}
   ${leitura}
-  <div class="two"><div>${radar(series)}</div>
+  <div class="two"><div>${cardRadar(series)}</div>
   <div><div class="tbl"><table class="dspec" style="min-width:0"><thead><tr><th>Ficha</th><th style="color:var(--pri)">${esc(a.model)}</th><th>${esc(b.model)}</th></tr></thead><tbody>${sp.map(([l,k,u,t])=>{const x=a[k],y=b[k];const fx=t===1?x.replace('x','×'):t===2?(x?(a.usd?'~':'')+'R$ '+fmt(x[0]):'—'):x+u,fy=t===1?y.replace('x','×'):t===2?(y?(b.usd?'~':'')+'R$ '+fmt(y[0]):'—'):y+u;return `<tr><td>${GLOS[l]?gl(l):l}</td><td>${fx}</td><td>${fy}</td></tr>`}).join('')}<tr><td>${gl('pro','Profissionais na linha')}</td><td style="font-family:var(--f-body)">${PROS[a.id]?PROS[a.id].p.slice(0,3).map(p=>esc(p[1])).join(', '):'—'}</td><td style="font-family:var(--f-body)">${PROS[b.id]?PROS[b.id].p.slice(0,3).map(p=>esc(p[1])).join(', '):'—'}</td></tr></tbody></table></div>
   <p class="note" style="margin-top:8px">Índices de 0 a 10 calculados a partir das specs medidas.</p></div></div>`;
 }
@@ -1231,7 +1285,7 @@ function duelBadge(){$('#duelBadge').textContent=duelOpen()?'Comparador liberado
 const REPORT_PITCH=`<ul><li>As 3 raquetes que mais encaixam no seu jogo, com o ranking dos 10</li><li>Comparador ilimitado entre as ${RK.length} raquetes, com o DNA Score de cada uma para você</li><li>Corda e tensão para a nova e para a sua raquete atual</li><li>Reteste grátis em 90 dias e garantia de 7 dias</li></ul>`;
 function duelLock(){
   $('#duelOut').innerHTML=`<div class="single" style="padding:8px 0"><p class="eyebrow">Você já usou a comparação grátis</p><h3 style="margin:6px 0 10px">Compare quantas raquetes quiser no relatório</h3>
-  <div class="plan best" style="max-width:520px"><h3>Relatório RACKET DNA</h3><span class="price">R$ 19,99</span>${REPORT_PITCH}<button class="btn btn-go" type="button" data-rep>Fazer o teste · prévia grátis</button></div></div>`;
+  <div class="plan best" style="max-width:520px"><h3>Relatório RACKET DNA</h3><span class="price">R$ 19,99</span><span class="promotag" style="align-self:flex-start">Preço de lançamento</span>${REPORT_PITCH}<button class="btn btn-go" type="button" data-rep>Fazer o teste · prévia grátis</button></div></div>`;
   $('#duelOut [data-rep]').onclick=()=>{exampleSession=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()};
 }
 function renderDuel(){
@@ -1660,6 +1714,7 @@ function renderPreview(){
           <li>Sugestão de corda, espessura e tensão.</li>
           <li>Comparador ilimitado para colocar as raquetes lado a lado.</li>
         </ul>
+        <p class="promo" style="margin:0"><span class="promotag">Preço de lançamento</span> R$ 19,99 por tempo limitado, enquanto o RACKET DNA é novo.</p>
         <button class="btn btn-go" type="button" data-buy="2" data-position="preview_primary" style="width:100%">Revelar minhas raquetes · R$ 19,99</button>
         <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF. Comparador incluído, reteste grátis em 90 dias e garantia de 7 dias.</p>
         <div class="fin">${top.map((x,i)=>`
@@ -1690,7 +1745,7 @@ function renderPreview(){
     <div class="single">
       <p class="eyebrow">Um relatório, tudo incluído</p>
       <h2 style="margin:6px 0 4px">Relatório RACKET DNA</h2>
-      <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="muted">pagamento único, por cartão ou Pix</span></div>
+      <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="promotag">Preço de lançamento</span><span class="muted">pagamento único, por cartão ou Pix</span></div>
       <ul>
         <li>As 3 raquetes que mais encaixam, reveladas, com o ranking dos 10</li>
         <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>
