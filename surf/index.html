@@ -248,6 +248,7 @@ details.mini{margin-top:14px}details.mini>summary{cursor:pointer;font-weight:700
 .opt-tag{display:inline-block;vertical-align:2px;margin-left:8px;font-size:12px;font-weight:700;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:2px 9px}
 .bdim{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:12px}.bd{display:flex;flex-direction:column;gap:6px;min-width:0}.bd label{font-weight:700;font-size:14px}
 .bdu{display:flex;align-items:center;gap:6px}.bdu span{font-size:14px;color:var(--muted)}.bdim input{font:inherit;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:11px 10px;min-height:48px;width:100%;min-width:0}.bdu input{width:72px}
+.promotag{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:99px;padding:3px 10px;white-space:nowrap}
 .plan.one{border:2px solid var(--pri);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:14px 24px;align-items:start}.plan.one .btn{grid-column:1/-1}.onep{display:flex;flex-direction:column;gap:4px}
 .hboard{max-width:620px;width:100%;margin:4px auto 0}
 .htiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
@@ -1532,6 +1533,7 @@ function renderPreview(){
             <div><span class="blur" aria-label="Prancha oculta até o desbloqueio">${PN[x.k].replace(/[^ ]/g,'X')}</span><div class="meter"><i style="width:${x.fit}%"></i></div></div>
             <span class="pct">${x.fit}%</span></div>`).join('')}
         </div>
+        <p class="promo" style="margin:0"><span class="promotag">Preço de lançamento</span> ${PRICE_TXT} por tempo limitado, enquanto o SURF DNA é novo.</p>
         <button class="btn btn-go" type="button" data-buy style="width:100%">Revelar minha prancha · ${PRICE_TXT}</button>
         <p class="note" style="margin:0"><b>Errar a prancha custa caro: uma nova sai por R$ 1.500 a R$ 4.000.</b> O relatório custa R$ 19,99, pagamento único por cartão ou Pix, e sai na hora, também em PDF.</p>
       </div>
@@ -1561,7 +1563,7 @@ function renderPreview(){
   <div class="panel">
     <h2>Revele sua prancha</h2>
     <div class="plan one">
-      <div class="onep"><h3>Seu relatório completo</h3><span class="price">${PRICE_TXT}</span><span class="note">pagamento único</span></div>
+      <div class="onep"><h3>Seu relatório completo</h3><span class="price">${PRICE_TXT}</span><span class="promotag" style="align-self:flex-start">Preço de lançamento</span><span class="note">pagamento único</span></div>
       <ul><li>A prancha ideal, explicada em palavras simples</li><li>Todas as 17 variáveis: medidas, litros, formato, quilhas e construção</li><li>As outras finalistas e o comparador entre modelos</li><li>Guia para achar a prancha numa loja e ficha técnica para qualquer shaper</li><li>Relatório em PDF (A4), ${PDF_PAGES} páginas, para baixar e levar à loja</li><li>${COACH_ON?'Seu DNA: briefing pronto para fazer a prancha com um coach':'Seu DNA: cards da sua prancha e do seu jeito de surfar para compartilhar'}</li></ul>
       <button class="btn btn-go" type="button" data-buy>Pagar ${PRICE_TXT} com cartão ou Pix</button>
     </div>
