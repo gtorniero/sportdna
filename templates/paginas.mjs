@@ -575,12 +575,12 @@ export function paginas(h) {
    crumb: 'Como ganhamos dinheiro',
    body: date => inst({crumb: 'Como ganhamos dinheiro', titulo: 'Como o SPORT DNA ganha dinheiro', dek: 'De onde vem a receita, o que nunca está à venda e onde pode haver comissão.', date, corpo: `
     <h2>Relatórios pagos</h2>
-    <p>A principal receita é a venda dos relatórios completos. O teste e a prévia com a análise são grátis.</p>
+    <p>O RUN DNA oferece teste e relatório completo gratuitos. No RACKET DNA e no SURF DNA, o teste e a prévia são grátis; o relatório completo continua pago.</p>
     ${precos}
     <h2>O que não está à venda</h2>
     <p>Nenhuma marca, loja ou fabricante paga para aparecer no resultado nem para mudar a ordem. O ranking é calculado antes e sem olhar para comissão. Os guias de compra, como o da <a ${go('melhor-raquete')}>melhor raquete de tênis</a>, saem do mesmo motor dos testes.</p>
     <h2>Links de afiliado</h2>
-    <p>Hoje os relatórios não têm links de afiliado. Se passarem a ter, valem estas regras:</p>
+    <p>Os relatórios de RUN e RACKET podem incluir ofertas do Mercado Livre quando existe um anúncio verificado para o modelo recomendado. Valem estas regras:</p>
     <ul>
      <li>o link aparece só depois da recomendação e não muda a conta;</li>
      <li>o link é identificado como de afiliado;</li>

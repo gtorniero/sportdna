@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-17",
+  "productionBase": "4642f7e",
+  "existingMeasurementAndPaymentTests": 38,
+  "backendTestsBeforeNewGuard": 33,
+  "newGuardAndAffiliateTests": 18,
+  "axe": {
+    "runLanding": 0,
+    "racketLanding": 0,
+    "surfLanding": 0,
+    "runExampleWithOffer": 0,
+    "racketExampleWithOffer": 0
+  },
+  "manual": [
+    "RUN questionnaire four steps -> full report without checkout",
+    "RUN PDF UI confirmed downloaded",
+    "RACKET and SURF paid copy preserved",
+    "Both official links feature correct product"
+  ],
+  "coverage": {
+    "verified": 2,
+    "catalog": 395,
+    "pending": 393
+  }
+}

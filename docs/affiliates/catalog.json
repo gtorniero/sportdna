@@ -1,0 +1,3318 @@
+[
+  {
+    "key": "run:ASICS Dynablast 6",
+    "sport": "run",
+    "name": "ASICS Dynablast 6",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS GT-1000 15",
+    "sport": "run",
+    "name": "ASICS GT-1000 15",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS GT-2000 15",
+    "sport": "run",
+    "name": "ASICS GT-2000 15",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Contend 10",
+    "sport": "run",
+    "name": "ASICS Gel-Contend 10",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Cumulus 28",
+    "sport": "run",
+    "name": "ASICS Gel-Cumulus 28",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Excite 11",
+    "sport": "run",
+    "name": "ASICS Gel-Excite 11",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Hypersonic 6",
+    "sport": "run",
+    "name": "ASICS Gel-Hypersonic 6",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Kayano 33",
+    "sport": "run",
+    "name": "ASICS Gel-Kayano 33",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Nagoya 8",
+    "sport": "run",
+    "name": "ASICS Gel-Nagoya 8",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Nimbus 28",
+    "sport": "run",
+    "name": "ASICS Gel-Nimbus 28",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Pulse 17",
+    "sport": "run",
+    "name": "ASICS Gel-Pulse 17",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Gel-Sonoma 8",
+    "sport": "run",
+    "name": "ASICS Gel-Sonoma 8",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Magic Speed 5",
+    "sport": "run",
+    "name": "ASICS Magic Speed 5",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Megablast",
+    "sport": "run",
+    "name": "ASICS Megablast",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Metaspeed Edge Tokyo",
+    "sport": "run",
+    "name": "ASICS Metaspeed Edge Tokyo",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Metaspeed Sky Tokyo",
+    "sport": "run",
+    "name": "ASICS Metaspeed Sky Tokyo",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Novablast 6",
+    "sport": "run",
+    "name": "ASICS Novablast 6",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Sonicblast",
+    "sport": "run",
+    "name": "ASICS Sonicblast",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Superblast 3",
+    "sport": "run",
+    "name": "ASICS Superblast 3",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Trabuco 14",
+    "sport": "run",
+    "name": "ASICS Trabuco 14",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Trabuco Max 5",
+    "sport": "run",
+    "name": "ASICS Trabuco Max 5",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:ASICS Versablast 4",
+    "sport": "run",
+    "name": "ASICS Versablast 4",
+    "brand": "ASICS",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Adrenaline GTS 25",
+    "sport": "run",
+    "name": "Brooks Adrenaline GTS 25",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Caldera 8",
+    "sport": "run",
+    "name": "Brooks Caldera 8",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Cascadia 19",
+    "sport": "run",
+    "name": "Brooks Cascadia 19",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Catamount 4",
+    "sport": "run",
+    "name": "Brooks Catamount 4",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Ghost 17",
+    "sport": "run",
+    "name": "Brooks Ghost 17",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Ghost Max 3",
+    "sport": "run",
+    "name": "Brooks Ghost Max 3",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Glycerin 22",
+    "sport": "run",
+    "name": "Brooks Glycerin 22",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Glycerin GTS 22",
+    "sport": "run",
+    "name": "Brooks Glycerin GTS 22",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Glycerin Max 2",
+    "sport": "run",
+    "name": "Brooks Glycerin Max 2",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Hyperion 3",
+    "sport": "run",
+    "name": "Brooks Hyperion 3",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Hyperion Elite 5",
+    "sport": "run",
+    "name": "Brooks Hyperion Elite 5",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Hyperion Max 3",
+    "sport": "run",
+    "name": "Brooks Hyperion Max 3",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Launch 11",
+    "sport": "run",
+    "name": "Brooks Launch 11",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Revel 9",
+    "sport": "run",
+    "name": "Brooks Revel 9",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Brooks Trace 4",
+    "sport": "run",
+    "name": "Brooks Trace 4",
+    "brand": "Brooks",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Fila Float Maxxi 2",
+    "sport": "run",
+    "name": "Fila Float Maxxi 2",
+    "brand": "Fila",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Fila KR7 Pro Speed Tech",
+    "sport": "run",
+    "name": "Fila KR7 Pro Speed Tech",
+    "brand": "Fila",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Fila Racer Carbon 3",
+    "sport": "run",
+    "name": "Fila Racer Carbon 3",
+    "brand": "Fila",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Fila Racer Skytrail",
+    "sport": "run",
+    "name": "Fila Racer Skytrail",
+    "brand": "Fila",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Fila Speedrocker Skyfoam",
+    "sport": "run",
+    "name": "Fila Speedrocker Skyfoam",
+    "brand": "Fila",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Fila Speedzone 2",
+    "sport": "run",
+    "name": "Fila Speedzone 2",
+    "brand": "Fila",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Arahi 8",
+    "sport": "run",
+    "name": "Hoka Arahi 8",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Bondi 9",
+    "sport": "run",
+    "name": "Hoka Bondi 9",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Challenger 8",
+    "sport": "run",
+    "name": "Hoka Challenger 8",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Cielo X1 3.0",
+    "sport": "run",
+    "name": "Hoka Cielo X1 3.0",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Clifton 11",
+    "sport": "run",
+    "name": "Hoka Clifton 11",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Clifton Pro",
+    "sport": "run",
+    "name": "Hoka Clifton Pro",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Gaviota 6",
+    "sport": "run",
+    "name": "Hoka Gaviota 6",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Mach 7",
+    "sport": "run",
+    "name": "Hoka Mach 7",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Mach X 3",
+    "sport": "run",
+    "name": "Hoka Mach X 3",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Mafate 5",
+    "sport": "run",
+    "name": "Hoka Mafate 5",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Mafate X",
+    "sport": "run",
+    "name": "Hoka Mafate X",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Rincon 4",
+    "sport": "run",
+    "name": "Hoka Rincon 4",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Rocket X 3",
+    "sport": "run",
+    "name": "Hoka Rocket X 3",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Skyflow",
+    "sport": "run",
+    "name": "Hoka Skyflow",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Skyward X 2",
+    "sport": "run",
+    "name": "Hoka Skyward X 2",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Speedgoat 7",
+    "sport": "run",
+    "name": "Hoka Speedgoat 7",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Tecton X 3",
+    "sport": "run",
+    "name": "Hoka Tecton X 3",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Hoka Transport 2",
+    "sport": "run",
+    "name": "Hoka Transport 2",
+    "brand": "Hoka",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Enigma 3",
+    "sport": "run",
+    "name": "Mizuno Enigma 3",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Hyperwarp Elite",
+    "sport": "run",
+    "name": "Mizuno Hyperwarp Elite",
+    "brand": "Mizuno",
+    "status": "verified",
+    "offerId": "MLB5351658807"
+  },
+  {
+    "key": "run:Mizuno Hyperwarp Pro",
+    "sport": "run",
+    "name": "Mizuno Hyperwarp Pro",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Hyperwarp Pure",
+    "sport": "run",
+    "name": "Mizuno Hyperwarp Pure",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Neo Aura",
+    "sport": "run",
+    "name": "Mizuno Neo Aura",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Neo Vista 3",
+    "sport": "run",
+    "name": "Mizuno Neo Vista 3",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Neo Zen 2",
+    "sport": "run",
+    "name": "Mizuno Neo Zen 2",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Victory",
+    "sport": "run",
+    "name": "Mizuno Victory",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Daichi 9",
+    "sport": "run",
+    "name": "Mizuno Wave Daichi 9",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Falcon 4",
+    "sport": "run",
+    "name": "Mizuno Wave Falcon 4",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Frontier 15",
+    "sport": "run",
+    "name": "Mizuno Wave Frontier 15",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Horizon 9",
+    "sport": "run",
+    "name": "Mizuno Wave Horizon 9",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Ibuki 4",
+    "sport": "run",
+    "name": "Mizuno Wave Ibuki 4",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Inspire 22",
+    "sport": "run",
+    "name": "Mizuno Wave Inspire 22",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Mirai 5",
+    "sport": "run",
+    "name": "Mizuno Wave Mirai 5",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Mujin 11",
+    "sport": "run",
+    "name": "Mizuno Wave Mujin 11",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Prophecy 15",
+    "sport": "run",
+    "name": "Mizuno Wave Prophecy 15",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Prorunner 25",
+    "sport": "run",
+    "name": "Mizuno Wave Prorunner 25",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Rebellion Flash 3",
+    "sport": "run",
+    "name": "Mizuno Wave Rebellion Flash 3",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Rebellion Pro 3",
+    "sport": "run",
+    "name": "Mizuno Wave Rebellion Pro 3",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Rebellion Sonic 2",
+    "sport": "run",
+    "name": "Mizuno Wave Rebellion Sonic 2",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Rider 30",
+    "sport": "run",
+    "name": "Mizuno Wave Rider 30",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Sky 9",
+    "sport": "run",
+    "name": "Mizuno Wave Sky 9",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Titan 3",
+    "sport": "run",
+    "name": "Mizuno Wave Titan 3",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Mizuno Wave Way 4",
+    "sport": "run",
+    "name": "Mizuno Wave Way 4",
+    "brand": "Mizuno",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance 1080 v15",
+    "sport": "run",
+    "name": "New Balance 1080 v15",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance DynaSoft Nitrel v6",
+    "sport": "run",
+    "name": "New Balance DynaSoft Nitrel v6",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Ellipse v1",
+    "sport": "run",
+    "name": "New Balance Ellipse v1",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam 520 v9",
+    "sport": "run",
+    "name": "New Balance Fresh Foam 520 v9",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam 680 v9",
+    "sport": "run",
+    "name": "New Balance Fresh Foam 680 v9",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam Arishi v4",
+    "sport": "run",
+    "name": "New Balance Fresh Foam Arishi v4",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X 860 v15",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X 860 v15",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X 880 v15",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X 880 v15",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X Balos",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X Balos",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X Garoé v2",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X Garoé v2",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X Hierro v9",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X Hierro v9",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X Kaiha Road v2",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X Kaiha Road v2",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X More Trail v3",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X More Trail v3",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X More v6",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X More v6",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance Fresh Foam X Vongo v6",
+    "sport": "run",
+    "name": "New Balance Fresh Foam X Vongo v6",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance FuelCell Propel v5",
+    "sport": "run",
+    "name": "New Balance FuelCell Propel v5",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance FuelCell Rebel Trail",
+    "sport": "run",
+    "name": "New Balance FuelCell Rebel Trail",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance FuelCell Rebel v5",
+    "sport": "run",
+    "name": "New Balance FuelCell Rebel v5",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance FuelCell SuperComp Pacer v2",
+    "sport": "run",
+    "name": "New Balance FuelCell SuperComp Pacer v2",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance FuelCell SuperComp Trail v2",
+    "sport": "run",
+    "name": "New Balance FuelCell SuperComp Trail v2",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance FuelCell SuperComp Trainer v3",
+    "sport": "run",
+    "name": "New Balance FuelCell SuperComp Trainer v3",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance SuperComp Elite v6",
+    "sport": "run",
+    "name": "New Balance SuperComp Elite v6",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:New Balance SuperComp Rebel v1",
+    "sport": "run",
+    "name": "New Balance SuperComp Rebel v1",
+    "brand": "New Balance",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike ACG Pegasus Trail",
+    "sport": "run",
+    "name": "Nike ACG Pegasus Trail",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike ACG Ultrafly Trail",
+    "sport": "run",
+    "name": "Nike ACG Ultrafly Trail",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike ACG Zegama Trail",
+    "sport": "run",
+    "name": "Nike ACG Zegama Trail",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Alphafly 3",
+    "sport": "run",
+    "name": "Nike Alphafly 3",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Alphafly 4",
+    "sport": "run",
+    "name": "Nike Alphafly 4",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Downshifter 14",
+    "sport": "run",
+    "name": "Nike Downshifter 14",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Interact Run",
+    "sport": "run",
+    "name": "Nike Interact Run",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Invincible 3",
+    "sport": "run",
+    "name": "Nike Invincible 3",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Journey Run",
+    "sport": "run",
+    "name": "Nike Journey Run",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Juniper Trail 3",
+    "sport": "run",
+    "name": "Nike Juniper Trail 3",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Kiger 10",
+    "sport": "run",
+    "name": "Nike Kiger 10",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Pegasus 42",
+    "sport": "run",
+    "name": "Nike Pegasus 42",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Pegasus Plus 2",
+    "sport": "run",
+    "name": "Nike Pegasus Plus 2",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Pegasus Premium",
+    "sport": "run",
+    "name": "Nike Pegasus Premium",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Quest 6",
+    "sport": "run",
+    "name": "Nike Quest 6",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Revolution 8",
+    "sport": "run",
+    "name": "Nike Revolution 8",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Rival Fly 4",
+    "sport": "run",
+    "name": "Nike Rival Fly 4",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Streakfly 2",
+    "sport": "run",
+    "name": "Nike Streakfly 2",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Structure 26",
+    "sport": "run",
+    "name": "Nike Structure 26",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Structure Plus",
+    "sport": "run",
+    "name": "Nike Structure Plus",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Vaporfly 4",
+    "sport": "run",
+    "name": "Nike Vaporfly 4",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Vomero 18",
+    "sport": "run",
+    "name": "Nike Vomero 18",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Vomero Plus",
+    "sport": "run",
+    "name": "Nike Vomero Plus",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Vomero Premium",
+    "sport": "run",
+    "name": "Nike Vomero Premium",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Wildhorse 10",
+    "sport": "run",
+    "name": "Nike Wildhorse 10",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Winflo 12",
+    "sport": "run",
+    "name": "Nike Winflo 12",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Nike Zoom Fly 6",
+    "sport": "run",
+    "name": "Nike Zoom Fly 6",
+    "brand": "Nike",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre 4",
+    "sport": "run",
+    "name": "Olympikus Corre 4",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre 5",
+    "sport": "run",
+    "name": "Olympikus Corre 5",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Grafeno 3",
+    "sport": "run",
+    "name": "Olympikus Corre Grafeno 3",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Max 2",
+    "sport": "run",
+    "name": "Olympikus Corre Max 2",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Pace",
+    "sport": "run",
+    "name": "Olympikus Corre Pace",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Supra 2",
+    "sport": "run",
+    "name": "Olympikus Corre Supra 2",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Trilha 3",
+    "sport": "run",
+    "name": "Olympikus Corre Trilha 3",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Turbo",
+    "sport": "run",
+    "name": "Olympikus Corre Turbo",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Corre Vento 3",
+    "sport": "run",
+    "name": "Olympikus Corre Vento 3",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Inverse 2",
+    "sport": "run",
+    "name": "Olympikus Inverse 2",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Pride 4",
+    "sport": "run",
+    "name": "Olympikus Pride 4",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Veloz 4",
+    "sport": "run",
+    "name": "Olympikus Veloz 4",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Olympikus Volta 2",
+    "sport": "run",
+    "name": "Olympikus Volta 2",
+    "brand": "Olympikus",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudboom Echo 3",
+    "sport": "run",
+    "name": "On Cloudboom Echo 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudboom Max",
+    "sport": "run",
+    "name": "On Cloudboom Max",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudboom Strike 2",
+    "sport": "run",
+    "name": "On Cloudboom Strike 2",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudboom Volt",
+    "sport": "run",
+    "name": "On Cloudboom Volt",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudboom Zone",
+    "sport": "run",
+    "name": "On Cloudboom Zone",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudflow 5",
+    "sport": "run",
+    "name": "On Cloudflow 5",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudflyer 5",
+    "sport": "run",
+    "name": "On Cloudflyer 5",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudmonster 3",
+    "sport": "run",
+    "name": "On Cloudmonster 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudmonster 3 Hyper",
+    "sport": "run",
+    "name": "On Cloudmonster 3 Hyper",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudrunner 3",
+    "sport": "run",
+    "name": "On Cloudrunner 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudrunner 3 Max",
+    "sport": "run",
+    "name": "On Cloudrunner 3 Max",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudsoma",
+    "sport": "run",
+    "name": "On Cloudsoma",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudstratus 3",
+    "sport": "run",
+    "name": "On Cloudstratus 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudsurfer 3",
+    "sport": "run",
+    "name": "On Cloudsurfer 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudsurfer Max",
+    "sport": "run",
+    "name": "On Cloudsurfer Max",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudsurfer Next",
+    "sport": "run",
+    "name": "On Cloudsurfer Next",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudsurfer Trail 2",
+    "sport": "run",
+    "name": "On Cloudsurfer Trail 2",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudswift 4",
+    "sport": "run",
+    "name": "On Cloudswift 4",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudultra 3",
+    "sport": "run",
+    "name": "On Cloudultra 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudultra Pro",
+    "sport": "run",
+    "name": "On Cloudultra Pro",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudventure Peak 3",
+    "sport": "run",
+    "name": "On Cloudventure Peak 3",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On Cloudvista 2",
+    "sport": "run",
+    "name": "On Cloudvista 2",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:On LightSpray Cloudmonster 3 Hyper",
+    "sport": "run",
+    "name": "On LightSpray Cloudmonster 3 Hyper",
+    "brand": "On",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma Deviate Nitro 4",
+    "sport": "run",
+    "name": "Puma Deviate Nitro 4",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma Deviate Nitro Elite 4",
+    "sport": "run",
+    "name": "Puma Deviate Nitro Elite 4",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma Electrify Nitro 4",
+    "sport": "run",
+    "name": "Puma Electrify Nitro 4",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma Fast-R Nitro Elite 3",
+    "sport": "run",
+    "name": "Puma Fast-R Nitro Elite 3",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma ForeverRun Nitro 2",
+    "sport": "run",
+    "name": "Puma ForeverRun Nitro 2",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma MagMax Nitro 2",
+    "sport": "run",
+    "name": "Puma MagMax Nitro 2",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma Magnify Nitro 3",
+    "sport": "run",
+    "name": "Puma Magnify Nitro 3",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Puma Velocity Nitro 5",
+    "sport": "run",
+    "name": "Puma Velocity Nitro 5",
+    "brand": "Puma",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Aero Blaze 4",
+    "sport": "run",
+    "name": "Salomon Aero Blaze 4",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Aero Glide 4",
+    "sport": "run",
+    "name": "Salomon Aero Glide 4",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Genesis 2",
+    "sport": "run",
+    "name": "Salomon Genesis 2",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon S/Lab Phantasm 3",
+    "sport": "run",
+    "name": "Salomon S/Lab Phantasm 3",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Sense Ride 5",
+    "sport": "run",
+    "name": "Salomon Sense Ride 5",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Speedcross 6",
+    "sport": "run",
+    "name": "Salomon Speedcross 6",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Thundercross",
+    "sport": "run",
+    "name": "Salomon Thundercross",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Salomon Ultra Glide 4",
+    "sport": "run",
+    "name": "Salomon Ultra Glide 4",
+    "brand": "Salomon",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Under Armour Infinite Elite 2",
+    "sport": "run",
+    "name": "Under Armour Infinite Elite 2",
+    "brand": "Under Armour",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Under Armour Infinite Pro",
+    "sport": "run",
+    "name": "Under Armour Infinite Pro",
+    "brand": "Under Armour",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:Under Armour Velociti Elite 2",
+    "sport": "run",
+    "name": "Under Armour Velociti Elite 2",
+    "brand": "Under Armour",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero Adios Pro 5",
+    "sport": "run",
+    "name": "adidas Adizero Adios Pro 5",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero Boston 13",
+    "sport": "run",
+    "name": "adidas Adizero Boston 13",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero Drive RC",
+    "sport": "run",
+    "name": "adidas Adizero Drive RC",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero Evo SL",
+    "sport": "run",
+    "name": "adidas Adizero Evo SL",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero Prime X3 Strung",
+    "sport": "run",
+    "name": "adidas Adizero Prime X3 Strung",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero SL2",
+    "sport": "run",
+    "name": "adidas Adizero SL2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Adizero Takumi Sen 11",
+    "sport": "run",
+    "name": "adidas Adizero Takumi Sen 11",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Duramo SL 2",
+    "sport": "run",
+    "name": "adidas Duramo SL 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Duramo Speed 2",
+    "sport": "run",
+    "name": "adidas Duramo Speed 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Hyperboost Edge",
+    "sport": "run",
+    "name": "adidas Hyperboost Edge",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Response 2",
+    "sport": "run",
+    "name": "adidas Response 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Runfalcon 6",
+    "sport": "run",
+    "name": "adidas Runfalcon 6",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Supernova Glide",
+    "sport": "run",
+    "name": "adidas Supernova Glide",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Supernova Prima 3",
+    "sport": "run",
+    "name": "adidas Supernova Prima 3",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Supernova Rise 3",
+    "sport": "run",
+    "name": "adidas Supernova Rise 3",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Supernova Stride 2",
+    "sport": "run",
+    "name": "adidas Supernova Stride 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Terrex Agravic 4",
+    "sport": "run",
+    "name": "adidas Terrex Agravic 4",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Terrex Agravic Speed 2",
+    "sport": "run",
+    "name": "adidas Terrex Agravic Speed 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Terrex Agravic Speed Ultra 2",
+    "sport": "run",
+    "name": "adidas Terrex Agravic Speed Ultra 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Terrex Tracefinder 2",
+    "sport": "run",
+    "name": "adidas Terrex Tracefinder 2",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "run:adidas Ultraboost 5",
+    "sport": "run",
+    "name": "adidas Ultraboost 5",
+    "brand": "adidas",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:0",
+    "sport": "racket",
+    "name": "Babolat Pure Aero 98",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:1",
+    "sport": "racket",
+    "name": "Babolat Pure Aero",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:2",
+    "sport": "racket",
+    "name": "Babolat Pure Aero Team",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:3",
+    "sport": "racket",
+    "name": "Babolat Pure Aero Lite",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:4",
+    "sport": "racket",
+    "name": "Babolat Pure Drive",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:5",
+    "sport": "racket",
+    "name": "Babolat Pure Drive Team",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:6",
+    "sport": "racket",
+    "name": "Babolat Pure Drive Lite",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:7",
+    "sport": "racket",
+    "name": "Babolat Pure Strike 100 16x19",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:8",
+    "sport": "racket",
+    "name": "Babolat Pure Strike 98 16x19",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:9",
+    "sport": "racket",
+    "name": "Babolat Boost Drive",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 260,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:10",
+    "sport": "racket",
+    "name": "Head Speed MP",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:11",
+    "sport": "racket",
+    "name": "Head Speed MP L",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:12",
+    "sport": "racket",
+    "name": "Head Speed Pro",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 310,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:13",
+    "sport": "racket",
+    "name": "Head Speed Team",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:14",
+    "sport": "racket",
+    "name": "Head Gravity MP",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 295,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:15",
+    "sport": "racket",
+    "name": "Head Gravity Pro",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 315,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:16",
+    "sport": "racket",
+    "name": "Head Boom MP",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 295,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:17",
+    "sport": "racket",
+    "name": "Head Boom Team",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 260,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:18",
+    "sport": "racket",
+    "name": "Head Radical MP",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:19",
+    "sport": "racket",
+    "name": "Head Extreme MP",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:20",
+    "sport": "racket",
+    "name": "Head Extreme Team",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 265,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:21",
+    "sport": "racket",
+    "name": "Head Prestige MP",
+    "brand": "Head",
+    "year": 2023,
+    "weight": 310,
+    "pattern": "18x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:22",
+    "sport": "racket",
+    "name": "Head Instinct MP",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:23",
+    "sport": "racket",
+    "name": "Head Ti S6",
+    "brand": "Head",
+    "year": 2004,
+    "weight": 225,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:24",
+    "sport": "racket",
+    "name": "ProKennex Ki Q+ Tour 300 g",
+    "brand": "ProKennex",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:25",
+    "sport": "racket",
+    "name": "ProKennex Black Ace 300",
+    "brand": "ProKennex",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:26",
+    "sport": "racket",
+    "name": "ProKennex Black Ace 105",
+    "brand": "ProKennex",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:27",
+    "sport": "racket",
+    "name": "Volkl Vostra V1 Pro",
+    "brand": "Volkl",
+    "year": 2025,
+    "weight": 302,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:28",
+    "sport": "racket",
+    "name": "Volkl Vostra V8 300 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 300,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:29",
+    "sport": "racket",
+    "name": "Volkl Vostra V1 MP",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:30",
+    "sport": "racket",
+    "name": "Wilson Blade 98 16x19 v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "verified",
+    "offerId": "MLB7088249244"
+  },
+  {
+    "key": "racket:31",
+    "sport": "racket",
+    "name": "Wilson Blade 100L v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 284,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:32",
+    "sport": "racket",
+    "name": "Wilson Blade 104 v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:33",
+    "sport": "racket",
+    "name": "Wilson Clash 100 v3",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 295,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:34",
+    "sport": "racket",
+    "name": "Wilson Clash 100L v3",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:35",
+    "sport": "racket",
+    "name": "Wilson Clash 108 v3",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:36",
+    "sport": "racket",
+    "name": "Wilson Ultra 100 v5",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:37",
+    "sport": "racket",
+    "name": "Wilson Ultra 100L v5",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:38",
+    "sport": "racket",
+    "name": "Wilson Pro Staff 97 v14",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:39",
+    "sport": "racket",
+    "name": "Wilson Shift 99 v1 300 g",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 300,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:40",
+    "sport": "racket",
+    "name": "Wilson Burn 100 v5",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:41",
+    "sport": "racket",
+    "name": "Yonex EZONE 98",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:42",
+    "sport": "racket",
+    "name": "Yonex EZONE 100",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:43",
+    "sport": "racket",
+    "name": "Yonex EZONE 100L",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:44",
+    "sport": "racket",
+    "name": "Yonex VCORE 98 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:45",
+    "sport": "racket",
+    "name": "Yonex VCORE 100 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:46",
+    "sport": "racket",
+    "name": "Yonex VCORE 100L 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:47",
+    "sport": "racket",
+    "name": "Yonex Percept 97",
+    "brand": "Yonex",
+    "year": 2023,
+    "weight": 310,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:48",
+    "sport": "racket",
+    "name": "Yonex Percept 100",
+    "brand": "Yonex",
+    "year": 2023,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:49",
+    "sport": "racket",
+    "name": "Prince Phantom 100X 290 g",
+    "brand": "Prince",
+    "year": 2024,
+    "weight": 290,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:50",
+    "sport": "racket",
+    "name": "Prince Tour 100 290 g",
+    "brand": "Prince",
+    "year": 2026,
+    "weight": 290,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:51",
+    "sport": "racket",
+    "name": "Prince Ripstick 100 300 g",
+    "brand": "Prince",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:52",
+    "sport": "racket",
+    "name": "Tecnifibre TF40 305 16x19",
+    "brand": "Tecnifibre",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:53",
+    "sport": "racket",
+    "name": "Tecnifibre TFight 300",
+    "brand": "Tecnifibre",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:54",
+    "sport": "racket",
+    "name": "Dunlop CX 200",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:55",
+    "sport": "racket",
+    "name": "Dunlop SX 300",
+    "brand": "Dunlop",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:56",
+    "sport": "racket",
+    "name": "Dunlop FX 500",
+    "brand": "Dunlop",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:57",
+    "sport": "racket",
+    "name": "Dunlop CX 200 Tour 16x19",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 310,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:58",
+    "sport": "racket",
+    "name": "Babolat Evo Drive",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 270,
+    "pattern": "16x17",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:59",
+    "sport": "racket",
+    "name": "Babolat Boost Aero",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 260,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:60",
+    "sport": "racket",
+    "name": "Babolat Pure Drive 107",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:61",
+    "sport": "racket",
+    "name": "Wilson Ultra Power 100",
+    "brand": "Wilson",
+    "year": null,
+    "weight": 268,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:62",
+    "sport": "racket",
+    "name": "Babolat Pure Aero Plus",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:63",
+    "sport": "racket",
+    "name": "Babolat Pure Aero Rafa Origin",
+    "brand": "Babolat",
+    "year": 2023,
+    "weight": 317,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:64",
+    "sport": "racket",
+    "name": "Babolat Pure Drive Plus",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:65",
+    "sport": "racket",
+    "name": "Babolat Pure Drive Tour",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:66",
+    "sport": "racket",
+    "name": "Babolat Pure Drive Super Lite",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 255,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:67",
+    "sport": "racket",
+    "name": "Babolat Pure Drive 98",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:68",
+    "sport": "racket",
+    "name": "Babolat Pure Strike 100 16x20",
+    "brand": "Babolat",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:69",
+    "sport": "racket",
+    "name": "Babolat Pure Strike Team",
+    "brand": "Babolat",
+    "year": 2024,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:70",
+    "sport": "racket",
+    "name": "Babolat Pure Strike 98 18x20",
+    "brand": "Babolat",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:71",
+    "sport": "racket",
+    "name": "Babolat Pure Strike 97",
+    "brand": "Babolat",
+    "year": 2024,
+    "weight": 310,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:72",
+    "sport": "racket",
+    "name": "Babolat Evo Drive Lite",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 255,
+    "pattern": "16x17",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:73",
+    "sport": "racket",
+    "name": "Babolat Evo Drive Tour",
+    "brand": "Babolat",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:74",
+    "sport": "racket",
+    "name": "Babolat Evo Aero",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 275,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:75",
+    "sport": "racket",
+    "name": "Babolat Evo Aero Lite",
+    "brand": "Babolat",
+    "year": 2026,
+    "weight": 260,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:76",
+    "sport": "racket",
+    "name": "Babolat Boost Strike",
+    "brand": "Babolat",
+    "year": 2023,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:77",
+    "sport": "racket",
+    "name": "Head Speed Tour 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:78",
+    "sport": "racket",
+    "name": "Head Speed MP UL 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 265,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:79",
+    "sport": "racket",
+    "name": "Head Speed Elite 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 275,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:80",
+    "sport": "racket",
+    "name": "Head Gravity MP L 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 280,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:81",
+    "sport": "racket",
+    "name": "Head Gravity Tour 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:82",
+    "sport": "racket",
+    "name": "Head Gravity Team 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 270,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:83",
+    "sport": "racket",
+    "name": "Head Boom Pro 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 310,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:84",
+    "sport": "racket",
+    "name": "Head Boom MP L 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 275,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:85",
+    "sport": "racket",
+    "name": "Head Boom MP UL 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 255,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:86",
+    "sport": "racket",
+    "name": "Head Radical Pro 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:87",
+    "sport": "racket",
+    "name": "Head Radical Team 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:88",
+    "sport": "racket",
+    "name": "Head Radical Team L 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 260,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:89",
+    "sport": "racket",
+    "name": "Head Extreme Pro 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:90",
+    "sport": "racket",
+    "name": "Head Extreme MP L 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:91",
+    "sport": "racket",
+    "name": "Head Extreme MP XL 2026",
+    "brand": "Head",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:92",
+    "sport": "racket",
+    "name": "Head Prestige MP L 2023",
+    "brand": "Head",
+    "year": 2023,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:93",
+    "sport": "racket",
+    "name": "Head Prestige Pro 2023",
+    "brand": "Head",
+    "year": 2023,
+    "weight": 320,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:94",
+    "sport": "racket",
+    "name": "Head Prestige Tour 2023",
+    "brand": "Head",
+    "year": 2023,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:95",
+    "sport": "racket",
+    "name": "Head Instinct Team 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:96",
+    "sport": "racket",
+    "name": "Head Instinct Team L 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:97",
+    "sport": "racket",
+    "name": "Head Instinct PWR 110 2025",
+    "brand": "Head",
+    "year": 2025,
+    "weight": 265,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:98",
+    "sport": "racket",
+    "name": "Wilson Pro Staff 97L v14",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:99",
+    "sport": "racket",
+    "name": "Wilson Pro Staff 97UL v14",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:100",
+    "sport": "racket",
+    "name": "Wilson Pro Staff X v14",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:101",
+    "sport": "racket",
+    "name": "Wilson Pro Staff Six.One 100 v14",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:102",
+    "sport": "racket",
+    "name": "Wilson Pro Staff Team v14",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:103",
+    "sport": "racket",
+    "name": "Wilson RF 01 Pro",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 320,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:104",
+    "sport": "racket",
+    "name": "Wilson RF 01",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:105",
+    "sport": "racket",
+    "name": "Wilson RF 01 Future",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:106",
+    "sport": "racket",
+    "name": "Wilson Blade 98 16x19 v10",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:107",
+    "sport": "racket",
+    "name": "Wilson Blade 98 18x20 v10",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:108",
+    "sport": "racket",
+    "name": "Wilson Blade 98 18x20 v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:109",
+    "sport": "racket",
+    "name": "Wilson Blade 98S v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 295,
+    "pattern": "18x16",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:110",
+    "sport": "racket",
+    "name": "Wilson Blade Pro 98 18x20 v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:111",
+    "sport": "racket",
+    "name": "Wilson Blade 100 v10",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:112",
+    "sport": "racket",
+    "name": "Wilson Blade 100L v10",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:113",
+    "sport": "racket",
+    "name": "Wilson Blade 100UL v10",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 265,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:114",
+    "sport": "racket",
+    "name": "Wilson Blade 100 v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:115",
+    "sport": "racket",
+    "name": "Wilson Blade 100UL v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 265,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:116",
+    "sport": "racket",
+    "name": "Wilson Blade 101L v9",
+    "brand": "Wilson",
+    "year": 2024,
+    "weight": 274,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:117",
+    "sport": "racket",
+    "name": "Wilson Blade 104 v10",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:118",
+    "sport": "racket",
+    "name": "Wilson Clash 100 Pro v3",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:119",
+    "sport": "racket",
+    "name": "Wilson Clash 100UL v3",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 265,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:120",
+    "sport": "racket",
+    "name": "Wilson Ultra 100UL v5",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 260,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:121",
+    "sport": "racket",
+    "name": "Wilson Ultra 99 Pro v5",
+    "brand": "Wilson",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:122",
+    "sport": "racket",
+    "name": "Wilson Ultra Pro 97 16x19 v4",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:123",
+    "sport": "racket",
+    "name": "Wilson Ultra Pro 97 18x20 v4",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:124",
+    "sport": "racket",
+    "name": "Wilson Shift 99 Pro v1 315 g",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 315,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:125",
+    "sport": "racket",
+    "name": "Wilson Shift 99L v1 285 g",
+    "brand": "Wilson",
+    "year": 2023,
+    "weight": 285,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:126",
+    "sport": "racket",
+    "name": "Wilson Burn 100S v6",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "18x16",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:127",
+    "sport": "racket",
+    "name": "Wilson Burn 100LS v6",
+    "brand": "Wilson",
+    "year": 2026,
+    "weight": 280,
+    "pattern": "18x16",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:128",
+    "sport": "racket",
+    "name": "Yonex EZONE 98 Tour",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:129",
+    "sport": "racket",
+    "name": "Yonex EZONE 98L",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:130",
+    "sport": "racket",
+    "name": "Yonex EZONE 100SL",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:131",
+    "sport": "racket",
+    "name": "Yonex EZONE 100+",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:132",
+    "sport": "racket",
+    "name": "Yonex EZONE 105",
+    "brand": "Yonex",
+    "year": 2025,
+    "weight": 275,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:133",
+    "sport": "racket",
+    "name": "Yonex VCORE 95 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 310,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:134",
+    "sport": "racket",
+    "name": "Yonex VCORE 98 Tour 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:135",
+    "sport": "racket",
+    "name": "Yonex VCORE 98L 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:136",
+    "sport": "racket",
+    "name": "Yonex VCORE 98+ 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:137",
+    "sport": "racket",
+    "name": "Yonex VCORE 100D 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:138",
+    "sport": "racket",
+    "name": "Yonex VCORE 100+ 8ª geração",
+    "brand": "Yonex",
+    "year": 2026,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:139",
+    "sport": "racket",
+    "name": "Yonex Percept 97D",
+    "brand": "Yonex",
+    "year": 2023,
+    "weight": 320,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:140",
+    "sport": "racket",
+    "name": "Yonex Percept 97H",
+    "brand": "Yonex",
+    "year": 2023,
+    "weight": 330,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:141",
+    "sport": "racket",
+    "name": "Yonex Percept 100D",
+    "brand": "Yonex",
+    "year": 2023,
+    "weight": 305,
+    "pattern": "18x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:142",
+    "sport": "racket",
+    "name": "Yonex Percept 100L",
+    "brand": "Yonex",
+    "year": 2023,
+    "weight": 280,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:143",
+    "sport": "racket",
+    "name": "Volkl Vostra V8 285 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 285,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:144",
+    "sport": "racket",
+    "name": "Volkl Vostra V8 315 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 315,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:145",
+    "sport": "racket",
+    "name": "Volkl Vostra V10 300 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:146",
+    "sport": "racket",
+    "name": "Volkl Vostra V10 320 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 320,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:147",
+    "sport": "racket",
+    "name": "Volkl Vostra V9 290 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:148",
+    "sport": "racket",
+    "name": "Volkl Vostra V9 305 g",
+    "brand": "Volkl",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:149",
+    "sport": "racket",
+    "name": "Volkl V1 Classic 2025",
+    "brand": "Volkl",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:150",
+    "sport": "racket",
+    "name": "Prince Phantom 100X 305 g",
+    "brand": "Prince",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:151",
+    "sport": "racket",
+    "name": "Prince Phantom 100X 18x20",
+    "brand": "Prince",
+    "year": 2024,
+    "weight": 320,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:152",
+    "sport": "racket",
+    "name": "Prince O3 Phantom 100X 310 g",
+    "brand": "Prince",
+    "year": 2025,
+    "weight": 310,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:153",
+    "sport": "racket",
+    "name": "Prince Phantom 100P",
+    "brand": "Prince",
+    "year": 2024,
+    "weight": 310,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:154",
+    "sport": "racket",
+    "name": "Prince Phantom 107G",
+    "brand": "Prince",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:155",
+    "sport": "racket",
+    "name": "Prince Tour 100 310 g",
+    "brand": "Prince",
+    "year": 2026,
+    "weight": 310,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:156",
+    "sport": "racket",
+    "name": "Prince Tour 100P",
+    "brand": "Prince",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:157",
+    "sport": "racket",
+    "name": "Prince Tour 98",
+    "brand": "Prince",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:158",
+    "sport": "racket",
+    "name": "Prince Ripstick 100 280 g",
+    "brand": "Prince",
+    "year": 2025,
+    "weight": 280,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:159",
+    "sport": "racket",
+    "name": "Tecnifibre TF40 305 18x20",
+    "brand": "Tecnifibre",
+    "year": 2024,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:160",
+    "sport": "racket",
+    "name": "Tecnifibre TF40 315 16x19",
+    "brand": "Tecnifibre",
+    "year": 2024,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:161",
+    "sport": "racket",
+    "name": "Tecnifibre TF40 315 18x20",
+    "brand": "Tecnifibre",
+    "year": 2024,
+    "weight": 315,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:162",
+    "sport": "racket",
+    "name": "Tecnifibre TF40 290 16x19",
+    "brand": "Tecnifibre",
+    "year": 2024,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:163",
+    "sport": "racket",
+    "name": "Tecnifibre TFight 300S",
+    "brand": "Tecnifibre",
+    "year": 2025,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:164",
+    "sport": "racket",
+    "name": "Tecnifibre TFight 305S",
+    "brand": "Tecnifibre",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "18x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:165",
+    "sport": "racket",
+    "name": "Tecnifibre TFight 315S",
+    "brand": "Tecnifibre",
+    "year": 2025,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:166",
+    "sport": "racket",
+    "name": "Dunlop CX 200 LS",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:167",
+    "sport": "racket",
+    "name": "Dunlop CX 200 18x20 Limited",
+    "brand": "Dunlop",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:168",
+    "sport": "racket",
+    "name": "Dunlop CX 200 Tour 18x20",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 315,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:169",
+    "sport": "racket",
+    "name": "Dunlop CX 200 OS",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 290,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:170",
+    "sport": "racket",
+    "name": "Dunlop CX 400 Tour",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 300,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:171",
+    "sport": "racket",
+    "name": "Dunlop CX 400",
+    "brand": "Dunlop",
+    "year": 2024,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:172",
+    "sport": "racket",
+    "name": "Dunlop SX 300 Tour",
+    "brand": "Dunlop",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:173",
+    "sport": "racket",
+    "name": "Dunlop SX 300 LS",
+    "brand": "Dunlop",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:174",
+    "sport": "racket",
+    "name": "Dunlop SX 300 Lite",
+    "brand": "Dunlop",
+    "year": 2025,
+    "weight": 270,
+    "pattern": "16x18",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:175",
+    "sport": "racket",
+    "name": "Dunlop FX 500 Tour",
+    "brand": "Dunlop",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:176",
+    "sport": "racket",
+    "name": "Dunlop FX 500 LS",
+    "brand": "Dunlop",
+    "year": 2026,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:177",
+    "sport": "racket",
+    "name": "Dunlop FX 500 Lite",
+    "brand": "Dunlop",
+    "year": 2026,
+    "weight": 270,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:178",
+    "sport": "racket",
+    "name": "ProKennex Q+ Tour 305 g 16x19",
+    "brand": "ProKennex",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:179",
+    "sport": "racket",
+    "name": "ProKennex Q+ Tour Pro 305 g 18x20",
+    "brand": "ProKennex",
+    "year": 2026,
+    "weight": 305,
+    "pattern": "18x20",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:180",
+    "sport": "racket",
+    "name": "ProKennex Black Ace 285",
+    "brand": "ProKennex",
+    "year": 2025,
+    "weight": 285,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:181",
+    "sport": "racket",
+    "name": "ProKennex Black Ace 315",
+    "brand": "ProKennex",
+    "year": 2025,
+    "weight": 315,
+    "pattern": "16x19",
+    "status": "unmapped"
+  },
+  {
+    "key": "racket:182",
+    "sport": "racket",
+    "name": "ProKennex Black Ace Pro 97",
+    "brand": "ProKennex",
+    "year": 2025,
+    "weight": 305,
+    "pattern": "16x19",
+    "status": "unmapped"
+  }
+]

@@ -55,6 +55,7 @@ async function refresh(o,env,force=false) {
 }
 async function create(request,env) {
  const b=await readJson(request);
+ if(b.product==='run-report') fail(409,'O RUN DNA agora é gratuito. Acesse sportdna.com.br/run/ para gerar seu relatório.');
  const product=catalog[b.product];if(!product||!['stripe','mercadopago'].includes(b.provider)||!uuid.test(b.id)||!tokenFormat.test(b.token)) fail(400,'Produto ou pedido inválido.');
  ready(env,b.provider);await rate(request,env);
  if(b.provider==='mercadopago'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email||'')) fail(400,'Informe seu e-mail para o Pix.');
