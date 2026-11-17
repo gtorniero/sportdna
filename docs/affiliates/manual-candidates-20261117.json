@@ -1,0 +1,284 @@
+[
+  {
+    "catalog": {
+      "key": "run:Nike ACG Ultrafly Trail",
+      "sport": "run",
+      "name": "Nike ACG Ultrafly Trail",
+      "brand": "Nike",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:44:28.331Z",
+      "query": "tenis Nike ACG Ultrafly Trail"
+    },
+    "candidate": {
+      "title": "Tênis Nike Ultrafly Trail Acg",
+      "url": "https://www.mercadolivre.com.br/tenis-nike-ultrafly-trail-acg/up/MLBU5309243615#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=product&tracking_id=1cc3d6c4-0ad4-4987-8ec2-6acde1442146&overlay_label_capability=not_apply&wid=MLB5312636407&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "run:Nike Streakfly 2",
+      "sport": "run",
+      "name": "Nike Streakfly 2",
+      "brand": "Nike",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:45:25.617Z",
+      "query": "tenis Nike Streakfly 2"
+    },
+    "candidate": {
+      "title": "Tênis Nike Zoomx Streakfly 2",
+      "url": "https://www.mercadolivre.com.br/tenis-nike-zoomx-streakfly-2/up/MLBU3541936000#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=product&tracking_id=42ece564-1af6-4d72-924b-7aac0aebd639&overlay_label_capability=not_apply&wid=MLB4288698081&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "run:Nike Structure Plus",
+      "sport": "run",
+      "name": "Nike Structure Plus",
+      "brand": "Nike",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:45:31.266Z",
+      "query": "tenis Nike Structure Plus"
+    },
+    "candidate": {
+      "title": "Tênis Nike Zoom X Structure Plus",
+      "url": "https://www.mercadolivre.com.br/tenis-nike-zoom-x-structure-plus/up/MLBU5135357932#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=30&type=product&tracking_id=d7439d6b-f231-482b-bb3a-c66a455842e0&overlay_label_capability=not_apply&wid=MLB5198880801&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "run:Nike Wildhorse 10",
+      "sport": "run",
+      "name": "Nike Wildhorse 10",
+      "brand": "Nike",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:45:56.959Z",
+      "query": "tenis Nike Wildhorse 10"
+    },
+    "candidate": {
+      "title": "Tênis Nike Wildhorse 10 Trail Masculino Corrida De Trilha",
+      "url": "https://www.mercadolivre.com.br/tenis-nike-wildhorse-10-trail-masculino-corrida-de-trilha/up/MLBU5268736346#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=10&type=product&tracking_id=694cb4fa-2fcc-47f4-964e-c6dad4b7b886&overlay_label_capability=not_apply&wid=MLB5271427125&sid=search",
+      "gender": "male"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "run:On Cloudboom Max",
+      "sport": "run",
+      "name": "On Cloudboom Max",
+      "brand": "On",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:47:27.184Z",
+      "query": "tenis On Cloudboom Max"
+    },
+    "candidate": {
+      "title": "Tênis On Running Cloudboom Max Masculino Branco E Preto",
+      "url": "https://www.mercadolivre.com.br/tenis-on-running-cloudboom-max-masculino-branco-e-preto/up/MLBU5306096003#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=70382fab-d316-4a9e-bc2c-55d4b23bc326&overlay_label_capability=not_apply&wid=MLB5311152419&sid=search",
+      "gender": "male"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "run:On Cloudsurfer 3",
+      "sport": "run",
+      "name": "On Cloudsurfer 3",
+      "brand": "On",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:48:20.884Z",
+      "query": "tenis On Cloudsurfer 3"
+    },
+    "candidate": {
+      "title": "Tenis On Running Cloudsurfer 3 Importado Leve Macio Academia",
+      "url": "https://www.mercadolivre.com.br/tenis-on-running-cloudsurfer-3-importado-leve-macio-academia/up/MLBU5350384184#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=65edceeb-a770-4aeb-b188-c00f52e63fef&overlay_label_capability=not_apply&wid=MLB5312955931&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:25",
+      "sport": "racket",
+      "name": "ProKennex Black Ace 300",
+      "brand": "ProKennex",
+      "year": 2025,
+      "weight": 300,
+      "pattern": "16x19",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:53:11.629Z",
+      "query": "raquete ProKennex Black Ace 300"
+    },
+    "candidate": {
+      "title": "Raquete De Tênis Prokennex Kinetic Ki Black Ace 300 - Pt Vm",
+      "url": "https://produto.mercadolivre.com.br/MLB-4232065901-raquete-de-tnis-prokennex-kinetic-ki-black-ace-300-pt-vm-_JM?searchVariation=191380029227#polycard_client=search-desktop&searchVariation=191380029227&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=4&type=item&tracking_id=d53882ee-c1cc-429d-9451-c793731d9f82&overlay_label_capability=not_apply&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:55",
+      "sport": "racket",
+      "name": "Dunlop SX 300",
+      "brand": "Dunlop",
+      "year": 2025,
+      "weight": 300,
+      "pattern": "16x19",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:54:59.609Z",
+      "query": "raquete Dunlop SX 300"
+    },
+    "candidate": {
+      "title": "Raquete De Tenis Dunlop 25 Sx 300 - 300g - 16x19 - L3",
+      "url": "https://www.mercadolivre.com.br/raquete-de-tenis-dunlop-25-sx-300-300g-16x19-l3/up/MLBU4407600714#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=4&type=product&tracking_id=d69f8cc7-fe87-4efb-97c7-9a06891f0b5a&overlay_label_capability=not_apply&wid=MLB7229515870&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:73",
+      "sport": "racket",
+      "name": "Babolat Evo Drive Tour",
+      "brand": "Babolat",
+      "year": 2025,
+      "weight": 285,
+      "pattern": "16x19",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:55:59.667Z",
+      "query": "raquete Babolat Evo Drive Tour"
+    },
+    "candidate": {
+      "title": "Raquete Babolat Evo Tour Drive",
+      "url": "https://www.mercadolivre.com.br/raquete-babolat-evo-tour-drive/up/MLBU3694821870#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=product&tracking_id=21874b5f-f949-4232-a523-d98f3e69fafe&overlay_label_capability=not_apply&wid=MLB4377933127&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:110",
+      "sport": "racket",
+      "name": "Wilson Blade Pro 98 18x20 v9",
+      "brand": "Wilson",
+      "year": 2024,
+      "weight": 305,
+      "pattern": "18x20",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:58:27.292Z",
+      "query": "raquete Wilson Blade Pro 98 18x20 v9"
+    },
+    "candidate": {
+      "title": "Raqueta Blade V9 Pro 98 18x20 4 1/4 Wilson Color Esmeralda",
+      "url": "https://www.mercadolivre.com.br/raqueta-blade-v9-pro-98-18x20-4-14-wilson-color-esmeralda/up/MLBU5489389441#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=aa8f7fa7-d380-45ef-a86a-d15eb7914d41&overlay_label_capability=not_apply&wid=MLB5393831731&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:122",
+      "sport": "racket",
+      "name": "Wilson Ultra Pro 97 16x19 v4",
+      "brand": "Wilson",
+      "year": 2023,
+      "weight": 305,
+      "pattern": "16x19",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:59:20.946Z",
+      "query": "raquete Wilson Ultra Pro 97 16x19 v4"
+    },
+    "candidate": {
+      "title": "Raquete De Tênis Wilson Ultra V4 Pro Labs 97 305gr 16x19 L3",
+      "url": "https://www.mercadolivre.com.br/raquete-de-tenis-wilson-ultra-v4-pro-labs-97-305gr-16x19-l3/up/MLBU5627147275#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=product&tracking_id=b36e9ecd-bc97-402a-908d-e00f83bfad8f&overlay_label_capability=not_apply&wid=MLB5452349047&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:126",
+      "sport": "racket",
+      "name": "Wilson Burn 100S v6",
+      "brand": "Wilson",
+      "year": 2026,
+      "weight": 300,
+      "pattern": "18x16",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:59:32.331Z",
+      "query": "raquete Wilson Burn 100S v6"
+    },
+    "candidate": {
+      "title": "Raquete De Tênis Wilson Burn V6 100s Orange 1-4 1/8",
+      "url": "https://produto.mercadolivre.com.br/MLB-7935629804-raquete-de-tnis-wilson-burn-v6-100s-orange-1-4-18-_JM#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=item&tracking_id=b2a67462-fefc-477c-b608-5f0f8dcef2c0&overlay_label_capability=not_apply&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:127",
+      "sport": "racket",
+      "name": "Wilson Burn 100LS v6",
+      "brand": "Wilson",
+      "year": 2026,
+      "weight": 280,
+      "pattern": "18x16",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T22:59:35.666Z",
+      "query": "raquete Wilson Burn 100LS v6"
+    },
+    "candidate": {
+      "title": "Raquete De Tênis Wilson Burn V6 100ls Laranja 1-4 1/8",
+      "url": "https://produto.mercadolivre.com.br/MLB-7828353036-raquete-de-tnis-wilson-burn-v6-100ls-laranja-1-4-18-_JM#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=item&tracking_id=bedea516-1ef3-4319-81a3-9dc837e0d5a1&overlay_label_capability=not_apply&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:131",
+      "sport": "racket",
+      "name": "Yonex EZONE 100+",
+      "brand": "Yonex",
+      "year": 2025,
+      "weight": 300,
+      "pattern": "16x19",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T23:27:56.955Z",
+      "query": "raquete Yonex EZONE 100 plus"
+    },
+    "candidate": {
+      "title": "Raquete de tênis Yonex Ezone 100+ Long Plus Grip 4 3/8 300g cor azul",
+      "url": "https://www.mercadolivre.com.br/raquete-de-tenis-yonex-ezone-100-long-plus-grip-4-38-300g-cor-azul/p/MLB51294459#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=3&type=product&tracking_id=d5755402-3280-4edd-93c0-d37a6344557b&overlay_label_capability=not_apply&wid=MLB7912785230&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  },
+  {
+    "catalog": {
+      "key": "racket:160",
+      "sport": "racket",
+      "name": "Tecnifibre TF40 315 16x19",
+      "brand": "Tecnifibre",
+      "year": 2024,
+      "weight": 315,
+      "pattern": "16x19",
+      "status": "candidate_needs_review",
+      "lastSearchedAt": "2026-11-17T23:02:09.771Z",
+      "query": "raquete Tecnifibre TF40 315 16x19"
+    },
+    "candidate": {
+      "title": "Raquete De Tênis Tecnifibre Tf40 315 L3 16x19",
+      "url": "https://www.mercadolivre.com.br/raquete-de-tenis-tecnifibre-tf40-315-l3-16x19/up/MLBU5953702970#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=dff56aab-64f6-4198-9c49-c24b2e4e6693&overlay_label_capability=not_apply&wid=MLB5573747697&sid=search",
+      "gender": "unspecified"
+    },
+    "status": "manual_name_order_review"
+  }
+]

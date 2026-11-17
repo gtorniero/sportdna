@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-17",
+  "base": "3d4a119",
+  "tests": {
+    "passed": 56,
+    "failed": 0
+  },
+  "axeGenderAndGripPreviewViolations": 0,
+  "coverage": {
+    "date": "2026-11-17",
+    "catalogModels": 395,
+    "linkedModels": 203,
+    "offers": 279,
+    "bySport": {
+      "racket": 55,
+      "run": 224
+    },
+    "genders": {
+      "male": 110,
+      "unspecified": 22,
+      "unisex": 24,
+      "female": 68
+    },
+    "pendingReasons": {
+      "variant_not_confirmed": 4,
+      "no_exact_offer_in_search": 101,
+      "generator_rejected": 26,
+      "specs_unconfirmed": 60,
+      "accessory_only": 1
+    },
+    "excludedVariants": [
+      {
+        "model": "Mizuno Neo Aura",
+        "reason": "variant_not_confirmed",
+        "variants": [
+          "knit"
+        ]
+      },
+      {
+        "model": "adidas Adizero Evo SL",
+        "reason": "variant_not_confirmed",
+        "variants": [
+          "woven"
+        ]
+      },
+      {
+        "model": "Mizuno Victory",
+        "reason": "variant_not_confirmed",
+        "variants": [
+          "rsp"
+        ]
+      }
+    ],
+    "weekly": "ACTIVE Sunday 10:00 America/Sao_Paulo; links only"
+  },
+  "weeklyHelperSmoke": {
+    "checked": 3,
+    "verified": 3,
+    "fullScheduledRunExecuted": false
+  },
+  "publication": "pending"
+}

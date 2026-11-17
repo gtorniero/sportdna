@@ -1,13 +1,13 @@
 # Mercado Livre — SPORT DNA
 
-Entrega de 17/11/2026: RUN gratuito; RACKET e SURF mantêm cobrança.
+Atualização de 17/11/2026: 279 ofertas para 203 dos 395 modelos. RUN gratuito; RACKET e SURF continuam pagos. Consulte coverage-20261117.json e catalog.json para cobertura e motivo de cada pendência. Nenhuma ausência em busca é prova de inexistência no mercado.
 
-O catálogo em catalog.json registra 212 tênis e 183 raquetes. Somente 2 ofertas foram verificadas nesta entrega; 393 modelos ainda precisam de mapeamento. Não interpretar modelos pendentes como indisponíveis no Meli. Buscas em lote instáveis não comprovaram ausência.
+Tênis: botões Modelo masculino, Modelo feminino e Modelo unissex, somente quando o anúncio identifica a versão e o destino foi verificado. Sem pergunta obrigatória nova; sem alteração do ranking. Versão não informada recebe botão genérico. Confira numeração e forma no anúncio.
 
-assets/affiliate-offers.js é a fonte pública das ofertas. Links gerados no compartilhamento oficial do Meli, com sportdnatenis e sportdnaraquetes. Ambos abrem página de afiliado com o modelo correto em destaque; clicar em Ir para produto chega ao anúncio. Não remover parâmetros nem fabricar links.
+Raquetes: geração, peso e encordoamento verificados na ficha/descrição. Grip destacado quando informado. Produtos usados recusados pelo gerador, acessórios e variantes não confirmadas ficam fora. Links oficiais gerados na conta Meli com etiquetas sportdnatenis e sportdnaraquetes. Os links abrem o perfil SPORT DNA com o produto destacado antes de Ir para produto. Páginas de catálogo podem alternar vendedor; a identidade do modelo continua sendo conferida.
 
-Motor e pontuação não consultam comissões. Não substituir geração, peso, padrão de cordas ou versão. Indicar explicitamente grip e numeração; anúncio da Blade v9 é L4. Sem imagem de vendedor copiada. Clique afiliado não é venda e não tem valor financeiro atribuído.
+Manutenção: agenda existente renomeada para SPORT DNA · Checagem semanal dos links Meli, ACTIVE, domingo às 10h de São Paulo. O prompt anterior de Growth/Ads/SEO/finanças foi integralmente substituído. Nenhuma outra agenda foi ativada ou criada.
 
-Revisão semanal: ler somente as ofertas publicadas; abrir cada link, verificar produto destacado, anúncio, variante, vendedor e disponibilidade. Registrar checkedAt somente após confirmação real. Se mudar para modelo incorreto, desativar. Não procurar 395 substitutos automaticamente. Uma recuperação por falha; depois registrar bloqueio. Ofertas ficam ocultas após 8 dias sem verificação. Atualizar arquivo e publicar pela Cloudflare, sem alterar ranking.
+Usar scripts/check-affiliate-links.mjs com o navegador integrado, manifesto atual e lotes de 20; salvar cursor e imprimir apenas resumo/exceções. O helper não usa API de IA, não gasta em anúncios e não pesquisa substitutos. Duas falhas consecutivas interrompem o lote/origem. Apenas confirmação real permite atualizar checkedAt. needs_review não é validação. Ofertas ficam ocultas após 8 dias sem confirmação. Publicar alterações de estado somente na Cloudflare existente, conciliando mudanças concorrentes.
 
-A agenda econômica existente estava PAUSED na consulta; não foi criada agenda duplicada.
+Evidências completas comprimidas em audit-20261117.json.gz; contém buscas, candidatos, retornos do gerador e conferências dos destinos/fichas. Não abrir este histórico na revisão semanal. Não atribuir receita ou compra a cliques; affiliate_click respeita o consentimento.
