@@ -4,434 +4,639 @@
     "sport": "run",
     "name": "ASICS Dynablast 6",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "variant_not_confirmed",
+    "lastSearchedAt": "2026-11-17T22:34:05.397Z",
+    "query": "tenis ASICS Dynablast 6",
+    "reason": "Resultados revisados são versão SE, não confirmada como equivalente ao modelo do motor."
   },
   {
     "key": "run:ASICS GT-1000 15",
     "sport": "run",
     "name": "ASICS GT-1000 15",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4898773559"
+    ]
   },
   {
     "key": "run:ASICS GT-2000 15",
     "sport": "run",
     "name": "ASICS GT-2000 15",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4999959703"
+    ]
   },
   {
     "key": "run:ASICS Gel-Contend 10",
     "sport": "run",
     "name": "ASICS Gel-Contend 10",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7328218986"
+    ]
   },
   {
     "key": "run:ASICS Gel-Cumulus 28",
     "sport": "run",
     "name": "ASICS Gel-Cumulus 28",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4937067461"
+    ]
   },
   {
     "key": "run:ASICS Gel-Excite 11",
     "sport": "run",
     "name": "ASICS Gel-Excite 11",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6538578618"
+    ]
   },
   {
     "key": "run:ASICS Gel-Hypersonic 6",
     "sport": "run",
     "name": "ASICS Gel-Hypersonic 6",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4918506543"
+    ]
   },
   {
     "key": "run:ASICS Gel-Kayano 33",
     "sport": "run",
     "name": "ASICS Gel-Kayano 33",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7895915596"
+    ]
   },
   {
     "key": "run:ASICS Gel-Nagoya 8",
     "sport": "run",
     "name": "ASICS Gel-Nagoya 8",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4861874017"
+    ]
   },
   {
     "key": "run:ASICS Gel-Nimbus 28",
     "sport": "run",
     "name": "ASICS Gel-Nimbus 28",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5440704481"
+    ]
   },
   {
     "key": "run:ASICS Gel-Pulse 17",
     "sport": "run",
     "name": "ASICS Gel-Pulse 17",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "variant_not_confirmed",
+    "lastSearchedAt": "2026-11-17T22:35:41.583Z",
+    "query": "tenis ASICS Gel-Pulse 17",
+    "reason": "Resultados revisados são versão SE, não confirmada como equivalente ao modelo do motor."
   },
   {
     "key": "run:ASICS Gel-Sonoma 8",
     "sport": "run",
     "name": "ASICS Gel-Sonoma 8",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4379696027"
+    ]
   },
   {
     "key": "run:ASICS Magic Speed 5",
     "sport": "run",
     "name": "ASICS Magic Speed 5",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6290292714",
+      "MLB4628865421"
+    ]
   },
   {
     "key": "run:ASICS Megablast",
     "sport": "run",
     "name": "ASICS Megablast",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4674599231",
+      "MLB5549478009"
+    ]
   },
   {
     "key": "run:ASICS Metaspeed Edge Tokyo",
     "sport": "run",
     "name": "ASICS Metaspeed Edge Tokyo",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5506230103",
+      "MLB7684096930"
+    ]
   },
   {
     "key": "run:ASICS Metaspeed Sky Tokyo",
     "sport": "run",
     "name": "ASICS Metaspeed Sky Tokyo",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6555619652",
+      "MLB5566942493"
+    ]
   },
   {
     "key": "run:ASICS Novablast 6",
     "sport": "run",
     "name": "ASICS Novablast 6",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5173638527"
+    ]
   },
   {
     "key": "run:ASICS Sonicblast",
     "sport": "run",
     "name": "ASICS Sonicblast",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7613909202",
+      "MLB5716077404"
+    ]
   },
   {
     "key": "run:ASICS Superblast 3",
     "sport": "run",
     "name": "ASICS Superblast 3",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7096627268",
+      "MLB7901277718",
+      "MLB5452351329"
+    ]
   },
   {
     "key": "run:ASICS Trabuco 14",
     "sport": "run",
     "name": "ASICS Trabuco 14",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7656922556"
+    ]
   },
   {
     "key": "run:ASICS Trabuco Max 5",
     "sport": "run",
     "name": "ASICS Trabuco Max 5",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "lastSearchedAt": "2026-11-17T23:27:01.679Z",
+    "query": "tenis ASICS Trabuco Max 5",
+    "offerIds": [
+      "MLB7338644838"
+    ]
   },
   {
     "key": "run:ASICS Versablast 4",
     "sport": "run",
     "name": "ASICS Versablast 4",
     "brand": "ASICS",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4474689241",
+      "MLB4846092135"
+    ]
   },
   {
     "key": "run:Brooks Adrenaline GTS 25",
     "sport": "run",
     "name": "Brooks Adrenaline GTS 25",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2109864110",
+      "MLB2106795610"
+    ]
   },
   {
     "key": "run:Brooks Caldera 8",
     "sport": "run",
     "name": "Brooks Caldera 8",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7690193770"
+    ]
   },
   {
     "key": "run:Brooks Cascadia 19",
     "sport": "run",
     "name": "Brooks Cascadia 19",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6733429088"
+    ]
   },
   {
     "key": "run:Brooks Catamount 4",
     "sport": "run",
     "name": "Brooks Catamount 4",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2115760378"
+    ]
   },
   {
     "key": "run:Brooks Ghost 17",
     "sport": "run",
     "name": "Brooks Ghost 17",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5407693897",
+      "MLB7213920182"
+    ]
   },
   {
     "key": "run:Brooks Ghost Max 3",
     "sport": "run",
     "name": "Brooks Ghost Max 3",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2108016658",
+      "MLB5566480677"
+    ]
   },
   {
     "key": "run:Brooks Glycerin 22",
     "sport": "run",
     "name": "Brooks Glycerin 22",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6056808512"
+    ]
   },
   {
     "key": "run:Brooks Glycerin GTS 22",
     "sport": "run",
     "name": "Brooks Glycerin GTS 22",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6416446566"
+    ]
   },
   {
     "key": "run:Brooks Glycerin Max 2",
     "sport": "run",
     "name": "Brooks Glycerin Max 2",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5459434637",
+      "MLB7986886490"
+    ]
   },
   {
     "key": "run:Brooks Hyperion 3",
     "sport": "run",
     "name": "Brooks Hyperion 3",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5761987154"
+    ]
   },
   {
     "key": "run:Brooks Hyperion Elite 5",
     "sport": "run",
     "name": "Brooks Hyperion Elite 5",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7014582738",
+      "MLB7858188810"
+    ]
   },
   {
     "key": "run:Brooks Hyperion Max 3",
     "sport": "run",
     "name": "Brooks Hyperion Max 3",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5512040991"
+    ]
   },
   {
     "key": "run:Brooks Launch 11",
     "sport": "run",
     "name": "Brooks Launch 11",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2131941444"
+    ]
   },
   {
     "key": "run:Brooks Revel 9",
     "sport": "run",
     "name": "Brooks Revel 9",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2119780716"
+    ]
   },
   {
     "key": "run:Brooks Trace 4",
     "sport": "run",
     "name": "Brooks Trace 4",
     "brand": "Brooks",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2109107853"
+    ]
   },
   {
     "key": "run:Fila Float Maxxi 2",
     "sport": "run",
     "name": "Fila Float Maxxi 2",
     "brand": "Fila",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4128460779"
+    ]
   },
   {
     "key": "run:Fila KR7 Pro Speed Tech",
     "sport": "run",
     "name": "Fila KR7 Pro Speed Tech",
     "brand": "Fila",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4480441697"
+    ]
   },
   {
     "key": "run:Fila Racer Carbon 3",
     "sport": "run",
     "name": "Fila Racer Carbon 3",
     "brand": "Fila",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7709934174"
+    ]
   },
   {
     "key": "run:Fila Racer Skytrail",
     "sport": "run",
     "name": "Fila Racer Skytrail",
     "brand": "Fila",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5059316948"
+    ]
   },
   {
     "key": "run:Fila Speedrocker Skyfoam",
     "sport": "run",
     "name": "Fila Speedrocker Skyfoam",
     "brand": "Fila",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5048640653"
+    ]
   },
   {
     "key": "run:Fila Speedzone 2",
     "sport": "run",
     "name": "Fila Speedzone 2",
     "brand": "Fila",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5472353043",
+      "MLB5511475805"
+    ]
   },
   {
     "key": "run:Hoka Arahi 8",
     "sport": "run",
     "name": "Hoka Arahi 8",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5087015145"
+    ]
   },
   {
     "key": "run:Hoka Bondi 9",
     "sport": "run",
     "name": "Hoka Bondi 9",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5660695748"
+    ]
   },
   {
     "key": "run:Hoka Challenger 8",
     "sport": "run",
     "name": "Hoka Challenger 8",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4930970525"
+    ]
   },
   {
     "key": "run:Hoka Cielo X1 3.0",
     "sport": "run",
     "name": "Hoka Cielo X1 3.0",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5271454023",
+      "MLB7965074290",
+      "MLB4571290539"
+    ]
   },
   {
     "key": "run:Hoka Clifton 11",
     "sport": "run",
     "name": "Hoka Clifton 11",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7597571542"
+    ]
   },
   {
     "key": "run:Hoka Clifton Pro",
     "sport": "run",
     "name": "Hoka Clifton Pro",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7420054912"
+    ]
   },
   {
     "key": "run:Hoka Gaviota 6",
     "sport": "run",
     "name": "Hoka Gaviota 6",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4731541615"
+    ]
   },
   {
     "key": "run:Hoka Mach 7",
     "sport": "run",
     "name": "Hoka Mach 7",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6420426068"
+    ]
   },
   {
     "key": "run:Hoka Mach X 3",
     "sport": "run",
     "name": "Hoka Mach X 3",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6862288990"
+    ]
   },
   {
     "key": "run:Hoka Mafate 5",
     "sport": "run",
     "name": "Hoka Mafate 5",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4874826465"
+    ]
   },
   {
     "key": "run:Hoka Mafate X",
     "sport": "run",
     "name": "Hoka Mafate X",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5491329200",
+      "MLB7776578710"
+    ]
   },
   {
     "key": "run:Hoka Rincon 4",
     "sport": "run",
     "name": "Hoka Rincon 4",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4482433727"
+    ]
   },
   {
     "key": "run:Hoka Rocket X 3",
     "sport": "run",
     "name": "Hoka Rocket X 3",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4865811891"
+    ]
   },
   {
     "key": "run:Hoka Skyflow",
     "sport": "run",
     "name": "Hoka Skyflow",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4313243747"
+    ]
   },
   {
     "key": "run:Hoka Skyward X 2",
     "sport": "run",
     "name": "Hoka Skyward X 2",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7639001258"
+    ]
   },
   {
     "key": "run:Hoka Speedgoat 7",
     "sport": "run",
     "name": "Hoka Speedgoat 7",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5337334121"
+    ]
   },
   {
     "key": "run:Hoka Tecton X 3",
     "sport": "run",
     "name": "Hoka Tecton X 3",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4228882499"
+    ]
   },
   {
     "key": "run:Hoka Transport 2",
     "sport": "run",
     "name": "Hoka Transport 2",
     "brand": "Hoka",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5522465705"
+    ]
   },
   {
     "key": "run:Mizuno Enigma 3",
     "sport": "run",
     "name": "Mizuno Enigma 3",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4807491027"
+    ]
   },
   {
     "key": "run:Mizuno Hyperwarp Elite",
@@ -439,1050 +644,1500 @@
     "name": "Mizuno Hyperwarp Elite",
     "brand": "Mizuno",
     "status": "verified",
-    "offerId": "MLB5351658807"
+    "offerIds": [
+      "MLB5351658807"
+    ]
   },
   {
     "key": "run:Mizuno Hyperwarp Pro",
     "sport": "run",
     "name": "Mizuno Hyperwarp Pro",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5347484607"
+    ]
   },
   {
     "key": "run:Mizuno Hyperwarp Pure",
     "sport": "run",
     "name": "Mizuno Hyperwarp Pure",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6895459422",
+      "MLB6983001472"
+    ]
   },
   {
     "key": "run:Mizuno Neo Aura",
     "sport": "run",
     "name": "Mizuno Neo Aura",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "variant_not_confirmed",
+    "lastSearchedAt": "2026-11-17T22:40:37.190Z",
+    "query": "tenis Mizuno Neo Aura"
   },
   {
     "key": "run:Mizuno Neo Vista 3",
     "sport": "run",
     "name": "Mizuno Neo Vista 3",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4924864871",
+      "MLB7511489454"
+    ]
   },
   {
     "key": "run:Mizuno Neo Zen 2",
     "sport": "run",
     "name": "Mizuno Neo Zen 2",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4629067025"
+    ]
   },
   {
     "key": "run:Mizuno Victory",
     "sport": "run",
     "name": "Mizuno Victory",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "variant_not_confirmed",
+    "lastSearchedAt": "2026-11-17T23:27:13.174Z",
+    "query": "tenis Mizuno Victory"
   },
   {
     "key": "run:Mizuno Wave Daichi 9",
     "sport": "run",
     "name": "Mizuno Wave Daichi 9",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:41:22.978Z",
+    "query": "tenis Mizuno Wave Daichi 9"
   },
   {
     "key": "run:Mizuno Wave Falcon 4",
     "sport": "run",
     "name": "Mizuno Wave Falcon 4",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4937786539"
+    ]
   },
   {
     "key": "run:Mizuno Wave Frontier 15",
     "sport": "run",
     "name": "Mizuno Wave Frontier 15",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB3381104039",
+      "MLB4616915386"
+    ]
   },
   {
     "key": "run:Mizuno Wave Horizon 9",
     "sport": "run",
     "name": "Mizuno Wave Horizon 9",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:41:32.535Z",
+    "query": "tenis Mizuno Wave Horizon 9"
   },
   {
     "key": "run:Mizuno Wave Ibuki 4",
     "sport": "run",
     "name": "Mizuno Wave Ibuki 4",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:41:36.642Z",
+    "query": "tenis Mizuno Wave Ibuki 4"
   },
   {
     "key": "run:Mizuno Wave Inspire 22",
     "sport": "run",
     "name": "Mizuno Wave Inspire 22",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6235354806",
+      "MLB6235496398"
+    ]
   },
   {
     "key": "run:Mizuno Wave Mirai 5",
     "sport": "run",
     "name": "Mizuno Wave Mirai 5",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB3814251862",
+      "MLB3445835269"
+    ]
   },
   {
     "key": "run:Mizuno Wave Mujin 11",
     "sport": "run",
     "name": "Mizuno Wave Mujin 11",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4230561505"
+    ]
   },
   {
     "key": "run:Mizuno Wave Prophecy 15",
     "sport": "run",
     "name": "Mizuno Wave Prophecy 15",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7643967120"
+    ]
   },
   {
     "key": "run:Mizuno Wave Prorunner 25",
     "sport": "run",
     "name": "Mizuno Wave Prorunner 25",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:27:16.351Z",
+    "query": "tenis Mizuno Wave Prorunner 25"
   },
   {
     "key": "run:Mizuno Wave Rebellion Flash 3",
     "sport": "run",
     "name": "Mizuno Wave Rebellion Flash 3",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6172441766"
+    ]
   },
   {
     "key": "run:Mizuno Wave Rebellion Pro 3",
     "sport": "run",
     "name": "Mizuno Wave Rebellion Pro 3",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5661294892"
+    ]
   },
   {
     "key": "run:Mizuno Wave Rebellion Sonic 2",
     "sport": "run",
     "name": "Mizuno Wave Rebellion Sonic 2",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5056000905",
+      "MLB7407152856"
+    ]
   },
   {
     "key": "run:Mizuno Wave Rider 30",
     "sport": "run",
     "name": "Mizuno Wave Rider 30",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7690634858",
+      "MLB7698083016"
+    ]
   },
   {
     "key": "run:Mizuno Wave Sky 9",
     "sport": "run",
     "name": "Mizuno Wave Sky 9",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4142931501"
+    ]
   },
   {
     "key": "run:Mizuno Wave Titan 3",
     "sport": "run",
     "name": "Mizuno Wave Titan 3",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:42:30.943Z",
+    "query": "tenis Mizuno Wave Titan 3"
   },
   {
     "key": "run:Mizuno Wave Way 4",
     "sport": "run",
     "name": "Mizuno Wave Way 4",
     "brand": "Mizuno",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB3830891927",
+      "MLB7417502958",
+      "MLB3919918523"
+    ]
   },
   {
     "key": "run:New Balance 1080 v15",
     "sport": "run",
     "name": "New Balance 1080 v15",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4533802389",
+      "MLB5345718763"
+    ]
   },
   {
     "key": "run:New Balance DynaSoft Nitrel v6",
     "sport": "run",
     "name": "New Balance DynaSoft Nitrel v6",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4504102857",
+      "MLB5453789101"
+    ]
   },
   {
     "key": "run:New Balance Ellipse v1",
     "sport": "run",
     "name": "New Balance Ellipse v1",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2124915598"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam 520 v9",
     "sport": "run",
     "name": "New Balance Fresh Foam 520 v9",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4150070879",
+      "MLB4875563873"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam 680 v9",
     "sport": "run",
     "name": "New Balance Fresh Foam 680 v9",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4865358321",
+      "MLB4991530209"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam Arishi v4",
     "sport": "run",
     "name": "New Balance Fresh Foam Arishi v4",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4459722743",
+      "MLB6717672528"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam X 860 v15",
     "sport": "run",
     "name": "New Balance Fresh Foam X 860 v15",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:42:56.058Z",
+    "query": "tenis New Balance Fresh Foam X 860 v15"
   },
   {
     "key": "run:New Balance Fresh Foam X 880 v15",
     "sport": "run",
     "name": "New Balance Fresh Foam X 880 v15",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4470062389",
+      "MLB5755935514"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam X Balos",
     "sport": "run",
     "name": "New Balance Fresh Foam X Balos",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:43:26.284Z",
+    "query": "tenis New Balance Fresh Foam X Balos"
   },
   {
     "key": "run:New Balance Fresh Foam X Garoé v2",
     "sport": "run",
     "name": "New Balance Fresh Foam X Garoé v2",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:27:18.774Z",
+    "query": "tenis New Balance Fresh Foam X Garoe v2"
   },
   {
     "key": "run:New Balance Fresh Foam X Hierro v9",
     "sport": "run",
     "name": "New Balance Fresh Foam X Hierro v9",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5208816575",
+      "MLB4923257783"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam X Kaiha Road v2",
     "sport": "run",
     "name": "New Balance Fresh Foam X Kaiha Road v2",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4612239777",
+      "MLB4941931289"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam X More Trail v3",
     "sport": "run",
     "name": "New Balance Fresh Foam X More Trail v3",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:43:40.648Z",
+    "query": "tenis New Balance Fresh Foam X More Trail v3"
   },
   {
     "key": "run:New Balance Fresh Foam X More v6",
     "sport": "run",
     "name": "New Balance Fresh Foam X More v6",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4334637901",
+      "MLB5772584790"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam X Vongo v6",
     "sport": "run",
     "name": "New Balance Fresh Foam X Vongo v6",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:43:46.458Z",
+    "query": "tenis New Balance Fresh Foam X Vongo v6"
   },
   {
     "key": "run:New Balance FuelCell Propel v5",
     "sport": "run",
     "name": "New Balance FuelCell Propel v5",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4133346993",
+      "MLB4836605355"
+    ]
   },
   {
     "key": "run:New Balance FuelCell Rebel Trail",
     "sport": "run",
     "name": "New Balance FuelCell Rebel Trail",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:43:53.054Z",
+    "query": "tenis New Balance FuelCell Rebel Trail"
   },
   {
     "key": "run:New Balance FuelCell Rebel v5",
     "sport": "run",
     "name": "New Balance FuelCell Rebel v5",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4161325171",
+      "MLB5872799100"
+    ]
   },
   {
     "key": "run:New Balance FuelCell SuperComp Pacer v2",
     "sport": "run",
     "name": "New Balance FuelCell SuperComp Pacer v2",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5276469911"
+    ]
   },
   {
     "key": "run:New Balance FuelCell SuperComp Trail v2",
     "sport": "run",
     "name": "New Balance FuelCell SuperComp Trail v2",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:13.680Z",
+    "query": "tenis New Balance FuelCell SuperComp Trail v2"
   },
   {
     "key": "run:New Balance FuelCell SuperComp Trainer v3",
     "sport": "run",
     "name": "New Balance FuelCell SuperComp Trainer v3",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4524966635",
+      "MLB6850278092"
+    ]
   },
   {
     "key": "run:New Balance SuperComp Elite v6",
     "sport": "run",
     "name": "New Balance SuperComp Elite v6",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7378038918"
+    ]
   },
   {
     "key": "run:New Balance SuperComp Rebel v1",
     "sport": "run",
     "name": "New Balance SuperComp Rebel v1",
     "brand": "New Balance",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5099716243",
+      "MLB7468976884"
+    ]
   },
   {
     "key": "run:Nike ACG Pegasus Trail",
     "sport": "run",
     "name": "Nike ACG Pegasus Trail",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:25.654Z",
+    "query": "tenis Nike ACG Pegasus Trail"
   },
   {
     "key": "run:Nike ACG Ultrafly Trail",
     "sport": "run",
     "name": "Nike ACG Ultrafly Trail",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:44:28.331Z",
+    "query": "tenis Nike ACG Ultrafly Trail"
   },
   {
     "key": "run:Nike ACG Zegama Trail",
     "sport": "run",
     "name": "Nike ACG Zegama Trail",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:31.212Z",
+    "query": "tenis Nike ACG Zegama Trail"
   },
   {
     "key": "run:Nike Alphafly 3",
     "sport": "run",
     "name": "Nike Alphafly 3",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:34.256Z",
+    "query": "tenis Nike Alphafly 3"
   },
   {
     "key": "run:Nike Alphafly 4",
     "sport": "run",
     "name": "Nike Alphafly 4",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:37.033Z",
+    "query": "tenis Nike Alphafly 4"
   },
   {
     "key": "run:Nike Downshifter 14",
     "sport": "run",
     "name": "Nike Downshifter 14",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7063424052"
+    ]
   },
   {
     "key": "run:Nike Interact Run",
     "sport": "run",
     "name": "Nike Interact Run",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:42.826Z",
+    "query": "tenis Nike Interact Run"
   },
   {
     "key": "run:Nike Invincible 3",
     "sport": "run",
     "name": "Nike Invincible 3",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:44:45.646Z",
+    "query": "tenis Nike Invincible 3"
   },
   {
     "key": "run:Nike Journey Run",
     "sport": "run",
     "name": "Nike Journey Run",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4759264630",
+      "MLB3727972293"
+    ]
   },
   {
     "key": "run:Nike Juniper Trail 3",
     "sport": "run",
     "name": "Nike Juniper Trail 3",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:02.133Z",
+    "query": "tenis Nike Juniper Trail 3"
   },
   {
     "key": "run:Nike Kiger 10",
     "sport": "run",
     "name": "Nike Kiger 10",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:04.866Z",
+    "query": "tenis Nike Kiger 10"
   },
   {
     "key": "run:Nike Pegasus 42",
     "sport": "run",
     "name": "Nike Pegasus 42",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:45:07.683Z",
+    "query": "tenis Nike Pegasus 42"
   },
   {
     "key": "run:Nike Pegasus Plus 2",
     "sport": "run",
     "name": "Nike Pegasus Plus 2",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:10.558Z",
+    "query": "tenis Nike Pegasus Plus 2"
   },
   {
     "key": "run:Nike Pegasus Premium",
     "sport": "run",
     "name": "Nike Pegasus Premium",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:13.756Z",
+    "query": "tenis Nike Pegasus Premium"
   },
   {
     "key": "run:Nike Quest 6",
     "sport": "run",
     "name": "Nike Quest 6",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB3799323043",
+      "MLB3805866285"
+    ]
   },
   {
     "key": "run:Nike Revolution 8",
     "sport": "run",
     "name": "Nike Revolution 8",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7917514680",
+      "MLB4209906299"
+    ]
   },
   {
     "key": "run:Nike Rival Fly 4",
     "sport": "run",
     "name": "Nike Rival Fly 4",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:22.657Z",
+    "query": "tenis Nike Rival Fly 4"
   },
   {
     "key": "run:Nike Streakfly 2",
     "sport": "run",
     "name": "Nike Streakfly 2",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:45:25.617Z",
+    "query": "tenis Nike Streakfly 2"
   },
   {
     "key": "run:Nike Structure 26",
     "sport": "run",
     "name": "Nike Structure 26",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:28.497Z",
+    "query": "tenis Nike Structure 26"
   },
   {
     "key": "run:Nike Structure Plus",
     "sport": "run",
     "name": "Nike Structure Plus",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:45:31.266Z",
+    "query": "tenis Nike Structure Plus"
   },
   {
     "key": "run:Nike Vaporfly 4",
     "sport": "run",
     "name": "Nike Vaporfly 4",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:45.983Z",
+    "query": "tenis Nike Vaporfly 4"
   },
   {
     "key": "run:Nike Vomero 18",
     "sport": "run",
     "name": "Nike Vomero 18",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:45:48.202Z",
+    "query": "tenis Nike Vomero 18"
   },
   {
     "key": "run:Nike Vomero Plus",
     "sport": "run",
     "name": "Nike Vomero Plus",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:45:51.151Z",
+    "query": "tenis Nike Vomero Plus"
   },
   {
     "key": "run:Nike Vomero Premium",
     "sport": "run",
     "name": "Nike Vomero Premium",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:45:54.144Z",
+    "query": "tenis Nike Vomero Premium"
   },
   {
     "key": "run:Nike Wildhorse 10",
     "sport": "run",
     "name": "Nike Wildhorse 10",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:45:56.959Z",
+    "query": "tenis Nike Wildhorse 10"
   },
   {
     "key": "run:Nike Winflo 12",
     "sport": "run",
     "name": "Nike Winflo 12",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4577599847",
+      "MLB7917588424"
+    ]
   },
   {
     "key": "run:Nike Zoom Fly 6",
     "sport": "run",
     "name": "Nike Zoom Fly 6",
     "brand": "Nike",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:46:02.926Z",
+    "query": "tenis Nike Zoom Fly 6"
   },
   {
     "key": "run:Olympikus Corre 4",
     "sport": "run",
     "name": "Olympikus Corre 4",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4794439937"
+    ]
   },
   {
     "key": "run:Olympikus Corre 5",
     "sport": "run",
     "name": "Olympikus Corre 5",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5487052269",
+      "MLB5349375613"
+    ]
   },
   {
     "key": "run:Olympikus Corre Grafeno 3",
     "sport": "run",
     "name": "Olympikus Corre Grafeno 3",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6928111620",
+      "MLB6928116898",
+      "MLB7537212646"
+    ]
   },
   {
     "key": "run:Olympikus Corre Max 2",
     "sport": "run",
     "name": "Olympikus Corre Max 2",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5255016525",
+      "MLB7424125158",
+      "MLB5033574959"
+    ]
   },
   {
     "key": "run:Olympikus Corre Pace",
     "sport": "run",
     "name": "Olympikus Corre Pace",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:46:21.008Z",
+    "query": "tenis Olympikus Corre Pace"
   },
   {
     "key": "run:Olympikus Corre Supra 2",
     "sport": "run",
     "name": "Olympikus Corre Supra 2",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7760014158",
+      "MLB5113848163"
+    ]
   },
   {
     "key": "run:Olympikus Corre Trilha 3",
     "sport": "run",
     "name": "Olympikus Corre Trilha 3",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7828976232",
+      "MLB5064333251",
+      "MLB7739892156"
+    ]
   },
   {
     "key": "run:Olympikus Corre Turbo",
     "sport": "run",
     "name": "Olympikus Corre Turbo",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7094975016",
+      "MLB6849893132",
+      "MLB5271154061"
+    ]
   },
   {
     "key": "run:Olympikus Corre Vento 3",
     "sport": "run",
     "name": "Olympikus Corre Vento 3",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4803735617",
+      "MLB7944997004",
+      "MLB6907313836"
+    ]
   },
   {
     "key": "run:Olympikus Inverse 2",
     "sport": "run",
     "name": "Olympikus Inverse 2",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5124169157",
+      "MLB6862656186"
+    ]
   },
   {
     "key": "run:Olympikus Pride 4",
     "sport": "run",
     "name": "Olympikus Pride 4",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5380577114",
+      "MLB5541301496",
+      "MLB5318082534"
+    ]
   },
   {
     "key": "run:Olympikus Veloz 4",
     "sport": "run",
     "name": "Olympikus Veloz 4",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5188615797",
+      "MLB1513814396"
+    ]
   },
   {
     "key": "run:Olympikus Volta 2",
     "sport": "run",
     "name": "Olympikus Volta 2",
     "brand": "Olympikus",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4860814555",
+      "MLB4718721173"
+    ]
   },
   {
     "key": "run:On Cloudboom Echo 3",
     "sport": "run",
     "name": "On Cloudboom Echo 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:47:23.835Z",
+    "query": "tenis On Cloudboom Echo 3"
   },
   {
     "key": "run:On Cloudboom Max",
     "sport": "run",
     "name": "On Cloudboom Max",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "lastSearchedAt": "2026-11-17T22:47:27.184Z",
+    "query": "tenis On Cloudboom Max",
+    "offerIds": [
+      "MLB5311152419"
+    ]
   },
   {
     "key": "run:On Cloudboom Strike 2",
     "sport": "run",
     "name": "On Cloudboom Strike 2",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7933928856"
+    ]
   },
   {
     "key": "run:On Cloudboom Volt",
     "sport": "run",
     "name": "On Cloudboom Volt",
     "brand": "On",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:47:32.816Z",
+    "query": "tenis On Cloudboom Volt"
   },
   {
     "key": "run:On Cloudboom Zone",
     "sport": "run",
     "name": "On Cloudboom Zone",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:47:51.746Z",
+    "query": "tenis On Cloudboom Zone"
   },
   {
     "key": "run:On Cloudflow 5",
     "sport": "run",
     "name": "On Cloudflow 5",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7686009318"
+    ]
   },
   {
     "key": "run:On Cloudflyer 5",
     "sport": "run",
     "name": "On Cloudflyer 5",
     "brand": "On",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:47:57.641Z",
+    "query": "tenis On Cloudflyer 5"
   },
   {
     "key": "run:On Cloudmonster 3",
     "sport": "run",
     "name": "On Cloudmonster 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:48:00.406Z",
+    "query": "tenis On Cloudmonster 3"
   },
   {
     "key": "run:On Cloudmonster 3 Hyper",
     "sport": "run",
     "name": "On Cloudmonster 3 Hyper",
     "brand": "On",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:48:03.134Z",
+    "query": "tenis On Cloudmonster 3 Hyper"
   },
   {
     "key": "run:On Cloudrunner 3",
     "sport": "run",
     "name": "On Cloudrunner 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4876807641",
+      "MLB7867971132"
+    ]
   },
   {
     "key": "run:On Cloudrunner 3 Max",
     "sport": "run",
     "name": "On Cloudrunner 3 Max",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:48:08.822Z",
+    "query": "tenis On Cloudrunner 3 Max"
   },
   {
     "key": "run:On Cloudsoma",
     "sport": "run",
     "name": "On Cloudsoma",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:48:13.221Z",
+    "query": "tenis On Cloudsoma"
   },
   {
     "key": "run:On Cloudstratus 3",
     "sport": "run",
     "name": "On Cloudstratus 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4761699767"
+    ]
   },
   {
     "key": "run:On Cloudsurfer 3",
     "sport": "run",
     "name": "On Cloudsurfer 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "lastSearchedAt": "2026-11-17T22:48:20.884Z",
+    "query": "tenis On Cloudsurfer 3",
+    "offerIds": [
+      "MLB5312955931"
+    ]
   },
   {
     "key": "run:On Cloudsurfer Max",
     "sport": "run",
     "name": "On Cloudsurfer Max",
     "brand": "On",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:48:23.774Z",
+    "query": "tenis On Cloudsurfer Max"
   },
   {
     "key": "run:On Cloudsurfer Next",
     "sport": "run",
     "name": "On Cloudsurfer Next",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB3873765827"
+    ]
   },
   {
     "key": "run:On Cloudsurfer Trail 2",
     "sport": "run",
     "name": "On Cloudsurfer Trail 2",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:48:38.551Z",
+    "query": "tenis On Cloudsurfer Trail 2"
   },
   {
     "key": "run:On Cloudswift 4",
     "sport": "run",
     "name": "On Cloudswift 4",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2098583085",
+      "MLB2107983610"
+    ]
   },
   {
     "key": "run:On Cloudultra 3",
     "sport": "run",
     "name": "On Cloudultra 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:48:44.542Z",
+    "query": "tenis On Cloudultra 3"
   },
   {
     "key": "run:On Cloudultra Pro",
     "sport": "run",
     "name": "On Cloudultra Pro",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5505172231"
+    ]
   },
   {
     "key": "run:On Cloudventure Peak 3",
     "sport": "run",
     "name": "On Cloudventure Peak 3",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:48:50.465Z",
+    "query": "tenis On Cloudventure Peak 3"
   },
   {
     "key": "run:On Cloudvista 2",
     "sport": "run",
     "name": "On Cloudvista 2",
     "brand": "On",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6976832140"
+    ]
   },
   {
     "key": "run:On LightSpray Cloudmonster 3 Hyper",
     "sport": "run",
     "name": "On LightSpray Cloudmonster 3 Hyper",
     "brand": "On",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:48:56.631Z",
+    "query": "tenis On LightSpray Cloudmonster 3 Hyper"
   },
   {
     "key": "run:Puma Deviate Nitro 4",
     "sport": "run",
     "name": "Puma Deviate Nitro 4",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5156782783",
+      "MLB7386851424"
+    ]
   },
   {
     "key": "run:Puma Deviate Nitro Elite 4",
     "sport": "run",
     "name": "Puma Deviate Nitro Elite 4",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5452020657"
+    ]
   },
   {
     "key": "run:Puma Electrify Nitro 4",
     "sport": "run",
     "name": "Puma Electrify Nitro 4",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4771101153"
+    ]
   },
   {
     "key": "run:Puma Fast-R Nitro Elite 3",
     "sport": "run",
     "name": "Puma Fast-R Nitro Elite 3",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4709694809"
+    ]
   },
   {
     "key": "run:Puma ForeverRun Nitro 2",
     "sport": "run",
     "name": "Puma ForeverRun Nitro 2",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7247106834"
+    ]
   },
   {
     "key": "run:Puma MagMax Nitro 2",
     "sport": "run",
     "name": "Puma MagMax Nitro 2",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4970609653",
+      "MLB4965676941"
+    ]
   },
   {
     "key": "run:Puma Magnify Nitro 3",
     "sport": "run",
     "name": "Puma Magnify Nitro 3",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:49:23.773Z",
+    "query": "tenis Puma Magnify Nitro 3"
   },
   {
     "key": "run:Puma Velocity Nitro 5",
     "sport": "run",
     "name": "Puma Velocity Nitro 5",
     "brand": "Puma",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5005911485",
+      "MLB5343100583",
+      "MLB7854948548"
+    ]
   },
   {
     "key": "run:Salomon Aero Blaze 4",
     "sport": "run",
     "name": "Salomon Aero Blaze 4",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:49:29.432Z",
+    "query": "tenis Salomon Aero Blaze 4"
   },
   {
     "key": "run:Salomon Aero Glide 4",
     "sport": "run",
     "name": "Salomon Aero Glide 4",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:49:32.138Z",
+    "query": "tenis Salomon Aero Glide 4"
   },
   {
     "key": "run:Salomon Genesis 2",
     "sport": "run",
     "name": "Salomon Genesis 2",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:49:34.557Z",
+    "query": "tenis Salomon Genesis 2"
   },
   {
     "key": "run:Salomon S/Lab Phantasm 3",
     "sport": "run",
     "name": "Salomon S/Lab Phantasm 3",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:27:21.900Z",
+    "query": "tenis Salomon S Lab Phantasm 3"
   },
   {
     "key": "run:Salomon Sense Ride 5",
     "sport": "run",
     "name": "Salomon Sense Ride 5",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4035648713",
+      "MLB5496550578"
+    ]
   },
   {
     "key": "run:Salomon Speedcross 6",
     "sport": "run",
     "name": "Salomon Speedcross 6",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2132951470",
+      "MLB3921753573"
+    ]
   },
   {
     "key": "run:Salomon Thundercross",
     "sport": "run",
     "name": "Salomon Thundercross",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:49:49.106Z",
+    "query": "tenis Salomon Thundercross"
   },
   {
     "key": "run:Salomon Ultra Glide 4",
     "sport": "run",
     "name": "Salomon Ultra Glide 4",
     "brand": "Salomon",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:49:52.283Z",
+    "query": "tenis Salomon Ultra Glide 4"
   },
   {
     "key": "run:Under Armour Infinite Elite 2",
     "sport": "run",
     "name": "Under Armour Infinite Elite 2",
     "brand": "Under Armour",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4610537153",
+      "MLB4465220965"
+    ]
   },
   {
     "key": "run:Under Armour Infinite Pro",
     "sport": "run",
     "name": "Under Armour Infinite Pro",
     "brand": "Under Armour",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4070345485",
+      "MLB4070262903"
+    ]
   },
   {
     "key": "run:Under Armour Velociti Elite 2",
     "sport": "run",
     "name": "Under Armour Velociti Elite 2",
     "brand": "Under Armour",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7647181930"
+    ]
   },
   {
     "key": "run:adidas Adizero Adios Pro 5",
     "sport": "run",
     "name": "adidas Adizero Adios Pro 5",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:50:15.484Z",
+    "query": "tenis adidas Adizero Adios Pro 5"
   },
   {
     "key": "run:adidas Adizero Boston 13",
     "sport": "run",
     "name": "adidas Adizero Boston 13",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5724930424",
+      "MLB5444177780"
+    ]
   },
   {
     "key": "run:adidas Adizero Drive RC",
     "sport": "run",
     "name": "adidas Adizero Drive RC",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5300572972",
+      "MLB3999288441"
+    ]
   },
   {
     "key": "run:adidas Adizero Evo SL",
     "sport": "run",
     "name": "adidas Adizero Evo SL",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7748310586"
+    ]
   },
   {
     "key": "run:adidas Adizero Prime X3 Strung",
     "sport": "run",
     "name": "adidas Adizero Prime X3 Strung",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:50:26.776Z",
+    "query": "tenis adidas Adizero Prime X3 Strung"
   },
   {
     "key": "run:adidas Adizero SL2",
     "sport": "run",
     "name": "adidas Adizero SL2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7396841732"
+    ]
   },
   {
     "key": "run:adidas Adizero Takumi Sen 11",
     "sport": "run",
     "name": "adidas Adizero Takumi Sen 11",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7741379316",
+      "MLB8008534190"
+    ]
   },
   {
     "key": "run:adidas Duramo SL 2",
     "sport": "run",
     "name": "adidas Duramo SL 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5455098462",
+      "MLB7644444918"
+    ]
   },
   {
     "key": "run:adidas Duramo Speed 2",
     "sport": "run",
     "name": "adidas Duramo Speed 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4745492289"
+    ]
   },
   {
     "key": "run:adidas Hyperboost Edge",
     "sport": "run",
     "name": "adidas Hyperboost Edge",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:50:41.774Z",
+    "query": "tenis adidas Hyperboost Edge"
   },
   {
     "key": "run:adidas Response 2",
     "sport": "run",
     "name": "adidas Response 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4334307055",
+      "MLB7229426546"
+    ]
   },
   {
     "key": "run:adidas Runfalcon 6",
     "sport": "run",
     "name": "adidas Runfalcon 6",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4906988467"
+    ]
   },
   {
     "key": "run:adidas Supernova Glide",
     "sport": "run",
     "name": "adidas Supernova Glide",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7283429162"
+    ]
   },
   {
     "key": "run:adidas Supernova Prima 3",
     "sport": "run",
     "name": "adidas Supernova Prima 3",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:51:05.097Z",
+    "query": "tenis adidas Supernova Prima 3"
   },
   {
     "key": "run:adidas Supernova Rise 3",
     "sport": "run",
     "name": "adidas Supernova Rise 3",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5045918643"
+    ]
   },
   {
     "key": "run:adidas Supernova Stride 2",
     "sport": "run",
     "name": "adidas Supernova Stride 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5742603522",
+      "MLB4190669001"
+    ]
   },
   {
     "key": "run:adidas Terrex Agravic 4",
     "sport": "run",
     "name": "adidas Terrex Agravic 4",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB1808466856"
+    ]
   },
   {
     "key": "run:adidas Terrex Agravic Speed 2",
     "sport": "run",
     "name": "adidas Terrex Agravic Speed 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5453607331"
+    ]
   },
   {
     "key": "run:adidas Terrex Agravic Speed Ultra 2",
     "sport": "run",
     "name": "adidas Terrex Agravic Speed Ultra 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:51:20.946Z",
+    "query": "tenis adidas Terrex Agravic Speed Ultra 2"
   },
   {
     "key": "run:adidas Terrex Tracefinder 2",
     "sport": "run",
     "name": "adidas Terrex Tracefinder 2",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4075608939"
+    ]
   },
   {
     "key": "run:adidas Ultraboost 5",
     "sport": "run",
     "name": "adidas Ultraboost 5",
     "brand": "adidas",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4028824173"
+    ]
   },
   {
     "key": "racket:0",
@@ -1492,7 +2147,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4461225043"
+    ]
   },
   {
     "key": "racket:1",
@@ -1502,7 +2160,10 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7980667364"
+    ]
   },
   {
     "key": "racket:2",
@@ -1512,7 +2173,10 @@
     "year": 2026,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7796274222"
+    ]
   },
   {
     "key": "racket:3",
@@ -1522,7 +2186,10 @@
     "year": 2026,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6555847794"
+    ]
   },
   {
     "key": "racket:4",
@@ -1532,7 +2199,10 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7913104822"
+    ]
   },
   {
     "key": "racket:5",
@@ -1542,7 +2212,9 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:51:55.197Z",
+    "query": "raquete Babolat Pure Drive Team"
   },
   {
     "key": "racket:6",
@@ -1552,7 +2224,10 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4930471275"
+    ]
   },
   {
     "key": "racket:7",
@@ -1562,7 +2237,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:00.567Z",
+    "query": "raquete Babolat Pure Strike 100 16x19"
   },
   {
     "key": "racket:8",
@@ -1572,7 +2249,9 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:03.416Z",
+    "query": "raquete Babolat Pure Strike 98 16x19"
   },
   {
     "key": "racket:9",
@@ -1582,7 +2261,9 @@
     "year": 2025,
     "weight": 260,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:06.181Z",
+    "query": "raquete Babolat Boost Drive"
   },
   {
     "key": "racket:10",
@@ -1592,7 +2273,9 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:09.025Z",
+    "query": "raquete Head Speed MP"
   },
   {
     "key": "racket:11",
@@ -1602,7 +2285,9 @@
     "year": 2026,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:12.084Z",
+    "query": "raquete Head Speed MP L"
   },
   {
     "key": "racket:12",
@@ -1612,7 +2297,10 @@
     "year": 2026,
     "weight": 310,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6979414292"
+    ]
   },
   {
     "key": "racket:13",
@@ -1622,7 +2310,9 @@
     "year": 2026,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:26.882Z",
+    "query": "raquete Head Speed Team"
   },
   {
     "key": "racket:14",
@@ -1632,7 +2322,9 @@
     "year": 2025,
     "weight": 295,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:29.795Z",
+    "query": "raquete Head Gravity MP"
   },
   {
     "key": "racket:15",
@@ -1642,7 +2334,10 @@
     "year": 2025,
     "weight": 315,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7227228850"
+    ]
   },
   {
     "key": "racket:16",
@@ -1652,7 +2347,10 @@
     "year": 2026,
     "weight": 295,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB74491294"
+    ]
   },
   {
     "key": "racket:17",
@@ -1662,7 +2360,9 @@
     "year": 2026,
     "weight": 260,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:38.108Z",
+    "query": "raquete Head Boom Team"
   },
   {
     "key": "racket:18",
@@ -1672,7 +2372,10 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB59878847"
+    ]
   },
   {
     "key": "racket:19",
@@ -1682,7 +2385,10 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB77041928"
+    ]
   },
   {
     "key": "racket:20",
@@ -1692,7 +2398,9 @@
     "year": 2026,
     "weight": 265,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:46.436Z",
+    "query": "raquete Head Extreme Team"
   },
   {
     "key": "racket:21",
@@ -1702,7 +2410,9 @@
     "year": 2023,
     "weight": 310,
     "pattern": "18x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:49.407Z",
+    "query": "raquete Head Prestige MP"
   },
   {
     "key": "racket:22",
@@ -1712,7 +2422,10 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7607598216"
+    ]
   },
   {
     "key": "racket:23",
@@ -1722,7 +2435,9 @@
     "year": 2004,
     "weight": 225,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:52:54.625Z",
+    "query": "raquete Head Ti S6"
   },
   {
     "key": "racket:24",
@@ -1732,7 +2447,9 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:27:37.494Z",
+    "query": "raquete ProKennex Ki Q plus Tour 300g"
   },
   {
     "key": "racket:25",
@@ -1742,7 +2459,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:53:11.629Z",
+    "query": "raquete ProKennex Black Ace 300"
   },
   {
     "key": "racket:26",
@@ -1752,7 +2471,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:27:40.374Z",
+    "query": "raquete ProKennex Black Ace 105"
   },
   {
     "key": "racket:27",
@@ -1762,7 +2483,9 @@
     "year": 2025,
     "weight": 302,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:53:18.236Z",
+    "query": "raquete Volkl Vostra V1 Pro"
   },
   {
     "key": "racket:28",
@@ -1772,7 +2495,9 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:53:21.373Z",
+    "query": "raquete Volkl Vostra V8 300 g"
   },
   {
     "key": "racket:29",
@@ -1782,7 +2507,9 @@
     "year": 2024,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:53:24.236Z",
+    "query": "raquete Volkl Vostra V1 MP"
   },
   {
     "key": "racket:30",
@@ -1793,7 +2520,9 @@
     "weight": 305,
     "pattern": "16x19",
     "status": "verified",
-    "offerId": "MLB7088249244"
+    "offerIds": [
+      "MLB7088249244"
+    ]
   },
   {
     "key": "racket:31",
@@ -1803,7 +2532,9 @@
     "year": 2024,
     "weight": 284,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:53:27.038Z",
+    "query": "raquete Wilson Blade 100L v9"
   },
   {
     "key": "racket:32",
@@ -1813,7 +2544,10 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB34014018"
+    ]
   },
   {
     "key": "racket:33",
@@ -1823,7 +2557,10 @@
     "year": 2025,
     "weight": 295,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6239450306"
+    ]
   },
   {
     "key": "racket:34",
@@ -1833,7 +2570,10 @@
     "year": 2025,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7227240442"
+    ]
   },
   {
     "key": "racket:35",
@@ -1843,7 +2583,9 @@
     "year": 2025,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:53:38.089Z",
+    "query": "raquete Wilson Clash 108 v3"
   },
   {
     "key": "racket:36",
@@ -1853,7 +2595,10 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4126643153"
+    ]
   },
   {
     "key": "racket:37",
@@ -1863,7 +2608,10 @@
     "year": 2025,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB53336134"
+    ]
   },
   {
     "key": "racket:38",
@@ -1873,7 +2621,10 @@
     "year": 2023,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4460154107"
+    ]
   },
   {
     "key": "racket:39",
@@ -1883,7 +2634,9 @@
     "year": 2023,
     "weight": 300,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:53:55.858Z",
+    "query": "raquete Wilson Shift 99 v1 300 g"
   },
   {
     "key": "racket:40",
@@ -1893,7 +2646,9 @@
     "year": 2023,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:53:58.568Z",
+    "query": "raquete Wilson Burn 100 v5"
   },
   {
     "key": "racket:41",
@@ -1903,7 +2658,10 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB45927684"
+    ]
   },
   {
     "key": "racket:42",
@@ -1913,7 +2671,10 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB45548657"
+    ]
   },
   {
     "key": "racket:43",
@@ -1923,7 +2684,10 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB45521253"
+    ]
   },
   {
     "key": "racket:44",
@@ -1933,7 +2697,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6654736072"
+    ]
   },
   {
     "key": "racket:45",
@@ -1943,7 +2710,10 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4527793093"
+    ]
   },
   {
     "key": "racket:46",
@@ -1953,7 +2723,10 @@
     "year": 2026,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6233040564"
+    ]
   },
   {
     "key": "racket:47",
@@ -1963,7 +2736,9 @@
     "year": 2023,
     "weight": 310,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:54:25.667Z",
+    "query": "raquete Yonex Percept 97"
   },
   {
     "key": "racket:48",
@@ -1973,7 +2748,9 @@
     "year": 2023,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:54:28.599Z",
+    "query": "raquete Yonex Percept 100"
   },
   {
     "key": "racket:49",
@@ -1983,7 +2760,9 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:54:31.612Z",
+    "query": "raquete Prince Phantom 100X 290 g"
   },
   {
     "key": "racket:50",
@@ -1993,7 +2772,9 @@
     "year": 2026,
     "weight": 290,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:54:45.194Z",
+    "query": "raquete Prince Tour 100 290 g"
   },
   {
     "key": "racket:51",
@@ -2003,7 +2784,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:54:47.916Z",
+    "query": "raquete Prince Ripstick 100 300 g"
   },
   {
     "key": "racket:52",
@@ -2013,7 +2796,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:54:50.703Z",
+    "query": "raquete Tecnifibre TF40 305 16x19"
   },
   {
     "key": "racket:53",
@@ -2023,7 +2808,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:54:54.339Z",
+    "query": "raquete Tecnifibre TFight 300"
   },
   {
     "key": "racket:54",
@@ -2033,7 +2820,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:54:56.738Z",
+    "query": "raquete Dunlop CX 200"
   },
   {
     "key": "racket:55",
@@ -2043,7 +2832,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:54:59.609Z",
+    "query": "raquete Dunlop SX 300"
   },
   {
     "key": "racket:56",
@@ -2053,7 +2844,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:02.378Z",
+    "query": "raquete Dunlop FX 500"
   },
   {
     "key": "racket:57",
@@ -2063,7 +2856,9 @@
     "year": 2024,
     "weight": 310,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:55:05.138Z",
+    "query": "raquete Dunlop CX 200 Tour 16x19"
   },
   {
     "key": "racket:58",
@@ -2073,7 +2868,9 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x17",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:07.824Z",
+    "query": "raquete Babolat Evo Drive"
   },
   {
     "key": "racket:59",
@@ -2083,7 +2880,9 @@
     "year": 2026,
     "weight": 260,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:10.650Z",
+    "query": "raquete Babolat Boost Aero"
   },
   {
     "key": "racket:60",
@@ -2093,7 +2892,10 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB3991255871"
+    ]
   },
   {
     "key": "racket:61",
@@ -2103,7 +2905,9 @@
     "year": null,
     "weight": 268,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:55:16.700Z",
+    "query": "raquete Wilson Ultra Power 100"
   },
   {
     "key": "racket:62",
@@ -2113,7 +2917,10 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB66104480"
+    ]
   },
   {
     "key": "racket:63",
@@ -2123,7 +2930,9 @@
     "year": 2023,
     "weight": 317,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:55:29.684Z",
+    "query": "raquete Babolat Pure Aero Rafa Origin"
   },
   {
     "key": "racket:64",
@@ -2133,7 +2942,9 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:32.695Z",
+    "query": "raquete Babolat Pure Drive Plus"
   },
   {
     "key": "racket:65",
@@ -2143,7 +2954,9 @@
     "year": 2025,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:55:36.258Z",
+    "query": "raquete Babolat Pure Drive Tour"
   },
   {
     "key": "racket:66",
@@ -2153,7 +2966,9 @@
     "year": 2025,
     "weight": 255,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:55:39.071Z",
+    "query": "raquete Babolat Pure Drive Super Lite"
   },
   {
     "key": "racket:67",
@@ -2163,7 +2978,9 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:41.790Z",
+    "query": "raquete Babolat Pure Drive 98"
   },
   {
     "key": "racket:68",
@@ -2173,7 +2990,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:44.563Z",
+    "query": "raquete Babolat Pure Strike 100 16x20"
   },
   {
     "key": "racket:69",
@@ -2183,7 +3002,9 @@
     "year": 2024,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:47.822Z",
+    "query": "raquete Babolat Pure Strike Team"
   },
   {
     "key": "racket:70",
@@ -2193,7 +3014,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:51.001Z",
+    "query": "raquete Babolat Pure Strike 98 18x20"
   },
   {
     "key": "racket:71",
@@ -2203,7 +3026,9 @@
     "year": 2024,
     "weight": 310,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:54.134Z",
+    "query": "raquete Babolat Pure Strike 97"
   },
   {
     "key": "racket:72",
@@ -2213,7 +3038,9 @@
     "year": 2025,
     "weight": 255,
     "pattern": "16x17",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:57.039Z",
+    "query": "raquete Babolat Evo Drive Lite"
   },
   {
     "key": "racket:73",
@@ -2223,7 +3050,9 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:55:59.667Z",
+    "query": "raquete Babolat Evo Drive Tour"
   },
   {
     "key": "racket:74",
@@ -2233,7 +3062,9 @@
     "year": 2026,
     "weight": 275,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:56:10.776Z",
+    "query": "raquete Babolat Evo Aero"
   },
   {
     "key": "racket:75",
@@ -2243,7 +3074,9 @@
     "year": 2026,
     "weight": 260,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:56:14.296Z",
+    "query": "raquete Babolat Evo Aero Lite"
   },
   {
     "key": "racket:76",
@@ -2253,7 +3086,9 @@
     "year": 2023,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:56:17.296Z",
+    "query": "raquete Babolat Boost Strike"
   },
   {
     "key": "racket:77",
@@ -2263,7 +3098,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB72231488"
+    ]
   },
   {
     "key": "racket:78",
@@ -2273,7 +3111,9 @@
     "year": 2026,
     "weight": 265,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:56:23.014Z",
+    "query": "raquete Head Speed MP UL 2026"
   },
   {
     "key": "racket:79",
@@ -2283,7 +3123,9 @@
     "year": 2026,
     "weight": 275,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:56:25.846Z",
+    "query": "raquete Head Speed Elite 2026"
   },
   {
     "key": "racket:80",
@@ -2293,7 +3135,10 @@
     "year": 2025,
     "weight": 280,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB69423592"
+    ]
   },
   {
     "key": "racket:81",
@@ -2303,7 +3148,10 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7227240412"
+    ]
   },
   {
     "key": "racket:82",
@@ -2313,7 +3161,9 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:56:33.837Z",
+    "query": "raquete Head Gravity Team 2025"
   },
   {
     "key": "racket:83",
@@ -2323,7 +3173,10 @@
     "year": 2026,
     "weight": 310,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5470410563"
+    ]
   },
   {
     "key": "racket:84",
@@ -2333,7 +3186,10 @@
     "year": 2026,
     "weight": 275,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5373264089"
+    ]
   },
   {
     "key": "racket:85",
@@ -2343,7 +3199,9 @@
     "year": 2026,
     "weight": 255,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:56:42.745Z",
+    "query": "raquete Head Boom MP UL 2026"
   },
   {
     "key": "racket:86",
@@ -2353,7 +3211,10 @@
     "year": 2025,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7665231058"
+    ]
   },
   {
     "key": "racket:87",
@@ -2363,7 +3224,10 @@
     "year": 2025,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5886342554"
+    ]
   },
   {
     "key": "racket:88",
@@ -2373,7 +3237,10 @@
     "year": 2025,
     "weight": 260,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7399075444"
+    ]
   },
   {
     "key": "racket:89",
@@ -2383,7 +3250,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5470469965"
+    ]
   },
   {
     "key": "racket:90",
@@ -2393,7 +3263,10 @@
     "year": 2026,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB77879005"
+    ]
   },
   {
     "key": "racket:91",
@@ -2403,7 +3276,10 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5184466755"
+    ]
   },
   {
     "key": "racket:92",
@@ -2413,7 +3289,9 @@
     "year": 2023,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:57:10.298Z",
+    "query": "raquete Head Prestige MP L 2023"
   },
   {
     "key": "racket:93",
@@ -2423,7 +3301,9 @@
     "year": 2023,
     "weight": 320,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:57:13.652Z",
+    "query": "raquete Head Prestige Pro 2023"
   },
   {
     "key": "racket:94",
@@ -2433,7 +3313,9 @@
     "year": 2023,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:57:15.947Z",
+    "query": "raquete Head Prestige Tour 2023"
   },
   {
     "key": "racket:95",
@@ -2443,7 +3325,10 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5739482868"
+    ]
   },
   {
     "key": "racket:96",
@@ -2453,7 +3338,9 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:57:20.523Z",
+    "query": "raquete Head Instinct Team L 2025"
   },
   {
     "key": "racket:97",
@@ -2463,7 +3350,9 @@
     "year": 2025,
     "weight": 265,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:57:23.629Z",
+    "query": "raquete Head Instinct PWR 110 2025"
   },
   {
     "key": "racket:98",
@@ -2473,7 +3362,10 @@
     "year": 2023,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB28081837"
+    ]
   },
   {
     "key": "racket:99",
@@ -2483,7 +3375,9 @@
     "year": 2023,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:57:41.218Z",
+    "query": "raquete Wilson Pro Staff 97UL v14"
   },
   {
     "key": "racket:100",
@@ -2493,7 +3387,9 @@
     "year": 2023,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:57:43.872Z",
+    "query": "raquete Wilson Pro Staff X v14"
   },
   {
     "key": "racket:101",
@@ -2503,7 +3399,9 @@
     "year": 2023,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T23:27:53.833Z",
+    "query": "raquete Wilson Pro Staff Six One 100 v14"
   },
   {
     "key": "racket:102",
@@ -2513,7 +3411,9 @@
     "year": 2023,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:57:53.070Z",
+    "query": "raquete Wilson Pro Staff Team v14"
   },
   {
     "key": "racket:103",
@@ -2523,7 +3423,9 @@
     "year": 2024,
     "weight": 320,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:57:56.148Z",
+    "query": "raquete Wilson RF 01 Pro"
   },
   {
     "key": "racket:104",
@@ -2533,7 +3435,9 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:57:59.182Z",
+    "query": "raquete Wilson RF 01"
   },
   {
     "key": "racket:105",
@@ -2543,7 +3447,9 @@
     "year": 2024,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:58:02.039Z",
+    "query": "raquete Wilson RF 01 Future"
   },
   {
     "key": "racket:106",
@@ -2553,7 +3459,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4670818763"
+    ]
   },
   {
     "key": "racket:107",
@@ -2563,7 +3472,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4621210147"
+    ]
   },
   {
     "key": "racket:108",
@@ -2573,7 +3485,10 @@
     "year": 2024,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6928499208"
+    ]
   },
   {
     "key": "racket:109",
@@ -2583,7 +3498,9 @@
     "year": 2024,
     "weight": 295,
     "pattern": "18x16",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:58:14.616Z",
+    "query": "raquete Wilson Blade 98S v9"
   },
   {
     "key": "racket:110",
@@ -2593,7 +3510,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:58:27.292Z",
+    "query": "raquete Wilson Blade Pro 98 18x20 v9"
   },
   {
     "key": "racket:111",
@@ -2603,7 +3522,10 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB68284119"
+    ]
   },
   {
     "key": "racket:112",
@@ -2613,7 +3535,9 @@
     "year": 2026,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:58:33.057Z",
+    "query": "raquete Wilson Blade 100L v10"
   },
   {
     "key": "racket:113",
@@ -2623,7 +3547,9 @@
     "year": 2026,
     "weight": 265,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:58:36.454Z",
+    "query": "raquete Wilson Blade 100UL v10"
   },
   {
     "key": "racket:114",
@@ -2633,7 +3559,9 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:58:39.195Z",
+    "query": "raquete Wilson Blade 100 v9"
   },
   {
     "key": "racket:115",
@@ -2643,7 +3571,9 @@
     "year": 2024,
     "weight": 265,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:58:42.294Z",
+    "query": "raquete Wilson Blade 100UL v9"
   },
   {
     "key": "racket:116",
@@ -2653,7 +3583,9 @@
     "year": 2024,
     "weight": 274,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:58:45.017Z",
+    "query": "raquete Wilson Blade 101L v9"
   },
   {
     "key": "racket:117",
@@ -2663,7 +3595,10 @@
     "year": 2026,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7951781240"
+    ]
   },
   {
     "key": "racket:118",
@@ -2673,7 +3608,10 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7901078942"
+    ]
   },
   {
     "key": "racket:119",
@@ -2683,7 +3621,9 @@
     "year": 2025,
     "weight": 265,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:58:53.818Z",
+    "query": "raquete Wilson Clash 100UL v3"
   },
   {
     "key": "racket:120",
@@ -2693,7 +3633,10 @@
     "year": 2025,
     "weight": 260,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4329193161"
+    ]
   },
   {
     "key": "racket:121",
@@ -2703,7 +3646,9 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:58:59.761Z",
+    "query": "raquete Wilson Ultra 99 Pro v5"
   },
   {
     "key": "racket:122",
@@ -2713,7 +3658,9 @@
     "year": 2023,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T22:59:20.946Z",
+    "query": "raquete Wilson Ultra Pro 97 16x19 v4"
   },
   {
     "key": "racket:123",
@@ -2723,7 +3670,9 @@
     "year": 2023,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:59:23.638Z",
+    "query": "raquete Wilson Ultra Pro 97 18x20 v4"
   },
   {
     "key": "racket:124",
@@ -2733,7 +3682,9 @@
     "year": 2023,
     "weight": 315,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:59:26.717Z",
+    "query": "raquete Wilson Shift 99 Pro v1 315 g"
   },
   {
     "key": "racket:125",
@@ -2743,7 +3694,9 @@
     "year": 2023,
     "weight": 285,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T22:59:29.541Z",
+    "query": "raquete Wilson Shift 99L v1 285 g"
   },
   {
     "key": "racket:126",
@@ -2753,7 +3706,9 @@
     "year": 2026,
     "weight": 300,
     "pattern": "18x16",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:59:32.331Z",
+    "query": "raquete Wilson Burn 100S v6"
   },
   {
     "key": "racket:127",
@@ -2763,7 +3718,9 @@
     "year": 2026,
     "weight": 280,
     "pattern": "18x16",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:59:35.666Z",
+    "query": "raquete Wilson Burn 100LS v6"
   },
   {
     "key": "racket:128",
@@ -2773,7 +3730,9 @@
     "year": 2025,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:59:38.311Z",
+    "query": "raquete Yonex EZONE 98 Tour"
   },
   {
     "key": "racket:129",
@@ -2783,7 +3742,10 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "accessory_only",
+    "lastSearchedAt": "2026-11-17T22:59:40.984Z",
+    "query": "raquete Yonex EZONE 98L",
+    "reason": "Resultado encontrado era grommet/acessório, não raquete."
   },
   {
     "key": "racket:130",
@@ -2793,7 +3755,9 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:59:43.674Z",
+    "query": "raquete Yonex EZONE 100SL"
   },
   {
     "key": "racket:131",
@@ -2803,7 +3767,12 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "lastSearchedAt": "2026-11-17T23:27:56.955Z",
+    "query": "raquete Yonex EZONE 100 plus",
+    "offerIds": [
+      "MLB51294459"
+    ]
   },
   {
     "key": "racket:132",
@@ -2813,7 +3782,9 @@
     "year": 2025,
     "weight": 275,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T22:59:51.896Z",
+    "query": "raquete Yonex EZONE 105"
   },
   {
     "key": "racket:133",
@@ -2823,7 +3794,9 @@
     "year": 2026,
     "weight": 310,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T23:28:00.616Z",
+    "query": "raquete Yonex VCORE 95 2026"
   },
   {
     "key": "racket:134",
@@ -2833,7 +3806,9 @@
     "year": 2026,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:28:10.195Z",
+    "query": "raquete Yonex VCORE 98 Tour 2026"
   },
   {
     "key": "racket:135",
@@ -2843,7 +3818,9 @@
     "year": 2026,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:28:14.039Z",
+    "query": "raquete Yonex VCORE 98L 2026"
   },
   {
     "key": "racket:136",
@@ -2853,7 +3830,9 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T23:28:17.260Z",
+    "query": "raquete Yonex VCORE 98 plus 2026"
   },
   {
     "key": "racket:137",
@@ -2863,7 +3842,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB6881866988"
+    ]
   },
   {
     "key": "racket:138",
@@ -2873,7 +3855,9 @@
     "year": 2026,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:28:23.434Z",
+    "query": "raquete Yonex VCORE 100 plus 2026"
   },
   {
     "key": "racket:139",
@@ -2883,7 +3867,9 @@
     "year": 2023,
     "weight": 320,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T23:00:35.435Z",
+    "query": "raquete Yonex Percept 97D"
   },
   {
     "key": "racket:140",
@@ -2893,7 +3879,9 @@
     "year": 2023,
     "weight": 330,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T23:00:38.317Z",
+    "query": "raquete Yonex Percept 97H"
   },
   {
     "key": "racket:141",
@@ -2903,7 +3891,9 @@
     "year": 2023,
     "weight": 305,
     "pattern": "18x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:00:41.210Z",
+    "query": "raquete Yonex Percept 100D"
   },
   {
     "key": "racket:142",
@@ -2913,7 +3903,9 @@
     "year": 2023,
     "weight": 280,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T23:00:43.884Z",
+    "query": "raquete Yonex Percept 100L"
   },
   {
     "key": "racket:143",
@@ -2923,7 +3915,9 @@
     "year": 2024,
     "weight": 285,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:00:46.764Z",
+    "query": "raquete Volkl Vostra V8 285 g"
   },
   {
     "key": "racket:144",
@@ -2933,7 +3927,10 @@
     "year": 2024,
     "weight": 315,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4267995827"
+    ]
   },
   {
     "key": "racket:145",
@@ -2943,7 +3940,9 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:00:52.591Z",
+    "query": "raquete Volkl Vostra V10 300 g"
   },
   {
     "key": "racket:146",
@@ -2953,7 +3952,9 @@
     "year": 2024,
     "weight": 320,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:20.391Z",
+    "query": "raquete Volkl Vostra V10 320 g"
   },
   {
     "key": "racket:147",
@@ -2963,7 +3964,10 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB2071291469"
+    ]
   },
   {
     "key": "racket:148",
@@ -2973,7 +3977,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:26.642Z",
+    "query": "raquete Volkl Vostra V9 305 g"
   },
   {
     "key": "racket:149",
@@ -2983,7 +3989,9 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:29.370Z",
+    "query": "raquete Volkl V1 Classic 2025"
   },
   {
     "key": "racket:150",
@@ -2993,7 +4001,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:32.374Z",
+    "query": "raquete Prince Phantom 100X 305 g"
   },
   {
     "key": "racket:151",
@@ -3003,7 +4013,9 @@
     "year": 2024,
     "weight": 320,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:35.313Z",
+    "query": "raquete Prince Phantom 100X 18x20"
   },
   {
     "key": "racket:152",
@@ -3013,7 +4025,9 @@
     "year": 2025,
     "weight": 310,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:38.298Z",
+    "query": "raquete Prince O3 Phantom 100X 310 g"
   },
   {
     "key": "racket:153",
@@ -3023,7 +4037,9 @@
     "year": 2024,
     "weight": 310,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:41.331Z",
+    "query": "raquete Prince Phantom 100P"
   },
   {
     "key": "racket:154",
@@ -3033,7 +4049,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:44.444Z",
+    "query": "raquete Prince Phantom 107G"
   },
   {
     "key": "racket:155",
@@ -3043,7 +4061,9 @@
     "year": 2026,
     "weight": 310,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:01:47.334Z",
+    "query": "raquete Prince Tour 100 310 g"
   },
   {
     "key": "racket:156",
@@ -3053,7 +4073,10 @@
     "year": 2026,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB7190073568"
+    ]
   },
   {
     "key": "racket:157",
@@ -3063,7 +4086,9 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T23:01:52.965Z",
+    "query": "raquete Prince Tour 98"
   },
   {
     "key": "racket:158",
@@ -3073,7 +4098,9 @@
     "year": 2025,
     "weight": 280,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:04.428Z",
+    "query": "raquete Prince Ripstick 100 280 g"
   },
   {
     "key": "racket:159",
@@ -3083,7 +4110,9 @@
     "year": 2024,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:07.083Z",
+    "query": "raquete Tecnifibre TF40 305 18x20"
   },
   {
     "key": "racket:160",
@@ -3093,7 +4122,9 @@
     "year": 2024,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T23:02:09.771Z",
+    "query": "raquete Tecnifibre TF40 315 16x19"
   },
   {
     "key": "racket:161",
@@ -3103,7 +4134,9 @@
     "year": 2024,
     "weight": 315,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:12.491Z",
+    "query": "raquete Tecnifibre TF40 315 18x20"
   },
   {
     "key": "racket:162",
@@ -3113,7 +4146,9 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:16.210Z",
+    "query": "raquete Tecnifibre TF40 290 16x19"
   },
   {
     "key": "racket:163",
@@ -3123,7 +4158,10 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB4677257435"
+    ]
   },
   {
     "key": "racket:164",
@@ -3133,7 +4171,10 @@
     "year": 2025,
     "weight": 305,
     "pattern": "18x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB45534641"
+    ]
   },
   {
     "key": "racket:165",
@@ -3143,7 +4184,9 @@
     "year": 2025,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:25.868Z",
+    "query": "raquete Tecnifibre TFight 315S"
   },
   {
     "key": "racket:166",
@@ -3153,7 +4196,9 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:28.702Z",
+    "query": "raquete Dunlop CX 200 LS"
   },
   {
     "key": "racket:167",
@@ -3163,7 +4208,9 @@
     "year": 2025,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:31.751Z",
+    "query": "raquete Dunlop CX 200 18x20 Limited"
   },
   {
     "key": "racket:168",
@@ -3173,7 +4220,9 @@
     "year": 2024,
     "weight": 315,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:33.913Z",
+    "query": "raquete Dunlop CX 200 Tour 18x20"
   },
   {
     "key": "racket:169",
@@ -3183,7 +4232,9 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:02:36.751Z",
+    "query": "raquete Dunlop CX 200 OS"
   },
   {
     "key": "racket:170",
@@ -3193,7 +4244,9 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "generator_rejected",
+    "lastSearchedAt": "2026-11-17T23:02:52.257Z",
+    "query": "raquete Dunlop CX 400 Tour"
   },
   {
     "key": "racket:171",
@@ -3203,7 +4256,9 @@
     "year": 2024,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T23:02:55.192Z",
+    "query": "raquete Dunlop CX 400"
   },
   {
     "key": "racket:172",
@@ -3213,7 +4268,10 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "verified",
+    "offerIds": [
+      "MLB5470482273"
+    ]
   },
   {
     "key": "racket:173",
@@ -3223,7 +4281,9 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:01.259Z",
+    "query": "raquete Dunlop SX 300 LS"
   },
   {
     "key": "racket:174",
@@ -3233,7 +4293,9 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x18",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:04.388Z",
+    "query": "raquete Dunlop SX 300 Lite"
   },
   {
     "key": "racket:175",
@@ -3243,7 +4305,9 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:07.003Z",
+    "query": "raquete Dunlop FX 500 Tour"
   },
   {
     "key": "racket:176",
@@ -3253,7 +4317,9 @@
     "year": 2026,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "specs_unconfirmed",
+    "lastSearchedAt": "2026-11-17T23:03:09.866Z",
+    "query": "raquete Dunlop FX 500 LS"
   },
   {
     "key": "racket:177",
@@ -3263,7 +4329,9 @@
     "year": 2026,
     "weight": 270,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:13.042Z",
+    "query": "raquete Dunlop FX 500 Lite"
   },
   {
     "key": "racket:178",
@@ -3273,7 +4341,9 @@
     "year": 2026,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:28:26.672Z",
+    "query": "raquete ProKennex Q plus Tour 305g 16x19"
   },
   {
     "key": "racket:179",
@@ -3283,7 +4353,9 @@
     "year": 2026,
     "weight": 305,
     "pattern": "18x20",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:28:30.199Z",
+    "query": "raquete ProKennex Q plus Tour Pro 305g 18x20"
   },
   {
     "key": "racket:180",
@@ -3293,7 +4365,9 @@
     "year": 2025,
     "weight": 285,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:28.393Z",
+    "query": "raquete ProKennex Black Ace 285"
   },
   {
     "key": "racket:181",
@@ -3303,7 +4377,9 @@
     "year": 2025,
     "weight": 315,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:31.488Z",
+    "query": "raquete ProKennex Black Ace 315"
   },
   {
     "key": "racket:182",
@@ -3313,6 +4389,8 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x19",
-    "status": "unmapped"
+    "status": "no_exact_offer_in_search",
+    "lastSearchedAt": "2026-11-17T23:03:34.483Z",
+    "query": "raquete ProKennex Black Ace Pro 97"
   }
 ]
