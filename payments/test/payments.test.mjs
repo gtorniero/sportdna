@@ -108,3 +108,8 @@ test('live Pix uses its own token and omits sandbox approval marker',async()=>{
  globalThis.fetch=async(url,init)=>{assert.equal(init.headers.Authorization,'Bearer live-mp-unit');const b=JSON.parse(init.body);assert.equal(b.payer.first_name,undefined);assert.equal(b.total_amount,'19.99');return new Response(JSON.stringify({...pix,id:'ORDLIVEUNIT',status:'action_required',transactions:{payments:[{payment_method:{id:'pix',qr_code:'unit-pix'}}]}}),{headers:{'Content-Type':'application/json'}})};
  try{const r=await worker.fetch(req('/orders',{method:'POST',body:JSON.stringify({id:order.id,token:'a'.repeat(64),product:order.product,provider:'mercadopago',email:'unit@example.com'})}),e);assert.equal(r.status,200);assert.equal((await r.json()).pixCode,'unit-pix')}finally{globalThis.fetch=oldFetch}
 });
+
+test('free RUN rejects new paid orders before database or payment-provider work',async()=>{
+ const r=await worker.fetch(req('/orders',{method:'POST',body:JSON.stringify({product:'run-report'})}),{SITE_ORIGIN:origin});
+ assert.equal(r.status,409);assert.match(await r.text(),/gratuito/);
+});

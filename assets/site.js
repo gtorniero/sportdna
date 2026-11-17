@@ -65,11 +65,11 @@ const AREAS = {
     h1:`O tênis de corrida certo para o seu corpo e o seu <span class="hl">treino</span>.`,
     lede:"Espuma, drop, altura, forma, durabilidade e custo por km, cruzados com seu peso, seu ritmo e seus km por semana. Sem mito da pisada: neutro por padrão.",
     quiz:"run/",
-    facts:[["212","tênis de 13 marcas"],["19","perguntas"],["R$ 9,99","relatório"]],
+    facts:[["212","tênis de 13 marcas"],["19","perguntas"],["Grátis","relatório completo"]],
     vin:["Peso e largura do pé","Dor ao correr","Km por semana e ritmo","Terreno","Objetivo e prova","Treino de tiro","Sensação preferida","Orçamento"],
     vout:["Categoria","Altura de espuma","Drop","Peso","Durabilidade","Custo por km","Quando trocar","Segundo par"],
     inside:[["Tênis ideal com DNA Score","Modelo, preço médio no Brasil e ficha técnica."],["Ficha de laboratório","Peso, espuma e drop medidos, e seis índices contra a média do catálogo."],["Quando trocar","A data de troca pela sua quilometragem semanal."],["Segundo par e custo por km","Rodízio e os finalistas lado a lado."]],
-    price:[["R$ 9,99","Relatório completo"]],
+    price:[["Grátis","Teste e relatório completo"]],
     engine:{title:"Não é palpite. É um motor calibrado com 234 recomendações de especialistas.",
       lede:"Cada indicação de especialista (guias de revistas, testes de laboratório, lojas e treinadores) virou um perfil do questionário e rodou no motor. Os pesos foram ajustados e conferidos em casos guardados à parte, sem marca nenhuma pagando para aparecer.",
       stats:[["1.755","reviews lidas, de testadores e de clientes"],["37","critérios técnicos por tênis"],["41","estudos científicos por trás das regras"],["234","recomendações de especialistas, de 35 fontes"],["5.000","perfis simulados para conferir segurança e viés"],["212","tênis de 13 marcas avaliados"]],
@@ -191,7 +191,7 @@ function home(){
       <div class="chooser">
         <h2>Escolher meu esporte</h2>
         <div class="tiles">${ORDER.map((k,i)=>{const a=AREAS[k];return `<a class="tile ${a.cls}${i===0?" sel":""}" href="${a.quiz}">${ICON[k](52)}<span class="tn"><b>${a.w1} DNA</b><span>${a.sport}</span></span><span class="go">Fazer o teste<i aria-hidden="true"> →</i></span></a>`}).join("")}</div>
-        <p>Teste e prévia grátis, sem cadastro. Relatório completo a partir de R$ 9,99.</p>
+        <p>RUN DNA gratuito. RACKET e BOARD: prévia grátis e relatório completo por R$ 19,99.</p>
       </div>
     </div>
     <figure class="fan">

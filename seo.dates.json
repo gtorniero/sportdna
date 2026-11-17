@@ -1,8 +1,8 @@
 {
  "": {
   "published": "2026-10-23",
-  "modified": "2026-11-14",
-  "hash": "d753ab52b93be56e"
+  "modified": "2026-11-17",
+  "hash": "4f1eb2154f5bf2b3"
  },
  "blog/": {
   "published": "2026-11-01",
@@ -306,8 +306,8 @@
  },
  "como-ganhamos-dinheiro/": {
   "published": "2026-11-14",
-  "modified": "2026-11-14",
-  "hash": "8ce8e402c6baaa0b"
+  "modified": "2026-11-17",
+  "hash": "e48ee8a01d6c22c5"
  },
  "contato/": {
   "published": "2026-11-14",
@@ -326,8 +326,8 @@
  },
  "guias/racket/": {
   "published": "2026-11-01",
-  "modified": "2026-11-14",
-  "hash": "6a935012a590f704"
+  "modified": "2026-11-17",
+  "hash": "5678bd9639025196"
  },
  "guias/racket/melhor-raquete-de-tenis-para-iniciante/": {
   "published": "2026-11-14",
@@ -346,8 +346,8 @@
  },
  "guias/run/": {
   "published": "2026-11-01",
-  "modified": "2026-11-14",
-  "hash": "4e261ec2e41ebf09"
+  "modified": "2026-11-17",
+  "hash": "1dd76454eed04ad7"
  },
  "guias/surf/": {
   "published": "2026-11-01",
@@ -361,13 +361,13 @@
  },
  "racket/": {
   "published": "2026-11-02",
-  "modified": "2026-11-14",
-  "hash": "918d06da7c6e6eab"
+  "modified": "2026-11-17",
+  "hash": "b4f1c2f92bb57e5f"
  },
  "run/": {
   "published": "2026-11-02",
-  "modified": "2026-11-14",
-  "hash": "23e5e4847bbf9b6f"
+  "modified": "2026-11-17",
+  "hash": "6d4e4290003e17ae"
  },
  "sobre/": {
   "published": "2026-11-14",
@@ -376,12 +376,12 @@
  },
  "surf/": {
   "published": "2026-11-02",
-  "modified": "2026-11-14",
-  "hash": "dcd70cd12436e04a"
+  "modified": "2026-11-17",
+  "hash": "d1b5a0094489b648"
  },
  "termos/": {
   "published": "2026-11-14",
-  "modified": "2026-11-14",
-  "hash": "83e58450410eb5dd"
+  "modified": "2026-11-17",
+  "hash": "422b5a24aa9331e0"
  }
 }

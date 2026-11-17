@@ -72,12 +72,13 @@
       analytics = a; marketing = m;
       return;
     }
-    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_step', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase', 'generate_lead'].includes(d.event)) return;
+    if (!initialized || d?.type !== 'sd_measure' || !['page_view', 'quiz_start', 'quiz_step', 'quiz_complete', 'view_offer', 'checkout_open', 'checkout_error', 'begin_checkout', 'purchase', 'generate_lead', 'affiliate_click'].includes(d.event)) return;
     const path = typeof d.path === 'string' ? safePath(d.path) : null;
     if (!path) return;
     const p = {};
     const raw = d.params || {};
     if (['racket','surf','run'].includes(raw.sport)) p.sport = raw.sport;
+    if(d.event==='affiliate_click'){if(!['run','racket'].includes(p.sport)||path!=='/'+p.sport+'/'||!/^MLB[0-9]+$/.test(raw.offer_id||'')||raw.partner!=='meli')return;p.offer_id=raw.offer_id;p.partner='meli';}
     const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'};
     if (has(products,raw.product)&&products[raw.product]===p.sport) p.product=raw.product;
     if (['pix','card'].includes(raw.payment_type)) p.payment_type = raw.payment_type;
@@ -137,7 +138,7 @@
         window.fbq('trackSingle', PIXEL, 'Contact', { ...page, origem: p.origem });
       }
       else {
-        window.fbq('trackSingleCustom', PIXEL, {quiz_start:'QuizStarted',quiz_complete:'QuizCompleted',view_offer:'OfferViewed',checkout_open:'CheckoutOpened',checkout_error:'CheckoutError'}[d.event], { page_category: path, ...p, ...page });
+        window.fbq('trackSingleCustom', PIXEL, {affiliate_click:'AffiliateClick',quiz_start:'QuizStarted',quiz_complete:'QuizCompleted',view_offer:'OfferViewed',checkout_open:'CheckoutOpened',checkout_error:'CheckoutError'}[d.event], { page_category: path, ...p, ...page });
         // Eventos padrão ao lado dos personalizados, que continuam iguais.
         if (d.event === 'quiz_complete' && p.sport) window.fbq('trackSingle', PIXEL, 'Lead', { content_category: p.sport, page_path: path });
         if (d.event === 'view_offer') window.fbq('trackSingle', PIXEL, 'ViewContent', { ...(p.value ? { value: p.value, currency: 'BRL' } : {}), ...item, ...page });

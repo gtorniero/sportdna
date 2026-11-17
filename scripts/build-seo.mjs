@@ -18,14 +18,14 @@ for(const file of ['raquete','tenis','prancha'])vm.runInContext(read(`content/${
 vm.runInContext(read('assets/site.js'),ctx,{filename:'site.js'});
 // Preços do Product/Offer e das descrições vêm do mesmo arquivo do checkout (conferido contra o servidor em tests/payment-prices.test.mjs).
 vm.runInContext(read('assets/payments/config.js'),ctx,{filename:'config.js'});
-const PRODUCTS=window.SPORTDNA_PAYMENTS.products;
+const PRODUCTS={...window.SPORTDNA_PAYMENTS.products,'run-report':{...window.SPORTDNA_PAYMENTS.products['run-report'],amount:0}};
 const A=window.ML_ARTICLES, api=window.ML_BUILD_API;
 const routes=config.routes;
 for(const a of A)if(!routes['a-'+a.id])throw Error('Missing stable route for '+a.id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const json=s=>JSON.stringify(s).replace(/</g,'\\u003c');
 const absolute=p=>new URL(p,site).href;
-const price=product=>'R$ '+(PRODUCTS[product].amount/100).toFixed(2).replace('.',',');
+const price=product=>product==='run-report'?'Grátis':'R$ '+(PRODUCTS[product].amount/100).toFixed(2).replace('.',',');
 const text=s=>s.replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim();
 const CHROME=['brandHome','footBrand','nav','footTests','footGuides','footLinks'];
 /* Catálogo do RACKET DNA lido do próprio app: os guias de compra nunca têm ficha ou preço digitados à mão. */
@@ -79,7 +79,7 @@ const AREA_OF={prancha:'board',raquete:'racket',tenis:'tenis'};
 const HUB={board:'guias/surf/',racket:'guias/racket/',tenis:'guias/run/'};
 const APP_ROUTE={board:'surf/',racket:'racket/',tenis:'run/'};
 const REPORT={board:'surf-report',racket:'racket-report',tenis:'run-report'};
-const PRODUCT_TEXT={racket:'Relatório completo do RACKET DNA: a raquete de tênis que combina com o seu jogo e o seu braço, com a explicação de cada especificação. Prévia grátis antes de pagar.',board:'Relatório completo do SURF DNA: tipo, medidas e litragem da prancha de surf para o seu nível e o seu mar. Prévia grátis antes de pagar.',tenis:'Relatório completo do RUN DNA: o tênis de corrida para o seu corpo, ritmo e objetivo, com ficha técnica e custo por km. Prévia grátis antes de pagar.'};
+const PRODUCT_TEXT={racket:'Relatório completo do RACKET DNA: a raquete de tênis que combina com o seu jogo e o seu braço, com a explicação de cada especificação. Prévia grátis antes de pagar.',board:'Relatório completo do SURF DNA: tipo, medidas e litragem da prancha de surf para o seu nível e o seu mar. Prévia grátis antes de pagar.',tenis:'Relatório completo do RUN DNA: o tênis de corrida para o seu corpo, ritmo e objetivo, com ficha técnica e custo por km. Teste e relatório gratuitos.'};
 // Título: até ~60 caracteres, busca principal antes da marca. Sem seoTitle, a marca só entra se couber.
 const articleTitle=a=>a.seoTitle||((a.title+' | SPORT DNA').length<=60?a.title+' | SPORT DNA':a.title);
 // Descrição: até ~155 caracteres, cortada no fim de uma palavra.
@@ -169,7 +169,7 @@ for(const app of ['board','racket','tenis','litragem','grip']){
  const url=absolute(route),date=stamp(route,html);
  const name=app==='litragem'?'Calculadora de litragem':app==='grip'?'Tamanho do grip':api.AREAS[app].name;
  const title=app==='grip'?'Tamanho do grip da raquete: meça a mão | SPORT DNA':app==='litragem'?'Calculadora de litragem de prancha de surf | SPORT DNA':({board:'Teste: qual prancha de surf escolher? | SURF DNA',racket:'Teste: qual raquete de tênis escolher? | RACKET DNA',tenis:'Teste: qual tênis de corrida escolher? | RUN DNA'}[app]);
- const description=app==='grip'?'Meça a mão com uma régua e descubra o grip da sua raquete de tênis, de L1 a L5, com polegadas e milímetros. Grátis e sem cadastro.':app==='litragem'?'Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.':({board:`Faça o teste SURF DNA para explorar tipos, medidas e volume de prancha. Prévia grátis e relatório completo por ${price('surf-report')}.`,racket:`Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por ${price('racket-report')}.`,tenis:`Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Prévia grátis e relatório completo por ${price('run-report')}.`}[app]);
+ const description=app==='grip'?'Meça a mão com uma régua e descubra o grip da sua raquete de tênis, de L1 a L5, com polegadas e milímetros. Grátis e sem cadastro.':app==='litragem'?'Estime uma faixa de volume de prancha pelo peso, nível e tipo. Explore a fórmula e use o resultado como referência para conversar com seu shaper.':({board:`Faça o teste SURF DNA para explorar tipos, medidas e volume de prancha. Prévia grátis e relatório completo por ${price('surf-report')}.`,racket:`Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por ${price('racket-report')}.`,tenis:`Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Teste e relatório completo gratuitos.`}[app]);
  const extra=[];
  if(tool){
   // FAQPage só com as perguntas visíveis na própria página.
