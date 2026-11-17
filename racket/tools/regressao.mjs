@@ -19,7 +19,7 @@
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
      T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
      T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
-     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual · T27 gerações anteriores (rodada 17)
+     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual · T27 gerações anteriores (rodada 17) · T28 nota da atual sem critérios de compra (rodada 19)
      T19 estilo em 4 degraus (básico → completo) e compatibilidade · T20 resumo quando a raquete atual empata ou fica perto da recomendada
      T21 comparador sem placar e nas cores da marca
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
@@ -192,9 +192,15 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
   const o2=await pg.evaluate(()=>{const H=window.__RK,G=H.GERACOES;const lin=t=>t.replace(/ (v\d+|20\d\d.*|\d+ª geração|7ª geração)$/,'').split(' ')[0];
     const ruins=G.filter(g=>!g.to||g.to.brand!==g.brand).map(g=>g.name);
     const c=H.cleanAnswers({cur:'none',curOld:'Babolat Pure Drive 2021'});return {n:G.length,ok:G.length>=100&&!ruins.length,ruins,limpa:!('curOld' in c)}});
+  const o3=await pg.evaluate(()=>{const H=window.__RK,{A,RK,compute}=H;const set=x=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,H.cleanAnswers(JSON.parse(JSON.stringify(x))))};
+    const b={age:'40',height:'180',weight:'80',str:'high',cond:'2',arm:'now',joint:['elbow'],pain:'2',lim:'1',lvl:'adv_int',years:'10',freq:'2',swing:'full',spin:'mid',serve:'flat',style:'agg',opp:'mix',miss:'long',keep:'comfort',issue:'none',hold:'end',why:'feel',want:['power','spin'],string:'poly',tens:'52',restr:'3m'};
+    const out=[];for(const cur of ['ProKennex Black Ace 300','Tecnifibre TFight 300S','Wilson Clash 100 v3']){const f=[];for(const imp of ['yes','no'])for(const budget of ['1400','99999']){set({...b,cur:String(RK.findIndex(r=>r.name===cur)),imp,budget});const R=compute();f.push(R.curFit.raw+'|'+(R.curFit.pen.some(p=>/no Brasil|nicho|orçamento|Avaliação fraca|^Não ganha/.test(p[1]))?'x':''))}out.push([cur,f])}return out});
+  globalThis.X3=o3;
   globalThis.X2=o2;await b.close();srv.close();return o})();
  const X2=globalThis.X2;
  teste('T27 gerações anteriores: todas apontam para uma versão atual da mesma marca e linha; sem raquete, a geração antiga some',X2.ok&&X2.limpa,`${X2.n} gerações${X2.ruins.length?' · sem destino: '+X2.ruins.join(', '):''}`);
+ const X3=globalThis.X3;
+ teste('T28 nota bruta da atual mede só o encaixe: não muda com marca, oferta no Brasil, orçamento nem avaliação de testadores',X3.every(([,f])=>new Set(f).size===1&&!f[0].includes('x')),X3.map(([c,f])=>c+' bruta '+f[0].split('|')[0]+' ('+new Set(f).size+' valor)').join(' · '));
  teste('T26 veredito da atual: aderente (90%+ e até 3 pontos), ajuste fino (85%+ e até 8, ou sem nada contra), trocar',JSON.stringify(X)===JSON.stringify(['fica','fica','fino','fino','trocar','trocar']),X.join(', '))}
 
 /* ---------- relatórios ---------- */

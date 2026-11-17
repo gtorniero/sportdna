@@ -5,6 +5,35 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 19: a nota da raquete atual mede só o encaixe (nov/2026)
+
+**Gatilho.** Teste real do Gui (intermediário avançado, dor no braço hoje, Black Ace 300). No hexágono, a atual estava bem mais perto do perfil ideal que a 1ª colocada (Pure Aero; conforto 7,7 contra alvo 7,7, a Pure Aero tinha 4,8), mas ficou com 78% contra 96%.
+
+**Causa:** a atual recebia penalidades de compra.
+- Marca marginal e "prefiro achar aqui": 16 pontos, escondidos no relatório porque o texto fala de Brasil.
+- "Avaliação fraca entre os testadores": 6 pontos, mais −4 de aprovação.
+- "Não ganha potência/spin em relação à sua atual": a atual comparada com ela mesma, 3 pontos por item pedido.
+
+**Mudança:**
+- Para a raquete que a pessoa já tem, não entram marca, oferta no Brasil, orçamento, aprovação ou reprovação de testadores, nem as regras "não ganha/perde em relação à atual".
+- Continuam valendo tudo o que é de jogo e de corpo: peso, swingweight, rigidez com dor, queixa ("ela pesa", "é leve") e cabeça.
+- As raquetes candidatas seguem com todos os critérios de compra.
+
+**Efeito:**
+- No perfil reconstruído: a Black Ace passa de 74% para 94%, contra 96% da 1ª (veredito "aderente").
+- 218 perfis fixos (sem raquete atual): nenhuma mudança.
+- Grade de 192 perfis com raquete atual:
+
+| | Antes | Depois |
+|---|---|---|
+| Aderente | 3 | 5 |
+| Ajuste fino | 43 | 61 |
+| Trocar | 146 | 126 |
+
+- Médias da atual: Black Ace 68% → 80%, TFight 61% → 74%, EZONE 100 57% → 68%. Clash e Blade caem 1 ponto, porque perdem a aprovação positiva, que também deixou de contar.
+- O exemplo pronto não muda (Speed Pro com 83%).
+- T28 confere que a nota bruta da atual não muda com marca, oferta, orçamento nem testadores. Regressão 28/28; casos-guia 15/15.
+
 ## Rodada 18: corpo pequeno sem desconto em dobro (nov/2026)
 
 **Gatilho.** O perfil real da rodada 15 (mulher iniciante, 1,60 m, 60 kg, Speed MP pesada, mão no meio do cabo) foi cruzado com as indicações de outra conversa do Claude: 265 a 285 g, cabeça de 100 a 105, versões "L" (Pure Drive Lite, Clash 100L, Boom MP L, EZONE 100L).

@@ -1380,7 +1380,11 @@ function zones(T,tw){
   return {wt:[Math.max(pisoW,tw-pw),Math.max(pisoW,tw-pw)+2*pw],sw:[sw-ps,sw+ps],ra:[raMin,raMax],head:hd,bal:[balMax-P.balLargura,balMax]};
 }
 function penalties(r,c,tw){
-  const P=PESOS.pen;const want=wants();const out=[];let p=0;const add=(v,why)=>{if(v>0){p+=v;out.push([v,why])}};
+  const P=PESOS.pen;const want=wants();const out=[];let p=0;
+  /* rodada 19: a raquete que a pessoa já tem é medida só pelo encaixe no jogo. Marca, oferta no Brasil, preço e avaliação de testadores pesam na compra, não no uso */
+  const ehAtual=!!c&&r.id===c.id,COMPRA=/no Brasil|marca de nicho|orçamento|Avaliação fraca|^Não ganha|^Perde .* que você quer manter/;
+  /* "não ganha X em relação à sua atual" comparava a atual com ela mesma; o que a pessoa quer ganhar já entra no alvo (quer) */
+  const add=(v,why)=>{if(v>0&&!(ehAtual&&COMPRA.test(why))){p+=v;out.push([v,why])}};
   const armOk=A.arm!=='no'&&r.ix.arm>=P.bracoIndiceMin&&r.wt>tw;
   /* rodada 13: peso e swingweight medem a mesma coisa (massa a acelerar). Um termo só, pela hipotenusa dos excessos:
      um desvio sozinho custa o mesmo de antes; os dois juntos não somam por inteiro. A zona (±2) saiu do placar pelo mesmo motivo. */
@@ -1429,9 +1433,10 @@ function score(r,T,tw,c){
   d=Math.sqrt(d/ws);
   const pen=penalties(r,c,tw);
   const lw=P.aprovacaoNivel[A.lvl]||P.aprovacaoPadrao,el=J('elbow')||!(A.joint||[]).length;
-  const qa=cl(r.q*(r.q<0?Math.max(lw,1):lw),-P.aprovacaoTeto,P.aprovacaoTeto) /* rodada 15: avaliação negativa não é amortecida pelo nível */,q=(A.arm==='now'?cl((r.ix.arm-B.centro)*(el?B.hojeCotovelo:B.hoje),B.hojeMin,el?B.hojeMaxCotovelo:B.hojeMax):A.arm==='past'?cl((r.ix.arm-B.centro)*B.passado,B.passadoMin,B.passadoMax):0);
-  const ob=r.price&&+A.budget<99999&&r.price[0]<=+A.budget?P.dentroOrcamento:0;
-  const caro=!!r.price&&r.price[0]>+A.budget*(1+PESOS.pen.orcamento.tolerancia);
+  const ehAtual=!!c&&r.id===c.id;/* rodada 19: na atual, aprovação de testadores e orçamento não entram (critérios de compra) */
+  const qa=ehAtual?0:cl(r.q*(r.q<0?Math.max(lw,1):lw),-P.aprovacaoTeto,P.aprovacaoTeto) /* rodada 15: avaliação negativa não é amortecida pelo nível */,q=(A.arm==='now'?cl((r.ix.arm-B.centro)*(el?B.hojeCotovelo:B.hoje),B.hojeMin,el?B.hojeMaxCotovelo:B.hojeMax):A.arm==='past'?cl((r.ix.arm-B.centro)*B.passado,B.passadoMin,B.passadoMax):0);
+  const ob=!ehAtual&&r.price&&+A.budget<99999&&r.price[0]<=+A.budget?P.dentroOrcamento:0;
+  const caro=!ehAtual&&!!r.price&&r.price[0]>+A.budget*(1+PESOS.pen.orcamento.tolerancia);
   return {pen:pen.out,dist:d,p:pen.p,qb:q,qa,ob,caro};
 }
 let RES=null,tier=0,ZZ=null;
