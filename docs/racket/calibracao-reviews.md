@@ -5,6 +5,30 @@
 - Atletas: 45 de 58 raquetes com profissionais por linha. Incluídos nesta rodada: Dunlop CX (Mérida, Brooksby, Jamie Murray, Santamaria), Dunlop SX (Vallejo), Prince Tour (Pouille, customizada). Sem profissional confirmado: Clash, Shift, Instinct, Ti S6, Boost Drive, ProKennex, Phantom, Ripstick. Burn (Pavlyuchenkova) ficou de fora por fonte fraca (jan/2025).
 - Comparação com o Tennis Engineer no mesmo perfil (intermediário, cotovelo, Pure Strike 98): o top 3 deles (Shift 99, Extreme MP, Percept 100, todas 66–67 RA) fica entre 16º e 37º no nosso, por causa da dor no cotovelo; os dois motores concordam que vale trocar a Pure Strike.
 
+## Rodada 20: escala mais aberta, faixas no ranking e uma pergunta a menos (nov/2026)
+
+**Diagnóstico (600 perfis gerados pelo questionário):**
+- O top 10 é pessoal: 152 das 183 raquetes aparecem em algum top 10, e há 74 primeiros lugares diferentes. Duas pessoas quaisquer dividem em média 2 raquetes do top 10.
+- A escala comprimia as notas: o 1º lugar ficava com 94% em média e o 10º com 86,5%.
+- Mudam o top 3 em 0% dos casos: frequência de jogo, histórico de dor (intensidade e há quanto tempo), corda, tensão e troca de corda. As cinco últimas são usadas no relatório e na sugestão de corda. A frequência só definia o intervalo de troca de corda.
+
+**Mudanças:**
+- **Escala:** cada ponto bruto vale 1,2 ponto de DNA Score (antes 0,8; decisão do Gui). A ordem não muda; o 10º cai para cerca de 83% em média.
+- **Limites recalibrados para a escala nova:**
+  - veredito da atual: aderente com 89%+ e até 4 pontos; ajuste fino com 82%+ e até 12 pontos, ou nada contra e 76%+;
+  - "empata com a recomendada": 89%+ e até 4 pontos.
+- **Faixas no top 10 do relatório e do PDF:**
+  - "Encaixe ideal": até 4 pontos da 1ª, empate técnico; a diferença é de sensação, não de resultado;
+  - "Muito boa": até 12 pontos;
+  - "Boa": o resto.
+- **Pergunta de frequência de jogo:** saiu. A troca de corda passa a seguir o nível: iniciante a cada 3 meses, intermediário a cada 2 a 3 meses, intermediário avançado a cada 6 a 8 semanas, avançado a cada 3 a 4 semanas. Contador de perguntas: 18 a 28 (site e guia atualizados).
+
+**Testes:**
+- Top 1 e top 3 iguais nos 218 perfis; calibração igual (a ordem não muda).
+- Regressão 28/28 (T17 e T26 atualizados); casos-guia 15/15.
+- Questionário completo sem erro; axe 0.
+- Imagem do exemplo refeita.
+
 ## Rodada 19: a nota da raquete atual mede só o encaixe (nov/2026)
 
 **Gatilho.** Teste real do Gui (intermediário avançado, dor no braço hoje, Black Ace 300). No hexágono, a atual estava bem mais perto do perfil ideal que a 1ª colocada (Pure Aero; conforto 7,7 contra alvo 7,7, a Pure Aero tinha 4,8), mas ficou com 78% contra 96%.

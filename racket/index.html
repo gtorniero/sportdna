@@ -257,9 +257,9 @@ th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 .rank{display:flex;flex-direction:column;gap:6px}
 .rk{display:grid;grid-template-columns:28px minmax(0,1fr) 52px;gap:10px;align-items:center;font-size:14px}
-.rk .nm{position:relative;height:28px;border-radius:8px;background:var(--bg);overflow:hidden}
+.rk .nm{position:relative;height:28px;border-radius:8px;background:var(--bg);overflow:hidden;display:flex;align-items:center}
 .rk .nm i{position:absolute;inset:0 auto 0 0;background:color-mix(in srgb,var(--pri) 22%,transparent)}
-.rk .nm span{position:relative;line-height:28px;padding-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.rk .nm span{position:relative;line-height:28px;padding-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;flex:1 1 auto;min-width:0}
 .rk.win .nm i{background:color-mix(in srgb,var(--ball) 70%,transparent)}
 .rk.cur .nm i{background:repeating-linear-gradient(45deg,color-mix(in srgb,var(--cur) 30%,transparent) 0 6px,transparent 6px 12px)}
 .rk b{font-family:var(--f-mono);text-align:right}
@@ -269,6 +269,8 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .share small{opacity:.85}
 .mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .mini .panel{gap:10px}
+.fx{position:relative;flex:none;margin-right:6px;font-size:11px;font-weight:700;border-radius:99px;padding:1px 8px;white-space:nowrap;margin-left:6px}
+.fx-ideal{background:var(--ball);color:var(--ball-ink)}.fx-mboa{background:var(--soft);color:var(--ink)}.fx-boa{background:transparent;color:var(--muted);border:1px solid var(--line)}
 .freecard{background:color-mix(in srgb,var(--ball) 16%,var(--surface));border:2px solid var(--ball)}
 .freecard .eyebrow,.freecard .note,.freecard .gl,.freecard .muted{color:var(--ink)}
 .freebadge{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:3px 10px;margin:0 0 8px}
@@ -506,6 +508,7 @@ details.calc>summary{cursor:pointer;font-weight:600;color:var(--pri);min-height:
 .pdfroot .pq.big .pqt{font-size:12px}
 .pdfroot .pqm{font-size:9.5px;margin:0;opacity:.8}
 .pdfroot .pqs{background:#DDF247;color:#0B2530;border-radius:8px;padding:0 6px;font-weight:800}
+.pdfroot .rk5 .fx5{position:absolute;right:4px;top:50%;transform:translateY(-50%);text-decoration:none;font-size:8.5px;font-weight:700;border-radius:99px;padding:1px 6px;background:#fff;color:#0B2530}.pdfroot .rk5 .fx5.fx-ideal{background:#DDF247}.pdfroot .rk5 .fx5.fx-boa{color:#5B6B70}
 .pdfroot .rk5 .r5{display:grid;grid-template-columns:22px 1fr 40px;gap:8px;align-items:center;margin-bottom:5px;font-size:11px}
 .pdfroot .r5>span{color:#4A6570;font-weight:700;text-align:right}
 .pdfroot .r5 div{position:relative;height:20px;background:#EEF4F5;border-radius:5px;overflow:hidden}
@@ -921,7 +924,7 @@ const PESOS={
   match:{
     base:93,porDist:11,distRuim:1.3,distRuimPeso:3,pen:.8,aprovacaoAlcance:1.2,/* rodada 13: zona saiu do placar (já está no termo de massa); segue no mapa e na promoção */min:30,max:98,
     promoverZona:10,
-    escalaTopo:96,escalaPasso:.8,escalaRef:92,escalaRefPeso:.3,escalaMax:97,
+    escalaTopo:96,escalaPasso:1.2, /* rodada 20: .8 → 1,2 (decisão do Gui): a distância entre as raquetes fica visível; a ordem não muda */escalaRef:92,escalaRefPeso:.3,escalaMax:97,
     confBase:68,confPorResposta:1,confGap:.8,confMin:70,confMax:97
   },
   /* Aprovação dos testadores (r.q). Origem: reviews (rodada 2); versão leve sem TW herda parte da do modelo-pai (rodada 6) */
@@ -1034,7 +1037,6 @@ const Q=[
  {s:1,id:'painAgo',if:()=>A.arm==='past',t:'Há quanto tempo você está sem dor?',o:[['6m','Menos de 6 meses'],['2y','De 6 meses a 2 anos'],['more','Mais de 2 anos']]},
  {s:2,id:'lvl',t:'Qual o seu nível?',h:'Usamos a escala '+'<button type="button" class="gl" data-g="ntrp">NTRP</button>'+', de 1.0 a 7.0. Na dúvida, escolha o nível de baixo.',o:[['beg','Iniciante','NTRP 2.0 a 2.5 · ainda erra a troca de bola em ritmo médio'],['int','Intermediário','NTRP 3.0 a 3.5 · troca bola com consistência e joga partidas'],['adv_int','Intermediário avançado','NTRP 4.0 · golpes confiáveis, varia direção e spin'],['adv','Avançado','NTRP 4.5+ · compete, usa potência e spin como arma']]},
  {s:2,id:'years',t:'Há quanto tempo você joga?',o:[['0','Menos de 1 ano'],['1','1 a 3 anos'],['3','3 a 10 anos'],['10','Mais de 10 anos']]},
- {s:2,id:'freq',t:'Quantas vezes por semana você joga?',o:[['1','1 vez'],['2','2 a 3 vezes'],['4','4 ou mais']]},
  {s:2,id:'swing',if:()=>A.lvl&&A.lvl!=='beg',t:'Como é o seu swing (o movimento da raquete até a bola)?',h:'O tamanho e a velocidade do movimento até a bola. '+'<button type="button" class="gl" data-g="swing">Entenda</button>',o:[['short','Curto e compacto','Pouca preparação, bloqueia a bola'],['mid','Médio','Preparação moderada'],['long','Longo e rápido','Preparação ampla e aceleração forte']]},
  {s:2,id:'spin',if:()=>A.lvl&&A.lvl!=='beg',t:'Quanto topspin (efeito na bola) você usa?',h:'Topspin é o efeito em que a raquete sobe por trás da bola: ela gira para a frente, passa alta sobre a rede e cai rápido dentro da quadra. Se você bate a bola mais reta ou não sabe, escolha "Pouco".',o:[['low','Pouco','Bola mais reta, quase sem girar'],['mid','Médio','Bola com algum giro, passa a rede com folga'],['high','Muito','Bola alta e pesada, que quica alto no adversário']]},
  {s:2,id:'serve',t:'Como é o seu saque hoje?',h:'Seja sincero: isso muda a recomendação.',o:[['weak','Ainda inseguro','Faço dupla falta com frequência'],['push','Só coloco em jogo','Saque lento, quase empurrado'],['safe','Seguro','Raramente erro, mas não ganho ponto com ele'],['flat','Chapado e forte','Bola reta e rápida, sem efeito, para ganhar o ponto direto'],['kick','Com efeito','A bola faz curva (slice) ou quica alto (kick)'],['mix','Vario tudo','Reto ou com efeito, conforme o ponto']]},
@@ -1250,7 +1252,7 @@ $('#duelQuiz').addEventListener('click',()=>{exampleSession=false;Object.keys(A)
 const encode=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=+$/,'');
 const decode=s=>JSON.parse(decodeURIComponent(escape(atob(s.trim()))));
 /* códigos antigos: perguntas que saíram (mão dominante, backhand) são ignoradas; orçamento das 4 faixas antigas vai para a faixa nova */
-function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;if(!a.cur||a.cur==='none'||a.cur==='other')delete a.curOld;
+function cleanAnswers(a){a=a&&typeof a==='object'?a:{};delete a.dom;delete a.bh;delete a.freq;if(!a.cur||a.cur==='none'||a.cur==='other')delete a.curOld;
   /* rodada 14: estilo antigo (6 opções, até 2) vira um dos 4 degraus. Rede ("subo quando a bola deixa", saque e voleio) vai para jogo completo; com 2, fica o mais avançado */
   if(a.style!=null&&(typeof a.style!=='string'||['netc','net'].includes(a.style))){const ord=['keep','cnt','agg','all'],m={netc:'all',net:'all'};const v=[].concat(a.style||[]).map(x=>m[x]||x).filter(x=>ord.includes(x));
     a.style=v.length?v.sort((x,y)=>ord.indexOf(y)-ord.indexOf(x))[0]:undefined;if(!a.style)delete a.style}
@@ -1469,7 +1471,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,verdictAtual,GERACOES,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
+if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,verdictAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1849,7 +1851,8 @@ function stringSetup(r){
   adj(want.includes('power'),-2,'Você quer mais potência');adj(want.includes('control')&&A.lvl!=='beg',2,'Você quer mais controle');adj(r.pat==='18x20',1,'Padrão fechado 18×20');adj(r.ra>=68&&A.arm!=='no',-1,'Quadro rígido com histórico de dor');adj(A.opp==='heavy',1,'Bola pesada dos adversários');adj(A.swing==='short'&&!want.includes('power'),-1,'Swing curto: corda solta ajuda a bola sair');
   if(false)base-=2;
   const kg=lb=>dec(lb*0.4536);
-  const swap={'1':'a cada 3 meses','2':'a cada 6 a 8 semanas','4':'a cada 3 a 4 semanas'}[A.freq];
+  /* rodada 20: saiu a pergunta de frequência (não mudava o ranking); a troca de corda segue o nível */
+  const swap={beg:'a cada 3 meses',int:'a cada 2 a 3 meses',adv_int:'a cada 6 a 8 semanas',adv:'a cada 3 a 4 semanas'}[A.lvl];
   const cur=A.tens&&A.tens!=='?'?+A.tens:null;let vs='';
   if(cur){const d=base-cur;vs=Math.abs(d)<=2?`Você usa cerca de ${cur} lb: está perto do ideal.`:d<0?`Você usa cerca de ${cur} lb: ${-d} lb acima do recomendado. Baixar a tensão deve dar mais profundidade e conforto${A.arm!=='no'?' e aliviar o braço':''}.`:`Você usa cerca de ${cur} lb: ${d} lb abaixo do recomendado. Subir a tensão deve dar mais controle.`}
   const rs=A.restr==='zero'?'Corda nunca trocada é corda morta: o poliéster perde tensão nas primeiras semanas e fica duro como arame. Isso tira controle e manda vibração direto para o braço. Antes de qualquer coisa, troque a corda, mesmo que ela nunca tenha arrebentado.':A.restr==='never'||A.restr==='6m'?(/oli/.test(s)?'Poliéster perde tensão e endurece em poucas semanas. Trocando só a cada 6 meses ou mais, a corda fica morta e rígida, o que tira controle e castiga o braço.':'Corda velha perde elasticidade. Mesmo sem arrebentar, troque no prazo indicado.'):'';
@@ -1889,18 +1892,20 @@ function diffMao(a,b){const d=[];
   return d}
 const jnE=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
 /* rodada 17: veredito da raquete atual (grátis na prévia e no relatório).
-   Aderente: 90%+ e até 3 pontos da 1ª (troca só por sensação). Ajuste fino: 85%+ e até 8 pontos. Abaixo disso: trocar. */
+   Rodada 20 (escala 1,2): aderente com 89%+ e até 4 pontos da 1ª; ajuste fino com 82%+ e até 12 pontos, ou nada contra e 76%+; abaixo disso, trocar. */
 function verdictAtual(current,best,semNumero){
   if(!current||!best)return null;const gap=Math.max(0,best.fit-current.fit);
   /* na prévia grátis a nota fica borrada: o veredito não traz número (daria para deduzir a nota) */
   if(semNumero){const v=verdictAtual(current,best);return v&&{k:v.k,t:v.t,s:{fica:'Ela já é uma das melhores para o seu jogo. Trocar só se quiser uma sensação diferente.',fino:'Há raquetes um pouco acima para o seu jogo. Vale trocar se ela já está gasta ou se você quer ganhar no que falta.',trocar:'Há raquetes bem acima dela para o seu jogo. Com a troca, você corrige o que hoje joga contra você.'}[v.k]}}
-  if(current.fit>=90&&gap<=3)return {k:'fica',t:'Sua raquete está aderente ao seu jogo',s:`Ela já é uma das melhores para você${gap?`: só ${gap} ${gap>1?'pontos':'ponto'} abaixo da 1ª colocada`:', empatada com a 1ª colocada'}. Trocar só se quiser uma sensação diferente.`};
+  if(current.fit>=89&&gap<=4)return {k:'fica',t:'Sua raquete está aderente ao seu jogo',s:`Ela já é uma das melhores para você${gap?`: só ${gap} ${gap>1?'pontos':'ponto'} abaixo da 1ª colocada`:', empatada com a 1ª colocada'}. Trocar só se quiser uma sensação diferente.`};
   /* sem nada pesando contra (só distância de perfil), não mandamos trocar: é ganho fino */
-  if((current.fit>=85&&gap<=8)||(!(current.pen||[]).some(p=>p[0]>=1)&&current.fit>=80))return {k:'fino',t:'Ela atende bem; trocar é ajuste fino',s:`Há raquetes até ${gap} pontos acima para o seu jogo. Vale trocar se ela já está gasta ou se você quer ${(current.pen||[]).some(p=>p[0]>=1)?'resolver o que pesa contra ela':'chegar mais perto do seu perfil ideal'}.`};
+  if((current.fit>=82&&gap<=12)||(!(current.pen||[]).some(p=>p[0]>=1)&&current.fit>=76))return {k:'fino',t:'Ela atende bem; trocar é ajuste fino',s:`Há raquetes até ${gap} pontos acima para o seu jogo. Vale trocar se ela já está gasta ou se você quer ${(current.pen||[]).some(p=>p[0]>=1)?'resolver o que pesa contra ela':'chegar mais perto do seu perfil ideal'}.`};
   return {k:'trocar',t:'Recomendamos trocar',s:`Há raquetes ${gap} pontos acima para o seu jogo. Com a troca, você corrige o que hoje joga contra você.`};
 }
+/* rodada 20: faixas no ranking. Até 4 pontos da 1ª: encaixe ideal (empate técnico); até 12: muito boa; depois: boa */
+const faixa=(x,best)=>{const g=best.fit-x.fit;return g<=4?['ideal','Encaixe ideal']:g<=12?['mboa','Muito boa']:['boa','Boa']};
 function closeRacketFit(current,best){
-  if(!current||current.fit<90||best.fit-current.fit>3)return '';
+  if(!current||current.fit<89||best.fit-current.fit>4)return ''; /* rodada 20: limites na escala 1,2 */
   const a=current.r,b=best.r,d=diffMao(a,b),jn=jnE;
   const mao=d.length?`Na mão, a ${esc(b.model)} seria ${jn(d)}.`:`Na mão, as duas são muito parecidas.`;
   if(current.fit>=best.fit)return `Sua raquete atual empata com a recomendada: ${current.fit}% contra ${best.fit}%. Ela já é uma das melhores para o seu jogo e você não precisa trocar. ${mao} Se trocar, a mudança é de sensação, não de resultado.`;
@@ -1960,7 +1965,8 @@ function renderReport(){
       <div class="altl">${ranked.slice(1,3).map((x,i)=>`<div class="altc"><div style="min-width:0"><p class="eyebrow">${i+2}º lugar · ${esc(x.r.brand)}${x.r.year?' · '+x.r.year:''}</p><h3>${esc(x.r.model)}</h3><p class="mono specline">${x.r.wt} g · SW ${x.r.sw} · ${x.r.ra} RA · ${x.r.head} pol² · ${x.r.pat.replace('x','×')}</p><p class="note" style="margin-top:2px">Novo: ${precoTxt(x.r)} ${brTag(x.r)}</p><div class="pcs">${tradeChips(x,top3)}</div></div><div style="text-align:right"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>`).join('')}</div>
       </section><section class="panel" id="r-top"><h2 class="sec">Top 10 e mapa do catálogo</h2>
         <h3 style="margin-bottom:10px">Ranking dos 10 melhores</h3>
-        <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}${altsTag(x)}</span></div><b>${x.fit}%</b></div>`).join('')})()}</div>
+        <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}${altsTag(x)}</span><small class="fx fx-${faixa(x,w)[0]}">${faixa(x,w)[1]}</small></div><b>${x.fit}%</b></div>`).join('')})()}</div>
+        <p class="note">Encaixe ideal: até 4 pontos da 1ª; entre elas, a diferença é de sensação, não de resultado. Muito boa: até 12 pontos.</p>
         <div class="phead" style="margin-top:22px"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
         <p class="note">Cada ponto é uma das ${RK.length} raquetes do catálogo. Os números são o seu top 10, na ordem do ranking.${c?' O anel laranja é a sua atual.':''}</p>
       </section>`;
@@ -2137,7 +2143,7 @@ function pdfPages(){
   /* página 5: ranking e método */
   const list=ranked.slice(0,10);if(curFit)list.push(curFit);list.sort((a,b)=>b.fit-a.fit);
   const p5=`<section class="pg">${head(4,'Ranking completo e como chegamos aqui')}
-   <div class="cols c2"><div><h2 class="st">Top 10 para o seu perfil</h2><div class="rk5">${list.map(x=>{const isC=curFit&&x===curFit;return `<div class="r5${x===w?' w':''}${isC?' c':''}"><span>${isC?'—':ranked.indexOf(x)+1}</span><div><i style="width:${x.fit}%"></i><em>${esc(x.r.name)}${isC?' (sua)':''}</em></div><b>${x.fit}%</b></div>`}).join('')}</div></div>
+   <div class="cols c2"><div><h2 class="st">Top 10 para o seu perfil</h2><div class="rk5">${list.map(x=>{const isC=curFit&&x===curFit;return `<div class="r5${x===w?' w':''}${isC?' c':''}"><span>${isC?'—':ranked.indexOf(x)+1}</span><div><i style="width:${x.fit}%"></i><em>${esc(x.r.name)}${isC?' (sua)':''}</em><u class="fx5 fx-${faixa(x,w)[0]}">${faixa(x,w)[1]}</u></div><b>${x.fit}%</b></div>`}).join('')}</div><p class="small">Encaixe ideal: até 4 pontos da 1ª (diferença de sensação, não de resultado). Muito boa: até 12 pontos.</p></div>
    <div><h2 class="st">Mapa peso × swingweight</h2><div class="map">${hexify(scatter(r,c,Z,ranked.slice(0,10)))}</div><p class="small">Cada ponto é uma raquete; os números são o seu top 10.</p></div></div>
    ${curFit&&!fitNote?`<h2 class="st">Por que a sua ${esc(c.model)} ficou para trás</h2><p class="small">DNA Score ${curFit.fit}%, ${w.fit-curFit.fit} pontos abaixo da recomendada.</p><ul class="why">${curFit.pen.slice(0,4).map(p=>`<li>${p[1]}.</li>`).join('')||'<li>Ela está próxima do seu perfil; a troca é ganho fino, não correção.</li>'}</ul>`:''}
    <h2 class="st">Como chegamos aqui</h2>
