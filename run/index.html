@@ -10,6 +10,10 @@
 /* 2.5.8: área de toque mínima de 24 px sem mudar o desenho */
 .blink{position:relative}.blink::after{content:"";position:absolute;left:0;right:0;top:50%;height:24px;transform:translateY(-50%)}
 a.brand{text-decoration:none;color:inherit}a.brand:focus-visible{outline:3px solid var(--pri);outline-offset:4px;border-radius:10px}
+.freebig{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0}
+.freebig b{background:var(--ball);color:var(--ball-ink);font:800 clamp(20px,5vw,26px)/1 Archivo,sans-serif;letter-spacing:.02em;border-radius:12px;padding:10px 16px;box-shadow:0 6px 18px color-mix(in srgb,var(--ball) 35%,transparent)}
+.freebig span{font-weight:700;color:var(--ink);font-size:15px}
+.tag.freetag{background:var(--ball);color:var(--ball-ink);border-color:var(--ball);font-weight:800}
 </style><!-- SEO_START -->
 <title>Teste: qual tênis de corrida escolher? | RUN DNA</title>
 <meta name="description" content="Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Teste e relatório completo gratuitos.">
@@ -396,7 +400,7 @@ details.rk:not([open]){gap:0}
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 34) rotate(18) scale(1.08) translate(-34 -37)"><path d="M13 37.5 C13 32.5 15 29 18.5 28.3 C20.5 30 23.5 30.6 26.5 29 L28.5 27.2 C31 28 33 30 35.5 31.6 C41.5 34 48.5 35.2 53 36.8 C54.6 37.4 54.4 38.8 53 38.8 L13 38.8Z" fill="#FF8A3D"/><path d="M12 40.6 L55.5 40.6 C55.5 43.6 53 45.6 49.5 45.6 L16 45.6 C13.5 45.6 11.8 43.6 12 40.6Z" fill="#FF8A3D"/></g></svg>
       <span>RUN DNA<small>by SPORT DNA</small></span>
     </a>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Teste e relatório gratuitos</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag freetag">100% grátis</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -404,11 +408,12 @@ details.rk:not([open]){gap:0}
   <section id="landing" style="display:flex;flex-direction:column;gap:28px">
     <div class="hero">
       <div style="display:flex;flex-direction:column;gap:18px">
+        <p class="freebig"><b>100% GRÁTIS</b><span>Teste e relatório completo · sem cadastro · sem cartão</span></p>
         <p class="eyebrow">Análise técnica independente</p>
         <h1>O tênis de corrida certo para o seu corpo e o seu treino.</h1>
         <p class="lead">Responda 19 perguntas sobre seu corpo, sua corrida e seu objetivo. Receba o relatório completo gratuitamente, sem cadastro.</p>
         <div class="row">
-          <button class="btn btn-go" id="start" type="button">Descobrir meu tênis</button>
+          <button class="btn btn-go" id="start" type="button">Descobrir meu tênis grátis</button>
           <button class="btn btn-ghost" id="duelGo" type="button">Comparar dois tênis</button>
           <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
         </div>
