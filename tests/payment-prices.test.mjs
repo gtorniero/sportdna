@@ -23,7 +23,7 @@ function environment(options={}){
 }
 test('all displayed products exactly match server amounts and names',()=>{
  const {context}=environment();const products=context.window.SPORTDNA_PAYMENTS.products;
- assert.deepEqual(Object.keys(products).sort(),Object.keys(catalog).sort());
+ assert.deepEqual(Object.keys(products).sort(),Object.keys(catalog).filter(k=>!catalog[k].testOnly).sort()); // produto internacional de teste fica fora do checkout brasileiro
  for(const [id,p] of Object.entries(products)){assert.equal(p.amount,catalog[id].amount,id);assert.equal(p.name,catalog[id].name,id)}
 });
 for(const [id,price] of [['racket-report','19,99'],['surf-report','19,99'],['run-report','9,99'],['racket-comparator','4,99']]){

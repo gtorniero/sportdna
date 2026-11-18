@@ -5,7 +5,7 @@ import {saleMeasurement} from './measurement.mjs';
 import {redeemPromo} from './promos.mjs';
 import StripeClient from 'stripe';
 import {sendReport} from './email.mjs';
-import {catalog,digest,verifyMP,stripeState,mpState} from './security.mjs';
+import {catalog,currencyOf,digest,verifyMP,stripeState,mpState} from './security.mjs';
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const tokenFormat=/^[0-9a-f]{64}$/;
 const fail=(status,message)=>{throw Object.assign(new Error(message),{status})};
@@ -38,11 +38,12 @@ async function rate(request,env) {
 }
 async function publicOrder(o) {
  const measurement=await saleMeasurement(o);
- return {...(measurement?{measurement}:{}),id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:'BRL',mode:o.mode,state:o.state,
+ return {...(measurement?{measurement}:{}),id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:currencyOf(o.product).toUpperCase(),mode:o.mode,state:o.state,...(o.market?{market:o.market}:{}),
   checkoutUrl:o.checkout_url||null,pixCode:o.pix_code||null,pixImage:o.pix_image||null};
 }
 async function refresh(o,env,force=false) {
  if(o.mode!==env.PAYMENTS_MODE) fail(409,'Pedido de outro ambiente.');
+ if(catalog[o.product]?.testOnly&&env.PAYMENTS_MODE!=='test') fail(409,'Product not available.');
  if(o.provider==='promo'){const r=await env.DB.prepare('SELECT email FROM promo_order_emails WHERE order_id=?').bind(o.id).first();return {...o,recipientEmail:r?.email};}
  if(!o.provider_id) return o;
  if(!force&&Date.now()-o.checked_at<5000) return o;
@@ -57,24 +58,31 @@ async function create(request,env) {
  const b=await readJson(request);
  if(b.product==='run-report') fail(409,'O RUN DNA agora é gratuito. Acesse sportdna.com.br/run/ para gerar seu relatório.');
  const product=catalog[b.product];if(!product||!['stripe','mercadopago'].includes(b.provider)||!uuid.test(b.id)||!tokenFormat.test(b.token)) fail(400,'Produto ou pedido inválido.');
+ // Internacional: só sandbox, só cartão (Stripe) e só para um dos mercados do produto. Nada disso vale em modo live.
+ if(product.testOnly&&env.PAYMENTS_MODE!=='test') fail(409,'Product not available.');
+ if(product.provider&&b.provider!==product.provider) fail(400,'Payment method not available.');
+ if(product.markets&&!product.markets[b.market]) fail(400,'Country not available.');
  ready(env,b.provider);await rate(request,env);
  if(b.provider==='mercadopago'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email||'')) fail(400,'Informe seu e-mail para o Pix.');
  await captureCheckout(env,b.id,b.meta);
  const hash=await digest(b.token);
  let existing=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first();
  if(existing) {
-  if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!==b.provider||existing.mode!==env.PAYMENTS_MODE) fail(409,'Pedido já utilizado.');
+  if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!==b.provider||existing.mode!==env.PAYMENTS_MODE||(product.markets&&existing.market!==b.market)) fail(409,'Pedido já utilizado.');
   if(existing.provider_id) return publicOrder(await refresh(existing,env));
  } else {
-  await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,created_at) VALUES (?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,env.PAYMENTS_MODE,Date.now()).run();
+  // A coluna market (migrations/0002_market.sql) só é usada pelo produto internacional; o insert brasileiro é o mesmo de antes.
+  if(product.markets) await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,market,created_at) VALUES (?,?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,env.PAYMENTS_MODE,b.market,Date.now()).run();
+  else await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,created_at) VALUES (?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,env.PAYMENTS_MODE,Date.now()).run();
  }
  let id,url=null,code=null,image=null;
  if(b.provider==='stripe') {
+  const path=product.markets?product.markets[b.market]:product.path;
   const s=await stripe(env).checkout.sessions.create({mode:'payment',client_reference_id:b.id,
-   metadata:{sportdna_product:b.product},integration_identifier:'sportdna_reports_kpvndwqa',
-   allowed_payment_method_types:['card'],
-   line_items:[{quantity:1,...(env.PAYMENTS_MODE==='test'?{price:product.stripeTestPrice}:{price_data:{currency:'brl',unit_amount:product.amount,product_data:{name:product.name}}})}],
-   success_url:`${env.SITE_ORIGIN}/${product.path}/?payment=return`,cancel_url:`${env.SITE_ORIGIN}/${product.path}/?payment=cancel`},
+   metadata:{sportdna_product:b.product,...(product.markets?{sportdna_market:b.market}:{})},integration_identifier:'sportdna_reports_kpvndwqa',
+   allowed_payment_method_types:['card'],...(product.markets?{locale:'en'}:{}),
+   line_items:[{quantity:1,...(env.PAYMENTS_MODE==='test'&&product.stripeTestPrice?{price:product.stripeTestPrice}:{price_data:{currency:currencyOf(b.product),unit_amount:product.amount,product_data:{name:product.name}}})}],
+   success_url:`${env.SITE_ORIGIN}/${path}/?payment=return`,cancel_url:`${env.SITE_ORIGIN}/${path}/?payment=cancel`},
    {idempotencyKey:b.id});
   if(s.livemode!==(env.PAYMENTS_MODE==='live')||!s.url?.startsWith('https://checkout.stripe.com/')) fail(502,'Checkout inválido.');
   id=s.id;url=s.url;
@@ -92,7 +100,7 @@ async function create(request,env) {
 }
 async function redeem(request,env){
  const b=await readJson(request);
- if(!catalog[b.product]||!uuid.test(b.id)||!tokenFormat.test(b.token))fail(400,'Pedido inválido.');
+ if(!catalog[b.product]||catalog[b.product].testOnly||!uuid.test(b.id)||!tokenFormat.test(b.token))fail(400,'Pedido inválido.');
  ready(env,'promo');await rate(request,env);
  await captureCheckout(env,b.id,b.meta);
  const hash=await digest(b.token);

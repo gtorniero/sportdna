@@ -1,0 +1,19 @@
+// Sandbox isolado para a versão internacional do RACKET DNA (Stripe em modo teste, USD).
+// NÃO é o worker de produção (sportdna-payments-test, que roda em modo live apesar do nome).
+// Worker, banco D1 e segredos próprios. Nada é compartilhado com a produção.
+// Deploy só com aprovação: npx wrangler deploy -c wrangler.sandbox.jsonc
+// Antes: criar o D1 (npx wrangler d1 create sportdna-payments-sandbox), colar o id abaixo e aplicar as migrações
+// (npx wrangler d1 migrations apply sportdna-payments-sandbox -c wrangler.sandbox.jsonc --remote).
+// Segredos (só chaves de TESTE da Stripe): STRIPE_KEY (rk_test_/sk_test_), STRIPE_WEBHOOK_SECRET, RATE_SECRET.
+{
+  "name": "sportdna-payments-sandbox",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-11-02",
+  "workers_dev": true,
+  "vars": {
+    "PAYMENTS_MODE": "test",
+    "SITE_ORIGIN": "https://SUBSTITUIR-PELA-ORIGEM-DA-PREVIA",
+    "META_CAPI_ENABLED": "false"
+  },
+  "d1_databases": [{"binding":"DB","database_name":"sportdna-payments-sandbox","database_id":"SUBSTITUIR-APOS-CRIAR","migrations_dir":"migrations"}]
+}
