@@ -37,7 +37,8 @@ export const page = [
 
  // ---------- sem compra de raquetes: nenhum card de loja, afiliado ou comparação de preço ----------
  { find: "${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}", replace: '', n: 2 }, // 1º lugar e alternativas
- { find: '<script src="/assets/affiliate-offers.js"></script>\n<script src="/assets/affiliates.js"></script>\n<script src="/assets/measurement.js"></script>\n', replace: '__MEASURE__\n' },
+ // sem lojas nem fotos de produto no inglês (affiliates.js também desenha as fotos aprovadas do Brasil)
+ { find: /<script src="\/assets\/affiliate-offers\.js[^"]*"><\/script>\n(?:<script src="\/assets\/(?:report-photos|affiliates)\.js[^"]*"><\/script>\n)+<script src="\/assets\/measurement\.js"><\/script>\n/, replace: '__MEASURE__\n' },
  { find: "${r.usd?'':' novo'}${r.br==='d'?' · difícil de achar no Brasil':r.br==='p'?' · pouca oferta no Brasil':' · fácil de achar no Brasil'}", replace: "${' novo'}" },
  { find: "${x.r.usd?'~R$ '+fmt(x.r.price[0])+' · importada':precoTxt(x.r,'–')+(x.r.br==='p'?' · pouca oferta':'')}", replace: '${precoTxt(x.r)}' },
  { find: "x.fillText(precoTxt(r).replace(' importada',' · importada').replace(/ \\(US.*\\)/,''),90,y+30);", replace: 'x.fillText(precoTxt(r),90,y+30);' },
