@@ -1067,18 +1067,23 @@ const EXAMPLE={atual:'Nike Pegasus 42',marca:['2','3'],peso:'82',largura:'1',dor
 function renderSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${i===step?'on':i<step?'done':''}">${i+1}. ${s}</li>`).join('')}
 // respostas salvas antes das faixas novas (orc numérico de 0 a 5) viram a lista de faixas de hoje
 function normA(){if(A.orc!==undefined)A.orc=orcSel(A.orc).map(String)}
+/* rolagem automática (nov/2026, como no RACKET DNA): respondeu, a tela desce até a próxima pergunta sem resposta da etapa; sem próxima, até o botão Continuar */
+function goNext(q){const L=Q.filter(x=>x.s===step);const i=L.findIndex(x=>x.id===q.id);
+  const nx=L.slice(i+1).find(x=>{const v=A[x.id];return !(v!==undefined&&v!==''&&(!Array.isArray(v)||v.length))});
+  const el=nx?$(`#qs [data-q="${nx.id}"]`):$('#next');
+  if(el)setTimeout(()=>el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'}),180)}
 function renderQs(){
   normA();renderSteps();
   const box=$('#qs');box.innerHTML='';
   Q.filter(q=>q.s===step).forEach(q=>{
-    const fs=document.createElement('fieldset');fs.className='q';
+    const fs=document.createElement('fieldset');fs.className='q';fs.dataset.q=q.id;
     if(q.type==='number'){
       fs.innerHTML=`<label class="ql" for="q_${q.id}">${q.t}</label>${q.h?`<p class="help">${q.h}</p>`:''}<div class="numf"><input type="text" class="num" id="q_${q.id}" inputmode="numeric" autocomplete="off" maxlength="3" placeholder="${q.ph}">${q.u?`<span>${q.u}</span>`:''}</div>`;
       // campo simples de digitar: só números, sem setas nem rolagem mudando o valor
-      const inp=fs.querySelector('input');inp.value=A[q.id]||'';inp.addEventListener('beforeinput',e=>{if(e.data&&/\D/.test(e.data))e.preventDefault()});inp.addEventListener('input',()=>{inp.value=inp.value.replace(/\D/g,'');A[q.id]=inp.value});
+      const inp=fs.querySelector('input');inp.value=A[q.id]||'';inp.addEventListener('beforeinput',e=>{if(e.data&&/\D/.test(e.data))e.preventDefault()});inp.addEventListener('input',()=>{inp.value=inp.value.replace(/\D/g,'');A[q.id]=inp.value});inp.addEventListener('change',()=>{if(inp.value)goNext(q)});inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();inp.blur()}});
     }else if(q.type==='select'){
       fs.innerHTML=`<label class="ql" for="q_${q.id}">${q.t}</label>${q.h?`<p class="help">${q.h}</p>`:''}<select id="q_${q.id}" style="width:100%;max-width:420px"><option value="">Não sei ou não está na lista</option>${BRANDS.slice().sort((x,y)=>x.localeCompare(y,'pt',{sensitivity:'base'})).map(b=>`<optgroup label="${esc(b)}">${M.filter(m=>m.b===b).map(m=>`<option${A[q.id]===m.n?' selected':''}>${esc(m.n)}</option>`).join('')}</optgroup>`).join('')}</select>`;
-      const sel=fs.querySelector('select');sel.addEventListener('change',()=>{A[q.id]=sel.value});
+      const sel=fs.querySelector('select');sel.addEventListener('change',()=>{A[q.id]=sel.value;goNext(q)});
     }else{
       // a dica (ex.: "Pode marcar mais de uma faixa.") também é lida com o grupo pelo leitor de tela
       fs.innerHTML=`<legend>${q.t}</legend>${q.h?`<p class="help" id="h_${q.id}">${q.h}</p>`:''}<div class="opts"></div>`;if(q.h)fs.setAttribute('aria-describedby','h_'+q.id);
@@ -1088,7 +1093,7 @@ function renderQs(){
         b.innerHTML=`<span>${esc(o[1])}</span>${o[2]?`<small>${esc(o[2])}</small>`:''}`;
         const on=v=>q.multi?(A[q.id]||[]).includes(v):A[q.id]===v;
         b.setAttribute('aria-pressed',on(o[0]));
-        b.addEventListener('click',()=>{if(q.multi){let v=A[q.id]||[];if(o[0]===q.none)v=[o[0]];else{v=v.filter(x=>x!==q.none);v=v.includes(o[0])?v.filter(x=>x!==o[0]):[...v,o[0]].slice(-q.multi)}A[q.id]=v}else A[q.id]=o[0];g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',on(q.o[i][0])));$('#err').hidden=true});
+        b.addEventListener('click',()=>{if(q.multi){let v=A[q.id]||[];if(o[0]===q.none)v=[o[0]];else{v=v.filter(x=>x!==q.none);v=v.includes(o[0])?v.filter(x=>x!==o[0]):[...v,o[0]].slice(-q.multi)}A[q.id]=v}else A[q.id]=o[0];g.querySelectorAll('.opt').forEach((x,i)=>x.setAttribute('aria-pressed',on(q.o[i][0])));$('#err').hidden=true;if(!q.multi)goNext(q)});
         g.appendChild(b);
       });
     }
