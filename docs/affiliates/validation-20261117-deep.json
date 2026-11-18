@@ -1,0 +1,19 @@
+{
+  "oldOffersPreserved": 303,
+  "offers": 321,
+  "newModels": 18,
+  "run": {
+    "linked": 154,
+    "total": 212,
+    "target": 191
+  },
+  "racket": {
+    "linked": 91,
+    "total": 183,
+    "target": 165
+  },
+  "goalMet": false,
+  "testsPassed": 5,
+  "otherStoresAuthorized": false,
+  "publication": "pending"
+}

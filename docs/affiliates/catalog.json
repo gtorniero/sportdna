@@ -1016,12 +1016,14 @@
     "sport": "run",
     "name": "New Balance Fresh Foam X Garoé v2",
     "brand": "New Balance",
-    "status": "bundle_not_selected",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:12:42.963Z",
     "query": "tenis New Balance Fresh Foam X Garoe v2",
     "lastAlternativeQuery": "tenis New Balance Garoé v2",
     "retryStatus": "bundle_not_selected",
-    "reason": "Oferta inclui área de membros/treinamento em kit; não selecionada nesta rodada."
+    "offerIds": [
+      "MLB7410511592"
+    ]
   },
   {
     "key": "run:New Balance Fresh Foam X Hierro v9",
@@ -1805,12 +1807,12 @@
     "sport": "run",
     "name": "On Cloudsurfer Max",
     "brand": "On",
-    "status": "generator_rejected",
+    "status": "not_verified",
     "lastSearchedAt": "2026-11-18T00:11:56.047Z",
     "query": "tenis On Cloudsurfer Max",
     "lastAlternativeQuery": "tenis On Cloudsurfer Max",
-    "retryStatus": "generator_rejected",
-    "reason": "⚠️ O vendedor tem reputação vermelha ou laranja."
+    "retryStatus": "not_verified",
+    "reason": "Não foi possível confirmar a ficha do anúncio."
   },
   {
     "key": "run:On Cloudsurfer Next",
@@ -2459,12 +2461,14 @@
     "year": 2025,
     "weight": 305,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:15:00.765Z",
     "query": "raquete Babolat Pure Strike 98 16x19",
     "lastAlternativeQuery": "raquete Babolat Pure Strike 98 16x19 2025",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB4907814249"
+    ]
   },
   {
     "key": "racket:9",
@@ -2478,8 +2482,8 @@
     "lastSearchedAt": "2026-11-18T00:15:04.520Z",
     "query": "raquete Babolat Boost Drive",
     "lastAlternativeQuery": "raquete Babolat Boost Drive 2025",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:10",
@@ -2506,12 +2510,14 @@
     "year": 2026,
     "weight": 285,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:08:48.771Z",
     "query": "raquete Head Speed MP L",
     "lastAlternativeQuery": "raquete Head Speed MP L 2026",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB4452153921"
+    ]
   },
   {
     "key": "racket:12",
@@ -2708,12 +2714,12 @@
     "year": 2025,
     "weight": 300,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "variant_not_confirmed",
     "lastSearchedAt": "2026-11-18T00:15:26.793Z",
     "query": "raquete ProKennex Black Ace 300",
     "lastAlternativeQuery": "raquete ProKennex Black Ace 300 2025",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "variant_not_confirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:26",
@@ -2904,12 +2910,12 @@
     "year": 2023,
     "weight": 300,
     "pattern": "16x20",
-    "status": "no_exact_offer_in_search",
+    "status": "generator_rejected",
     "lastSearchedAt": "2026-11-18T00:15:49.828Z",
     "query": "raquete Wilson Shift 99 v1 300 g",
     "lastAlternativeQuery": "raquete Wilson Shift 99 v1 300",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "generator_rejected",
+    "reason": "⚠️ Este URL corresponde a um produto usado."
   },
   {
     "key": "racket:40",
@@ -3029,12 +3035,12 @@
     "year": 2023,
     "weight": 300,
     "pattern": "16x19",
-    "status": "generator_rejected",
+    "status": "specs_unconfirmed",
     "lastSearchedAt": "2026-11-18T00:16:03.618Z",
     "query": "raquete Yonex Percept 100",
     "lastAlternativeQuery": "raquete Yonex Percept 100 2023",
-    "retryStatus": "generator_rejected",
-    "reason": "⚠️ Este produto não cumpre com os requisitos do Programa."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:49",
@@ -3044,12 +3050,12 @@
     "year": 2024,
     "weight": 290,
     "pattern": "16x18",
-    "status": "no_exact_offer_in_search",
+    "status": "specs_unconfirmed",
     "lastSearchedAt": "2026-11-18T00:08:54.617Z",
     "query": "raquete Prince Phantom 100X 290 g",
     "lastAlternativeQuery": "raquete Prince Phantom 100X 290 2024",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:50",
@@ -3059,12 +3065,14 @@
     "year": 2026,
     "weight": 290,
     "pattern": "16x18",
-    "status": "no_exact_offer_in_search",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:09:31.862Z",
     "query": "raquete Prince Tour 100 290 g",
     "lastAlternativeQuery": "raquete Prince Tour 100 290 2026",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_verified",
+    "offerIds": [
+      "MLB4906597997"
+    ]
   },
   {
     "key": "racket:51",
@@ -3157,8 +3165,8 @@
     "lastSearchedAt": "2026-11-18T00:16:23.404Z",
     "query": "raquete Dunlop FX 500",
     "lastAlternativeQuery": "raquete Dunlop FX 500 2025",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:57",
@@ -3275,8 +3283,8 @@
     "lastSearchedAt": "2026-11-18T00:16:37.965Z",
     "query": "raquete Babolat Pure Drive Plus",
     "lastAlternativeQuery": "raquete Babolat Pure Drive Plus 2025",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:65",
@@ -3290,8 +3298,8 @@
     "lastSearchedAt": "2026-11-18T00:12:13.199Z",
     "query": "raquete Babolat Pure Drive Tour",
     "lastAlternativeQuery": "raquete Babolat Pure Drive Tour 2025",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "generator_rejected",
+    "reason": "⚠️ Este URL corresponde a um produto usado."
   },
   {
     "key": "racket:66",
@@ -3367,12 +3375,14 @@
     "year": 2024,
     "weight": 305,
     "pattern": "18x20",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:16:58.767Z",
     "query": "raquete Babolat Pure Strike 98 18x20",
     "lastAlternativeQuery": "raquete Babolat Pure Strike 98 18x20 2024",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB7908950628"
+    ]
   },
   {
     "key": "racket:71",
@@ -3786,12 +3796,14 @@
     "year": 2023,
     "weight": 270,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:17:35.554Z",
     "query": "raquete Wilson Pro Staff 97UL v14",
     "lastAlternativeQuery": "raquete Wilson Pro Staff 97UL v14",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB2126577226"
+    ]
   },
   {
     "key": "racket:100",
@@ -3801,12 +3813,14 @@
     "year": 2023,
     "weight": 315,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:09:08.344Z",
     "query": "raquete Wilson Pro Staff X v14",
     "lastAlternativeQuery": "raquete Wilson Pro Staff X v14",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB2064019941"
+    ]
   },
   {
     "key": "racket:101",
@@ -3846,12 +3860,14 @@
     "year": 2024,
     "weight": 320,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:09:37.877Z",
     "query": "raquete Wilson RF 01 Pro",
     "lastAlternativeQuery": "raquete Wilson RF 01 Pro 2024",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB4070381623"
+    ]
   },
   {
     "key": "racket:104",
@@ -3861,12 +3877,14 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x19",
-    "status": "not_verified",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:17:55.596Z",
     "query": "raquete Wilson RF 01",
     "lastAlternativeQuery": "raquete Wilson RF 01 2024",
     "retryStatus": "not_verified",
-    "reason": "Não foi possível confirmar a ficha do anúncio."
+    "offerIds": [
+      "MLB3887619471"
+    ]
   },
   {
     "key": "racket:105",
@@ -3876,12 +3894,14 @@
     "year": 2024,
     "weight": 280,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:17:58.831Z",
     "query": "raquete Wilson RF 01 Future",
     "lastAlternativeQuery": "raquete Wilson RF 01 Future 2024",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB39360629"
+    ]
   },
   {
     "key": "racket:106",
@@ -4149,12 +4169,14 @@
     "year": 2023,
     "weight": 315,
     "pattern": "18x20",
-    "status": "no_exact_offer_in_search",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:18:29.334Z",
     "query": "raquete Wilson Shift 99 Pro v1 315 g",
     "lastAlternativeQuery": "raquete Wilson Shift 99 Pro v1 315",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_verified",
+    "offerIds": [
+      "MLB5107011434"
+    ]
   },
   {
     "key": "racket:125",
@@ -4179,12 +4201,14 @@
     "year": 2026,
     "weight": 300,
     "pattern": "18x16",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:18:39.712Z",
     "query": "raquete Wilson Burn 100S v6",
     "lastAlternativeQuery": "raquete Wilson Burn 100S v6",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB5445690041"
+    ]
   },
   {
     "key": "racket:127",
@@ -4194,12 +4218,14 @@
     "year": 2026,
     "weight": 280,
     "pattern": "18x16",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:18:42.475Z",
     "query": "raquete Wilson Burn 100LS v6",
     "lastAlternativeQuery": "raquete Wilson Burn 100LS v6",
     "retryStatus": "specs_unconfirmed",
-    "reason": "Ficha não confirma todas as especificações do motor."
+    "offerIds": [
+      "MLB2116154611"
+    ]
   },
   {
     "key": "racket:128",
@@ -4209,12 +4235,14 @@
     "year": 2025,
     "weight": 315,
     "pattern": "16x19",
-    "status": "not_verified",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:18:46.021Z",
     "query": "raquete Yonex EZONE 98 Tour",
     "lastAlternativeQuery": "raquete Yonex EZONE 98 Tour 2025",
     "retryStatus": "not_verified",
-    "reason": "Não foi possível confirmar a ficha do anúncio."
+    "offerIds": [
+      "MLB59647240"
+    ]
   },
   {
     "key": "racket:129",
@@ -4239,12 +4267,14 @@
     "year": 2025,
     "weight": 270,
     "pattern": "16x19",
-    "status": "not_verified",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:18:52.110Z",
     "query": "raquete Yonex EZONE 100SL",
     "lastAlternativeQuery": "raquete Yonex EZONE 100SL 2025",
     "retryStatus": "not_verified",
-    "reason": "Não foi possível confirmar a ficha do anúncio."
+    "offerIds": [
+      "MLB7025347526"
+    ]
   },
   {
     "key": "racket:131",
@@ -4372,12 +4402,14 @@
     "year": 2023,
     "weight": 320,
     "pattern": "18x20",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:19:09.612Z",
     "query": "raquete Yonex Percept 97D",
     "lastAlternativeQuery": "raquete Yonex Percept 97D 2023",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "offerIds": [
+      "MLB2071996244"
+    ]
   },
   {
     "key": "racket:140",
@@ -4387,12 +4419,14 @@
     "year": 2023,
     "weight": 330,
     "pattern": "16x19",
-    "status": "specs_unconfirmed",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:08:56.575Z",
     "query": "raquete Yonex Percept 97H",
     "lastAlternativeQuery": "raquete Yonex Percept 97H 2023",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_verified",
+    "offerIds": [
+      "MLB2070457675"
+    ]
   },
   {
     "key": "racket:141",
@@ -4460,12 +4494,12 @@
     "year": 2024,
     "weight": 300,
     "pattern": "16x19",
-    "status": "no_exact_offer_in_search",
+    "status": "specs_unconfirmed",
     "lastSearchedAt": "2026-11-18T00:19:22.519Z",
     "query": "raquete Volkl Vostra V10 300 g",
     "lastAlternativeQuery": "raquete Volkl Vostra V10 300",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "V8 é família Volkl, não comprovação de geração."
   },
   {
     "key": "racket:146",
@@ -4608,12 +4642,14 @@
     "year": 2026,
     "weight": 310,
     "pattern": "16x18",
-    "status": "no_exact_offer_in_search",
+    "status": "verified",
     "lastSearchedAt": "2026-11-18T00:19:51.296Z",
     "query": "raquete Prince Tour 100 310 g",
     "lastAlternativeQuery": "raquete Prince Tour 100 310 2026",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_verified",
+    "offerIds": [
+      "MLB4906599279"
+    ]
   },
   {
     "key": "racket:156",
@@ -4681,12 +4717,12 @@
     "year": 2024,
     "weight": 315,
     "pattern": "16x19",
-    "status": "generator_rejected",
+    "status": "specs_unconfirmed",
     "lastSearchedAt": "2026-11-18T00:20:02.618Z",
     "query": "raquete Tecnifibre TF40 315 16x19",
     "lastAlternativeQuery": "raquete Tecnifibre TF40 315 16x19 2024",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:161",
@@ -4696,12 +4732,12 @@
     "year": 2024,
     "weight": 315,
     "pattern": "18x20",
-    "status": "no_exact_offer_in_search",
+    "status": "specs_unconfirmed",
     "lastSearchedAt": "2026-11-18T00:20:05.665Z",
     "query": "raquete Tecnifibre TF40 315 18x20",
     "lastAlternativeQuery": "raquete Tecnifibre TF40 315 18x20 2024",
-    "retryStatus": "no_new_exact_candidate",
-    "reason": "Busca alternativa revisada; nenhum novo candidato exato além dos anúncios já avaliados."
+    "retryStatus": "specs_unconfirmed",
+    "reason": "Ficha não confirma todas as especificações do motor."
   },
   {
     "key": "racket:162",
