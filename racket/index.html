@@ -41,7 +41,7 @@
 /* Layout: uma coluna de leitura (max 980px); identidade SPORT DNA: azul-petróleo, branco e lima (bola de tênis) */
 :root{
   --bg:#EEF4F5; --surface:#FFFFFF; --ink:#0B2530; --muted:#4A6570; --line:#CFDEE2;
-  --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#DDF247; --ball-ink:#0B2530; --alt:#5C6B00; --warn:#8F5200; --soft:#DCEBEF;
+  --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#DDF247; --ball-ink:#0B2530; --alt:#5C6B00; --warn:#8F5200; --soft:#DCEBEF; --winbg:#E4EEF1;
   --deep:#0A3A4C; --cur:#E07A1F;
   --f-display:'DM Sans',system-ui,-apple-system,sans-serif;
   --f-body:'DM Sans',system-ui,-apple-system,sans-serif;
@@ -49,10 +49,10 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#08222C; --surface:#0E3442; --ink:#EAF4F6; --muted:#9BB8C1; --line:#1C4B5A;
-  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; color-scheme:dark}}
+  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; --winbg:#123F4E; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#08222C; --surface:#0E3442; --ink:#EAF4F6; --muted:#9BB8C1; --line:#1C4B5A;
-  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; color-scheme:dark}
+  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; --winbg:#123F4E; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
@@ -306,7 +306,8 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .verdict.v-fica{border-left-color:var(--ball)}.verdict.v-trocar{border-left-color:var(--warn)}
 .lock{border:1.5px dashed var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 .cmpsel{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
-.cmpsel select{width:100%}
+.cmpsel select{width:100%;padding:12px 16px;min-height:52px}
+.cmpsel{margin:6px 0 18px}
 .cmpfit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
 .cmpfit .kpi b{font-family:var(--f-body);font-variant-numeric:tabular-nums;font-size:38px;font-weight:700!important;letter-spacing:-.02em}
 .vs{font-family:var(--f-display);font-weight:800;color:var(--muted)}
@@ -599,8 +600,17 @@ details.cmpbox[open]{background:var(--surface)}
   table.stack td.wide{grid-column:1/-1}
   table.stack td.wide::before{display:inline;margin-right:6px}
 }
-.altl{display:flex;flex-direction:column;gap:10px}
-.altc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;background:var(--bg);border-radius:14px;padding:14px}
+.altl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+/* rodada 23: bloco da raquete atual e card do resultado em destaque (azul-petróleo bem claro, AA nos dois temas) */
+.curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
+.curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
+.cv-troca{color:var(--warn)}.cv-fica{color:var(--pri)}
+.winbox{background:var(--winbg)}.winbox .fit{font-size:62px;color:var(--pri)}
+.altt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}.altf{text-align:right}
+.altw{margin:0}.altc .affcard{margin-top:4px}
+.mudas li,.maoc li{margin:2px 0}.maoc{margin:6px 0 0}
+.crleg span{display:inline-flex;align-items:center;font:600 13px "DM Sans",sans-serif;color:var(--ink);margin-right:12px}
+.altc{display:flex;flex-direction:column;gap:8px;background:var(--bg);border-radius:14px;padding:16px;min-width:0}
 .altc h3{font-size:18px}
 .altc .fit{font-size:30px}
 .altc .pcs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
@@ -1252,9 +1262,7 @@ function cardRadar(series){
   const main=series.filter(s=>!s.ideal);
   return `<div class="crad" id="${id}">
     <svg viewBox="0 0 460 400" role="img" data-a11y="1" aria-label="Hexágono de índices de 0 a 10. ${series.map(s=>esc(s.name)+': '+KEYS.map(k=>LBL[k]+' '+dec(s.v[k])).join(', ')).join('. ')}.">${g}</svg>
-    <div class="crkeys" role="group" aria-label="Ver um atributo">${KEYS.map((k,i)=>`<button type="button" data-cra="${k}" aria-pressed="${i===0}">${LBL[k]}</button>`).join('')}</div>
-    <p class="crout" aria-live="polite">${crTxt(series,KEYS[0])}</p>
-    <div class="crleg" role="group" aria-label="Mostrar ou esconder no hexágono">${series.map((s,si)=>`<button type="button" data-crs="${si}" aria-pressed="true"><i class="${s.ideal?'ci':s.b?'cb':'ca'}"></i>${esc(s.name)}</button>`).join('')}</div>
+    <p class="crleg">${series.map(s=>`<span><i class="${s.ideal?'ci':s.b?'cb':'ca'}" aria-hidden="true"></i>${esc(s.name)}</span>`).join('')}</p>
     <script type="application/json" class="crdata">${JSON.stringify(series.map(s=>({n:s.name,v:s.v,i:!!s.ideal}))).replace(/</g,'\\u003c')}<\/script></div>`;
 }
 function crTxt(series,k){return `<b>${LBL[k]}</b> ${series.map(s=>`<span>${esc(s.name)} <strong>${dec(s.v[k])}</strong></span>`).join('')}`}
@@ -1272,8 +1280,8 @@ function duelHTML(a,b,withFit){
   const rows=KEYS.map(k=>{const va=a.ix[k],vb=b.ix[k],t=T?`<em class="idl" style="--p:${T[k]*10}%" title="Seu ideal: ${dec(T[k])}"></em>`:'';
     return `<div class="drow"><span class="v">${dec(va)}</span><div class="tl"><i style="width:${va*10}%"></i>${t}</div><div class="mid"><b>${gl(k,LBL[k])}</b>${T?`<small>seu ideal ${dec(T[k])}</small>`:''}</div><div class="tr2"><i style="width:${vb*10}%"></i>${t}</div><span class="v r">${dec(vb)}</span></div>`}).join('');
   const fa=withFit&&RES?RES.all.find(x=>x.r.id===a.id):null,fb=withFit&&RES?RES.all.find(x=>x.r.id===b.id):null;
-  const mao=diffMao(a,b);
-  const leitura=`<p class="verdict"><strong>O que muda na mão.</strong> ${mao.length?`Da ${esc(a.model)} para a ${esc(b.model)}: ${jnE(mao)}.`:'Na mão, as duas são muito parecidas.'} ${fa?`Para o seu jogo, a ${esc(a.model)} fica com ${fa.fit}% e a ${esc(b.model)} com ${fb.fit}%. O DNA Score compara cada uma com o seu perfil, não uma com a outra: uma raquete equilibrada pode servir melhor do que a que tem número maior em vários atributos.`:'Os números mostram como cada uma se comporta, não qual é melhor. Faça o teste para ver qual encaixa no seu jogo.'}</p>`;
+  const mao=maoCurta(a,b);
+  const leitura=`<div class="verdict"><p style="margin:0"><strong>O que muda na mão</strong>${mao.length?`, da ${esc(a.model)} para a ${esc(b.model)}:`:': as duas são muito parecidas.'}</p>${mao.length?`<ul class="why maoc">${mao.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}<p class="note" style="margin:6px 0 0">${fa?'O DNA Score compara cada uma com o seu perfil, não uma com a outra.':'Os números mostram como cada uma se comporta, não qual é melhor. Faça o teste para ver qual encaixa no seu jogo.'}</p></div>`;
   const sp=[['wt','wt',' g',0],['sw','sw','',0],['bal','bal',' mm',0],['ra','ra',' RA',0],['head','head',' pol²',0],['pat','pat','',1],['Preço no Brasil','price','',2]];
   const series=[{name:a.model,v:a.ix},{name:b.model,v:b.ix,b:true}];if(T)series.push({name:'Seu ideal',v:T,ideal:true});
   return `<div class="dhead"><div class="a"><p class="eyebrow">${esc(a.brand)}</p><h3>${esc(a.model)}</h3></div><div class="vs" aria-hidden="true">×</div><div class="b"><p class="eyebrow">${esc(b.brand)}</p><h3>${esc(b.model)}</h3></div></div>
@@ -1941,6 +1949,52 @@ function racketHead(x){
   return `<div class="whead"><div><p class="eyebrow">${esc(r.brand)}${r.year?` · ${r.year}`:''}</p><h3 class="rname">${esc(r.model)}</h3><p class="muted mono" style="font-size:14px">Novo: ${precoTxt(r)}</p>${r.est?`<p class="note">Ficha com valor estimado a partir da versão irmã: ${r.est.map(k=>({sw:'swingweight',ra:'rigidez',bal:'balanço',wt:'peso'})[k]).join(', ')}.</p>`:''}<p style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${brTag(r)}${r.tech?`<span class="techchip">${esc(r.tech)}</span>`:''}<span class="techchip" style="border-color:var(--line);color:var(--muted)">${r.nrev?`Specs + ${gl('rev',r.nrev+(r.nrev>1?' avaliações':' avaliação'))}`:'Só specs medidas'}</span></p>${proLine(r)}</div>
     <div style="text-align:right"><div class="fit">${x.fit}%</div><span class="muted" style="font-size:13px">${gl("fit")}</span></div></div>`;
 }
+/* rodada 23: bloco "Sua raquete atual" no topo do relatório: DNA Score, veredito em uma linha e o motivo em uma frase */
+function curBox(curFit,best){
+  const V=verdictAtual(curFit,best),gap=Math.max(0,best.fit-curFit.fit),troca=V.k==='trocar';
+  const p0=(curFit.pen||[]).slice().sort((a,b)=>b[0]-a[0])[0];
+  const pts=n=>n+(n>1?' pontos':' ponto');
+  const why=troca?`Há raquetes ${pts(gap)} acima para o seu jogo${p0?`; o que mais pesa contra ela: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1)}`:''}.`
+    :V.k==='fica'?(gap?`Ela fica a só ${pts(gap)} da 1ª colocada: trocar só muda a sensação, não o resultado.`:'Ela empata com a 1ª colocada: trocar só muda a sensação, não o resultado.')
+    :`As melhores para o seu jogo ficam até ${pts(gap)} acima: trocar é ajuste fino.`;
+  return `<section class="panel curbox" id="r-cur" aria-labelledby="h-cur"><div class="curl"><div style="min-width:0"><h2 class="eyebrow" id="h-cur">Sua raquete atual</h2><p class="rname">${esc(curLabel())}</p>
+    <p class="curv"><strong class="${troca?'cv-troca':'cv-fica'}">${troca?'Vale trocar.':'Pode continuar com ela.'}</strong> ${why}</p></div>
+    <div class="curf"><div class="fit">${curFit.fit}%</div><span class="note">DNA Score</span></div></div></section>`;
+}
+/* rodada 23: 2º e 3º lugar lado a lado: nota, preço, ficha em uma linha, 1 ou 2 motivos curtos e o mesmo botão de compra da 1ª */
+function altWhy(x,top,c){
+  const out=[];const ks=KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,4);
+  const best=ks.filter(k=>top.every(y=>x.r.ix[k]>=y.r.ix[k])).map(k=>LBL[k].toLowerCase());
+  if(best.length)out.push(`A melhor das 3 em ${jnE(best.slice(0,2))}`);
+  if(inZone(x.r))out.push('Peso e swingweight dentro da sua faixa ideal');
+  if(x.r.ix.arm>=7)out.push(`Conforto no braço ${dec(x.r.ix.arm)} de 10`);
+  if(!out.length){const k=ks[0];out.push(`${LBL[k]} ${dec(x.r.ix[k])}, o atributo que o seu jogo mais pede`)}
+  return out.slice(0,2);
+}
+function altCard(x,pos,top,c){const r=x.r;
+  return `<article class="altc"><div class="altt"><div style="min-width:0"><p class="eyebrow">${pos}º lugar · ${esc(r.brand)}${r.year?' · '+r.year:''}</p><h3>${esc(r.model)}</h3></div><div class="altf"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>
+    <p class="note" style="margin:0">Novo: ${precoTxt(r)} ${brTag(r)}</p>
+    <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
+    <ul class="why altw">${altWhy(x,top,c).map(t=>`<li>${t}</li>`).join('')}</ul>
+    ${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}</article>`;
+}
+/* rodada 23: sua atual × a nova em bullets curtos, só o que muda (peso, swingweight, balanço, rigidez) */
+function mudaNaMao(r,c){const L=[];
+  const w=r.wt-c.wt;if(Math.abs(w)>=5)L.push(w<0?`<strong>Mais leve:</strong> ${r.wt} g × ${c.wt} g, mais rápida de manejar.`:`<strong>Mais pesada:</strong> ${r.wt} g × ${c.wt} g, mais estável contra bola forte.`);
+  const s=r.sw-c.sw;if(Math.abs(s)>=4)L.push(s<0?`<strong>Swingweight menor:</strong> ${r.sw} × ${c.sw}, chega antes na bola.`:`<strong>Swingweight maior:</strong> ${r.sw} × ${c.sw}, bola sai mais pesada.`);
+  const b=r.bal-c.bal;if(Math.abs(b)>=4)L.push(b<0?`<strong>Mais leve na cabeça:</strong> ${r.bal} mm × ${c.bal} mm, mais rápida na rede.`:`<strong>Mais peso na cabeça:</strong> ${r.bal} mm × ${c.bal} mm, mais potência no fundo.`);
+  const ra=r.ra-c.ra;if(Math.abs(ra)>=3)L.push(ra<0?`<strong>Mais macia:</strong> ${r.ra} RA × ${c.ra} RA, menos vibração no braço.`:`<strong>Mais firme:</strong> ${r.ra} RA × ${c.ra} RA, mais saída de bola.`);
+  return L;
+}
+/* rodada 23: comparador, uma frase curta por atributo, sem repetir os números da tabela */
+function maoCurta(a,b){const d=[];
+  if(Math.abs(b.wt-a.wt)>=5)d.push(b.wt>a.wt?'Mais pesada: mais estável, cansa um pouco mais.':'Mais leve: menos cansaço, um pouco menos estável.');
+  if(Math.abs(b.sw-a.sw)>=5)d.push(b.sw>a.sw?'Mais massa no golpe: bola mais pesada, mais lenta de mexer.':'Mais solta: chega antes na bola, menos firme contra bola pesada.');
+  if(Math.abs(b.bal-a.bal)>=6)d.push(b.bal<a.bal?'Mais leve na cabeça: mais rápida na rede.':'Mais peso na cabeça: mais potência no fundo.');
+  if(Math.abs(b.ra-a.ra)>=3)d.push(b.ra<a.ra?'Mais macia: impacto mais confortável.':'Mais firme: mais saída de bola, mais vibração.');
+  if(Math.abs(b.head-a.head)>=2)d.push(b.head>a.head?'Ponto doce maior: perdoa mais.':'Ponto doce menor: mais precisão.');
+  if(a.pat!==b.pat&&OPEN[a.pat]!=null&&OPEN[b.pat]!=null&&OPEN[a.pat]!==OPEN[b.pat])d.push(OPEN[b.pat]>OPEN[a.pat]?'Padrão mais aberto: mais spin.':'Padrão mais fechado: mais controle.');
+  return d}
 /* relatório pago, na ordem do padrão comum dos 3 apps:
    barra fixa · 1 Seu resultado · 2 Por que combina · 3 Sua atual × a nova · 4 Alternativas · 5 Comparador · 6 Guia de compra · 7 Seu DNA · 8 Ficha técnica (recolhida, com Copiar) · 9 rodapé */
 function fichaRows(r){
@@ -2004,36 +2058,31 @@ function renderReport(){
   const series=[{name:'Seu perfil ideal',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Atual × nova':'Perfil × nova';
-  const chips=[['r-res','Resultado'],['r-por','Por que combina'],['r-atual',cmpName]].concat(full?[['r-alt','Alternativas'],['r-top','Top 10 e mapa'],['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
+  /* rodada 23 (pedido do Gui): sua atual → resultado → por que combina → alternativas → top 10 e mapa → atual × nova → comparador → guia → DNA → ficha */
+  const chips=(c&&curFit?[['r-cur','Sua raquete']]:[]).concat([['r-res','Resultado'],['r-por','Por que combina']]).concat(full?[['r-alt','Alternativas'],['r-top','Top 10 e mapa']]:[]).concat([['r-atual',cmpName]]).concat(full?[['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
   const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Baixar PDF</button>':'';
   let h=`<div class="rbar"><div class="backbar">${ex?'<button class="btn btn-ghost btn-sm" type="button" data-mytest>Fazer o meu teste</button>':'<button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button>'}<button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
   <nav class="rchips" aria-label="Seções do relatório">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
   if(ex)h+=exampleBanner();
-  /* 1. Seu resultado */
-  h+=`<section class="panel winner" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
+  /* 0. Sua raquete atual (só quando informada e no catálogo): nota e veredito em uma linha */
+  if(c&&curFit)h+=curBox(curFit,w);
+  /* 1. Seu resultado (card em destaque) */
+  h+=`<section class="panel winner winbox" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
     ${racketHead(w)}
     <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
     <p class="hero2">${heroText(w,T)}</p>${fitNote?`<p class="hero2"><strong>${fitNote}</strong></p>`:''}${altsNote(w)}${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}</section>`;
   /* 2. Por que combina */
   const rv=(REVQ[r.id]||[]).slice(0,3);
-  h+=`<section class="panel" id="r-por"><h2 class="sec">Por que combina</h2>
+  h+=`<section class="panel" id="r-por" aria-labelledby="h-por"><details class="fold"><summary><span><h2 id="h-por" class="sec">Por que combina</h2><small>ver detalhes</small></span></summary><div class="foldin">
     <ul class="why">${whyItems(r,c).map(x=>`<li>${x}</li>`).join('')}</ul>
     ${rv.length?`<div style="display:flex;flex-direction:column;gap:10px"><h3>O que dizem de quem jogou com ela</h3><p class="note" style="margin-top:-6px">${r.ntw?r.ntw+' notas de testadores analisadas. ':''}Trechos resumidos e traduzidos de avaliações publicadas.</p>
       <ul class="rvq">${rv.map(q=>`<li><p>“${esc(q[5])}”</p><small>${esc(q[1])}${q[2]?' · '+esc(q[2]):''}${q[3]?' · '+dec(q[3])+'/10':''} · ${esc(q[0])}${q[4]?' '+esc(q[4]):''}</small></li>`).join('')}</ul></div>`:''}
-    <div style="display:flex;flex-direction:column;gap:10px"><h3>Pontos de atenção</h3>${juniorNote(1)}${painNote(1)}<ul class="why">${attention(r).map(x=>`<li>${x}</li>`).join('')}</ul></div></section>`;
-  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada) */
-  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Sua atual × a nova':'Seu perfil × a nova'}</h2>
-    <p class="muted" style="margin-top:-8px">${c?`Sua ${esc(curLabel())} × a ${esc(r.model)}${A.curOld?`. ${curOldNote()}`:''}`:`O seu perfil ideal × a ${esc(r.model)}. Informe a sua raquete no teste para ver a comparação com ela.`}</p>
-    ${c&&curFit?(V=>V?`<div class="verdict v-${V.k}"><strong>${V.t}.</strong> ${V.s}</div>`:'')(verdictAtual(curFit,w)):''}
-    ${c&&curFit&&!fitNote?`<p>A sua ficou com DNA Score <strong>${curFit.fit}%</strong>, ${w.fit-curFit.fit} pontos abaixo da recomendada${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}
-    ${viz('rp',series,T,r.ix,c?c.ix:null)}
-    ${c?`<h3>O que você vai sentir</h3><table class="stack"><thead><tr><th scope="col">Item</th><th scope="col">Atual</th><th scope="col">Nova</th><th scope="col">O que você vai sentir</th></tr></thead><tbody>${feel(r,c).map(x=>`<tr><td>${x[0]}</td><td class="n" data-label="Atual">${x[1]}</td><td class="n" data-label="Nova">${x[2]}</td><td class="full">${x[3]}</td></tr>`).join('')}</tbody></table>`:''}
-  </section>`;
+    <div style="display:flex;flex-direction:column;gap:10px"><h3>Pontos de atenção</h3>${juniorNote(1)}${painNote(1)}<ul class="why">${attention(r).map(x=>`<li>${x}</li>`).join('')}</ul></div></div></details></section>`;
   if(full){
     /* 5. Alternativas: 2º e 3º à vista; 5b. top 10 e mapa sempre à vista (rodada 17) */
     const top3=ranked.slice(0,3);
     h+=`<section class="panel" id="r-alt"><h2 class="sec">Alternativas</h2>
-      <div class="altl">${ranked.slice(1,3).map((x,i)=>`<div class="altc"><div style="min-width:0"><p class="eyebrow">${i+2}º lugar · ${esc(x.r.brand)}${x.r.year?' · '+x.r.year:''}</p><h3>${esc(x.r.model)}</h3><p class="mono specline">${x.r.wt} g · SW ${x.r.sw} · ${x.r.ra} RA · ${x.r.head} pol² · ${x.r.pat.replace('x','×')}</p><p class="note" style="margin-top:2px">Novo: ${precoTxt(x.r)} ${brTag(x.r)}</p><div class="pcs">${tradeChips(x,top3)}</div></div><div style="text-align:right"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>`).join('')}</div>
+      <div class="altl">${ranked.slice(1,3).map((x,i)=>altCard(x,i+2,top3,c)).join('')}</div>
       </section><section class="panel" id="r-top"><h2 class="sec">Top 10 e mapa do catálogo</h2>
         <h3 style="margin-bottom:10px">Ranking dos 10 melhores</h3>
         <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}${altsTag(x)}</span><small class="fx fx-${faixa(x,w)[0]}">${faixa(x,w)[1]}</small></div><b>${x.fit}%</b></div>`).join('')})()}</div>
@@ -2041,6 +2090,12 @@ function renderReport(){
         <div class="phead" style="margin-top:22px"><h3>Mapa do catálogo</h3><span class="note">Peso × swingweight · passe o dedo nos pontos</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
         <p class="note">Cada ponto é uma das ${RK.length} raquetes do catálogo. Os números são o seu top 10, na ordem do ranking.${c?' O anel laranja é a sua atual.':''}</p>
       </section>`;
+  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada). Rodada 23: só o que muda, em bullets; nota e veredito ficam no topo */
+  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Sua atual × a nova':'Seu perfil × a nova'}</h2>
+    <p class="muted" style="margin-top:-8px">${c?`Sua ${esc(curLabel())} × a ${esc(r.model)}${A.curOld?`. ${curOldNote()}`:''}`:`O seu perfil ideal × a ${esc(r.model)}. Informe a sua raquete no teste para ver a comparação com ela.`}</p>
+    ${c?(L=>`<h3>O que muda na mão</h3>${L.length?`<ul class="why mudas">${L.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<p>Na mão, as duas são muito parecidas.</p>'}`)(mudaNaMao(r,c)):''}
+    ${viz('rp',series,T,r.ix,c?c.ix:null)}
+  </section>`;
     /* 6. Comparador (recolhido) */
     h+=`<section id="r-cmp" aria-label="Comparador"><details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Comparar duas raquetes</b><span>A recomendada contra a sua ou contra qualquer outra das ${RK.length}, atributo por atributo, com o DNA Score de cada uma.</span></span><span class="cmpgo" aria-hidden="true">Comparar</span></summary>
       <div class="cmpsel"><select id="cmpA" aria-label="Raquete A"${ex?' disabled':''}>${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Raquete B"${ex?' disabled':''}>${optList(c?c.id:ranked[1].r.id)}</select></div>${ex?`<p class="note">No exemplo, a comparação fica fixa. No seu relatório, você compara quaisquer duas das ${RK.length}.</p>`:''}
@@ -2065,6 +2120,12 @@ function renderReport(){
       ${[['até 10,6 cm','L1 · 4 1/8'],['10,7 a 10,9 cm','L2 · 4 1/4'],['11,0 a 11,2 cm','L3 · 4 3/8'],['11,3 a 11,5 cm','L4 · 4 1/2'],['11,6 cm ou mais','L5 · 4 5/8']].map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td></tr>`).join('')}</tbody></table></div>
       <ul class="why"><li>Na loja: segurando a raquete, o dedo indicador da outra mão deve caber entre a ponta dos seus dedos e a base da palma.</li><li>Entre dois tamanhos, escolha o menor e complete com overgrip: cada overgrip engrossa cerca de meio número.</li></ul></div></div></details></section>`;
   }else{
+  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada). Rodada 23: só o que muda, em bullets; nota e veredito ficam no topo */
+  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Sua atual × a nova':'Seu perfil × a nova'}</h2>
+    <p class="muted" style="margin-top:-8px">${c?`Sua ${esc(curLabel())} × a ${esc(r.model)}${A.curOld?`. ${curOldNote()}`:''}`:`O seu perfil ideal × a ${esc(r.model)}. Informe a sua raquete no teste para ver a comparação com ela.`}</p>
+    ${c?(L=>`<h3>O que muda na mão</h3>${L.length?`<ul class="why mudas">${L.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<p>Na mão, as duas são muito parecidas.</p>'}`)(mudaNaMao(r,c)):''}
+    ${viz('rp',series,T,r.ix,c?c.ix:null)}
+  </section>`;
     h+=`<div class="lock"><h3>2º e 3º lugares, mapa, ranking, comparador e corda</h3><p class="muted">As alternativas, o mapa peso × swingweight do catálogo, o ranking dos 10, o comparador livre e a corda e tensão para a nova e para a sua fazem parte do relatório completo, que também sai em PDF A4.</p><button class="btn btn-go" type="button" id="up">Liberar por R$ 19,99</button></div>`;
   }
   /* 8. Seu DNA: cards e compartilhar */
