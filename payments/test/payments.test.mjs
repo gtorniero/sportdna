@@ -8,7 +8,7 @@ const order={id:'81f87685-15e9-42b9-8074-6f13b94597ab',product:'racket-report',p
 const session={id:'cs_unit',client_reference_id:order.id,metadata:{sportdna_product:order.product},amount_total:1999,currency:'brl',livemode:false,payment_status:'paid',status:'complete'};
 const mpOrder={...order,provider_id:'ORD123'};
 const pix={id:'ORD123',external_reference:order.id,total_amount:'19.99',country_code:'BRA',status:'processed',status_detail:'accredited',transactions:{payments:[{amount:'19.99',status:'processed',status_detail:'accredited',payment_method:{id:'pix'}}]}};
-test('preserves the four existing prices in integer cents',()=>assert.deepEqual(Object.values(catalog).map(x=>x.amount),[1999,1999,999,499]));
+test('preserves the four existing prices in integer cents',()=>assert.deepEqual(Object.values(catalog).filter(x=>!x.markets).map(x=>[x.amount,x.currency||'brl']),[[1999,'brl'],[1999,'brl'],[999,'brl'],[499,'brl']]));
 test('Stripe requires paid status and exact order/product/amount/currency/mode',()=>{
  assert.equal(stripeState(session,order),'paid');
  for(const patch of [{payment_status:'unpaid'},{status:'open'},{amount_total:999},{currency:'usd'},{livemode:true},{id:'other'},{client_reference_id:'other'},{metadata:{sportdna_product:'run-report'}}]) assert.notEqual(stripeState({...session,...patch},order),'paid');
@@ -29,7 +29,7 @@ test('Mercado Pago rejects forgery, altered ids and stale notifications',async()
  assert.equal(await verifyMP(request(),'',now),false);
 });
 function database(){
- const db=new DatabaseSync(':memory:');db.exec(readFileSync(new URL('../migrations/0001.sql',import.meta.url),'utf8'));
+ const db=new DatabaseSync(':memory:');for(const m of ['0001.sql','0002_market.sql'])db.exec(readFileSync(new URL('../migrations/'+m,import.meta.url),'utf8'));
  return {prepare(sql){return {bind(...params){return {async first(){return db.prepare(sql).get(...params)},async run(){return db.prepare(sql).run(...params)}}}}}};
 }
 const origin='https://sportdna.com.br';

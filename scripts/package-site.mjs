@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const source = root;
 const target = join(root, 'dist', 'site');
-const directories = ['apps', 'assets', 'blog', 'como-ganhamos-dinheiro', 'contato', 'content', 'ferramentas', 'guias', 'privacidade', 'racket', 'run', 'sobre', 'surf', 'tenis', 'termos'];
+const directories = ['apps', 'assets', 'blog', 'como-ganhamos-dinheiro', 'contato', 'content', 'en', 'ferramentas', 'guias', 'privacidade', 'racket', 'run', 'sobre', 'surf', 'tenis', 'termos'];
 const files = ['index.html', '404.html', 'ads.txt', 'favicon.ico', 'medicao.html', 'robots.txt', 'sitemap.xml', '_headers'];
 const allowed = /\.(html|css|js|json|svg|png|jpe?g|webp|gif|ico|avif|woff2?|ttf|otf)$/i;
 if (existsSync(target)) rmSync(target, { recursive: true });
