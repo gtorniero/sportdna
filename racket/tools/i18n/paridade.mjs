@@ -23,7 +23,7 @@ await new Promise(r => srv.listen(0, '127.0.0.1', r));
 const base = `http://127.0.0.1:${srv.address().port}`;
 const b = await chromium.launch();
 async function open(p) { const pg = await b.newPage(); await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g|googletag|facebook/, r => r.abort()); await pg.goto(base + p + '?teste'); await pg.waitForFunction(() => window.__RK); return pg }
-const br = await open('/racket/'), en = await open('/intl/en-us/racket/');
+const br = await open('/racket/'), en = await open('/en/racket/');
 const fails = [], ok = m => console.log('ok  ' + m), bad = m => { fails.push(m); console.log('ERRO ' + m) };
 
 /* perfis aleatórios a partir das perguntas brasileiras (as ocultas saem no purgeHidden do próprio motor) */
@@ -70,7 +70,7 @@ mudou ? bad(`P2 resposta antiga "imp" mudou ${mudou}/100 resultados no EN`) : ok
 /* P3 e P4 por mercado */
 const mercados = {};
 for (const m of ['us', 'gb', 'ca', 'au']) {
-  const pg = m === 'us' ? en : await open(`/intl/en-${m}/racket/`);
+  const pg = m === 'us' ? en : await open(`/intl/en-${m}/racket/`); // US = página publicada (beta)
   const info = await pg.evaluate(() => { const I = window.RK_INTL, q = window.__RK.Q.find(x => x.id === 'budget');
     return { market: I.market, currency: I.currency, opts: q.o.map(o => o[1]), faixas: I.budget.map(b => b[0]), semPreco: window.__RK.RK.filter(r => !r.price).length,
       precos: window.__RK.RK.map(r => r.price && r.price[0]), lang: document.documentElement.lang, report: I.report } });

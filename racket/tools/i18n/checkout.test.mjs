@@ -1,11 +1,11 @@
-// Checkout da versão internacional (intl/assets/checkout.en.js): só cartão, USD, sandbox, mercado no pedido.
+// Checkout da versão em inglês (en/assets/checkout.en.js): só cartão, USD, sandbox, mercado no pedido.
 // node --test racket/tools/i18n/checkout.test.mjs  (rodar depois de build.mjs). Provedores simulados em memória.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
-const clientSource=readFileSync(new URL('../../../intl/assets/checkout.en.js',import.meta.url),'utf8');
-const page=readFileSync(new URL('../../../intl/en-us/racket/index.html',import.meta.url),'utf8');
+const clientSource=readFileSync(new URL('../../../en/assets/checkout.en.js',import.meta.url),'utf8');
+const page=readFileSync(new URL('../../../en/racket/index.html',import.meta.url),'utf8');
 const configOf=api=>(page.match(/window\.SPORTDNA_PAYMENTS=Object\.freeze\([^\n]*;/)||[''])[0].replace(/api:"[^"]*"/,'api:'+JSON.stringify(api));
 function environment(options={}){
  const nodes=[];
@@ -23,9 +23,9 @@ function environment(options={}){
  context.window.SportDNAPayments.register({name:'racket',snapshot:()=>({}),restore(){},unlock:options.unlock||(()=>{throw Error('Unpaid access must never unlock')})});
  return {context,nodes};
 }
-test('generated page config is test mode, USD 9.99 and has no live API',()=>{
- const c=configOf(undefined);assert.match(page,/mode:'test',api:""/);assert.match(c,/'racket-report-intl':Object\.freeze\(\{name:'RACKET DNA Report',amount:999,currency:'USD'\}\)/);
- assert.doesNotMatch(page,/sportdna-payments-test\.guitorniero/);assert.doesNotMatch(page,/open\('racket-report'|open\(t==='cmp'|saveRevision\('racket-report'[,)]/);
+test('published page (US beta): live mode on the production worker, USD 9.99',()=>{
+ const c=configOf(undefined);assert.match(page,/mode:'live',api:"https:\/\/sportdna-payments-test\.guitorniero\.workers\.dev"/);assert.match(c,/'racket-report-intl':Object\.freeze\(\{name:'RACKET DNA Report',amount:999,currency:'USD'\}\)/);
+ assert.doesNotMatch(page,/open\('racket-report'|open\(t==='cmp'|saveRevision\('racket-report'[,)]/);
 });
 test('without a sandbox API the checkout stays off (the page shows its own test simulator, never a live charge)',()=>{
  const {context}=environment({api:''});assert.equal(context.window.SportDNAPayments.enabled,false);assert.equal(context.window.SportDNAPayments.open('racket-report-intl'),false);
@@ -44,16 +44,16 @@ test('order carries product, market and card provider; never quiz answers',async
  context.window.SportDNAPayments.open('racket-report-intl');await nodes.find(x=>x.id==='paymentGo').onclick();
  assert.equal(body.product,'racket-report-intl');assert.equal(body.provider,'stripe');assert.equal(body.market,'GB');assert.equal(body.answers,undefined);assert.equal(body.meta,null);
 });
-for(const [label,patch] of [['BRL',{currency:'BRL'}],['other market',{market:'AU'}],['other amount',{amount:1999}],['Pix',{provider:'mercadopago'}]])
+for(const [label,patch] of [['sandbox mode',{mode:'test'}],['BRL',{currency:'BRL'}],['other market',{market:'AU'}],['other amount',{amount:1999}],['Pix',{provider:'mercadopago'}]])
  test(`a paid order with ${label} never unlocks`,async()=>{
   let unlocked=0;const {context,nodes}=environment({unlock:()=>unlocked++});let pending;
-  context.fetch=async(_u,o)=>{if(o.method==='POST')pending=JSON.parse(o.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,amount:999,currency:'USD',market:'US',provider:'stripe',mode:'test',state:o.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/c/pay/x',...patch})}};
+  context.fetch=async(_u,o)=>{if(o.method==='POST')pending=JSON.parse(o.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,amount:999,currency:'USD',market:'US',provider:'stripe',mode:'live',state:o.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/c/pay/x',...patch})}};
   context.window.SportDNAPayments.open('racket-report-intl');await nodes.find(x=>x.id==='paymentGo').onclick();await new Promise(setImmediate);
   assert.equal(unlocked,0);
  });
-test('a matching paid sandbox order unlocks once',async()=>{
+test('a matching paid live US order unlocks once',async()=>{
  let unlocked=0;const {context,nodes}=environment({unlock:()=>unlocked++});let pending;
- context.fetch=async(_u,o)=>{if(o.method==='POST')pending=JSON.parse(o.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,amount:999,currency:'USD',market:'US',provider:'stripe',mode:'test',state:o.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/c/pay/x'})}};
+ context.fetch=async(_u,o)=>{if(o.method==='POST')pending=JSON.parse(o.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,amount:999,currency:'USD',market:'US',provider:'stripe',mode:'live',state:o.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/c/pay/x'})}};
  context.window.SportDNAPayments.open('racket-report-intl');await nodes.find(x=>x.id==='paymentGo').onclick();await new Promise(setImmediate);
  assert.equal(unlocked,1);
 });
