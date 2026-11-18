@@ -6,16 +6,16 @@ const source=readFileSync(new URL('../assets/measurement.js',import.meta.url),'u
 const vendor=readFileSync(new URL('../assets/measurement-vendor.js',import.meta.url),'utf8');
 const config=readFileSync(new URL('../assets/payments/config.js',import.meta.url),'utf8');
 const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'};
-function browser({path='/surf/',choice=true,stored=new Map(),autoReady=true,ack=true,canonical=null,referrer=''}={}){
+function browser({path='/surf/',choice=true,stored=new Map(),autoReady=true,ack=true,canonical=null,referrer='',cfg=null,navigator={}}={}){
  const handlers={},nodes=[],messages=[];let frame;
  if(!stored.has('sd_consent_v1'))stored.set('sd_consent_v1',JSON.stringify({version:1,analytics:choice,marketing:choice,at:Date.now()}));
  const window={addEventListener(n,f){handlers[n]=f}};
  class Element{constructor(tag){this.tag=tag;this.style={};this.children=[];this.id='';this.listeners={};nodes.push(this);if(tag==='iframe'){frame=this;this.contentWindow={postMessage:data=>{messages.push(data);if(data.type==='sd_measure'&&data.id&&ack)handlers.message({origin:location.origin,source:this.contentWindow,data:{type:'sd_done',id:data.id,queued:true}})}}}}append(...children){this.children.push(...children);for(const child of children)if(child.tag==='iframe'&&autoReady)ready()}appendChild(child){this.append(child)}remove(){this.removed=true}setAttribute(){}addEventListener(n,f){this.listeners[n]=f}querySelector(){return null}}
  const location={hostname:'sportdna.com.br',pathname:path,origin:'https://sportdna.com.br',search:'?utm_source=qa&utm_term=private%40example.invalid&email=private%40example.invalid#private'};
  const document={cookie:'',referrer,head:new Element('head'),body:new Element('body'),createElement:t=>new Element(t),getElementById:id=>nodes.find(n=>n.id===id&&!n.removed)||null,querySelectorAll:()=>[],querySelector:s=>s.includes('canonical')&&canonical?{getAttribute:()=>canonical}:null};
- const context={window,document,location,URL,URLSearchParams,Date,Number,Map,Set,Object,Promise,setTimeout,clearTimeout,MutationObserver:class{observe(){}},localStorage:{getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v)}};
+ const context={window,document,location,navigator,URL,URLSearchParams,Date,Number,Map,Set,Object,Promise,setTimeout,clearTimeout,MutationObserver:class{observe(){}},localStorage:{getItem:k=>stored.get(k)||null,setItem:(k,v)=>stored.set(k,v)}};
  const ready=()=>handlers.message({origin:location.origin,source:frame.contentWindow,data:{type:'sd_ready'}});
- vm.createContext(context);vm.runInContext(config,context);vm.runInContext(source,context);
+ vm.createContext(context);vm.runInContext(cfg||config,context);vm.runInContext(source,context);
  return {measure:window.SportDNAMeasure,messages,stored,handlers,ready,frame:()=>frame,context,nodes};
 }
 function order(product='surf-report',provider='stripe'){
@@ -252,4 +252,34 @@ test('buying guides: page view measured with the real path and the racket catego
  send({type:'sd_measure',event:'page_view',path:'/guias/racket/outro/'});
  const views=Array.from(window.fbq.queue.filter(e=>e[2]==='PageView'),e=>Array.from(e));
  assert.deepEqual(views.map(e=>e[3].page_path),guides);for(const e of views)assert.equal(e[3].content_category,'racket');
+});
+
+// RACKET DNA em inglês (beta nos EUA): mesma medição, valores em USD, aviso em inglês e Global Privacy Control respeitado.
+const enConfig=(readFileSync(new URL('../en/racket/index.html',import.meta.url),'utf8').match(/window\.SPORTDNA_PAYMENTS=Object\.freeze\([^\n]*;/)||[''])[0];
+test('English page: US purchase is measured once in USD, BRL-tagged order is rejected',async()=>{
+ assert.match(enConfig,/'racket-report-intl'/);
+ const o={id:'fixture-en',mode:'live',state:'paid',provider:'stripe',product:'racket-report-intl',amount:999,currency:'USD',market:'US',measurement:{transaction_id:'b'.repeat(64),value:9.99,currency:'USD',sport:'racket',product:'racket-report-intl'}};
+ const b=browser({path:'/en/racket/',cfg:enConfig});
+ await b.measure.checkout({...o,state:'pending'});await b.measure.purchase(o);
+ const sale=events(b).find(x=>x.event==='purchase');assert.equal(sale.path,'/en/racket/');assert.equal(sale.params.currency,'USD');assert.equal(sale.params.value,9.99);assert.equal(sale.params.product,'racket-report-intl');
+ assert.equal(events(b).find(x=>x.event==='begin_checkout').params.currency,'USD');
+ const c=browser({path:'/en/racket/',cfg:enConfig});await c.measure.purchase({...o,id:'fixture-en2',currency:'BRL',measurement:{...o.measurement,transaction_id:'c'.repeat(64),currency:'BRL'}});
+ assert.equal(events(c).filter(x=>x.event==='purchase').length,0);
+});
+test('English page: cookie notice in English; Global Privacy Control means no measurement and no notice',()=>{
+ const b=browser({path:'/en/racket/',cfg:enConfig,stored:new Map()});
+ const banner=b.nodes.find(n=>n.id==='sd-consent'&&!n.removed);assert(banner);assert.match(banner.innerHTML,/We use cookies/);assert.match(banner.innerHTML,/Decline/);assert.match(banner.innerHTML,/\/en\/privacy\/#measurement/);
+ const g=browser({path:'/en/racket/',cfg:enConfig,navigator:{globalPrivacyControl:true}});
+ assert.equal(g.frame(),undefined);assert.equal(g.nodes.some(n=>n.id==='sd-consent'&&!n.removed),false);
+});
+test('vendor: US purchase on /en/racket/ goes to GA4 and the Meta pixel in USD, tagged as English',()=>{
+ const handlers={},parent={postMessage(){}},window={addEventListener(n,f){handlers[n]=f}};
+ vm.runInNewContext(vendor,{window,parent,location:{origin:'https://sportdna.com.br'},document:{createElement:()=>({}),head:{appendChild(){}}},URLSearchParams,Number});
+ const send=data=>handlers.message({origin:'https://sportdna.com.br',source:parent,data});send({type:'sd_init',analytics:true,marketing:true});
+ const params={transaction_id:'d'.repeat(64),value:9.99,currency:'USD',sport:'racket',product:'racket-report-intl',payment_type:'card'};
+ send({type:'sd_measure',event:'purchase',path:'/en/racket/',params});
+ const ga=window.dataLayer.find(x=>x[0]==='event'&&x[1]==='purchase');assert.equal(ga[2].currency,'USD');assert.equal(ga[2].site_language,'en');assert.equal(ga[2].product,'racket-report-intl');
+ const px=window.fbq.queue.find(x=>x[2]==='Purchase');assert.equal(px[3].currency,'USD');assert.equal(px[3].value,9.99);assert.equal(px[3].page_path,'/en/racket/');
+ send({type:'sd_measure',event:'purchase',path:'/en/racket/',params:{...params,transaction_id:'e'.repeat(64),currency:'EUR'}});
+ assert.equal(window.fbq.queue.filter(x=>x[2]==='Purchase').length,1);
 });

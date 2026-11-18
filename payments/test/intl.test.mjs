@@ -105,3 +105,12 @@ test('a paid live US order is measured in USD',async()=>{
  const m=await saleMeasurement({id,product,provider:'stripe',provider_id:'cs_live',amount:999,mode:'live',state:'paid'});
  assert.equal(m.currency,'USD');assert.equal(m.value,9.99);assert.equal(m.product,product);
 });
+test('Meta purchase time: a live USD card payment for the US report is verified; BRL is not',async()=>{
+ const {stripePaidAt}=await import('../src/meta-paid-at.mjs');
+ const now=Date.now(),created=Math.floor(now/1000)-60;
+ const o={...order,provider_id:'cs_live',mode:'live',state:'paid',created_at:now-600000};
+ const charge={paid:true,captured:true,status:'succeeded',amount:999,amount_captured:999,currency:'usd',livemode:true,payment_method_details:{type:'card'},created};
+ const s={...live,payment_intent:{capture_method:'automatic',status:'succeeded',latest_charge:charge}};
+ assert.equal(stripePaidAt(s,o,now),created*1000);
+ assert.equal(stripePaidAt({...s,payment_intent:{...s.payment_intent,latest_charge:{...charge,currency:'brl'}}},o,now),null);
+});

@@ -42,7 +42,7 @@ test('order carries product, market and card provider; never quiz answers',async
  const {context,nodes}=environment({market:'GB'});let body;
  context.fetch=async(_u,o)=>{body=JSON.parse(o.body);return {ok:true,json:async()=>({id:body.id,product:body.product,amount:999,currency:'USD',market:'GB',provider:'stripe',mode:'test',state:'pending',checkoutUrl:'https://checkout.stripe.com/c/pay/x'})}};
  context.window.SportDNAPayments.open('racket-report-intl');await nodes.find(x=>x.id==='paymentGo').onclick();
- assert.equal(body.product,'racket-report-intl');assert.equal(body.provider,'stripe');assert.equal(body.market,'GB');assert.equal(body.answers,undefined);assert.equal(body.meta,null);
+ assert.equal(body.product,'racket-report-intl');assert.equal(body.provider,'stripe');assert.equal(body.market,'GB');assert.equal(body.answers,undefined);assert.equal(body.meta,undefined); // sem aceite de marketing não há contexto da Meta
 });
 for(const [label,patch] of [['sandbox mode',{mode:'test'}],['BRL',{currency:'BRL'}],['other market',{market:'AU'}],['other amount',{amount:1999}],['Pix',{provider:'mercadopago'}]])
  test(`a paid order with ${label} never unlocks`,async()=>{

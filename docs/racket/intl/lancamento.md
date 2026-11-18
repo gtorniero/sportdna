@@ -13,6 +13,12 @@
 - **Fora do ar:** Reino Unido, Canadá e Austrália seguem como páginas de teste em `intl/`, fora do pacote e só no sandbox.
 - **Relatório financeiro (BRL):** não soma as vendas em USD. Acompanhe essas vendas na Stripe.
 
+- **Medição (19/11 em diante):** o `/en/racket/` usa a mesma medição do site, com GA4, Google Ads e o mesmo pixel da Meta.
+  - Aviso de cookies em inglês; o sinal Global Privacy Control vale como recusa.
+  - Valores em USD e parâmetro `site_language=en`.
+  - A compra também vai para a Meta pelo servidor (CAPI) em USD; worker na versão `79d990f1`.
+- **Idioma:** seletor com bandeiras no canto superior direito do `/racket/` e do `/en/racket/`. Português é sempre o padrão; o inglês só abre pelo clique, sem redirecionar pelo idioma do navegador.
+
 Os itens abaixo continuam valendo para os outros mercados e para sair do beta. Já resolvidos para os EUA: domínio provisório `.com.br`, preço US$ 9,99, termos e privacidade em inglês e tirar o `noindex`.
 
 Nada abaixo foi feito em produção. Cada item precisa da aprovação do dono.

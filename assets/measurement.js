@@ -2,7 +2,7 @@
 /* Somente contagens consentidas. Nunca recebe respostas, medidas ou relatórios. */
 (()=>{
 'use strict';
-const PRODUCTS=Object.freeze({'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'});
+const PRODUCTS=Object.freeze({'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket','racket-report-intl':'racket'});
 const waiting=new Set(),callbacks=new Map(),checkouts=new Set(),purchases=new Set();let sequence=0;
 const KEY='sd_consent_v1';let consent=null,frame=null,ready=false,last='',active=false,done=false,opener=null;
 const store={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
@@ -11,12 +11,17 @@ const host=/^(www\.)?sportdna\.com\.br$/.test(location.hostname);
 // (testes e compras da equipe não viram dados de anúncio); ?btw_interno=0 apaga. O aviso continua igual.
 const internal=(()=>{try{const q=location.search||'';if(/[?&]btw_interno=1(?:&|$)/.test(q))document.cookie='btw_interno=1; Max-Age=31536000; Path=/; SameSite=Lax; Secure';else if(/[?&]btw_interno=0(?:&|$)/.test(q))document.cookie='btw_interno=; Max-Age=0; Path=/; SameSite=Lax; Secure';return /(?:^|;\s*)btw_interno=1(?:;|$)/.test(document.cookie||'')}catch{return false}})();
 const path=location.pathname;
-const allowed=new Set(['/','/racket/','/surf/','/run/','/blog/','/privacidade/','/guias/racket/','/guias/surf/','/guias/run/','/ferramentas/litragem/','/ferramentas/grip/','/guias/racket/melhor-raquete-de-tenis/','/guias/racket/melhor-raquete-de-tenis-para-iniciante/','/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
+const allowed=new Set(['/','/racket/','/en/racket/','/surf/','/run/','/blog/','/privacidade/','/guias/racket/','/guias/surf/','/guias/run/','/ferramentas/litragem/','/ferramentas/grip/','/guias/racket/melhor-raquete-de-tenis/','/guias/racket/melhor-raquete-de-tenis-para-iniciante/','/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
 // Artigo do blog entra com o próprio caminho só quando é a página publicada (canonical igual ao endereço).
 // Endereço inexistente em /blog/ continua reduzido a /blog/: nenhum trecho arbitrário vira parâmetro.
 function canonicalPath(){try{const href=document.querySelector?.('link[rel="canonical"]')?.getAttribute('href');return href?new URL(href,'https://sportdna.com.br/').pathname:null}catch{return null}}
 const publicPath=allowed.has(path)?path:/^\/blog\/[a-z0-9-]{1,140}\/$/.test(path)?(canonicalPath()===path?path:'/blog/'):null;
-const sport=/^\/(racket|surf|run)\/$/.exec(path)?.[1];
+const sport=/^\/(?:en\/)?(racket|surf|run)\/$/.exec(path)?.[1];
+// Inglês (beta nos EUA, /en/racket/): mesmo pixel e mesmas contas; aviso em inglês e valores em USD.
+const EN=/^\/en\//.test(path);
+// Global Privacy Control (EUA): na página em inglês vale como recusa; nada carrega e o aviso não aparece.
+const GPC=EN&&(()=>{try{return navigator.globalPrivacyControl===true}catch{return false}})();
+const CUR=product=>window.SPORTDNA_PAYMENTS?.products?.[product]?.currency||'BRL';
 const query=new URLSearchParams();const source=new URLSearchParams(location.search);
 for(const k of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','gbraid','wbraid']){const v=source.get(k);if(v&&/^[a-z0-9_.-]{1,200}$/i.test(v))query.set(k,v)}
 // URLSearchParams.size não existe no Safari antes do 17: usar toString() para não perder a campanha.
@@ -27,7 +32,7 @@ function read(){try{const c=JSON.parse(store.get(KEY)||'null');return c?.version
 // update: Consent Mode v2 do Google e consentimento da Meta recebem a revogação antes de o quadro sair.
 function remove(update){const old=frame;frame=null;ready=false;last='';if(old){if(update){try{old.contentWindow.postMessage({type:'sd_consent',...update},location.origin)}catch{}setTimeout(()=>{old.remove();clearCookies()},500)}else old.remove()}for(const resolve of waiting)resolve(false);waiting.clear();for(const done of [...callbacks.values()])done(false);callbacks.clear()}
 function send(event,params={},id){if(!ready||!frame||!publicPath)return;frame.contentWindow.postMessage({type:'sd_measure',event,path:publicPath,params,campaign,referrer,id},location.origin)}
-function canMeasure(){return host&&!internal&&publicPath&&!!(consent?.analytics||consent?.marketing)}
+function canMeasure(){return host&&!internal&&!GPC&&publicPath&&!!(consent?.analytics||consent?.marketing)}
 function bridgeReady(waitMs=2000){if(!canMeasure())return Promise.resolve(false);if(ready)return Promise.resolve(true);return new Promise(resolve=>{const finish=ok=>{clearTimeout(timer);waiting.delete(finish);resolve(ok)};const timer=setTimeout(()=>finish(false),waitMs);waiting.add(finish)})}
 // Quiz não bloqueia a interface: tolera carregamento lento só com consentimento já válido.
 // remove() cancela a espera ao mudar/revogar a escolha; eventos anteriores ao aceite não entram.
@@ -38,14 +43,14 @@ const ab=()=>{if(sport!=='racket')return null;const v=store.get('sd_ab_ficha_v1'
 const ORIGIN=(()=>{if(!sport)return null;try{const o=JSON.parse(sessionStorage.getItem('sd_de')||'null');if(!o||!Number.isFinite(o.at)||Date.now()-o.at>1800000||o.sport!==sport)return null;if(!['artigo_meio','artigo_fim','grip','litragem','guia'].includes(o.de))return null;return {cta_origem:o.de,...(/^(raquete|prancha|tenis)-\d{2}$/.test(o.a||'')?{cta_artigo:o.a}:{})}}catch{return null}})();
 function context(event,params){if(!sport||event==='page_view')return params;const out={...params},v=ab();if(v)out.ab_ficha=v;if(ORIGIN)Object.assign(out,ORIGIN);return out}
 async function track(event,params){params=context(event,params);const waitMs=event==='quiz_start'||event==='quiz_complete'||event==='quiz_step'?15000:2000;if(!await bridgeReady(waitMs)||!canMeasure())return;return new Promise(resolve=>{const id=++sequence;const done=queued=>{clearTimeout(timer);callbacks.delete(id);resolve(queued===true)};const timer=setTimeout(()=>done(false),2000);callbacks.set(id,done);send(event,params,id)})}
-function orderParams(order){const kind=PRODUCTS[order?.product],amount=window.SPORTDNA_PAYMENTS?.products?.[order?.product]?.amount;if(!kind||kind!==sport||order.mode!=='live'||!['stripe','mercadopago'].includes(order.provider)||order.currency!=='BRL'||!Number.isSafeInteger(amount)||amount<=0||order.amount!==amount)return null;return {sport:kind,product:order.product,value:amount/100,currency:'BRL',payment_type:order.provider==='stripe'?'card':'pix'}}
+function orderParams(order){const kind=PRODUCTS[order?.product],amount=window.SPORTDNA_PAYMENTS?.products?.[order?.product]?.amount;if(!kind||kind!==sport||order.mode!=='live'||!['stripe','mercadopago'].includes(order.provider)||order.currency!==CUR(order.product)||!Number.isSafeInteger(amount)||amount<=0||order.amount!==amount)return null;return {sport:kind,product:order.product,value:amount/100,currency:CUR(order.product),payment_type:order.provider==='stripe'?'card':'pix'}}
 // Oferta e abertura não são pedidos nem compras. Não recebem dados do questionário.
 // Valem nos três testes; cada página só aceita os produtos do próprio esporte.
 function offerEvent(event,product,options={}){
  if(!sport||PRODUCTS[product]!==sport||window.SPORTDNA_PAYMENTS?.mode!=='live'||options.example===true)return;
  const params={sport,product};
  const amount=window.SPORTDNA_PAYMENTS?.products?.[product]?.amount;
- if(event!=='checkout_error'&&Number.isSafeInteger(amount)&&amount>0){params.value=amount/100;params.currency='BRL'}
+ if(event!=='checkout_error'&&Number.isSafeInteger(amount)&&amount>0){params.value=amount/100;params.currency=CUR(product)}
  if(['preview_primary','preview_details','comparator','other'].includes(options.position))params.cta_position=options.position;
  if(['pix','card'].includes(options.method))params.payment_type=options.method;
  if(event==='checkout_error'){
@@ -58,8 +63,8 @@ function offerEvent(event,product,options={}){
 // Nunca leva a mensagem, as respostas, o resultado nem o código de referência.
 function contactEvent(origin){if(!sport||!['previa','relatorio'].includes(origin))return;return track('generate_lead',{sport,origem:origin})}
 async function checkout(order){const p=orderParams(order);if(!p||!['pending','paid'].includes(order.state)||typeof order.id!=='string'||!order.id||checkouts.has(order.id)||!await bridgeReady()||!canMeasure())return;checkouts.add(order.id);await track('begin_checkout',p)}
-async function purchase(order){const p=orderParams(order),m=order?.measurement;if(!p||order.state!=='paid'||!m||!/^([a-f0-9]{64})$/.test(m.transaction_id)||m.value!==p.value||m.currency!=='BRL'||m.sport!==p.sport||m.product!==p.product||purchases.has(m.transaction_id)||!canMeasure())return;try{const key='sd_sale_'+m.transaction_id;if(localStorage.getItem(key))return;purchases.add(m.transaction_id);const queued=await track('purchase',{...p,transaction_id:m.transaction_id});if(queued&&canMeasure())localStorage.setItem(key,'1')}catch{/* A medição nunca impede o acesso. */}finally{purchases.delete(m.transaction_id)}}
-function sync(){if(!host||internal||!publicPath||!(consent?.analytics||consent?.marketing)){remove();return}if(!frame){frame=document.createElement('iframe');frame.hidden=true;frame.title='Medição opcional';frame.referrerPolicy='no-referrer';frame.src='/medicao.html'+campaign;document.body.append(frame)}if(ready&&last!==publicPath){send('page_view');last=publicPath}}
+async function purchase(order){const p=orderParams(order),m=order?.measurement;if(!p||order.state!=='paid'||!m||!/^([a-f0-9]{64})$/.test(m.transaction_id)||m.value!==p.value||m.currency!==p.currency||m.sport!==p.sport||m.product!==p.product||purchases.has(m.transaction_id)||!canMeasure())return;try{const key='sd_sale_'+m.transaction_id;if(localStorage.getItem(key))return;purchases.add(m.transaction_id);const queued=await track('purchase',{...p,transaction_id:m.transaction_id});if(queued&&canMeasure())localStorage.setItem(key,'1')}catch{/* A medição nunca impede o acesso. */}finally{purchases.delete(m.transaction_id)}}
+function sync(){if(!host||internal||GPC||!publicPath||!(consent?.analytics||consent?.marketing)){remove();return}if(!frame){frame=document.createElement('iframe');frame.hidden=true;frame.title='Medição opcional';frame.referrerPolicy='no-referrer';frame.src='/medicao.html'+campaign;document.body.append(frame)}if(ready&&last!==publicPath){send('page_view');last=publicPath}}
 function clearCookies(){for(const part of document.cookie.split(';')){const n=part.trim().split('=')[0];if(!/^(_ga(?:_|$)|_gid$|_gat(?:_|$)|_fbp$|_fbc$|_gcl_)/.test(n))continue;for(const domain of ['',location.hostname,'.sportdna.com.br'])document.cookie=n+'=; Max-Age=0; Path=/; SameSite=Lax'+(domain?'; Domain='+domain:'')}}
 function save(analytics,marketing){const before=consent;store.set('btw_capi_choice_v1',marketing?'yes':'no');if(!marketing)window.BTWMetaConsent?.revoke();consent={version:1,analytics,marketing,googleAdsMeasurement:analytics&&marketing,at:Date.now()};store.set(KEY,JSON.stringify(consent));const narrowed=(before?.analytics&&!analytics)||(before?.marketing&&!marketing);remove(narrowed?{analytics,marketing,googleAdsMeasurement:analytics&&marketing}:null);clearCookies();close();sync();if(marketing)window.BTWMetaConsent?.context();label()}
 /* Aviso: uma barra no rodapé da tela. "Aceitar" é o principal (cor da marca, à direita, foco inicial);
@@ -74,8 +79,8 @@ function room(el){try{const h=el?.isConnected?Math.ceil(el.getBoundingClientRect
 function close(){const el=document.getElementById('sd-consent');const inside=el&&el.contains?.(document.activeElement);el?.remove();resize?.disconnect?.();resize=null;room(null);if(inside&&opener?.isConnected)opener.focus?.();opener=null}
 function banner(){
  document.getElementById('sd-consent')?.remove();style();
- const el=document.createElement('section');el.id='sd-consent';el.setAttribute('aria-label','Aviso de cookies');el.style.setProperty?.('--sd-accent',accent);
- el.innerHTML='<div class="sd-row"><p class="sd-txt">Usamos cookies para medir visitas e anúncios. Os testes funcionam igual sem eles. <a href="/privacidade/#medicao">Saiba mais</a></p><div class="sd-btns"><button type="button" class="sd-sec" data-choice="reject">Recusar</button><button type="button" class="sd-pri" data-choice="accept">Aceitar</button></div></div>';
+ const el=document.createElement('section');el.id='sd-consent';el.setAttribute('aria-label',EN?'Cookie notice':'Aviso de cookies');el.style.setProperty?.('--sd-accent',accent);
+ el.innerHTML=EN?'<div class="sd-row"><p class="sd-txt">We use cookies to measure visits and ads. The test works the same without them. <a href="/en/privacy/#measurement">Learn more</a></p><div class="sd-btns"><button type="button" class="sd-sec" data-choice="reject">Decline</button><button type="button" class="sd-pri" data-choice="accept">Accept</button></div></div>':'<div class="sd-row"><p class="sd-txt">Usamos cookies para medir visitas e anúncios. Os testes funcionam igual sem eles. <a href="/privacidade/#medicao">Saiba mais</a></p><div class="sd-btns"><button type="button" class="sd-sec" data-choice="reject">Recusar</button><button type="button" class="sd-pri" data-choice="accept">Aceitar</button></div></div>';
  el.addEventListener('click',e=>{const a=e.target.closest('[data-choice]')?.dataset.choice;if(a==='accept'||a==='reject')save(a==='accept',a==='accept')});
  document.body.append(el);
  try{resize=new ResizeObserver(()=>room(el));resize.observe(el)}catch{room(el)}
@@ -84,7 +89,7 @@ function banner(){
 }
 // Rodapé: estado atual da medição; reabre o mesmo aviso. Revogar fica tão fácil quanto aceitar.
 let footer=null;
-function label(){if(!footer)return;const on=!!(consent?.analytics||consent?.marketing);footer.innerHTML='<span>Medição '+(on?'ligada':'desligada')+'</span><span class="sd-sr">: mudar a escolha de cookies</span>'}
+function label(){if(!footer)return;const on=!!(consent?.analytics||consent?.marketing);footer.innerHTML=EN?'<span>Measurement '+(on?'on':'off')+'</span><span class="sd-sr">: change your cookie choice</span>':'<span>Medição '+(on?'ligada':'desligada')+'</span><span class="sd-sr">: mudar a escolha de cookies</span>'}
 function reopen(){opener=footer;banner()}
 window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==frame?.contentWindow)return;if(e.data?.type==='sd_done'){callbacks.get(e.data.id)?.(e.data.queued===true);return}if(e.data?.type!=='sd_ready')return;frame.contentWindow.postMessage({type:'sd_init',analytics:!!consent?.analytics,marketing:!!consent?.marketing,googleAdsMeasurement:consent?.analytics===true&&consent?.marketing===true&&consent?.googleAdsMeasurement===true},location.origin);ready=true;sync();for(const resolve of waiting)resolve(true);waiting.clear()});
 window.addEventListener('storage',e=>{if(e.key===KEY||e.key===null){consent=read();remove();clearCookies();sync();label()}});
@@ -94,5 +99,5 @@ const stepsSent=new Set();
 function stepRead(){const box=document.getElementById?.('steps');if(!sport||!active||!box)return;const items=[...(box.children||[])];const i=items.findIndex(x=>x.classList?.contains('on'));if(i<0||items.length>20)return;const n=i+1;if(stepsSent.has(n))return;stepsSent.add(n);void track('quiz_step',{sport,step:n,steps_total:items.length})}
 window.SportDNAMeasure=Object.freeze({affiliate(sport,offer){if(['run','racket'].includes(sport)&&/^MLB[0-9]+$/.test(offer))void track('affiliate_click',{sport,offer_id:offer,partner:'meli'})},screen(id){if(!sport)return;if(id==='landing'){active=false;done=false}if(id==='quiz'&&!active){active=true;done=false;stepsSent.clear();void track('quiz_start',{sport});stepRead()}if(id==='analysis'&&active&&!done){done=true;active=false;void track('quiz_complete',{sport})}},offer:(product,options)=>offerEvent('view_offer',product,options),checkoutOpen:(product,options)=>offerEvent('checkout_open',product,options),checkoutError:(product,options)=>offerEvent('checkout_error',product,options),contact:contactEvent,checkout,purchase,preferences:reopen});
 if(sport){const sections=['landing','quiz','analysis'].map(id=>document.getElementById(id)).filter(Boolean);new MutationObserver(()=>{for(const el of sections)if(!el.hidden)window.SportDNAMeasure.screen(el.id)}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});const box=document.getElementById('steps');if(box)new MutationObserver(stepRead).observe(box,{childList:true,subtree:true,attributes:true,attributeFilter:['class']})}
-consent=read();style();footer=document.createElement('button');footer.type='button';footer.className='sd-cookie-link';footer.id='sd-cookie-status';footer.onclick=reopen;label();const ft=[...document.querySelectorAll('footer')].pop();const spot=document.getElementById('footLinks')||ft?.querySelector?.('.f-links')||ft?.querySelector?.('.f-base');if(spot)spot.append(footer);else if(ft)ft.append(footer);else{footer.style.cssText='display:block;margin:16px auto';document.body.append(footer)}sync();if(publicPath&&(!consent||!store.get('btw_capi_choice_v1')||consent.marketing&&typeof consent.googleAdsMeasurement!=='boolean'))banner();
+consent=read();style();footer=document.createElement('button');footer.type='button';footer.className='sd-cookie-link';footer.id='sd-cookie-status';footer.onclick=reopen;label();const ft=[...document.querySelectorAll('footer')].pop();const spot=document.getElementById('footLinks')||ft?.querySelector?.('.f-links')||ft?.querySelector?.('.f-base');if(spot)spot.append(footer);else if(ft)ft.append(footer);else{footer.style.cssText='display:block;margin:16px auto';document.body.append(footer)}sync();if(publicPath&&!GPC&&(!consent||!store.get('btw_capi_choice_v1')||consent.marketing&&typeof consent.googleAdsMeasurement!=='boolean'))banner();
 })();

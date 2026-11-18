@@ -184,7 +184,7 @@
    busy=true;cta.disabled=true;message(provider==='mercadopago'?'Creating the Pix payment…':'Opening card payment…');
    try{
     const current=get(),answers=app.snapshot();const p=current?.app===app.name&&current.product===product&&current.provider===provider&&!Number.isFinite(current.paidAt)&&stable(current.answers)===stable(answers)?current:{id:uuid(),token:random(),app:app.name,product,provider,answers,at:Date.now()};
-    save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,market:window.RK_INTL?.market,meta:null,...(provider==='mercadopago'?{email:mail()}:{})})});
+    save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,market:window.RK_INTL?.market,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:mail()}:{})})});
     try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
    }catch(e){
     // Falha de rede/servidor já vem classificada por api(); o resto é validação da resposta ou falha deste navegador.

@@ -1,4 +1,4 @@
-import {stripeState} from './security.mjs';
+import {stripeState,currencyOf} from './security.mjs';
 // Read-only provider verification. checked_at is a polling timestamp, never a purchase time.
 function validTime(value,order,now){const t=typeof value==='number'?value:Date.parse(value);return Number.isFinite(t)&&t>=order.created_at-60000&&t<=now+60000?t:null}
 export function mpPaidAt(body,order,now=Date.now()){
@@ -13,7 +13,7 @@ export function stripePaidAt(session,order,now=Date.now()){
  if(stripeState(session,order)!=='paid')return null;
  const pi=session.payment_intent,c=pi?.latest_charge;
  // Only the existing immediate card capture flow has a charge-created purchase time.
- if(!['automatic','automatic_async'].includes(pi?.capture_method)||pi.status!=='succeeded'||!c||typeof c!=='object'||c.paid!==true||c.captured!==true||c.status!=='succeeded'||c.amount!==order.amount||c.amount_captured!==order.amount||c.currency!=='brl'||c.livemode!==true||c.payment_method_details?.type!=='card'||!Number.isSafeInteger(c.created))return null;
+ if(!['automatic','automatic_async'].includes(pi?.capture_method)||pi.status!=='succeeded'||!c||typeof c!=='object'||c.paid!==true||c.captured!==true||c.status!=='succeeded'||c.amount!==order.amount||c.amount_captured!==order.amount||c.currency!==currencyOf(order.product)||c.livemode!==true||c.payment_method_details?.type!=='card'||!Number.isSafeInteger(c.created))return null;
  return validTime(c.created*1000,order,now);
 }
 export async function verifiedPaidAt(order,env,fetcher=fetch,now=Date.now()){
