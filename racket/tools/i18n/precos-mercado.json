@@ -1,0 +1,1105 @@
+{
+ "checked": "2026-11-18",
+ "usd": {
+  "0": {
+   "usd": 309,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Aero_98_2026/descpageRCBAB-BPA98R.html",
+   "est": false
+  },
+  "1": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Aero_2026/descpageRCBAB-BPAR26.html",
+   "est": false
+  },
+  "2": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Aero_Team_2026/descpageRCBAB-BPAT26.html",
+   "est": false
+  },
+  "3": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Aero_Lite_2026/descpageRCBAB-BPALTR.html",
+   "est": false
+  },
+  "4": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_2025/descpageRCBAB-BPD25R.html",
+   "est": false
+  },
+  "5": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_Team_2025/descpageRCBAB-BRPTR.html",
+   "est": false
+  },
+  "6": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_Lite_2025/descpageRCBAB-BPDLR.html",
+   "est": false
+  },
+  "7": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Strike_100_Carbon_Grey/descpageRCBAB-PS1019.html",
+   "est": false
+  },
+  "8": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Strike_98_16x19_Carbon_Grey/descpageRCBAB-PS9816.html",
+   "est": false
+  },
+  "9": {
+   "usd": 119,
+   "src": "https://www.tennis-warehouse.com/Babolat_Boost_Drive/descpageRCBAB-BBSTDR.html",
+   "est": false
+  },
+  "10": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Head_Speed_MP_2026/descpageRCHEAD-HSPMP6.html",
+   "est": false
+  },
+  "11": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Head_Speed_MP_L_2026/descpageRCHEAD-HSMPL6.html",
+   "est": false
+  },
+  "12": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/catpage-HDSPEEDPP.html",
+   "est": false
+  },
+  "13": {
+   "usd": 239,
+   "src": "https://www.tennis-warehouse.com/catpage-HDSPEEDPP.html",
+   "est": false
+  },
+  "14": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Head_Gravity_MP_2025/descpageRCHEAD-HGMPG.html",
+   "est": false
+  },
+  "15": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Head_Gravity_Pro_2025/descpageRCHEAD-HGPRR.html",
+   "est": false
+  },
+  "16": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Head_Boom_MP_2026/descpageRCHEAD-HBOMP6.html",
+   "est": false
+  },
+  "17": {
+   "usd": 239,
+   "src": "https://www.tennis-warehouse.com/Head_Boom_Team_2026/descpageRCHEAD-HBOT26.html",
+   "est": false
+  },
+  "18": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Head_Radical_MP_2025/descpageRCHEAD-HRMP.html",
+   "est": false
+  },
+  "19": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Head_Extreme_MP_Racquet/descpageRCHEAD-HREM26.html",
+   "est": false
+  },
+  "20": {
+   "usd": 239,
+   "src": "https://www.tennis-warehouse.com/HEAD_Extreme_2024/catpage-HEADEXTPP.html",
+   "est": false
+  },
+  "21": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/HEAD_Prestige_Tennis_Racquets/catpage-HMICROGEL.html",
+   "est": false
+  },
+  "22": {
+   "usd": 199,
+   "src": "https://allabouttennis.com/products/2025-head-instinct-mp",
+   "est": false
+  },
+  "23": {
+   "usd": 99,
+   "src": "https://www.tennis-warehouse.com/descpage-TIS6.html",
+   "est": false
+  },
+  "24": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "25": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/ProKennex_Black_Ace_300/descpageRCPK-PKBAC.html",
+   "est": false
+  },
+  "26": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/ProKennex_Black_Ace_105/descpageRCPK-PKBA5.html",
+   "est": false
+  },
+  "27": {
+   "usd": 270,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_Tennis_Racquets/catpage-VOSTRAR.html",
+   "est": false
+  },
+  "28": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_V8_300g/descpageRCVOLKL-VOSV8M.html",
+   "est": false
+  },
+  "29": {
+   "usd": 270,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_Tennis_Racquets/catpage-VOSTRAR.html",
+   "est": false
+  },
+  "30": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_v9_only_199/catpage-TWYSBLDLP.html",
+   "est": false
+  },
+  "31": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_v9_only_199/catpage-TWYSBLDLP.html",
+   "est": false
+  },
+  "32": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_v9_only_199/catpage-TWYSBLDLP.html",
+   "est": false
+  },
+  "33": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Clash_Racquets/catpage-WILCLASHRAC.html",
+   "est": false
+  },
+  "34": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Wilson_Clash_100L_v3/descpageRCWILSON-CL1L3V.html",
+   "est": false
+  },
+  "35": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Clash_108_v3/descpageRCWILSON-CL183V.html",
+   "est": false
+  },
+  "36": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Ultra_100_v5/descpageRCWILSON-WU1005.html",
+   "est": false
+  },
+  "37": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Wilson_Ultra_100L_v5/descpageRCWILSON-WU10L5.html",
+   "est": false
+  },
+  "38": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Wilson_Pro_Staff_v14/catpage-WPSV14PP.html",
+   "est": false
+  },
+  "39": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Wilson_Shift_Racquets/catpage-WILSHIFT.html",
+   "est": false
+  },
+  "40": {
+   "usd": 189,
+   "src": "https://ustaproshop.com/wilson-burn-100-v5-2023",
+   "est": false
+  },
+  "41": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_98_2025/descpageRCYONEX-EZ98BB.html",
+   "est": false
+  },
+  "42": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_100_2025/descpageRCYONEX-EZ10BB.html",
+   "est": false
+  },
+  "43": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_100L_2025/descpageRCYONEX-EZ1LBB.html",
+   "est": false
+  },
+  "44": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_VCORE_2026/catpage-VCORE8PP.html",
+   "est": false
+  },
+  "45": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_VCORE_100_8th_Gen/descpageRCYONEX-VC108G.html",
+   "est": false
+  },
+  "46": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_VCORE_100L_8th_Gen/descpageRCYONEX-VC1L8G.html",
+   "est": false
+  },
+  "47": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_Percept_Tennis_Racquets/catpage-YPERCEPT.html",
+   "est": false
+  },
+  "48": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_Percept_Tennis_Racquets/catpage-YPERCEPT.html",
+   "est": false
+  },
+  "49": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/Prince_Phantom_Racquets/catpage-PRINPHAN.html",
+   "est": false
+  },
+  "50": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Prince_Tour_100_290g_2026/descpageRCTWABG-PTR629.html",
+   "est": false
+  },
+  "51": {
+   "usd": 219,
+   "src": "https://www.tennis-warehouse.com/Prince_Ripstick_100_300g/descpageRCTWABG-25RIPH.html",
+   "est": false
+  },
+  "52": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Tecnifibre_TF40_305g_16x19/descpageRCTFUSA-TF40R1.html",
+   "est": false
+  },
+  "53": {
+   "usd": 269,
+   "src": "estimate from TFight 300S (TW $269)",
+   "est": true
+  },
+  "54": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_CX_Racquets/catpage-SCXSERIES.html",
+   "est": false
+  },
+  "55": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_SX_300/descpageRCDUNLOP-DSX3R.html",
+   "est": false
+  },
+  "56": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_FX_Racquets/catpage-DUNLOPFXRAC.html",
+   "est": false
+  },
+  "57": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_CX_200_Tour_16x19/descpageRCDUNLOP-DCX2T6.html",
+   "est": false
+  },
+  "58": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/Babolat_Evo_Drive/descpageRCBAB-BEDR.html",
+   "est": false
+  },
+  "59": {
+   "usd": 119,
+   "src": "https://www.tennis-warehouse.com/Babolat_Boost_Racquets/catpage-BESTBEGRACS.html",
+   "est": false
+  },
+  "60": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_107_2025/descpageRCBAB-BPD17R.html",
+   "est": false
+  },
+  "61": {
+   "usd": 129,
+   "src": "estimate: strung recreational frame; UK RRP GBP115, AU A$159-170, no US listing found",
+   "est": true
+  },
+  "62": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Aero_Plus_2026/descpageRCBAB-BPAPLR.html",
+   "est": false
+  },
+  "63": {
+   "usd": 329,
+   "src": "https://babolat.com/us/pure-aero-rafa-origin-unstrung/101509.html",
+   "est": false
+  },
+  "64": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_Plus_2025/descpageRCBAB-BPDP25.html",
+   "est": false
+  },
+  "65": {
+   "usd": 289,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "66": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_Super_Lite_2025/descpageRCBAB-BPDSLR.html",
+   "est": false
+  },
+  "67": {
+   "usd": 309,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Drive_98_2025/descpageRCBAB-PD98R.html",
+   "est": false
+  },
+  "68": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Strike_Racquets/catpage-PURESTRIKE.html",
+   "est": false
+  },
+  "69": {
+   "usd": 259,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "70": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Strike_Racquets/catpage-PURESTRIKE.html",
+   "est": false
+  },
+  "71": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Babolat_Pure_Strike_Racquets/catpage-PURESTRIKE.html",
+   "est": false
+  },
+  "72": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/Babolat_Evo_Drive_Lite/descpageRCBAB-BEDLR.html",
+   "est": false
+  },
+  "73": {
+   "usd": 179,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "74": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/BabolatRacquets.html",
+   "est": false
+  },
+  "75": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/Babolat_Evo_Aero_Lite_Pink_2026/descpageRCBAB-BEALPR.html",
+   "est": false
+  },
+  "76": {
+   "usd": 119,
+   "src": "https://www.tennis-warehouse.com/Babolat_Boost_Strike/descpageRCBAB-BSTRRKT.html",
+   "est": false
+  },
+  "77": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/HEAD_Speed_Tennis_Racquets/catpage-YOUTEKIG.html",
+   "est": false
+  },
+  "78": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Head_Speed_MP_UL_2026/descpageRCHEAD-HSMPUL.html",
+   "est": false
+  },
+  "79": {
+   "usd": 149,
+   "src": "https://www.tennis-warehouse.com/Head_Speed_Elite_2026/descpageRCHEAD-HSPELT.html",
+   "est": false
+  },
+  "80": {
+   "usd": 249,
+   "src": "estimate from Head MP L siblings (Speed/Boom/Extreme MP L $249)",
+   "est": true
+  },
+  "81": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Head_Gravity_Tour_2025/descpageRCHEAD-HGTRR.html",
+   "est": false
+  },
+  "82": {
+   "usd": 239,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "83": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Head_Boom_Pro_2026/descpageRCHEAD-HBOOP6.html",
+   "est": false
+  },
+  "84": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/HEAD_Boom_Tennis_Racquets/catpage-HEADBOOM1.html",
+   "est": false
+  },
+  "85": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Head_Boom_MP_UL_2026/descpageRCHEAD-HBMPUL.html",
+   "est": false
+  },
+  "86": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Head_Radical_Pro_2025/descpageRCHEAD-HPRR.html",
+   "est": false
+  },
+  "87": {
+   "usd": 239,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "88": {
+   "usd": 229,
+   "src": "estimate: Radical Team $239 less ~$10 (Head Team L pattern)",
+   "est": true
+  },
+  "89": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Head_Extreme_Pro_Racquet/descpageRCHEAD-HEXP26.html",
+   "est": false
+  },
+  "90": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Head_Extreme_MP_L_Racquet/descpageRCHEAD-HEMPL6.html",
+   "est": false
+  },
+  "91": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Head_Extreme_MP_XL_Racquet/descpageRCHEAD-HEMPXL.html",
+   "est": false
+  },
+  "92": {
+   "usd": 269,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "93": {
+   "usd": 279,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "94": {
+   "usd": 279,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "95": {
+   "usd": 229,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "96": {
+   "usd": 219,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "97": {
+   "usd": 199,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "98": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Pro_Staff_Racquets/catpage-WILSON2014.html",
+   "est": false
+  },
+  "99": {
+   "usd": 269,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "100": {
+   "usd": 289,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "101": {
+   "usd": 269,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "102": {
+   "usd": 199,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "103": {
+   "usd": 349,
+   "src": "https://www.tennis-warehouse.com/Wilson_RF_01_Pro/descpageRCWILSON-WRFPR.html",
+   "est": false
+  },
+  "104": {
+   "usd": 329,
+   "src": "https://www.tennis-warehouse.com/Wilson_RF_01/descpageRCWILSON-WRF1R.html",
+   "est": false
+  },
+  "105": {
+   "usd": 309,
+   "src": "https://www.tennis-warehouse.com/Wilson_RF_Collection_Racquets/catpage-RFCOLL.html",
+   "est": false
+  },
+  "106": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_Racquets/catpage-BLXRACQUETS.html",
+   "est": false
+  },
+  "107": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_98_18x20_v10/descpageRCWILSON-WB9818.html",
+   "est": false
+  },
+  "108": {
+   "usd": 269,
+   "src": "estimate: same as Blade 98 16x19 v9 list $269",
+   "est": true
+  },
+  "109": {
+   "usd": 269,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "110": {
+   "usd": 269,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "111": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_100_v10/descpageRCWILSON-WB1001.html",
+   "est": false
+  },
+  "112": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_100L_v10/descpageRCWILSON-WB10L1.html",
+   "est": false
+  },
+  "113": {
+   "usd": 289,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_100UL_v10/descpageRCWILSON-WB1UL1.html",
+   "est": false
+  },
+  "114": {
+   "usd": 269,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "115": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "116": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "117": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Blade_v10/catpage-BLADEPP.html",
+   "est": false
+  },
+  "118": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Clash_Racquets/catpage-WILCLASHRAC.html",
+   "est": false
+  },
+  "119": {
+   "usd": 259,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "120": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Wilson_Ultra_100UL_v5/descpageRCWILSON-WU1UL5.html",
+   "est": false
+  },
+  "121": {
+   "usd": 299,
+   "src": "https://www.tennis-warehouse.com/Wilson_Ultra_99_Pro_v5/descpageRCWILSON-WU99P5.html",
+   "est": false
+  },
+  "122": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Wilson_Ultra_Pro_16x19_v4/descpageRCWILSON-WUPRO6.html",
+   "est": false
+  },
+  "123": {
+   "usd": 259,
+   "src": "https://www.tennis-warehouse.com/Wilson_Ultra_Pro_18x20_v4/descpageRCWILSON-WUPRO8.html",
+   "est": false
+  },
+  "124": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Wilson_Shift_99_Pro/descpageRCWILSON-WSP315.html",
+   "est": false
+  },
+  "125": {
+   "usd": 259,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "126": {
+   "usd": 159,
+   "src": "https://www.tennis-warehouse.com/Wilson_Burn_100S_v6/descpageRCWILSON-WB1SV6.html",
+   "est": false
+  },
+  "127": {
+   "usd": 149,
+   "src": "https://www.tennis-warehouse.com/Wilson_Burn_100_LS_v6/descpageRCWILSON-BRNLS6.html",
+   "est": false
+  },
+  "128": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_98_Tour_2025/descpageRCYONEX-TEZ98B.html",
+   "est": false
+  },
+  "129": {
+   "usd": 305,
+   "src": "estimate: all 2025 EZONE frames $305 at TW; 98L 2025 listing not found",
+   "est": true
+  },
+  "130": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_2025/catpage-EZONEPP.html",
+   "est": false
+  },
+  "131": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_100_2025/descpageRCYONEX-LEZ10B.html",
+   "est": false
+  },
+  "132": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_EZONE_2025/catpage-EZONEPP.html",
+   "est": false
+  },
+  "133": {
+   "usd": 305,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "134": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_VCORE_2026/catpage-VCORE8PP.html",
+   "est": false
+  },
+  "135": {
+   "usd": 305,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "136": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_VCORE_2026/catpage-VCORE8PP.html",
+   "est": false
+  },
+  "137": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_VCORE_100D_8th_Gen/descpageRCYONEX-VC1D8G.html",
+   "est": false
+  },
+  "138": {
+   "usd": 305,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "139": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/YonexRacquets.html",
+   "est": false
+  },
+  "140": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_Spin_Friendly_Racquets/catpage-YONSF.html",
+   "est": false
+  },
+  "141": {
+   "usd": 305,
+   "src": "https://www.tennis-warehouse.com/Yonex_Spin_Friendly_Racquets/catpage-YONSF.html",
+   "est": false
+  },
+  "142": {
+   "usd": 305,
+   "src": "estimate: all Percept frames $305 at TW; 100L not found",
+   "est": true
+  },
+  "143": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_V8_285g/descpageRCVOLKL-VOSV8L.html",
+   "est": false
+  },
+  "144": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_V8_315g/descpageRCVOLKL-VOSV8H.html",
+   "est": false
+  },
+  "145": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "146": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_Tennis_Racquets/catpage-VOSTRAR.html",
+   "est": false
+  },
+  "147": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Volkl_Vostra_Tennis_Racquets/catpage-VOSTRAR.html",
+   "est": false
+  },
+  "148": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "149": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Volkl_V1_Classic_v12/descpage-V1CL12.html",
+   "est": false
+  },
+  "150": {
+   "usd": 199,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "151": {
+   "usd": 199,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "152": {
+   "usd": 219,
+   "src": "https://www.tennis-warehouse.com/Prince_Phantom_Racquets/catpage-PRINPHAN.html",
+   "est": false
+  },
+  "153": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/Prince_Phantom_Racquets/catpage-PRINPHAN.html",
+   "est": false
+  },
+  "154": {
+   "usd": 199,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "155": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Prince_Tour_2026/catpage-PRNCETOURPP.html",
+   "est": false
+  },
+  "156": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Prince_Tour_100P_2026/descpageRCTWABG-PTR61P.html",
+   "est": false
+  },
+  "157": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Prince_Tour_2026/catpage-PRNCETOURPP.html",
+   "est": false
+  },
+  "158": {
+   "usd": 199,
+   "src": "https://www.tennis-warehouse.com/Prince_Ripstick_2025/catpage-PRINRIP25.html",
+   "est": false
+  },
+  "159": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Tecnifibre_TF40_305g_18x20/descpageRCTFUSA-TF40R2.html",
+   "est": false
+  },
+  "160": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Tecnifibre_TF40_315g_16x19/descpageRCTFUSA-TF40R5.html",
+   "est": false
+  },
+  "161": {
+   "usd": 279,
+   "src": "estimate: TF40 315 16x19 $279; 315 18x20 not in current TW line",
+   "est": true
+  },
+  "162": {
+   "usd": 249,
+   "src": "https://www.tennis-warehouse.com/Tecnifibreracquets.html",
+   "est": false
+  },
+  "163": {
+   "usd": 269,
+   "src": "https://www.tennis-warehouse.com/Tecnifibre_TFight_Racquets/catpage-TECNTFIGHT.html",
+   "est": false
+  },
+  "164": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Tecnifibre_TFight_305S/descpageRCTFUSA-TF305S.html",
+   "est": false
+  },
+  "165": {
+   "usd": 279,
+   "src": "https://www.tennis-warehouse.com/Tecnifibre_TFight_315S/descpageRCTFUSA-TF315S.html",
+   "est": false
+  },
+  "166": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_CX_Racquets/catpage-SCXSERIES.html",
+   "est": false
+  },
+  "167": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_CX_200_18x20_Limited_Edition/descpageRCDUNLOP-CX28LE.html",
+   "est": false
+  },
+  "168": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_CX_200_Tour_18x20/descpageRCDUNLOP-DCX2T8.html",
+   "est": false
+  },
+  "169": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "170": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "171": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "172": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_SX_300_Tour/descpageRCDUNLOP-DSXTR.html",
+   "est": false
+  },
+  "173": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_SX_Racquets/catpage-DUNSXRAC.html",
+   "est": false
+  },
+  "174": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_SX_Racquets/catpage-DUNSXRAC.html",
+   "est": false
+  },
+  "175": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "176": {
+   "usd": 250,
+   "src": "https://www.tennis-warehouse.com/Dunlop_FX_500_LS/descpageRCDUNLOP-DF50LS.html",
+   "est": false
+  },
+  "177": {
+   "usd": 250,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "178": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "179": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "180": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "181": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  },
+  "182": {
+   "usd": 249,
+   "src": "existing catalog value (consistent with/close to Tennis Warehouse line pricing)",
+   "est": false
+  }
+ },
+ "bench": [
+  {
+   "id": 1,
+   "name": "Babolat Pure Aero",
+   "usd": 299,
+   "gbp": 260,
+   "cad": 329.99,
+   "aud": 429,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/babolat-pure-aero-2026",
+    "cad": "https://www.merchantoftennis.com/products/babolat-pure-aero-gen-9",
+    "aud": "https://www.tenniswarehouse.com.au/babolat-pure-aero-gen9-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 4,
+   "name": "Babolat Pure Drive",
+   "usd": 299,
+   "gbp": 229.99,
+   "cad": 319.99,
+   "aud": 399,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/babolat-pure-drive-2025",
+    "cad": "https://www.merchantoftennis.com/collections/family-pure-drive",
+    "aud": "https://www.tenniswarehouse.com.au/babolat-pure-drive-16x19-2025-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 6,
+   "name": "Babolat Pure Drive Lite",
+   "usd": 279,
+   "gbp": 204.99,
+   "cad": 289.99,
+   "aud": 349,
+   "src": {
+    "gbp": "All Things Tennis (Pure Drive Lite 2025, regular price)",
+    "cad": "https://www.merchantoftennis.com/products/babolat-pure-drive-lite-gen11",
+    "aud": "https://www.tenniswarehouse.com.au/babolat-pure-drive-lite-16x19-2025-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 106,
+   "name": "Wilson Blade 98 16x19 v10",
+   "usd": 299,
+   "gbp": 245,
+   "cad": 309.95,
+   "aud": 429.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/wilson-blade-98-16x19-v10",
+    "cad": "https://www.merchantoftennis.com/products/wilson-blade-98-16x19-v10",
+    "aud": "https://www.tenniswarehouse.com.au/wilson-blade-98-16x19-v10-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 33,
+   "name": "Wilson Clash 100 v3",
+   "usd": 299,
+   "gbp": 220,
+   "cad": 289.95,
+   "aud": 399.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/wilson-clash-100-v3-2025",
+    "cad": "https://racquetguys.ca/products/wilson-clash-100-v3",
+    "aud": "https://tenniswarehouse.com.au/wilson-clash-100-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 36,
+   "name": "Wilson Ultra 100 v5",
+   "usd": 299,
+   "gbp": 210,
+   "cad": 289.95,
+   "aud": 369.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/wilson-ultra-100-v5-2025",
+    "cad": "https://www.merchantoftennis.com/products/wilson-ultra-100-v5",
+    "aud": "https://www.tenniswarehouse.com.au/catalogsearch/result/?q=wilson+ultra+100"
+   }
+  },
+  {
+   "id": 10,
+   "name": "Head Speed MP",
+   "usd": 259,
+   "gbp": 230,
+   "cad": 299,
+   "aud": 349.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/head-speed-mp-2026",
+    "cad": "https://racquetguys.ca/products/head-speed-mp-2026",
+    "aud": "https://www.tenniswarehouse.com.au/head-speed-mp-2026-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 18,
+   "name": "Head Radical MP",
+   "usd": 259,
+   "gbp": 230,
+   "cad": 299,
+   "aud": 349.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/head-radical-mp-2025",
+    "cad": "https://racquetguys.ca/products/head-radical-mp-2025",
+    "aud": "https://www.tenniswarehouse.com.au/head-radical-mp-2025-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 16,
+   "name": "Head Boom MP",
+   "usd": 259,
+   "gbp": 210,
+   "cad": 299,
+   "aud": 349.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/head-boom-mp-2026",
+    "cad": "https://www.merchantoftennis.com/products/head-boom-mp-2026",
+    "aud": "https://www.tenniswarehouse.com.au/head-boom-mp-2026-tennis-racquet.html"
+   }
+  },
+  {
+   "id": 13,
+   "name": "Head Speed Team",
+   "usd": 239,
+   "gbp": 200,
+   "cad": 259,
+   "aud": 279.95,
+   "src": {
+    "gbp": "https://www.tennisnuts.com/shop/tennis/australian-open/head-speed-team-tennis-racquet-2026-1754810.html",
+    "cad": "https://www.merchantoftennis.com/collections/head/adult-racquets",
+    "aud": "https://www.tenniswarehouse.com.au/head-speed-mp-2026-tennis-racquet.html (Speed Team 2026 cross-listing)"
+   }
+  },
+  {
+   "id": 42,
+   "name": "Yonex EZONE 100",
+   "usd": 305,
+   "gbp": 270,
+   "cad": 359,
+   "aud": 419.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/collections/yonex-rackets (Ezone 100 Blast Blue 2025, regular price)",
+    "cad": "https://www.merchantoftennis.com/collections/yonex/racquets",
+    "aud": "https://www.tenniswarehouse.com.au/yonex-ezone-100-blast-blue-tennis-racquet-2025.html"
+   }
+  },
+  {
+   "id": 47,
+   "name": "Yonex Percept 97",
+   "usd": 305,
+   "gbp": 270,
+   "cad": 349,
+   "aud": 439.95,
+   "src": {
+    "gbp": "https://www.tennisnuts.com/shop/tennis/tennis-rackets/yonex/percept.html (RRP; All Things Tennis shows GBP255 for Midnight Navy)",
+    "cad": "https://www.merchantoftennis.com/collections/yonex/racquets (Percept 97 Midnight)",
+    "aud": "https://www.tenniswarehouse.com.au/racquets/shop/yonex/yonex-percept.html"
+   }
+  },
+  {
+   "id": 44,
+   "name": "Yonex VCORE 98 8ª geração",
+   "usd": 305,
+   "gbp": 270,
+   "cad": 359,
+   "aud": 419.95,
+   "src": {
+    "gbp": "https://allthingstennis.co.uk/products/yonex-vcore-98-ruby-red-2026",
+    "cad": "https://www.merchantoftennis.com/collections/yonex/racquets (VCORE 98 8th Gen)",
+    "aud": "https://www.tenniswarehouse.com.au/racquets/shop/yonex.html (Vcore 98 305g Ruby Red)"
+   }
+  },
+  {
+   "id": 126,
+   "name": "Wilson Burn 100S v6",
+   "usd": 159,
+   "gbp": 175,
+   "cad": null,
+   "aud": 269.95,
+   "src": {
+    "gbp": "https://www.tennis-point.co.uk/products/wilson-burn-burn-100-s-v60-tour-racket-strung-00707604298000 (regular price, strung)",
+    "cad": "not found in Canadian retailers",
+    "aud": "https://www.tenniswarehouse.com.au/racquets/shop/wilson-burn.html"
+   }
+  }
+ ],
+ "notes": "Collected 2026-11-18 via web search snippets only: tennis-warehouse.com and other retailer sites were not reachable by direct fetch from this session, so every figure comes from search-indexed page text and should be spot-checked on the live page before publishing. USD = Tennis Warehouse (US) regular price, not sale/clearance. Where TW shows a reduced price next to an asterisked higher figure, the higher figure was treated as list price only when it matched the line's normal TW price. Head 2025 lines (Gravity, Radical): TW pages show '*' reference prices of $289 (MP), $299 (Pro/Tour), $269 (Team) above TW regular prices of $259/$269/$239; the TW regular prices were used for consistency with the 2026 Head lines (Speed/Boom/Extreme MP $259, Pro $269, Team $239). If the app wants MSRP, add ~$30. Previous-generation frames still in the catalog (Blade v9, Pro Staff v14, Shift v1, Ultra Pro v4, Prestige 2023, TF40 2024, Dunlop CX 2024) are now mostly on clearance at TW; their original TW list price is given. Changed existing values: 29 Volkl Vostra V1 MP: 202->270; 35 Wilson Clash 108 v3: 224->299; 66 Babolat Pure Drive Super Lite: 199->269; 75 Babolat Evo Aero Lite: 169->199; 85 Head Boom MP UL 2026: 279->249; 104 Wilson RF 01: 259->329; 105 Wilson RF 01 Future: 239->309; 117 Wilson Blade 104 v10: 289->299; 120 Wilson Ultra 100UL v5: 249->279; 122 Wilson Ultra Pro 97 16x19 v4: 279->259; 123 Wilson Ultra Pro 97 18x20 v4: 279->259; 152 Prince O3 Phantom 100X 310 g: 249->219; 158 Prince Ripstick 100 280 g: 229->199; 162 Tecnifibre TF40 290 16x19: 279->249. Kept existing values where no clearly better current figure was found: Clash 100UL v3 259 (likely 279 by analogy with Ultra 100UL v5 $279), Prestige MP L/Pro/Tour 2023 (TW snapshots show 259/269 but also 279/299), Pro Staff Six.One v14 269 (a -13% markdown to $249 implies ~$289 list), Pure Strike Team 259 (current Carbon Grey Team is $269), ProKennex Ki Q+ Tour 249 (TW lists Ki Q+ Tour at $239). Benchmark: GBP = UK retailer 'regular price'/RRP (UK shops nearly always show a discount against it; real street prices run 15-30% lower). AUD = Tennis Warehouse Australia list price. CAD = Merchant of Tennis or Racquet Guys regular price. Doubts: Merchant of Tennis Yonex pages (EZONE 100 C$359, VCORE 98 C$359, Percept 97 C$349) were flagged as old cached pages; ATR Sports also showed $305 for Yonex but its en-us storefront may be USD, so it was not used. VCORE 98 AUD listing (Ruby Red) not explicitly labelled 2026 but Ruby Red is the 2026 cosmetic. Burn 100S v6: no Canadian listing found (cad null); GBP figure is for the strung version. Tennis Warehouse Europe did not expose GBP pricing in results, so UK figures come from All Things Tennis, Tennisnuts and Tennis-Point UK."
+}
