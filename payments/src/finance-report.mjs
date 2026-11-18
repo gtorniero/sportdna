@@ -119,7 +119,7 @@ export function aggregatePayments(product,orders,observedAt){
 export async function collectProduct(product,env,fetcher,now){
  const db=product==='quiddo'?env.DB:env.PROMO_SPORTDNA;if(!db)return {status:'not_configured',product:names[product]};
  const sql=product==='quiddo'?"SELECT p.ref,p.ordem,p.status,p.valor,p.modo,p.plano,p.tipo,p.criado,p.pago,p.expira,CASE WHEN p.codigo IS NOT NULL AND p.codigo!='' THEN 1 ELSE 0 END access_generated,a.status subscription_status,a.risk subscription_risk FROM compras p LEFT JOIN qd_assinaturas a ON a.ref=p.ref ORDER BY p.criado,p.ref LIMIT 1001":
-  'SELECT o.id,o.product,o.provider,o.amount,o.mode,o.provider_id,o.state,o.created_at,e.attempted_at email_attempted_at,p.grant_id FROM orders o LEFT JOIN report_emails e ON e.order_id=o.id LEFT JOIN promo_order_emails p ON p.order_id=o.id ORDER BY o.created_at,o.id LIMIT 1001';
+  'SELECT o.id,o.product,o.provider,o.amount,o.mode,o.provider_id,o.state,o.created_at,e.attempted_at email_attempted_at,p.grant_id FROM orders o LEFT JOIN report_emails e ON e.order_id=o.id LEFT JOIN promo_order_emails p ON p.order_id=o.id WHERE o.product!='racket-report-intl' ORDER BY o.created_at,o.id LIMIT 1001';
  const result=await db.prepare(sql).all();if(!Array.isArray(result.results)||result.results.length>1000)throw Error('REPORT_TOO_LARGE');
  const orders=result.results.map(r=>row(product,r)),ids=new Set();let readBudget=12;
  for(const order of orders){

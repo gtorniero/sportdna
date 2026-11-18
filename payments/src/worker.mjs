@@ -5,7 +5,7 @@ import {saleMeasurement} from './measurement.mjs';
 import {redeemPromo} from './promos.mjs';
 import StripeClient from 'stripe';
 import {sendReport} from './email.mjs';
-import {catalog,currencyOf,digest,verifyMP,stripeState,mpState} from './security.mjs';
+import {catalog,currencyOf,marketOk,digest,verifyMP,stripeState,mpState} from './security.mjs';
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const tokenFormat=/^[0-9a-f]{64}$/;
 const fail=(status,message)=>{throw Object.assign(new Error(message),{status})};
@@ -43,7 +43,7 @@ async function publicOrder(o) {
 }
 async function refresh(o,env,force=false) {
  if(o.mode!==env.PAYMENTS_MODE) fail(409,'Pedido de outro ambiente.');
- if(catalog[o.product]?.testOnly&&env.PAYMENTS_MODE!=='test') fail(409,'Product not available.');
+ if(!marketOk(o.product,o.market,env.PAYMENTS_MODE==='live')) fail(409,'Product not available.');
  if(o.provider==='promo'){const r=await env.DB.prepare('SELECT email FROM promo_order_emails WHERE order_id=?').bind(o.id).first();return {...o,recipientEmail:r?.email};}
  if(!o.provider_id) return o;
  if(!force&&Date.now()-o.checked_at<5000) return o;
@@ -58,10 +58,10 @@ async function create(request,env) {
  const b=await readJson(request);
  if(b.product==='run-report') fail(409,'O RUN DNA agora é gratuito. Acesse sportdna.com.br/run/ para gerar seu relatório.');
  const product=catalog[b.product];if(!product||!['stripe','mercadopago'].includes(b.provider)||!uuid.test(b.id)||!tokenFormat.test(b.token)) fail(400,'Produto ou pedido inválido.');
- // Internacional: só sandbox, só cartão (Stripe) e só para um dos mercados do produto. Nada disso vale em modo live.
- if(product.testOnly&&env.PAYMENTS_MODE!=='test') fail(409,'Product not available.');
+ // Inglês: só cartão (Stripe) e só para um país do produto; em live, só os países liberados (beta: US).
  if(product.provider&&b.provider!==product.provider) fail(400,'Payment method not available.');
  if(product.markets&&!product.markets[b.market]) fail(400,'Country not available.');
+ if(!marketOk(b.product,b.market,env.PAYMENTS_MODE==='live')) fail(409,'Product not available in this country yet.');
  ready(env,b.provider);await rate(request,env);
  if(b.provider==='mercadopago'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email||'')) fail(400,'Informe seu e-mail para o Pix.');
  await captureCheckout(env,b.id,b.meta);
@@ -100,7 +100,7 @@ async function create(request,env) {
 }
 async function redeem(request,env){
  const b=await readJson(request);
- if(!catalog[b.product]||catalog[b.product].testOnly||!uuid.test(b.id)||!tokenFormat.test(b.token))fail(400,'Pedido inválido.');
+ if(!catalog[b.product]||catalog[b.product].markets||!uuid.test(b.id)||!tokenFormat.test(b.token))fail(400,'Pedido inválido.');
  ready(env,'promo');await rate(request,env);
  await captureCheckout(env,b.id,b.meta);
  const hash=await digest(b.token);

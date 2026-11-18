@@ -4,14 +4,19 @@ export const catalog = Object.freeze({
  'surf-report': {amount:1999, name:'Relatório SURF DNA', path:'surf', stripeTestPrice:'price_1UXQcC134hMOoEZVMG1XhvLs'},
  'run-report': {amount:999, name:'Relatório RUN DNA', path:'run', stripeTestPrice:'price_1UXQcG134hMOoEZVNKn0DNnj'},
  'racket-comparator': {amount:499, name:'Comparador RACKET DNA', path:'racket', stripeTestPrice:'price_1UXQcL134hMOoEZV0yLYBnVF'},
- /* Versão internacional (en-US, en-GB, en-CA, en-AU): só no sandbox da Stripe (PAYMENTS_MODE=test).
-    Preço do relatório em USD para os quatro mercados; o orçamento das raquetes é outra moeda e não passa por aqui.
-    testOnly: o worker recusa este produto em modo live, mesmo que o código chegue à produção. */
- 'racket-report-intl': {amount:999, currency:'usd', testOnly:true, provider:'stripe', name:'RACKET DNA Report', path:'intl/racket',
-  markets:{US:'intl/en-us/racket',GB:'intl/en-gb/racket',CA:'intl/en-ca/racket',AU:'intl/en-au/racket'}}
+ /* Versão em inglês (beta aprovado em 18/11/2026: só Estados Unidos ao vivo, em /en/racket/).
+    Relatório a US$ 9,99, só cartão (Stripe). GB, CA e AU existem só no sandbox (PAYMENTS_MODE=test).
+    O orçamento das raquetes é outra moeda e não passa por aqui. */
+ 'racket-report-intl': {amount:999, currency:'usd', sport:'racket', provider:'stripe', name:'RACKET DNA Report', path:'en/racket',
+  markets:{US:'en/racket',GB:'intl/en-gb/racket',CA:'intl/en-ca/racket',AU:'intl/en-au/racket'}, liveMarkets:['US']}
 });
 // Moeda cobrada por produto. Produtos brasileiros continuam em BRL.
 export const currencyOf = product => catalog[product]?.currency || 'brl';
+// País do pedido: produtos sem mercados (brasileiros) não usam; o internacional exige país do catálogo e, em live, país liberado.
+export function marketOk(product, market, live) {
+ const p=catalog[product];if(!p?.markets)return true;
+ return !!p.markets[market]&&(!live||(p.liveMarkets||[]).includes(market));
+}
 export const hex = bytes => [...new Uint8Array(bytes)].map(b=>b.toString(16).padStart(2,'0')).join('');
 export async function digest(value) { return hex(await crypto.subtle.digest('SHA-256',encoder.encode(value))); }
 export async function hmac(secret, value) {
@@ -36,7 +41,7 @@ export async function verifyMP(request, secret, now=Date.now()) {
 export function stripeState(s, order) {
  if(s.id!==order.provider_id||s.client_reference_id!==order.id||s.metadata?.sportdna_product!==order.product||
     s.amount_total!==order.amount||s.currency!==currencyOf(order.product)||s.livemode!==(order.mode==='live')||
-    (catalog[order.product]?.markets&&(s.livemode||!catalog[order.product].markets[s.metadata?.sportdna_market]||(order.market&&s.metadata.sportdna_market!==order.market)))) return 'invalid';
+    !marketOk(order.product,s.metadata?.sportdna_market,s.livemode)||(catalog[order.product]?.markets&&order.market&&s.metadata.sportdna_market!==order.market)) return 'invalid';
  const pi=s.payment_intent;
  const charge=pi && typeof pi==='object'?pi.latest_charge:null;
  if(charge&&typeof charge==='object'&&(charge.refunded||charge.amount_refunded>0||charge.disputed)) return 'revoked';
