@@ -159,6 +159,9 @@ for(const pg of PAGES){
 // Existing interactive pages retain their engines and layouts; only metadata changes.
 const strip=html=>html.replace(/<!-- SEO_START -->[\s\S]*?<!-- SEO_END -->\n?/g,'');
 const TOOLS={litragem:'ferramentas/litragem/',grip:'ferramentas/grip/'};
+/* RACKET DNA em inglês (beta nos EUA, 18/11/2026): páginas geradas por racket/tools/i18n (en/racket) e estáticas (en/terms, en/privacy). */
+const HREFLANG_RACKET=`<link rel="alternate" hreflang="pt-BR" href="${absolute('racket/')}">\n<link rel="alternate" hreflang="en-US" href="${absolute('en/racket/')}">\n<link rel="alternate" hreflang="x-default" href="${absolute('en/racket/')}">`;
+const EN_PAGES=['en/racket/','en/terms/','en/privacy/'];
 for(const app of ['board','racket','tenis','litragem','grip']){
  const tool=!!TOOLS[app];
  const route=tool?TOOLS[app]:APP_ROUTE[app];
@@ -180,12 +183,13 @@ for(const app of ['board','racket','tenis','litragem','grip']){
   const product=REPORT[app],info=PRODUCTS[product];
   extra.push({'@type':'Product','@id':url+'#product',name:info.name,description:PRODUCT_TEXT[app],category:'Teste de equipamento esportivo',brand:{'@type':'Brand',name:'SPORT DNA'},image:absolute(`assets/reports/${app}.webp`),url,offers:{'@type':'Offer',url,price:(info.amount/100).toFixed(2),priceCurrency:'BRL',availability:'https://schema.org/InStock',seller:{'@id':ORG}}});
  }
- html=html.replace('</head>',`<!-- SEO_START -->\n${metadata({title,description,url,crumbs:[[tool?name:'Teste '+name,url]],extra,date})}\n${icons(tool?'../../':'../',{board:'surfdna-icone',racket:'racketdna-icone',tenis:'rundna-icone',litragem:'surfdna-icone',grip:'racketdna-icone'}[app])}\n<!-- SEO_END -->\n</head>`);
+ html=html.replace('</head>',`<!-- SEO_START -->\n${metadata({title,description,url,crumbs:[[tool?name:'Teste '+name,url]],extra,date})}\n${app==='racket'?HREFLANG_RACKET+'\n':''}${icons(tool?'../../':'../',{board:'surfdna-icone',racket:'racketdna-icone',tenis:'rundna-icone',litragem:'surfdna-icone',grip:'racketdna-icone'}[app])}\n<!-- SEO_END -->\n</head>`);
  // Replace legacy home hash links with canonical paths without changing app actions.
  html=html.replace(/href="\.\.\/\.\.\/(?:index\.html)?#(a-[^"\s]+|blog|board|racket|tenis|privacidade)"/g,(_,key)=>`href="../../${routes[key]||''}"`);
  write(route+'index.html',html);sitemap.push([url,date.modified]);
 }
 write(DATES,JSON.stringify(Object.fromEntries(Object.entries(dates).sort(([a],[b])=>a.localeCompare(b))),null,1)+'\n');
+{const d=JSON.parse(read('seo.dates.json'));for(const rel of EN_PAGES)sitemap.push([absolute(rel),d[rel].modified])}
 write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemap.map(([url,mod])=>`  <url><loc>${esc(url)}</loc><lastmod>${mod}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${absolute('sitemap.xml')}\n`);
 write('404.html',`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><link rel="icon" type="image/svg+xml" href="${site.pathname}assets/brand/svg/sportdna-simbolo-cor.svg"><link rel="stylesheet" href="${site.pathname}assets/site.css"><title>Página não encontrada | SPORT DNA</title></head><body><main id="app" tabindex="-1"><section><div class="wrap"><h1>Página não encontrada</h1><p>Confira o endereço, <a href="${site.pathname}">volte ao início</a> ou veja os <a href="${site.pathname}blog/">guias do blog</a>.</p></div></section></main><footer><div class="wrap f-base"><span class="f-links"><a href="${site.pathname}sobre/">Sobre</a> · <a href="${site.pathname}como-ganhamos-dinheiro/">Como ganhamos dinheiro</a> · <a href="${site.pathname}contato/">Contato</a> · <a href="${site.pathname}termos/">Termos de uso</a> · <a href="${site.pathname}privacidade/">Privacidade e afiliados</a></span><a class="btw" href="https://www.beyondthework.com.br" target="_blank" rel="noopener" aria-label="Um projeto Beyond the Work"><svg class="btw-sym" viewBox="0 0 120 120" aria-hidden="true"><line x1="46" y1="34" x2="110" y2="34" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><line x1="28" y1="60" x2="110" y2="60" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><line x1="10" y1="86" x2="110" y2="86" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></svg><span class="btw-txt"><small>Um projeto</small><b>Beyond the Work</b></span></a></div></footer><script src="${site.pathname}assets/measurement.js" defer></script></body></html>`);

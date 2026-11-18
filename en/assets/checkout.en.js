@@ -93,7 +93,7 @@
     if(fresh)try{await window.SportDNAMeasure?.purchase?.(order)}catch{/* Medição opcional não bloqueia acesso. */}return true;
    }
    if(['invalid','revoked','expired'].includes(order.state)&&!Number.isFinite(pending.paidAt))forget();
-   if(['invalid','revoked','expired'].includes(order.state)){message('The payment wasn\'t approved. No access was granted.');return false}
+   if(['invalid','revoked','expired'].includes(order.state)){message('The payment didn\'t go through. Your report is still locked.');return false}
    message('Waiting for payment confirmation…');
    if(dialog?.open)timer=setTimeout(check,6000);return false;
   }catch(e){message(e.message);return false}
@@ -160,8 +160,8 @@
   }
   // 2) e-mail: só para o Pix (o comprovante e o acesso vão para ele); no cartão a Stripe pede
   const field=el('div','sp-field');const elbl=el('label','sp-lbl','Your email');elbl.htmlFor='paymentEmail';
-  const email=document.createElement('input');email.type='email';email.id='paymentEmail';email.autocomplete='email';email.inputMode='email';email.placeholder='you@email.com';email.setAttribute('aria-describedby','paymentEmailHint');
-  const hint=el('p','sp-hint','To send your receipt and help you recover access if needed.');hint.id='paymentEmailHint';
+  const email=document.createElement('input');email.type='email';email.id='paymentEmail';email.autocomplete='email';email.inputMode='email';email.placeholder='you@example.com';email.setAttribute('aria-describedby','paymentEmailHint');
+  const hint=el('p','sp-hint','For your receipt, and to help you get back into your report if needed.');hint.id='paymentEmailHint';
   const err=el('p','sp-err');err.id='paymentEmailErr';err.setAttribute('role','alert');
   field.append(elbl,email,hint,err);body.append(field);
   // 3) botão principal
@@ -204,7 +204,7 @@
    try{
     const p={id:uuid(),token:random(),app:app.name,product,provider:'promo',answers:app.snapshot()};
     const order=await api('/promos/redeem',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,email:mail(),codigo:promo.value})});
-    if(order.state!=='paid'||order.provider!=='promo'||order.amount!==0)throw new Error('Code not confirmed.');
+    if(order.state!=='paid'||order.provider!=='promo'||order.amount!==0)throw new Error('Couldn\'t apply that code.');
     save(p);await check();
    }catch(e){message(e.message)}finally{busy=false;apply.disabled=false;cta.disabled=false}
   };

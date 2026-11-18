@@ -65,7 +65,7 @@ export const page = [
 
  // ---------- RUN e SURF ainda não têm versão em inglês: sem convite cruzado; rodapé sem páginas em português ----------
  { find: /const testeTambem=\(\)=>`[\s\S]*?<\/div><\/section>`;/, replace: "const testeTambem=()=>'';" },
- { find: /    <a href="\.\.\/guias\/racket\/">Como escolher raquete de tênis<\/a>[^\n]*\n/, replace: '    <a href="mailto:hi@sportdna.com.br">Contact</a><span aria-hidden="true"> · </span><span>Privacy policy and terms in English: coming before launch</span><span aria-hidden="true"> · </span>\n' },
+ { find: /    <a href="\.\.\/guias\/racket\/">Como escolher raquete de tênis<\/a>[^\n]*\n/, replace: '    <a href="/en/terms/">Terms of Use</a><span aria-hidden="true"> · </span><a href="/en/privacy/">Privacy Policy</a><span aria-hidden="true"> · </span><a href="mailto:hi@sportdna.com.br">Contact</a><span aria-hidden="true"> · </span><a href="/racket/" hreflang="pt-BR" lang="pt-BR">Português</a><span aria-hidden="true"> · </span>\n' },
  { find: '<a class="tag" href="../"', replace: '<a class="tag" href="/"' },
 
  // ---------- garantia: sem citar o Código de Defesa do Consumidor (lei brasileira); política em inglês pendente ----------

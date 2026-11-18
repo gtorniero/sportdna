@@ -15,6 +15,8 @@ var MARKETS={
   budget:[[270,'Under $270'],[350,'$270 to $350'],[99999,'Over $350, or no set limit']]}
 };
 function pick(){
+ /* página ao vivo: o país é o da página (o checkout real só aceita esse país) */
+ var fixed=document.documentElement.getAttribute('data-market');if(window.RK_ENV==='live'&&MARKETS[fixed])return fixed;
  var q=null;try{q=(new URLSearchParams(location.search).get('market')||'').toUpperCase()}catch(e){}
  if(q==='UK')q='GB';
  if(MARKETS[q])return q;
@@ -27,8 +29,8 @@ var units=M.units;try{var u=localStorage.getItem('rk_intl_units');if(u==='metric
 window.RK_INTL=Object.freeze({
  market:M.code,lang:M.lang,name:M.name,currency:M.currency,path:M.path,markets:MARKETS,
  report:M.report,budget:M.budget,
- /* ambiente: o checkout internacional só existe no sandbox da Stripe */
- env:'test',
+ /* ambiente: 'live' só na página publicada (EUA, beta); as demais são de teste (sandbox) */
+ env:window.RK_ENV==='live'?'live':'test',
  /* preço de referência local (moeda do país) a partir da tabela embutida no build */
  price:function(id){var p=(window.RK_PRICES||{})[id];return p?p[M.col]:null},
  money:function(n){return fmt0.format(n)},

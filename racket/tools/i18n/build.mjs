@@ -92,7 +92,7 @@ let client = applyPatches(read('assets/payments/client.js'), CLIENT_PATCHES, 'ch
 
 /* ---------- 5. português sobrando ---------- */
 const PT_LEFT = /[ãõçâêôÃÕÇ]|\b(você|não|raquete|raquetes|seu|sua|para|com|mais|uma|está|são)\b/i;
-const NAMES = /Muchová|Jódar|Krejčíková|Kopřiva|Lehečka|Macháč|Menšík|Siniaková|Bouzková|Nosková|Vondroušová|Paolini|João|Fonseca|Mendonça|Câmara/;
+const NAMES = /Português|Muchová|Jódar|Krejčíková|Kopřiva|Lehečka|Macháč|Menšík|Siniaková|Bouzková|Nosková|Vondroušová|Paolini|João|Fonseca|Mendonça|Câmara/;
 function leftovers(src, label, skip = () => false, js = false) {
   let pieces;
   if (js) { pieces = []; scanJS(src, 0, () => false, pieces, []); } else ({ pieces } = lex(src));
@@ -114,49 +114,79 @@ const pricesTable = {};
     pricesTable[id] = [Math.round(v.usd), Math.round(b.gbp || r5(v.usd * f.gbp)), Math.round(b.cad || r5(v.usd * f.cad)), Math.round(b.aud || r5(v.usd * f.aud))];
   }
 }
+/* Beta aprovado em 18/11/2026: só os EUA vão ao ar, em /en/racket/ (indexável, checkout real em USD).
+   Reino Unido, Canadá e Austrália continuam como páginas de teste em intl/ (noindex, fora do pacote do site, só sandbox). */
 const MARKETS = { us: ['US', 'en-US', 'en_US', '$9.99'], gb: ['GB', 'en-GB', 'en_GB', 'US$9.99'], ca: ['CA', 'en-CA', 'en_CA', 'US$9.99'], au: ['AU', 'en-AU', 'en_AU', 'US$9.99'] };
-const SITE = 'https://sportdna.com.br'; // domínio provisório: ver docs/racket/intl/diagnostico.md (ccTLD .com.br)
+const LIVE = { us: 'en/racket' };
+const SITE = 'https://sportdna.com.br';
+const API_LIVE = 'https://sportdna-payments-test.guitorniero.workers.dev'; // worker de produção (modo live, apesar do nome)
+const TITLE = 'Which Tennis Racket Should You Buy? | RACKET DNA';
+const DESC = 'Answer a few questions about your body, level and game, and we match you against 183 current rackets. Free preview; full report $9.99.';
 function seo(m) {
   const [, lang, og] = MARKETS[m];
-  const title = 'Which tennis racket should you buy? Take the test | RACKET DNA';
-  const desc = 'Answer a few questions about your body, level and game and see how the rackets in our catalog fit you. Free preview; the full report is a one-time payment.';
-  const alt = Object.entries(MARKETS).map(([k, v]) => `<link rel="alternate" hreflang="${v[1]}" href="${SITE}/intl/en-${k}/racket/">`).join('\n');
-  return `
-<title>${title}</title>
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="description" content="${desc}">
-<!-- Pré-lançamento: sem canonical e sem link do site brasileiro. Na aprovação, trocar SITE pelo domínio final e ligar os hreflang abaixo
-     (e o par pt-BR ↔ en no racket/ brasileiro). Ver docs/racket/intl/seo-analytics.md.
-${alt.replace(/--/g, '- -')}
-<link rel="alternate" hreflang="pt-BR" href="${SITE}/racket/">
-<link rel="alternate" hreflang="x-default" href="${SITE}/intl/en-us/racket/">
--->
-<meta property="og:locale" content="${og}">
-<meta property="og:site_name" content="SPORT DNA">
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${desc}">
-<link rel="icon" type="image/svg+xml" href="/assets/brand/svg/racketdna-icone.svg">
+  const live = LIVE[m], url = live ? `${SITE}/${live}/` : null;
+  const icons = `<link rel="icon" type="image/svg+xml" href="/assets/brand/svg/racketdna-icone.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/png/racketdna-icone.png">
-<link rel="apple-touch-icon" href="/assets/brand/png/racketdna-icone.png">
+<link rel="apple-touch-icon" href="/assets/brand/png/racketdna-icone.png">`;
+  if (!live) return `
+<title>${TITLE}</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="${DESC}">
+<!-- Página de teste (${lang}): fora do ar, sem canonical. -->
+${icons}
+`;
+  return `
+<title>${TITLE}</title>
+<meta name="description" content="${DESC}">
+<link rel="canonical" href="${url}">
+<link rel="alternate" hreflang="en-US" href="${url}">
+<link rel="alternate" hreflang="pt-BR" href="${SITE}/racket/">
+<link rel="alternate" hreflang="x-default" href="${url}">
+<meta property="og:locale" content="${og}">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:site_name" content="SPORT DNA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${TITLE}">
+<meta property="og:description" content="${DESC}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${SITE}/assets/og/sportdna-3-apps.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RACKET DNA result cards">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${TITLE}">
+<meta name="twitter:description" content="${DESC}">
+<meta name="twitter:image" content="${SITE}/assets/og/sportdna-3-apps.jpg">
+<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Organization', '@id': SITE + '/#organization', name: 'SPORT DNA', url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/assets/brand/png/sportdna-simbolo-cor.png', width: 512, height: 512 }, email: 'hi@sportdna.com.br', parentOrganization: { '@type': 'Organization', name: 'Beyond the Work', url: 'https://www.beyondthework.com.br/' } },
+  { '@type': 'WebSite', '@id': SITE + '/#website', name: 'SPORT DNA', url: SITE + '/', publisher: { '@id': SITE + '/#organization' } },
+  { '@type': 'WebPage', '@id': url + '#webpage', url, name: TITLE, description: DESC, inLanguage: lang, isPartOf: { '@id': SITE + '/#website' } },
+  { '@type': 'Product', '@id': url + '#product', name: 'RACKET DNA Report', description: 'Personalized tennis racket report: top 3 rackets, top 10 ranking, comparisons, strings and tension.', brand: { '@type': 'Brand', name: 'SPORT DNA' }, url, offers: { '@type': 'Offer', price: '9.99', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url } },
+  { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'RACKET DNA', item: url }] }
+] }).replace(/</g, '\\u003c')}</script>
+${icons}
 `;
 }
-const payConfig = `window.SPORTDNA_PAYMENTS=Object.freeze({mode:'test',api:${JSON.stringify(typeof args.api === 'string' ? args.api : '')},products:Object.freeze({'racket-report-intl':Object.freeze({name:'RACKET DNA Report',amount:999,currency:'USD'})})});`;
-const inject = `<script>window.RK_PRICES=${JSON.stringify(pricesTable)};</script>\n<script>\n${LOCALE}</script>\n<script>${payConfig}</script>\n<script src="../../assets/checkout.en.js"></script>`;
+const payConfig = live => `window.SPORTDNA_PAYMENTS=Object.freeze({mode:${live ? "'live'" : "'test'"},api:${JSON.stringify(live ? API_LIVE : (typeof args.api === 'string' ? args.api : ''))},products:Object.freeze({'racket-report-intl':Object.freeze({name:'RACKET DNA Report',amount:999,currency:'USD'})})});`;
+const inject = live => `<script>window.RK_ENV=${live ? "'live'" : "'test'"};window.RK_PRICES=${JSON.stringify(pricesTable)};</script>\n<script>\n${LOCALE}</script>\n<script>${payConfig(live)}</script>\n<script src="/en/assets/checkout.en.js"></script>`;
 const PAYSCRIPTS = /<script src="\.\.\/assets\/payments\/config\.js[^"]*"><\/script>\n<script src="\.\.\/assets\/payments\/client\.js[^"]*"><\/script>/;
 if (!PAYSCRIPTS.test(page)) errors.push('scripts de pagamento não encontrados');
 
 const outputs = {};
 for (const [m, [code, , , report]] of Object.entries(MARKETS)) {
-  let html = page.replace('__MARKET__', code).replace('__SEO__', seo(m)).replace(PAYSCRIPTS, inject)
+  const live = LIVE[m];
+  let html = page.replace('__MARKET__', code).replace('__SEO__', seo(m)).replace(PAYSCRIPTS, () => inject(!!live))
     .replace('__MEASURE__', `<script>\n${MEASURE}</script>`).split('{REPORT}').join(report);
-  outputs[`intl/en-${m}/racket/index.html`] = html;
+  outputs[live ? `${live}/index.html` : `intl/en-${m}/racket/index.html`] = html;
 }
-outputs['intl/assets/checkout.en.js'] = '/* Gerado por racket/tools/i18n/build.mjs a partir de assets/payments/client.js. Não editar à mão. */\n' + client;
+outputs['en/assets/checkout.en.js'] = '/* Gerado por racket/tools/i18n/build.mjs a partir de assets/payments/client.js. Não editar à mão. */\n' + client;
+const MAIN = 'en/racket/index.html';
 
-if (args.debug) { writeFileSync(join(root, 'dist', 'client.en.debug.js'), client); writeFileSync(join(root, 'dist', 'page.en.debug.html'), outputs['intl/en-us/racket/index.html']); }
-leftovers(outputs['intl/en-us/racket/index.html'], 'página', dataRanges(outputs['intl/en-us/racket/index.html']));
+if (args.debug) { writeFileSync(join(root, 'dist', 'client.en.debug.js'), client); writeFileSync(join(root, 'dist', 'page.en.debug.html'), outputs[MAIN]); }
+leftovers(outputs[MAIN], 'página', dataRanges(outputs[MAIN]));
 leftovers(client, 'checkout', () => false, true);
-if (/\{REPORT\}|__MARKET__|__SEO__|__MEASURE__/.test(outputs['intl/en-us/racket/index.html'])) errors.push('marcador não substituído');
+if (/\{REPORT\}|__MARKET__|__SEO__|__MEASURE__/.test(outputs[MAIN])) errors.push('marcador não substituído');
 
 if (missing.size) {
   writeFileSync(join(here, 'faltando.json'), JSON.stringify(Object.fromEntries([...missing].map(([k]) => [k, ''])), null, 1) + '\n');
