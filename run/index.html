@@ -14,6 +14,42 @@ a.brand{text-decoration:none;color:inherit}a.brand:focus-visible{outline:3px sol
 .freebig b{background:var(--ball);color:var(--ball-ink);font:800 clamp(20px,5vw,26px)/1 Archivo,sans-serif;letter-spacing:.02em;border-radius:12px;padding:10px 16px;box-shadow:0 6px 18px color-mix(in srgb,var(--ball) 35%,transparent)}
 .freebig span{font-weight:700;color:var(--ink);font-size:15px}
 .tag.freetag{background:var(--ball);color:var(--ball-ink);border-color:var(--ball);font-weight:800}
+.rhero{background:linear-gradient(160deg,#0E4D64,#06222C);color:#FFFFFF;border-radius:22px;padding:clamp(20px,4vw,30px);display:flex;flex-direction:column;gap:14px;box-shadow:0 14px 30px rgba(6,34,44,.22);position:relative;overflow:hidden}
+.rhero::after{content:"";position:absolute;right:-44px;bottom:-44px;width:110px;height:110px;border-radius:50%;background:#FF8A3D;opacity:.85;pointer-events:none}
+.rhero>*{position:relative;z-index:1}
+.rh-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;position:relative;z-index:1}
+.rh-eye{margin:0;font:700 12px "DM Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.rh-name{margin:6px 0 0;font:800 clamp(28px,7vw,40px)/1.05 Archivo,sans-serif;color:#FFFFFF}
+.rh-fit{text-align:right;flex:none}.rh-fit b{display:block;font:800 clamp(44px,12vw,60px)/1 Archivo,sans-serif;color:#FFFFFF}.rh-fit b small{font-size:.5em}.rh-fit span{font-size:12px;color:rgba(255,255,255,.78)}
+.rh-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}.rh-chips li{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 11px;font:600 13px "DM Sans",sans-serif;color:#FFFFFF}
+.rh-txt{margin:0;color:rgba(255,255,255,.9);font-size:16px}
+.podio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.podio{grid-template-columns:1fr}}
+.pod{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pod.p1{border:2px solid var(--ball);box-shadow:0 8px 22px color-mix(in srgb,var(--ball) 22%,transparent)}
+.pod-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pod-n{font:800 22px Archivo,sans-serif;color:var(--ink)}
+.pod-fx{font-size:11px;font-weight:800;border-radius:99px;padding:2px 9px;white-space:nowrap}
+.fx-ideal{background:var(--ball);color:var(--ball-ink)}.fx-mbom{background:var(--soft);color:var(--ink)}.fx-bom{border:1px solid var(--line);color:var(--muted)}
+.pod-b{margin:0;font:700 12px "DM Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pod-name{margin:0;font:800 20px/1.15 Archivo,sans-serif}
+.pod-fit{margin:0;color:var(--muted);font-size:13px}.pod-fit b{font:800 26px Archivo,sans-serif;color:var(--ink)}
+.pod-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px}.pod-chips li{background:var(--soft);border-radius:99px;padding:3px 9px;font-size:12.5px;font-weight:600;color:var(--ink)}
+.pod-txt{margin:0;font-size:14px;color:var(--muted)}
+.crad{display:flex;flex-direction:column;gap:10px}
+.crad svg{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 24px rgba(6,34,44,.25))}
+.crad .crp{transform-origin:230px 200px;animation:crgrow .7s cubic-bezier(.2,.8,.2,1) both}
+.crad .crs[data-s="1"] .crp{animation-delay:.12s}.crad .crs[data-s="2"] .crp{animation-delay:.22s}
+@keyframes crgrow{from{transform:scale(.15);opacity:0}to{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.crad .crp{animation:none}}
+.crad .crl.on{fill:#FF8A3D;fill-opacity:1}
+.crkeys,.crleg{display:flex;flex-wrap:wrap;gap:6px}
+.crkeys button,.crleg button{font:600 13px "DM Sans",sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 12px;cursor:pointer;min-height:32px}
+.crkeys button[aria-pressed="true"]{background:#0E4D64;color:#FFFFFF;border-color:#0E4D64}
+.crout{margin:0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:14px}.crout b{font-family:Archivo,sans-serif}
+.crleg button[aria-pressed="false"]{opacity:.5;text-decoration:line-through}
+.crleg i{display:inline-block;width:16px;height:10px;border-radius:3px;margin-right:7px;vertical-align:middle}
+.crleg i.ca{background:linear-gradient(135deg,#FF8A3D,#7FD0E6)}.crleg i.cb{height:0;border-top:3px dashed #3BA9C9;border-radius:0}.crleg i.ci{background:none;border:1.5px dashed var(--ink)}
 </style><!-- SEO_START -->
 <title>Teste: qual tênis de corrida escolher? | RUN DNA</title>
 <meta name="description" content="Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Teste e relatório completo gratuitos.">
@@ -1246,7 +1282,7 @@ function exampleBanner(){
 function renderReport(){
   const r=RES,a=r.a,w=r.fins[0],m=w.m,ex=isExample();
   const cur=r.atual,hasAt=cur&&cur.m!==m,zone=zoneT(r);
-  const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Alternativas'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
+  const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Pódio'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
   const sec=(id,title,body)=>`<section class="rsec" id="${id}" aria-labelledby="${id}-h"><h2 class="sech" id="${id}-h">${title}</h2>${body}</section>`;
   const specLine=x=>`${CAT[x.c].n} · ${x.g} g · espuma ${mm1(stackOf(x))} mm · drop ${dec1(x.dr)} mm · ${priceTxt(x)}`;
   const att=attT(r).filter(x=>!/^Prove no fim do dia/.test(x)&&!/^Clientes relatam que veste/.test(x));
@@ -1256,10 +1292,12 @@ function renderReport(){
     <ul class="rnav-c">${S.map(x=>`<li><a href="#${x[0]}">${x[1]}</a></li>`).join('')}</ul></nav>`;
   if(ex)h+=exampleBanner();
   /* 1. seu resultado */
-  h+=sec('r-res','Seu resultado',`<div class="panel winner">
-    <div class="whead"><div style="min-width:0"><p class="eyebrow">Seu tênis ideal · ${esc(m.b)}</p><h3 class="pname">${esc(modelOf(m))}</h3><p class="muted mono" style="font-size:14px;margin-top:6px">${specLine(m)}</p></div>
-      <div style="text-align:right"><div class="fit">${w.fit}%</div><span class="muted" style="font-size:13px">DNA Score</span></div></div>
-    <p>${esc(/[.!?]$/.test(m.nt)?m.nt:m.nt+'.')}${zone?' '+esc(zone):''}</p>${brandLink(m)}</div>`);
+  /* redesenho (nov/2026): topo no visual do card do RUN, medidas em etiquetas, compra logo abaixo */
+  h+=sec('r-res','Seu resultado',`<div class="rhero">
+    <div class="rh-top"><div style="min-width:0"><p class="rh-eye">Seu tênis ideal · ${esc(m.b)}</p><h3 class="rh-name">${esc(modelOf(m))}</h3></div>
+      <div class="rh-fit"><b>${w.fit}<small>%</small></b><span>DNA Score</span></div></div>
+    <ul class="rh-chips" aria-label="Medidas"><li>${CAT[m.c].n}</li><li>${m.g} g</li><li>espuma ${mm1(stackOf(m))} mm</li><li>drop ${dec1(m.dr)} mm</li><li>${priceTxt(m)}</li></ul>
+    <p class="rh-txt">${esc(/[.!?]$/.test(m.nt)?m.nt:m.nt+'.')}${zone?' '+esc(zone):''}</p></div>${brandLink(m)}`);
   /* 2. por que combina */
   h+=sec('r-why','Por que combina',`<div class="panel">
     <div class="chips">${factors(r).map(f=>`<span class="fx ${f[0]==='+'?'up':'dn'}">${f[0]} ${esc(f[1])}</span>`).join('')}</div>
@@ -1282,12 +1320,16 @@ function renderReport(){
     if(!hasAt)h+=sec('r-atual','Sua atual × a nova',`<div class="panel"><p>O ${esc(m.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.</p></div>`);
     else{const c=cur.m,out=atualDiffs(r);
       h+=sec('r-atual','Sua atual × a nova',`<div class="panel"><p class="muted" style="font-size:14px">DNA Score: ${esc(modelOf(c))} (atual) <b class="mono" style="color:var(--ink)">${cur.fit}%</b> · ${esc(modelOf(m))} <b class="mono" style="color:var(--ink)">${w.fit}%</b>.</p>
-        <div class="two"><div>${VZ.hex(SX,[{name:'O que você precisa',v:r.ID,c:'var(--ball)',dash:1},{name:modelOf(c)+' (atual)',v:idx(c),c:'var(--clay)',dash:1},{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.16,dots:1}])}</div>
+        <div class="two"><div>${cardHex(SX,[{name:modelOf(m),v:idx(m)},{name:modelOf(c)+' (atual)',v:idx(c),b:1},{name:'O que você precisa',v:r.ID,ideal:1}])}</div>
         <div><h3 style="margin-bottom:8px">O que você vai sentir</h3>${out.length?`<ul class="why">${out.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'<p class="muted">Os dois são muito parecidos nas medidas.</p>'}</div></div></div>`)}
   }
   /* 5. alternativas: 2º e 3º + ranking recolhido com filtro por marca (o melhor de cada marca) */
   const brs=[...new Set([...MARCAS,...r.pref])].sort((x,y)=>x.localeCompare(y,'pt',{sensitivity:'base'}));
-  h+=sec('r-alt','Alternativas',`<div class="mini">${r.fins.slice(1).map((x,i)=>`<div class="panel"><p class="eyebrow">${i+2}º lugar · ${esc(x.m.b)}</p><div class="whead"><h3 class="pname sm">${esc(modelOf(x.m))}</h3><div style="text-align:right"><div class="fit" style="font-size:28px">${x.fit}%</div><span class="muted" style="font-size:12px">DNA Score</span></div></div><p class="mono" style="font-size:14px">${priceTxt(x.m)} · ${x.m.g} g · drop ${dec1(x.m.dr)} mm · ${x.m.du} km</p><p style="font-size:15px">${esc(x.m.nt)}</p>${brandLink(x.m)}</div>`).join('')}</div>
+  const faixaR=x=>{const g=w.fit-x.fit;return g<=4?['ideal','Encaixe ideal']:g<=12?['mbom','Muito bom']:['bom','Bom']};
+  h+=sec('r-alt','Seu pódio',`<div class="podio">${r.fins.slice(0,3).map((x,i)=>`<article class="pod${i?'':' p1'}"><div class="pod-top"><span class="pod-n">${i+1}º</span><span class="pod-fx fx-${faixaR(x)[0]}">${faixaR(x)[1]}</span></div>
+      <p class="pod-b">${esc(x.m.b)}</p><h3 class="pod-name">${esc(modelOf(x.m))}</h3><p class="pod-fit"><b>${x.fit}%</b> DNA Score</p>
+      <ul class="pod-chips"><li>${priceTxt(x.m)}</li><li>${x.m.g} g</li><li>drop ${dec1(x.m.dr)} mm</li><li>${x.m.du} km</li></ul>
+      <p class="pod-txt">${esc(x.m.nt)}</p>${i?`<button type="button" class="btn btn-ghost btn-sm" data-podcmp="${esc(x.m.n)}">Comparar com o 1º</button>${brandLink(x.m)}`:'<p class="note" style="margin:0">Compra no topo do resultado.</p>'}</article>`).join('')}</div>
     <details class="panel rk" id="rkD"><summary><span>Ranking: seus 10 que mais combinam</span><small class="muted">e o melhor de cada marca</small></summary>
       <div class="vhead"><div class="q" style="gap:4px"><label class="ql" for="rkBrand" style="font-size:14px">Marca</label><select id="rkBrand"><option value="">Todas as marcas</option>${brs.map(b=>`<option value="${esc(b)}">${esc(b)}${r.pref.includes(b)?' (sua preferida)':''}</option>`).join('')}</select></div>
         <div class="seg" role="group" aria-label="Ordenar o ranking"><button type="button" data-o="fit" aria-pressed="true">Por DNA</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
@@ -1322,7 +1364,8 @@ function renderReport(){
   }
   /* comparador */
   {const go=()=>{const A=M.find(x=>x.n===$('#rA').value),B=M.find(x=>x.n===$('#rB').value);$('#rOut').innerHTML=A===B?'<p class="muted">Escolha dois tênis diferentes.</p>':duelHTML(A,B)};
-    $('#rA').onchange=go;$('#rB').onchange=go;go()}
+    $('#rA').onchange=go;$('#rB').onchange=go;go();
+    document.querySelectorAll('[data-podcmp]').forEach(bt=>bt.onclick=()=>{$('#rA').value=m.n;$('#rB').value=bt.dataset.podcmp;go();const d=$('#cmpD');d.open=true;d.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})})}
   const iv=v=>{document.querySelectorAll('#report [data-i]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.i===v));if($('#ihex')){$('#ihex').hidden=v!=='hex';$('#ibar').hidden=v!=='bar'}};
   document.querySelectorAll('#report [data-i]').forEach(b=>b.onclick=()=>iv(b.dataset.i));iv('hex');
   $('#fichaCp').onclick=async()=>{const t=`Ficha técnica · RUN DNA\n`+F.map(x=>x[0]+': '+x[1]).join('\n');
@@ -1355,6 +1398,36 @@ const catOpts=sel=>BRANDS.slice().sort((x,y)=>x.localeCompare(y,'pt',{sensitivit
 let duelFrom='landing';
 // DNA Score de um tênis para quem já fez o teste: o mesmo do relatório (fitM)
 const fitFor=m=>RES?RES.fitM(m):null;
+/* redesenho (nov/2026): hexágono no visual do card do RUN (petróleo + laranja), interativo como no RACKET DNA */
+let crSeq=0;
+function cardHex(labels,series){
+  const id='rc'+(++crSeq),cx=230,cy=200,R=112,n=labels.length;
+  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+Math.cos(a)*R*cl(v,0,10)/10,cy+Math.sin(a)*R*cl(v,0,10)/10]};
+  const poly=v=>labels.map((_,i)=>pt(i,typeof v==='number'?v:v[i]).map(z=>z.toFixed(1)).join(',')).join(' ');
+  const cor=s=>s.ideal?'#FFFFFF':s.b?'#7FD0E6':'#FF8A3D';
+  let g=`<defs><linearGradient id="${id}bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E4D64"/><stop offset="1" stop-color="#06222C"/></linearGradient>
+    <radialGradient id="${id}fa" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#FF8A3D" stop-opacity=".95"/><stop offset="1" stop-color="#7FD0E6" stop-opacity=".55"/></radialGradient></defs>
+    <rect x="0" y="0" width="460" height="400" rx="26" fill="url(#${id}bg)"/><circle cx="420" cy="38" r="16" fill="#FF8A3D"/>`;
+  [10,7.5,5,2.5].forEach((v,i)=>{g+=`<polygon points="${poly(v)}" fill="#FFFFFF" fill-opacity="${i%2?.04:.08}" stroke="#FFFFFF" stroke-opacity=".18" stroke-width="1.2"/>`});
+  labels.forEach((_,i)=>{const p=pt(i,10);g+=`<line x1="${cx}" y1="${cy}" x2="${p[0].toFixed(1)}" y2="${p[1].toFixed(1)}" stroke="#FFFFFF" stroke-opacity=".12"/>`});
+  series.forEach((s,si)=>{const c=cor(s);
+    g+=`<g class="crs" data-s="${si}"><polygon class="crp" points="${poly(s.v)}" fill="${s.ideal||s.b?'none':`url(#${id}fa)`}" stroke="${c}" stroke-width="${s.ideal?1.6:s.b?2.4:3}" ${s.ideal?'stroke-dasharray="5 5"':s.b?'stroke-dasharray="7 4"':''} stroke-linejoin="round"/>`+
+      (s.ideal?'':labels.map((_,i)=>{const q=pt(i,s.v[i]);return `<circle cx="${q[0].toFixed(1)}" cy="${q[1].toFixed(1)}" r="${s.b?3.6:4.6}" fill="${s.b?'#06222C':c}" stroke="${c}" stroke-width="2"/>`}).join(''))+'</g>'});
+  labels.forEach((k,i)=>{const l=pt(i,12.7);const anc=Math.abs(l[0]-cx)<5?'middle':l[0]>cx?'start':'end';const y=l[1]+(l[1]<cy-60?-2:l[1]>cy+60?10:4);
+    g+=`<text class="crl" data-k="${i}" x="${l[0].toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anc}" font-size="13.5" font-weight="700" font-family="DM Sans, sans-serif" fill="#FFFFFF" fill-opacity=".9">${k}</text>`});
+  const txt=k=>`<b>${labels[k]}</b> ${series.map(s=>`<span>${esc(s.name)} <strong>${dec1(s.v[k])}</strong></span>`).join('')}`;
+  return `<div class="crad" id="${id}"><svg viewBox="0 0 460 400" role="img" aria-label="Hexágono de índices de 0 a 10. ${series.map(s=>esc(s.name)+': '+labels.map((l,i)=>l+' '+dec1(s.v[i])).join(', ')).join('. ')}.">${g}</svg>
+    <div class="crkeys" role="group" aria-label="Ver um índice">${labels.map((l,i)=>`<button type="button" data-cra="${i}" aria-pressed="${i===0}">${l}</button>`).join('')}</div>
+    <p class="crout" aria-live="polite">${txt(0)}</p>
+    <div class="crleg" role="group" aria-label="Mostrar ou esconder no hexágono">${series.map((s,si)=>`<button type="button" data-crs="${si}" aria-pressed="true"><i class="${s.ideal?'ci':s.b?'cb':'ca'}"></i>${esc(s.name)}</button>`).join('')}</div>
+    <template class="crtx">${labels.map((_,k)=>`<p data-k="${k}">${txt(k)}</p>`).join('')}</template></div>`;
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-cra]'),sb=e.target.closest('[data-crs]');const box=(a||sb)&&(a||sb).closest('.crad');if(!box)return;
+  if(a){box.querySelectorAll('[data-cra]').forEach(b=>b.setAttribute('aria-pressed',b===a));const t=box.querySelector('.crtx').content.querySelector(`[data-k="${a.dataset.cra}"]`);if(t)box.querySelector('.crout').innerHTML=t.innerHTML;
+    box.querySelectorAll('.crl').forEach(t=>t.classList.toggle('on',t.dataset.k===a.dataset.cra))}
+  if(sb){const on=sb.getAttribute('aria-pressed')!=='true';sb.setAttribute('aria-pressed',on);const g=box.querySelector(`.crs[data-s="${sb.dataset.crs}"]`);if(g)g.style.display=on?'':'none'}
+});
 function duelHTML(a,b){
   const ia=idx(a),ib=idx(b),na=modelOf(a),nb=modelOf(b),out=[];
   const cmp=(d,lim,txt)=>{if(Math.abs(d)>=lim)out.push(txt(d))};
@@ -1369,7 +1442,7 @@ function duelHTML(a,b){
   if(a.c!==b.c)out.push(`Categorias diferentes: ${CAT[a.c].n.toLowerCase()} × ${CAT[b.c].n.toLowerCase()}`);
   const fa=fitFor(a),fb=fitFor(b);
   const row=(l,f)=>`<tr><td>${l}</td><td class="n" data-label="${esc(na)}">${f(a)}</td><td class="n" data-label="${esc(nb)}">${f(b)}</td></tr>`;
-  return `<div class="two" style="margin-top:6px"><div>${VZ.hex(SX,[{name:na,v:ia,c:'var(--clay)',dash:1},{name:nb,v:ib,c:'var(--pri)',fill:'var(--pri)',fo:.16,dots:1}])}</div>
+  return `<div class="two" style="margin-top:6px"><div>${cardHex(SX,[{name:na,v:ia},{name:nb,v:ib,b:1}].concat(RES&&RES.ID?[{name:'O que você precisa',v:RES.ID,ideal:1}]:[]))}</div>
   <div style="display:flex;flex-direction:column;gap:14px;min-width:0"><div class="tbl"><table class="duelt stk" style="min-width:0"><thead><tr><th><span class="a11y-sr">Medida</span></th><th>${esc(na)}</th><th>${esc(nb)}</th></tr></thead><tbody>
   ${RES?row('Seu DNA Score',x=>{const v=x===a?fa:fb;return v+'%'+(RES.inRank(x)?'':' (fora da sua categoria)')}):''}
   ${row('Marca',x=>esc(x.b))}${row('Categoria',x=>CAT[x.c].n)}${row('Preço',x=>priceTxt(x).replace(' (aprox.)',''))}${row('Peso',x=>x.g+' g')}${row('Espuma',x=>mm1(stackOf(x))+' / '+mm1(foreOf(x))+' mm')}${row('Drop',x=>dec1(x.dr)+' mm')}${row('Durabilidade',x=>x.du+' km')}${row('Custo por km',x=>kmCost(x).replace(' por km',''))}${row('Reviews',x=>`${dec1(x.sc)} de 5 · ${x.np+x.nc}`)}${row('Specs',x=>x.fi?'da ficha':'de laboratório')}
