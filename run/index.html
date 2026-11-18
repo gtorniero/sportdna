@@ -58,6 +58,10 @@ a.brand{text-decoration:none;color:inherit}a.brand:focus-visible{outline:3px sol
 .maisc .maisgo{flex:none;font-size:22px;font-weight:800}
 .maisc.mr{border-color:#DDF247}.maisc.mr .maisgo{color:#DDF247}.maisc.ms{border-color:#6CCFF6}.maisc.ms .maisgo{color:#6CCFF6}
 .maisc:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.rh-price{margin:0;font:800 clamp(24px,6vw,30px)/1 Archivo,sans-serif;color:#FF8A3D}
+.pod-price{margin:0;font:800 20px Archivo,sans-serif;color:var(--ink)}
+.pod .affcard{padding:0;border:0;background:none;margin-top:4px}
+.linkbtn{background:none;border:0;padding:6px 0;font:600 14px "DM Sans",sans-serif;color:var(--ink);text-decoration:underline;cursor:pointer;align-self:flex-start;min-height:32px}
 </style><!-- SEO_START -->
 <title>Teste: qual tênis de corrida escolher? | RUN DNA</title>
 <meta name="description" content="Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Teste e relatório completo gratuitos.">
@@ -1295,7 +1299,7 @@ function exampleBanner(){
 function renderReport(){
   const r=RES,a=r.a,w=r.fins[0],m=w.m,ex=isExample();
   const cur=r.atual,hasAt=cur&&cur.m!==m,zone=zoneT(r);
-  const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Pódio'],['r-mapa','Mapa'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
+  const S=[['r-res','Resultado'],['r-alt','Pódio'],['r-idx','Índices'],['r-why','Por que combina'],cur?['r-atual','Atual × nova']:null,['r-mapa','Top 10 e mapa'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA'],['r-ficha','Ficha técnica']].filter(Boolean);
   const sec=(id,title,body)=>`<section class="rsec" id="${id}" aria-labelledby="${id}-h"><h2 class="sech" id="${id}-h">${title}</h2>${body}</section>`;
   const specLine=x=>`${CAT[x.c].n} · ${x.g} g · espuma ${mm1(stackOf(x))} mm · drop ${dec1(x.dr)} mm · ${priceTxt(x)}`;
   const att=attT(r).filter(x=>!/^Prove no fim do dia/.test(x)&&!/^Clientes relatam que veste/.test(x));
@@ -1309,7 +1313,8 @@ function renderReport(){
   h+=sec('r-res','Seu resultado',`<div class="rhero">
     <div class="rh-top"><div style="min-width:0"><p class="rh-eye">Seu tênis ideal · ${esc(m.b)}</p><h3 class="rh-name">${esc(modelOf(m))}</h3></div>
       <div class="rh-fit"><b>${w.fit}<small>%</small></b><span>DNA Score</span></div></div>
-    <ul class="rh-chips" aria-label="Medidas"><li>${CAT[m.c].n}</li><li>${m.g} g</li><li>espuma ${mm1(stackOf(m))} mm</li><li>drop ${dec1(m.dr)} mm</li><li>${priceTxt(m)}</li></ul>
+    <p class="rh-price">${priceTxt(m)}</p>
+    <ul class="rh-chips" aria-label="Medidas"><li>${CAT[m.c].n}</li><li>${m.g} g</li><li>espuma ${mm1(stackOf(m))} mm</li><li>drop ${dec1(m.dr)} mm</li></ul>
     <p class="rh-txt">${esc(/[.!?]$/.test(m.nt)?m.nt:m.nt+'.')}${zone?' '+esc(zone):''}</p></div>${brandLink(m)}`);
   /* 2. por que combina */
   h+=sec('r-why','Por que combina',`<div class="panel">
@@ -1318,16 +1323,18 @@ function renderReport(){
       <div><h3 style="margin-bottom:8px">Pontos de atenção</h3><ul class="why">${att.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div></div>`);
   /* 3. ficha técnica (o hexágono fica em "Sua atual × a nova" quando há tênis atual) */
   const F=fichaRows(r);
-  h+=sec('r-ficha','Ficha técnica',`<div class="panel">
-    <div class="vhead"><p class="muted" style="font-size:14px">${esc(m.n)}: medidas, preço e quando trocar.</p><button class="btn btn-ghost btn-sm" type="button" id="fichaCp">Copiar</button></div>
-    <table class="ftab"><caption class="a11y-sr">Ficha técnica do ${esc(m.n)}</caption><tbody>${F.map(x=>`<tr><th scope="row">${x[0]}</th><td>${esc(x[1])}</td></tr>`).join('')}</tbody></table>
-    <p class="note" id="fichaSt" aria-live="polite"></p>
-    <div class="vhead"><div><h3>Seis índices de 0 a 10</h3><p class="muted" style="font-size:14px">${hasAt?`O ${esc(modelOf(m))} contra a média da categoria e os ${M.length} modelos do catálogo.`:`No hexágono, a linha laranja é o que suas respostas pedem; nas barras, o tênis contra a média da categoria e os ${M.length} modelos do catálogo.`}</p></div>
+  /* redesenho 2 (nov/2026): índices logo depois do pódio; ficha técnica pequena e recolhida no fim */
+  h+=sec('r-idx','Seis índices de 0 a 10',`<div class="panel">
+    <div class="vhead"><p class="muted" style="font-size:14px">${hasAt?`O ${esc(modelOf(m))} contra a média da categoria e os ${M.length} modelos do catálogo.`:`No hexágono, a linha tracejada é o que suas respostas pedem; nas barras, o tênis contra a média da categoria e os ${M.length} modelos do catálogo.`}</p>
       ${hasAt?'':`<div class="seg" role="group" aria-label="Formato dos índices"><button type="button" data-i="hex" aria-pressed="true">Hexágono</button><button type="button" data-i="bar" aria-pressed="false">Barras</button></div>`}</div>
     <div style="max-width:560px;width:100%;margin:0 auto">
-      ${hasAt?'':`<div id="ihex">${VZ.hex(SX,[{name:'O que você precisa',v:r.ID,c:'var(--ball)',dash:1},{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.18,dots:1}])}</div>`}
+      ${hasAt?'':`<div id="ihex">${cardHex(SX,[{name:modelOf(m),v:idx(m)},{name:'O que você precisa',v:r.ID,ideal:1}])}</div>`}
       <div id="ibar">${VZ.bars(m)}</div>
     </div></div>`);
+  h+=sec('r-ficha','Ficha técnica',`<details class="panel rk" id="fichaD"><summary><span>Ficha técnica</span><small class="muted">medidas, preço e quando trocar</small></summary>
+    <div class="vhead"><p class="muted" style="font-size:14px">${esc(m.n)}</p><button class="btn btn-ghost btn-sm" type="button" id="fichaCp">Copiar</button></div>
+    <table class="ftab"><caption class="a11y-sr">Ficha técnica do ${esc(m.n)}</caption><tbody>${F.map(x=>`<tr><th scope="row">${x[0]}</th><td>${esc(x[1])}</td></tr>`).join('')}</tbody></table>
+    <p class="note" id="fichaSt" aria-live="polite"></p></details>`);
   /* 4. sua atual × a nova */
   if(cur){
     if(!hasAt)h+=sec('r-atual','Sua atual × a nova',`<div class="panel"><p>O ${esc(m.n)} que você usa hoje é o que mais combina com você. Na hora de trocar, pode repetir o modelo.</p></div>`);
@@ -1341,8 +1348,8 @@ function renderReport(){
   const faixaR=x=>{const g=w.fit-x.fit;return g<=4?['ideal','Encaixe ideal']:g<=12?['mbom','Muito bom']:['bom','Bom']};
   h+=sec('r-alt','Seu pódio',`<div class="podio">${r.fins.slice(0,3).map((x,i)=>`<article class="pod${i?'':' p1'}"><div class="pod-top"><span class="pod-n">${i+1}º</span><span class="pod-fx fx-${faixaR(x)[0]}">${faixaR(x)[1]}</span></div>
       <p class="pod-b">${esc(x.m.b)}</p><h3 class="pod-name">${esc(modelOf(x.m))}</h3><p class="pod-fit"><b>${x.fit}%</b> DNA Score</p>
-      <ul class="pod-chips"><li>${priceTxt(x.m)}</li><li>${x.m.g} g</li><li>drop ${dec1(x.m.dr)} mm</li><li>${x.m.du} km</li></ul>
-      <p class="pod-txt">${esc(x.m.nt)}</p>${i?`<button type="button" class="btn btn-ghost btn-sm" data-podcmp="${esc(x.m.n)}">Comparar com o 1º</button>${brandLink(x.m)}`:'<p class="note" style="margin:0">Compra no topo do resultado.</p>'}</article>`).join('')}</div>
+      <p class="pod-price">${priceTxt(x.m)}</p><ul class="pod-chips"><li>${x.m.g} g</li><li>drop ${dec1(x.m.dr)} mm</li></ul>
+      ${i?`${brandLink(x.m)}<button type="button" class="linkbtn" data-podcmp="${esc(x.m.n)}">Comparar com o 1º</button>`:''}</article>`).join('')}</div>
     <details class="panel rk" id="rkD" open><summary><span>Ranking: seus 10 que mais combinam</span><small class="muted">e o melhor de cada marca</small></summary>
       <div class="vhead"><div class="q" style="gap:4px"><label class="ql" for="rkBrand" style="font-size:14px">Marca</label><select id="rkBrand"><option value="">Todas as marcas</option>${brs.map(b=>`<option value="${esc(b)}">${esc(b)}${r.pref.includes(b)?' (sua preferida)':''}</option>`).join('')}</select></div>
         <div class="seg" role="group" aria-label="Ordenar o ranking"><button type="button" data-o="fit" aria-pressed="true">Por DNA</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
@@ -1351,25 +1358,28 @@ function renderReport(){
       <p class="note">Só tênis vendidos no Brasil entram no filtro por marca. Marcas com menos modelos no catálogo têm menos chance de ter um tênis da categoria ideal; por isso o DNA Score delas pode ser mais baixo.</p></details>`);
   /* 6. comparador (recolhido) */
   /* mapa do catálogo sempre à vista (pedido do Gui, como no RACKET DNA) */
-  h+=sec('r-mapa','Mapa do catálogo',`<div class="panel"><p class="muted" style="font-size:14px">Peso × espuma no calcanhar dos ${M.length} tênis do catálogo. Os números são o seu pódio.</p>${VZ.map(r.fins)}</div>`);
-  h+=sec('r-cmp','Comparador',`<details class="panel rk" id="cmpD"><summary><span>Comparar com outro tênis</span><small class="muted">qualquer modelo do catálogo, lado a lado</small></summary>
+  h+=sec('r-mapa','Top 10 e mapa',`<div class="panel"><p class="muted" style="font-size:14px">Peso × espuma no calcanhar dos ${M.length} tênis do catálogo. Os números são o seu pódio.</p>${VZ.map(r.fins)}</div>`);
+  h+=sec('r-cmp','Comparador',`<details class="panel rk" id="cmpD" open><summary><span>Comparar com outro tênis</span><small class="muted">qualquer modelo do catálogo, lado a lado</small></summary>
     <div class="two"><div class="q"><label class="ql" for="rA">Tênis A</label><select id="rA" style="width:100%">${catOpts(m.n)}</select></div><div class="q"><label class="ql" for="rB">Tênis B</label><select id="rB" style="width:100%">${catOpts(r.fins[1].m.n)}</select></div></div>
     <div id="rOut"></div></details>`);
   /* 7. guia de compra: segundo par + pagar menos */
-  h+=sec('r-guia','Guia de compra',`${r.second?`<div class="panel"><h3>Segundo par para rodízio</h3><p class="muted">Alternar dois pares pode ajudar: num estudo com 264 corredores, quem alternava teve 39% menos lesões. É um indício, não garantia. Use este ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}.</p><div><p class="eyebrow">${esc(r.second.b)}</p><h4 class="pname sm">${esc(modelOf(r.second))}</h4><p class="muted mono" style="font-size:14px">${priceTxt(r.second)} · ${CAT[r.second.c].n}</p>${brandLink(r.second)}</div><p class="note">Os dois pares juntos: ${brl(m.p+r.second.p)}. Custo por km do rodízio: ${('R$ '+((m.p+r.second.p)/(m.du+r.second.du)).toFixed(2)).replace('.',',')}.</p><div style="max-width:460px;width:100%;margin:0 auto">${VZ.hex(SX,[{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.14},{name:modelOf(r.second),v:idx(r.second),c:'var(--ball)',fill:'var(--ball)',fo:.14}])}</div><p class="muted" style="font-size:14px;text-align:center">Juntos, os dois cobrem mais área do hexágono do que qualquer um sozinho.</p></div>`:''}
-    <div class="panel"><h3>Para pagar menos</h3><ul class="why"><li>A versão da coleção anterior costuma sair 30% a 50% mais barata, com quase o mesmo desempenho.</li><li>Lançamentos raramente entram em promoção nos primeiros meses.</li><li>Compare o preço por km, não só o preço: um tênis mais caro que dura mais pode sair mais barato.</li></ul></div>`);
+  h+=sec('r-guia','Guia de compra',`<details class="panel rk" id="guiaD"><summary><span>Guia de compra</span><small class="muted">segundo par e como pagar menos</small></summary>${r.second?`<div class="panel"><h3>Segundo par para rodízio</h3><p class="muted">Alternar dois pares pode ajudar: num estudo com 264 corredores, quem alternava teve 39% menos lesões. É um indício, não garantia. Use este ${r.second.c==='sup'?'só em prova e treinos-chave':r.second.c==='rap'?'nos treinos de ritmo e tiro':'na rodagem leve'}.</p><div><p class="eyebrow">${esc(r.second.b)}</p><h4 class="pname sm">${esc(modelOf(r.second))}</h4><p class="muted mono" style="font-size:14px">${priceTxt(r.second)} · ${CAT[r.second.c].n}</p>${brandLink(r.second)}</div><p class="note">Os dois pares juntos: ${brl(m.p+r.second.p)}. Custo por km do rodízio: ${('R$ '+((m.p+r.second.p)/(m.du+r.second.du)).toFixed(2)).replace('.',',')}.</p><div style="max-width:460px;width:100%;margin:0 auto">${VZ.hex(SX,[{name:modelOf(m),v:idx(m),c:'var(--pri)',fill:'var(--pri)',fo:.14},{name:modelOf(r.second),v:idx(r.second),c:'var(--ball)',fill:'var(--ball)',fo:.14}])}</div><p class="muted" style="font-size:14px;text-align:center">Juntos, os dois cobrem mais área do hexágono do que qualquer um sozinho.</p></div>`:''}
+    <div class="panel"><h3>Para pagar menos</h3><ul class="why"><li>A versão da coleção anterior costuma sair 30% a 50% mais barata, com quase o mesmo desempenho.</li><li>Lançamentos raramente entram em promoção nos primeiros meses.</li><li>Compare o preço por km, não só o preço: um tênis mais caro que dura mais pode sair mais barato.</li></ul></div></details>`);
   /* 8. seu DNA: cards */
   h+=sec('r-dna','Seu DNA',`<div class="panel"><p class="muted">Prontos para story: o seu perfil de corredor e o tênis que mais combina com você, com o DNA Score.</p>
     <div id="cardsOut" class="cardpair"></div>
     <div class="row"><button class="btn btn-pri" type="button" id="shareCards">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlRunner">Salvar card do corredor</button><button class="btn btn-ghost" type="button" id="dlShoe">Salvar card do tênis</button></div></div>`);
   /* teste também (pedido do Gui): RACKET DNA e SURF DNA */
-  h+=`<section class="rsec" aria-labelledby="r-mais-h"><h2 class="sech" id="r-mais-h">Teste também</h2><div class="mais">
+  h+=`<section class="rsec" id="r-mais" aria-labelledby="r-mais-h"><h2 class="sech" id="r-mais-h">Teste também</h2><div class="mais">
     <a class="maisc mr" href="../racket/"><img src="/assets/brand/svg/racketdna-icone.svg" alt="" width="52" height="52"><span><b>Teste sua raquete de tênis</b><small>RACKET DNA · prévia grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
     <a class="maisc ms" href="../surf/"><img src="/assets/brand/svg/surfdna-icone.svg" alt="" width="52" height="52"><span><b>Teste sua prancha de surf</b><small>SURF DNA · prévia grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
   </div></section>`;
   /* 9. rodapé */
   h+=`<div class="pdfbar"><button class="btn btn-pri" type="button" id="pdfBot">Baixar relatório em PDF (A4)</button><button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><span class="note pdfst" aria-live="polite"></span></div>`;
   $('#report').innerHTML=h;
+  /* ordem pedida pelo Gui: resultado, pódio, índices, por que combina, atual × nova, top 10 e mapa, comparador, guia, DNA, teste também, ficha */
+  {const R=$('#report'),end=R.querySelector('.pdfbar'),rk=R.querySelector('#rkD'),mp=R.querySelector('#r-mapa');if(rk&&mp)mp.insertBefore(rk,mp.querySelector('.panel'));
+   ['r-res','r-alt','r-idx','r-why','r-atual','r-mapa','r-cmp','r-guia','r-dna','r-mais','r-ficha'].forEach(id=>{const el=R.querySelector('#'+id);if(el)R.insertBefore(el,end)})}
   /* ranking: todas as marcas (top 10, com ordenação) ou o melhor de uma marca */
   {
     let ord='fit';
