@@ -290,6 +290,15 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .crleg i.cb{height:0;border-top:3px dashed #3BA9C9;border-radius:0}
 .crleg i.ci{background:none;border:1.5px dashed var(--ink)}
 .promotag{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:99px;padding:3px 10px;white-space:nowrap}
+.rsec2{display:flex;flex-direction:column;gap:12px}
+.mais{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.mais{grid-template-columns:1fr}}
+.maisc{display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;text-decoration:none;color:#FFFFFF;background:linear-gradient(160deg,#0E4D64,#06222C);border:2px solid transparent;min-height:84px}
+.maisc img{border-radius:14px;flex:none}.maisc span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.maisc b{font:800 17px/1.2 Archivo,sans-serif}.maisc small{font-size:13px;color:rgba(255,255,255,.8)}
+.maisc .maisgo{flex:none;font-size:22px;font-weight:800}
+.maisc.mn{border-color:#FF8A3D}.maisc.mn .maisgo{color:#FF8A3D}.maisc.ms{border-color:#6CCFF6}.maisc.ms .maisgo{color:#6CCFF6}
+.maisc:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .freecard{background:color-mix(in srgb,var(--ball) 16%,var(--surface));border:2px solid var(--ball)}
 .freecard .eyebrow,.freecard .note,.freecard .gl,.freecard .muted{color:var(--ink)}
 .freebadge{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:3px 10px;margin:0 0 8px}
@@ -1699,6 +1708,11 @@ function fichaGratis(){
     <div class="fconf"><b>${conf}%</b><span>confiança do resultado, com ${answered} respostas. ${RK.length} raquetes e ${fmt(NREV)} avaliações na base.</span></div>
     <p class="note" style="margin:0">Quais modelos cabem nessa ficha, a corda e a tensão ficam no relatório.</p></section>`;
 }
+/* teste também (pedido do Gui): RUN DNA grátis e SURF DNA, no fim da prévia e do relatório */
+const testeTambem=()=>`<section class="rsec2" aria-labelledby="mais-h"><h2 class="sec" id="mais-h">Teste também</h2><div class="mais">
+    <a class="maisc mn" href="../run/"><img src="/assets/brand/svg/rundna-icone.svg" alt="" width="52" height="52"><span><b>Teste seu tênis de corrida grátis</b><small>RUN DNA · teste e relatório 100% grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
+    <a class="maisc ms" href="../surf/"><img src="/assets/brand/svg/surfdna-icone.svg" alt="" width="52" height="52"><span><b>Teste sua prancha de surf</b><small>SURF DNA · prévia grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
+  </div></section>`;
 function renderPreview(){
   const {ranked,conf,T,curFit,c}=RES;const top=ranked.slice(0,3);
   const BB=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="quiz">← Voltar às respostas</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button></div>`;
@@ -1759,7 +1773,7 @@ function renderPreview(){
     </div>
     <p class="note"><strong>Garantia de 7 dias:</strong> não gostou, devolvemos o valor pago, como prevê o artigo 49 do Código de Defesa do Consumidor (<a href="../termos/" style="color:inherit">termos</a>). O cálculo já foi feito: o pagamento só revela o resultado. Se houver link de compra, ele aparece depois, e a recomendação não muda por isso.</p>
     <div class="row"><button class="btn btn-ghost" type="button" id="redo">Refazer respostas</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button></div>
-  </div>`;
+  </div>${testeTambem()}`;
   wireSeg($('#preview'));previewCard('#cardPrev');$('#pvShare').onclick=shareCard;$('#pvDl').onclick=async()=>{const cv=await drawCard();const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const l=document.createElement('a');l.href=URL.createObjectURL(blob);l.download='racket-dna-dna.png';document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(l.href),4000);toast('Card salvo')};
   $('#preview').querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>pix(+b.dataset.buy,b.dataset.position));
   $('#redo').onclick=()=>{step=0;show('quiz');renderQs()};
@@ -2065,6 +2079,7 @@ function renderReport(){
     <table class="ficha"><caption class="sr-only">Ficha técnica da ${esc(r.name)}</caption><tbody>${fr.map(([l,k,v])=>`<tr><th scope="row">${k?gl(k,l):l}</th><td>${v}</td></tr>`).join('')}</tbody></table>
     <p class="note" style="margin:0">Especificações de catálogo, aproximadas. Confira na loja: a mesma raquete varia alguns gramas de uma unidade para outra.</p></div></details></section>`})()}
   ${tier>=2&&!ex?retestBox():''}
+  ${testeTambem()}
   ${full&&editLeft>0?`<div class="panel editbox"><h2 class="sec">Errou alguma resposta?</h2><p>Você pode corrigir as respostas uma vez, por exemplo a versão exata da sua raquete atual. O relatório é refeito na hora, sem novo pagamento.</p><button class="btn btn-ghost" type="button" id="editAns" style="align-self:flex-start">Editar respostas</button></div>`:''}
   ${tier>=2&&!ex?'<p class="note"><strong>Garantia de 7 dias:</strong> não gostou, devolvemos o valor pago (artigo 49 do Código de Defesa do Consumidor). Escreva para <a href="mailto:hi@sportdna.com.br" style="color:inherit">hi@sportdna.com.br</a> com o e-mail da compra.</p>':''}
   <div class="row">${full?`<button class="btn btn-go" type="button" data-pdf>${ex?'Baixar o PDF do exemplo (A4)':'Baixar relatório em PDF (A4)'}</button>`:''}${ex?'<button class="btn btn-ghost" type="button" data-mytest>Fazer o meu teste · prévia grátis</button>':'<button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><button class="btn btn-ghost" type="button" data-save>Salvar resultado</button>'}</div>`;
