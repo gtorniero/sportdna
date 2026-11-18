@@ -70,9 +70,9 @@ export const page = [
 
  // ---------- garantia: sem citar o Código de Defesa do Consumidor (lei brasileira); política em inglês pendente ----------
  { find: '<p class="note"><strong>Garantia de 7 dias:</strong> não gostou, devolvemos o valor pago, como prevê o artigo 49 do Código de Defesa do Consumidor (<a href="../termos/" style="color:inherit">termos</a>). O cálculo já foi feito: o pagamento só revela o resultado. Se houver link de compra, ele aparece depois, e a recomendação não muda por isso.</p>',
-   replace: '<p class="note"><strong>7-day guarantee:</strong> not happy with your report? Email us within 7 days and we will refund what you paid. The analysis is already done: paying only reveals the result.</p>' },
+   replace: '<p class="note"><strong>7-day money-back guarantee:</strong> not happy with your report? Email us within 7 days of purchase and we will refund what you paid. The analysis is already done: paying only reveals the result.</p>' },
  { find: "'<p class=\"note\"><strong>Garantia de 7 dias:</strong> não gostou, devolvemos o valor pago (artigo 49 do Código de Defesa do Consumidor). Escreva para <a href=\"mailto:hi@sportdna.com.br\" style=\"color:inherit\">hi@sportdna.com.br</a> com o e-mail da compra.</p>'",
-   replace: "'<p class=\"note\"><strong>7-day guarantee:</strong> not happy with your report? Email <a href=\"mailto:hi@sportdna.com.br\" style=\"color:inherit\">hi@sportdna.com.br</a> from the address you paid with within 7 days and we will refund you.</p>'" },
+   replace: "'<p class=\"note\"><strong>7-day money-back guarantee:</strong> not happy with your report? Within 7 days of purchase, email <a href=\"mailto:hi@sportdna.com.br\" style=\"color:inherit\">hi@sportdna.com.br</a> from the address you paid with and we will refund you.</p>'" },
  { find: "${hv?'acima':'abaixo'}", replace: "${hv?'above':'below'}", n: -1 },
 
  { find: "t===2?(x?(a.usd?'~':'')+'R$ '+fmt(x[0]):'—')", replace: "t===2?(x?'~'+window.RK_INTL.money(x[0]):'—')" },

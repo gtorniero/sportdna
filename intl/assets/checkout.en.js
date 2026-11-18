@@ -52,7 +52,7 @@
  async function api(path,options={}) {
   let response;
   try{response=await fetch(config.api+path,{...options,headers:{'Content-Type':'application/json',...options.headers},cache:'no-store',signal:deadline(18000)})}
-  catch(e){throw ['TimeoutError','AbortError'].includes(e?.name)?fault('The payment took too long to respond. Check your connection and try again.','timeout'):fault('No connection to the payment service. Check your internet and try again.','network')}
+  catch(e){throw ['TimeoutError','AbortError'].includes(e?.name)?fault('The payment service took too long to respond. Check your connection and try again.','timeout'):fault('No connection to the payment service. Check your internet and try again.','network')}
   // Erro do servidor pode vir sem JSON (página de erro da rede): status primeiro, texto em português sempre.
   let data=null;try{data=await response.json()}catch{}
   if(!response.ok)throw fault(typeof data?.error==='string'&&data.error?data.error:'We couldn\'t confirm the payment. Try again in a moment.',response.status>=500?'unavailable':'rejected');

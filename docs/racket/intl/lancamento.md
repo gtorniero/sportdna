@@ -48,6 +48,16 @@ Nada abaixo foi feito em produção. Cada item precisa da aprovação do dono.
 - [ ] **Imagens das raquetes.** Não usar imagens do Mercado Livre. Se houver fotos, licenciar ou usar material de imprensa das marcas.
 - [ ] **Campanhas.** Nenhuma até a aprovação.
 
+## Achados da revisão editorial
+
+- [ ] **Trecho de review com promessa de cura.** "Conta que ela curou o cotovelo de tenista" (REVQ) contradiz "nenhuma raquete previne ou trata lesão".
+  - No inglês já foi suavizado.
+  - No português segue igual: é dado do app brasileiro e precisa de decisão do dono.
+- [ ] **PDF em A4.** Nos EUA e no Canadá o papel é Letter.
+- [ ] **Horário.** O horário do pagamento aparece no formato de 24 horas.
+- [ ] **Contato.** O e-mail é `.com.br` e o assunto do e-mail de "número errado" está em português.
+- [ ] **Grafia americana.** "maneuverability" e "catalog" ficam na grafia dos EUA por falta de alternativa neutra.
+
 ## Revisão editorial
 
 - [x] Segunda revisão completa do inglês, independente (ver `docs/racket/intl/revisao-editorial.md`).
