@@ -43,6 +43,23 @@ if (existsSync(productSources)) for (const file of readdirSync(productSources).s
   writeFileSync(destination, content);
   manifest.push({path:name,bytes:content.length,sha256:createHash('sha256').update(content).digest('hex')});
 }
+// Decode only individually approved originals; preserve their exact image bytes.
+const photoSources = join(source, 'source-assets', 'model-photos');
+const approvedPhotos = JSON.parse(readFileSync(join(source, 'docs', 'affiliates', 'approved-model-photos-20261118.json'), 'utf8')).photos;
+const approvedPaths = new Set();
+for (const photo of approvedPhotos) {
+  const name = photo.imageUrl.slice(1);
+  if (photo.approval !== 'approved' || !/^(T|R)-[0-9]{3}$/.test(photo.id) || !new RegExp('^assets/model-photos/'+photo.id+'\\.(jpg|png|webp)$').test(name) || approvedPaths.has(name)) throw new Error('Invalid approved photo: '+photo.id);
+  approvedPaths.add(name);
+  const encoded = readFileSync(join(photoSources, name.split('/').at(-1)+'.b64'), 'utf8').trim();
+  const content = Buffer.from(encoded, 'base64');
+  const sha256 = createHash('sha256').update(content).digest('hex');
+  if (content.toString('base64') !== encoded || sha256 !== photo.sha256 || content.length !== photo.bytes) throw new Error('Approved photo hash mismatch: '+photo.id);
+  const destination = join(target, name);
+  mkdirSync(dirname(destination), {recursive:true});
+  writeFileSync(destination, content);
+  manifest.push({path:name,bytes:content.length,sha256});
+}
 manifest.sort((a, b) => a.path.localeCompare(b.path));
 writeFileSync(join(root, 'dist', 'asset-manifest.json'), JSON.stringify({ source: 'current-checkout', files: manifest }, null, 2) + '\n');
 console.log(JSON.stringify({ files: manifest.length, bytes: manifest.reduce((n, f) => n + f.bytes, 0), source: 'current-checkout' }));

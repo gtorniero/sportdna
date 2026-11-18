@@ -10,10 +10,13 @@
 .affphoto{flex:1 1 140px;margin:0;min-width:0}
 .affphoto img{display:block;width:100%;height:210px;object-fit:contain;background:#fff;border-radius:12px}
 .affphoto figcaption{font-size:12px;text-align:center;margin-top:6px;color:var(--muted,#4A6570)}
+.report-model-photo{margin-top:14px}
+.report-model-photo figcaption{color:inherit}
 .pod .affphoto img{height:150px}`;document.head.appendChild(st)})();
 (()=>{'use strict';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const data=window.SPORTDNA_AFFILIATE_OFFERS||{offers:[]};
+const approvedPhotos=window.SPORTDNA_REPORT_PHOTOS?.photos||[];
 const merchants={meli:{name:'Mercado Livre',hosts:['www.mercadolivre.com.br','produto.mercadolivre.com.br','mercadolivre.com.br']},nike:{name:'Nike',hosts:['www.nike.com.br','nike.com.br']}};
 function valid(o){try{const u=new URL(o.purchaseUrl),m=merchants[o.merchant||'meli'];return !!m&&o.status==='verified'&&u.protocol==='https:'&&!u.username&&!u.password&&m.hosts.includes(u.hostname)&&((o.merchant||'meli')==='meli'?/\/(?:p\/MLB\d+|up\/MLBU\d+|MLB-\d+)/.test(u.pathname):/\.html$/.test(u.pathname))&&Number.isFinite(Date.parse(o.checkedAt))&&Date.now()-Date.parse(o.checkedAt)>=0&&Date.now()-Date.parse(o.checkedAt)<=8*86400000;}catch{return false}}
 function offerPhoto(offer){
@@ -22,15 +25,20 @@ function offerPhoto(offer){
  const variant={male:'Modelo masculino',female:'Modelo feminino',unisex:'Modelo unissex'}[offer.gender]||'';
  return '<figure class="affphoto"><img src="'+esc(offer.imageUrl)+'" alt="'+esc(offer.imageTitle||offer.model)+'" width="420" height="420" loading="lazy" decoding="async" referrerpolicy="no-referrer">'+(variant?'<figcaption>'+variant+'</figcaption>':'')+'</figure>';
 }
+function modelPhoto(sport,model){
+ const photo=approvedPhotos.find(p=>p.sport===sport&&p.model===model&&p.approval==='approved');
+ if(!photo||!(/^(T|R)-[0-9]{3}$/.test(photo.id))||!new RegExp('^/assets/model-photos/'+photo.id+'\\.(jpg|png|webp)$').test(photo.imageUrl))return '';
+ return '<figure class="affphoto report-model-photo"><img src="'+esc(photo.imageUrl)+'" alt="'+esc(model)+'" width="420" height="420" loading="lazy" decoding="async"><figcaption>Imagem: '+esc(photo.brand)+'</figcaption></figure>';
+}
 document.addEventListener('error',event=>{
  const image=event.target;
  if(image?.tagName==='IMG'&&image.closest('.affphoto'))image.closest('.affphoto').remove();
 },true);
 window.SportDNAAffiliates=Object.freeze({card(sport,model){
  const offers=data.offers.filter(o=>o.sport===sport&&o.model===model&&valid(o)).sort((a,b)=>Number((a.merchant||'meli')!=='meli')-Number((b.merchant||'meli')!=='meli'));
- if(!offers.length)return '';
+ if(!offers.length)return modelPhoto(sport,model);
  const seen=new Set(),choices=offers.filter(o=>{const key=sport==='run'?(o.gender||'unspecified'):(o.variantKey||o.id);if(seen.has(key))return false;seen.add(key);return true});
- const photos=choices.map(offerPhoto).filter(Boolean).join('');
+ const photos=choices.map(offerPhoto).filter(Boolean).join('')||modelPhoto(sport,model);
  const names={male:'Modelo masculino',female:'Modelo feminino',unisex:'Modelo unissex'};
  const meliOnly=choices.every(o=>(o.merchant||'meli')==='meli');
  /* visual limpo (pedido do Gui, nov/2026): título, botão "Comprar agora" por variante e só "Publicidade · link de afiliado" */
