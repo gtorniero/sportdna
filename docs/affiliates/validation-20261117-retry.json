@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-17",
+  "baselineModels": 203,
+  "linkedModels": 227,
+  "offers": 303,
+  "newModels": 24,
+  "pendingReviewed": 192,
+  "pendingRemaining": 168,
+  "oldOffersPreserved": 279,
+  "affiliateTestsPassed": 5,
+  "affiliateTestsFailed": 0,
+  "engineModified": false,
+  "automationModified": false,
+  "publication": "pending"
+}
