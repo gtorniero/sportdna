@@ -50,6 +50,14 @@ a.brand{text-decoration:none;color:inherit}a.brand:focus-visible{outline:3px sol
 .crleg button[aria-pressed="false"]{opacity:.5;text-decoration:line-through}
 .crleg i{display:inline-block;width:16px;height:10px;border-radius:3px;margin-right:7px;vertical-align:middle}
 .crleg i.ca{background:linear-gradient(135deg,#FF8A3D,#7FD0E6)}.crleg i.cb{height:0;border-top:3px dashed #3BA9C9;border-radius:0}.crleg i.ci{background:none;border:1.5px dashed var(--ink)}
+.mais{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.mais{grid-template-columns:1fr}}
+.maisc{display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;text-decoration:none;color:#FFFFFF;background:linear-gradient(160deg,#0E4D64,#06222C);border:2px solid transparent;min-height:84px}
+.maisc img{border-radius:14px;flex:none}.maisc span{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.maisc b{font:800 17px/1.2 Archivo,sans-serif}.maisc small{font-size:13px;color:rgba(255,255,255,.8)}
+.maisc .maisgo{flex:none;font-size:22px;font-weight:800}
+.maisc.mr{border-color:#DDF247}.maisc.mr .maisgo{color:#DDF247}.maisc.ms{border-color:#6CCFF6}.maisc.ms .maisgo{color:#6CCFF6}
+.maisc:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 </style><!-- SEO_START -->
 <title>Teste: qual tênis de corrida escolher? | RUN DNA</title>
 <meta name="description" content="Faça o teste RUN DNA e explore tênis de corrida para seu perfil de treino. Teste e relatório completo gratuitos.">
@@ -1282,7 +1290,7 @@ function exampleBanner(){
 function renderReport(){
   const r=RES,a=r.a,w=r.fins[0],m=w.m,ex=isExample();
   const cur=r.atual,hasAt=cur&&cur.m!==m,zone=zoneT(r);
-  const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Pódio'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
+  const S=[['r-res','Resultado'],['r-why','Por que combina'],['r-ficha','Ficha técnica'],cur?['r-atual','Atual × nova']:null,['r-alt','Pódio'],['r-mapa','Mapa'],['r-cmp','Comparador'],['r-guia','Guia de compra'],['r-dna','Seu DNA']].filter(Boolean);
   const sec=(id,title,body)=>`<section class="rsec" id="${id}" aria-labelledby="${id}-h"><h2 class="sech" id="${id}-h">${title}</h2>${body}</section>`;
   const specLine=x=>`${CAT[x.c].n} · ${x.g} g · espuma ${mm1(stackOf(x))} mm · drop ${dec1(x.dr)} mm · ${priceTxt(x)}`;
   const att=attT(r).filter(x=>!/^Prove no fim do dia/.test(x)&&!/^Clientes relatam que veste/.test(x));
@@ -1330,13 +1338,15 @@ function renderReport(){
       <p class="pod-b">${esc(x.m.b)}</p><h3 class="pod-name">${esc(modelOf(x.m))}</h3><p class="pod-fit"><b>${x.fit}%</b> DNA Score</p>
       <ul class="pod-chips"><li>${priceTxt(x.m)}</li><li>${x.m.g} g</li><li>drop ${dec1(x.m.dr)} mm</li><li>${x.m.du} km</li></ul>
       <p class="pod-txt">${esc(x.m.nt)}</p>${i?`<button type="button" class="btn btn-ghost btn-sm" data-podcmp="${esc(x.m.n)}">Comparar com o 1º</button>${brandLink(x.m)}`:'<p class="note" style="margin:0">Compra no topo do resultado.</p>'}</article>`).join('')}</div>
-    <details class="panel rk" id="rkD"><summary><span>Ranking: seus 10 que mais combinam</span><small class="muted">e o melhor de cada marca</small></summary>
+    <details class="panel rk" id="rkD" open><summary><span>Ranking: seus 10 que mais combinam</span><small class="muted">e o melhor de cada marca</small></summary>
       <div class="vhead"><div class="q" style="gap:4px"><label class="ql" for="rkBrand" style="font-size:14px">Marca</label><select id="rkBrand"><option value="">Todas as marcas</option>${brs.map(b=>`<option value="${esc(b)}">${esc(b)}${r.pref.includes(b)?' (sua preferida)':''}</option>`).join('')}</select></div>
         <div class="seg" role="group" aria-label="Ordenar o ranking"><button type="button" data-o="fit" aria-pressed="true">Por DNA</button><button type="button" data-o="p" aria-pressed="false">Por preço</button><button type="button" data-o="km" aria-pressed="false">Por custo/km</button></div></div>
       <p class="muted" style="font-size:14px" id="rkSub" aria-live="polite"></p>
       <div class="tbl"><table class="t10 stk"><thead><tr><th>#</th><th>Tênis</th><th>Marca</th><th>Categoria</th><th>Preço</th><th>Custo/km</th><th style="width:150px">DNA Score</th></tr></thead><tbody id="t10b"></tbody></table></div>
       <p class="note">Só tênis vendidos no Brasil entram no filtro por marca. Marcas com menos modelos no catálogo têm menos chance de ter um tênis da categoria ideal; por isso o DNA Score delas pode ser mais baixo.</p></details>`);
   /* 6. comparador (recolhido) */
+  /* mapa do catálogo sempre à vista (pedido do Gui, como no RACKET DNA) */
+  h+=sec('r-mapa','Mapa do catálogo',`<div class="panel"><p class="muted" style="font-size:14px">Peso × espuma no calcanhar dos ${M.length} tênis do catálogo. Os números são o seu pódio.</p>${VZ.map(r.fins)}</div>`);
   h+=sec('r-cmp','Comparador',`<details class="panel rk" id="cmpD"><summary><span>Comparar com outro tênis</span><small class="muted">qualquer modelo do catálogo, lado a lado</small></summary>
     <div class="two"><div class="q"><label class="ql" for="rA">Tênis A</label><select id="rA" style="width:100%">${catOpts(m.n)}</select></div><div class="q"><label class="ql" for="rB">Tênis B</label><select id="rB" style="width:100%">${catOpts(r.fins[1].m.n)}</select></div></div>
     <div id="rOut"></div></details>`);
@@ -1347,6 +1357,11 @@ function renderReport(){
   h+=sec('r-dna','Seu DNA',`<div class="panel"><p class="muted">Prontos para story: o seu perfil de corredor e o tênis que mais combina com você, com o DNA Score.</p>
     <div id="cardsOut" class="cardpair"></div>
     <div class="row"><button class="btn btn-pri" type="button" id="shareCards">Compartilhar</button><button class="btn btn-ghost" type="button" id="dlRunner">Salvar card do corredor</button><button class="btn btn-ghost" type="button" id="dlShoe">Salvar card do tênis</button></div></div>`);
+  /* teste também (pedido do Gui): RACKET DNA e SURF DNA */
+  h+=`<section class="rsec" aria-labelledby="r-mais-h"><h2 class="sech" id="r-mais-h">Teste também</h2><div class="mais">
+    <a class="maisc mr" href="../racket/"><img src="/assets/brand/svg/racketdna-icone.svg" alt="" width="52" height="52"><span><b>Teste sua raquete de tênis</b><small>RACKET DNA · prévia grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
+    <a class="maisc ms" href="../surf/"><img src="/assets/brand/svg/surfdna-icone.svg" alt="" width="52" height="52"><span><b>Teste sua prancha de surf</b><small>SURF DNA · prévia grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
+  </div></section>`;
   /* 9. rodapé */
   h+=`<div class="pdfbar"><button class="btn btn-pri" type="button" id="pdfBot">Baixar relatório em PDF (A4)</button><button class="btn btn-ghost" type="button" id="again">Refazer o teste</button><span class="note pdfst" aria-live="polite"></span></div>`;
   $('#report').innerHTML=h;
