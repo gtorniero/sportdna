@@ -37,7 +37,7 @@
 /* Layout: uma coluna de leitura (max 980px); identidade SPORT DNA: azul-petróleo, branco e lima (bola de tênis) */
 :root{
   --bg:#EEF4F5; --surface:#FFFFFF; --ink:#0B2530; --muted:#4A6570; --line:#CFDEE2;
-  --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#DDF247; --ball-ink:#0B2530; --alt:#5C6B00; --warn:#8F5200; --soft:#DCEBEF;
+  --pri:#0E4D64; --pri-ink:#FFFFFF; --ball:#DDF247; --ball-ink:#0B2530; --alt:#5C6B00; --warn:#8F5200; --soft:#DCEBEF; --winbg:#E4EEF1;
   --deep:#0A3A4C; --cur:#E07A1F;
   --f-display:'DM Sans',system-ui,-apple-system,sans-serif;
   --f-body:'DM Sans',system-ui,-apple-system,sans-serif;
@@ -45,10 +45,10 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#08222C; --surface:#0E3442; --ink:#EAF4F6; --muted:#9BB8C1; --line:#1C4B5A;
-  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; color-scheme:dark}}
+  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; --winbg:#123F4E; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#08222C; --surface:#0E3442; --ink:#EAF4F6; --muted:#9BB8C1; --line:#1C4B5A;
-  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; color-scheme:dark}
+  --pri:#7FD0E6; --pri-ink:#08222C; --ball:#DDF247; --ball-ink:#0B2530; --alt:#DDF247; --warn:#FFC266; --soft:#12404F; --deep:#05161D; --cur:#FFAE5C; --winbg:#123F4E; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
@@ -302,7 +302,8 @@ td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:now
 .verdict.v-fica{border-left-color:var(--ball)}.verdict.v-trocar{border-left-color:var(--warn)}
 .lock{border:1.5px dashed var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 .cmpsel{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
-.cmpsel select{width:100%}
+.cmpsel select{width:100%;padding:12px 16px;min-height:52px}
+.cmpsel{margin:6px 0 18px}
 .cmpfit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
 .cmpfit .kpi b{font-family:var(--f-body);font-variant-numeric:tabular-nums;font-size:38px;font-weight:700!important;letter-spacing:-.02em}
 .vs{font-family:var(--f-display);font-weight:800;color:var(--muted)}
@@ -595,8 +596,17 @@ details.cmpbox[open]{background:var(--surface)}
   table.stack td.wide{grid-column:1/-1}
   table.stack td.wide::before{display:inline;margin-right:6px}
 }
-.altl{display:flex;flex-direction:column;gap:10px}
-.altc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;background:var(--bg);border-radius:14px;padding:14px}
+.altl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+/* rodada 23: bloco da raquete atual e card do resultado em destaque (azul-petróleo bem claro, AA nos dois temas) */
+.curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
+.curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
+.cv-troca{color:var(--warn)}.cv-fica{color:var(--pri)}
+.winbox{background:var(--winbg)}.winbox .fit{font-size:62px;color:var(--pri)}
+.altt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}.altf{text-align:right}
+.altw{margin:0}.altc .affcard{margin-top:4px}
+.mudas li,.maoc li{margin:2px 0}.maoc{margin:6px 0 0}
+.crleg span{display:inline-flex;align-items:center;font:600 13px "DM Sans",sans-serif;color:var(--ink);margin-right:12px}
+.altc{display:flex;flex-direction:column;gap:8px;background:var(--bg);border-radius:14px;padding:16px;min-width:0}
 .altc h3{font-size:18px}
 .altc .fit{font-size:30px}
 .altc .pcs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
@@ -1305,9 +1315,7 @@ function cardRadar(series){
   const main=series.filter(s=>!s.ideal);
   return `<div class="crad" id="${id}">
     <svg viewBox="0 0 460 400" role="img" data-a11y="1" aria-label="Hexagon of indexes from 0 to 10. ${series.map(s=>esc(s.name)+': '+KEYS.map(k=>LBL[k]+' '+dec(s.v[k])).join(', ')).join('. ')}.">${g}</svg>
-    <div class="crkeys" role="group" aria-label="Show an attribute">${KEYS.map((k,i)=>`<button type="button" data-cra="${k}" aria-pressed="${i===0}">${LBL[k]}</button>`).join('')}</div>
-    <p class="crout" aria-live="polite">${crTxt(series,KEYS[0])}</p>
-    <div class="crleg" role="group" aria-label="Show or hide on the hexagon">${series.map((s,si)=>`<button type="button" data-crs="${si}" aria-pressed="true"><i class="${s.ideal?'ci':s.b?'cb':'ca'}"></i>${esc(s.name)}</button>`).join('')}</div>
+    <p class="crleg">${series.map(s=>`<span><i class="${s.ideal?'ci':s.b?'cb':'ca'}" aria-hidden="true"></i>${esc(s.name)}</span>`).join('')}</p>
     <script type="application/json" class="crdata">${JSON.stringify(series.map(s=>({n:s.name,v:s.v,i:!!s.ideal}))).replace(/</g,'\\u003c')}<\/script></div>`;
 }
 function crTxt(series,k){return `<b>${LBL[k]}</b> ${series.map(s=>`<span>${esc(s.name)} <strong>${dec(s.v[k])}</strong></span>`).join('')}`}
@@ -1325,8 +1333,8 @@ function duelHTML(a,b,withFit){
   const rows=KEYS.map(k=>{const va=a.ix[k],vb=b.ix[k],t=T?`<em class="idl" style="--p:${T[k]*10}%" title="Your ideal: ${dec(T[k])}"></em>`:'';
     return `<div class="drow"><span class="v">${dec(va)}</span><div class="tl"><i style="width:${va*10}%"></i>${t}</div><div class="mid"><b>${gl(k,LBL[k])}</b>${T?`<small>your ideal ${dec(T[k])}</small>`:''}</div><div class="tr2"><i style="width:${vb*10}%"></i>${t}</div><span class="v r">${dec(vb)}</span></div>`}).join('');
   const fa=withFit&&RES?RES.all.find(x=>x.r.id===a.id):null,fb=withFit&&RES?RES.all.find(x=>x.r.id===b.id):null;
-  const mao=diffMao(a,b);
-  const leitura=`<p class="verdict"><strong>What changes in your hand.</strong> ${mao.length?`From the ${esc(a.model)} to the ${esc(b.model)}: ${jnE(mao)}.`:'In your hand, the two are very similar.'} ${fa?`For your game, the ${esc(a.model)} scores ${fa.fit}% and the ${esc(b.model)} scores ${fb.fit}%. The DNA Score compares each racket with your profile, not with each other: a well-balanced racket can suit you better than one with higher numbers on several attributes.`:'The numbers show how each racket behaves, not which one is better. Take the test to see which one fits your game.'}</p>`;
+  const mao=maoCurta(a,b);
+  const leitura=`<div class="verdict"><p style="margin:0"><strong>What changes in your hand</strong>${mao.length?`, from the ${esc(a.model)} to the ${esc(b.model)}:`:': the two are very similar.'}</p>${mao.length?`<ul class="why maoc">${mao.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}<p class="note" style="margin:6px 0 0">${fa?'The DNA Score compares each one with your profile, not with each other.':'The numbers show how each racket behaves, not which one is better. Take the test to see which one fits your game.'}</p></div>`;
   const sp=[['wt','wt',' g',0],['sw','sw','',0],['bal','bal',' mm',0],['ra','ra',' RA',0],['head','head',' pol²',0],['pat','pat','',1],['Price','price','',2]];
   const series=[{name:a.model,v:a.ix},{name:b.model,v:b.ix,b:true}];if(T)series.push({name:'Your ideal',v:T,ideal:true});
   return `<div class="dhead"><div class="a"><p class="eyebrow">${esc(a.brand)}</p><h3>${esc(a.model)}</h3></div><div class="vs" aria-hidden="true">×</div><div class="b"><p class="eyebrow">${esc(b.brand)}</p><h3>${esc(b.model)}</h3></div></div>
@@ -1510,7 +1518,7 @@ function penalties(r,c,tw){
      um desvio sozinho custa o mesmo de antes; os dois juntos não somam por inteiro. A zona (±2) saiu do placar pelo mesmo motivo. */
   {const G=P.massa,tol=semRef()?G.tolPesoAmplo:G.tolPeso,dd=Math.abs(r.wt-tw),hv=r.wt>tw;
    const ew=Math.max(0,dd-tol),es=ZZ?Math.max(0,r.sw-ZZ.sw[1],ZZ.sw[0]-r.sw)/G.swPorGrama:0,e=Math.hypot(ew,es);
-   if(e>0)add(e*G.peso,ew>=es*1.0?(semRef()?`Weight of ${r.wt} g, outside the starting range of ${ZZ.wt[0]} to ${ZZ.wt[1]} g`:dd>P.pesoLonge?`Weight of ${r.wt} g, far from your ideal (${tw} g): ${dd} g ${hv?'above':'below'}`:`Weight of ${r.wt} g, ${dd} g ${hv?'above':'below'} from the ideal (${tw} g)`):(r.sw>ZZ.sw[1]?`Swingweight ${r.sw}: more mass on the swing than your arm accelerates well (up to ${ZZ.sw[1]})`:`Swingweight ${r.sw}: too light for the stability you need`))}
+   if(e>0)add(e*G.peso,ew>=es*1.0?(semRef()?`Weight of ${r.wt} g, outside the starting range of ${ZZ.wt[0]} to ${ZZ.wt[1]} g`:dd>P.pesoLonge?`Weight of ${r.wt} g, far from your ideal (${tw} g): ${dd} g ${hv?'above':'below'}`:`Weight of ${r.wt} g, ${dd} g ${hv?'above':'below'} the ideal (${tw} g)`):(r.sw>ZZ.sw[1]?`Swingweight ${r.sw}: more mass on the swing than your arm accelerates well (up to ${ZZ.sw[1]})`:`Swingweight ${r.sw}: too light for the stability you need`))}
   {const el=J('elbow')||!(A.joint||[]).length,lim=el?P.raHoje.limCotovelo:P.raHoje.limOutras;if(A.arm==='now'&&r.ra>lim)add((r.ra-lim)*(J('elbow')?P.raHoje.cotovelo:el?P.raHoje.semArticulacao:P.raHoje.outras),`Stiffness ${r.ra} RA is high for someone in pain right now`)}
   if(dorForte()&&r.ra>P.raForte.lim)add((r.ra-P.raForte.lim)*P.raForte.peso,`Stiffness ${r.ra} RA is high for severe pain`);
   if(A.opp==='heavy'&&r.sw<P.bolaPesada.sw)add((P.bolaPesada.sw-r.sw)*P.bolaPesada.peso,'Not enough mass for heavy balls');
@@ -1981,6 +1989,52 @@ function racketHead(x){
   return `<div class="whead"><div><p class="eyebrow">${esc(r.brand)}${r.year?` · ${r.year}`:''}</p><h3 class="rname">${esc(r.model)}</h3><p class="muted mono" style="font-size:14px">New: ${precoTxt(r)}</p>${r.est?`<p class="note">Some specs estimated from the sister version: ${r.est.map(k=>({sw:'swingweight',ra:'stiffness',bal:'balance',wt:'weight'})[k]).join(', ')}.</p>`:''}<p style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${brTag(r)}${r.tech?`<span class="techchip">${esc(r.tech)}</span>`:''}<span class="techchip" style="border-color:var(--line);color:var(--muted)">${r.nrev?`Specs + ${gl('rev',r.nrev+(r.nrev>1?' reviews':' review'))}`:'Measured specs only'}</span></p>${proLine(r)}</div>
     <div style="text-align:right"><div class="fit">${x.fit}%</div><span class="muted" style="font-size:13px">${gl("fit")}</span></div></div>`;
 }
+/* rodada 23: bloco "Sua raquete atual" no topo do relatório: DNA Score, veredito em uma linha e o motivo em uma frase */
+function curBox(curFit,best){
+  const V=verdictAtual(curFit,best),gap=Math.max(0,best.fit-curFit.fit),troca=V.k==='trocar';
+  const p0=(curFit.pen||[]).slice().sort((a,b)=>b[0]-a[0])[0];
+  const pts=n=>n+(n>1?' points':' point');
+  const why=troca?`There are rackets ${pts(gap)} ahead for your game${p0?`; what counts against it most: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1)}`:''}.`
+    :V.k==='fica'?(gap?`It's only ${pts(gap)} behind the #1: switching changes the feel, not the result.`:'It ties with the #1: switching changes the feel, not the result.')
+    :`The best rackets for your game are up to ${pts(gap)} ahead: switching would be fine-tuning.`;
+  return `<section class="panel curbox" id="r-cur" aria-labelledby="h-cur"><div class="curl"><div style="min-width:0"><h2 class="eyebrow" id="h-cur">Your current racket</h2><p class="rname">${esc(curLabel())}</p>
+    <p class="curv"><strong class="${troca?'cv-troca':'cv-fica'}">${troca?'Worth switching.':'You can keep it.'}</strong> ${why}</p></div>
+    <div class="curf"><div class="fit">${curFit.fit}%</div><span class="note">DNA Score</span></div></div></section>`;
+}
+/* rodada 23: 2º e 3º lugar lado a lado: nota, preço, ficha em uma linha, 1 ou 2 motivos curtos e o mesmo botão de compra da 1ª */
+function altWhy(x,top,c){
+  const out=[];const ks=KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,4);
+  const best=ks.filter(k=>top.every(y=>x.r.ix[k]>=y.r.ix[k])).map(k=>LBL[k].toLowerCase());
+  if(best.length)out.push(`Best of the 3 for ${jnE(best.slice(0,2))}`);
+  if(inZone(x.r))out.push('Weight and swingweight within your ideal range');
+  if(x.r.ix.arm>=7)out.push(`Arm comfort ${dec(x.r.ix.arm)} out of 10`);
+  if(!out.length){const k=ks[0];out.push(`${LBL[k]} ${dec(x.r.ix[k])}, the attribute your game needs most`)}
+  return out.slice(0,2);
+}
+function altCard(x,pos,top,c){const r=x.r;
+  return `<article class="altc"><div class="altt"><div style="min-width:0"><p class="eyebrow">${pos}· # ${esc(r.brand)}${r.year?' · '+r.year:''}</p><h3>${esc(r.model)}</h3></div><div class="altf"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>
+    <p class="note" style="margin:0">New: ${precoTxt(r)} ${brTag(r)}</p>
+    <p class="mono specline">${r.wt} g · balance ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} sq in · ${r.pat.replace('x','×')}</p>
+    <ul class="why altw">${altWhy(x,top,c).map(t=>`<li>${t}</li>`).join('')}</ul>
+    </article>`;
+}
+/* rodada 23: sua atual × a nova em bullets curtos, só o que muda (peso, swingweight, balanço, rigidez) */
+function mudaNaMao(r,c){const L=[];
+  const w=r.wt-c.wt;if(Math.abs(w)>=5)L.push(w<0?`<strong>Lighter:</strong> ${r.wt} g × ${c.wt} g, quicker to handle.`:`<strong>Heavier:</strong> ${r.wt} g × ${c.wt} g, more stable against hard-hit balls.`);
+  const s=r.sw-c.sw;if(Math.abs(s)>=4)L.push(s<0?`<strong>Lower swingweight:</strong> ${r.sw} × ${c.sw}, gets to the ball earlier.`:`<strong>Higher swingweight:</strong> ${r.sw} × ${c.sw}, a heavier ball.`);
+  const b=r.bal-c.bal;if(Math.abs(b)>=4)L.push(b<0?`<strong>More head-light:</strong> ${r.bal} mm × ${c.bal} mm, quicker at the net.`:`<strong>More head-heavy:</strong> ${r.bal} mm × ${c.bal} mm, more power from the baseline.`);
+  const ra=r.ra-c.ra;if(Math.abs(ra)>=3)L.push(ra<0?`<strong>Softer:</strong> ${r.ra} RA × ${c.ra} RA, less vibration to the arm.`:`<strong>Firmer:</strong> ${r.ra} RA × ${c.ra} RA, more pop.`);
+  return L;
+}
+/* rodada 23: comparador, uma frase curta por atributo, sem repetir os números da tabela */
+function maoCurta(a,b){const d=[];
+  if(Math.abs(b.wt-a.wt)>=5)d.push(b.wt>a.wt?'Heavier: more stable, a little more tiring.':'Lighter: less tiring, a little less stable.');
+  if(Math.abs(b.sw-a.sw)>=5)d.push(b.sw>a.sw?'More mass behind the ball: a heavier shot, slower to move.':'Quicker: gets to the ball earlier, less solid against heavy balls.');
+  if(Math.abs(b.bal-a.bal)>=6)d.push(b.bal<a.bal?'More head-light: quicker at the net.':'More head-heavy: more power from the baseline.');
+  if(Math.abs(b.ra-a.ra)>=3)d.push(b.ra<a.ra?'Softer: a more comfortable impact.':'Firmer: more pop, more vibration.');
+  if(Math.abs(b.head-a.head)>=2)d.push(b.head>a.head?'Bigger sweet spot: more forgiving.':'Smaller sweet spot: more precision.');
+  if(a.pat!==b.pat&&OPEN[a.pat]!=null&&OPEN[b.pat]!=null&&OPEN[a.pat]!==OPEN[b.pat])d.push(OPEN[b.pat]>OPEN[a.pat]?'More open pattern: more spin.':'Denser pattern: more control.');
+  return d}
 /* relatório pago, na ordem do padrão comum dos 3 apps:
    barra fixa · 1 Seu resultado · 2 Por que combina · 3 Sua atual × a nova · 4 Alternativas · 5 Comparador · 6 Guia de compra · 7 Seu DNA · 8 Ficha técnica (recolhida, com Copiar) · 9 rodapé */
 function fichaRows(r){
@@ -2044,36 +2098,31 @@ function renderReport(){
   const series=[{name:'Your ideal profile',v:T,c:'var(--ink)',ideal:true},{name:r.model,v:r.ix,c:'var(--pri)',solid:true}];
   if(c)series.push({name:'Your current racket',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Current × new':'Profile × new';
-  const chips=[['r-res','Result'],['r-por','Why it fits'],['r-atual',cmpName]].concat(full?[['r-alt','Alternatives'],['r-top','Top 10 and map'],['r-cmp','Comparison'],['r-guia','Buying guide']]:[]).concat([['r-dna','Your DNA'],['r-ficha','Specs']]);
+  /* rodada 23 (pedido do Gui): sua atual → resultado → por que combina → alternativas → top 10 e mapa → atual × nova → comparador → guia → DNA → ficha */
+  const chips=(c&&curFit?[['r-cur','Your racket']]:[]).concat([['r-res','Result'],['r-por','Why it fits']]).concat(full?[['r-alt','Alternatives'],['r-top','Top 10 and map']]:[]).concat([['r-atual',cmpName]]).concat(full?[['r-cmp','Comparison'],['r-guia','Buying guide']]:[]).concat([['r-dna','Your DNA'],['r-ficha','Specs']]);
   const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Download PDF</button>':'';
   let h=`<div class="rbar"><div class="backbar">${ex?'<button class="btn btn-ghost btn-sm" type="button" data-mytest>Take my test</button>':'<button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Back to the preview</button>'}<button class="btn btn-ghost btn-sm" type="button" data-back="landing">Home</button>${PDFB}</div>
   <nav class="rchips" aria-label="Report sections">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
   if(ex)h+=exampleBanner();
-  /* 1. Seu resultado */
-  h+=`<section class="panel winner" id="r-res"><h2 class="eyebrow">Your result · the racket that best fits your game</h2>
+  /* 0. Sua raquete atual (só quando informada e no catálogo): nota e veredito em uma linha */
+  if(c&&curFit)h+=curBox(curFit,w);
+  /* 1. Seu resultado (card em destaque) */
+  h+=`<section class="panel winner winbox" id="r-res"><h2 class="eyebrow">Your result · the racket that best fits your game</h2>
     ${racketHead(w)}
     <p class="mono specline">${r.wt} g · balance ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} sq in · ${r.pat.replace('x','×')}</p>
     <p class="hero2">${heroText(w,T)}</p>${fitNote?`<p class="hero2"><strong>${fitNote}</strong></p>`:''}${altsNote(w)}</section>`;
   /* 2. Por que combina */
   const rv=(REVQ[r.id]||[]).slice(0,3);
-  h+=`<section class="panel" id="r-por"><h2 class="sec">Why it fits</h2>
+  h+=`<section class="panel" id="r-por" aria-labelledby="h-por"><details class="fold"><summary><span><h2 id="h-por" class="sec">Why it fits</h2><small>ver detalhes</small></span></summary><div class="foldin">
     <ul class="why">${whyItems(r,c).map(x=>`<li>${x}</li>`).join('')}</ul>
     ${rv.length?`<div style="display:flex;flex-direction:column;gap:10px"><h3>What players who used it say</h3><p class="note" style="margin-top:-6px">${r.ntw?r.ntw+' playtester ratings analyzed. ':''}Summarized excerpts from published reviews.</p>
       <ul class="rvq">${rv.map(q=>`<li><p>“${esc(q[5])}”</p><small>${esc(q[1])}${q[2]?' · '+esc(q[2]):''}${q[3]?' · '+dec(q[3])+'/10':''} · ${esc(q[0])}${q[4]?' '+esc(q[4]):''}</small></li>`).join('')}</ul></div>`:''}
-    <div style="display:flex;flex-direction:column;gap:10px"><h3>Things to watch</h3>${juniorNote(1)}${painNote(1)}<ul class="why">${attention(r).map(x=>`<li>${x}</li>`).join('')}</ul></div></section>`;
-  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada) */
-  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Your current racket × the new one':'Your profile × the new one'}</h2>
-    <p class="muted" style="margin-top:-8px">${c?`Yours ${esc(curLabel())} × the ${esc(r.model)}${A.curOld?`. ${curOldNote()}`:''}`:`Your ideal profile × the ${esc(r.model)}. Tell us your racket in the test to see the comparison with it.`}</p>
-    ${c&&curFit?(V=>V?`<div class="verdict v-${V.k}"><strong>${V.t}.</strong> ${V.s}</div>`:'')(verdictAtual(curFit,w)):''}
-    ${c&&curFit&&!fitNote?`<p>Yours has a DNA Score of <strong>${curFit.fit}%</strong>, ${w.fit-curFit.fit} points below the recommended one${curFit.pen.length?': '+curFit.pen.slice(0,2).map(p=>p[1].charAt(0).toLowerCase()+p[1].slice(1)).join('; ')+'.':'.'}</p>`:''}
-    ${viz('rp',series,T,r.ix,c?c.ix:null)}
-    ${c?`<h3>What you'll feel</h3><table class="stack"><thead><tr><th scope="col">Item</th><th scope="col">Current</th><th scope="col">New</th><th scope="col">What you'll feel</th></tr></thead><tbody>${feel(r,c).map(x=>`<tr><td>${x[0]}</td><td class="n" data-label="Atual">${x[1]}</td><td class="n" data-label="Nova">${x[2]}</td><td class="full">${x[3]}</td></tr>`).join('')}</tbody></table>`:''}
-  </section>`;
+    <div style="display:flex;flex-direction:column;gap:10px"><h3>Things to watch</h3>${juniorNote(1)}${painNote(1)}<ul class="why">${attention(r).map(x=>`<li>${x}</li>`).join('')}</ul></div></div></details></section>`;
   if(full){
     /* 5. Alternativas: 2º e 3º à vista; 5b. top 10 e mapa sempre à vista (rodada 17) */
     const top3=ranked.slice(0,3);
     h+=`<section class="panel" id="r-alt"><h2 class="sec">Alternatives</h2>
-      <div class="altl">${ranked.slice(1,3).map((x,i)=>`<div class="altc"><div style="min-width:0"><p class="eyebrow">${i+2}· # ${esc(x.r.brand)}${x.r.year?' · '+x.r.year:''}</p><h3>${esc(x.r.model)}</h3><p class="mono specline">${x.r.wt} g · SW ${x.r.sw} · ${x.r.ra} RA · ${x.r.head} sq in · ${x.r.pat.replace('x','×')}</p><p class="note" style="margin-top:2px">New: ${precoTxt(x.r)} ${brTag(x.r)}</p><div class="pcs">${tradeChips(x,top3)}</div></div><div style="text-align:right"><div class="fit">${x.fit}%</div><span class="note">DNA Score</span></div></div>`).join('')}</div>
+      <div class="altl">${ranked.slice(1,3).map((x,i)=>altCard(x,i+2,top3,c)).join('')}</div>
       </section><section class="panel" id="r-top"><h2 class="sec">Top 10 and catalog map</h2>
         <h3 style="margin-bottom:10px">Top 10 ranking</h3>
         <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (yours)':''}${x.r.br==='d'?' · imported':''}${altsTag(x)}</span><small class="fx fx-${faixa(x,w)[0]}">${faixa(x,w)[1]}</small></div><b>${x.fit}%</b></div>`).join('')})()}</div>
@@ -2081,6 +2130,12 @@ function renderReport(){
         <div class="phead" style="margin-top:22px"><h3>Catalog map</h3><span class="note">Weight × swingweight · tap the dots</span></div>${scatter(r,c,Z,ranked.slice(0,10))}
         <p class="note">Each dot is one of the ${RK.length} rackets in the catalog. The numbers are your top 10, in ranking order.${c?' The orange ring is your current racket.':''}</p>
       </section>`;
+  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada). Rodada 23: só o que muda, em bullets; nota e veredito ficam no topo */
+  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Your current racket × the new one':'Your profile × the new one'}</h2>
+    <p class="muted" style="margin-top:-8px">${c?`Yours ${esc(curLabel())} × the ${esc(r.model)}${A.curOld?`. ${curOldNote()}`:''}`:`Your ideal profile × the ${esc(r.model)}. Tell us your racket in the test to see the comparison with it.`}</p>
+    ${c?(L=>`<h3>What changes in your hand</h3>${L.length?`<ul class="why mudas">${L.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<p>In your hand, the two are very similar.</p>'}`)(mudaNaMao(r,c)):''}
+    ${viz('rp',series,T,r.ix,c?c.ix:null)}
+  </section>`;
     /* 6. Comparador (recolhido) */
     h+=`<section id="r-cmp" aria-label="Comparison"><details class="panel cmpbox" id="cmp"><summary class="cmpsum"><span class="vsbadge" aria-hidden="true">VS</span><span class="cmptxt"><b>Compare two rackets</b><span>The recommended racket against yours or any other of the ${RK.length}, attribute by attribute, with each one's DNA Score.</span></span><span class="cmpgo" aria-hidden="true">Compare</span></summary>
       <div class="cmpsel"><select id="cmpA" aria-label="Racket A"${ex?' disabled':''}>${optList(r.id)}</select><span class="vs">VS</span><select id="cmpB" aria-label="Racket B"${ex?' disabled':''}>${optList(c?c.id:ranked[1].r.id)}</select></div>${ex?`<p class="note">In the example, the comparison is fixed. In your report, you can compare any two of the ${RK.length}.</p>`:''}
@@ -2105,6 +2160,12 @@ function renderReport(){
       ${[['up to 10.6 cm (4 1/8 in)','L1 · 4 1/8'],['10.7 to 10.9 cm (4 1/4 in)','L2 · 4 1/4'],['11.0 to 11.2 cm (4 3/8 in)','L3 · 4 3/8'],['11.3 to 11.5 cm (4 1/2 in)','L4 · 4 1/2'],['11.6 cm (4 5/8 in) or more','L5 · 4 5/8']].map(x=>`<tr><td>${x[0]}</td><td class="n">${x[1]}</td></tr>`).join('')}</tbody></table></div>
       <ul class="why"><li>In the shop: holding the racket, the index finger of your other hand should fit between your fingertips and the base of your palm.</li><li>Between two sizes, choose the smaller one and build it up with an overgrip: each overgrip adds about half a size.</li></ul></div></div></details></section>`;
   }else{
+  /* 4. Sua atual × a nova (sem a atual: o seu perfil ideal × a recomendada). Rodada 23: só o que muda, em bullets; nota e veredito ficam no topo */
+  h+=`<section class="panel" id="r-atual"><h2 class="sec">${c?'Your current racket × the new one':'Your profile × the new one'}</h2>
+    <p class="muted" style="margin-top:-8px">${c?`Yours ${esc(curLabel())} × the ${esc(r.model)}${A.curOld?`. ${curOldNote()}`:''}`:`Your ideal profile × the ${esc(r.model)}. Tell us your racket in the test to see the comparison with it.`}</p>
+    ${c?(L=>`<h3>What changes in your hand</h3>${L.length?`<ul class="why mudas">${L.map(x=>`<li>${x}</li>`).join('')}</ul>`:'<p>In your hand, the two are very similar.</p>'}`)(mudaNaMao(r,c)):''}
+    ${viz('rp',series,T,r.ix,c?c.ix:null)}
+  </section>`;
     h+=`<div class="lock"><h3>#2 and #3, map, ranking, comparison and strings</h3><p class="muted">The alternatives, the catalog's weight × swingweight map, the top 10 ranking, unlimited comparisons and the strings and tension for the new racket and for yours are part of the full report, which also comes as an A4 PDF.</p><button class="btn btn-go" type="button" id="up">Unlock for $9.99</button></div>`;
   }
   /* 8. Seu DNA: cards e compartilhar */
