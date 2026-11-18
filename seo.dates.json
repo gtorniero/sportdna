@@ -383,5 +383,20 @@
   "published": "2026-11-14",
   "modified": "2026-11-17",
   "hash": "422b5a24aa9331e0"
+ },
+ "en/racket/": {
+  "published": "2026-11-18",
+  "modified": "2026-11-18",
+  "hash": "en-beta"
+ },
+ "en/terms/": {
+  "published": "2026-11-18",
+  "modified": "2026-11-18",
+  "hash": "en-beta"
+ },
+ "en/privacy/": {
+  "published": "2026-11-18",
+  "modified": "2026-11-18",
+  "hash": "en-beta"
  }
 }

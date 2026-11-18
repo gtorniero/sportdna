@@ -19,7 +19,7 @@ class Page(HTMLParser):
 class SEO(unittest.TestCase):
  def test_all_canonical_pages_and_links(self):
   tree=ET.parse(ROOT/'sitemap.xml');urls=[x.text for x in tree.findall('.//{*}loc')]
-  self.assertEqual(len(urls),77);self.assertEqual(len(set(urls)),len(urls))
+  self.assertEqual(len(urls),80);self.assertEqual(len(set(urls)),len(urls))
   titles=set();descriptions=set()
   for url in urls:
    with self.subTest(url=url):
@@ -31,7 +31,7 @@ class SEO(unittest.TestCase):
     description=next(a['content'] for t,a in p.tags if t=='meta' and a.get('name')=='description');self.assertNotIn(description,descriptions);descriptions.add(description)
     title=re.search(r'<title>(.*?)</title>',text).group(1);self.assertNotIn(title,titles);titles.add(title)
     self.assertTrue(p.json);self.assertNotIn('"@type":"Review"',text)
-    if rel not in ['surf/','racket/','run/'] and not rel.startswith('apps/'):
+    if rel not in ['surf/','racket/','run/','en/racket/'] and not rel.startswith('apps/'):
      self.assertEqual(sum(t=='h1' for t,a in p.tags),1)
     self.assertEqual(len(p.ids),len(set(p.ids)))
     for tag,a in p.tags:
