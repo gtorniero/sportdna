@@ -655,7 +655,7 @@ details.more[open]>summary{margin-bottom:10px}
       <svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0E4D64"/><g transform="translate(32 32) scale(.84) translate(-32 -32)"><ellipse cx="42.24" cy="21.71" rx="16.7" ry="12.8" transform="rotate(-45 42.24 21.71)" fill="none" stroke="#DDF247" stroke-width="2.3"/><path d="M22 41.6 C24.4 37.6 25.8 33 27 27" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><path d="M23 42.4 C27 39.5 31.5 37.7 37 37.4" fill="none" stroke="#DDF247" stroke-width="2.3" stroke-linecap="round"/><line x1="7.8" y1="56.2" x2="21.8" y2="42.2" stroke="#DDF247" stroke-width="4.8" stroke-linecap="round"/></g></svg>
       <span>RACKET DNA<small>by SPORT DNA</small></span>
     </div>
-    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Prévia grátis · relatório R$ 19,99 · preço de lançamento</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
+    <span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag">Prévia grátis · relatório R$ 19,99 · oferta por tempo limitado</span><a class="tag" href="../" style="text-decoration:none;color:var(--ink);border-color:var(--ink)">← SPORT DNA</a></span>
   </header>
 
   <!-- LANDING -->
@@ -1285,7 +1285,7 @@ function duelBadge(){$('#duelBadge').textContent=duelOpen()?'Comparador liberado
 const REPORT_PITCH=`<ul><li>As 3 raquetes que mais encaixam no seu jogo, com o ranking dos 10</li><li>Comparador ilimitado entre as ${RK.length} raquetes, com o DNA Score de cada uma para você</li><li>Corda e tensão para a nova e para a sua raquete atual</li><li>Reteste grátis em 90 dias e garantia de 7 dias</li></ul>`;
 function duelLock(){
   $('#duelOut').innerHTML=`<div class="single" style="padding:8px 0"><p class="eyebrow">Você já usou a comparação grátis</p><h3 style="margin:6px 0 10px">Compare quantas raquetes quiser no relatório</h3>
-  <div class="plan best" style="max-width:520px"><h3>Relatório RACKET DNA</h3><span class="price">R$ 19,99</span><span class="promotag" style="align-self:flex-start">Preço de lançamento</span>${REPORT_PITCH}<button class="btn btn-go" type="button" data-rep>Fazer o teste · prévia grátis</button></div></div>`;
+  <div class="plan best" style="max-width:520px"><h3>Relatório RACKET DNA</h3><span class="price">R$ 19,99</span><span class="promotag" style="align-self:flex-start">Oferta por tempo limitado</span>${REPORT_PITCH}<button class="btn btn-go" type="button" data-rep>Fazer o teste · prévia grátis</button></div></div>`;
   $('#duelOut [data-rep]').onclick=()=>{exampleSession=false;Object.keys(A).forEach(k=>delete A[k]);step=0;show('quiz');renderQs()};
 }
 function renderDuel(){
@@ -1714,7 +1714,7 @@ function renderPreview(){
           <li>Sugestão de corda, espessura e tensão.</li>
           <li>Comparador ilimitado para colocar as raquetes lado a lado.</li>
         </ul>
-        <p class="promo" style="margin:0"><span class="promotag">Preço de lançamento</span> R$ 19,99 por tempo limitado, enquanto o RACKET DNA é novo.</p>
+        <p class="promo" style="margin:0"><span class="promotag">Oferta por tempo limitado</span></p>
         <button class="btn btn-go" type="button" data-buy="2" data-position="preview_primary" style="width:100%">Revelar minhas raquetes · R$ 19,99</button>
         <p class="note" style="margin:0">Pagamento único por cartão ou Pix. O relatório sai na hora, também em PDF. Comparador incluído, reteste grátis em 90 dias e garantia de 7 dias.</p>
         <div class="fin">${top.map((x,i)=>`
@@ -1745,7 +1745,7 @@ function renderPreview(){
     <div class="single">
       <p class="eyebrow">Um relatório, tudo incluído</p>
       <h2 style="margin:6px 0 4px">Relatório RACKET DNA</h2>
-      <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="promotag">Preço de lançamento</span><span class="muted">pagamento único, por cartão ou Pix</span></div>
+      <div class="row" style="gap:10px;align-items:baseline;margin-bottom:12px"><span class="price mono" style="font-size:40px;font-weight:600;letter-spacing:-.03em">R$ 19,99</span><span class="promotag">Oferta por tempo limitado</span><span class="muted">pagamento único, por cartão ou Pix</span></div>
       <ul>
         <li>As 3 raquetes que mais encaixam, reveladas, com o ranking dos 10</li>
         <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>
