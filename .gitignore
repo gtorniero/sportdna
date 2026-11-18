@@ -1,3 +1,4 @@
 
 # Build local do site Cloudflare
 dist/
+assets/products/*.webp

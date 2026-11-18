@@ -248,7 +248,9 @@ details.mini{margin-top:14px}details.mini>summary{cursor:pointer;font-weight:700
 .opt-tag{display:inline-block;vertical-align:2px;margin-left:8px;font-size:12px;font-weight:700;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:2px 9px}
 .bdim{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:12px}.bd{display:flex;flex-direction:column;gap:6px;min-width:0}.bd label{font-weight:700;font-size:14px}
 .bdu{display:flex;align-items:center;gap:6px}.bdu span{font-size:14px;color:var(--muted)}.bdim input{font:inherit;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:11px 10px;min-height:48px;width:100%;min-width:0}.bdu input{width:72px}
-.promotag{display:inline-block;background:var(--ball);color:var(--ball-ink);font-weight:800;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:99px;padding:3px 10px;white-space:nowrap}
+/* oferta por tempo limitado: amarelo com texto preto em todos os apps pagos (o RUN é grátis) */
+.promotag{display:inline-flex;align-items:center;gap:7px;background:#FFD23F;color:#111;font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;border-radius:99px;padding:6px 14px 6px 11px;white-space:nowrap;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.promotag::before{content:"";flex:none;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round'%3E%3Ccircle cx='12' cy='13' r='8'/%3E%3Cpath d='M12 9v4l2.5 2.5M9 2h6'/%3E%3C/svg%3E") center/contain no-repeat}
 .plan.one{border:2px solid var(--pri);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:14px 24px;align-items:start}.plan.one .btn{grid-column:1/-1}.onep{display:flex;flex-direction:column;gap:4px}
 .hboard{max-width:620px;width:100%;margin:4px auto 0}
 .htiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
@@ -736,8 +738,8 @@ table.ft tr.ftg th{padding-top:16px;color:var(--pri)}
 </div>
 <div id="modalRoot"></div>
 
-<script src="../assets/payments/config.js?v=20261104"></script>
-<script src="../assets/payments/client.js?v=20261104b"></script>
+<script src="../assets/payments/config.js?v=20261118"></script>
+<script src="../assets/payments/client.js?v=20261118"></script>
 <script>
 (function(){
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
