@@ -20,7 +20,7 @@
   const price=el('span','sp-price',money(amount??info.amount));price.id='payment-product-price';
   left.append(name,note);box.append(left,price);
   // oferta por tempo limitado (texto vem do config.js; o RUN é grátis e não tem)
-  if(info.promo&&(amount??info.amount)>0){const tag=el('p','sp-promo',info.promo);body.append(tag)}
+  const promo=config.promo?.[product];if(promo&&(amount??info.amount)>0)body.append(el('p','sp-promo',promo));
   body.append(box);
  }
 
