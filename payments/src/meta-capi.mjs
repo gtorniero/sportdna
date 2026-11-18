@@ -21,7 +21,7 @@ export async function payload(brand,sale,context){
  if(sale.emailMatching===true&&/^[a-f0-9]{64}$/.test(context?.em||''))user_data.em=[context.em];
  if(sale.emailMatching===true&&typeof sale.email==='string'&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sale.email.trim()))user_data.em=[await hash(sale.email.trim().toLowerCase())];
  if(!Object.keys(user_data).length)return null;
- return {event_name:'Purchase',event_time:Math.floor(sale.paidAt/1000),event_id:await hash(b.prefix+sale.id),action_source:'website',event_source_url:b.origin+'/',user_data,custom_data:{value:sale.cents/100,currency:'BRL'}};
+ return {event_name:'Purchase',event_time:Math.floor(sale.paidAt/1000),event_id:await hash(b.prefix+sale.id),action_source:'website',event_source_url:b.origin+'/',user_data,custom_data:{value:sale.cents/100,currency:sale.currency==='USD'?'USD':'BRL'}};
 }
 export async function enqueue(db,brand,sale){await schema(db);const row=await db.prepare('SELECT * FROM btw_meta_consent WHERE id=? AND brand=? AND revoked=0').bind(sale.id,brand).first();if(!row||row.created>sale.paidAt)return false;const event=await payload(brand,sale,JSON.parse(row.context));if(!event)return false;await db.prepare('INSERT OR IGNORE INTO btw_meta_outbox(id,brand,payload,created,next_try) VALUES (?,?,?,?,?)').bind(sale.id,brand,JSON.stringify(event),Date.now(),Date.now()).run();return true}
 export async function drain(db,env,brand,fetcher=fetch){

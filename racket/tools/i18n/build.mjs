@@ -168,16 +168,16 @@ ${icons}
 ${icons}
 `;
 }
-const payConfig = live => `window.SPORTDNA_PAYMENTS=Object.freeze({mode:${live ? "'live'" : "'test'"},api:${JSON.stringify(live ? API_LIVE : (typeof args.api === 'string' ? args.api : ''))},products:Object.freeze({'racket-report-intl':Object.freeze({name:'RACKET DNA Report',amount:999,currency:'USD'})})});`;
+const payConfig = live => `window.SPORTDNA_PAYMENTS=Object.freeze({mode:${live ? "'live'" : "'test'"},api:${JSON.stringify(live ? API_LIVE : (typeof args.api === 'string' ? args.api : ''))},products:Object.freeze({'racket-report-intl':Object.freeze({name:'RACKET DNA Report',amount:999,currency:'USD'})}),promo:Object.freeze({'racket-report-intl':'Limited-time offer'})});`;
 const inject = live => `<script>window.RK_ENV=${live ? "'live'" : "'test'"};window.RK_PRICES=${JSON.stringify(pricesTable)};</script>\n<script>\n${LOCALE}</script>\n<script>${payConfig(live)}</script>\n<script src="/en/assets/checkout.en.js"></script>`;
 const PAYSCRIPTS = /<script src="\.\.\/assets\/payments\/config\.js[^"]*"><\/script>\n<script src="\.\.\/assets\/payments\/client\.js[^"]*"><\/script>/;
 if (!PAYSCRIPTS.test(page)) errors.push('scripts de pagamento não encontrados');
 
 const outputs = {};
 for (const [m, [code, , , report]] of Object.entries(MARKETS)) {
-  const live = LIVE[m];
+  const live = LIVE[m]; // ao vivo: a mesma medição do site (GA4, Google Ads e pixel da Meta, com aceite)
   let html = page.replace('__MARKET__', code).replace('__SEO__', seo(m)).replace(PAYSCRIPTS, () => inject(!!live))
-    .replace('__MEASURE__', `<script>\n${MEASURE}</script>`).split('{REPORT}').join(report);
+    .replace('__MEASURE__', live ? '<script src="/assets/measurement.js"></script>' : `<script>\n${MEASURE}</script>`).split('{REPORT}').join(report);
   outputs[live ? `${live}/index.html` : `intl/en-${m}/racket/index.html`] = html;
 }
 outputs['en/assets/checkout.en.js'] = '/* Gerado por racket/tools/i18n/build.mjs a partir de assets/payments/client.js. Não editar à mão. */\n' + client;

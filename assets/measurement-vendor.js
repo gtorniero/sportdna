@@ -13,13 +13,13 @@
   let metaLoaded = false;
   const metaCallbacks = [];
   const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
-  const allowedPaths = new Set(['/', '/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/', '/ferramentas/litragem/', '/ferramentas/grip/', '/guias/racket/melhor-raquete-de-tenis/', '/guias/racket/melhor-raquete-de-tenis-para-iniciante/', '/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
+  const allowedPaths = new Set(['/', '/racket/', '/en/racket/', '/surf/', '/run/', '/blog/', '/privacidade/', '/guias/racket/', '/guias/surf/', '/guias/run/', '/ferramentas/litragem/', '/ferramentas/grip/', '/guias/racket/melhor-raquete-de-tenis/', '/guias/racket/melhor-raquete-de-tenis-para-iniciante/', '/guias/racket/raquete-de-tenis-para-dor-no-cotovelo/']);
   // Artigos entram pelo próprio caminho; a página principal só envia caminhos publicados (canonical igual ao endereço).
   function safePath(path) { return allowedPaths.has(path) || /^\/blog\/[a-z0-9-]{1,140}\/$/.test(path) ? path : null; }
   // Área da página para a Meta: o pixel roda em /medicao.html, então o caminho real vai como parâmetro.
   function area(path, sport) {
     if (sport) return sport;
-    const m = /^\/(?:guias\/)?(racket|surf|run)\/(?:[a-z0-9-]+\/)?$/.exec(path);
+    const m = /^\/(?:guias\/|en\/)?(racket|surf|run)\/(?:[a-z0-9-]+\/)?$/.exec(path);
     if (m) return m[1];
     if (path === '/ferramentas/grip/') return 'racket';
     return path === '/ferramentas/litragem/' ? 'surf' : path === '/' ? 'home' : path === '/privacidade/' ? 'privacidade' : 'blog';
@@ -78,8 +78,11 @@
     const p = {};
     const raw = d.params || {};
     if (['racket','surf','run'].includes(raw.sport)) p.sport = raw.sport;
+    // Página do próprio esporte: /racket/ ou, em inglês, /en/racket/. Idioma vai como parâmetro para separar BR e EUA.
+    const own = s => path === '/' + s + '/' || path === '/en/' + s + '/';
+    p.site_language = /^\/en\//.test(path) ? 'en' : 'pt';
     if(d.event==='affiliate_click'){if(!['run','racket'].includes(p.sport)||path!=='/'+p.sport+'/'||!/^MLB[0-9]+$/.test(raw.offer_id||'')||raw.partner!=='meli')return;p.offer_id=raw.offer_id;p.partner='meli';}
-    const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket'};
+    const products={'racket-report':'racket','surf-report':'surf','run-report':'run','racket-comparator':'racket','racket-report-intl':'racket'};
     if (has(products,raw.product)&&products[raw.product]===p.sport) p.product=raw.product;
     if (['pix','card'].includes(raw.payment_type)) p.payment_type = raw.payment_type;
     // Contexto de lista fechada: grupo do A/B da ficha grátis (só RACKET) e de onde veio o clique para o teste.
@@ -90,11 +93,11 @@
     }
     // Etapa do questionário: número da etapa e total, nada mais.
     if (d.event === 'quiz_step') {
-      if (!p.sport || path !== '/' + p.sport + '/' || !Number.isInteger(raw.step) || !Number.isInteger(raw.steps_total) || raw.step < 1 || raw.steps_total > 20 || raw.step > raw.steps_total) return;
+      if (!p.sport || !own(p.sport) || !Number.isInteger(raw.step) || !Number.isInteger(raw.steps_total) || raw.step < 1 || raw.steps_total > 20 || raw.step > raw.steps_total) return;
       p.step = raw.step; p.steps_total = raw.steps_total;
     }
     if (['view_offer','checkout_open','checkout_error'].includes(d.event)) {
-      if(!p.sport||path!=='/'+p.sport+'/'||!p.product)return;
+      if(!p.sport||!own(p.sport)||!p.product)return;
       if(['preview_primary','preview_details','comparator','other'].includes(raw.cta_position))p.cta_position=raw.cta_position;
       if(d.event==='checkout_error'){
         if(!['invalid_email','network','timeout','unavailable','rejected','invalid_response','client'].includes(raw.error_category))return;
@@ -106,7 +109,7 @@
       if (!p.sport || path !== '/' + p.sport + '/' || !['previa', 'relatorio'].includes(raw.origem)) return;
       p.origem = raw.origem;
     }
-    if (Number.isFinite(raw.value) && raw.value > 0 && raw.value < 10000 && raw.currency === 'BRL') { p.value = raw.value; p.currency = 'BRL'; }
+    if (Number.isFinite(raw.value) && raw.value > 0 && raw.value < 10000 && ['BRL', 'USD'].includes(raw.currency)) { p.value = raw.value; p.currency = raw.currency; }
     if (d.event === 'purchase') {
       if (!/^[a-f0-9]{64}$/.test(raw.transaction_id) || !p.value || !p.sport || !p.product) return;
       p.transaction_id = raw.transaction_id;
@@ -123,13 +126,13 @@
     const done = () => parent.postMessage({ type: 'sd_done', id: d.id, queued: true }, location.origin);
     if (analytics) gtag('event', d.event, { ...p, send_to: GA, page_location: SITE + path + suffix, page_referrer: referrer, page_title: 'SPORT DNA', transport_type: 'beacon', event_callback: done, event_timeout: 1500 });
     // Google Ads: só o pedido criado e a compra, com valor, moeda e o ID irreversível; nada do teste nem do produto.
-    if (adsTag === true && analytics && ['begin_checkout','purchase'].includes(d.event) && topPublic()) gtag('event', d.event, { send_to: ADS, page_title: 'SPORT DNA', ...(p.value ? { value: p.value, currency: 'BRL' } : {}), ...(p.transaction_id ? { transaction_id: p.transaction_id } : {}) });
+    if (adsTag === true && analytics && ['begin_checkout','purchase'].includes(d.event) && topPublic()) gtag('event', d.event, { send_to: ADS, page_title: 'SPORT DNA', ...(p.value ? { value: p.value, currency: p.currency } : {}), ...(p.transaction_id ? { transaction_id: p.transaction_id } : {}) });
     if (marketing && d.event !== 'quiz_step') {
       // Toda chamada leva a página real e a área, porque a Meta só enxerga /medicao.html.
-      const page = { page_path: path, content_category: area(path, p.sport) };
+      const page = { page_path: path, content_category: area(path, p.sport), site_language: p.site_language };
       const item = p.product ? { content_ids: [p.product], content_type: 'product', num_items: 1 } : {};
       if (d.event === 'page_view') window.fbq('trackSingle', PIXEL, 'PageView', { page_category: path, ...page });
-      else if (d.event === 'purchase') window.fbq('trackSingle', PIXEL, 'Purchase', { value:p.value, currency:'BRL', ...item, ...page }, {eventID:p.transaction_id});
+      else if (d.event === 'purchase') window.fbq('trackSingle', PIXEL, 'Purchase', { value:p.value, currency:p.currency, ...item, ...page }, {eventID:p.transaction_id});
       // content_category do InitiateCheckout continua sendo o produto, como já era.
       else if (d.event === 'begin_checkout') window.fbq('trackSingle', PIXEL, 'InitiateCheckout', {value:p.value, currency:p.currency, ...item, page_path:path, content_category:p.product});
       // Contato: personalizado ContatoEspecialista e, ao lado, o padrão Contact.
@@ -141,7 +144,7 @@
         window.fbq('trackSingleCustom', PIXEL, {affiliate_click:'AffiliateClick',quiz_start:'QuizStarted',quiz_complete:'QuizCompleted',view_offer:'OfferViewed',checkout_open:'CheckoutOpened',checkout_error:'CheckoutError'}[d.event], { page_category: path, ...p, ...page });
         // Eventos padrão ao lado dos personalizados, que continuam iguais.
         if (d.event === 'quiz_complete' && p.sport) window.fbq('trackSingle', PIXEL, 'Lead', { content_category: p.sport, page_path: path });
-        if (d.event === 'view_offer') window.fbq('trackSingle', PIXEL, 'ViewContent', { ...(p.value ? { value: p.value, currency: 'BRL' } : {}), ...item, ...page });
+        if (d.event === 'view_offer') window.fbq('trackSingle', PIXEL, 'ViewContent', { ...(p.value ? { value: p.value, currency: p.currency } : {}), ...item, ...page });
       }
     }
     if (!analytics && marketing) { if (d.event === 'quiz_step') done(); else if(metaLoaded)done();else metaCallbacks.push(done); }
