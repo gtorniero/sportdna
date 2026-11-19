@@ -28,3 +28,13 @@ test('Surf-only promotion rejects other products and grants the complete Surf re
  assert.equal((await db.prepare('SELECT COUNT(*) n FROM promo_grants').first()).n,0);
  const r=await redeem('surf-report');assert.equal(r.status,200);const result=await r.json();assert.equal(result.amount,0);assert.equal(result.provider,'promo');assert.equal(result.state,'paid');
 });
+
+test('a 5-character free code (GUIFF) grants the RACKET DNA report; 4 characters are refused',async()=>{
+ const db=database();for(const sql of readFileSync(new URL('../migrations/0001.sql',import.meta.url),'utf8').split(';').filter(x=>x.trim()))await db.prepare(sql).run();await promoTables(db);
+ await db.prepare('INSERT INTO promo_codes(id,hash,label,sites,created) VALUES (?,?,?,?,?)').bind('guiff',await promoHash('GUIFF'),'Amigos','["sportdna:racket-report"]',Date.now()).run();
+ await db.prepare('INSERT INTO promo_codes(id,hash,label,sites,created) VALUES (?,?,?,?,?)').bind('gui4',await promoHash('GUI4'),'Curto','["sportdna:racket-report"]',Date.now()).run();
+ const env={DB:db,PROMOS:db,SITE_ORIGIN:origin,PAYMENTS_MODE:'live',RATE_SECRET:'fixture'};
+ const redeem=codigo=>worker.fetch(new Request('https://api.example/promos/redeem',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({id:crypto.randomUUID(),token,product:'racket-report',email:'amigo@example.com',codigo})}),env);
+ const r=await redeem(' guiff ');assert.equal(r.status,200);const o=await r.json();assert.equal(o.amount,0);assert.equal(o.state,'paid');
+ assert.equal((await redeem('GUI4')).status,400);
+});
