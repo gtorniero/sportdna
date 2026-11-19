@@ -90,6 +90,27 @@ Onde massa e SW entram hoje:
 | Peso ideal 270 g, SW até 312, cabeça 100–107, −6 para cabeça < 100 | `peso.nivel.beg`, `zona`, `pen.cabecaIniciante` | **testar** (faixa ampla) | As fontes têm faixas largas e sobrepostas: LTA 250–300 g, USTA 269–312 g, cabeça 105–115 ou 98–105. Mostrar uma faixa e duas demos, sem um número ideal | só auditado |
 | Penalidade de −15 para cabeça ≥ 110 em quem não é iniciante | `pen.cabeca110` | **manter** | Coerente com as faixas comerciais | só auditado |
 
+### Rodada 24 (20/11/2026): opção "Para evoluir com ela"
+
+- Pedido do dono: iniciante com força não deveria sair só com raquete que ele supera rápido.
+- O top 3 não muda. Entra um bloco a mais em Alternativas, só para iniciante:
+  - com força acima da média, ou média com 1,75 m e 75 kg ou mais;
+  - com menos de 50 anos e sem dor no braço, nem passada;
+  - fora dos casos de "iniciante pequeno" (força baixa, corpo até 65 kg, 60+ ou queixa de pesada).
+- A raquete sugerida vem do catálogo todo: 295 a 305 g, cabeça 100 ou maior, SW até 325, sem 18×20. Vence a de melhor DNA sem contar a regra "fora do grupo de iniciante".
+  - Por isso a busca não usa só o ranking: a versão de 300 g pode estar dentro da família que aparece por uma versão mais leve (Pure Drive × Pure Drive Team).
+- Se ela já está no top 3, o bloco só aponta a posição. O texto avisa que cansa mais e perdoa menos no começo.
+- Casos testados:
+
+| Perfil | Top 3 | Para evoluir |
+| --- | --- | --- |
+| 28 anos, 1,78 m, 80 kg, forte | Blade 104 v9, Speed MP L, Pure Drive | Pure Drive (já é a 3ª) |
+| 28 anos, 1,85 m, 90 kg, força média | Blade 104 v9, Speed MP L, Ultra 100L v5 | Pure Drive 300 g |
+| 1,70 m, 68 kg, força média | EZONE 105, Boost Drive, Ultra 100L v5 | não aparece |
+| forte com dor passada / forte com 55 anos / intermediário | — | não aparece |
+
+- Casos-guia: 15/15. O PDF não mostra o bloco por enquanto.
+
 ## 9. Corda, tensão e explicações
 | Regra | Onde | Decisão | Por quê | Situação |
 |---|---|---|---|---|

@@ -36,3 +36,13 @@ test('PDF do relatório vai como anexo; PDF inválido é recusado antes de envia
  }
  assert.equal(messages.length,1);
 });
+test('e-mail traz link para reabrir o relatório (respostas no fragmento); resumo inválido só tira o link',async()=>{
+ const send=async extra=>{sqlite.exec('DROP TABLE IF EXISTS report_emails');messages.length=0;
+  return worker.fetch(new Request('https://api.example/orders/'+id+'/email',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({report:text,...extra})}),env)};
+ let r=await send({resume:'eyJsdmwiOiJiZWcifQ'});assert.equal(r.status,200);
+ const link='https://sportdna.com.br/racket/?retomar='+id+'.'+token+'#r=eyJsdmwiOiJiZWcifQ';
+ assert.ok(messages[0].text.includes(link));assert.match(messages[0].html,/Abrir meu relatório/);assert.ok(messages[0].html.includes(link));
+ for(const bad of ['<script>','a b','x'.repeat(8001)]){r=await send({resume:bad});assert.equal(r.status,200);assert.ok(!messages[0].text.includes('retomar='))}
+ const o=await worker.fetch(new Request('https://api.example/orders/'+id,{headers:{Origin:origin,Authorization:'Bearer '+token}}),env);
+ assert.ok(Number.isFinite((await o.json()).createdAt));
+});
