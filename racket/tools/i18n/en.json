@@ -1614,5 +1614,17 @@
  "Destaques positivos, resumidos e traduzidos, de avaliações publicadas.": "Positive highlights, summarized from published reviews.",
  "Cupom": "Coupon",
  "% de desconto. Agora é só pagar.": "% off. You can pay now.",
- "aplicado:": "applied:"
+ "aplicado:": "applied:",
+ "Este app não deixa baixar arquivos. Enviando o PDF para o e-mail da compra…": "This app doesn't allow downloads. Sending the PDF to the email used for payment…",
+ "Este app não deixa baixar arquivos, então enviamos o PDF para o e-mail da compra. Confira também o spam.": "This app doesn't allow downloads, so we sent the PDF to the email used for payment. Check your spam folder too.",
+ "Já enviamos o PDF para o e-mail da compra há pouco. Confira a caixa de entrada e o spam.": "We just sent the PDF to the email used for payment. Check your inbox and spam folder.",
+ "Se não abrir, toque nos três pontinhos do app e escolha abrir no navegador.": "If it doesn't open, tap the three dots in the app and choose Open in browser.",
+ "JVBER": "JVBER",
+ "Reenviar o relatório por e-mail": "Email the report again",
+ "Enviar o relatório ao e-mail da compra": "Email the report to the address used for payment",
+ "O relatório em PDF já foi enviado ao e-mail da compra. Confira também o spam.": "The PDF report was already sent to the email used for payment. Check your spam folder too.",
+ "Enviando o relatório em PDF para o e-mail da compra…": "Sending the PDF report to the email used for payment…",
+ "Enviamos o relatório em PDF para o e-mail da compra. Confira também o spam.": "We sent the PDF report to the email used for payment. Check your spam folder too.",
+ "Enviamos o relatório para o e-mail da compra. Confira também o spam.": "We sent the report to the email used for payment. Check your spam folder too.",
+ "Não conseguimos enviar o relatório por e-mail agora. Toque no botão para tentar de novo.": "We couldn't email the report right now. Tap the button to try again."
 }

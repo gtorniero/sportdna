@@ -25,3 +25,14 @@ test('recusa relatório vazio, origem indevida e e-mail ausente',async()=>{asser
 test('recusa provedor de produção e modo live',async()=>{provider.livemode=true;assert.equal((await worker.fetch(req(),env)).status,403);assert.equal((await worker.fetch(req(),{...env,PAYMENTS_MODE:'live'})).status,503);assert.equal(messages.length,0)});
 
 test('não confirma envio sem comprovante do provedor',async()=>{const previous=globalThis.fetch;globalThis.fetch=async(url,init)=>String(url).startsWith('https://api.resend.com/')?new Response('{}',{status:200}):previous(url,init);assert.equal((await worker.fetch(req(),env)).status,502)});
+test('PDF do relatório vai como anexo; PDF inválido é recusado antes de enviar',async()=>{
+ const pdf={filename:'racket-dna-speed-mp.pdf',data:Buffer.from('%PDF-1.7 fixture').toString('base64')};
+ const r=await worker.fetch(new Request('https://api.example/orders/'+id+'/email',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({report:text,pdf})}),env);
+ assert.equal(r.status,200);assert.deepEqual(messages[0].attachments,[{filename:pdf.filename,content:pdf.data}]);assert.match(messages[0].text,/em anexo, em PDF/);
+ for(const bad of [{filename:'../x.pdf',data:pdf.data},{filename:'a.exe',data:pdf.data},{filename:'a.pdf',data:Buffer.from('MZ fake').toString('base64')}]){
+  sqlite.prepare('DELETE FROM report_emails').run();
+  const b=await worker.fetch(new Request('https://api.example/orders/'+id+'/email',{method:'POST',headers:{Origin:origin,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({report:text,pdf:bad})}),env);
+  assert.equal(b.status,400,JSON.stringify(bad.filename));
+ }
+ assert.equal(messages.length,1);
+});

@@ -55,11 +55,12 @@
  const EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  async function api(path,options={}) {
   let response;
-  try{response=await fetch(config.api+path,{...options,headers:{'Content-Type':'application/json',...options.headers},cache:'no-store',signal:deadline(18000)})}
+  const {timeout=18000,...rest}=options;
+  try{response=await fetch(config.api+path,{...rest,headers:{'Content-Type':'application/json',...rest.headers},cache:'no-store',signal:deadline(timeout)})}
   catch(e){throw ['TimeoutError','AbortError'].includes(e?.name)?fault('O pagamento demorou para responder. Confira sua conexão e tente de novo.','timeout'):fault('Sem conexão com o pagamento. Confira sua internet e tente de novo.','network')}
   // Erro do servidor pode vir sem JSON (página de erro da rede): status primeiro, texto em português sempre.
   let data=null;try{data=await response.json()}catch{}
-  if(!response.ok)throw fault(typeof data?.error==='string'&&data.error?data.error:'Não foi possível confirmar o pagamento. Tente de novo em instantes.',response.status>=500?'unavailable':'rejected');
+  if(!response.ok)throw Object.assign(fault(typeof data?.error==='string'&&data.error?data.error:'Não foi possível confirmar o pagamento. Tente de novo em instantes.',response.status>=500?'unavailable':'rejected'),{status:response.status});
   if(!data||typeof data!=='object')throw fault('Resposta inesperada do pagamento. Tente de novo em instantes.','invalid_response');
   return data;
  }
@@ -93,7 +94,7 @@
     const fresh=!Number.isFinite(current.paidAt)||Date.now()-current.paidAt<DAY;
     if(!Number.isFinite(current.paidAt)){current={...current,paidAt:Date.now()};try{save(current)}catch{}}
     verifiedOrder=current.id;
-    app.restore(current.answers);app.unlock(current.product,current.revised===true,{retested:current.retested===true,retest:retestInfo(current)});close();emailButton(current);
+    app.restore(current.answers);app.unlock(current.product,current.revised===true,{retested:current.retested===true,retest:retestInfo(current)});close();emailButton(current,fresh);
     if(fresh)try{await window.SportDNAMeasure?.purchase?.(order)}catch{/* Medição opcional não bloqueia acesso. */}return true;
    }
    if(['invalid','revoked','expired'].includes(order.state)&&!Number.isFinite(pending.paidAt))forget();
@@ -102,24 +103,50 @@
    if(dialog?.open)timer=setTimeout(check,6000);return false;
   }catch(e){message(e.message);return false}
  }
- function emailButton(pending){
+ // PDF do app (opcional) em base64 para ir anexo no e-mail; se falhar, o e-mail sai só com o texto.
+ async function pdfData(){
+  try{
+   const p=await app?.pdf?.();if(!p?.blob||!/^[a-z0-9-]{1,80}\.pdf$/.test(p.filename||''))return null;
+   const data=await new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(String(r.result).split(',')[1]||'');r.onerror=()=>no(r.error);r.readAsDataURL(p.blob)});
+   return data.startsWith('JVBER')&&data.length<7500000?{filename:p.filename,data}:null;
+  }catch{return null}
+ }
+ let mailing=null;
+ // Envia o relatório (PDF anexo + texto) ao e-mail da compra. Só depois de o servidor confirmar o pagamento nesta página.
+ function sendReportEmail(){
+  const p=get();if(!p||!app||p.app!==app.name||verifiedOrder!==p.id||!p.product.endsWith('-report'))return Promise.resolve(false);
+  const report=document.querySelector('#report');if(!report||report.hidden)return Promise.resolve(false);
+  if(mailing)return mailing;
+  mailing=(async()=>{
+   const text=report.innerText,pdf=await pdfData();
+   const send=body=>api('/orders/'+p.id+'/email',{method:'POST',headers:{Authorization:'Bearer '+p.token},body:JSON.stringify(body),timeout:60000});
+   let attached=!!pdf;
+   try{await send(pdf?{report:text,pdf}:{report:text})}
+   catch(e){if(!pdf||e.status!==400)throw e;attached=false;await send({report:text})}
+   try{const now=get();if(now?.id===p.id)save({...now,emailed:Date.now()})}catch{}
+   return {sent:true,pdf:attached};
+  })().finally(()=>{mailing=null});
+  return mailing;
+ }
+ function emailButton(pending,fresh){
   if(!pending.product.endsWith('-report'))return;
   const report=document.querySelector('#report');if(!report||report.hidden||document.querySelector('#sportdna-email-report'))return;
-  const button=document.createElement('button');button.id='sportdna-email-report';button.type='button';button.className='btn btn-go';button.textContent='Enviar relatório ao e-mail da compra';
+  const button=document.createElement('button');button.id='sportdna-email-report';button.type='button';button.className='btn btn-go';
+  button.textContent=pending.emailed?'Reenviar o relatório por e-mail':'Enviar o relatório ao e-mail da compra';
   const status=document.createElement('p');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+  if(pending.emailed)status.textContent='O relatório em PDF já foi enviado ao e-mail da compra. Confira também o spam.';
   // O botão fica fora do relatório para preservar o PDF e seu conteúdo original.
   const actions=document.createElement('aside');actions.hidden=report.hidden;actions.append(button,status);report.after(actions);
   new MutationObserver(()=>{actions.hidden=report.hidden}).observe(report,{attributes:true,attributeFilter:['hidden']});
-  button.onclick=()=>{
-   const body=panel('Receber o relatório por e-mail');
-   const notice=document.createElement('p');notice.textContent='Enviamos o texto deste relatório para o e-mail usado no pagamento.';notice.style.margin='0 0 14px';body.append(notice);
-   const send=document.createElement('button');send.type='button';send.className='btn btn-go sp-cta';send.textContent='Enviar o relatório';body.append(send);
-   send.onclick=async()=>{
-    send.disabled=true;message('Enviando relatório…');
-    try{await api('/orders/'+pending.id+'/email',{method:'POST',headers:{Authorization:'Bearer '+pending.token},body:JSON.stringify({report:report.innerText})});status.textContent='Relatório enviado ao e-mail da compra. Confira também o spam.';}
-    catch(e){status.textContent=e.message}finally{message(status.textContent);send.disabled=false}
-   };
+  const go=async auto=>{
+   button.disabled=true;status.textContent='Enviando o relatório em PDF para o e-mail da compra…';
+   try{const r=await sendReportEmail();if(r)status.textContent=r.pdf?'Enviamos o relatório em PDF para o e-mail da compra. Confira também o spam.':'Enviamos o relatório para o e-mail da compra. Confira também o spam.';else status.textContent='';if(r)button.textContent='Reenviar o relatório por e-mail'}
+   catch(e){status.textContent=auto?'Não conseguimos enviar o relatório por e-mail agora. Toque no botão para tentar de novo.':e.message}
+   finally{button.disabled=false}
   };
+  button.onclick=()=>go(false);
+  // Entrega automática logo depois do pagamento: no navegador do Instagram o PDF não baixa.
+  if(fresh&&!pending.emailed)go(true);
  }
  function pendingPanel(order){
   const product=order.product||get()?.product;
@@ -254,5 +281,5 @@
    pendingPanel(order);return false;
   }catch(e){message(e.message);return false}
  }
- window.SportDNAPayments={enabled,open,saveRevision,saved,resume,forget,register(options){app=options;if(!enabled)return;const p=get();if(p?.app!==app.name)return;const back=new URLSearchParams(location.search).has('payment');if(!tab()&&!back)return;app.restore(p.answers);check().then(paid=>{if(!paid&&back)pendingPanel({})})}};
+ window.SportDNAPayments={enabled,open,saveRevision,saved,resume,forget,emailReport:sendReportEmail,register(options){app=options;if(!enabled)return;const p=get();if(p?.app!==app.name)return;const back=new URLSearchParams(location.search).has('payment');if(!tab()&&!back)return;app.restore(p.answers);check().then(paid=>{if(!paid&&back)pendingPanel({})})}};
 })();

@@ -154,8 +154,9 @@ async function emailReport(request,env,id) {
  if(!o||o.token_hash!==await digest(token))fail(404,'Pedido não encontrado.');
  ready(env,o.provider);
  const confirmed=await refresh(o,env,true);
- const body=await readJson(request,80000);
- return sendReport(env,confirmed,body.report);
+ // O PDF vem junto (base64) para chegar como anexo: o navegador do Instagram não deixa baixar arquivos.
+ const body=await readJson(request,8000000);
+ return sendReport(env,confirmed,body.report,body.pdf);
 }
 async function webhook(request,env,provider) {
  ready(env,provider);
