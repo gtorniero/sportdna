@@ -39,7 +39,7 @@ async function rate(request,env) {
 async function publicOrder(o) {
  const measurement=await saleMeasurement(o);
  return {...(measurement?{measurement}:{}),id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:currencyOf(o.product).toUpperCase(),mode:o.mode,state:o.state,...(o.discount?{discount:o.discount}:{}),...(o.market?{market:o.market}:{}),
-  checkoutUrl:o.checkout_url||null,pixCode:o.pix_code||null,pixImage:o.pix_image||null};
+  checkoutUrl:o.checkout_url||null,pixCode:o.pix_code||null,pixImage:o.pix_image||null,...(o.state==='paid'&&Number.isFinite(o.created_at)?{createdAt:o.created_at}:{})};
 }
 async function refresh(o,env,force=false) {
  if(o.mode!==env.PAYMENTS_MODE) fail(409,'Pedido de outro ambiente.');
@@ -156,7 +156,7 @@ async function emailReport(request,env,id) {
  const confirmed=await refresh(o,env,true);
  // O PDF vem junto (base64) para chegar como anexo: o navegador do Instagram não deixa baixar arquivos.
  const body=await readJson(request,8000000);
- return sendReport(env,confirmed,body.report,body.pdf);
+ return sendReport(env,confirmed,body.report,body.pdf,body.resume,token);
 }
 async function webhook(request,env,provider) {
  ready(env,provider);

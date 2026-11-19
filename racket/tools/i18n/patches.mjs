@@ -36,7 +36,7 @@ export const page = [
  { find: '        <li>Onde é fácil ou difícil de achar cada raquete no Brasil</li>\n', replace: '' },
 
  // ---------- sem compra de raquetes: nenhum card de loja, afiliado ou comparação de preço ----------
- { find: "${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}", replace: '', n: 2 }, // 1º lugar e alternativas
+ { find: "${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}", replace: '', n: 3 }, // 1º lugar, alternativas e opção para evoluir
  // sem lojas nem fotos de produto no inglês (affiliates.js também desenha as fotos aprovadas do Brasil)
  { find: /<script src="\/assets\/affiliate-offers\.js[^"]*"><\/script>\n(?:<script src="\/assets\/(?:report-photos|affiliates)\.js[^"]*"><\/script>\n)+<script src="\/assets\/measurement\.js"><\/script>\n/, replace: '__MEASURE__\n' },
  { find: "${r.usd?'':' novo'}${r.br==='d'?' · difícil de achar no Brasil':r.br==='p'?' · pouca oferta no Brasil':' · fácil de achar no Brasil'}", replace: "${' novo'}" },

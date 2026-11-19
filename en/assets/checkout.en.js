@@ -92,7 +92,7 @@
     let current=get();
     if(current?.id!==pending.id)return false;
     // A compra só é medida perto do pagamento (24 h): abrir de novo semanas depois não vira outra Purchase.
-    const fresh=!Number.isFinite(current.paidAt)||Date.now()-current.paidAt<DAY;
+    const fresh=current.restored!==true&&(!Number.isFinite(current.paidAt)||Date.now()-current.paidAt<DAY);
     if(!Number.isFinite(current.paidAt)){current={...current,paidAt:Date.now()};try{save(current)}catch{}}
     verifiedOrder=current.id;
     app.restore(current.answers);app.unlock(current.product,current.revised===true,{retested:current.retested===true,retest:retestInfo(current)});close();emailButton(current,fresh);
@@ -112,6 +112,8 @@
    return data.startsWith('JVBER')&&data.length<7500000?{filename:p.filename,data}:null;
   }catch{return null}
  }
+ const b64u=t=>btoa(String.fromCharCode(...new TextEncoder().encode(t))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+ const unb64u=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
  let mailing=null;
  // Envia o relatório (PDF anexo + texto) ao e-mail da compra. Só depois de o servidor confirmar o pagamento nesta página.
  function sendReportEmail(){
@@ -121,10 +123,12 @@
   if(mailing)return mailing;
   mailing=(async()=>{
    const text=report.innerText,pdf=await pdfData();
+   let resume='';try{resume=b64u(JSON.stringify(p.answers||{}))}catch{}
    const send=body=>api('/orders/'+p.id+'/email',{method:'POST',headers:{Authorization:'Bearer '+p.token},body:JSON.stringify(body),timeout:60000});
    let attached=!!pdf;
-   try{await send(pdf?{report:text,pdf}:{report:text})}
-   catch(e){if(!pdf||e.status!==400)throw e;attached=false;await send({report:text})}
+   const extra=resume&&resume.length<=8000?{resume}:{};
+   try{await send(pdf?{report:text,pdf,...extra}:{report:text,...extra})}
+   catch(e){if(!pdf||e.status!==400)throw e;attached=false;await send({report:text,...extra})}
    try{const now=get();if(now?.id===p.id)save({...now,emailed:Date.now()})}catch{}
    return {sent:true,pdf:attached};
   })().finally(()=>{mailing=null});
@@ -283,5 +287,24 @@
    pendingPanel(order);return false;
   }catch(e){message(e.message);return false}
  }
- window.SportDNAPayments={enabled,open,saveRevision,saved,resume,forget,emailReport:sendReportEmail,register(options){app=options;if(!enabled)return;const p=get();if(p?.app!==app.name)return;const back=new URLSearchParams(location.search).has('payment');if(!tab()&&!back)return;app.restore(p.answers);check().then(paid=>{if(!paid&&back)pendingPanel({})})}};
+  /* Link "Abrir meu relatório" do e-mail: ?retomar=<pedido>.<token>#r=<respostas>. Só reabre se o servidor disser que o pedido está pago. */
+ async function reopen(){
+  let q;try{q=new URLSearchParams(location.search).get('retomar')}catch{return false}
+  if(!q)return false;
+  const clean=()=>{try{history.replaceState(null,'',location.pathname)}catch{}};
+  const m=/^([0-9a-f-]{36})\.([0-9a-f]{64})$/.exec(q);const h=/^#r=([A-Za-z0-9_-]{2,8000})$/.exec(location.hash||'');
+  let answers=null;try{answers=h?JSON.parse(unb64u(h[1])):null}catch{}
+  const fail=t=>{clean();panel('We couldn\'t open the report');message(t);return false};
+  if(!m||!answers||typeof answers!=='object')return fail('The link is incomplete. Open it again from the button in the email or write to hi@sportdna.com.br.');
+  try{
+   const order=await api('/orders/'+m[1],{headers:{Authorization:'Bearer '+m[2]}});
+   if(!productInfo(order.product)||!order.product.startsWith(app.name+'-')||order.mode!==config.mode||!validAmount(order))return fail('This link is for a different product. Write to hi@sportdna.com.br.');
+   if(order.state!=='paid')return fail('Payment for this order isn\'t confirmed. No access was granted.');
+   const paidAt=Number.isFinite(order.createdAt)?Math.min(order.createdAt,Date.now()):Date.now();
+   if(Date.now()-paidAt>=keepPaid())return fail('This link has expired. Write to hi@sportdna.com.br from the email used for payment.');
+   save({id:m[1],token:m[2],app:app.name,product:order.product,provider:order.provider,answers,paidAt,emailed:Date.now(),restored:true});clean();
+   app.restore(answers);return check();
+  }catch(e){return fail(e.message)}
+ }
+window.SportDNAPayments={enabled,open,saveRevision,saved,resume,forget,emailReport:sendReportEmail,register(options){app=options;if(!enabled)return;if(new URLSearchParams(location.search).has('retomar')){reopen();return}const p=get();if(p?.app!==app.name)return;const back=new URLSearchParams(location.search).has('payment');if(!tab()&&!back)return;app.restore(p.answers);check().then(paid=>{if(!paid&&back)pendingPanel({})})}};
 })();

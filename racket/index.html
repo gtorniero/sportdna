@@ -620,7 +620,7 @@ details.cmpbox[open]{background:var(--surface)}
 .curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
 .curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
 .cv-troca{color:var(--warn)}.cv-fica{color:var(--pri)}
-.winbox{background:var(--winbg)}.winbox .fit{font-size:62px;color:var(--pri)}
+.evolui{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}.evolui h3{margin:0}.evolui p{margin:0}.winbox{background:var(--winbg)}.winbox .fit{font-size:62px;color:var(--pri)}
 .altt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}.altf{text-align:right}
 .altw{margin:0}.altc .affcard{margin-top:4px}
 .mudas li,.maoc li{margin:2px 0}.maoc{margin:6px 0 0}
@@ -829,7 +829,7 @@ details.more[open]>summary{margin-bottom:10px}
 <div id="modalRoot"></div>
 
 <script src="../assets/payments/config.js?v=20261118"></script>
-<script src="../assets/payments/client.js?v=20261119e"></script>
+<script src="../assets/payments/client.js?v=20261120a"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -1560,7 +1560,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,verdictAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight};
+if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,verdictAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight,evoluiPick};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1994,6 +1994,28 @@ function altCard(x,pos,top,c){const r=x.r;
     <ul class="why altw">${altWhy(x,top,c).map(t=>`<li>${t}</li>`).join('')}</ul>
     ${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}</article>`;
 }
+/* rodada 24 (pedido do Gui): iniciante forte e sem dor pode querer uma raquete para crescer junto (2 ou 3 anos), sem mexer no top 3.
+   Força acima da média, ou média com porte grande (1,75 m e 75 kg ou mais); menos de 50 anos; nunca teve dor no braço. */
+function evoluiPick(res=RES){
+  if(!res||A.lvl!=='beg'||A.arm!=='no'||(+A.age||35)>=50||inicPequeno())return null;
+  const forte=A.str==='high'||A.str==='vhigh'||(A.str==='mid'&&+A.height>=175&&+A.weight>=75);if(!forte)return null;
+  /* entre as de 295 a 305 g (cabeça 100+, SW até 325, sem 18×20), a melhor para o perfil sem contar a regra "fora do grupo de iniciante" */
+  const sem=x=>x.fit+PESOS.match.pen*(x.pen||[]).filter(q=>/^Fora do grupo de raquetes para iniciante/.test(q[1])).reduce((t,q)=>t+q[0],0);
+  /* busca no catálogo todo: a versão de 300 g pode estar "dentro" da família que aparece no ranking por uma versão mais leve */
+  const R=res.ranked,first=R[0].r;let best=null;
+  (res.all||R).forEach(x=>{if(x.r!==first&&(!res.c||x.r.id!==res.c.id)&&x.r.wt>=295&&x.r.wt<=305&&x.r.head>=100&&x.r.sw<=325&&x.r.pat!=='18x20'&&(!best||sem(x)>sem(best)))best=x});
+  if(!best)return null;const k=R.indexOf(best);
+  return {x:best,pos:k>=0?k+1:99};
+}
+function evoluiBox(){const e=evoluiPick();if(!e)return '';const r=e.x.r;
+  const intro=`Você está começando, mas tem força e porte para uma raquete um pouco mais pesada. Se você joga 2 vezes ou mais por semana e quer ficar 2 ou 3 anos com a mesma raquete, a ${esc(r.model)} (${r.wt} g) acompanha a sua evolução por mais tempo.`;
+  const aviso='No começo ela cansa mais o braço e perdoa menos a bola fora do centro. Se o golpe atrasar ou o braço reclamar, fique com o top 3.';
+  const card=e.pos<=3?'':`<article class="altc"><div class="altt"><div style="min-width:0"><p class="eyebrow">Para evoluir · ${esc(r.brand)}${r.year?' · '+r.year:''}</p><h3>${esc(r.model)}</h3></div></div>
+    <p class="note" style="margin:0">Novo: ${precoTxt(r)} ${brTag(r)}</p>
+    <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
+    ${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}</article>`;
+  return `<div class="evolui"><h3>Para evoluir com ela</h3><p>${intro}${e.pos<=3?` Ela já está no seu top 3, em ${e.pos}º lugar.`:''}</p><p class="note">${aviso}</p>${card}</div>`;
+}
 /* rodada 23: sua atual × a nova em bullets curtos, só o que muda (peso, swingweight, balanço, rigidez) */
 function mudaNaMao(r,c){const L=[];
   const w=r.wt-c.wt;if(Math.abs(w)>=5)L.push(w<0?`<strong>Mais leve:</strong> ${r.wt} g × ${c.wt} g, mais rápida de manejar.`:`<strong>Mais pesada:</strong> ${r.wt} g × ${c.wt} g, mais estável contra bola forte.`);
@@ -2099,7 +2121,7 @@ function renderReport(){
     const top3=ranked.slice(0,3);
     h+=`<section class="panel" id="r-alt"><h2 class="sec">Alternativas</h2>
       <div class="altl">${ranked.slice(1,3).map((x,i)=>altCard(x,i+2,top3,c)).join('')}</div>
-      </section><section class="panel" id="r-top"><h2 class="sec">Top 10 e mapa do catálogo</h2>
+      ${evoluiBox()}</section><section class="panel" id="r-top"><h2 class="sec">Top 10 e mapa do catálogo</h2>
         <h3 style="margin-bottom:10px">Ranking dos 10 melhores</h3>
         <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}${altsTag(x)}</span><small class="fx fx-${faixa(x,w)[0]}">${faixa(x,w)[1]}</small></div><b>${x.fit}%</b></div>`).join('')})()}</div>
         <p class="note">Encaixe ideal: até 4 pontos da 1ª; entre elas, a diferença é de sensação, não de resultado. Muito boa: até 12 pontos.</p>
