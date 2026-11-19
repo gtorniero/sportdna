@@ -540,7 +540,7 @@ export function paginas(h) {
     <h2>5. Entrega</h2>
     <ul>
      <li>A entrega é digital. O relatório abre no próprio navegador assim que o Mercado Pago ou o Stripe confirmam o pagamento. Sem essa confirmação, o relatório não é liberado.</li>
-     <li>Você pode baixar o relatório em PDF. Quando a opção aparecer, também pode pedir o envio do texto do relatório para o e-mail usado no pagamento.</li>
+     <li>Você pode baixar o relatório em PDF. Logo depois do pagamento, o relatório também vai para o e-mail usado no pagamento, em PDF quando o app gera o arquivo, e você pode pedir o reenvio.</li>
      <li>Não há conta de usuário nem recuperação automática em outro aparelho. O relatório fica no navegador em que foi liberado; baixe o PDF para guardar.</li>
      <li>No RACKET DNA e no SURF DNA, você pode corrigir as respostas uma vez depois de pagar, e o relatório é refeito sem novo pagamento.</li>
     </ul>

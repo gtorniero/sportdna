@@ -829,7 +829,7 @@ details.more[open]>summary{margin-bottom:10px}
 <div id="modalRoot"></div>
 
 <script src="../assets/payments/config.js?v=20261118"></script>
-<script src="../assets/payments/client.js?v=20261119c"></script>
+<script src="../assets/payments/client.js?v=20261119e"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -2343,7 +2343,22 @@ async function deliverPDF(c){
 }
 function pdfStatus(btn,html){document.querySelectorAll('.pdflink').forEach(x=>x.remove());if(!btn||!html)return null;
   const w=document.createElement('div');w.className='pdflink';w.setAttribute('role','status');w.innerHTML=html;btn.insertAdjacentElement('afterend',w);return w}
+/* navegador interno do Instagram, Facebook e TikTok: não deixa baixar arquivos */
+const inAppBrowser=()=>/Instagram|FBAN|FBAV|FB_IAB|FB4A|musical_ly|BytedanceWebview/i.test(navigator.userAgent||'');
+async function pdfInApp(btn){
+  const pay=window.SportDNAPayments;
+  if(!exampleSession&&tier>=2&&pay&&pay.emailReport){
+    if(btn)btn.disabled=true;
+    pdfStatus(btn,'<span class="note">Este app não deixa baixar arquivos. Enviando o PDF para o e-mail da compra…</span>');
+    try{const r=await pay.emailReport();
+      if(r){pdfStatus(btn,'<p class="note">Este app não deixa baixar arquivos, então enviamos o PDF para o e-mail da compra. Confira também o spam.</p>');return {ok:true,tap:true}}}
+    catch(e){if(e&&e.status===429){pdfStatus(btn,'<p class="note">Já enviamos o PDF para o e-mail da compra há pouco. Confira a caixa de entrada e o spam.</p>');return {ok:true,tap:true}}}
+    finally{if(btn)btn.disabled=false}
+  }
+  return null;
+}
 async function downloadPDF(btn){
+  if(inAppBrowser()){const r=await pdfInApp(btn);if(r)return r}
   const label=btn?btn.textContent:'';
   const c=ensurePDF();
   /* pronto: baixa no mesmo gesto */
@@ -2360,6 +2375,7 @@ async function downloadPDF(btn){
     if(PDFC!==c)throw new Error('respostas mudaram');
     if(window.claude&&window.claude.use&&await deliverPDF(c)){pdfStatus(btn,'');return {ok:true}}
     const ios=isIOS();
+    if(inAppBrowser()){pdfStatus(btn,`<a class="btn btn-go btn-sm" href="${c.url}" download="${c.fn}" target="_blank" rel="noopener">Abrir o PDF</a><p class="note">Se não abrir, toque nos três pontinhos do app e escolha abrir no navegador.</p>`);return {ok:true,tap:true}}
     /* fora do iPhone o download automático costuma passar; o botão abaixo fica como garantia (e é o caminho no iPhone) */
     if(!ios){saveBlobNow(c);toast('PDF baixado')}
     const w=pdfStatus(btn,`<a class="btn btn-go btn-sm" href="${c.url}" download="${c.fn}" target="_blank" rel="noopener">Abrir o PDF</a>`);
@@ -2491,6 +2507,7 @@ async function drawRacketCard(d=racketCardData()){
 /* SPORTDNA_CHECKOUT_ADAPTER_START */
 window.SportDNAPayments?.register({name:'racket',keepPaidDays:90,retestDays:90,snapshot:()=>JSON.parse(JSON.stringify(A)),
  restore:answers=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,cleanAnswers(answers));RES=Object.keys(A).length?compute():null},
+ pdf:async()=>{if(tier<2||!RES)return null;const c=ensurePDF();await c.p;return {blob:c.blob,filename:c.fn}},
  unlock:(product,revised,info)=>{if(product==='racket-comparator'){cmpPaid=true;$('#duelGo').click();renderDuel()}else{exampleSession=false;tier=2;editLeft=revised?0:1;retestInfo=info?.retest||null;persist();renderReport();show('report')}}});
 /* SPORTDNA_CHECKOUT_ADAPTER_END */
 renderResume();
