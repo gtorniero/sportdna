@@ -97,7 +97,7 @@ export const page = [
 /* cliente de checkout (assets/payments/client.js) → cópia em inglês, só cartão (Stripe sandbox) e USD */
 export const client = [
  { find: "const money=amount=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(amount/100);", replace: "const money=amount=>window.RK_INTL?.report||new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(amount/100);" },
- { find: " return !!info&&Number.isSafeInteger(order.amount)&&(order.provider==='promo'?order.amount===0:order.amount===info.amount);",
+ { find: "  return !!info&&Number.isSafeInteger(order.amount)&&(order.provider==='promo'?order.amount===0:order.amount===info.amount||(order.discount!==undefined&&order.amount===discounted(info.amount,order.discount)));",
    replace: " return !!info&&Number.isSafeInteger(order.amount)&&order.provider==='stripe'&&order.amount===info.amount&&order.currency===info.currency&&(!order.market||order.market===window.RK_INTL?.market);" },
  { find: "function emailButton(pending){\n  if(!pending.product.endsWith('-report'))return;", replace: "function emailButton(pending){\n  return; /* intl: envio por e-mail ainda só em português (pendência) */" },
  { find: "for(const [provider,title,sub,icon] of [['mercadopago','Pix','Aprovação na hora, pelo app do seu banco',ICON.pix],['stripe','Cartão de crédito ou débito','Pagamento seguro pela Stripe',ICON.card]]){", replace: "for(const [provider,title,sub,icon] of [['stripe','Cartão de crédito ou débito','Pagamento seguro pela Stripe',ICON.card]]){" },

@@ -29,7 +29,7 @@ test('Mercado Pago rejects forgery, altered ids and stale notifications',async()
  assert.equal(await verifyMP(request(),'',now),false);
 });
 function database(){
- const db=new DatabaseSync(':memory:');for(const m of ['0001.sql','0002_market.sql'])db.exec(readFileSync(new URL('../migrations/'+m,import.meta.url),'utf8'));
+ const db=new DatabaseSync(':memory:');for(const m of ['0001.sql','0002_market.sql','0003_discounts.sql'])db.exec(readFileSync(new URL('../migrations/'+m,import.meta.url),'utf8'));
  return {prepare(sql){return {bind(...params){return {async first(){return db.prepare(sql).get(...params)},async run(){return db.prepare(sql).run(...params)}}}}}};
 }
 const origin='https://sportdna.com.br';

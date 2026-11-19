@@ -38,7 +38,7 @@ async function rate(request,env) {
 }
 async function publicOrder(o) {
  const measurement=await saleMeasurement(o);
- return {...(measurement?{measurement}:{}),id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:currencyOf(o.product).toUpperCase(),mode:o.mode,state:o.state,...(o.market?{market:o.market}:{}),
+ return {...(measurement?{measurement}:{}),id:o.id,product:o.product,provider:o.provider,amount:o.amount,currency:currencyOf(o.product).toUpperCase(),mode:o.mode,state:o.state,...(o.discount?{discount:o.discount}:{}),...(o.market?{market:o.market}:{}),
   checkoutUrl:o.checkout_url||null,pixCode:o.pix_code||null,pixImage:o.pix_image||null};
 }
 async function refresh(o,env,force=false) {
@@ -54,6 +54,27 @@ async function refresh(o,env,force=false) {
  await env.DB.prepare('UPDATE orders SET state=?,checked_at=? WHERE id=?').bind(state,Date.now(),o.id).run();
  return {...o,state,recipientEmail:o.provider==='stripe'?value.customer_details?.email:value.payer?.email};
 }
+/* Cupom de desconto (ex.: ARBO50, 50% no relatório RACKET DNA). Fica no banco do SPORT DNA, só o hash do código.
+   O servidor calcula o valor com desconto (arredondado para baixo) e é esse valor que vai para a Stripe ou o Mercado Pago. */
+const couponHash=code=>digest('sportdna-coupon:'+code);
+async function findCoupon(env,productId,raw){
+ if(raw===undefined||raw===null||raw==='') return null;
+ const code=String(raw).trim().toUpperCase();
+ if(!/^[A-Z0-9-]{4,40}$/.test(code)) fail(404,'Cupom inválido ou vencido.');
+ const c=await env.DB.prepare('SELECT code,percent,products FROM discount_codes WHERE hash=? AND active=1 AND (expires IS NULL OR expires>?)').bind(await couponHash(code),Date.now()).first();
+ let products=[];try{products=JSON.parse(c?.products||'[]')}catch{}
+ if(!c||!products.includes(productId)||!Number.isInteger(c.percent)||c.percent<1||c.percent>90) fail(404,'Cupom inválido ou vencido.');
+ const product=catalog[productId];
+ return {code:c.code,percent:c.percent,amount:Math.floor(product.amount*(100-c.percent)/100)};
+}
+async function checkCoupon(request,env){
+ const b=await readJson(request);
+ const product=catalog[b.product];if(!product||product.markets) fail(404,'Cupom inválido ou vencido.');
+ if(!env.DB||!env.RATE_SECRET) fail(503,'Configuração de pagamentos incompleta.');
+ await rate(request,env);
+ const c=await findCoupon(env,b.product,b.coupon);if(!c) fail(404,'Cupom inválido ou vencido.');
+ return {product:b.product,code:c.code,percent:c.percent,amount:c.amount,currency:currencyOf(b.product).toUpperCase()};
+}
 async function create(request,env) {
  const b=await readJson(request);
  if(b.product==='run-report') fail(409,'O RUN DNA agora é gratuito. Acesse sportdna.com.br/run/ para gerar seu relatório.');
@@ -64,15 +85,19 @@ async function create(request,env) {
  if(!marketOk(b.product,b.market,env.PAYMENTS_MODE==='live')) fail(409,'Product not available in this country yet.');
  ready(env,b.provider);await rate(request,env);
  if(b.provider==='mercadopago'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email||'')) fail(400,'Informe seu e-mail para o Pix.');
+ const discount=product.markets?null:await findCoupon(env,b.product,b.coupon);
+ const amountDue=discount?discount.amount:product.amount;
  await captureCheckout(env,b.id,b.meta);
  const hash=await digest(b.token);
  let existing=await env.DB.prepare('SELECT * FROM orders WHERE id=?').bind(b.id).first();
  if(existing) {
-  if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!==b.provider||existing.mode!==env.PAYMENTS_MODE||(product.markets&&existing.market!==b.market)) fail(409,'Pedido já utilizado.');
+  if(existing.token_hash!==hash||existing.product!==b.product||existing.provider!==b.provider||existing.mode!==env.PAYMENTS_MODE||(product.markets&&existing.market!==b.market)||(existing.discount||0)!==(discount?.percent||0)) fail(409,'Pedido já utilizado.');
   if(existing.provider_id) return publicOrder(await refresh(existing,env));
  } else {
   // A coluna market (migrations/0002_market.sql) só é usada pelo produto internacional; o insert brasileiro é o mesmo de antes.
   if(product.markets) await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,market,created_at) VALUES (?,?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,env.PAYMENTS_MODE,b.market,Date.now()).run();
+  // Com cupom, o pedido guarda o valor com desconto e o percentual (migrations/0003_discounts.sql); sem cupom, o insert é o de antes.
+  else if(discount) await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,discount,created_at) VALUES (?,?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,amountDue,env.PAYMENTS_MODE,discount.percent,Date.now()).run();
   else await env.DB.prepare('INSERT INTO orders(id,token_hash,product,provider,amount,mode,created_at) VALUES (?,?,?,?,?,?,?)').bind(b.id,hash,b.product,b.provider,product.amount,env.PAYMENTS_MODE,Date.now()).run();
  }
  let id,url=null,code=null,image=null;
@@ -81,13 +106,13 @@ async function create(request,env) {
   const s=await stripe(env).checkout.sessions.create({mode:'payment',client_reference_id:b.id,
    metadata:{sportdna_product:b.product,...(product.markets?{sportdna_market:b.market}:{})},integration_identifier:'sportdna_reports_kpvndwqa',
    allowed_payment_method_types:['card'],...(product.markets?{locale:'en'}:{}),
-   line_items:[{quantity:1,...(env.PAYMENTS_MODE==='test'&&product.stripeTestPrice?{price:product.stripeTestPrice}:{price_data:{currency:currencyOf(b.product),unit_amount:product.amount,product_data:{name:product.name}}})}],
+   line_items:[{quantity:1,...(env.PAYMENTS_MODE==='test'&&product.stripeTestPrice&&!discount?{price:product.stripeTestPrice}:{price_data:{currency:currencyOf(b.product),unit_amount:amountDue,product_data:{name:discount?product.name+' (cupom '+discount.code+')':product.name}}})}],
    success_url:`${env.SITE_ORIGIN}/${path}/?payment=return`,cancel_url:`${env.SITE_ORIGIN}/${path}/?payment=cancel`},
    {idempotencyKey:b.id});
   if(s.livemode!==(env.PAYMENTS_MODE==='live')||!s.url?.startsWith('https://checkout.stripe.com/')) fail(502,'Checkout inválido.');
   id=s.id;url=s.url;
  } else {
-  const amount=(product.amount/100).toFixed(2);
+  const amount=(amountDue/100).toFixed(2);
   const s=await mp(env,'',{type:'online',processing_mode:'automatic',total_amount:amount,external_reference:b.id,
    payer:{email:b.email,...(env.PAYMENTS_MODE==='test'?{first_name:'APRO'}:{})},transactions:{payments:[{amount,payment_method:{id:'pix',type:'bank_transfer'}}]}},b.id);
   if((typeof s.live_mode==='boolean'&&s.live_mode!==(env.PAYMENTS_MODE==='live'))||(env.PAYMENTS_MODE==='live'&&String(s.id).startsWith('ORDTST'))) fail(502,'Ambiente de pagamento inválido.');
@@ -170,6 +195,7 @@ const app = {async fetch(request,env) {
   let value;
   if(request.method==='POST'&&url.pathname==='/orders') value=await create(request,env);
   else if(request.method==='POST'&&url.pathname==='/promos/redeem') value=await redeem(request,env);
+  else if(request.method==='POST'&&url.pathname==='/coupons/check') value=await checkCoupon(request,env);
   else if(request.method==='POST'&&/^\/orders\/[^/]+\/email$/.test(url.pathname)) value=await emailReport(request,env,url.pathname.split('/')[2]);
   else if(request.method==='GET'&&url.pathname.startsWith('/orders/')) value=await status(request,env,url.pathname.slice(8));
   else if(request.method==='POST'&&url.pathname==='/webhooks/stripe') value=await webhook(request,env,'stripe');

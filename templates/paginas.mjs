@@ -531,7 +531,7 @@ export function paginas(h) {
     <p>Testes que recomendam equipamento esportivo a partir das suas respostas, mais guias educativos. O teste e a prévia com a análise são grátis e não pedem cadastro. O SPORT DNA não vende equipamento.</p>
     <h2>3. Relatórios pagos e preços</h2>
     ${precos}
-    <p>O valor cobrado é o mostrado na tela de pagamento, antes de você escolher o meio. É um pagamento único: não é assinatura e não renova. Códigos promocionais, quando oferecidos, liberam um relatório sem cobrança.</p>
+    <p>O valor cobrado é o mostrado na tela de pagamento, antes de você escolher o meio. É um pagamento único: não é assinatura e não renova. Códigos promocionais, quando oferecidos, liberam um relatório sem cobrança ou dão um desconto no valor; o valor com desconto aparece antes do pagamento.</p>
     <h2>4. Como pagar</h2>
     <ul>
      <li><b>Pix</b>, processado pelo Mercado Pago. Para gerar o Pix, você informa um e-mail, que é repassado ao Mercado Pago.</li>

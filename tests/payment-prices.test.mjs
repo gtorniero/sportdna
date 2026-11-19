@@ -89,3 +89,11 @@ test('Safari 15 without AbortSignal.timeout and crypto.randomUUID still creates 
  assert.match(body.id,/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);assert.ok(signal&&typeof signal.aborted==='boolean');
  assert.equal(env.nodes.find(x=>x.id==='paymentStatus').textContent.includes('neste navegador'),false);
 });
+// Cupom de desconto: só libera com o valor que o próprio cliente recalcula a partir do percentual.
+for(const [label,patch,ok] of [['50% coupon',{amount:999,discount:50},1],['amount not matching the percent',{amount:500,discount:50},0],['discount above 90%',{amount:99,discount:95},0],['cheaper without discount',{amount:999},0]])
+ test(`paid order with ${label} ${ok?'unlocks':'never unlocks'}`,async()=>{
+  let unlocked=0;const {context,nodes}=environment({unlock:()=>unlocked++});let pending;
+  context.fetch=async(_url,options)=>{if(options.method==='POST')pending=JSON.parse(options.body);return {ok:true,json:async()=>({id:pending.id,product:pending.product,provider:'stripe',currency:'BRL',mode:'live',state:options.method==='POST'?'pending':'paid',checkoutUrl:'https://checkout.stripe.com/x',...patch})}};
+  context.window.SportDNAPayments.open('racket-report');nodes.find(x=>x.tag==='button'&&x.provider==='stripe').onclick();await nodes.find(x=>x.id==='paymentGo').onclick();await new Promise(setImmediate);
+  assert.equal(unlocked,ok);
+ });
