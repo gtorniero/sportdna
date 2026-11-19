@@ -8,9 +8,11 @@
  const fieldStyle='box-sizing:border-box;display:block;width:100%;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;border:1.5px solid #6B7F87;border-radius:12px;background:var(--surface,#fff);color:var(--ink,#111);margin-top:6px';
  const actionStyle='box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px';
  const money=amount=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(amount/100);
+ // Valor com cupom: o servidor manda o percentual e o cliente refaz a conta (arredondada para baixo) antes de aceitar.
+ const discounted=(full,pct)=>Number.isInteger(pct)&&pct>=1&&pct<=90?Math.floor(full*(100-pct)/100):null;
  function validAmount(order){
   const info=productInfo(order.product);
-  return !!info&&Number.isSafeInteger(order.amount)&&(order.provider==='promo'?order.amount===0:order.amount===info.amount);
+  return !!info&&Number.isSafeInteger(order.amount)&&(order.provider==='promo'?order.amount===0:order.amount===info.amount||(order.discount!==undefined&&order.amount===discounted(info.amount,order.discount)));
  }
  function summary(body,product,amount){
   const info=productInfo(product);if(!info)throw new Error('Produto indisponível. Atualize a página.');
@@ -149,7 +151,7 @@
   try{void window.SportDNAMeasure?.checkoutOpen?.(product,measurement)}catch{/* Medição opcional. */}
   function checkoutError(category,provider){try{void window.SportDNAMeasure?.checkoutError?.(product,{...measurement,category,method:provider==='stripe'?'card':'pix'})}catch{/* Medição opcional. */}}
   summary(body,product);
-  const price=money(productInfo(product).amount);
+  let price=money(productInfo(product).amount),coupon=null;
   // 1) forma de pagamento: Pix já vem marcado (o mais usado no Brasil)
   const lbl=el('p','sp-lbl','Como você quer pagar?');lbl.id='paymentMethodLabel';body.append(lbl);
   const opts=el('div','sp-opts');opts.setAttribute('role','group');opts.setAttribute('aria-labelledby','paymentMethodLabel');body.append(opts);
@@ -182,8 +184,8 @@
    email.removeAttribute?.('aria-invalid');err.textContent='';
    busy=true;cta.disabled=true;message(provider==='mercadopago'?'Gerando o Pix…':'Abrindo o pagamento com cartão…');
    try{
-    const current=get(),answers=app.snapshot();const p=current?.app===app.name&&current.product===product&&current.provider===provider&&!Number.isFinite(current.paidAt)&&stable(current.answers)===stable(answers)?current:{id:uuid(),token:random(),app:app.name,product,provider,answers,at:Date.now()};
-    save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(provider==='mercadopago'?{email:mail()}:{})})});
+    const current=get(),answers=app.snapshot();const p=current?.app===app.name&&current.product===product&&current.provider===provider&&!Number.isFinite(current.paidAt)&&stable(current.answers)===stable(answers)&&(current.coupon||null)===(coupon?.code||null)?current:{id:uuid(),token:random(),app:app.name,product,provider,answers,at:Date.now(),...(coupon?{coupon:coupon.code}:{})};
+    save(p);const order=await api('/orders',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,provider,meta:window.BTWMetaConsent?.context(),...(coupon?{coupon:coupon.code}:{}),...(provider==='mercadopago'?{email:mail()}:{})})});
     try{await window.SportDNAMeasure?.checkout?.(order)}catch{/* Medição opcional não bloqueia checkout. */}pendingPanel(order);
    }catch(e){
     // Falha de rede/servidor já vem classificada por api(); o resto é validação da resposta ou falha deste navegador.
@@ -200,10 +202,19 @@
   det.addEventListener('toggle',()=>{if(det.open)field.hidden=false;else select(method)});
   apply.onclick=async()=>{
    if(busy)return;
-   if(!emailOk()){needEmail('Digite seu e-mail para usar o código.');return}
    if(!promo.value.trim()){message('Digite o código promocional.');promo.focus();return}
    busy=true;apply.disabled=true;cta.disabled=true;message('Conferindo o código…');
    try{
+    // 1) cupom de desconto: não pede e-mail; o preço novo aparece antes de escolher Pix ou cartão
+    let disc=null;
+    try{disc=await api('/coupons/check',{method:'POST',body:JSON.stringify({product,coupon:promo.value})})}catch(e){if(e.category!=='rejected')throw e}
+    if(disc&&disc.product===product&&disc.amount===discounted(productInfo(product).amount,disc.percent)){
+     coupon={code:String(disc.code),percent:disc.percent,amount:disc.amount};price=money(disc.amount);
+     const shown=dialog?.querySelector('#payment-product-price');if(shown){shown.textContent=price;const old=el('s','sp-old',money(productInfo(product).amount));old.style.cssText='display:block;font-size:13px;font-weight:600;opacity:.7';shown.prepend?.(old)}
+     det.open=false;select(method);message('Cupom '+coupon.code+' aplicado: '+coupon.percent+'% de desconto. Agora é só pagar.');cta.focus?.();return;
+    }
+    // 2) código que libera o relatório sem cobrança: precisa do e-mail
+    if(!emailOk()){needEmail('Digite seu e-mail para usar o código.');return}
     const p={id:uuid(),token:random(),app:app.name,product,provider:'promo',answers:app.snapshot()};
     const order=await api('/promos/redeem',{method:'POST',body:JSON.stringify({id:p.id,token:p.token,product,email:mail(),codigo:promo.value})});
     if(order.state!=='paid'||order.provider!=='promo'||order.amount!==0)throw new Error('Código não confirmado.');

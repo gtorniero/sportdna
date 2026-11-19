@@ -12,7 +12,7 @@ const product='racket-report-intl';
 const id='81f87685-15e9-42b9-8074-6f13b94597ac',token='c'.repeat(64);
 const origin='https://preview.example';
 function database(){
- const db=new DatabaseSync(':memory:');for(const m of ['0001.sql','0002_market.sql'])db.exec(readFileSync(new URL('../migrations/'+m,import.meta.url),'utf8'));
+ const db=new DatabaseSync(':memory:');for(const m of ['0001.sql','0002_market.sql','0003_discounts.sql'])db.exec(readFileSync(new URL('../migrations/'+m,import.meta.url),'utf8'));
  return {raw:db,prepare(sql){return {bind(...params){return {async first(){return db.prepare(sql).get(...params)},async run(){return db.prepare(sql).run(...params)}}}}}};
 }
 const env=(mode='test')=>({DB:database(),SITE_ORIGIN:origin,PAYMENTS_MODE:mode,RATE_SECRET:'unit-rate',STRIPE_KEY:['rk','test','unit'].join('_'),STRIPE_WEBHOOK_SECRET:'unit-secret',STRIPE_LIVE_KEY:'rk_live_unit',STRIPE_LIVE_WEBHOOK_SECRET:'live-hook'});
