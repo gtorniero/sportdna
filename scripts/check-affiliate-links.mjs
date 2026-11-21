@@ -1,5 +1,6 @@
 // Links-only maintenance through the supported integrated-browser client.
-// The customer-visible direct route is authoritative; never revive a social-profile hop.
+// Check stock on the product route. Customer CTAs must retain official affiliateUrl.
+// This inspection never certifies commission attribution or rewrites affiliateUrl.
 export async function checkBatch(tab,offers,{start=0,limit=20}={}){
  const results=[];let failures=0,cursor=start;
  const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
@@ -16,8 +17,11 @@ export async function checkBatch(tab,offers,{start=0,limit=20}={}){
    const social=/\/social\//.test(actual.pathname)||actual.hostname==='meli.la';
    const genderOK=o.gender==='male'?!/\bfeminin/.test(n):o.gender==='female'?!/\bmasculin/.test(n):true;
    const identityOK=!!saved&&(n===saved||n.includes(saved));
-   const status=!social&&samePath&&identityOK&&genderOK?'verified':'needs_review';
-   results.push({id:o.id,model:o.model,gender:o.gender,status,observedTitle:title,directRoute:!social,checkedAt:status==='verified'?new Date().toISOString():null});failures=0;
+   const snapshot=await tab.playwright.domSnapshot();
+   const unavailable=/Este produto est[áa] indispon[íi]vel|An[úu]ncio pausado|Publica[çc][ãa]o pausada|Produto esgotado/i.test(snapshot);
+   const buyable=/button \"Comprar agora/.test(snapshot);
+   const status=unavailable?'unavailable':!social&&samePath&&identityOK&&genderOK&&buyable?'verified':'needs_review';
+   results.push({id:o.id,model:o.model,gender:o.gender,status,observedTitle:title,availability:unavailable?'unavailable':buyable?'buy_button_present':'unconfirmed',directRoute:!social,checkedAt:status==='verified'?new Date().toISOString():null});failures=0;
   }catch(e){results.push({id:o.id,status:'not_verified',reason:String(e).slice(0,140)});failures++;if(failures>=2){cursor++;break}}
  }
  return {results,nextCursor:cursor,complete:cursor>=offers.length,blocked:failures>=2};
