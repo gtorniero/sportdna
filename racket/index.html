@@ -1986,13 +1986,13 @@ function cordaPool(cat){
   const P={synthetic:x=>x.t==='synthetic',multi:x=>x.t==='multi',poly:x=>x.t==='poly',poly_shaped:x=>x.t==='poly_shaped',poly_soft:x=>x.mc&&/^poly/.test(x.t),hybrid:x=>x.mc&&/^poly/.test(x.t)}[cat];
   return P?CORDAS.filter(x=>ok(x)&&P(x)):[];
 }
-/* preço do set: confirmado em página de loja, referência de busca ou esgotado (fora das 3 escolhas) */
+/* preço do set: confirmado em página de loja, referência de busca ou esgotado. A recomendação não depende de estoque nem de preço (pedido do Gui): a pessoa compra onde quiser */
 function cordaPreco(x){
   const v=x.p[0]===x.p[1]?x.p[0]:x.p[0]+' a '+x.p[1],g=x.pg?` (${x.pg.toFixed(2).replace('.',',')} mm)`:'';
-  return x.ps==='esg'?'Esgotado nas lojas consultadas':x.ps==='ref'?`cerca de R$ ${v} (referência)`:`R$ ${v}${g}`;
+  return x.ps==='esg'?`R$ ${v}${g}, esgotado nas lojas consultadas em nov/2026`:x.ps==='ref'?`cerca de R$ ${v} (referência)`:`R$ ${v}${g}`;
 }
 function cordaScore(x,cat){
-  let v=x.pop*10+(x.ps==='ok'?4:0);const macia=A.arm!=='no'||cat==='hybrid'||cat==='poly_soft'||cat==='multi';
+  let v=x.pop*10;const macia=A.arm!=='no'||cat==='hybrid'||cat==='poly_soft'||cat==='multi';
   if(x.s!=null)v+=(macia?1.5:.5)*(200-x.s)/10;
   if(x.l!=null)v+=(35-x.l)/5;
   if(x.c!=null&&A.spin==='high')v+=(x.c-5)*2;
@@ -2002,10 +2002,10 @@ function cordaScore(x,cat){
 const cordaMeio=x=>(x.p[0]+x.p[1])/2;
 function cordaPicks(st){
   if(!st||!st.cat)return [];
-  const pool=cordaPool(st.cat).filter(x=>x.ps!=='esg').map(x=>({x,v:cordaScore(x,st.cat)})).sort((a,b)=>b.v-a.v||cordaMeio(a.x)-cordaMeio(b.x));
+  const pool=cordaPool(st.cat).map(x=>({x,v:cordaScore(x,st.cat)})).sort((a,b)=>b.v-a.v||cordaMeio(a.x)-cordaMeio(b.x));
   if(!pool.length)return [];
   const rec=pool[0].x,rest=pool.slice(1).map(o=>o.x).filter(x=>x.pop>=2);
-  const eco=rest.filter(x=>x.ps==='ok'&&cordaMeio(x)<cordaMeio(rec)&&!(x.l!=null&&x.l>=50)).sort((a,b)=>cordaMeio(a)-cordaMeio(b))[0]||null;
+  const eco=rest.filter(x=>cordaMeio(x)<cordaMeio(rec)&&!(x.l!=null&&x.l>=50)).sort((a,b)=>cordaMeio(a)-cordaMeio(b))[0]||null;
   let prem=rest.filter(x=>x!==eco&&cordaMeio(x)>cordaMeio(rec)).sort((a,b)=>b.pop-a.pop||cordaMeio(b)-cordaMeio(a))[0]||null;
   /* com dor hoje, a premium é tripa natural: a corda mais macia que existe */
   if(st.cat==='multi'&&(A.arm==='now'||dorForte())){const g=CORDAS.filter(x=>x.t==='gut'&&!(window.RK_INTL&&x.br)).sort((a,b)=>b.pop-a.pop||cordaMeio(a)-cordaMeio(b))[0];if(g)prem=g}

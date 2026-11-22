@@ -45,9 +45,9 @@ A tensão segue a lógica anterior (base por tipo, com ajustes por potência, co
 - Preço do set agora tem status:
   - confirmado: 37 cordas, com página de loja e bitola;
   - referência: 21 cordas, só por busca, e o relatório mostra "cerca de R$ X (referência)";
-  - esgotado: X-One Biphase e Multifeel, fora das 3 escolhas.
+  - esgotado: X-One Biphase e Multifeel (continuam recomendáveis; o preço aparece com o aviso de esgotado).
 - Quando o set cotado é de outra bitola, o relatório mostra a bitola ao lado do preço.
-- As escolhas preferem corda com preço confirmado; a econômica exige preço confirmado.
+- A recomendação não depende de estoque nem de preço confirmado (decisão do dono): todas as marcas e modelos seguem no catálogo e nas escolhas; o preço só informa, com o status ao lado.
 - A Duramix HD (162 lb/in) não foi usada para a Tecnifibre Synthetic Gut. RPM Power: só a bitola foi confirmada.
 - Mercado Livre e Amazon não abriram: sem links de compra nesta versão.
 
