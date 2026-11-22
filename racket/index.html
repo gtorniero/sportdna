@@ -619,7 +619,14 @@ details.cmpbox[open]{background:var(--surface)}
 /* rodada 23: bloco da raquete atual e card do resultado em destaque (azul-petróleo bem claro, AA nos dois temas) */
 .curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
 .curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
-.cv-troca{color:var(--warn)}.cv-fica{color:var(--pri)}
+.vbig{margin:14px 0 4px;display:flex;flex-direction:column;gap:10px}
+.vbt{margin:0;display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;font:800 44px/1.05 'Archivo',var(--f-display);letter-spacing:-.02em}
+.vbt svg{flex:none;width:40px;height:40px}
+.vbs{margin:0;font-size:17px;font-weight:600}
+.vb-manter .vbt{background:#DDF247;color:#0B2530}
+.vb-opcoes .vbt{background:#FFC266;color:#2B1A00}
+.vb-trocar .vbt{background:#C2410C;color:#FFFFFF}
+@media (max-width:600px){.vbt{font-size:32px;padding:12px 14px;gap:10px}.vbt svg{width:30px;height:30px}.vbs{font-size:16px}}
 .evolui{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}.evolui h3{margin:0}.evolui p{margin:0}.winbox{background:var(--winbg)}.winbox .fit{font-size:62px;color:var(--pri)}
 .altt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}.altf{text-align:right}
 .altw{margin:0}.altc .affcard{margin-top:4px}
@@ -658,11 +665,17 @@ details.more[open]>summary{margin-bottom:10px}
 .pdfroot .pfit{font-size:26px!important;margin-top:0!important}.pdfroot .pc3 h3{min-height:0!important}.pdfroot .pc3{padding:10px 12px!important}.pdfroot .mini3 div{margin-top:2px!important}.pdfroot .pq{padding:8px 11px!important}.pdfroot .qrow{margin-bottom:6px!important}.pdfroot .prc{padding:7px 10px!important}
 
 /* primeira tela (nov/2026): botão principal inteiro, dois secundários lado a lado, linha do iniciante e selos */
-.cta2{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.cta2b{display:flex;gap:12px;flex-wrap:wrap}
+.cta2b{display:flex;gap:12px;flex-wrap:wrap}
+.ctamain{display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap}
+.btn-hero{font-size:21px;font-weight:800;padding:20px 34px;min-height:68px;border-radius:16px;box-shadow:0 10px 26px color-mix(in srgb,var(--ball) 45%,transparent);transition:transform .15s,box-shadow .15s}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 14px 30px color-mix(in srgb,var(--ball) 55%,transparent)}
+.ctasub{font-size:14px;font-weight:600;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.btn-hero{transition:none}.btn-hero:hover{transform:none}}
+@media (max-width:600px){.btn-hero{width:100%;font-size:19px}.ctamain{flex-direction:column;align-items:stretch;text-align:center}}
 .begin{margin:0;font-size:15px;color:var(--muted)}.begin b{color:var(--ink)}
 .trust{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .trust li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
-@media (max-width:560px){.cta2{display:grid;grid-template-columns:minmax(0,1fr)}.cta2 #start{width:100%}.cta2b{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.cta2b .btn{padding:12px 10px}}
+@media (max-width:560px){.cta2b{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.cta2b .btn{padding:12px 10px}}
 /* cartão de retomada: resultado salvo e pagamento pendente */
 .resumecard{border:2px solid var(--pri);gap:12px}
 .resumecard h2{font-size:clamp(20px,4.6vw,26px);margin:0}
@@ -702,12 +715,13 @@ details.more[open]>summary{margin-bottom:10px}
         <p class="eyebrow">Laboratório de raquetes</p>
         <h1>A raquete certa para o seu jogo e para o seu braço.</h1>
         <p class="lead">Corpo, nível e jogo cruzados com <b><span data-n="rk">183</span> raquetes medidas</b>. Você vê a prévia grátis e só paga se quiser o relatório.</p>
-        <div class="cta2">
-          <button class="btn btn-go" id="start" type="button">Descobrir minha raquete</button>
-          <div class="cta2b">
-            <button class="btn btn-ghost" id="example" type="button" aria-describedby="exNote">Ver um exemplo</button>
-            <button class="btn btn-ghost" id="duelGo" type="button" aria-label="Comparar duas raquetes">Comparar duas</button>
-          </div>
+        <div class="ctamain">
+          <button class="btn btn-go btn-hero" id="start" type="button" aria-describedby="startSub">Fazer meu teste grátis <span aria-hidden="true">→</span></button>
+          <span class="ctasub" id="startSub"><span id="nSubQ">19–28</span> perguntas · 3 minutos · sem cadastro</span>
+        </div>
+        <div class="cta2b">
+          <button class="btn btn-ghost" id="duelGo" type="button">Comparar duas raquetes</button>
+          <button class="btn btn-ghost" id="example" type="button" aria-describedby="exNote">Ver um exemplo pronto</button>
         </div>
         <p class="note sr-only" id="exNote">Relatório completo de um perfil fictício</p>
         <p class="begin"><b>Iniciante e sem raquete?</b> São <span id="nBeg">19</span> perguntas, cerca de <span id="tBeg">3</span> min. Quem já joga responde até <span id="nQ">28</span>.</p>
@@ -1121,7 +1135,7 @@ const EXAMPLE={imp:'no',age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm
 /* iniciante, sem raquete e sem dor: o caminho mais curto; tempo pela mesma conta da barra de progresso (8 s por pergunta) */
 const caminhoIniciante=()=>{const guard={...A};Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm:'no',cur:'none',lvl:'beg'});const n=Q.filter(q=>!q.if||q.if()).length;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return n};
 const contaCaminhos=()=>{const guard={...A},ns=[];for(const arm of ['no','past','now'])for(const cur of ['none','other','0'])for(const lvl of ['beg','adv']){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm,cur,lvl});ns.push(Q.filter(q=>!q.if||q.if()).length)}Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return [Math.min(...ns),Math.max(...ns)]};
-{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#tBeg').textContent=Math.max(1,Math.round(nb*8/60))}
+{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#nSubQ').textContent=nb===mx?String(nb):nb+'–'+mx;$('#tBeg').textContent=Math.max(1,Math.round(nb*8/60))}
 const NVAR=Q.length+9+7;
 /* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
    casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
@@ -1560,7 +1574,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,verdictAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight,evoluiPick};
+if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,vereditoAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight,evoluiPick};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1697,12 +1711,12 @@ function diagnosis(free=true){
   if(A.why==='broken'&&curFit.fit>=ranked[0].fit-6)extra.push('Ela ainda combina bem com você. Uma nova do mesmo modelo seria uma troca segura; a recomendação mostra se há algo melhor.');
   if(A.why==='level'&&c.ix.control<T.control-1)extra.push('Para o seu nível atual, ela entrega menos controle do que o seu jogo pede.');
   const jn=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
-  const fitHTML=free?mask(curFit.fit+'%'):curFit.fit+'%';const V=verdictAtual(curFit,ranked[0],free);
+  const fitHTML=free?mask(curFit.fit+'%'):curFit.fit+'%';const V=vereditoAtual(curFit);
   const gapTxt=gaps.map(x=>`${gl(x.k,LBL[x.k])}: ${dec(c.ix[x.k])} para um alvo de ${dec(T[x.k])}`);
   const contra=(bad.length?bad:['Nada crítico: a troca é ajuste fino']).map(x=>x.replace(/\.$/,''));
-  return `<div class="panel${free?' freecard':''}"><div class="phead"><div>${free?'<p class="freebadge">Grátis</p>':''}<p class="eyebrow">${free?'O match da sua raquete':'Diagnóstico'}</p><h3>A sua ${esc(curLabel())}</h3></div><div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} para você</span></div></div>
-  ${V?`<div class="verdict v-${V.k}"><strong>${V.t}.</strong> ${V.s}</div>`:''}
-  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Onde ela acerta</p><p>${good.length?'Entrega o que você pede em '+jn(good)+'.':(f=>V&&V.k==='fica'?`Ela está perto do seu perfil no conjunto; os pontos fortes dela são ${f}.`:`Os pontos fortes dela são ${f}, mas nenhum dos atributos que o seu jogo mais pede está no ponto.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">O que falta</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
+  return `<div class="panel${free?' freecard':''}"><div class="phead"><div>${free?'<p class="freebadge">Grátis</p>':''}<h3>Análise da sua raquete</h3><p class="muted" style="margin:2px 0 0">A sua ${esc(curLabel())}</p></div><div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} para você</span></div></div>
+  ${vereditoHTML(V)}
+  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Onde ela acerta</p><p>${good.length?'Entrega o que você pede em '+jn(good)+'.':(f=>V&&V.k==='manter'?`Ela está perto do seu perfil no conjunto; os pontos fortes dela são ${f}.`:`Os pontos fortes dela são ${f}, mas nenhum dos atributos que o seu jogo mais pede está no ponto.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">O que falta</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
   <div><p class="eyebrow" style="margin-bottom:6px">O que pesa contra</p><ul class="why">${contra.map((x,i)=>`<li>${free&&i>0?mask(x+'.'):x+'.'}</li>`).join('')}</ul></div></div>
   ${extra.length?`<p class="muted">${extra.join(' ')}</p>`:''}${curOldNote()?`<p class="note" style="margin:0">${curOldNote()}</p>`:''}${free?'<p class="note" style="margin:0">A nota da sua raquete, o que falta nela e a comparação lado a lado com a recomendada estão no relatório.</p>':''}</div>`;
 }
@@ -1967,15 +1981,11 @@ function racketHead(x){
 }
 /* rodada 23: bloco "Sua raquete atual" no topo do relatório: DNA Score, veredito em uma linha e o motivo em uma frase */
 function curBox(curFit,best){
-  const V=verdictAtual(curFit,best),gap=Math.max(0,best.fit-curFit.fit),troca=V.k==='trocar';
-  const p0=(curFit.pen||[]).slice().sort((a,b)=>b[0]-a[0])[0];
-  const pts=n=>n+(n>1?' pontos':' ponto');
-  const why=troca?`Há raquetes ${pts(gap)} acima para o seu jogo${p0?`; o que mais pesa contra ela: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1)}`:''}.`
-    :V.k==='fica'?(gap?`Ela fica a só ${pts(gap)} da 1ª colocada: trocar só muda a sensação, não o resultado.`:'Ela empata com a 1ª colocada: trocar só muda a sensação, não o resultado.')
-    :`As melhores para o seu jogo ficam até ${pts(gap)} acima: trocar é ajuste fino.`;
-  return `<section class="panel curbox" id="r-cur" aria-labelledby="h-cur"><div class="curl"><div style="min-width:0"><h2 class="eyebrow" id="h-cur">Sua raquete atual</h2><p class="rname">${esc(curLabel())}</p>
-    <p class="curv"><strong class="${troca?'cv-troca':'cv-fica'}">${troca?'Vale trocar.':'Pode continuar com ela.'}</strong> ${why}</p></div>
-    <div class="curf"><div class="fit">${curFit.fit}%</div><span class="note">DNA Score</span></div></div></section>`;
+  const V=vereditoAtual(curFit);const pts=n=>n+(n>1?' pontos':' ponto');
+  const onde=V.pos===1?'':`Ela fica em ${V.pos}º no seu ranking${V.gap?`, ${pts(V.gap)} abaixo da 1ª`:''}.`;
+  return `<section class="panel curbox" id="r-cur" aria-labelledby="h-cur"><div class="curl"><div style="min-width:0"><h2 class="eyebrow" id="h-cur">Sua raquete atual</h2><p class="rname">${esc(curLabel())}</p></div>
+    <div class="curf"><div class="fit">${curFit.fit}%</div><span class="note">DNA Score</span></div></div>
+    ${vereditoHTML(V,onde)}</section>`;
 }
 /* rodada 23: 2º e 3º lugar lado a lado: nota, preço, ficha em uma linha, 1 ou 2 motivos curtos e o mesmo botão de compra da 1ª */
 function altWhy(x,top,c){
@@ -2054,16 +2064,23 @@ function diffMao(a,b){const d=[];
   if(a.pat!==b.pat&&OPEN[a.pat]!=null&&OPEN[b.pat]!=null&&OPEN[a.pat]!==OPEN[b.pat])d.push(OPEN[b.pat]>OPEN[a.pat]?`padrão ${b.pat.replace('x','×')} mais aberto, com mais spin`:`padrão ${b.pat.replace('x','×')} mais fechado, com mais controle`);
   return d}
 const jnE=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
-/* rodada 17: veredito da raquete atual (grátis na prévia e no relatório).
-   Rodada 20 (escala 1,2): aderente com 89%+ e até 4 pontos da 1ª; ajuste fino com 82%+ e até 12 pontos, ou nada contra e 76%+; abaixo disso, trocar. */
-function verdictAtual(current,best,semNumero){
-  if(!current||!best)return null;const gap=Math.max(0,best.fit-current.fit);
-  /* na prévia grátis a nota fica borrada: o veredito não traz número (daria para deduzir a nota) */
-  if(semNumero){const v=verdictAtual(current,best);return v&&{k:v.k,t:v.t,s:{fica:'Ela já é uma das melhores para o seu jogo. Trocar só se quiser uma sensação diferente.',fino:'Há raquetes um pouco acima para o seu jogo. Vale trocar se ela já está gasta ou se você quer ganhar no que falta.',trocar:'Há raquetes bem acima dela para o seu jogo. Com a troca, você corrige o que hoje joga contra você.'}[v.k]}}
-  if(current.fit>=89&&gap<=4)return {k:'fica',t:'Sua raquete está aderente ao seu jogo',s:`Ela já é uma das melhores para você${gap?`: só ${gap} ${gap>1?'pontos':'ponto'} abaixo da 1ª colocada`:', empatada com a 1ª colocada'}. Trocar só se quiser uma sensação diferente.`};
-  /* sem nada pesando contra (só distância de perfil), não mandamos trocar: é ganho fino */
-  if((current.fit>=82&&gap<=12)||(!(current.pen||[]).some(p=>p[0]>=1)&&current.fit>=76))return {k:'fino',t:'Ela atende bem; trocar é ajuste fino',s:`Há raquetes até ${gap} pontos acima para o seu jogo. Vale trocar se ela já está gasta ou se você quer ${(current.pen||[]).some(p=>p[0]>=1)?'resolver o que pesa contra ela':'chegar mais perto do seu perfil ideal'}.`};
-  return {k:'trocar',t:'Recomendamos trocar',s:`Há raquetes ${gap} pontos acima para o seu jogo. Com a troca, você corrige o que hoje joga contra você.`};
+/* rodada 25 (pedido do Gui): veredito grande da raquete atual, grátis na prévia e no topo do bloco "Sua raquete atual" do relatório.
+   Régua: posição da atual no ranking da pessoa (entre as raquetes recomendáveis) e distância de DNA Score para a 1ª. */
+const VEREDITO={manterPos:3,manterGap:5,opcoesPos:10,opcoesGap:12};
+function vereditoAtual(cur,res=RES){
+  if(!cur||!res||!res.ranked.length)return null;
+  const best=res.ranked[0],gap=Math.max(0,best.fit-cur.fit),pos=res.ranked.filter(x=>x.fit>cur.fit).length+1;
+  const p0=(cur.pen||[]).filter(p=>p[0]>=1).sort((a,b)=>b[0]-a[0])[0];
+  if(pos===1)return {k:'manter',t:'MANTER',s:'Essa é a melhor raquete possível para o seu perfil.',pos,gap};
+  if(pos<=VEREDITO.manterPos||gap<=VEREDITO.manterGap)return {k:'manter',t:'MANTER',s:'Raquete ideal para você. Há opções um pouco melhores, mas a troca seria ajuste fino.',pos,gap};
+  if(pos<=VEREDITO.opcoesPos||gap<=VEREDITO.opcoesGap)return {k:'opcoes',t:'MANTER, MAS HÁ OPÇÕES MELHORES',
+    s:p0?`O que mais pesa contra ela: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1).replace(/\.$/,'')}.`:'Nada pesa contra ela; as melhores só ficam mais perto do seu perfil.',pos,gap};
+  return {k:'trocar',t:'TROCAR',s:'Há raquetes bem acima dela para o seu jogo. Com a troca, você corrige o que hoje joga contra você.',pos,gap};
+}
+const VICON={manter:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',opcoes:'<path d="M12 7v6M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>',trocar:'<path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/>'};
+function vereditoHTML(V,extra){
+  if(!V)return '';
+  return `<div class="vbig vb-${V.k}"><p class="vbt"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${VICON[V.k]}</svg><span>${V.t}</span></p><p class="vbs">${V.s}${extra?' '+extra:''}</p></div>`;
 }
 /* rodada 20: faixas no ranking. Até 4 pontos da 1ª: encaixe ideal (empate técnico); até 12: muito boa; depois: boa */
 const faixa=(x,best)=>{const g=best.fit-x.fit;return g<=4?['ideal','Encaixe ideal']:g<=12?['mboa','Muito boa']:['boa','Boa']};
