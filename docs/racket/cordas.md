@@ -78,3 +78,34 @@ Quantas cordas ficaram com rigidez, com notas de playtest, com preço de set e c
 LISTA (60)
 Babolat RPM Blast; Babolat RPM Rough; Babolat RPM Power; Babolat RPM Soft; Babolat Pro Hurricane; Babolat Xcel; Babolat Addiction; Babolat Synthetic Gut; Babolat Touch VS; Luxilon ALU Power; Luxilon 4G; Luxilon Element; Luxilon Big Banger Original; Luxilon Smart; Solinco Hyper-G; Solinco Hyper-G Soft; Solinco Tour Bite; Solinco Confidential; Solinco Revolution; Solinco Vanquish; Head Lynx; Head Lynx Tour; Head Hawk; Head Hawk Touch; Head Sonic Pro; Head Velocity MLT; Head Reflex MLT; Head Synthetic Gut PPS; Head RIP Control; Wilson Revolve; Wilson Revolve Spin; Wilson NXT; Wilson Sensation; Wilson Synthetic Gut Power; Wilson Natural Gut; Yonex Poly Tour Pro; Yonex Poly Tour Strike; Yonex Poly Tour Spin; Yonex Poly Tour Rev; Yonex Rexis; Tecnifibre Black Code; Tecnifibre Razor Code; Tecnifibre Ice Code; Tecnifibre Red Code; Tecnifibre X-One Biphase; Tecnifibre NRG2; Tecnifibre Multifeel; Tecnifibre Synthetic Gut; Kirschbaum Pro Line II; Kirschbaum Max Power; Signum Pro Poly Plasma; Signum Pro Firestorm; Polyfibre Black Venom; MSV Focus Hex; Topspin Cyber Blue; Topspin Cyber Flash; Prince Synthetic Gut Duraflex; Prince Premier Touch; Gamma Synthetic Gut; Gamma Live Wire
 ```
+
+## Prompt da 2ª rodada (laboratório que faltou e preços de todas)
+
+```text
+Segunda rodada da base de cordas do SPORT DNA. Faça tudo numa resposta só.
+
+REGRAS
+1. Nunca invente número. Todo dado vem de uma página que você abriu, com a URL na linha. O que não achar fica vazio.
+2. Responda só com os 2 blocos CSV abaixo (separador ponto e vírgula, decimais com ponto) e um resumo curto no fim.
+
+BLOCO 1: LABORATÓRIO QUE FALTOU (2 cordas)
+Fonte: Tennis Warehouse University (twu.tennis-warehouse.com, String Selector / reporter2.php) e páginas de produto e de review da tennis-warehouse.com. Bitola 1,30 mm (16) para a sintética; para a RPM Power, a que existir (diga qual).
+Colunas: marca;modelo;bitola_mm;rigidez_lbin;perda_tensao_pct;spin_potencial;nota_conforto;nota_controle;nota_potencia;nota_spin;nota_durabilidade;url_laboratorio;obs
+Cordas: Babolat RPM Power; Tecnifibre Synthetic Gut
+(Se a Tecnifibre Synthetic Gut não existir no TWU, procure a "Tecnifibre Synthetic Gut Duramix" ou a sintética da Tecnifibre mais próxima e diga em obs.)
+
+BLOCO 2: PREÇOS NO BRASIL, TODAS AS 60 CORDAS
+Lojas: Mercado Livre (só lojas oficiais ou com reputação verde), Amazon.com.br, ProSpin, iTenis, Spin Top, Empório do Tenista, Casa da Raquete, Decathlon, Centauro. Procure em pelo menos 3 lojas por corda.
+- Set = 12 m (ou 12,2 m), na bitola mais comum: 1,25 mm para poliéster, 1,30 mm para multifilamento, sintética e tripa. Se só achar outra bitola, use e diga em obs.
+- Rolo = 200 m. Se o rolo tiver outro tamanho, diga em obs.
+- Preço à vista (Pix) quando a loja mostrar. Marque se está esgotado e ignore anúncio claramente fora da curva (diga em obs).
+- set_min e set_max = menor e maior preço entre as lojas onde achou. Mesmo para rolo.
+Colunas: marca;modelo;set_min_brl;set_max_brl;n_lojas_set;rolo_min_brl;rolo_max_brl;n_lojas_rolo;loja_mais_barata_set;url_mais_barata_set;url_outra_loja;data;obs
+
+Lista (60): Babolat RPM Blast; Babolat RPM Rough; Babolat RPM Power; Babolat RPM Soft; Babolat Pro Hurricane; Babolat Xcel; Babolat Addiction; Babolat Synthetic Gut; Babolat Touch VS; Luxilon ALU Power; Luxilon 4G; Luxilon Element; Luxilon Big Banger Original; Luxilon Smart; Solinco Hyper-G; Solinco Hyper-G Soft; Solinco Tour Bite; Solinco Confidential; Solinco Revolution; Solinco Vanquish; Head Lynx; Head Lynx Tour; Head Hawk; Head Hawk Touch; Head Sonic Pro; Head Velocity MLT; Head Reflex MLT; Head Synthetic Gut PPS; Head RIP Control; Wilson Revolve; Wilson Revolve Spin; Wilson NXT; Wilson Sensation; Wilson Synthetic Gut Power; Wilson Natural Gut; Yonex Poly Tour Pro; Yonex Poly Tour Strike; Yonex Poly Tour Spin; Yonex Poly Tour Rev; Yonex Rexis; Tecnifibre Black Code; Tecnifibre Razor Code; Tecnifibre Ice Code; Tecnifibre Red Code; Tecnifibre X-One Biphase; Tecnifibre NRG2; Tecnifibre Multifeel; Tecnifibre Synthetic Gut; Kirschbaum Pro Line II; Kirschbaum Max Power; Signum Pro Poly Plasma; Signum Pro Firestorm; Polyfibre Black Venom; MSV Focus Hex; Topspin Cyber Blue; Topspin Cyber Flash; Prince Synthetic Gut Duraflex; Prince Premier Touch; Gamma Synthetic Gut; Gamma Live Wire
+
+Prioridade, se o tempo acabar: primeiro estas 27, que estão sem preço de loja: Babolat Pro Hurricane; Babolat Addiction; Babolat Synthetic Gut; Luxilon Element; Luxilon Big Banger Original; Luxilon Smart; Solinco Vanquish; Head Sonic Pro; Head Velocity MLT; Head Synthetic Gut PPS; Wilson Revolve; Wilson Revolve Spin; Wilson Natural Gut; Yonex Poly Tour Strike; Yonex Poly Tour Rev; Tecnifibre X-One Biphase; Tecnifibre NRG2; Tecnifibre Multifeel; Tecnifibre Synthetic Gut; Kirschbaum Pro Line II; Signum Pro Firestorm; MSV Focus Hex; Topspin Cyber Blue; Topspin Cyber Flash; Prince Synthetic Gut Duraflex; Prince Premier Touch; Gamma Synthetic Gut.
+
+RESUMO NO FIM (até 6 linhas)
+Quantas cordas ficaram com preço de set em 3 lojas ou mais, quantas em 1 ou 2, quantas sem preço; quais lojas não abriram.
+```
