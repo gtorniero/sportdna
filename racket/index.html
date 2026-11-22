@@ -1951,11 +1951,18 @@ const QUADRO_MEDIO={pat:'16x19',ra:65,head:100};
 function stringSetup(r){
   let s,base;const sensitive=A.arm==='now'||(A.arm!=='no'&&(J('wrist')||J('elbow')));
   const sev=dorForte();
-  if(A.arm==='now'||sev){s='Multifilamento 1,30 mm';base=sev?48:50}
-  else if(A.lvl==='beg'){s='Sintético (nylon) 1,30 mm';base=50}
-  else if(sensitive){s='Híbrido: poliéster macio 1,25 mm nas verticais e multifilamento 1,30 mm nas horizontais';base=49}
-  else if(A.spin==='high'&&(A.lvl==='adv'||A.lvl==='adv_int')){s='Poliéster facetado 1,25 mm';base=49}
-  else {s='Poliéster redondo 1,25 mm';base=48}
+  /* rodada 27 (docs/racket/cordas.md): o tipo segue nível, swing, topspin, dor e idade. Antes, o intermediário caía no poliéster por padrão;
+     as fontes indicam multifilamento ou híbrido até o 4.0 e poliéster completo só com swing longo e topspin, sem dor, a partir de ~16 anos. */
+  const age=+A.age||35,HIB='Híbrido: poliéster macio 1,25 mm nas verticais e multifilamento 1,30 mm nas horizontais',MULTI='Multifilamento 1,30 mm';
+  let cat;
+  if(A.arm==='now'||sev){s=MULTI;cat='multi';base=sev?48:50}
+  else if(A.lvl==='beg'||age<14){s='Sintético (nylon) 1,30 mm';cat='synthetic';base=50}
+  else if(sensitive||A.arm==='past'||age>=60){if(A.lvl==='adv'||A.lvl==='adv_int'){s=HIB;cat='hybrid';base=49}else{s=MULTI;cat='multi';base=50}}
+  else if(A.lvl==='int'){if(A.spin==='high'&&A.swing==='long'){s=HIB;cat='hybrid';base=49}else{s=MULTI;cat='multi';base=50}}
+  else if(age<16||(A.lvl==='adv_int'&&!(A.swing==='long'&&A.spin!=='low'))){s=HIB;cat='hybrid';base=49}
+  else if(A.lvl==='adv_int'){s='Poliéster macio 1,25 mm';cat='poly_soft';base=48}
+  else if(A.spin==='high'){s='Poliéster facetado 1,25 mm';cat='poly_shaped';base=49}
+  else {s='Poliéster redondo 1,25 mm';cat='poly';base=48}
   const want=wants();const steps=[['Base para a corda indicada e o seu perfil',base]];const adj=(c,v,t)=>{if(c){base+=v;steps.push([t,v])}};
   adj(want.includes('power'),-2,'Você quer mais potência');adj(want.includes('control')&&A.lvl!=='beg',2,'Você quer mais controle');adj(r.pat==='18x20',1,'Padrão fechado 18×20');adj(r.ra>=68&&A.arm!=='no',-1,'Quadro rígido com histórico de dor');adj(A.opp==='heavy',1,'Bola pesada dos adversários');adj(A.swing==='short'&&!want.includes('power'),-1,'Swing curto: corda solta ajuda a bola sair');
   if(false)base-=2;
@@ -1965,7 +1972,7 @@ function stringSetup(r){
   const cur=A.tens&&A.tens!=='?'?+A.tens:null;let vs='';
   if(cur){const d=base-cur;vs=Math.abs(d)<=2?`Você usa cerca de ${cur} lb: está perto do ideal.`:d<0?`Você usa cerca de ${cur} lb: ${-d} lb acima do recomendado. Baixar a tensão deve dar mais profundidade e conforto${A.arm!=='no'?' e aliviar o braço':''}.`:`Você usa cerca de ${cur} lb: ${d} lb abaixo do recomendado. Subir a tensão deve dar mais controle.`}
   const rs=A.restr==='zero'?'Corda nunca trocada é corda morta: o poliéster perde tensão nas primeiras semanas e fica duro como arame. Isso tira controle e manda vibração direto para o braço. Antes de qualquer coisa, troque a corda, mesmo que ela nunca tenha arrebentado.':A.restr==='never'||A.restr==='6m'?(/oli/.test(s)?'Poliéster perde tensão e endurece em poucas semanas. Trocando só a cada 6 meses ou mais, a corda fica morta e rígida, o que tira controle e castiga o braço.':'Corda velha perde elasticidade. Mesmo sem arrebentar, troque no prazo indicado.'):'';
-  return {s,lb:[base-1,base+1],kg:[kg(base-1),kg(base+1)],swap,steps,base,vs,rs};
+  return {s,cat,lb:[base-1,base+1],kg:[kg(base-1),kg(base+1)],swap,steps,base,vs,rs};
 }
 /* motivo da tensão em palavras, sem a conta ajuste por ajuste */
 function tensWhy(st){const x=st.steps.slice(1).map(s=>s[0].charAt(0).toLowerCase()+s[0].slice(1));return 'Faixa pensada para a corda indicada e o seu perfil'+(x.length?', considerando também: '+x.join('; '):'')+'.'}
@@ -2242,7 +2249,7 @@ function saveBox(){
 /* ---------- Relatório PDF A4 ---------- */
 const HEX={'--bg':'#FFFFFF','--surface':'#FFFFFF','--ink':'#0B2530','--muted':'#4A6570','--line':'#CFDEE2','--pri':'#0E4D64','--pri-ink':'#FFFFFF','--ball':'#DDF247','--ball-ink':'#0B2530','--alt':'#5C6B00','--warn':'#8F5200','--soft':'#DCEBEF','--deep':'#0A3A4C','--cur':'#E07A1F'};
 const hexify=s=>s.replace(/var\((--[a-z-]+)\)/g,(m,k)=>HEX[k]||m);
-const STR_EX=s=>/Multifilamento/.test(s)?'Ex.: Wilson NXT, Babolat Xcel, Tecnifibre X-One Biphase':/Sintético/.test(s)?'Ex.: Prince Synthetic Gut, Wilson Synthetic Gut Power':/Híbrido/.test(s)?'Ex.: Luxilon Element ou Solinco Hyper-G Soft + Wilson NXT':/facetado/.test(s)?'Ex.: Babolat RPM Blast, Solinco Hyper-G':'Ex.: Luxilon ALU Power, Yonex Poly Tour Pro';
+const STR_EX=s=>/Multifilamento/.test(s)?'Ex.: Wilson NXT, Babolat Xcel, Tecnifibre X-One Biphase':/Sintético/.test(s)?'Ex.: Prince Synthetic Gut, Wilson Synthetic Gut Power':/Híbrido/.test(s)?'Ex.: Luxilon Element ou Solinco Hyper-G Soft + Wilson NXT':/facetado/.test(s)?'Ex.: Babolat RPM Blast, Solinco Hyper-G':/macio/.test(s)?'Ex.: Solinco Hyper-G Soft, Luxilon Element':'Ex.: Luxilon ALU Power, Yonex Poly Tour Pro';
 function loadLib(src,test){return new Promise((ok,no)=>{if(test())return ok();const s=document.createElement('script');s.src=src;s.onload=()=>test()?ok():no(new Error('lib'));s.onerror=()=>no(new Error('lib'));document.head.appendChild(s)})}
 function quotesFor(r,n){return (REVQ[r.id]||[]).slice(0,n)}
 function qCard(q,big){const [src,who,lv,sc,gen,t]=q;return `<div class="pq${big?' big':''}"><p class="pqt">“${esc(t)}”</p><p class="pqm"><b>${esc(who)}${lv?' · '+esc(lv):''}</b>${sc?` <span class="pqs">${dec(sc)}/10</span>`:''}<br>${esc(src)}${gen?' · '+esc(gen):''}</p></div>`}
