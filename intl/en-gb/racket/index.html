@@ -2103,7 +2103,7 @@ function vereditoAtual(cur,res=RES){
   if(pos===1)return {k:'match',t:'PERFECT MATCH',s:'This is the best possible racket for your profile.',pos,gap};
   if(pos<=VEREDITO.opcoesPos||gap<=VEREDITO.opcoesGap)return {k:'opcoes',t:'KEEP IT, BUT THERE ARE BETTER OPTIONS',
     s:'It\'s among the best for your game, but some rackets fit you a little better.'+(p0?` What counts against it most: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1).replace(/\.$/,'')}.`:''),pos,gap};
-  return {k:'trocar',t:'SWITCH',s:'There are rackets well ahead of it for your game. Switching fixes what\'s working against you today.',pos,gap};
+  return {k:'trocar',t:'SWITCH',s:gap>12?'There are rackets well ahead of it for your game. Switching fixes what\'s working against you today.':'Some rackets fit your game better. Switching helps with what\'s working against you today.',pos,gap};
 }
 const VICON={match:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',opcoes:'<path d="M12 7v6M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>',trocar:'<path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/>'};
 function vereditoHTML(V,extra){

@@ -2075,7 +2075,7 @@ function vereditoAtual(cur,res=RES){
   if(pos===1)return {k:'match',t:'MATCH PERFEITO',s:'Essa é a melhor raquete possível para o seu perfil.',pos,gap};
   if(pos<=VEREDITO.opcoesPos||gap<=VEREDITO.opcoesGap)return {k:'opcoes',t:'MANTER, MAS HÁ OPÇÕES MELHORES',
     s:'Ela está entre as melhores para o seu jogo, mas há raquetes que encaixam um pouco melhor.'+(p0?` O que mais pesa contra ela: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1).replace(/\.$/,'')}.`:''),pos,gap};
-  return {k:'trocar',t:'TROCAR',s:'Há raquetes bem acima dela para o seu jogo. Com a troca, você corrige o que hoje joga contra você.',pos,gap};
+  return {k:'trocar',t:'TROCAR',s:gap>12?'Há raquetes bem acima dela para o seu jogo. Com a troca, você corrige o que hoje joga contra você.':'Há raquetes que encaixam melhor no seu jogo. Com a troca, você ganha no que hoje joga contra você.',pos,gap};
 }
 const VICON={match:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',opcoes:'<path d="M12 7v6M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>',trocar:'<path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/>'};
 function vereditoHTML(V,extra){
