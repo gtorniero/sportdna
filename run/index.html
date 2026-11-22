@@ -126,6 +126,12 @@ p{margin:0}
 .tag{font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted)}
 .btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:14px 22px;cursor:pointer;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .btn-go{background:var(--ball);color:var(--ball-ink)}
+.ctamain{display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap}
+.btn-hero{font-size:21px;font-weight:800;padding:20px 34px;min-height:68px;border-radius:16px;box-shadow:0 10px 26px color-mix(in srgb,var(--ball) 45%,transparent);transition:transform .15s,box-shadow .15s}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 14px 30px color-mix(in srgb,var(--ball) 55%,transparent)}
+.ctasub{font-size:14px;font-weight:600;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.btn-hero{transition:none}.btn-hero:hover{transform:none}}
+@media (max-width:600px){.btn-hero{width:100%;font-size:19px}.ctamain{flex-direction:column;align-items:stretch;text-align:center}}
 .btn-go:hover{filter:brightness(.95)}
 .btn-pri{background:var(--pri);color:var(--pri-ink)}
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
@@ -460,12 +466,15 @@ details.rk:not([open]){gap:0}
         <p class="eyebrow">Análise técnica independente</p>
         <h1>O tênis de corrida certo para o seu corpo e o seu treino.</h1>
         <p class="lead">Responda 19 perguntas sobre seu corpo, sua corrida e seu objetivo. Receba o relatório completo gratuitamente, sem cadastro.</p>
+        <div class="ctamain">
+          <button class="btn btn-go btn-hero" id="start" type="button" aria-describedby="startSub">Fazer meu teste grátis <span aria-hidden="true">→</span></button>
+          <span class="ctasub" id="startSub">19 perguntas · 3 minutos · sem cadastro</span>
+        </div>
         <div class="row">
-          <button class="btn btn-go" id="start" type="button">Descobrir meu tênis grátis</button>
           <button class="btn btn-ghost" id="duelGo" type="button">Comparar dois tênis</button>
           <button class="btn btn-ghost" id="example" type="button">Ver um exemplo pronto</button>
         </div>
-        <p class="note">Grátis · 3 minutos · sem cadastro. No comparador, você escolhe dois modelos e vê specs, preço e diferenças lado a lado.</p>
+        <p class="note">No comparador, você escolhe dois modelos e vê specs, preço e diferenças lado a lado.</p>
       </div>
       <div class="herocol">
       <div id="cardHome" class="homecard" aria-label="Exemplo dos cards: perfil de corredor e tênis com o DNA"></div>
