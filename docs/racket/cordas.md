@@ -45,14 +45,34 @@ A tensão segue a lógica anterior (base por tipo, com ajustes por potência, co
 4. Revisão de um professor ou encordoador (casos reais: o que o aluno usa e quanto paga).
 5. Teste T29 em `racket/tools/regressao.mjs` cobre o tipo por perfil; ampliar com casos reais.
 
-## Briefing para completar os dados (GPT ou outra sessão com acesso à Tennis Warehouse)
-Cole o texto abaixo:
+## Prompt para completar os dados (GPT ou outra sessão com acesso à Tennis Warehouse)
+Um prompt só, numa rodada. O CSV que volta entra em `docs/racket/dados/cordas.json` (campos `lab`, `set_brl`, `rolo_brl`, `pros`) e depois roda `node racket/tools/cordas.mjs && node racket/tools/i18n/build.mjs`.
 
-> Preciso de dados de laboratório de cordas de tênis para um recomendador. Regra: nunca invente número; todo número vem de uma página que você leu, com a URL; o que não achar fica vazio.
-> Fonte principal: Tennis Warehouse University (twu.tennis-warehouse.com), String Selector / String Performance Database, e páginas de produto e comparação da tennis-warehouse.com que mostram "TWU Stiffness" e "Tension Loss". Secundária: notas de playtest da Tennis Warehouse (0 a 100).
-> Para cada corda da lista (arquivo docs/racket/dados/cordas.json, campo marca + modelo), devolva uma tabela CSV com as colunas:
-> marca, modelo, bitola_testada_mm, rigidez_lbin, perda_tensao_pct, spin_potencial_ou_cof, energy_return_pct, nota_conforto, nota_controle, nota_potencia, nota_spin, nota_durabilidade, nota_tensao, url_fonte
-> Se o TWU tiver mais de uma bitola, use a de 1,25 mm (17) para poliéster e 1,30 mm (16) para multi e sintético, e diga qual usou.
-> No fim, diga quantas cordas ficaram sem dado e por quê.
+```text
+Você vai montar uma base de dados de cordas de tênis para um site brasileiro que recomenda raquete e corda (SPORT DNA). Faça tudo numa resposta só, para as 60 cordas da lista no fim.
 
-O CSV entra no campo `lab` de cada corda em `docs/racket/dados/cordas.json`.
+REGRAS
+1. Nunca invente número nem nome. Todo dado vem de uma página que você abriu, e a URL vai na linha. O que não achar fica vazio.
+2. Uma linha por corda, na ordem da lista, mesmo que fique quase vazia.
+3. Responda só com um bloco CSV (separador ponto e vírgula, decimais com ponto), seguido de um resumo curto.
+
+FONTES
+- Laboratório: Tennis Warehouse University (twu.tennis-warehouse.com: String Selector / String Performance Database) e as páginas de produto e de comparação da tennis-warehouse.com que trazem "TWU Stiffness", "Tension Loss" e "Spin Potential". Use a bitola 1,25 mm (17) para poliéster e 1,30 mm (16) para multifilamento, sintética e tripa; se só houver outra, use-a e informe em bitola_mm.
+- Notas de playtest: reviews de cordas da Tennis Warehouse (0 a 100).
+- Preços no Brasil, em reais, lidos hoje: Mercado Livre, Amazon.com.br, ProSpin, iTenis, Spin Top, Empório do Tenista, Casa da Raquete, Decathlon. Set = 12 m (12,2 m). Rolo = 200 m (se o rolo tiver outro tamanho, diga em obs). Pegue o menor e o maior preço que encontrar entre lojas confiáveis (ignore anúncio claramente fora da curva e diga em obs).
+- Uso no circuito: jogadores profissionais (ATP/WTA, top 100 atual ou campeões de Grand Slam) que usam a corda, só com fonte (site do fabricante, Tennis Warehouse "What the pros use", stringers de torneio, matérias). Até 3 nomes.
+
+COLUNAS (nesta ordem)
+marca;modelo;bitola_mm;rigidez_lbin;perda_tensao_pct;spin_potencial;nota_conforto;nota_controle;nota_potencia;nota_spin;nota_durabilidade;nota_manter_tensao;url_laboratorio;set_min_brl;set_max_brl;rolo_min_brl;rolo_max_brl;lojas;url_precos;data_precos;pros;url_pros;obs
+
+- url_precos: até 2 URLs, separadas por espaço.
+- lojas: nomes separados por vírgula.
+- data_precos: AAAA-MM-DD.
+- pros: nomes separados por vírgula.
+
+RESUMO NO FIM (até 8 linhas)
+Quantas cordas ficaram com rigidez, com notas de playtest, com preço de set e com pro; quais fontes não abriram; qualquer dúvida importante.
+
+LISTA (60)
+Babolat RPM Blast; Babolat RPM Rough; Babolat RPM Power; Babolat RPM Soft; Babolat Pro Hurricane; Babolat Xcel; Babolat Addiction; Babolat Synthetic Gut; Babolat Touch VS; Luxilon ALU Power; Luxilon 4G; Luxilon Element; Luxilon Big Banger Original; Luxilon Smart; Solinco Hyper-G; Solinco Hyper-G Soft; Solinco Tour Bite; Solinco Confidential; Solinco Revolution; Solinco Vanquish; Head Lynx; Head Lynx Tour; Head Hawk; Head Hawk Touch; Head Sonic Pro; Head Velocity MLT; Head Reflex MLT; Head Synthetic Gut PPS; Head RIP Control; Wilson Revolve; Wilson Revolve Spin; Wilson NXT; Wilson Sensation; Wilson Synthetic Gut Power; Wilson Natural Gut; Yonex Poly Tour Pro; Yonex Poly Tour Strike; Yonex Poly Tour Spin; Yonex Poly Tour Rev; Yonex Rexis; Tecnifibre Black Code; Tecnifibre Razor Code; Tecnifibre Ice Code; Tecnifibre Red Code; Tecnifibre X-One Biphase; Tecnifibre NRG2; Tecnifibre Multifeel; Tecnifibre Synthetic Gut; Kirschbaum Pro Line II; Kirschbaum Max Power; Signum Pro Poly Plasma; Signum Pro Firestorm; Polyfibre Black Venom; MSV Focus Hex; Topspin Cyber Blue; Topspin Cyber Flash; Prince Synthetic Gut Duraflex; Prince Premier Touch; Gamma Synthetic Gut; Gamma Live Wire
+```

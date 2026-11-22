@@ -601,6 +601,7 @@ details.cmpbox[open]{background:var(--surface)}
 .curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
 .curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
 .cordal{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.cordamais{margin-top:14px}.cordamais summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;gap:8px}.cordamais summary::after{content:"▾";font-size:14px}.cordamais[open] summary::after{content:"▴"}.cordamais ul{list-style:none;margin:6px 0 0;padding:0;columns:2 260px;column-gap:24px}.cordamais li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);break-inside:avoid}
 .vbig{margin:14px 0 4px;display:flex;flex-direction:column;gap:10px}
 .vbt{margin:0;display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;font:800 44px/1.05 'Archivo',var(--f-display);letter-spacing:-.02em}
 .vbt svg{flex:none;width:40px;height:40px}
@@ -2052,6 +2053,7 @@ function cordaBox(st){
   return `<section class="panel" id="r-corda" aria-labelledby="h-corda"><h2 class="sec" id="h-corda">Strings for your game</h2>
     <p class="muted" style="margin-top:-8px">Recommended type: <strong>${st.s}</strong>, at ${st.lb[0]} to ${st.lb[1]} lb.${cruz?` Mains: one of these soft polyesters; crosses: a multifilament such as ${esc(cruz.n)}.`:''}</p>
     <div class="altl cordal">${picks.map(o=>`<article class="altc"><p class="eyebrow">${L[o.k]}</p><h3>${esc(o.x.n)}</h3>${intl?'':`<p class="note" style="margin:0">12 m set: R$ ${o.x.p[0]===o.x.p[1]?o.x.p[0]:o.x.p[0]+' a '+o.x.p[1]}</p>`}<ul class="why altw">${cordaPorque(o,st).map(t=>`<li>${t}</li>`).join('')}</ul></article>`).join('')}</div>
+    ${(L2=>L2.length>3?`<details class="cordamais"><summary>See all ${L2.length} strings of this type</summary><ul>${L2.map(x=>`<li><span>${esc(x.n)}</span>${intl?'':`<span class="note">R$ ${x.p[0]===x.p[1]?x.p[0]:x.p[0]+' a '+x.p[1]}</span>`}</li>`).join('')}</ul></details>`:'')(cordaPool(st.cat).sort((a,b)=>b.pop-a.pop||a.n.localeCompare(b.n)))}
     <p class="note">${intl?'Availability and prices vary by store. ':'Reference prices from online stores in Brazil (Nov 2026). Stringing usually costs R$ 40 to 85 extra. '}No brand pays to be listed.</p></section>`;
 }
 /* motivo da tensão em palavras, sem a conta ajuste por ajuste */
