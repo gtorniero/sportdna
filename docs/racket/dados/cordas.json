@@ -1,0 +1,4016 @@
+{
+ "versao": "2026-11-22",
+ "como_ler": "Preços: referências de lojas online no Brasil (Mercado Livre, Amazon, lojas especializadas), lidos em resumos de busca em 22/11/2026; conferir antes de publicar valores fechados. Tipo e formato: classificação de produto (poliéster redondo ou facetado, multifilamento, sintético, tripa). macio_fabricante: o próprio fabricante posiciona como poliéster macio (nome ou descrição); trocar pela rigidez TWU quando os dados de laboratório chegarem. lab: dados da Tennis Warehouse University (rigidez lb/in, perda de tensão %, spin potencial, notas de playtest 0-100), coletados via GPT em 22/11/2026 com URL; arquivo bruto em docs/racket/cordas/gpt-2026-11-22.csv. Preços: quando há preco_fonte \"página da loja\", vêm do GPT com URL; senão, do resumo de busca. pros: jogadores que usam ou usaram, com fonte em url_pros. Rodada 2 (docs/racket/cordas/rodada2-2026-11-22): preço de set por página de loja com bitola (bitola_set_mm); preco_status = confirmado (página de loja), referencia (só resumo de busca) ou esgotado (fora das ofertas). Duramix HD não substitui a Tecnifibre Synthetic Gut (ver LEIA-ME). Mercado Livre e Amazon não abriram: sem links de compra.",
+ "mao_de_obra_brl": {
+  "min": 40,
+  "max": 85,
+  "sources": [
+   "https://www.itenis.com.br/encordoamento-de-raquete-28m-e3-a3o-de-obra-29-corda-cliente-serv-mo.html",
+   "https://www.spintop.com.br/encordoamento",
+   "https://joguetennis.com.br/encordoamento/"
+  ],
+  "notes": "iTenis R$40 (R$36 Pix), Spin Top R$50 (R$47,50 Pix), Jogue Tennis (Recife) R$85 + R$35 busca/entrega opcional. Jogue Tennis vende corda cortada do rolo por raquete em faixas Game (a partir de R$35), Set (R$55) e Match (R$75+), ex.: Poly Plasma R$85, RPM Dual R$80, Element R$160. iTenis tem item separado 'corda loja' vs 'corda cliente'. Página da Jogue Tennis tinha ~448 dias segundo o buscador."
+ },
+ "cordas": [
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Blast",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    129.9,
+    129.9
+   ],
+   "rolo_brl": [
+    1709.91,
+    1999.9
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 233.7,
+    "perda_tensao_pct": 33.3,
+    "spin_potencial": 4.6,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 59.0,
+     "controle": 89.0,
+     "potencia": 52.0,
+     "spin": 90.0,
+     "durabilidade": 84.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.itenis.com.br/produto/corda-babolat-rpm-blast-17-1-25mm-set-12-m-preto-547"
+   ],
+   "obs": "Set: Amazon R$119 (1.30), ProSpin R$129,90, ML de R$93,18 a R$139,90. Rolo 200 m: ML ~R$1.199, Decathlon R$1.555,44 (1.30) a R$2.099,90 (1.25), Centauro R$1.999,90; Magalu R$2.099,90 (via Buscapé/Zoom). Jogue Tennis vende set montado.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Rafael Nadal"
+   ],
+   "url_pros": "https://www.babolat.com/us/rpm-blast-12m/3324921176437.html",
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/Learning_Center/string_reviews/BABRPMreview.html?pcode=BRPMB16 | Notas 0-10 convertidas para 0-100 | Playtest 1.30 mm | PIX | Uso profissional histórico",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      109.9,
+      109.9
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/babolat?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     129.9,
+     129.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1709.91,
+     1999.9
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.itenis.com.br/produto/corda-babolat-rpm-blast-17-1-25mm-set-12-m-preto-547"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-babolat-rpm-blast-17-1-25mm-laranja-rolo-com-200-metros | Rolo iTenis https://www.itenis.com.br/produto/rolo-de-corda-babolat-rpm-blast-17-1-25-rolo-com-200-metros-1811 | Sets ProSpin excluídos por descrição citando Rough | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Rough",
+   "tipo": "poly_shaped",
+   "formato": "textured",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    99.9,
+    129.9
+   ],
+   "rolo_brl": [
+    1799.91,
+    1799.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 196.0,
+    "perda_tensao_pct": 35.7,
+    "spin_potencial": 9.9,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 66.0,
+     "controle": 65.0,
+     "potencia": 62.0,
+     "spin": 90.0,
+     "durabilidade": 79.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-babolat-rpm-blast-rough-17l-1-25mm-set-individual-vermelho",
+    "https://www.itenis.com.br/produto/corda-babolat-rpm-rough-17-1-25mm-set-12-m-549"
+   ],
+   "obs": "Rolo: Netshoes R$1.299 (cartão N Card) / R$1.799 cheio. Vendido como 'RPM Blast Rough'.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "TWU: RPM Blast Rough | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBR3review.html | Playtest 1.30 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      99.9,
+      99.9
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/babolat?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     99.9,
+     129.9
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     1799.91,
+     1799.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-babolat-rpm-blast-rough-17l-1-25mm-set-individual-vermelho",
+     "https://www.itenis.com.br/produto/corda-babolat-rpm-rough-17-1-25mm-set-12-m-549"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-babolat-rpm-blast-rough-17l-1-25mm-amarela-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Power",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    89.91,
+    129.9
+   ],
+   "rolo_brl": [
+    1799.9,
+    1799.9
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_potencial": null,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": null,
+    "url_produto_r2": "https://www.tennis-warehouse.com/Babolat_RPM_Power_17_125_String/descpageACBAB-RPMPW17.html"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/babolat-rpm-power-azul-130/",
+    "https://www.itenis.com.br/produto/corda-babolat-rpm-power-16-1-30mm-set-12-m-1852"
+   ],
+   "obs": "Poucos anúncios; rolo não encontrado.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Dominic Thiem"
+   ],
+   "url_pros": "https://www.babolat.com/us/news-articles-blog-thiem-retirement-2024/thiem-retirement-2024.html?section=news",
+   "obs_gpt": "PIX | Uso profissional histórico",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      89.91,
+      89.91
+     ],
+     "fontes": [
+      "https://emporiodotenista.com.br/produto/babolat-rpm-power-azul-130/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     89.91,
+     129.9
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     1799.9,
+     1799.9
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/babolat-rpm-power-azul-130/",
+     "https://www.itenis.com.br/produto/corda-babolat-rpm-power-16-1-30mm-set-12-m-1852"
+    ],
+    "obs": "set 1.3mm | rolo 1.25mm | Rolo iTenis https://www.itenis.com.br/produto/rolo-de-corda-babolat-rpm-power-17-1-25-rolo-com-200m-1812 | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Soft",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    89.91,
+    89.91
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 154.9,
+    "perda_tensao_pct": 18.5,
+    "spin_potencial": 5.9,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 88.0,
+     "controle": 74.0,
+     "potencia": 84.0,
+     "spin": 73.0,
+     "durabilidade": 75.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/babolat-rpm-soft-125/"
+   ],
+   "obs": "Rolo não encontrado.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Poliamida; não é poliéster | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/babolat_rpm_soft.html?pcode=RPMS16R | Preço set: 1.25 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      89.91,
+      89.91
+     ],
+     "fontes": [
+      "https://emporiodotenista.com.br/produto/babolat-rpm-soft-125/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     89.91,
+     89.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/babolat-rpm-soft-125/"
+    ],
+    "obs": "set 1.25mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Pro Hurricane",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    49.9,
+    49.9
+   ],
+   "rolo_brl": [
+    514.45,
+    799.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Netshoes",
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 192.6,
+    "perda_tensao_pct": 42.0,
+    "spin_potencial": 3.1,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.netshoes.com.br/p/corda-babolat-pro-hurricane-tour-17l-125mm-inter-preta-set-individual-preto-2DC-0226-006",
+    "https://www.netshoes.com.br/corda-babolat-pro-hurricane-tour-17-125mm-12m-pack-com-17-sets-preto-2DC-0720-006",
+    "https://www.amazon.com.br/Babolat-Hurricane-17g-1-Molinete-cord%C3%A3o/dp/B0037E9SR2"
+   ],
+   "obs": "Em geral aparece como Pro Hurricane Tour. Set Netshoes R$49,90. 'Rolo' = pack 17 sets (204 m) R$799,90 (Amazon/U-Tennis, Netshoes); ML rolo 120 m R$514,45. Não confundir com RPM Hurricane (rolo 200 m R$1.369,75 Amazon, R$1.399,90 Decathlon).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Xcel",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    170.91,
+    170.91
+   ],
+   "rolo_brl": [
+    2339.91,
+    2339.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 150.9,
+    "perda_tensao_pct": 18.9,
+    "spin_potencial": 3.0,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 86.0,
+     "controle": 73.0,
+     "potencia": 82.0,
+     "spin": 70.0,
+     "durabilidade": 64.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-babolat-xcel-16l-1.30mm-champanhe-set-individual"
+   ],
+   "obs": "Amazon R$167,22 é importado com taxas incluídas; Decathlon R$249,90.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/BXCL16review.html | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      170.91,
+      170.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/babolat?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     170.91,
+     170.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     2339.91,
+     2339.91
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-babolat-xcel-16l-1.30mm-champanhe-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-babolat-xcel-16l-1-30mm-natural-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Addiction",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    94.91,
+    99.9
+   ],
+   "rolo_brl": [
+    1199.9,
+    1199.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": 167.4,
+    "perda_tensao_pct": 20.1,
+    "spin_potencial": 3.1,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-babolat-addiction",
+    "https://www.netshoes.com.br/corda-babolat-addiction-16l-130mm-natural-rolo-com-200-metros-creme-305-9989-QXV"
+   ],
+   "obs": "Também grafada 'Addixion'. Rolo Netshoes R$1.199,90 mas indisponível.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Synthetic Gut",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    31.41,
+    31.41
+   ],
+   "rolo_brl": [
+    359.9,
+    599.9
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Decathlon BR",
+    "Magazine Luiza",
+    "Mercado Livre",
+    "Centauro"
+   ],
+   "lab": {
+    "rigidez_lbin": 169.2,
+    "perda_tensao_pct": 17.5,
+    "spin_potencial": 5.8,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-babolat-synthetic-gut-universal-16l-1.30mm-branca-set-individual"
+   ],
+   "obs": "Decathlon R$34,90; Magalu R$29,90 Pix; Centauro ~R$34,99-38,78.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": [
+     31.41,
+     31.41
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     359.9,
+     599.9
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-babolat-synthetic-gut-universal-16l-1.30mm-branca-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-babolat-synthetic-gut-16l-1-30mm-branca-rolo-com-200-metros | Rolo iTenis https://www.itenis.com.br/produto/rolo-de-corda-babolat-synthetic-gut-16-1-30-rolo-com-200-metros-preto-302 | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Touch VS",
+   "tipo": "gut",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    539.91,
+    539.91
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 96.0,
+    "perda_tensao_pct": 18.7,
+    "spin_potencial": 2.7,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 100.0,
+     "controle": 74.0,
+     "potencia": 100.0,
+     "spin": 74.0,
+     "durabilidade": 72.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-babolat-touch-vs-16-1-30mm-natural-gut-150-anos-set-individual"
+   ],
+   "obs": "Tripa natural.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Novak Djokovic"
+   ],
+   "url_pros": "https://www.tennis-warehouse.com/Novak_Djokovic/catpage-THEDJOKER.html",
+   "obs_gpt": "TWU: registro histórico VS Natural ThermoGut 16 Touch | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/BNG16review.html | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      539.91,
+      539.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/babolat?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     539.91,
+     539.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-babolat-touch-vs-16-1-30mm-natural-gut-150-anos-set-individual"
+    ],
+    "obs": "set 1.3mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "ALU Power",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    169.9,
+    197.91
+   ],
+   "rolo_brl": [
+    2699.91,
+    2699.91
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Pró Spin",
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 209.2,
+    "perda_tensao_pct": 46.6,
+    "spin_potencial": 5.8,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 77.0,
+     "controle": 90.0,
+     "potencia": 58.0,
+     "spin": 86.0,
+     "durabilidade": 94.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-luxilon-alu-power-17l-1-25mm-branca-set-individual",
+    "https://emporiodotenista.com.br/produto/corda-luxilon-alu-power/"
+   ],
+   "obs": "Rolo: ML R$1.749-1.759 (inclui 220 m), Decathlon R$2.777,67-3.249,90, Magalu R$2.799,90. ML também vende 'set cortado do rolo' (R$138-329). Edição Guga é referência local.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Novak Djokovic"
+   ],
+   "url_pros": "https://www.tennis-warehouse.com/Novak_Djokovic/catpage-THEDJOKER.html",
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/ALUSTRreview.html | Preço rolo: 1.15 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      169.9,
+      197.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-luxilon?product_list_limit=72",
+      "https://emporiodotenista.com.br/produto/corda-luxilon-alu-power/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     169.9,
+     197.91
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     2699.91,
+     2699.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-luxilon-alu-power-17l-1-25mm-branca-set-individual",
+     "https://emporiodotenista.com.br/produto/corda-luxilon-alu-power/"
+    ],
+    "obs": "set 1.25mm | rolo 1.15mm | Rolo ProSpin https://www.prospin.com.br/corda-luxilon-alu-power-18l-1-15mm-prata-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "4G",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    215.91,
+    215.91
+   ],
+   "rolo_brl": [
+    2699.9,
+    2699.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin",
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 258.9,
+    "perda_tensao_pct": 21.3,
+    "spin_potencial": 3.9,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 78.0,
+     "controle": 88.0,
+     "potencia": 65.0,
+     "spin": 86.0,
+     "durabilidade": 86.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/corda-luxilon-4g/"
+   ],
+   "obs": "Centauro R$199,89-229,90.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Serena Williams"
+   ],
+   "url_pros": "https://www.tennis-warehouse.com/catpage-SWILLIAMS.html",
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/LUX4G125review.html | PIX | Uso profissional histórico",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      215.91,
+      215.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-luxilon?product_list_limit=72",
+      "https://emporiodotenista.com.br/produto/corda-luxilon-4g/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     215.91,
+     215.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     2699.9,
+     2699.9
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/corda-luxilon-4g/"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-luxilon-4g-17-1-25mm-preta-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "Element",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    149.9,
+    149.9
+   ],
+   "rolo_brl": [
+    1979.9,
+    1979.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 208.0,
+    "perda_tensao_pct": 33.6,
+    "spin_potencial": 5.5,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 73.0,
+     "controle": 83.0,
+     "potencia": 64.0,
+     "spin": 85.0,
+     "durabilidade": 81.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.itenis.com.br/produto/corda-luxilon-element-16l-1-25mm-marrom-set-individual-1953"
+   ],
+   "obs": "Jogue Tennis R$160 (promo, set cortado para encordoar).",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/LE130review.html | Playtest 1.30 mm | PIX",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": [
+     149.9,
+     149.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1979.9,
+     1979.9
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.itenis.com.br/produto/corda-luxilon-element-16l-1-25mm-marrom-set-individual-1953"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-luxilon-element-16l-1-25mm-bronze-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "Big Banger Original",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    113.38,
+    113.38
+   ],
+   "rolo_brl": [
+    1499,
+    1499
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": 213.2,
+    "perda_tensao_pct": 51.4,
+    "spin_potencial": 4.8,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 55.0,
+     "controle": 95.0,
+     "potencia": 35.0,
+     "spin": 69.0,
+     "durabilidade": 93.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-luxilon-big-banger-original",
+    "https://www.amazon.com.br/Luxilon-Big-Banger-cord%C3%A3o-original/dp/B08CMQXZCK"
+   ],
+   "obs": "Set Amazon é importado com taxas; rolo ML 1.30 R$1.499.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.3 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/BB16review.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "Smart",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    189,
+    189
+   ],
+   "rolo_brl": [
+    2800,
+    2800
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 201.2,
+    "perda_tensao_pct": 42.7,
+    "spin_potencial": 6.8,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 66.0,
+     "controle": 89.0,
+     "potencia": 61.0,
+     "spin": 80.0,
+     "durabilidade": 84.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://esportes.mercadolivre.com.br/tenis-squash/cordas/corda-luxilon"
+   ],
+   "obs": "Um anúncio de set e um de rolo no ML.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/Learning_Center/reviews/strings/Luxilon_LXN_Smart.html?pcode=LUS16S",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Hyper-G",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    119.9,
+    152.91
+   ],
+   "rolo_brl": [
+    1799.9,
+    1999.0
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Pró Spin",
+    "iTenis"
+   ],
+   "lab": {
+    "rigidez_lbin": 218.3,
+    "perda_tensao_pct": 24.7,
+    "spin_potencial": 6.1,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 73.0,
+     "controle": 96.0,
+     "potencia": 51.0,
+     "spin": 92.0,
+     "durabilidade": 87.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.itenis.com.br/produto/corda-solinco-hyper-g-16l-1-25-set-com-12-metros-1236",
+    "https://www.prospin.com.br/corda-solinco-hyper-g-16l-1-25mm-verde-set-individual"
+   ],
+   "obs": "ProSpin set 1.25 R$169,90 e listado em 'Mais vendidos'. Rolo Amazon R$1.877,37; Decathlon 1.20 R$1.649,90; ML até R$2.374.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Simone Bolelli"
+   ],
+   "url_pros": "https://www.supertennis.tv/Rubriche/Conosci-i-tuoi-campioni/La-vera-storia-della-racchetta-di-Sinner-e-le-altre-delle-Nitto-ATP-Finals",
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html?pcode=SHG16 | Playtest 1.30 mm | iTenis: oferta JSON-LD; demais preços PIX | Pro campeão de Grand Slam em duplas",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      119.9,
+      152.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/solinco?product_list_limit=72",
+      "https://www.itenis.com.br/produto/corda-solinco-hyper-g-16l-1-25-set-com-12-metros-1236"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     119.9,
+     152.91
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     1799.9,
+     1999.0
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.itenis.com.br/produto/corda-solinco-hyper-g-16l-1-25-set-com-12-metros-1236",
+     "https://www.prospin.com.br/corda-solinco-hyper-g-16l-1-25mm-verde-set-individual"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-solinco-hyper-g-16l-1-25mm-rolo-com-200-metros-verde | Rolo Spin Top https://www.spintop.com.br/produtos/corda-solinco-hyper-g-16l-1-25mm-rolo-com-200-metros-verde-149lh | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Hyper-G Soft",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    152.91,
+    152.91
+   ],
+   "rolo_brl": [
+    1799.9,
+    1799.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 172.0,
+    "perda_tensao_pct": 28.7,
+    "spin_potencial": 5.2,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 79.0,
+     "controle": 93.0,
+     "potencia": 57.0,
+     "spin": 92.0,
+     "durabilidade": 86.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-solinco-hyper-g-soft-16l-1-25mm-verde-set-individual"
+   ],
+   "obs": "Faixa de set compartilhada com Hyper-G nos resultados; rolos Soft 1.20 ~R$1.100-1.250.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Soft.html?pcode=SHGS16 | Playtest 1.30 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      152.91,
+      152.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/solinco?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     152.91,
+     152.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1799.9,
+     1799.9
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-solinco-hyper-g-soft-16l-1-25mm-verde-set-individual"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-solinco-hyper-g-soft-16l-1-25mm-rolo-com-200-metros-verde | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Tour Bite",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    107.91,
+    143.91
+   ],
+   "rolo_brl": [
+    1619.91,
+    1619.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin",
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 237.7,
+    "perda_tensao_pct": 25.2,
+    "spin_potencial": 5.9,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 54.0,
+     "controle": 91.0,
+     "potencia": 54.0,
+     "spin": 94.0,
+     "durabilidade": 85.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/solinco-tour-bite-125/",
+    "https://www.prospin.com.br/corda-solinco-tour-bite-16l-1-25mm-prata-set-individual"
+   ],
+   "obs": "Inclui versões Soft e Diamond Rough.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html?pcode=STB16L | Preço rolo: 1.3 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      107.91,
+      143.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/solinco?product_list_limit=72",
+      "https://emporiodotenista.com.br/produto/solinco-tour-bite-125/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     107.91,
+     143.91
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     1619.91,
+     1619.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/solinco-tour-bite-125/",
+     "https://www.prospin.com.br/corda-solinco-tour-bite-16l-1-25mm-prata-set-individual"
+    ],
+    "obs": "set 1.25mm | rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-solinco-tour-bite-16l-1-30mm-rolo-com-200-metros-prata | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Confidential",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    179.91,
+    179.91
+   ],
+   "rolo_brl": [
+    1763.91,
+    1763.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 222.3,
+    "perda_tensao_pct": 22.2,
+    "spin_potencial": 6.4,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 63.0,
+     "controle": 93.0,
+     "potencia": 42.0,
+     "spin": 90.0,
+     "durabilidade": 91.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-solinco-confidential-16l-1-30mm-chumbo-set-individual"
+   ],
+   "obs": "",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.3 mm | Playtest: https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      179.91,
+      179.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/solinco?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     179.91,
+     179.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1763.91,
+     1763.91
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-solinco-confidential-16l-1-30mm-chumbo-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-solinco-confidential-16l-1-25mm-rolo-com-200-metros-chumbo | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Revolution",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    98.91,
+    98.91
+   ],
+   "rolo_brl": [
+    1484.91,
+    1484.91
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 212.6,
+    "perda_tensao_pct": 28.4,
+    "spin_potencial": 8.0,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 71.0,
+     "controle": 93.0,
+     "potencia": 67.0,
+     "spin": 94.0,
+     "durabilidade": 95.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-solinco-revolution-16l-1-30mm-azul-set-individual"
+   ],
+   "obs": "",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html | Playtest 1.30 mm | Preço set: 1.3 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      98.91,
+      98.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/solinco?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     98.91,
+     98.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1484.91,
+     1484.91
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-solinco-revolution-16l-1-30mm-azul-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-solinco-revolution-16-l125-mm-rolo-com-200-metros-azul | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Vanquish",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    118.91,
+    144.9
+   ],
+   "rolo_brl": [
+    1709.91,
+    1709.91
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 160.0,
+    "perda_tensao_pct": 20.8,
+    "spin_potencial": 3.9,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/vanquish",
+    "https://m.magazineluiza.com.br/marcas/solinco/?filters=category---ES"
+   ],
+   "obs": "",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "PIX",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     1709.91,
+     1709.91
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-solinco-vanquish-16l-1-30mm-natural-rolo-com-200-metros | Set 12m não confirmado | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Head",
+   "modelo": "Lynx",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    62.9,
+    62.9
+   ],
+   "rolo_brl": [
+    989.91,
+    989.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 179.5,
+    "perda_tensao_pct": 47.0,
+    "spin_potencial": 5.7,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 82.0,
+     "controle": 75.0,
+     "potencia": 70.0,
+     "spin": 88.0,
+     "durabilidade": 65.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-head-lynx-16l-1-30mm-chumbo-set-individual"
+   ],
+   "obs": "Lynx 'simples' aparece pouco; resultados são Lynx Touch (R$78,90-89,90), Lynx Power (R$86-99,90) e Lynx 17 (R$99,90). Linha Lynx Team listada na ProSpin.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/LYNX16review.html | Playtest 1.30 mm | Oferta sem comprimento confirmado excluída | Preço set: 1.3 mm | Preço rolo: 1.3 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      62.9,
+      62.9
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-head?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     62.9,
+     62.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     989.91,
+     989.91
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-head-lynx-16l-1-30mm-chumbo-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-head-lynx-16l-1-30mm-azul-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Head",
+   "modelo": "Lynx Tour",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    71.91,
+    71.91
+   ],
+   "rolo_brl": [
+    1079.91,
+    1079.91
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Pró Spin",
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 217.7,
+    "perda_tensao_pct": 24.6,
+    "spin_potencial": 7.1,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 74.0,
+     "controle": 93.0,
+     "potencia": 65.0,
+     "spin": 89.0,
+     "durabilidade": 91.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/head-lynx-tour-1-25/"
+   ],
+   "obs": "Set mais comum ~R$78-80; iTenis R$71,91 Pix; ProSpin R$79,90-99,90. Rolo: Decathlon/Amazon R$1.149,90-1.199,90, Centauro R$1.199,90-1.599,90, ML ~R$962-1.119. Uma das opções mais baratas entre copoliésteres de marca grande.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/reviews/strings/head_lynx_tour.html?pcode=LTR16 | Playtest 1.30 mm | Preço set: 1.25,1.3 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      71.91,
+      79.9
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-head?product_list_limit=72",
+      "https://emporiodotenista.com.br/produto/head-lynx-tour-1-25/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     71.91,
+     71.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1079.91,
+     1079.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/head-lynx-tour-1-25/"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-head-lynx-tour-17l-1-25mm-laranja-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Head",
+   "modelo": "Hawk",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    80.91,
+    80.91
+   ],
+   "rolo_brl": [
+    1304.91,
+    1304.91
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 204.6,
+    "perda_tensao_pct": 32.9,
+    "spin_potencial": 4.7,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 56.0,
+     "controle": 84.0,
+     "potencia": 37.0,
+     "spin": 85.0,
+     "durabilidade": 90.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-head-hawk-17l-1-25mm-branco-set-individual"
+   ],
+   "obs": "Rolo Decathlon listado, preço não capturado.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/HAWK16review.html | Playtest 1.30 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      80.91,
+      80.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-head?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     80.91,
+     80.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1304.91,
+     1304.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-head-hawk-17l-1-25mm-branco-set-individual"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-head-hawk-17l-1-25mm-branco-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Head",
+   "modelo": "Hawk Touch",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    98.91,
+    98.91
+   ],
+   "rolo_brl": [
+    1699.9,
+    2022.44
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 196.0,
+    "perda_tensao_pct": 31.9,
+    "spin_potencial": 5.2,
+    "bitola_mm": 1.2,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-head-hawk-touch-19-1-15mm-vermelha-set-individual"
+   ],
+   "obs": "Set ML R$107,90-116,90; ProSpin R$79,90-109,90 (esgotado); Netshoes R$78 (indisponível). Rolo Decathlon R$1.699,90; Amazon R$2.022,44.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Jannik Sinner"
+   ],
+   "url_pros": "https://www.supertennis.tv/Rubriche/Conosci-i-tuoi-campioni/La-vera-storia-della-racchetta-di-Sinner-e-le-altre-delle-Nitto-ATP-Finals",
+   "obs_gpt": "Bitola TWU disponível 1.2 mm | Preço set: 1.15 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      98.91,
+      98.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-head?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     98.91,
+     98.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.15,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-head-hawk-touch-19-1-15mm-vermelha-set-individual"
+    ],
+    "obs": "set 1.15mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.15
+  },
+  {
+   "marca": "Head",
+   "modelo": "Sonic Pro",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    66.41,
+    69.9
+   ],
+   "rolo_brl": [
+    899.91,
+    899.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 164.6,
+    "perda_tensao_pct": 54.9,
+    "spin_potencial": 3.9,
+    "bitola_mm": 1.251,
+    "playtest": {
+     "conforto": 61.0,
+     "controle": 80.0,
+     "potencia": 58.0,
+     "spin": 78.0,
+     "durabilidade": 82.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-head-sonic-pro-17l-1-25mm-preta-set-individual-2145908681/p",
+    "https://www.decathlon.com.br/corda-head-sonic-pro-17l-1-25mm-preta-rolo-com-200-metros-2145726882/p",
+    "https://www.centauro.com.br/nav/produto/corda/marca/head"
+   ],
+   "obs": "Rolo Decathlon R$999,90; Centauro R$849,90-1.099,90.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.251 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/SONIC16review.html | Playtest 1.30 mm | Oferta sem comprimento confirmado excluída | Preço rolo: 1.25 mm | PIX",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     899.91,
+     899.91
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-head-sonic-pro-17l-1-25mm-preta-rolo-com-200-metros | Set 12m não confirmado | Set anunciado sem metragem confirmada | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Head",
+   "modelo": "Velocity MLT",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    52.25,
+    79
+   ],
+   "rolo_brl": [
+    1259.91,
+    1259.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 153.2,
+    "perda_tensao_pct": 14.7,
+    "spin_potencial": 5.5,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 85.0,
+     "controle": 81.0,
+     "potencia": 82.0,
+     "spin": 77.0,
+     "durabilidade": 69.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/HEAD-Conjunto-cordas-Velocity-Tennis/dp/B0DB13YG1R",
+    "https://www.netshoes.com.br/corda-head-velocity-mlt-17-preto-set-preto-OXM-0157-006",
+    "https://www.magazineluiza.com.br/set-head-dld-de-corda-velocity-mlt-16-preto/p/aa2471kkeg/es/teni/",
+    "https://www.decathlon.com.br/corda-head-velocity-mlt-16l-1-30mm---rolo-com-200-metros---natural-2145816888/p"
+   ],
+   "obs": "Netshoes e Magalu indisponíveis. Rolo existe na Decathlon (preço não capturado); Amazon rolo ~R$1.464,87 (modelo não confirmado).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.25 mm | Playtest: https://www.tennis-warehouse.com/learning_center/reviews/strings/head_velocity_mlt.html?pcode=VMLT16YE16 | PIX",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     1259.91,
+     1259.91
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-head-velocity-mlt-16-1-30mm-preto-rolo-com-200-metros-28141416b | Set 12m não confirmado | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Head",
+   "modelo": "Reflex MLT",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    134.91,
+    134.91
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 159.4,
+    "perda_tensao_pct": 24.0,
+    "spin_potencial": 5.1,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 91.0,
+     "controle": 75.0,
+     "potencia": 85.0,
+     "spin": 77.0,
+     "durabilidade": 71.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-head-reflex-mlt-17l-1-25mm-natural-set-individual"
+   ],
+   "obs": "Só Amazon (provavelmente importado); página exata do produto não identificada no resultado da busca.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/HRMLT16review.html | Preço set: 1.25 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      134.91,
+      134.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-head?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     134.91,
+     134.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-head-reflex-mlt-17l-1-25mm-natural-set-individual"
+    ],
+    "obs": "set 1.25mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Head",
+   "modelo": "Synthetic Gut PPS",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    44.9,
+    44.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "ProSpin",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 169.7,
+    "perda_tensao_pct": 23.3,
+    "spin_potencial": 3.9,
+    "bitola_mm": 1.34,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.itenis.com.br/produto/corda-head-synthetic-gut-pps-16l-1-30-dourado-set-com-12-metros-864"
+   ],
+   "obs": "ProSpin R$44,90 (R$38,16 promo, R$34,34 Pix). Rolo existe na ProSpin, preço não capturado.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.34 mm",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": [
+     44.9,
+     44.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.itenis.com.br/produto/corda-head-synthetic-gut-pps-16l-1-30-dourado-set-com-12-metros-864"
+    ],
+    "obs": "set 1.3mm | Preço exibido sem inferir desconto Pix",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Head",
+   "modelo": "RIP Control",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    107.91,
+    107.91
+   ],
+   "rolo_brl": [
+    1499.9,
+    1499.9
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 156.6,
+    "perda_tensao_pct": 22.2,
+    "spin_potencial": 2.6,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 84.0,
+     "controle": 85.0,
+     "potencia": 68.0,
+     "spin": 72.0,
+     "durabilidade": 80.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-head-rip-control-16-1-30mm-preta-set-individual"
+   ],
+   "obs": "",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/RCON16review.html | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      107.91,
+      107.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-head?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     107.91,
+     107.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1499.9,
+     1499.9
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-head-rip-control-16-1-30mm-preta-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-head-rip-control-16l-1-30mm-e-branca-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Revolve",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    92.07,
+    130.26
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 192.0,
+    "perda_tensao_pct": 36.2,
+    "spin_potencial": 7.7,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 77.0,
+     "controle": 88.0,
+     "potencia": 58.0,
+     "spin": 87.0,
+     "durabilidade": 93.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Corda-Wilson-Revolve-15-Set/dp/B00SUE8MYY"
+   ],
+   "obs": "Amazon com taxas de importação; mínimo R$92,07 incerto.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/WRV16review.html | Playtest 1.30 mm",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Revolve Spin",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    130.02,
+    224.11
+   ],
+   "rolo_brl": [
+    699.9,
+    699.9
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": 172.6,
+    "perda_tensao_pct": 54.5,
+    "spin_potencial": 5.0,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 73.0,
+     "controle": 93.0,
+     "potencia": 44.0,
+     "spin": 92.0,
+     "durabilidade": 90.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Conjunto-cordas-t%C3%AAnis-Wilson-Revole/dp/B088STHW6J",
+    "https://www.mercadolivre.com.br/encordoamento-de-tnis-wilson-revolve-spin-jogo-17-verde/p/MLB2039693783",
+    "https://www.netshoes.com.br/p/corda-wilson-revolve-spin-16l-130mm-chumbo-D25-1768-040"
+   ],
+   "obs": "Netshoes R$699,90 descrito como rolo 200 m (preço suspeito).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.3 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/WRS16review.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "NXT",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    199.9,
+    199.9
+   ],
+   "rolo_brl": [
+    2690,
+    2690
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "iTenis"
+   ],
+   "lab": {
+    "rigidez_lbin": 173.7,
+    "perda_tensao_pct": 20.5,
+    "spin_potencial": 3.9,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 89.0,
+     "controle": 76.0,
+     "potencia": 86.0,
+     "spin": 74.0,
+     "durabilidade": 64.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.itenis.com.br/produto/corda-wilson-nxt-17-1-24-set-individual-com-12-2-metros-992"
+   ],
+   "obs": "Inclui NXT Power.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/NXT16review.html | Preço set: 1.24 mm | iTenis: oferta JSON-LD; demais preços PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      199.9,
+      199.9
+     ],
+     "fontes": [
+      "https://www.itenis.com.br/produto/corda-wilson-nxt-17-1-24-set-individual-com-12-2-metros-992"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     199.9,
+     199.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.24,
+    "esgotado": false,
+    "urls": [
+     "https://www.itenis.com.br/produto/corda-wilson-nxt-17-1-24-set-individual-com-12-2-metros-992"
+    ],
+    "obs": "set 1.24mm | Preço exibido sem inferir desconto Pix",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.24
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Sensation",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    53.91,
+    53.91
+   ],
+   "rolo_brl": [
+    719.91,
+    719.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 168.6,
+    "perda_tensao_pct": 21.2,
+    "spin_potencial": 3.5,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-wilson-sensation-16l-1-30mm-verde-set-individual"
+   ],
+   "obs": "Decathlon R$69,90; Magalu R$69,90 (Zoom). Faixa de rolo aproximada do resumo do buscador.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      53.91,
+      71.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/wilson?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     53.91,
+     53.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     719.91,
+     719.91
+    ],
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-wilson-sensation-16l-1-30mm-verde-set-individual"
+    ],
+    "obs": "set 1.3mm | rolo 1.3mm | Rolo ProSpin https://www.prospin.com.br/corda-wilson-sensation-16l-1-30mm-verde-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Synthetic Gut Power",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    44.91,
+    44.91
+   ],
+   "rolo_brl": [
+    744.52,
+    744.52
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 156.0,
+    "perda_tensao_pct": 15.2,
+    "spin_potencial": 4.9,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-wilson-synthetic-gut-power-16-1-30mm-set-individual-azul"
+   ],
+   "obs": "Rolo 17L Amazon R$744,52 (via Zoom).",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      44.91,
+      44.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/wilson?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     44.91,
+     44.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-wilson-synthetic-gut-power-16-1-30mm-set-individual-azul"
+    ],
+    "obs": "set 1.3mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Natural Gut",
+   "tipo": "gut",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    538.95,
+    675.86
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": 96.6,
+    "perda_tensao_pct": 17.3,
+    "spin_potencial": 1.3,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/WILSON-Corda-t%C3%AAnis-Natural-Gut/dp/B0D585Z26Q",
+    "https://www.amazon.com.br/Conjunto-cordas-t%C3%AAnis-Wilson-Natural/dp/B07JCTPYK7"
+   ],
+   "obs": "Só importado via Amazon, com taxas (~R$178,50) incluídas.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [
+    "Serena Williams"
+   ],
+   "url_pros": "https://www.tennis-warehouse.com/catpage-SWILLIAMS.html",
+   "obs_gpt": "Uso profissional histórico",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Pro",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    89.91,
+    90.0
+   ],
+   "rolo_brl": [
+    899.0,
+    1124.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 181.2,
+    "perda_tensao_pct": 46.3,
+    "spin_potencial": null,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 72.0,
+     "controle": 86.0,
+     "potencia": 45.0,
+     "spin": 79.0,
+     "durabilidade": 85.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-yonex-poly-tour-pro-16l-1-25mm-amarela-set-individual",
+    "https://www.spintop.com.br/produtos/corda-yonex-poly-tour-pro-16l-1-25mm-amarela-edicao-15-aniversario-set-individual"
+   ],
+   "obs": "Rolo Amazon R$1.399,90; Decathlon R$1.249,90-1.299,90; Zoom menor R$1.199.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Naomi Osaka"
+   ],
+   "url_pros": "https://www.yonex.co.jp/tennis/players/Naomi-Osaka.html",
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/YPTP125YEreview.html | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      89.91,
+      89.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/yonex?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     89.91,
+     90.0
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     899.0,
+     1124.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-yonex-poly-tour-pro-16l-1-25mm-amarela-set-individual",
+     "https://www.spintop.com.br/produtos/corda-yonex-poly-tour-pro-16l-1-25mm-amarela-edicao-15-aniversario-set-individual"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo Spin Top https://www.spintop.com.br/produtos/rolo-corda-yonex-poly-tour-pro-16l-1-25mm-grafite-200m | Rolo ProSpin https://www.prospin.com.br/corda-yonex-polytour-pro-16l-1-25mm-grafite-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Strike",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    134.9,
+    134.9
+   ],
+   "rolo_brl": [
+    1619.0,
+    1619.0
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": 199.5,
+    "perda_tensao_pct": 27.9,
+    "spin_potencial": 4.6,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/YONEX-Conjunto-cordas-t%C3%AAnis-Strike/dp/B0CNTDSZYN",
+    "https://lista.mercadolivre.com.br/yonex-poly-tour"
+   ],
+   "obs": "Amazon R$268,99 parece fora da curva (importado).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [
+    "Naomi Osaka"
+   ],
+   "url_pros": "https://www.yonex.co.jp/tennis/players/Naomi-Osaka.html",
+   "obs_gpt": "",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     1619.0,
+     1619.0
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.25mm | Rolo Spin Top https://www.spintop.com.br/produtos/corda-yonex-poly-tour-strike-16l-125-preta-rolo | Set 12m não confirmado | Preço exibido sem inferir desconto Pix",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Spin",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    107.91,
+    107.91
+   ],
+   "rolo_brl": [
+    1169.91,
+    1169.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 213.7,
+    "perda_tensao_pct": 27.2,
+    "spin_potencial": 6.3,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-yonex-polytour-spin-16l-1-25mm-preta-set-individual"
+   ],
+   "obs": "Inclui Spin G.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Rinky Hijikata"
+   ],
+   "url_pros": "https://www.yonex.com/news/team-yonex-shines-at-the-australian-open-2026-in-melbournes-summer-heat/",
+   "obs_gpt": "PIX | Pro campeão de Grand Slam em duplas",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      107.91,
+      107.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/yonex?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     107.91,
+     107.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1169.91,
+     1169.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-yonex-polytour-spin-16l-1-25mm-preta-set-individual"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-yonex-polytour-spin-16l-1-25mm-preta-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Rev",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    139.9,
+    139.9
+   ],
+   "rolo_brl": [
+    1599.0,
+    1619.91
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 193.2,
+    "perda_tensao_pct": 34.4,
+    "spin_potencial": 7.2,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 74.0,
+     "controle": 88.0,
+     "potencia": 60.0,
+     "spin": 85.0,
+     "durabilidade": 91.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.itenis.com.br/produto/corda-yonex-poly-tour-rev-1-25-16l-set-individual-com-12-metros-301"
+   ],
+   "obs": "",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/reviews/strings/yonex_polytour_rev.html?pcode=YPTR17 | Playtest 1.20 mm | PIX",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": [
+     139.9,
+     139.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1599.0,
+     1619.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.itenis.com.br/produto/corda-yonex-poly-tour-rev-1-25-16l-set-individual-com-12-metros-301"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo Spin Top https://www.spintop.com.br/produtos/corda-yonex-poly-tour-rev-16l-1-25mm-laranja-rolo-com-200-metros | Rolo ProSpin https://www.prospin.com.br/corda-yonex-polytour-rev-16l-1-25mm-branca-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Rexis",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    179.91,
+    179.91
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 153.2,
+    "perda_tensao_pct": 19.1,
+    "spin_potencial": 4.1,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-yonex-rexis-16-1-30mm-natural-set-individual"
+   ],
+   "obs": "Rexis Comfort.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      179.91,
+      179.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/yonex?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     179.91,
+     179.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.3,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-yonex-rexis-16-1-30mm-natural-set-individual"
+    ],
+    "obs": "set 1.3mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Black Code",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    152.91,
+    152.91
+   ],
+   "rolo_brl": [
+    1349.91,
+    1349.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 236.0,
+    "perda_tensao_pct": 40.2,
+    "spin_potencial": 4.2,
+    "bitola_mm": 1.24,
+    "playtest": {
+     "conforto": 55.0,
+     "controle": 80.0,
+     "potencia": 40.0,
+     "spin": 83.0,
+     "durabilidade": 83.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-tecnifibre-black-code-17-1-24mm-set-individual-preta"
+   ],
+   "obs": "Um anúncio ML R$339,90 (outlier, excluído). Rolo Amazon R$1.199,90, Decathlon R$1.499,90.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.24 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/TBC16review.html | Playtest 1.28 mm | Preço rolo: 1.18 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      152.91,
+      152.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/tecnifibre?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     152.91,
+     152.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1349.91,
+     1349.91
+    ],
+    "bitola_set_mm": 1.24,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-tecnifibre-black-code-17-1-24mm-set-individual-preta"
+    ],
+    "obs": "set 1.24mm | rolo 1.28mm | Rolo ProSpin https://www.prospin.com.br/corda-tecnifibre-black-code-16-1-28mm-preta-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.24
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Razor Code",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    107.91,
+    170.91
+   ],
+   "rolo_brl": [
+    1349.91,
+    1349.91
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin",
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 229.2,
+    "perda_tensao_pct": 29.6,
+    "spin_potencial": 5.6,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 65.0,
+     "controle": 84.0,
+     "potencia": 65.0,
+     "spin": 86.0,
+     "durabilidade": 95.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/corda-tecnifibre-razor-code-1-25/",
+    "https://www.prospin.com.br/corda-tecnifibre-razor-code-17-1-25mm-set-individual-branca"
+   ],
+   "obs": "",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [
+    "Iga Swiatek"
+   ],
+   "url_pros": "https://www.tecnifibre.jp/athlete/iga-swiatek/",
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/TFRC16Breview.html | Playtest 1.30 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      107.91,
+      170.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/tecnifibre?product_list_limit=72",
+      "https://emporiodotenista.com.br/produto/corda-tecnifibre-razor-code-1-25/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     107.91,
+     170.91
+    ],
+    "n_lojas": 2,
+    "rolo_brl": [
+     1349.91,
+     1349.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/corda-tecnifibre-razor-code-1-25/",
+     "https://www.prospin.com.br/corda-tecnifibre-razor-code-17-1-25mm-set-individual-branca"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-tecnifibre-razor-code-17l-1-25mm-chumbo---rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Ice Code",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    134.91,
+    134.91
+   ],
+   "rolo_brl": [
+    1259.91,
+    1259.91
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 221.2,
+    "perda_tensao_pct": 35.0,
+    "spin_potencial": 5.6,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 76.0,
+     "controle": 95.0,
+     "potencia": 62.0,
+     "spin": 92.0,
+     "durabilidade": 90.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-tecnifibre-ice-code-17-1-25mm-set-individual-branca"
+   ],
+   "obs": "",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.3 mm | Playtest: https://www.tennis-warehouse.com/learning_center/reviews/strings/tecnifibre_ice_code.html?pcode=TICW16 | Preço rolo: 1.2 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      134.91,
+      134.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/tecnifibre?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     134.91,
+     134.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1259.91,
+     1259.91
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-tecnifibre-ice-code-17-1-25mm-set-individual-branca"
+    ],
+    "obs": "set 1.25mm | rolo 1.2mm | Rolo ProSpin https://www.prospin.com.br/corda-tecnifibre-ice-code-18l-1-20mm-branca-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Red Code",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    67.41,
+    116.91
+   ],
+   "rolo_brl": [
+    1018,
+    1198
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin",
+    "Empório do Tenista"
+   ],
+   "lab": {
+    "rigidez_lbin": 225.7,
+    "perda_tensao_pct": 36.4,
+    "spin_potencial": 4.8,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 60.0,
+     "controle": 89.0,
+     "potencia": 47.0,
+     "spin": 74.0,
+     "durabilidade": 93.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://emporiodotenista.com.br/produto/corda-tecnifibre-red-code-1-25-set-com-12-metros/",
+    "https://www.prospin.com.br/corda-tecnifibre-redcode-17-1-25mm-set-individual-vermelha"
+   ],
+   "obs": "Pro Red Code.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "TWU: Pro Red Code | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/TPRC16review.html | Playtest 1.30 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      67.41,
+      116.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/tecnifibre?product_list_limit=72",
+      "https://emporiodotenista.com.br/produto/corda-tecnifibre-red-code-1-25-set-com-12-metros/"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     67.41,
+     116.91
+    ],
+    "n_lojas": 2,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://emporiodotenista.com.br/produto/corda-tecnifibre-red-code-1-25-set-com-12-metros/",
+     "https://www.prospin.com.br/corda-tecnifibre-redcode-17-1-25mm-set-individual-vermelha"
+    ],
+    "obs": "set 1.25mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "X-One Biphase",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    195.38,
+    264.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": 162.9,
+    "perda_tensao_pct": 17.7,
+    "spin_potencial": 1.6,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 86.0,
+     "controle": 72.0,
+     "potencia": 90.0,
+     "spin": 66.0,
+     "durabilidade": 73.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-tecnifibre-x-one-biphase",
+    "https://www.netshoes.com.br/corda-tecnifibre-xone-biphase-16l-130-set-individual-natural-ANL-0156-D72",
+    "https://www.amazon.com.br/Corda-Tecnifibre-X-One-Biphase-1-24mm/dp/B00ER175R4"
+   ],
+   "obs": "Netshoes R$219,90. Rolo existe na Amazon, preço não capturado.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/X116review.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": [
+     269.91,
+     269.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.3,
+    "esgotado": true,
+    "urls": [
+     "https://www.prospin.com.br/corda-tecnifibre-x-one-biphase-16l-1-30mm-natural---set-individual"
+    ],
+    "obs": "set 1.3mm | ProSpin set ESGOTADO | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "esgotado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "NRG2",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    174.44,
+    259.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": 158.3,
+    "perda_tensao_pct": 18.3,
+    "spin_potencial": 3.2,
+    "bitola_mm": 1.32,
+    "playtest": {
+     "conforto": 89.0,
+     "controle": 73.0,
+     "potencia": 89.0,
+     "spin": 74.0,
+     "durabilidade": 69.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/corda-tecnifibre/s?k=corda+tecnifibre"
+   ],
+   "obs": "",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.32 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/NRG16R2review.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado | Set anunciado sem metragem confirmada | https://www.spintop.com.br/produtos/corda-set-nrg2-124-branco-tecnifibre",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Multifeel",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    107.2,
+    121.71
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 154.9,
+    "perda_tensao_pct": 21.4,
+    "spin_potencial": 3.3,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 86.0,
+     "controle": 80.0,
+     "potencia": 84.0,
+     "spin": 78.0,
+     "durabilidade": 69.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Tecnifibre-Corda-Multifeel-1-30mm-Natural/dp/B07XCS4XFT"
+   ],
+   "obs": "",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/MF16BKreview.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": [
+     161.91,
+     161.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.3,
+    "esgotado": true,
+    "urls": [
+     "https://www.prospin.com.br/corda-tecnifibre-multifeel-16-1-30mm-set-individual-branca"
+    ],
+    "obs": "set 1.3mm | ProSpin set ESGOTADO | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "esgotado",
+   "bitola_set_mm": 1.3
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Synthetic Gut",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    39.9,
+    39.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_potencial": null,
+    "bitola_mm": null,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/synthetic-gut"
+   ],
+   "obs": "",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Kirschbaum",
+   "modelo": "Pro Line II",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    79.9,
+    99.9
+   ],
+   "rolo_brl": [
+    899.9,
+    899.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Centauro",
+    "Magazine Luiza"
+   ],
+   "lab": {
+    "rigidez_lbin": 201.2,
+    "perda_tensao_pct": 44.9,
+    "spin_potencial": 4.7,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 63.0,
+     "controle": 88.0,
+     "potencia": 45.0,
+     "spin": 68.0,
+     "durabilidade": 84.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-kirschbaum-pro-line-ii",
+    "https://www.centauro.com.br/nav/produto/corda/modalidade/tennis/marca/kirschbaum",
+    "https://www.zoom.com.br/corda-raquete-tenis?page=7"
+   ],
+   "obs": "Magalu 18L R$88,78 (Zoom).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/PL2130RBKreview.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     899.9,
+     899.9
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.3mm | Rolo iTenis https://www.itenis.com.br/produto/rolo-de-corda-kirschbaum-pro-line-ii-16-1-30-rolo-com-200-metros-1324 | Set 12m não confirmado | Preço exibido sem inferir desconto Pix",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Kirschbaum",
+   "modelo": "Max Power",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    116.91,
+    116.91
+   ],
+   "rolo_brl": [
+    810.0,
+    999.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 240.6,
+    "perda_tensao_pct": 23.5,
+    "spin_potencial": 5.4,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 64.0,
+     "controle": 96.0,
+     "potencia": 38.0,
+     "spin": 86.0,
+     "durabilidade": 93.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-kirschbaum-max-power-17l-1-25mm-set-individual-branca"
+   ],
+   "obs": "Centauro rolo 1.30 R$1.199,90.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/KMAXPWR17review.html?pcode=KMAXPWR17 | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      116.91,
+      116.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/kirschbaum?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     116.91,
+     116.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     810.0,
+     999.9
+    ],
+    "bitola_set_mm": 1.25,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-kirschbaum-max-power-17l-1-25mm-set-individual-branca"
+    ],
+    "obs": "set 1.25mm | rolo 1.25mm | Rolo Spin Top https://www.spintop.com.br/produtos/corda-kirschbaum-max-power-17l-1-25mm-rolo-com-200-metros-prata | Rolo ProSpin https://www.prospin.com.br/corda-kirschbaum-max-power-17l-1-25mm-rolo-com-200-metros-prata | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.25
+  },
+  {
+   "marca": "Signum Pro",
+   "modelo": "Poly Plasma",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    80.91,
+    80.91
+   ],
+   "rolo_brl": [
+    1079.91,
+    1079.91
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 198.3,
+    "perda_tensao_pct": 26.0,
+    "spin_potencial": 5.4,
+    "bitola_mm": 1.23,
+    "playtest": {
+     "conforto": 58.0,
+     "controle": 85.0,
+     "potencia": 33.0,
+     "spin": 65.0,
+     "durabilidade": 92.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-signum-pro-poly-plasma-1-23mm-laranja-set-individual"
+   ],
+   "obs": "ProSpin R$89,90 (R$80,91 Pix); Jogue Tennis R$85 (cortado do rolo). Rolo Decathlon R$1.099,90; Zoom menor R$888,78 (Magalu). Set R$38,90 é anúncio antigo.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.23 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/SIGPPP170review.html | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      80.91,
+      80.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/manufacturer-signum_pro?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     80.91,
+     80.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     1079.91,
+     1079.91
+    ],
+    "bitola_set_mm": 1.23,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-signum-pro-poly-plasma-1-23mm-laranja-set-individual"
+    ],
+    "obs": "set 1.23mm | rolo 1.23mm | Rolo ProSpin https://www.prospin.com.br/corda-signum-pro-poly-plasma-1-23mm-laranja-rolo-com-200-metros | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.23
+  },
+  {
+   "marca": "Signum Pro",
+   "modelo": "Firestorm",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    119.9,
+    119.9
+   ],
+   "rolo_brl": [
+    459,
+    459
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 197.7,
+    "perda_tensao_pct": 46.4,
+    "spin_potencial": 4.8,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 73.0,
+     "controle": 79.0,
+     "potencia": 70.0,
+     "spin": 78.0,
+     "durabilidade": 80.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-signum-pro-firestorm"
+   ],
+   "obs": "Rolo R$459 de lojista no PR (pode ser antigo).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/SFS16review.html | Playtest 1.30 mm",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Polyfibre",
+   "modelo": "Black Venom",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    69.9,
+    69.9
+   ],
+   "rolo_brl": [
+    899.91,
+    899.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 170.3,
+    "perda_tensao_pct": 60.4,
+    "spin_potencial": null,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-polyfibre-black-venom-18-l-a-1-20mm-preta-set-individual"
+   ],
+   "obs": "Polyfibre tem forte presença na iTenis e ProSpin.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Preço set: 1.2,1.3 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      69.9,
+      80.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/polyfibre?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     69.9,
+     69.9
+    ],
+    "n_lojas": 1,
+    "rolo_brl": [
+     899.91,
+     899.91
+    ],
+    "bitola_set_mm": 1.2,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-polyfibre-black-venom-18-l-a-1-20mm-preta-set-individual"
+    ],
+    "obs": "set 1.2mm | rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-polyfibre-black-venom-17l-1-25mm-rolo-com-200-metros-preta | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.2
+  },
+  {
+   "marca": "MSV",
+   "modelo": "Focus Hex",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    49.49,
+    59.9
+   ],
+   "rolo_brl": [
+    563,
+    829
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 218.9,
+    "perda_tensao_pct": 29.1,
+    "spin_potencial": 7.5,
+    "bitola_mm": 1.23,
+    "playtest": {
+     "conforto": 77.0,
+     "controle": 85.0,
+     "potencia": 69.0,
+     "spin": 80.0,
+     "durabilidade": 93.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://produto.mercadolivre.com.br/MLB-3617699058-corda-msv-focus-hex-16l-123mm-preta-set-individual-_JM",
+    "https://lista.mercadolivre.com.br/corda-msv-focus-hex"
+   ],
+   "obs": "Só ML; um anúncio R$129,90 com brindes excluído.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.23 mm | Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/MSVFHreview.html | Playtest 1.18 mm",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Topspin",
+   "modelo": "Cyber Blue",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": true,
+   "set_brl": [
+    39.9,
+    65.4
+   ],
+   "rolo_brl": [
+    719.91,
+    719.91
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": 183.5,
+    "perda_tensao_pct": 46.1,
+    "spin_potencial": 5.1,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-top-spin-cyber-blue",
+    "https://www.amazon.com.br/Corda-Topspin-Cyber-1-20mm-Metros/dp/B004O1W02C",
+    "https://www.amazon.com.br/Corda-Topspin-Cyber-Blue-1-25mm/dp/B00FQJ17IY"
+   ],
+   "obs": "Vendida em rolos de 220 m e 300 m (não 200 m); sets de 11,5 m. Amazon 220 m R$699,90; 300 m R$645,90-899,90.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Rolo 300 m localizado esgotado; preço excluído",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     719.91,
+     719.91
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.25mm | Empório do Tenista rolo ESGOTADO | rolo 300m | Rolo Empório do Tenista https://emporiodotenista.com.br/produto/corda-topspin-cyber-blue-rolo-com-300-metros/ | Set 12m não confirmado | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Topspin",
+   "modelo": "Cyber Flash",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": true,
+   "set_brl": [
+    47,
+    53
+   ],
+   "rolo_brl": [
+    499,
+    899
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": 158.9,
+    "perda_tensao_pct": 54.9,
+    "spin_potencial": 4.2,
+    "bitola_mm": 1.25,
+    "playtest": {
+     "conforto": 75.0,
+     "controle": 75.0,
+     "potencia": 59.0,
+     "spin": 80.0,
+     "durabilidade": 83.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://produto.mercadolivre.com.br/MLB-2808240463-corda-topspin-cyber-flash-120mm-set-individual-115m-_JM",
+    "https://www.amazon.com.br/Corda-Topspin-Cyber-1-20mm-Metros/dp/B07RP59RBN",
+    "https://produto.mercadolivre.com.br/MLB-4647794042-corda-topspin-cyber-flash-300-metros-120mm-125mm-130mm-_JM"
+   ],
+   "obs": "Rolos 220 m R$499-609, 300 m R$653-899.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/TCF16review.html | Playtest 1.30 mm",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Prince",
+   "modelo": "Synthetic Gut Duraflex",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    44.9,
+    44.9
+   ],
+   "rolo_brl": [
+    299.9,
+    299.9
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 177.7,
+    "perda_tensao_pct": 20.4,
+    "spin_potencial": null,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Corda-Prince-Synthetic-Duraflex-1-30mm/dp/B079XZM7ZS",
+    "https://www.decathlon.com.br/corda-prince-synthetic-gut-duraflex-16l-1-30mm-preta---rolo-com-200-metros-2144938442/p",
+    "https://www.mercadolivre.com.br/corda-prince-synthetic-gut-duraflex-16l-130mm-verde-limo/p/MLB27074032"
+   ],
+   "obs": "Netshoes pack 6 sets R$189,90 (indisponível).",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Preço rolo: 1.25 mm | PIX",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": [
+     299.9,
+     299.9
+    ],
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "rolo 1.25mm | Rolo ProSpin https://www.prospin.com.br/corda-prince-synthetic-gut-duraflex-17l-1-25mm-amarela-rolo-com-200-metros | Set 12m não confirmado | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Prince",
+   "modelo": "Premier Touch",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    75,
+    78
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 149.2,
+    "perda_tensao_pct": 22.9,
+    "spin_potencial": 4.1,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": 97.0,
+     "controle": 71.0,
+     "potencia": 88.0,
+     "spin": 53.0,
+     "durabilidade": 70.0
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [],
+   "obs": "URL exata não retornada pelo buscador. ML, anúncios de 12,2 m; uma oferta a R$39 (50% off) excluída.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Playtest: https://www.tennis-warehouse.com/learning_center/string_reviews/PPT16review.html",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Gamma",
+   "modelo": "Synthetic Gut",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    108.61,
+    108.61
+   ],
+   "rolo_brl": [
+    499,
+    499
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": 185.7,
+    "perda_tensao_pct": 23.2,
+    "spin_potencial": 3.6,
+    "bitola_mm": 1.3,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Cordas-para-Raquete-de-T%C3%AAnis-Gamma/s?keywords=Cordas+para+Raquete+de+T%C3%AAnis&rh=n%3A17834465011%2Cp_4%3AGamma&c=ts&ts_id=17834465011"
+   ],
+   "obs": "Amazon provavelmente importado; rolo ML 220 m R$499.",
+   "preco_fonte": "resumo de busca (2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "",
+   "historico_precos": [],
+   "precos_r2": {
+    "set_brl": null,
+    "n_lojas": 0,
+    "rolo_brl": null,
+    "bitola_set_mm": null,
+    "esgotado": false,
+    "urls": [],
+    "obs": "Set 12m não confirmado",
+    "data": "2026-11-22"
+   },
+   "preco_status": "referencia"
+  },
+  {
+   "marca": "Gamma",
+   "modelo": "Live Wire",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    143.91,
+    143.91
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Pró Spin"
+   ],
+   "lab": {
+    "rigidez_lbin": 158.9,
+    "perda_tensao_pct": 29.7,
+    "spin_potencial": 2.6,
+    "bitola_mm": 1.32,
+    "playtest": {
+     "conforto": null,
+     "controle": null,
+     "potencia": null,
+     "spin": null,
+     "durabilidade": null
+    },
+    "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-gamma-live-wire-16l-1-32mm-champanhe-set-individual"
+   ],
+   "obs": "Decathlon/ML R$159,90; Professional/XP R$229-249.",
+   "preco_fonte": "página da loja (GPT rodada 2, 2026-11-22)",
+   "pros": [],
+   "url_pros": null,
+   "obs_gpt": "Bitola TWU disponível 1.32 mm | PIX",
+   "historico_precos": [
+    {
+     "rodada": "gpt-1 (2026-11-22)",
+     "set_brl": [
+      143.91,
+      143.91
+     ],
+     "fontes": [
+      "https://www.prospin.com.br/corda-para-raquete/marca/gamma?product_list_limit=72"
+     ]
+    }
+   ],
+   "precos_r2": {
+    "set_brl": [
+     143.91,
+     143.91
+    ],
+    "n_lojas": 1,
+    "rolo_brl": null,
+    "bitola_set_mm": 1.32,
+    "esgotado": false,
+    "urls": [
+     "https://www.prospin.com.br/corda-gamma-live-wire-16l-1-32mm-champanhe-set-individual"
+    ],
+    "obs": "set 1.32mm | Pix onde explícito",
+    "data": "2026-11-22"
+   },
+   "preco_status": "confirmado",
+   "bitola_set_mm": 1.32
+  }
+ ]
+}
