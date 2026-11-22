@@ -35,12 +35,14 @@ A tensão segue a lógica anterior (base por tipo, com ajustes por potência, co
 - **Limitações desta versão:**
   - Preços vêm de resumos de busca (lojas online, Mercado Livre, Amazon), lidos em 22/11/2026. As páginas não abriram direto nesta sessão; conferir antes de usar como valor fechado.
   - "Oferta no Brasil" é estimativa pela quantidade de lojas e anúncios, não dado de venda.
-  - Dados de laboratório (TWU) estão vazios: o site da Tennis Warehouse é bloqueado na rede desta sessão. O motor já usa esses campos quando forem preenchidos.
+  - Dados de laboratório (TWU) para 58 das 60 cordas, coletados pelo GPT em 22/11/2026 com URL (`docs/racket/cordas/gpt-2026-11-22.csv`). O mesmo arquivo trouxe preços de página de loja (33 cordas) e jogadores que usam ou usaram (12).
+  - Com a rigidez medida, "poliéster macio" passou a ser poliéster abaixo de 185 lb/in (RPM Soft, Hyper-G Soft, Black Venom, Lynx, Poly Tour Pro, Sonic Pro, Revolve Spin, Topspin Cyber Blue e Cyber Flash). A Luxilon Element (208) e a Head Hawk Touch (196) saíram do grupo. A planilha indica que a RPM Soft é de poliamida.
+  - A econômica não pode perder 50% ou mais de tensão no teste.
   - Tecnifibre HDMX ficou de fora (sem anúncio no Brasil).
 
 ## Próximos passos
-1. Preencher o laboratório (rigidez, perda de tensão, spin e bitola testada) com o briefing abaixo e rodar `racket/tools/cordas.mjs`.
-2. Trocar "macio pelo fabricante" por faixa de rigidez (sugestão da pesquisa: poliéster macio abaixo de 185 lb/in).
+1. Completar o laboratório da Tecnifibre Synthetic Gut e da RPM Power, e os preços que faltam.
+2. Feito: "macio" pela rigidez medida (abaixo de 185 lb/in para poliéster).
 3. Conferir preços nas lojas e incluir lojas especializadas (ProSpin, iTenis, Spin Top, Empório do Tenista).
 4. Revisão de um professor ou encordoador (casos reais: o que o aluno usa e quanto paga).
 5. Teste T29 em `racket/tools/regressao.mjs` cobre o tipo por perfil; ampliar com casos reais.
