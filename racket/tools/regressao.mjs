@@ -19,7 +19,7 @@
      T13 proveniência dos dados de reviews: elegível só com página aberta, sem transferir geração, autoria da conferência
      T14 resposta oculta não muda nota · T15 teto de SW (nível e ombro) com raquete conhecida de SW alto
      T16 EXAMPLE no formato novo · T17 contador público = caminhos reais = site · T18 iniciante sem número ideal único
-     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual · T27 gerações anteriores (rodada 17) · T28 nota da atual sem critérios de compra (rodada 19)
+     T22 iniciante com atual pesada · T23 mão no meio do cabo = pesada · T24 marca marginal fora do top 3 · T25 casos-guia (rodada 15) · T26 veredito da atual · T29 corda por perfil (rodada 27) · T27 gerações anteriores (rodada 17) · T28 nota da atual sem critérios de compra (rodada 19)
      T19 estilo em 4 degraus (básico → completo) e compatibilidade · T20 resumo quando a raquete atual empata ou fica perto da recomendada
      T21 comparador sem placar e nas cores da marca
    - Relatórios (não falham): remoção de fonte (sem TW, sem sites da rodada 1, sem EVID) e base × candidata.
@@ -203,6 +203,21 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  const X3=globalThis.X3;
  teste('T28 nota bruta da atual mede só o encaixe: não muda com marca, oferta no Brasil, orçamento nem avaliação de testadores',X3.every(([,f])=>new Set(f).size===1&&!f[0].includes('x')),X3.map(([c,f])=>c+' bruta '+f[0].split('|')[0]+' ('+new Set(f).size+' valor)').join(' · '));
  teste('T26 veredito da atual (rodada 26): match perfeito (1º), opções melhores (até 3º ou até 4 pontos), trocar',JSON.stringify(X)===JSON.stringify(['match1','opcoes3','opcoes5','trocar6','trocar16']),X.join(', '))}
+
+/* T29 (rodada 27): tipo de corda por perfil e 3 cordas reais do catálogo (docs/racket/cordas.md) */
+{const html=cand;const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);if(u==='/racket/'){s.writeHead(200,{'content-type':'text/html; charset=utf-8'});return s.end(html)}const f=path.join(raiz,u);if(!fs.existsSync(f)){s.writeHead(404);return s.end()}s.end(fs.readFileSync(f))});
+  await new Promise(r=>srv.listen(0,r));const b=await chromium.launch();const pg=await b.newPage();await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g|googletag|google-analytics|facebook|doubleclick/,r=>r.abort());
+  await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
+  const X=await pg.evaluate(()=>{const H=window.__RK,{A,compute}=H;const b={age:'38',height:'178',weight:'80',str:'mid',cond:'2',arm:'no',lvl:'int',years:'3',swing:'mid',spin:'mid',serve:'safe',style:'cnt',opp:'mix',miss:'long',cur:'none',why:'feel',want:[],restr:'3m',imp:'no',budget:'99999'};
+    const P=[['beg',{lvl:'beg'},'synthetic'],['int',{},'multi'],['int_topspin_longo',{spin:'high',swing:'long'},'hybrid'],['adv_int_longo',{lvl:'adv_int',swing:'long'},'poly_soft'],['adv_int_medio',{lvl:'adv_int'},'hybrid'],
+      ['adv_topspin',{lvl:'adv',spin:'high',swing:'long'},'poly_shaped'],['adv_reto',{lvl:'adv',spin:'low',swing:'long'},'poly'],['dor_hoje',{arm:'now',joint:['elbow'],pain:'2',lim:'1'},'multi'],
+      ['dor_passada_adv',{lvl:'adv',arm:'past',joint:['elbow'],painPast:'2',painAgo:'2y'},'hybrid'],['idade_62',{age:'62',lvl:'adv'},'hybrid'],['juvenil_13',{age:'13'},'synthetic'],['juvenil_15_adv',{age:'15',lvl:'adv',spin:'high',swing:'long'},'hybrid']];
+    return P.map(([id,d,exp])=>{Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,H.cleanAnswers({...b,...d}));const R=compute();const st=H.stringSetup(R.ranked[0].r);const pk=H.cordaPicks(st);
+      const okTipo=pk.every(o=>o.k==='prem'&&o.x.t==='gut'?st.cat==='multi':({synthetic:t=>t==='synthetic',multi:t=>t==='multi',poly:t=>t==='poly',poly_shaped:t=>t==='poly_shaped',poly_soft:t=>/^poly/.test(t),hybrid:t=>/^poly/.test(t)})[st.cat](o.x.t));
+      return {id,cat:st.cat,exp,n:pk.length,okTipo,semPoliCompleto:!(/beg|^int$|dor|juvenil|idade/.test(id)&&/^poly/.test(st.cat)&&st.cat!=='hybrid'&&st.cat!=='poly_soft')}})});
+  await b.close();srv.close();
+  const bad=X.filter(x=>x.cat!==x.exp||x.n<2||!x.okTipo||!x.semPoliCompleto);
+  teste('T29 corda por perfil (rodada 27): tipo certo para 12 perfis, ao menos 2 cordas reais do tipo, sem poliéster completo para iniciante, intermediário, dor, juvenil e 60+',!bad.length,bad.length?bad.map(x=>`${x.id}: ${x.cat}≠${x.exp} (${x.n})`).join('; '):'12/12')}
 
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});

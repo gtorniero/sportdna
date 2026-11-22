@@ -619,6 +619,7 @@ details.cmpbox[open]{background:var(--surface)}
 /* rodada 23: bloco da raquete atual e card do resultado em destaque (azul-petróleo bem claro, AA nos dois temas) */
 .curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
 .curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
+.cordal{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
 .vbig{margin:14px 0 4px;display:flex;flex-direction:column;gap:10px}
 .vbt{margin:0;display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;font:800 44px/1.05 'Archivo',var(--f-display);letter-spacing:-.02em}
 .vbt svg{flex:none;width:40px;height:40px}
@@ -1574,7 +1575,7 @@ function compute(){
   const conf=cl(Math.round(M.confBase+answered*M.confPorResposta+gap*M.confGap),M.confMin,M.confMax);
   return {T,tw,c,ranked,all,curFit,conf,answered,Z:ZZ};
 }
-if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,vereditoAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight,evoluiPick};
+if(/[?&]teste\b/.test(location.search))window.__RK={duelHTML,closeRacketFit,vereditoAtual,GERACOES,pdfPages,contaCaminhos,purgeHidden,A,Q,RK,compute,PESOS,idx,EXAMPLE,drawRacketCard,drawCard,stringSetup,painNote,cleanAnswers,familias,dorForte,penalties,zones,target,targetWeight,evoluiPick,cordaPicks};
 
 /* ---------- Análise ---------- */
 function runAnalysis(){
@@ -1765,7 +1766,7 @@ function renderPreview(){
         <p style="margin:0"><strong>O relatório completo inclui:</strong></p>
         <ul style="margin:0;padding-left:20px">
           <li>Diagnóstico completo da sua raquete atual e a comparação com a nova, quando informada.</li>
-          <li>Sugestão de corda, espessura e tensão.</li>
+          <li>As 3 cordas certas para o seu jogo, com preço, espessura e tensão.</li>
           <li>Comparador ilimitado para colocar as raquetes lado a lado.</li>
         </ul>
         <p class="promo" style="margin:0"><span class="promotag">Oferta por tempo limitado</span></p>
@@ -1804,7 +1805,7 @@ function renderPreview(){
         <li>As 3 raquetes que mais encaixam, reveladas, com o ranking dos 10</li>
         <li>Régua de specs, mapa peso × swingweight e Conforto no braço antes e depois</li>
         <li>Diagnóstico completo da sua raquete atual</li>
-        <li>Sugestão de corda, espessura e tensão para a nova e para a sua</li>
+        <li>As 3 cordas certas para o seu jogo, com preço, e a tensão para a nova e para a sua</li>
         <li>Comparador ilimitado entre as ${RK.length} raquetes e card para story</li>
         <li>Reteste grátis em 90 dias: o seu jogo mudou, você refaz e recebe o relatório novo</li>
         <li>Onde é fácil ou difícil de achar cada raquete no Brasil</li>
@@ -1974,6 +1975,57 @@ function stringSetup(r){
   const rs=A.restr==='zero'?'Corda nunca trocada é corda morta: o poliéster perde tensão nas primeiras semanas e fica duro como arame. Isso tira controle e manda vibração direto para o braço. Antes de qualquer coisa, troque a corda, mesmo que ela nunca tenha arrebentado.':A.restr==='never'||A.restr==='6m'?(/oli/.test(s)?'Poliéster perde tensão e endurece em poucas semanas. Trocando só a cada 6 meses ou mais, a corda fica morta e rígida, o que tira controle e castiga o braço.':'Corda velha perde elasticidade. Mesmo sem arrebentar, troque no prazo indicado.'):'';
   return {s,cat,lb:[base-1,base+1],kg:[kg(base-1),kg(base+1)],swap,steps,base,vs,rs};
 }
+/* rodada 27 (pedido do Gui): cordas reais para o tipo indicado. Catálogo em docs/racket/dados/cordas.json, injetado por racket/tools/cordas.mjs.
+   O tipo e a tensão vêm de stringSetup; aqui só escolhemos 3 modelos do tipo: a mais indicada, uma econômica e uma premium.
+   Sem dados de laboratório (TWU), a escolha usa oferta no Brasil e preço; com eles, entra maciez (dor), perda de tensão e spin. Nenhuma marca paga. */
+const CORDAS=/*CORDAS*/[{"n":"Babolat RPM Blast","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[93,140],"pop":3,"s":null,"l":null,"c":null},{"n":"Babolat RPM Rough","t":"poly_shaped","sh":"textured","mc":0,"br":0,"p":[110,144],"pop":2,"s":null,"l":null,"c":null},{"n":"Babolat RPM Power","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[92,125],"pop":1,"s":null,"l":null,"c":null},{"n":"Babolat RPM Soft","t":"poly_shaped","sh":"shaped","mc":1,"br":0,"p":[85,150],"pop":2,"s":null,"l":null,"c":null},{"n":"Babolat Pro Hurricane","t":"poly","sh":"round","mc":0,"br":0,"p":[50,50],"pop":2,"s":null,"l":null,"c":null},{"n":"Babolat Xcel","t":"multi","sh":"round","mc":0,"br":0,"p":[167,250],"pop":2,"s":null,"l":null,"c":null},{"n":"Babolat Addiction","t":"multi","sh":"round","mc":0,"br":0,"p":[95,100],"pop":2,"s":null,"l":null,"c":null},{"n":"Babolat Synthetic Gut","t":"synthetic","sh":"round","mc":0,"br":0,"p":[25,70],"pop":3,"s":null,"l":null,"c":null},{"n":"Babolat Touch VS","t":"gut","sh":"round","mc":0,"br":0,"p":[499,600],"pop":1,"s":null,"l":null,"c":null},{"n":"Luxilon ALU Power","t":"poly","sh":"round","mc":0,"br":0,"p":[170,210],"pop":3,"s":null,"l":null,"c":null},{"n":"Luxilon 4G","t":"poly","sh":"round","mc":0,"br":0,"p":[139,240],"pop":2,"s":null,"l":null,"c":null},{"n":"Luxilon Element","t":"poly","sh":"round","mc":1,"br":0,"p":[120,200],"pop":2,"s":null,"l":null,"c":null},{"n":"Luxilon Big Banger Original","t":"poly","sh":"round","mc":0,"br":0,"p":[113,113],"pop":1,"s":null,"l":null,"c":null},{"n":"Luxilon Smart","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[189,189],"pop":1,"s":null,"l":null,"c":null},{"n":"Solinco Hyper-G","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[115,170],"pop":3,"s":null,"l":null,"c":null},{"n":"Solinco Hyper-G Soft","t":"poly_shaped","sh":"shaped","mc":1,"br":0,"p":[115,150],"pop":2,"s":null,"l":null,"c":null},{"n":"Solinco Tour Bite","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[110,180],"pop":2,"s":null,"l":null,"c":null},{"n":"Solinco Confidential","t":"poly","sh":"round","mc":0,"br":0,"p":[114,220],"pop":2,"s":null,"l":null,"c":null},{"n":"Solinco Revolution","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[120,131],"pop":1,"s":null,"l":null,"c":null},{"n":"Solinco Vanquish","t":"multi","sh":"round","mc":0,"br":0,"p":[119,145],"pop":1,"s":null,"l":null,"c":null},{"n":"Head Lynx","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[79,100],"pop":2,"s":null,"l":null,"c":null},{"n":"Head Lynx Tour","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[72,110],"pop":3,"s":null,"l":null,"c":null},{"n":"Head Hawk","t":"poly","sh":"round","mc":0,"br":0,"p":[110,110],"pop":1,"s":null,"l":null,"c":null},{"n":"Head Hawk Touch","t":"poly","sh":"round","mc":1,"br":0,"p":[78,200],"pop":2,"s":null,"l":null,"c":null},{"n":"Head Sonic Pro","t":"poly","sh":"round","mc":0,"br":0,"p":[66,70],"pop":2,"s":null,"l":null,"c":null},{"n":"Head Velocity MLT","t":"multi","sh":"round","mc":0,"br":0,"p":[52,79],"pop":2,"s":null,"l":null,"c":null},{"n":"Head Reflex MLT","t":"multi","sh":"round","mc":0,"br":0,"p":[105,122],"pop":1,"s":null,"l":null,"c":null},{"n":"Head Synthetic Gut PPS","t":"synthetic","sh":"round","mc":0,"br":0,"p":[34,50],"pop":2,"s":null,"l":null,"c":null},{"n":"Head RIP Control","t":"synthetic","sh":"round","mc":0,"br":0,"p":[72,135],"pop":1,"s":null,"l":null,"c":null},{"n":"Wilson Revolve","t":"poly","sh":"round","mc":0,"br":0,"p":[92,130],"pop":1,"s":null,"l":null,"c":null},{"n":"Wilson Revolve Spin","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[130,224],"pop":1,"s":null,"l":null,"c":null},{"n":"Wilson NXT","t":"multi","sh":"round","mc":0,"br":0,"p":[170,296],"pop":2,"s":null,"l":null,"c":null},{"n":"Wilson Sensation","t":"multi","sh":"round","mc":0,"br":0,"p":[60,85],"pop":2,"s":null,"l":null,"c":null},{"n":"Wilson Synthetic Gut Power","t":"synthetic","sh":"round","mc":0,"br":0,"p":[38,55],"pop":2,"s":null,"l":null,"c":null},{"n":"Wilson Natural Gut","t":"gut","sh":"round","mc":0,"br":0,"p":[539,676],"pop":1,"s":null,"l":null,"c":null},{"n":"Yonex Poly Tour Pro","t":"poly","sh":"round","mc":0,"br":0,"p":[79,130],"pop":2,"s":null,"l":null,"c":null},{"n":"Yonex Poly Tour Strike","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[135,135],"pop":1,"s":null,"l":null,"c":null},{"n":"Yonex Poly Tour Spin","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[79,115],"pop":2,"s":null,"l":null,"c":null},{"n":"Yonex Poly Tour Rev","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[135,150],"pop":1,"s":null,"l":null,"c":null},{"n":"Yonex Rexis","t":"multi","sh":"round","mc":0,"br":0,"p":[162,180],"pop":1,"s":null,"l":null,"c":null},{"n":"Tecnifibre Black Code","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[79,170],"pop":2,"s":null,"l":null,"c":null},{"n":"Tecnifibre Razor Code","t":"poly","sh":"round","mc":0,"br":0,"p":[115,149],"pop":1,"s":null,"l":null,"c":null},{"n":"Tecnifibre Ice Code","t":"poly","sh":"round","mc":0,"br":0,"p":[79,160],"pop":1,"s":null,"l":null,"c":null},{"n":"Tecnifibre Red Code","t":"poly","sh":"round","mc":0,"br":0,"p":[55,65],"pop":1,"s":null,"l":null,"c":null},{"n":"Tecnifibre X-One Biphase","t":"multi","sh":"round","mc":0,"br":0,"p":[195,265],"pop":2,"s":null,"l":null,"c":null},{"n":"Tecnifibre NRG2","t":"multi","sh":"round","mc":0,"br":0,"p":[174,260],"pop":1,"s":null,"l":null,"c":null},{"n":"Tecnifibre Multifeel","t":"multi","sh":"round","mc":0,"br":0,"p":[107,122],"pop":1,"s":null,"l":null,"c":null},{"n":"Tecnifibre Synthetic Gut","t":"synthetic","sh":"round","mc":0,"br":0,"p":[40,40],"pop":1,"s":null,"l":null,"c":null},{"n":"Kirschbaum Pro Line II","t":"poly","sh":"round","mc":0,"br":0,"p":[80,100],"pop":2,"s":null,"l":null,"c":null},{"n":"Kirschbaum Max Power","t":"poly","sh":"round","mc":0,"br":0,"p":[79,100],"pop":2,"s":null,"l":null,"c":null},{"n":"Signum Pro Poly Plasma","t":"poly","sh":"round","mc":0,"br":0,"p":[39,95],"pop":3,"s":null,"l":null,"c":null},{"n":"Signum Pro Firestorm","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[120,120],"pop":1,"s":null,"l":null,"c":null},{"n":"Polyfibre Black Venom","t":"poly","sh":"round","mc":0,"br":0,"p":[70,90],"pop":2,"s":null,"l":null,"c":null},{"n":"MSV Focus Hex","t":"poly_shaped","sh":"shaped","mc":0,"br":0,"p":[49,60],"pop":2,"s":null,"l":null,"c":null},{"n":"Topspin Cyber Blue","t":"poly","sh":"round","mc":0,"br":1,"p":[40,65],"pop":2,"s":null,"l":null,"c":null},{"n":"Topspin Cyber Flash","t":"poly","sh":"round","mc":0,"br":1,"p":[47,53],"pop":2,"s":null,"l":null,"c":null},{"n":"Prince Synthetic Gut Duraflex","t":"synthetic","sh":"round","mc":0,"br":0,"p":[45,45],"pop":1,"s":null,"l":null,"c":null},{"n":"Prince Premier Touch","t":"multi","sh":"round","mc":0,"br":0,"p":[75,78],"pop":1,"s":null,"l":null,"c":null},{"n":"Gamma Synthetic Gut","t":"synthetic","sh":"round","mc":0,"br":0,"p":[109,109],"pop":1,"s":null,"l":null,"c":null},{"n":"Gamma Live Wire","t":"multi","sh":"round","mc":0,"br":0,"p":[121,160],"pop":1,"s":null,"l":null,"c":null}]/*FIM_CORDAS*/;
+const CORDA_TIPO={synthetic:'sintética',multi:'multifilamento',gut:'tripa natural',poly:'poliéster',poly_shaped:'poliéster facetado'};
+function cordaPool(cat){
+  const intl=!!window.RK_INTL,ok=x=>!(intl&&x.br);
+  const P={synthetic:x=>x.t==='synthetic',multi:x=>x.t==='multi',poly:x=>x.t==='poly',poly_shaped:x=>x.t==='poly_shaped',poly_soft:x=>x.mc&&/^poly/.test(x.t),hybrid:x=>x.mc&&/^poly/.test(x.t)}[cat];
+  return P?CORDAS.filter(x=>ok(x)&&P(x)):[];
+}
+function cordaScore(x,cat){
+  let v=x.pop*10;const macia=A.arm!=='no'||cat==='hybrid'||cat==='poly_soft'||cat==='multi';
+  if(x.s!=null)v+=(macia?1.5:.5)*(200-x.s)/10;
+  if(x.l!=null)v+=(35-x.l)/5;
+  if(x.c!=null&&A.spin==='high')v+=x.c*20;
+  if(wants().includes('spin')&&x.sh&&x.sh!=='round')v+=3;
+  return v;
+}
+const cordaMeio=x=>(x.p[0]+x.p[1])/2;
+function cordaPicks(st){
+  if(!st||!st.cat)return [];
+  const pool=cordaPool(st.cat).map(x=>({x,v:cordaScore(x,st.cat)})).sort((a,b)=>b.v-a.v||cordaMeio(a.x)-cordaMeio(b.x));
+  if(!pool.length)return [];
+  const rec=pool[0].x,rest=pool.slice(1).map(o=>o.x).filter(x=>x.pop>=2);
+  const eco=rest.filter(x=>cordaMeio(x)<cordaMeio(rec)).sort((a,b)=>cordaMeio(a)-cordaMeio(b))[0]||null;
+  let prem=rest.filter(x=>x!==eco&&cordaMeio(x)>cordaMeio(rec)).sort((a,b)=>b.pop-a.pop||cordaMeio(b)-cordaMeio(a))[0]||null;
+  /* com dor hoje, a premium é tripa natural: a corda mais macia que existe */
+  if(st.cat==='multi'&&(A.arm==='now'||dorForte())){const g=CORDAS.filter(x=>x.t==='gut'&&!(window.RK_INTL&&x.br)).sort((a,b)=>b.pop-a.pop||cordaMeio(a)-cordaMeio(b))[0];if(g)prem=g}
+  return [{k:'rec',x:rec},eco&&{k:'eco',x:eco},prem&&{k:'prem',x:prem}].filter(Boolean);
+}
+function cordaPorque(o,st){
+  const x=o.x,out=[];
+  if(o.k==='rec')out.push(x.pop>=3?'Uma das mais fáceis de achar no Brasil':'Boa oferta nas lojas e com encordoadores');
+  if(o.k==='eco')out.push('A mais em conta do grupo');
+  if(x.t==='gut')out.push('Tripa natural: a corda mais macia e a que menos cansa o braço. Custa caro e não gosta de umidade');
+  else if(o.k==='prem')out.push('Mais cara, para quem quer o modelo de ponta do tipo');
+  if(x.mc)out.push('O fabricante a posiciona como poliéster macio');
+  if(x.t==='poly_shaped'&&!x.mc&&st.cat!=='poly_shaped')out.push('Formato facetado, pensado para dar spin');
+  if(x.s!=null)out.push(`Rigidez de ${x.s} lb/in no laboratório (TWU)`);
+  return out.slice(0,2);
+}
+const cordaEx=st=>{const p=cordaPicks(st);return p.length?'Ex.: '+p.slice(0,2).map(o=>o.x.n).join(', '):STR_EX(st.s)};
+function cordaBox(st){
+  const picks=cordaPicks(st);if(!picks.length)return '';
+  const intl=!!window.RK_INTL,L={rec:'A mais indicada',eco:'Econômica',prem:'Premium'};
+  const cruz=st.cat==='hybrid'?(cordaPicks({cat:'multi'})[0]||{}).x:null;
+  return `<section class="panel" id="r-corda" aria-labelledby="h-corda"><h2 class="sec" id="h-corda">Cordas para o seu jogo</h2>
+    <p class="muted" style="margin-top:-8px">Tipo indicado: <strong>${st.s}</strong>, de ${st.lb[0]} a ${st.lb[1]} lb.${cruz?` Nas verticais, um destes poliésteres macios; nas horizontais, um multifilamento como a ${esc(cruz.n)}.`:''}</p>
+    <div class="altl cordal">${picks.map(o=>`<article class="altc"><p class="eyebrow">${L[o.k]}</p><h3>${esc(o.x.n)}</h3>${intl?'':`<p class="note" style="margin:0">Set de 12 m: R$ ${o.x.p[0]===o.x.p[1]?o.x.p[0]:o.x.p[0]+' a '+o.x.p[1]}</p>`}<ul class="why altw">${cordaPorque(o,st).map(t=>`<li>${t}</li>`).join('')}</ul></article>`).join('')}</div>
+    <p class="note">${intl?'Availability and prices vary by store. ':'Preços de referência em lojas online no Brasil (nov/2026). O encordoamento costuma custar de R$ 40 a 85 à parte. '}Nenhuma marca paga para aparecer.</p></section>`;
+}
 /* motivo da tensão em palavras, sem a conta ajuste por ajuste */
 function tensWhy(st){const x=st.steps.slice(1).map(s=>s[0].charAt(0).toLowerCase()+s[0].slice(1));return 'Faixa pensada para a corda indicada e o seu perfil'+(x.length?', considerando também: '+x.join('; '):'')+'.'}
 function archetype(){
@@ -2121,7 +2173,7 @@ function renderReport(){
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Atual × nova':'Perfil × nova';
   /* rodada 23 (pedido do Gui): sua atual → resultado → por que combina → alternativas → top 10 e mapa → atual × nova → comparador → guia → DNA → ficha */
-  const chips=(c&&curFit?[['r-cur','Sua raquete']]:[]).concat([['r-res','Resultado'],['r-por','Por que combina']]).concat(full?[['r-alt','Alternativas'],['r-top','Top 10 e mapa']]:[]).concat([['r-atual',cmpName]]).concat(full?[['r-cmp','Comparador'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
+  const chips=(c&&curFit?[['r-cur','Sua raquete']]:[]).concat([['r-res','Resultado'],['r-por','Por que combina']]).concat(full?[['r-alt','Alternativas'],['r-top','Top 10 e mapa']]:[]).concat([['r-atual',cmpName]]).concat(full?[['r-cmp','Comparador'],['r-corda','Cordas'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
   const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Baixar PDF</button>':'';
   let h=`<div class="rbar"><div class="backbar">${ex?'<button class="btn btn-ghost btn-sm" type="button" data-mytest>Fazer o meu teste</button>':'<button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button>'}<button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
   <nav class="rchips" aria-label="Seções do relatório">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
@@ -2165,6 +2217,7 @@ function renderReport(){
     /* 7. Guia de compra: corda e tensão + grip */
     const polyTip=A.string==='poly'&&A.arm!=='no'&&!/Poliéster perde/.test(st.rs);
     const strRow=(x,label,s2)=>`<tr><td class="wide">${label}</td><td class="wide" data-label="Corda">${s2.s}</td><td class="n" data-label="Tensão">${s2.lb[0]} a ${s2.lb[1]} lb<br>${s2.kg[0]} a ${s2.kg[1]} kg</td><td data-label="Trocar">${s2.swap||'—'}</td></tr>`;
+    h+=cordaBox(st);
     /* rodada 17: guia de compra recolhido (abre no clique); top 10 e mapa ficam sempre à vista */
     h+=`<section class="panel" id="r-guia" aria-labelledby="h-guia"><details class="fold"><summary><span><h2 id="h-guia" class="sec">Guia de compra</h2><small>Corda, tensão e grip para a nova${c?' e para a sua':''}</small></span></summary><div class="foldin">
       <div style="display:flex;flex-direction:column;gap:12px"><h3>Sugestão de corda e tensão</h3><p class="note" style="margin-top:-6px">Ponto de partida, não regra: corda é gosto pessoal. Use a sugestão no primeiro encordoamento e ajuste pela sensação.</p>
@@ -2278,7 +2331,7 @@ function pdfPages(){
   const foot=`<div class="pf"><span>${isExample()?'Exemplo pronto · perfil fictício':'Relatório pessoal'} · ${today} · #${id}</span><span>Índices RACKET DNA calculados de specs medidas + avaliações públicas. Não substitui teste em quadra.</span></div>`;
   const series=[{name:'Seu ideal',v:T,c:'#0B2530',ideal:true},{name:r.model,v:r.ix,c:'#0E4D64',solid:true}];if(c)series.push({name:'Sua atual',v:c.ix,c:'#E07A1F',dash:true});
   const radarSVG=hexify(radar(series).split('<div class="legend">')[0]).replace(/fill-opacity="\.5"/,'fill-opacity=".55"');
-  const tiles=[['Raquete',esc(r.name),`${r.head} pol² · ${r.pat.replace('x','×')} · ${r.wt} g`],['Grip',gs?'L'+gs.g:A.hold==='thick'?'Um abaixo do atual':A.hold==='thin'?'Um acima do atual':'Meça a mão',gs?gs.src:A.hold==='thick'?'O cabo da sua atual parece grosso':A.hold==='thin'?'Ou overgrip: o cabo da sua atual parece fino':'Palma até a ponta do anelar, em cm'],['Corda',st.s.split(':')[0].replace(/ \d,\d\d mm.*$/,''),STR_EX(st.s)],['Espessura',(st.s.match(/1,\d\d mm/)||['1,25 mm'])[0],'Mais fina: mais spin e toque; mais grossa: dura mais'],['Tensão',`${st.lb[0]}–${st.lb[1]} lb`,`${st.kg[0]}–${st.kg[1]} kg · centro em ${st.base} lb`],['Troca da corda',st.swap||'a cada 2 a 3 meses','Pelo seu ritmo de jogo']];
+  const tiles=[['Raquete',esc(r.name),`${r.head} pol² · ${r.pat.replace('x','×')} · ${r.wt} g`],['Grip',gs?'L'+gs.g:A.hold==='thick'?'Um abaixo do atual':A.hold==='thin'?'Um acima do atual':'Meça a mão',gs?gs.src:A.hold==='thick'?'O cabo da sua atual parece grosso':A.hold==='thin'?'Ou overgrip: o cabo da sua atual parece fino':'Palma até a ponta do anelar, em cm'],['Corda',st.s.split(':')[0].replace(/ \d,\d\d mm.*$/,''),cordaEx(st)],['Espessura',(st.s.match(/1,\d\d mm/)||['1,25 mm'])[0],'Mais fina: mais spin e toque; mais grossa: dura mais'],['Tensão',`${st.lb[0]}–${st.lb[1]} lb`,`${st.kg[0]}–${st.kg[1]} kg · centro em ${st.base} lb`],['Troca da corda',st.swap||'a cada 2 a 3 meses','Pelo seu ritmo de jogo']];
   /* página 1: veredito */
   const p1=`<section class="pg">${head(1,'O veredito')}
    <div class="hero"><div class="hl">
@@ -2308,7 +2361,7 @@ function pdfPages(){
    ${foot}</section>`;
   /* página 3: setup */
   const nofix=curFit?curFit.pen.filter(p=>/Peso|Swingweight|Balanço|Cabeça|Rigidez/.test(p[1])).slice(0,3):[];
-  const card=(t,rr,s,sub)=>`<div class="sc"><p class="ey">${t}</p><h3>${esc(rr.model)}</h3><p class="small">${sub}</p><div class="scg"><div><span>Corda</span><b>${s.s.replace(/:.*$/,'')}</b><em>${STR_EX(s.s)}</em></div><div><span>Tensão</span><b>${s.lb[0]}–${s.lb[1]} lb</b><em>${s.kg[0]}–${s.kg[1]} kg</em></div><div><span>Troca</span><b>${s.swap||'a cada 2 a 3 meses'}</b></div></div></div>`;
+  const card=(t,rr,s,sub)=>`<div class="sc"><p class="ey">${t}</p><h3>${esc(rr.model)}</h3><p class="small">${sub}</p><div class="scg"><div><span>Corda</span><b>${s.s.replace(/:.*$/,'')}</b><em>${cordaEx(s)}</em></div><div><span>Tensão</span><b>${s.lb[0]}–${s.lb[1]} lb</b><em>${s.kg[0]}–${s.kg[1]} kg</em></div><div><span>Troca</span><b>${s.swap||'a cada 2 a 3 meses'}</b></div></div></div>`;
   const tr=transition(r,c);
   /* ajuda de compra: última página, com menos destaque (nov/2026) */
   const p3=`<section class="pg lite">${head(5,'Depois da escolha: corda, adaptação e compra')}

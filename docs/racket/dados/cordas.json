@@ -1,0 +1,1935 @@
+{
+ "versao": "2026-11-22",
+ "como_ler": "Preços: referências de lojas online no Brasil (Mercado Livre, Amazon, lojas especializadas), lidos em resumos de busca em 22/11/2026; conferir antes de publicar valores fechados. Tipo e formato: classificação de produto (poliéster redondo ou facetado, multifilamento, sintético, tripa). macio_fabricante: o próprio fabricante posiciona como poliéster macio (nome ou descrição); trocar pela rigidez TWU quando os dados de laboratório chegarem. lab: dados da Tennis Warehouse University, ainda vazios (o site não abriu nesta coleta).",
+ "mao_de_obra_brl": {
+  "min": 40,
+  "max": 85,
+  "sources": [
+   "https://www.itenis.com.br/encordoamento-de-raquete-28m-e3-a3o-de-obra-29-corda-cliente-serv-mo.html",
+   "https://www.spintop.com.br/encordoamento",
+   "https://joguetennis.com.br/encordoamento/"
+  ],
+  "notes": "iTenis R$40 (R$36 Pix), Spin Top R$50 (R$47,50 Pix), Jogue Tennis (Recife) R$85 + R$35 busca/entrega opcional. Jogue Tennis vende corda cortada do rolo por raquete em faixas Game (a partir de R$35), Set (R$55) e Match (R$75+), ex.: Poly Plasma R$85, RPM Dual R$80, Element R$160. iTenis tem item separado 'corda loja' vs 'corda cliente'. Página da Jogue Tennis tinha ~448 dias segundo o buscador."
+ },
+ "cordas": [
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Blast",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    93.18,
+    139.9
+   ],
+   "rolo_brl": [
+    1199,
+    2099.9
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre",
+    "ProSpin",
+    "Decathlon BR",
+    "Centauro",
+    "Netshoes",
+    "Magazine Luiza"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Babolat-Rpm-Blast-Black-Corda/dp/B08Z2VPB3X",
+    "https://www.mercadolivre.com.br/corda-babolat-rpm-blast-17l-125mm-preta-set-ind/p/MLB27073958",
+    "https://www.prospin.com.br/corda-babolat-rpm-blast-16l-1.30mm-preta-set-individual",
+    "https://www.decathlon.com.br/corda-babolat-rpm-blast-1-25mm-17l-preta-rolo-com-200-metros-2144938017/p",
+    "https://www.decathlon.com.br/corda-babolat-rpm-blast-1-30mm-16l-preta-rolo-com-200-metros-2144938016/p",
+    "https://www.centauro.com.br/corda-babolat-rpm-blast-1-25mm-17l-preta-rolo-com-200-metros-m0jxwh-mktp.html",
+    "https://www.magazineluiza.com.br/"
+   ],
+   "obs": "Set: Amazon R$119 (1.30), ProSpin R$129,90, ML de R$93,18 a R$139,90. Rolo 200 m: ML ~R$1.199, Decathlon R$1.555,44 (1.30) a R$2.099,90 (1.25), Centauro R$1.999,90; Magalu R$2.099,90 (via Buscapé/Zoom). Jogue Tennis vende set montado."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Rough",
+   "tipo": "poly_shaped",
+   "formato": "textured",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    109.9,
+    144
+   ],
+   "rolo_brl": [
+    1299,
+    1799
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-babolat-rpm-blast-rough",
+    "https://www.amazon.com.br/CORDA-RPM-ROUGH-1-30-16-12M/dp/B0849WP9GD",
+    "https://www.netshoes.com.br/corda-babolat-rpm-blast-rough-17l-125mm-preta-rolo-com-200-metros-preto-2DC-0066-006"
+   ],
+   "obs": "Rolo: Netshoes R$1.299 (cartão N Card) / R$1.799 cheio. Vendido como 'RPM Blast Rough'."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Power",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    92.18,
+    124.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-babolat-rpm"
+   ],
+   "obs": "Poucos anúncios; rolo não encontrado."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "RPM Soft",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    84.9,
+    149.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.mercadolivre.com.br/corda-babolat-rpm-soft-17l-125mm-bege-set-individual/p/MLB27312664",
+    "https://lista.mercadolivre.com.br/corda-babolat-rpm-soft"
+   ],
+   "obs": "Rolo não encontrado."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Pro Hurricane",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    49.9,
+    49.9
+   ],
+   "rolo_brl": [
+    514.45,
+    799.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Netshoes",
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.netshoes.com.br/p/corda-babolat-pro-hurricane-tour-17l-125mm-inter-preta-set-individual-preto-2DC-0226-006",
+    "https://www.netshoes.com.br/corda-babolat-pro-hurricane-tour-17-125mm-12m-pack-com-17-sets-preto-2DC-0720-006",
+    "https://www.amazon.com.br/Babolat-Hurricane-17g-1-Molinete-cord%C3%A3o/dp/B0037E9SR2"
+   ],
+   "obs": "Em geral aparece como Pro Hurricane Tour. Set Netshoes R$49,90. 'Rolo' = pack 17 sets (204 m) R$799,90 (Amazon/U-Tennis, Netshoes); ML rolo 120 m R$514,45. Não confundir com RPM Hurricane (rolo 200 m R$1.369,75 Amazon, R$1.399,90 Decathlon)."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Xcel",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    167.22,
+    249.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Decathlon BR",
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-babolat-xcel-16l-1-30mm--set-12-metros----champanhe-2145590274/p",
+    "https://www.amazon.com.br/Babolat-Xcel-16-conjunto-Natural/dp/B00EK5FOHK",
+    "https://www.mercadolivre.com.br/corda-babolat-xcel-125mm-azul-12m-mulfilamento-set-unit/p/MLB28318306"
+   ],
+   "obs": "Amazon R$167,22 é importado com taxas incluídas; Decathlon R$249,90."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Addiction",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    94.91,
+    99.9
+   ],
+   "rolo_brl": [
+    1199.9,
+    1199.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-babolat-addiction",
+    "https://www.netshoes.com.br/corda-babolat-addiction-16l-130mm-natural-rolo-com-200-metros-creme-305-9989-QXV"
+   ],
+   "obs": "Também grafada 'Addixion'. Rolo Netshoes R$1.199,90 mas indisponível."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Synthetic Gut",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    24.52,
+    69.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "high",
+   "lojas": [
+    "Decathlon BR",
+    "Magazine Luiza",
+    "Mercado Livre",
+    "Centauro"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-babolat-synthetic-gut-17-1-25mm--set-12-m----branca-2145653574/p",
+    "https://www.mercadolivre.com.br/corda-babolat-synthetic-gut-16l-130mm-branca-set/p/MLB38521396",
+    "https://www.magazineluiza.com.br/busca/corda+babolat+synthetic+gut/"
+   ],
+   "obs": "Decathlon R$34,90; Magalu R$29,90 Pix; Centauro ~R$34,99-38,78."
+  },
+  {
+   "marca": "Babolat",
+   "modelo": "Touch VS",
+   "tipo": "gut",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    499,
+    599.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Magazine Luiza",
+    "Mercado Livre",
+    "Decathlon BR"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.magazineluiza.com.br/corda-babolat-touch-vs-130-mm-natural-gauge-16-set-individual/p/jjba8e84eh/es/ecro/",
+    "https://www.mercadolivre.com.br/corda-babolat-touch-vs-16l-130mm-natural-set-individual/p/MLB35652248",
+    "https://www.decathlon.com.br/corda-babolat-touch-vs-17l-1-25mm-natural---set-individual-2144937994/p"
+   ],
+   "obs": "Tripa natural."
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "ALU Power",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    169.9,
+    209.9
+   ],
+   "rolo_brl": [
+    1749,
+    3249.9
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Decathlon BR",
+    "Mercado Livre",
+    "Magazine Luiza",
+    "Amazon.com.br",
+    "ProSpin"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-luxilon-alu-power-16l---125----silver--set-individual-com-12-metros--2145590486/p",
+    "https://lista.mercadolivre.com.br/luxilon-alu-power",
+    "https://www.decathlon.com.br/corda-luxilon-alu-power-16l-1-25mm-prata-rolo-com-200-metros-2144937947/p",
+    "https://www.magazineluiza.com.br/corda-luxilon-alu-power-17l-1-25mm-branca-rolo-com-200-metros/p/cfgg6c09ff/es/ecro/",
+    "https://www.mercadolivre.com.br/luxilon-alu-power-rough-125mm-rolo-220m-corda-tennis/up/MLBU2189906990"
+   ],
+   "obs": "Rolo: ML R$1.749-1.759 (inclui 220 m), Decathlon R$2.777,67-3.249,90, Magalu R$2.799,90. ML também vende 'set cortado do rolo' (R$138-329). Edição Guga é referência local."
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "4G",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    139,
+    239.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Centauro",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/luxilon-4g",
+    "https://www.centauro.com.br/nav/marca/luxilon",
+    "https://www.amazon.com.br/Just-Tennis-Conjunto-Luxilon-estilos/dp/B0D1WJDG78"
+   ],
+   "obs": "Centauro R$199,89-229,90."
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "Element",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    119.7,
+    199.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Jogue Tennis (Recife)"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-luxilon-element",
+    "https://www.amazon.com.br/Corda-Luxilon-Element-125-Set/dp/B014PCNSDE",
+    "https://joguetennis.com.br/produto/luxilon-element-16l/"
+   ],
+   "obs": "Jogue Tennis R$160 (promo, set cortado para encordoar)."
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "Big Banger Original",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    113.38,
+    113.38
+   ],
+   "rolo_brl": [
+    1499,
+    1499
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-luxilon-big-banger-original",
+    "https://www.amazon.com.br/Luxilon-Big-Banger-cord%C3%A3o-original/dp/B08CMQXZCK"
+   ],
+   "obs": "Set Amazon é importado com taxas; rolo ML 1.30 R$1.499."
+  },
+  {
+   "marca": "Luxilon",
+   "modelo": "Smart",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    189,
+    189
+   ],
+   "rolo_brl": [
+    2800,
+    2800
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://esportes.mercadolivre.com.br/tenis-squash/cordas/corda-luxilon"
+   ],
+   "obs": "Um anúncio de set e um de rolo no ML."
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Hyper-G",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    115,
+    169.9
+   ],
+   "rolo_brl": [
+    1649.9,
+    2374
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Decathlon BR",
+    "ProSpin",
+    "Centauro"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/solinco-hyper-g",
+    "https://www.mercadolivre.com.br/corda-solinco-hyper-g-17-120mm-rolo-com-200-metro/p/MLB27923165",
+    "https://www.decathlon.com.br/corda-solinco-hyper-g-17-1-20mm-rolo-com-200-metros-verde-2144937929/p",
+    "https://www.amazon.com.br/Molinete-corda-t%C3%AAnis-Hyper-G-Solinco/dp/B08CN15YPW",
+    "https://www.prospin.com.br/corda-para-raquete/marca"
+   ],
+   "obs": "ProSpin set 1.25 R$169,90 e listado em 'Mais vendidos'. Rolo Amazon R$1.877,37; Decathlon 1.20 R$1.649,90; ML até R$2.374."
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Hyper-G Soft",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    115,
+    150
+   ],
+   "rolo_brl": [
+    1100,
+    1833
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Decathlon BR"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.mercadolivre.com.br/corda-solinco-hyper-g-soft-16l-125mm-rolo-com-200/p/MLB30430841",
+    "https://www.mercadolivre.com.br/corda-solinco-hyper-g-soft-17-120mm-rolo-com-200-metros/p/MLB28141104",
+    "https://www.decathlon.com.br/corda-solinco-hyper-g-soft-16-1-30mm-rolo-com-200-metros-verde-2144937921/p"
+   ],
+   "obs": "Faixa de set compartilhada com Hyper-G nos resultados; rolos Soft 1.20 ~R$1.100-1.250."
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Tour Bite",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    110,
+    179.9
+   ],
+   "rolo_brl": [
+    1045,
+    1999
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Decathlon BR",
+    "Centauro"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://esportes.mercadolivre.com.br/tenis-squash/cordas/solinco-tour-bite",
+    "https://www.decathlon.com.br/corda-solinco-tour-bite-soft-16l-1-25mm-prata---set-individual-2145436291/p",
+    "https://www.amazon.com.br/Corda-Solinco-Diamond-Rough-1-25mm/dp/B00P8DCWNM"
+   ],
+   "obs": "Inclui versões Soft e Diamond Rough."
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Confidential",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    113.91,
+    219.9
+   ],
+   "rolo_brl": [
+    1133,
+    1509
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Magazine Luiza",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/cordas-solinco",
+    "https://m.magazineluiza.com.br/marcas/solinco/?filters=category---ES",
+    "https://www.amazon.com.br/Corda-de-t%C3%AAnis-Confidencial-Solinco/dp/B08CM9VQBH"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Revolution",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    119.9,
+    131.04
+   ],
+   "rolo_brl": [
+    1399,
+    1399
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-solinco-revolution"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Solinco",
+   "modelo": "Vanquish",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    118.91,
+    144.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Magazine Luiza"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/vanquish",
+    "https://m.magazineluiza.com.br/marcas/solinco/?filters=category---ES"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Head",
+   "modelo": "Lynx",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    78.9,
+    99.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-head-lynx"
+   ],
+   "obs": "Lynx 'simples' aparece pouco; resultados são Lynx Touch (R$78,90-89,90), Lynx Power (R$86-99,90) e Lynx 17 (R$99,90). Linha Lynx Team listada na ProSpin."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Lynx Tour",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    71.91,
+    109.9
+   ],
+   "rolo_brl": [
+    962.34,
+    1599.9
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "Mercado Livre",
+    "Magazine Luiza",
+    "ProSpin",
+    "iTenis",
+    "Decathlon BR",
+    "Centauro",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.mercadolivre.com.br/corda-head-lynx-tour-125mm-copolimero-preto-set-ind-12-m/p/MLB36201040",
+    "https://www.itenis.com.br/corda-head-lynx-tour-16-1-30-champanhe-set-individual-itp030fd701806d.html",
+    "https://www.prospin.com.br/corda-head-lynx-tour-16l-1-30mm-champanhe-set-dld-individual",
+    "https://www.decathlon.com.br/corda-head-lynx-tour-18l-1-20mm-preta---rolo-com-200-metros-2145722700/p",
+    "https://www.centauro.com.br/corda-head-lynx-tour-17l-125mm-rolo-com-200-metros-m16kpd-mktp.html",
+    "https://www.amazon.com.br/Corda-Head-Lynx-1-20mm-Preta/dp/B0BTK7G4YP"
+   ],
+   "obs": "Set mais comum ~R$78-80; iTenis R$71,91 Pix; ProSpin R$79,90-99,90. Rolo: Decathlon/Amazon R$1.149,90-1.199,90, Centauro R$1.199,90-1.599,90, ML ~R$962-1.119. Uma das opções mais baratas entre copoliésteres de marca grande."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Hawk",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    109.9,
+    109.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Decathlon BR"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-head-hawk",
+    "https://www.decathlon.com.br/corda-head-hawk-16l-1-30mm-branco---rolo-com-200-metros-2145292635/p"
+   ],
+   "obs": "Rolo Decathlon listado, preço não capturado."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Hawk Touch",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": true,
+   "so_brasil": false,
+   "set_brl": [
+    78,
+    199.9
+   ],
+   "rolo_brl": [
+    1699.9,
+    2022.44
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "ProSpin",
+    "Netshoes",
+    "Decathlon BR",
+    "Amazon.com.br",
+    "Centauro"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.mercadolivre.com.br/corda-head-hawk-touch-17l-125mm-chumbo-set-individual/p/MLB38740111",
+    "https://www.prospin.com.br/corda-head-hawk-touch-17l-1-25mm-chumbo-set-individual",
+    "https://www.decathlon.com.br/corda-head-hawk-touch-18l-1-20mm-chumbo---rolo-com-200-metros-2145722698/p",
+    "https://www.amazon.com.br/HEAD-Unissex-carretel-adultos-carv%C3%A3o/dp/B084H9KMSG"
+   ],
+   "obs": "Set ML R$107,90-116,90; ProSpin R$79,90-109,90 (esgotado); Netshoes R$78 (indisponível). Rolo Decathlon R$1.699,90; Amazon R$2.022,44."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Sonic Pro",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    66.41,
+    69.9
+   ],
+   "rolo_brl": [
+    849.9,
+    1099.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Decathlon BR",
+    "Magazine Luiza",
+    "Centauro",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-head-sonic-pro-17l-1-25mm-preta-set-individual-2145908681/p",
+    "https://www.decathlon.com.br/corda-head-sonic-pro-17l-1-25mm-preta-rolo-com-200-metros-2145726882/p",
+    "https://www.centauro.com.br/nav/produto/corda/marca/head"
+   ],
+   "obs": "Rolo Decathlon R$999,90; Centauro R$849,90-1.099,90."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Velocity MLT",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    52.25,
+    79
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Amazon.com.br",
+    "Netshoes",
+    "Magazine Luiza",
+    "Decathlon BR"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/HEAD-Conjunto-cordas-Velocity-Tennis/dp/B0DB13YG1R",
+    "https://www.netshoes.com.br/corda-head-velocity-mlt-17-preto-set-preto-OXM-0157-006",
+    "https://www.magazineluiza.com.br/set-head-dld-de-corda-velocity-mlt-16-preto/p/aa2471kkeg/es/teni/",
+    "https://www.decathlon.com.br/corda-head-velocity-mlt-16l-1-30mm---rolo-com-200-metros---natural-2145816888/p"
+   ],
+   "obs": "Netshoes e Magalu indisponíveis. Rolo existe na Decathlon (preço não capturado); Amazon rolo ~R$1.464,87 (modelo não confirmado)."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Reflex MLT",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    104.5,
+    122.29
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/b?node=17834465011"
+   ],
+   "obs": "Só Amazon (provavelmente importado); página exata do produto não identificada no resultado da busca."
+  },
+  {
+   "marca": "Head",
+   "modelo": "Synthetic Gut PPS",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    34.34,
+    49.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "ProSpin",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-head-synthetic-gut-pps-16l-1-30mm-dourado-set-individual",
+    "https://www.prospin.com.br/corda-head-synthetic-gut-pps-16l-1-34mm-dourada-rolo-com-200-metros",
+    "https://lista.mercadolivre.com.br/corda-head-synthetic-gut"
+   ],
+   "obs": "ProSpin R$44,90 (R$38,16 promo, R$34,34 Pix). Rolo existe na ProSpin, preço não capturado."
+  },
+  {
+   "marca": "Head",
+   "modelo": "RIP Control",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    71.56,
+    134.9
+   ],
+   "rolo_brl": [
+    1449.9,
+    1699
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Decathlon BR"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://produto.mercadolivre.com.br/MLB-4580694266-corda-head-rip-control-16l-130mm-branca-set-individual-_JM",
+    "https://www.amazon.com.br/Corda-t%C3%AAnis-Head-Rip-Control/dp/B08CRGMBPQ",
+    "https://www.decathlon.com.br/corda-head-rip-control-18l-1-20mm-branca-rolo-com-200-metros-2145715439/p"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Revolve",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    92.07,
+    130.26
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Corda-Wilson-Revolve-15-Set/dp/B00SUE8MYY"
+   ],
+   "obs": "Amazon com taxas de importação; mínimo R$92,07 incerto."
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Revolve Spin",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    130.02,
+    224.11
+   ],
+   "rolo_brl": [
+    699.9,
+    699.9
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Conjunto-cordas-t%C3%AAnis-Wilson-Revole/dp/B088STHW6J",
+    "https://www.mercadolivre.com.br/encordoamento-de-tnis-wilson-revolve-spin-jogo-17-verde/p/MLB2039693783",
+    "https://www.netshoes.com.br/p/corda-wilson-revolve-spin-16l-130mm-chumbo-D25-1768-040"
+   ],
+   "obs": "Netshoes R$699,90 descrito como rolo 200 m (preço suspeito)."
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "NXT",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    170,
+    295.92
+   ],
+   "rolo_brl": [
+    2690,
+    2690
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-wilson-nxt"
+   ],
+   "obs": "Inclui NXT Power."
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Sensation",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    60,
+    85
+   ],
+   "rolo_brl": [
+    1000,
+    1200
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Decathlon BR",
+    "Magazine Luiza"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-wilson-sensation",
+    "https://www.decathlon.com.br/corda-wilson-sensation-17l-1-25mm-branca---set-individual-2144938062/p",
+    "https://www.zoom.com.br/corda-raquete-tenis"
+   ],
+   "obs": "Decathlon R$69,90; Magalu R$69,90 (Zoom). Faixa de rolo aproximada do resumo do buscador."
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Synthetic Gut Power",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    37.91,
+    55
+   ],
+   "rolo_brl": [
+    744.52,
+    744.52
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Amazon.com.br",
+    "Magazine Luiza",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.buscape.com.br/corda-raquete-tenis/corda-wilson-synthetic-gut-power-16-set",
+    "https://www.zoom.com.br/corda-raquete-tenis/corda-wilson-synthetic-gut-power-17l-1-25mm-rolo-com-200-metros"
+   ],
+   "obs": "Rolo 17L Amazon R$744,52 (via Zoom)."
+  },
+  {
+   "marca": "Wilson",
+   "modelo": "Natural Gut",
+   "tipo": "gut",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    538.95,
+    675.86
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/WILSON-Corda-t%C3%AAnis-Natural-Gut/dp/B0D585Z26Q",
+    "https://www.amazon.com.br/Conjunto-cordas-t%C3%AAnis-Wilson-Natural/dp/B07JCTPYK7"
+   ],
+   "obs": "Só importado via Amazon, com taxas (~R$178,50) incluídas."
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Pro",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    78.9,
+    130
+   ],
+   "rolo_brl": [
+    920,
+    1699
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Decathlon BR"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/yonex-poly-tour-pro",
+    "https://www.amazon.com.br/Corda-T%C3%AAnis-Yonex-Amarelo-metros/dp/B0055QWUVG",
+    "https://www.decathlon.com.br/corda-yonex-polytour-pro-16l-1-25mm-grafite-rolo-com-200-metros-2144938522/p",
+    "https://www.zoom.com.br/corda-raquete-tenis/corda-yonex-poly-tour-pro-125-16-rolo-200-metros"
+   ],
+   "obs": "Rolo Amazon R$1.399,90; Decathlon R$1.249,90-1.299,90; Zoom menor R$1.199."
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Strike",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    134.9,
+    134.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/YONEX-Conjunto-cordas-t%C3%AAnis-Strike/dp/B0CNTDSZYN",
+    "https://lista.mercadolivre.com.br/yonex-poly-tour"
+   ],
+   "obs": "Amazon R$268,99 parece fora da curva (importado)."
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Spin",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    78.9,
+    114.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Jogue Tennis (Recife)"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/poly-tour-spin",
+    "https://joguetennis.com.br/produto/yonex-poly-tour-spin-g-16l/"
+   ],
+   "obs": "Inclui Spin G."
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Poly Tour Rev",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    134.9,
+    149.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.mercadolivre.com.br/corda-yonex-poly-tour-rev-125mm-1-set-laranja/p/MLB27074089"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Yonex",
+   "modelo": "Rexis",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    161.67,
+    179.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/yonex-poly-tour"
+   ],
+   "obs": "Rexis Comfort."
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Black Code",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    78.9,
+    169.9
+   ],
+   "rolo_brl": [
+    1139,
+    1499.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Decathlon BR",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-tecnifibre",
+    "https://www.amazon.com.br/Tecnifibre-Blackcode-adulto-unissex-tamanho/dp/B07XCQRQNN",
+    "https://www.decathlon.com.br/corda-tecnifibre-black-code-16-1-28mm-preta---rolo-com-200-metros-2145823450/p",
+    "https://www.amazon.com.br/Tecnifibre-Fio-t%C3%AAnis-BlackCode-preto/dp/B07YFB5V4R"
+   ],
+   "obs": "Um anúncio ML R$339,90 (outlier, excluído). Rolo Amazon R$1.199,90, Decathlon R$1.499,90."
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Razor Code",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    114.9,
+    149.02
+   ],
+   "rolo_brl": [
+    1216,
+    1216
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Centauro"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://produto.mercadolivre.com.br/MLB-3810166735-corda-tecnifibre-razor-code-17-125mm-branca-set-c122m-_JM",
+    "https://www.amazon.com.br/Corda-t%C3%AAnis-branca-Tecnifibre-Razor/dp/B08CS2T71Z",
+    "https://www.centauro.com.br/corda-tecnifibre-razor-code-18l-1-20mm-branca---rolo-com-200-metros-m0lo19-mktp.html"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Ice Code",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    78.9,
+    159.9
+   ],
+   "rolo_brl": [
+    1019,
+    1199
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.mercadolivre.com.br/corda-tecnifibre-ice-code-17-125mm-set-individual/p/MLB47096282",
+    "https://produto.mercadolivre.com.br/MLB-3513197451-corda-tecnifibre-ice-code-16l-130mm-branca-rolo-200m-_JM"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Red Code",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    55.16,
+    64.9
+   ],
+   "rolo_brl": [
+    1018,
+    1198
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://esportes.mercadolivre.com.br/tenis-squash/cordas/corda-tecnifibre-pro-red-code-17-1,25-mm-11,50-m"
+   ],
+   "obs": "Pro Red Code."
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "X-One Biphase",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    195.38,
+    264.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-tecnifibre-x-one-biphase",
+    "https://www.netshoes.com.br/corda-tecnifibre-xone-biphase-16l-130-set-individual-natural-ANL-0156-D72",
+    "https://www.amazon.com.br/Corda-Tecnifibre-X-One-Biphase-1-24mm/dp/B00ER175R4"
+   ],
+   "obs": "Netshoes R$219,90. Rolo existe na Amazon, preço não capturado."
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "NRG2",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    174.44,
+    259.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/corda-tecnifibre/s?k=corda+tecnifibre"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Multifeel",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    107.2,
+    121.71
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Tecnifibre-Corda-Multifeel-1-30mm-Natural/dp/B07XCS4XFT"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Tecnifibre",
+   "modelo": "Synthetic Gut",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    39.9,
+    39.9
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/synthetic-gut"
+   ],
+   "obs": ""
+  },
+  {
+   "marca": "Kirschbaum",
+   "modelo": "Pro Line II",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    79.9,
+    99.9
+   ],
+   "rolo_brl": [
+    979.9,
+    1199
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Centauro",
+    "Magazine Luiza"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-kirschbaum-pro-line-ii",
+    "https://www.centauro.com.br/nav/produto/corda/modalidade/tennis/marca/kirschbaum",
+    "https://www.zoom.com.br/corda-raquete-tenis?page=7"
+   ],
+   "obs": "Magalu 18L R$88,78 (Zoom)."
+  },
+  {
+   "marca": "Kirschbaum",
+   "modelo": "Max Power",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    78.9,
+    99.9
+   ],
+   "rolo_brl": [
+    847,
+    1449
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Centauro",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-kirschbaum-max-power",
+    "https://produto.mercadolivre.com.br/MLB-1851392110-corda-kirschbaum-max-power-125-mm-rolo-200m-_JM",
+    "https://www.centauro.com.br/nav/produto/corda/modalidade/tennis/marca/kirschbaum"
+   ],
+   "obs": "Centauro rolo 1.30 R$1.199,90."
+  },
+  {
+   "marca": "Signum Pro",
+   "modelo": "Poly Plasma",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    38.9,
+    95
+   ],
+   "rolo_brl": [
+    888.78,
+    1199
+   ],
+   "popular_br": "high",
+   "lojas": [
+    "ProSpin",
+    "Decathlon BR",
+    "Mercado Livre",
+    "Magazine Luiza",
+    "Centauro",
+    "Jogue Tennis (Recife)"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.prospin.com.br/corda-signum-pro-poly-plasma-1-23mm-laranja-set-individual",
+    "https://www.decathlon.com.br/corda-signum-pro-poly-plasma-1-23mm-laranja-rolo-com-200-metros-2144938242/p",
+    "https://www.zoom.com.br/corda-raquete-tenis/corda-signum-pro-poly-plasma-1-23mm-laranja-rolo-com-200-metros",
+    "https://joguetennis.com.br/produto/signum-pro-poly-plasma-17l/"
+   ],
+   "obs": "ProSpin R$89,90 (R$80,91 Pix); Jogue Tennis R$85 (cortado do rolo). Rolo Decathlon R$1.099,90; Zoom menor R$888,78 (Magalu). Set R$38,90 é anúncio antigo."
+  },
+  {
+   "marca": "Signum Pro",
+   "modelo": "Firestorm",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    119.9,
+    119.9
+   ],
+   "rolo_brl": [
+    459,
+    459
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-signum-pro-firestorm"
+   ],
+   "obs": "Rolo R$459 de lojista no PR (pode ser antigo)."
+  },
+  {
+   "marca": "Polyfibre",
+   "modelo": "Black Venom",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    69.9,
+    89.9
+   ],
+   "rolo_brl": [
+    949.9,
+    1049.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Decathlon BR",
+    "Centauro",
+    "Amazon.com.br",
+    "Mercado Livre",
+    "ProSpin"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-polyfibre-black-venom-rough-17l-1-25mm-preta---set-individual-2145455927/p",
+    "https://www.centauro.com.br/corda-polyfibre-black-venom-17l-1-25mm-preta---rolo-com-200-metros-m0lnzd-mktp.html",
+    "https://www.amazon.com.br/Polyfibre-Carretel-corda-veneno-preto/dp/B01CUANCNE",
+    "https://www.prospin.com.br/corda-polyfibre-black-venom-17-l-a-1-25mm-preta-set-individual"
+   ],
+   "obs": "Polyfibre tem forte presença na iTenis e ProSpin."
+  },
+  {
+   "marca": "MSV",
+   "modelo": "Focus Hex",
+   "tipo": "poly_shaped",
+   "formato": "shaped",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    49.49,
+    59.9
+   ],
+   "rolo_brl": [
+    563,
+    829
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://produto.mercadolivre.com.br/MLB-3617699058-corda-msv-focus-hex-16l-123mm-preta-set-individual-_JM",
+    "https://lista.mercadolivre.com.br/corda-msv-focus-hex"
+   ],
+   "obs": "Só ML; um anúncio R$129,90 com brindes excluído."
+  },
+  {
+   "marca": "Topspin",
+   "modelo": "Cyber Blue",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": true,
+   "set_brl": [
+    39.9,
+    65.4
+   ],
+   "rolo_brl": [
+    590,
+    899.9
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://lista.mercadolivre.com.br/corda-top-spin-cyber-blue",
+    "https://www.amazon.com.br/Corda-Topspin-Cyber-1-20mm-Metros/dp/B004O1W02C",
+    "https://www.amazon.com.br/Corda-Topspin-Cyber-Blue-1-25mm/dp/B00FQJ17IY"
+   ],
+   "obs": "Vendida em rolos de 220 m e 300 m (não 200 m); sets de 11,5 m. Amazon 220 m R$699,90; 300 m R$645,90-899,90."
+  },
+  {
+   "marca": "Topspin",
+   "modelo": "Cyber Flash",
+   "tipo": "poly",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": true,
+   "set_brl": [
+    47,
+    53
+   ],
+   "rolo_brl": [
+    499,
+    899
+   ],
+   "popular_br": "medium",
+   "lojas": [
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://produto.mercadolivre.com.br/MLB-2808240463-corda-topspin-cyber-flash-120mm-set-individual-115m-_JM",
+    "https://www.amazon.com.br/Corda-Topspin-Cyber-1-20mm-Metros/dp/B07RP59RBN",
+    "https://produto.mercadolivre.com.br/MLB-4647794042-corda-topspin-cyber-flash-300-metros-120mm-125mm-130mm-_JM"
+   ],
+   "obs": "Rolos 220 m R$499-609, 300 m R$653-899."
+  },
+  {
+   "marca": "Prince",
+   "modelo": "Synthetic Gut Duraflex",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    44.9,
+    44.9
+   ],
+   "rolo_brl": [
+    499.89,
+    719.9
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Decathlon BR",
+    "Mercado Livre",
+    "Netshoes"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Corda-Prince-Synthetic-Duraflex-1-30mm/dp/B079XZM7ZS",
+    "https://www.decathlon.com.br/corda-prince-synthetic-gut-duraflex-16l-1-30mm-preta---rolo-com-200-metros-2144938442/p",
+    "https://www.mercadolivre.com.br/corda-prince-synthetic-gut-duraflex-16l-130mm-verde-limo/p/MLB27074032"
+   ],
+   "obs": "Netshoes pack 6 sets R$189,90 (indisponível)."
+  },
+  {
+   "marca": "Prince",
+   "modelo": "Premier Touch",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    75,
+    78
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [],
+   "obs": "URL exata não retornada pelo buscador. ML, anúncios de 12,2 m; uma oferta a R$39 (50% off) excluída."
+  },
+  {
+   "marca": "Gamma",
+   "modelo": "Synthetic Gut",
+   "tipo": "synthetic",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    108.61,
+    108.61
+   ],
+   "rolo_brl": [
+    499,
+    499
+   ],
+   "popular_br": "low",
+   "lojas": [
+    "Amazon.com.br",
+    "Mercado Livre"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.amazon.com.br/Cordas-para-Raquete-de-T%C3%AAnis-Gamma/s?keywords=Cordas+para+Raquete+de+T%C3%AAnis&rh=n%3A17834465011%2Cp_4%3AGamma&c=ts&ts_id=17834465011"
+   ],
+   "obs": "Amazon provavelmente importado; rolo ML 220 m R$499."
+  },
+  {
+   "marca": "Gamma",
+   "modelo": "Live Wire",
+   "tipo": "multi",
+   "formato": "round",
+   "macio_fabricante": false,
+   "so_brasil": false,
+   "set_brl": [
+    120.79,
+    160.01
+   ],
+   "rolo_brl": null,
+   "popular_br": "low",
+   "lojas": [
+    "Decathlon BR",
+    "Mercado Livre",
+    "Amazon.com.br"
+   ],
+   "lab": {
+    "rigidez_lbin": null,
+    "perda_tensao_pct": null,
+    "spin_cof": null,
+    "bitola_mm": null
+   },
+   "fontes_preco": [
+    "https://www.decathlon.com.br/corda-gamma-live-wire-16l-1-32mm-champanhe---set-individual-2145517045/p",
+    "https://www.amazon.com.br/Gamma-Corda-t%C3%AAnis-profissional-natural/dp/B001QTH5GG"
+   ],
+   "obs": "Decathlon/ML R$159,90; Professional/XP R$229-249."
+  }
+ ]
+}
