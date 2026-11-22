@@ -1171,7 +1171,7 @@ const EXAMPLE={age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',j
 /* iniciante, sem raquete e sem dor: o caminho mais curto; tempo pela mesma conta da barra de progresso (8 s por pergunta) */
 const caminhoIniciante=()=>{const guard={...A};Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm:'no',cur:'none',lvl:'beg'});const n=Q.filter(q=>!q.if||q.if()).length;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return n};
 const contaCaminhos=()=>{const guard={...A},ns=[];for(const arm of ['no','past','now'])for(const cur of ['none','other','0'])for(const lvl of ['beg','adv']){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm,cur,lvl});ns.push(Q.filter(q=>!q.if||q.if()).length)}Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return [Math.min(...ns),Math.max(...ns)]};
-{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#nSubQ').textContent=nb===mx?String(nb):nb+'–'+mx;$('#tBeg').textContent=Math.max(1,Math.round(nb*8/60))}
+{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#nSubQ').textContent=nb===mx?String(nb):nb+'–'+mx}
 const NVAR=Q.length+9+7;
 /* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
    casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
