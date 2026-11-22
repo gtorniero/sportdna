@@ -40,6 +40,17 @@ A tensão segue a lógica anterior (base por tipo, com ajustes por potência, co
   - A econômica não pode perder 50% ou mais de tensão no teste.
   - Tecnifibre HDMX ficou de fora (sem anúncio no Brasil).
 
+## Rodada 2 do GPT (22/11/2026)
+- Arquivos em `docs/racket/cordas/rodada2-2026-11-22/` (LEIA-ME com as regras de integração, preços e laboratório).
+- Preço do set agora tem status:
+  - confirmado: 37 cordas, com página de loja e bitola;
+  - referência: 21 cordas, só por busca, e o relatório mostra "cerca de R$ X (referência)";
+  - esgotado: X-One Biphase e Multifeel, fora das 3 escolhas.
+- Quando o set cotado é de outra bitola, o relatório mostra a bitola ao lado do preço.
+- As escolhas preferem corda com preço confirmado; a econômica exige preço confirmado.
+- A Duramix HD (162 lb/in) não foi usada para a Tecnifibre Synthetic Gut. RPM Power: só a bitola foi confirmada.
+- Mercado Livre e Amazon não abriram: sem links de compra nesta versão.
+
 ## Próximos passos
 1. Completar o laboratório da Tecnifibre Synthetic Gut e da RPM Power, e os preços que faltam.
 2. Feito: "macio" pela rigidez medida (abaixo de 185 lb/in para poliéster).
