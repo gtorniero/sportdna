@@ -187,9 +187,9 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
 {const X=await (async()=>{const html=cand;const srv=http.createServer((q,s)=>{const u=decodeURIComponent(q.url.split('?')[0]);if(u==='/racket/'){s.writeHead(200,{'content-type':'text/html; charset=utf-8'});return s.end(html)}const f=path.join(raiz,u);if(!fs.existsSync(f)){s.writeHead(404);return s.end()}s.end(fs.readFileSync(f))});
   await new Promise(r=>srv.listen(0,r));const b=await chromium.launch();const pg=await b.newPage();await pg.route(/cdnjs|jsdelivr|unpkg|fonts\.g|googletag|google-analytics|facebook|doubleclick/,r=>r.abort());
   await pg.goto(`http://localhost:${srv.address().port}/racket/?teste`);await pg.waitForFunction(()=>window.__RK);
-  /* rodada 25: régua por posição no ranking (3º/10º) e distância da 1ª (5/12 pontos) */
+  /* rodada 26: 1º = match perfeito; até 3º ou até 4 pontos da 1ª = opções melhores; resto = trocar */
   const o=await pg.evaluate(()=>{const V=window.__RK.vereditoAtual,res={ranked:[95,94,93,92,91,90,89,88,87,86,85,84,83,80,70].map(fit=>({fit}))},P=[[2,'x']];
-    return [V({fit:96,pen:P},res),V({fit:93.5,pen:P},res),V({fit:90.5,pen:P},res),V({fit:85.5,pen:P},res),V({fit:84.5,pen:[]},res),V({fit:83.5,pen:P},res),V({fit:82,pen:P},res)].map(v=>v.k+v.pos)});
+    return [V({fit:96,pen:P},res),V({fit:93.5,pen:P},res),V({fit:91,pen:[]},res),V({fit:90.5,pen:P},res),V({fit:60,pen:P},res)].map(v=>v.k+v.pos)});
   const o2=await pg.evaluate(()=>{const H=window.__RK,G=H.GERACOES;const lin=t=>t.replace(/ (v\d+|20\d\d.*|\d+ª geração|7ª geração)$/,'').split(' ')[0];
     const ruins=G.filter(g=>!g.to||g.to.brand!==g.brand).map(g=>g.name);
     const c=H.cleanAnswers({cur:'none',curOld:'Babolat Pure Drive 2021'});return {n:G.length,ok:G.length>=100&&!ruins.length,ruins,limpa:!('curOld' in c)}});
@@ -202,7 +202,7 @@ teste('T11 ausência de review não penaliza',!C.semRev&&C.semReview==null,'sem 
  teste('T27 gerações anteriores: todas apontam para uma versão atual da mesma marca e linha; sem raquete, a geração antiga some',X2.ok&&X2.limpa,`${X2.n} gerações${X2.ruins.length?' · sem destino: '+X2.ruins.join(', '):''}`);
  const X3=globalThis.X3;
  teste('T28 nota bruta da atual mede só o encaixe: não muda com marca, oferta no Brasil, orçamento nem avaliação de testadores',X3.every(([,f])=>new Set(f).size===1&&!f[0].includes('x')),X3.map(([c,f])=>c+' bruta '+f[0].split('|')[0]+' ('+new Set(f).size+' valor)').join(' · '));
- teste('T26 veredito da atual (rodada 25): manter (1º, até 3º ou até 5 pontos), manter com opções (até 10º ou até 12 pontos), trocar',JSON.stringify(X)===JSON.stringify(['manter1','manter3','manter6','opcoes11','opcoes12','opcoes13','trocar14']),X.join(', '))}
+ teste('T26 veredito da atual (rodada 26): match perfeito (1º), opções melhores (até 3º ou até 4 pontos), trocar',JSON.stringify(X)===JSON.stringify(['match1','opcoes3','opcoes5','trocar6','trocar16']),X.join(', '))}
 
 /* ---------- relatórios ---------- */
 const rel={};const mudou=(X,Y)=>({perfis:X.res.length,top1:X.res.filter((x,j)=>x.top3[0][0]!==Y.res[j].top3[0][0]).length,top3:X.res.filter((x,j)=>JSON.stringify(x.top3.map(t=>t[0]).sort())!==JSON.stringify(Y.res[j].top3.map(t=>t[0]).sort())).length,score:X.res.filter((x,j)=>!igual(x,Y.res[j])).length});
