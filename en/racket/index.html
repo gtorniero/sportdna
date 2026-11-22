@@ -623,7 +623,7 @@ details.cmpbox[open]{background:var(--surface)}
 .vbt{margin:0;display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;font:800 44px/1.05 'Archivo',var(--f-display);letter-spacing:-.02em}
 .vbt svg{flex:none;width:40px;height:40px}
 .vbs{margin:0;font-size:17px;font-weight:600}
-.vb-manter .vbt{background:#DDF247;color:#0B2530}
+.vb-match .vbt{background:#DDF247;color:#0B2530}
 .vb-opcoes .vbt{background:#FFC266;color:#2B1A00}
 .vb-trocar .vbt{background:#C2410C;color:#FFFFFF}
 @media (max-width:600px){.vbt{font-size:32px;padding:12px 14px;gap:10px}.vbt svg{width:30px;height:30px}.vbs{font-size:16px}}
@@ -1775,7 +1775,7 @@ function diagnosis(free=true){
   const contra=(bad.length?bad:[V&&V.pos===1?'Nothing critical':'Nothing critical: switching would be fine-tuning']).map(x=>x.replace(/\.$/,''));
   return `<div class="panel${free?' freecard':''}"><div class="phead"><div>${free?'<p class="freebadge">Free</p>':''}<h3>Your racket, analyzed</h3><p class="muted" style="margin:2px 0 0">Your ${esc(curLabel())}</p></div><div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} for you</span></div></div>
   ${vereditoHTML(V)}
-  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Where it delivers</p><p>${good.length?'It delivers what you ask for in '+jn(good)+'.':(f=>V&&V.k==='manter'?`Overall it's close to your profile; its strengths are ${f}.`:`Its strengths are ${f}, but none of the attributes your game needs most is on target.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">What's missing</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
+  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Where it delivers</p><p>${good.length?'It delivers what you ask for in '+jn(good)+'.':(f=>V&&V.k==='match'?`Overall it's close to your profile; its strengths are ${f}.`:`Its strengths are ${f}, but none of the attributes your game needs most is on target.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">What's missing</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
   <div><p class="eyebrow" style="margin-bottom:6px">What counts against it</p><ul class="why">${contra.map((x,i)=>`<li>${free&&i>0?mask(x+'.'):x+'.'}</li>`).join('')}</ul></div></div>
   ${extra.length?`<p class="muted">${extra.join(' ')}</p>`:''}${curOldNote()?`<p class="note" style="margin:0">${curOldNote()}</p>`:''}${free?'<p class="note" style="margin:0">Your racket\'s score, what it\'s missing and a side-by-side with the recommended one are all in the full report.</p>':''}</div>`;
 }
@@ -2113,18 +2113,18 @@ function diffMao(a,b){const d=[];
 const jnE=l=>l.length>1?l.slice(0,-1).join(', ')+' and '+l[l.length-1]:l[0];
 /* rodada 25 (pedido do Gui): veredito grande da raquete atual, grátis na prévia e no topo do bloco "Sua raquete atual" do relatório.
    Régua: posição da atual no ranking da pessoa (entre as raquetes recomendáveis) e distância de DNA Score para a 1ª. */
-const VEREDITO={manterPos:3,manterGap:5,opcoesPos:10,opcoesGap:12};
+/* rodada 26 (pedido do Gui): só a 1ª é "match perfeito"; 2ª e 3ª, ou até 4 pontos da 1ª (empate técnico, o mesmo "encaixe ideal" do ranking), têm opções melhores; o resto, trocar. */
+const VEREDITO={opcoesPos:3,opcoesGap:4};
 function vereditoAtual(cur,res=RES){
   if(!cur||!res||!res.ranked.length)return null;
   const best=res.ranked[0],gap=Math.max(0,best.fit-cur.fit),pos=res.ranked.filter(x=>x.fit>cur.fit).length+1;
   const p0=(cur.pen||[]).filter(p=>p[0]>=1).sort((a,b)=>b[0]-a[0])[0];
-  if(pos===1)return {k:'manter',t:'KEEP IT',s:'This is the best possible racket for your profile.',pos,gap};
-  if(pos<=VEREDITO.manterPos||gap<=VEREDITO.manterGap)return {k:'manter',t:'KEEP IT',s:'An ideal racket for you. There are slightly better options, but switching would be fine-tuning.',pos,gap};
+  if(pos===1)return {k:'match',t:'PERFECT MATCH',s:'This is the best possible racket for your profile.',pos,gap};
   if(pos<=VEREDITO.opcoesPos||gap<=VEREDITO.opcoesGap)return {k:'opcoes',t:'KEEP IT, BUT THERE ARE BETTER OPTIONS',
-    s:p0?`What counts against it most: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1).replace(/\.$/,'')}.`:'Nothing counts against it; the top picks are just closer to your profile.',pos,gap};
-  return {k:'trocar',t:'SWITCH',s:'There are rackets well ahead of it for your game. Switching fixes what\'s working against you today.',pos,gap};
+    s:'It\'s among the best for your game, but some rackets fit you a little better.'+(p0?` What counts against it most: ${p0[1].charAt(0).toLowerCase()+p0[1].slice(1).replace(/\.$/,'')}.`:''),pos,gap};
+  return {k:'trocar',t:'SWITCH',s:gap>12?'There are rackets well ahead of it for your game. Switching fixes what\'s working against you today.':'Some rackets fit your game better. Switching helps with what\'s working against you today.',pos,gap};
 }
-const VICON={manter:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',opcoes:'<path d="M12 7v6M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>',trocar:'<path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/>'};
+const VICON={match:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',opcoes:'<path d="M12 7v6M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>',trocar:'<path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/>'};
 function vereditoHTML(V,extra){
   if(!V)return '';
   return `<div class="vbig vb-${V.k}"><p class="vbt"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${VICON[V.k]}</svg><span>${V.t}</span></p><p class="vbs">${V.s}${extra?' '+extra:''}</p></div>`;
