@@ -717,7 +717,7 @@ details.more[open]>summary{margin-bottom:10px}
         <p class="lead">We match your body, level and game against <b><span data-n="rk">183</span> measured rackets</b>. The preview is free. You only pay if you want the full report.</p>
         <div class="ctamain">
           <button class="btn btn-go btn-hero" id="start" type="button" aria-describedby="startSub">Take my free test <span aria-hidden="true">→</span></button>
-          <span class="ctasub" id="startSub"><span id="nSubQ">19–28</span> questions · 3 minutes · no sign-up</span>
+          <span class="ctasub" id="startSub"><span id="nSubQ">19–28</span> questions · <span id="tSub">3</span> minutes · no sign-up</span>
         </div>
         <div class="cta2b">
           <button class="btn btn-ghost" id="duelGo" type="button">Compare two rackets</button>
@@ -1190,7 +1190,7 @@ const EXAMPLE={age:'38',height:'178',weight:'78',cond:'2',str:'mid',arm:'past',j
 /* iniciante, sem raquete e sem dor: o caminho mais curto; tempo pela mesma conta da barra de progresso (8 s por pergunta) */
 const caminhoIniciante=()=>{const guard={...A};Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm:'no',cur:'none',lvl:'beg'});const n=Q.filter(q=>!q.if||q.if()).length;Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return n};
 const contaCaminhos=()=>{const guard={...A},ns=[];for(const arm of ['no','past','now'])for(const cur of ['none','other','0'])for(const lvl of ['beg','adv']){Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,{arm,cur,lvl});ns.push(Q.filter(q=>!q.if||q.if()).length)}Object.keys(A).forEach(k=>delete A[k]);Object.assign(A,guard);return [Math.min(...ns),Math.max(...ns)]};
-{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#nSubQ').textContent=nb===mx?String(nb):nb+'–'+mx;$('#tBeg').textContent=Math.max(1,Math.round(nb*8/60))}
+{const [,mx]=contaCaminhos();$('#nQ').textContent=mx;const nb=caminhoIniciante();$('#nBeg').textContent=nb;$('#nSubQ').textContent=nb===mx?String(nb):nb+'–'+mx;{const t0=Math.max(1,Math.round(nb*8/60)),t1=Math.max(1,Math.round(mx*8/60));$('#tSub').textContent=t0===t1?String(t0):t0+'–'+t1}$('#tBeg').textContent=Math.max(1,Math.round(nb*8/60))}
 const NVAR=Q.length+9+7;
 /* números do método (conferíveis): avaliações = soma de r.nrev no catálogo; o resto vem de docs/racket/
    casos: dados/casos.json (200, en) + casos-pt.json (67) + casos-es.json (112); estudos: dados/ciencia.json (21);
@@ -1772,7 +1772,7 @@ function diagnosis(free=true){
   const jn=l=>l.length>1?l.slice(0,-1).join(', ')+' and '+l[l.length-1]:l[0];
   const fitHTML=free?mask(curFit.fit+'%'):curFit.fit+'%';const V=vereditoAtual(curFit);
   const gapTxt=gaps.map(x=>`${gl(x.k,LBL[x.k])}: ${dec(c.ix[x.k])} against a target of ${dec(T[x.k])}`);
-  const contra=(bad.length?bad:['Nothing critical: switching would be fine-tuning']).map(x=>x.replace(/\.$/,''));
+  const contra=(bad.length?bad:[V&&V.pos===1?'Nothing critical':'Nothing critical: switching would be fine-tuning']).map(x=>x.replace(/\.$/,''));
   return `<div class="panel${free?' freecard':''}"><div class="phead"><div>${free?'<p class="freebadge">Free</p>':''}<h3>Your racket, analyzed</h3><p class="muted" style="margin:2px 0 0">Your ${esc(curLabel())}</p></div><div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} for you</span></div></div>
   ${vereditoHTML(V)}
   <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Where it delivers</p><p>${good.length?'It delivers what you ask for in '+jn(good)+'.':(f=>V&&V.k==='manter'?`Overall it's close to your profile; its strengths are ${f}.`:`Its strengths are ${f}, but none of the attributes your game needs most is on target.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">What's missing</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
