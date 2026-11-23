@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-22",
+  "instruction": "Gui pediu publicar parcial antes de perder conexão; restante em backlog, sem nova agenda.",
+  "published_models_prepared": 38,
+  "pending_models": [
+    "Babolat RPM Power",
+    "Babolat Pro Hurricane",
+    "Babolat Addiction",
+    "Luxilon Big Banger Original",
+    "Luxilon Smart",
+    "Solinco Revolution",
+    "Solinco Vanquish",
+    "Head Lynx",
+    "Head Sonic Pro",
+    "Head Synthetic Gut PPS",
+    "Wilson Revolve",
+    "Wilson Revolve Spin",
+    "Wilson Natural Gut",
+    "Yonex Poly Tour Strike",
+    "Yonex Rexis",
+    "Tecnifibre NRG2",
+    "Tecnifibre Synthetic Gut",
+    "Kirschbaum Pro Line II",
+    "Signum Pro Firestorm",
+    "Topspin Cyber Blue",
+    "Prince Premier Touch",
+    "Gamma Synthetic Gut"
+  ],
+  "rejected": {
+    "Luxilon Big Banger Original": "Título 12,2m conflita com descrição 200m; não publicar."
+  },
+  "next": "Retomar pesquisas salvas apenas dos pendentes. Validar variante, estoque e link oficial. Integrar cordas na checagem semanal existente sem criar agenda.",
+  "publication": "pending"
+}

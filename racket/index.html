@@ -8,6 +8,7 @@
 .tbl:focus-visible,[data-stage]:focus-visible,canvas:focus-visible{outline:3px solid var(--pri);outline-offset:3px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .rk.win .nm i{background:color-mix(in srgb,var(--ball) 28%,transparent)}}
 :root[data-theme="dark"] .rk.win .nm i{background:color-mix(in srgb,var(--ball) 28%,transparent)}
+.corda-buy{margin-top:12px}.corda-buy a{display:inline-flex;align-items:center;min-height:44px;padding:9px 12px;border-radius:10px;background:var(--ink,#0B2530);color:#fff;font-weight:700;text-decoration:underline;font-size:14px}.corda-buy small{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.5}.corda-buy a:focus-visible{outline:3px solid #0E4D64;outline-offset:3px}@media print{.corda-buy{display:none}}
 </style><!-- SEO_START -->
 <title>Teste: qual raquete de tênis escolher? | RACKET DNA</title>
 <meta name="description" content="Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por R$ 19,99.">
@@ -2034,8 +2035,8 @@ function cordaBox(st){
   const cruz=st.cat==='hybrid'?(cordaPicks({cat:'multi'})[0]||{}).x:null;
   return `<section class="panel" id="r-corda" aria-labelledby="h-corda"><h2 class="sec" id="h-corda">Cordas para o seu jogo</h2>
     <p class="muted" style="margin-top:-8px">Tipo indicado: <strong>${st.s}</strong>, de ${st.lb[0]} a ${st.lb[1]} lb.${cruz?` Nas verticais, um destes poliésteres macios; nas horizontais, um multifilamento como a ${esc(cruz.n)}.`:''}</p>
-    <div class="altl cordal">${picks.map(o=>`<article class="altc"><p class="eyebrow">${L[o.k]}</p><h3>${esc(o.x.n)}</h3>${intl?'':`<p class="note" style="margin:0">Set de 12 m: ${cordaPreco(o.x)}</p>`}<ul class="why altw">${cordaPorque(o,st).map(t=>`<li>${t}</li>`).join('')}</ul></article>`).join('')}</div>
-    ${(L2=>L2.length>3?`<details class="cordamais"><summary>Ver todas as ${L2.length} cordas deste tipo</summary><ul>${L2.map(x=>`<li><span>${esc(x.n)}</span>${intl?'':`<span class="note">${cordaPreco(x)}</span>`}</li>`).join('')}</ul></details>`:'')(cordaPool(st.cat).sort((a,b)=>b.pop-a.pop||a.n.localeCompare(b.n)))}
+    <div class="altl cordal">${picks.map(o=>`<article class="altc"><p class="eyebrow">${L[o.k]}</p><h3>${esc(o.x.n)}</h3>${intl?'':`<p class="note" style="margin:0">Set de 12 m: ${cordaPreco(o.x)}</p>`}<ul class="why altw">${cordaPorque(o,st).map(t=>`<li>${t}</li>`).join('')}</ul>${intl?'':(window.SportDNAStringOffers?.card(o.x.n)||'')}</article>`).join('')}</div>
+    ${(L2=>L2.length>3?`<details class="cordamais"><summary>Ver todas as ${L2.length} cordas deste tipo</summary><ul>${L2.map(x=>`<li><div><span>${esc(x.n)}</span>${intl?'':(window.SportDNAStringOffers?.card(x.n)||'')}</div>${intl?'':`<span class="note">${cordaPreco(x)}</span>`}</li>`).join('')}</ul></details>`:'')(cordaPool(st.cat).sort((a,b)=>b.pop-a.pop||a.n.localeCompare(b.n)))}
     <p class="note">${intl?'Availability and prices vary by store. ':'Preços do set de 12 m em lojas brasileiras (ProSpin, Empório do Tenista, iTenis, Spin Top), nov/2026; "referência" = valor achado em busca, sem página de loja confirmada. O encordoamento costuma custar de R$ 40 a 85 à parte. '}Dados de laboratório: Tennis Warehouse University. Nenhuma marca paga para aparecer.</p></section>`;
 }
 /* motivo da tensão em palavras, sem a conta ajuste por ajuste */
@@ -2694,6 +2695,7 @@ renderResume();
   new MutationObserver(function(ms){var any=false;ms.forEach(function(m){if(m.type==='attributes'){any=true;return}[].forEach.call(m.addedNodes,function(n){if(n.nodeType===1){any=true;process(n.parentNode||n)}})});if(any)levelsSoon()}).observe(d.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']});
 })();
 </script>
+<script src="/racket/cordas-afiliados.js?v=20261122"></script>
 <script src="/assets/affiliate-offers.js"></script>
 <script src="/assets/report-photos.js?v=20261118"></script>
 <script src="/assets/affiliates.js?v=20261118-photos"></script>
