@@ -8,7 +8,7 @@
 .tbl:focus-visible,[data-stage]:focus-visible,canvas:focus-visible{outline:3px solid var(--pri);outline-offset:3px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .rk.win .nm i{background:color-mix(in srgb,var(--ball) 28%,transparent)}}
 :root[data-theme="dark"] .rk.win .nm i{background:color-mix(in srgb,var(--ball) 28%,transparent)}
-.corda-buy{margin-top:12px}.corda-buy a{display:inline-flex;align-items:center;min-height:44px;padding:9px 12px;border-radius:10px;background:var(--ink,#0B2530);color:#fff;font-weight:700;text-decoration:underline;font-size:14px}.corda-buy small{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.5}.corda-buy a:focus-visible{outline:3px solid #0E4D64;outline-offset:3px}@media print{.corda-buy{display:none}}
+.corda-buy{margin-top:12px}.corda-buy a{display:inline-flex;align-items:center;min-height:44px;padding:9px 12px;border-radius:10px;background:var(--pri,#0E4D64);color:var(--pri-ink,#fff);font-weight:700;text-decoration:underline;font-size:14px}.corda-buy small{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.5}.corda-buy a:focus-visible{outline:3px solid #0E4D64;outline-offset:3px}@media print{.corda-buy{display:none}}
 </style><!-- SEO_START -->
 <title>Teste: qual raquete de tênis escolher? | RACKET DNA</title>
 <meta name="description" content="Faça o teste RACKET DNA para comparar seu perfil com as raquetes do catálogo. Prévia grátis e relatório completo por R$ 19,99.">
@@ -620,6 +620,9 @@ details.cmpbox[open]{background:var(--surface)}
 /* rodada 23: bloco da raquete atual e card do resultado em destaque (azul-petróleo bem claro, AA nos dois temas) */
 .curbox .curl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start}
 .curbox .rname{margin:2px 0 6px}.curbox .curv{margin:0}.curbox .curf{text-align:right}.curbox .fit{font-size:38px}
+.venda{border:2px solid var(--ball);background:color-mix(in srgb,var(--ball) 10%,var(--surface))}.venda h2{margin:0 0 12px;font:800 26px/1.15 'Archivo',var(--f-display)}
+.vlist{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:12px}.vlist li{display:flex;gap:12px;align-items:flex-start;font-size:16px;font-weight:600}.vlist svg{flex:none;width:24px;height:24px;color:var(--pri);margin-top:1px}
+.vbtn{width:100%}
 .cordal{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
 .cordamais{margin-top:14px}.cordamais summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;gap:8px}.cordamais summary::after{content:"▾";font-size:14px}.cordamais[open] summary::after{content:"▴"}.cordamais ul{list-style:none;margin:6px 0 0;padding:0;columns:2 260px;column-gap:24px}.cordamais li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);break-inside:avoid}
 .vbig{margin:14px 0 4px;display:flex;flex-direction:column;gap:10px}
@@ -1711,15 +1714,18 @@ function diagnosis(free=true){
   if(A.why==='pain'||A.arm!=='no')extra.push(`${gl('arm')} da sua: ${dec(c.ix.arm)} de 10 (${armTxt(c.ix.arm).toLowerCase()}).`);
   {const d=c.wt-RES.tw;if(Math.abs(d)>=6&&Math.abs(d)<=8)extra.push(`Peso: um pouco ${d>0?'mais pesada':'mais leve'} que o ideal (${Math.abs(d)} g), nada relevante.`)}
   if(A.restr==='zero'||A.restr==='never')extra.push('Corda que nunca é trocada perde tensão e endurece, e parte da dor e da falta de controle pode vir dela. Trocar a corda é o primeiro passo, com ou sem raquete nova.');
-  if(A.why==='broken'&&curFit.fit>=ranked[0].fit-6)extra.push('Ela ainda combina bem com você. Uma nova do mesmo modelo seria uma troca segura; a recomendação mostra se há algo melhor.');
+  if(!free&&A.why==='broken'&&curFit.fit>=ranked[0].fit-6)extra.push('Ela ainda combina bem com você. Uma nova do mesmo modelo seria uma troca segura; a recomendação mostra se há algo melhor.');
   if(A.why==='level'&&c.ix.control<T.control-1)extra.push('Para o seu nível atual, ela entrega menos controle do que o seu jogo pede.');
   const jn=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0];
   const fitHTML=free?mask(curFit.fit+'%'):curFit.fit+'%';const V=vereditoAtual(curFit);
   const gapTxt=gaps.map(x=>`${gl(x.k,LBL[x.k])}: ${dec(c.ix[x.k])} para um alvo de ${dec(T[x.k])}`);
-  const contra=(bad.length?bad:[V&&V.pos===1?'Nada crítico':'Nada crítico: a troca é ajuste fino']).map(x=>x.replace(/\.$/,''));
-  return `<div class="panel${free?' freecard':''}"><div class="phead"><div>${free?'<p class="freebadge">Grátis</p>':''}<h3>Análise da sua raquete</h3><p class="muted" style="margin:2px 0 0">A sua ${esc(curLabel())}</p></div><div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} para você</span></div></div>
-  ${vereditoHTML(V)}
-  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Onde ela acerta</p><p>${good.length?'Entrega o que você pede em '+jn(good)+'.':(f=>V&&V.k==='match'?`Ela está perto do seu perfil no conjunto; os pontos fortes dela são ${f}.`:`Os pontos fortes dela são ${f}, mas nenhum dos atributos que o seu jogo mais pede está no ponto.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gaps.length?`<p class="eyebrow" style="margin:12px 0 6px">O que falta</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
+  /* rodada 28: na prévia o formato é sempre o mesmo (2 linhas borradas em "O que falta", 2 itens em "O que pesa contra"), para a estrutura não entregar o veredito */
+  if(free)while(gapTxt.length<2)gapTxt.push('Controle: 0,0 para um alvo de 0,0');
+  let contra=(bad.length?bad:[free?'Os pontos fortes estão acima; a nota e o veredito completos estão no relatório':V&&V.pos===1?'Nada crítico':'Nada crítico: a troca é ajuste fino']).map(x=>x.replace(/\.$/,''));
+  if(free){contra=contra.slice(0,2);while(contra.length<2)contra.push('Detalhe disponível no relatório completo')}
+  return `<div class="panel${free?' freecard':''}"><div class="phead"><div>${free?'<p class="freebadge">Grátis</p>':''}<h3>Análise da sua raquete</h3><p class="muted" style="margin:2px 0 0">A sua ${esc(curLabel())}</p></div>${free?'':`<div style="text-align:right"><div class="fit" style="font-size:34px">${fitHTML}</div><span class="note">${gl('fit')} para você</span></div>`}</div>
+  ${free?'':vereditoHTML(V)}
+  <div class="two"><div><p class="eyebrow" style="margin-bottom:6px">Onde ela acerta</p><p>${good.length?'Entrega o que você pede em '+jn(good)+'.':(f=>free?`Os pontos fortes dela são ${f}.`:V&&V.k==='match'?`Ela está perto do seu perfil no conjunto; os pontos fortes dela são ${f}.`:`Os pontos fortes dela são ${f}, mas nenhum dos atributos que o seu jogo mais pede está no ponto.`)(jn(KEYS.slice().sort((a,b)=>c.ix[b]-c.ix[a]).slice(0,2).map(k=>LBL[k].toLowerCase())))}</p>${gapTxt.length?`<p class="eyebrow" style="margin:12px 0 6px">O que falta</p><p>${free?gapTxt.map(mask).join('<br>'):gapTxt.join('<br>')}</p>`:''}</div>
   <div><p class="eyebrow" style="margin-bottom:6px">O que pesa contra</p><ul class="why">${contra.map((x,i)=>`<li>${free&&i>0?mask(x+'.'):x+'.'}</li>`).join('')}</ul></div></div>
   ${extra.length?`<p class="muted">${extra.join(' ')}</p>`:''}${curOldNote()?`<p class="note" style="margin:0">${curOldNote()}</p>`:''}${free?'<p class="note" style="margin:0">A nota da sua raquete, o que falta nela e a comparação lado a lado com a recomendada estão no relatório.</p>':''}</div>`;
 }
@@ -1756,10 +1762,29 @@ const testeTambem=()=>`<section class="rsec2" aria-labelledby="mais-h"><h2 class
     <a class="maisc mn" href="../run/"><img src="/assets/brand/svg/rundna-icone.svg" alt="" width="52" height="52"><span><b>Teste seu tênis de corrida grátis</b><small>RUN DNA · teste e relatório 100% grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
     <a class="maisc ms" href="../surf/"><img src="/assets/brand/svg/surfdna-icone.svg" alt="" width="52" height="52"><span><b>Teste sua prancha de surf</b><small>SURF DNA · prévia grátis</small></span><span aria-hidden="true" class="maisgo">→</span></a>
   </div></section>`;
+/* rodada 28 (pedido do Gui): a prévia não diz se a raquete atual é match. Logo abaixo da análise, para todo mundo, o que o relatório entrega,
+   com as prioridades que a pessoa marcou e sem revelar modelos nem notas. */
+const WANT_TXT={power:'mais potência',control:'mais controle',comfort:'mais conforto',spin:'mais spin',maneuver:'mais leveza na mão',stability:'mais estabilidade'};
+const jnE2=l=>l.length>1?l.slice(0,-1).join(', ')+' e '+l[l.length-1]:l[0]||'';
+function pedidos(){const w=wants().filter(k=>KEYS.includes(k));if(w.length)return {keys:w.slice(0,2),pediu:true};
+  return {keys:KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,2),pediu:false}}
+const VICO={v:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',up:'<path d="M4 17l6-6 4 4 6-7"/><path d="M15 8h5v5"/>',rk:'<path d="M5 6h14M5 12h10M5 18h6"/>',st:'<path d="M4 4l16 16M20 4L4 20M12 2v20M2 12h20"/>',vs:'<path d="M8 4v16M16 4v16M3 9h5M16 15h5"/>'};
+function vendaCard(){
+  const c=RES.c,P=pedidos(),alvo=jnE2(P.keys.map(k=>WANT_TXT[k]));
+  const it=[];
+  if(c)it.push(['v','O veredito: manter ou trocar, com o DNA Score da sua raquete.']);
+  it.push(['up',P.pediu?`Você pediu ${alvo}: veja quais raquetes entregam mais disso${c?' que a sua':''}.`:`O seu jogo pede ${alvo}: veja quais raquetes entregam mais disso${c?' que a sua':''}.`]);
+  it.push(['rk',`Seu ranking completo entre as ${RK.length} raquetes do catálogo.`]);
+  it.push(['st','A corda, a espessura e a tensão certas para o seu jogo e o seu braço.']);
+  it.push(['vs',c?`A comparação lado a lado: a sua ${esc(curLabel())} × a recomendada.`:'A comparação lado a lado entre as raquetes que mais encaixam.']);
+  return `<section class="panel venda" aria-labelledby="h-venda"><h2 id="h-venda">${c?'Sua raquete vale a pena? Descubra no relatório.':'Qual é a raquete certa para você? Descubra no relatório.'}</h2>
+    <ul class="vlist">${it.map(([i,t])=>`<li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${VICO[i]}</svg><span>${t}</span></li>`).join('')}</ul>
+    <button class="btn btn-go btn-hero vbtn" type="button" data-buy="2" data-position="preview_value">Ver meu relatório completo · R$ 19,99</button></section>`;
+}
 function renderPreview(){
   const {ranked,conf,T,curFit,c}=RES;const top=ranked.slice(0,3);
   const BB=`<div class="backbar"><button class="btn btn-ghost btn-sm" type="button" data-back="quiz">← Voltar às respostas</button><button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button></div>`;
-  $('#preview').innerHTML=BB+juniorNote()+painNote()+diagnosis()+`
+  $('#preview').innerHTML=BB+juniorNote()+painNote()+diagnosis()+vendaCard()+`
   <div class="panel">
     <div class="hook">
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
@@ -1789,7 +1814,7 @@ function renderPreview(){
       <div class="kpi"><b>${RK.length}</b><span>raquetes do catálogo comparadas com o seu jogo</span></div>
       <div class="kpi"><b>${top[0].r.nrev||'—'}</b><span>avaliações de testadores e sites sobre a 1ª</span></div>
       <div class="kpi"><b>${semRef()?`${RES.Z.wt[0]}–${RES.Z.wt[1]} g`:RES.tw+' g'}</b><span>${semRef()?'faixa para testar, sem corda':'peso ideal sem corda'}</span></div>
-      <div class="kpi"><b>${curFit?mask(curFit.fit+'%'):'—'}</b><span>${curFit?'DNA Score da sua atual':'informe a sua para comparar'}</span></div>
+      ${curFit?'':'<div class="kpi"><b>—</b><span>informe a sua para comparar</span></div>'}
     </div>
   </div>`}
   <div class="panel">
@@ -1890,7 +1915,8 @@ function gripSize(){
 /* abertura do relatório: no máximo 2 frases, sem jargão; o resto vai para "Por que combina" */
 function heroText(x,T){const r=x.r;const lv={beg:'iniciante',int:'intermediário',adv_int:'intermediário avançado',adv:'avançado'}[A.lvl]||'';
   const top=KEYS.filter(k=>T[k]>=6).sort((a,b)=>T[b]-T[a]).slice(0,2);const out=[];
-  out.push(`Entre as ${RK.length} raquetes do catálogo, a ${esc(r.model)} é a que mais combina com o seu jogo: ${esc(archetype().toLowerCase())}${lv?', nível '+lv:''}.`);
+  const cf=RES.curFit;
+  out.push(`${cf&&cf.fit>=x.fit?`A sua raquete atual é a que mais encaixa. Se quiser trocar, a ${esc(r.model)} é a melhor alternativa entre as ${RK.length} do catálogo para o seu jogo:`:`Entre as ${RK.length} raquetes do catálogo, a ${esc(r.model)} é a que mais combina com o seu jogo:`} ${esc(archetype().toLowerCase())}${lv?', nível '+lv:''}.`);
   if(top.length)out.push(`O que o seu jogo mais pede é ${top.map(k=>LBL[k].toLowerCase()).join(' e ')}, e ela ${top.every(k=>r.ix[k]>=T[k]-.5)?'entrega isso':'chega perto disso'} sem abrir mão do resto.`);
   return out.join(' ')}
 /* "Por que combina": até 4 motivos concretos (os índices ficam no gráfico da seção 4) */
@@ -2059,6 +2085,26 @@ function curBox(curFit,best){
     <div class="curf"><div class="fit">${curFit.fit}%</div><span class="note">DNA Score</span></div></div>
     ${vereditoHTML(V,onde)}</section>`;
 }
+/* rodada 28: as 3 que mais entregam nos atributos que a pessoa marcou (ou que o jogo mais pede), entre as que já encaixam no perfil.
+   Travas: só entram raquetes até 15 pontos de DNA abaixo da 1ª (dor, peso e orçamento já pesam na nota). */
+const MAIS_FAIXA=15;
+function maisPicks(){
+  const {ranked,c}=RES,P=pedidos(),m=r=>P.keys.reduce((t,k)=>t+r.ix[k],0)/P.keys.length;
+  const cv=c?m(c):null;
+  /* com raquete atual, só entram as que entregam mais que ela nesses atributos */
+  const L=ranked.filter(x=>x.fit>=ranked[0].fit-MAIS_FAIXA).map(x=>({x,v:m(x.r)})).filter(o=>cv==null||o.v>cv+0.05).sort((a,b)=>b.v-a.v||b.x.fit-a.x.fit).slice(0,3);
+  return {P,L,cv};
+}
+function maisBox(){
+  const {P,L,cv}=maisPicks(),c=RES.c;if(!L.length&&!c)return '';
+  const alvo=jnE2(P.keys.map(k=>WANT_TXT[k]));
+  const topo=c&&!L.length;
+  const linha=x=>P.keys.map(k=>`${LBL[k]} ${dec(x.r.ix[k])}${c?` × ${dec(c.ix[k])} da sua`:` (alvo ${dec(RES.T[k])})`}`).join(' · ');
+  return `<section class="panel" id="r-more"><h2 class="sec">Quem entrega mais do que você pediu</h2>
+    <p class="muted" style="margin-top:-8px">${P.pediu?`Você pediu ${alvo}.`:`O seu jogo pede ${alvo}.`} Estas são as que mais entregam isso entre as raquetes que encaixam no seu perfil, mesmo com DNA Score geral um pouco menor.</p>
+    ${topo?`<p><strong>A sua ${esc(curLabel())} já é a que mais entrega ${alvo} entre as raquetes que encaixam no seu perfil.</strong> Nenhuma outra entrega mais disso sem perder no resto.</p>`:''}
+    ${L.length?`<div class="altl cordal">${L.map((o,i)=>`<article class="altc"><p class="eyebrow">${esc(o.x.r.brand)}</p><h3>${esc(o.x.r.model)}</h3><p class="note" style="margin:0">DNA Score ${o.x.fit}%</p><p style="margin:0;font-weight:600">${linha(o.x)}</p></article>`).join('')}</div>`:''}</section>`;
+}
 /* rodada 23: 2º e 3º lugar lado a lado: nota, preço, ficha em uma linha, 1 ou 2 motivos curtos e o mesmo botão de compra da 1ª */
 function altWhy(x,top,c){
   const out=[];const ks=KEYS.slice().sort((a,b)=>RES.T[b]-RES.T[a]).slice(0,4);
@@ -2186,7 +2232,7 @@ function renderReport(){
   if(c)series.push({name:'Sua atual',v:c.ix,c:'var(--cur)',dash:true});
   const cmpName=c?'Atual × nova':'Perfil × nova';
   /* rodada 23 (pedido do Gui): sua atual → resultado → por que combina → alternativas → top 10 e mapa → atual × nova → comparador → guia → DNA → ficha */
-  const chips=(c&&curFit?[['r-cur','Sua raquete']]:[]).concat([['r-res','Resultado'],['r-por','Por que combina']]).concat(full?[['r-alt','Alternativas'],['r-top','Top 10 e mapa']]:[]).concat([['r-atual',cmpName]]).concat(full?[['r-cmp','Comparador'],['r-corda','Cordas'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
+  const chips=(c&&curFit?[['r-cur','Sua raquete']]:[]).concat([['r-res','Resultado'],['r-por','Por que combina']]).concat(full?[['r-alt','Alternativas'],['r-more','Mais do que pediu'],['r-top','Top 10 e mapa']]:[]).concat([['r-atual',cmpName]]).concat(full?[['r-cmp','Comparador'],['r-corda','Cordas'],['r-guia','Guia de compra']]:[]).concat([['r-dna','Seu DNA'],['r-ficha','Ficha técnica']]);
   const PDFB=full?'<button class="btn btn-go btn-sm" type="button" data-pdf style="margin-left:auto">Baixar PDF</button>':'';
   let h=`<div class="rbar"><div class="backbar">${ex?'<button class="btn btn-ghost btn-sm" type="button" data-mytest>Fazer o meu teste</button>':'<button class="btn btn-ghost btn-sm" type="button" data-back="preview">← Voltar à prévia</button>'}<button class="btn btn-ghost btn-sm" type="button" data-back="landing">Início</button>${PDFB}</div>
   <nav class="rchips" aria-label="Seções do relatório">${chips.map(([id,t])=>`<a href="#${id}">${t}</a>`).join('')}</nav></div>`;
@@ -2194,7 +2240,7 @@ function renderReport(){
   /* 0. Sua raquete atual (só quando informada e no catálogo): nota e veredito em uma linha */
   if(c&&curFit)h+=curBox(curFit,w);
   /* 1. Seu resultado (card em destaque) */
-  h+=`<section class="panel winner winbox" id="r-res"><h2 class="eyebrow">Seu resultado · a raquete que mais encaixa no seu jogo</h2>
+  h+=`<section class="panel winner winbox" id="r-res"><h2 class="eyebrow">${curFit&&curFit.fit>=w.fit?'Se for trocar · a alternativa que mais encaixa no seu jogo':'Seu resultado · a raquete que mais encaixa no seu jogo'}</h2>
     ${racketHead(w)}
     <p class="mono specline">${r.wt} g · balanço ${r.bal} mm · SW ${r.sw} · ${r.ra} RA · ${r.head} pol² · ${r.pat.replace('x','×')}</p>
     <p class="hero2">${heroText(w,T)}</p>${fitNote?`<p class="hero2"><strong>${fitNote}</strong></p>`:''}${altsNote(w)}${window.SportDNAAffiliates?.card('racket',r.brand+' '+r.model)||''}</section>`;
@@ -2210,7 +2256,7 @@ function renderReport(){
     const top3=ranked.slice(0,3);
     h+=`<section class="panel" id="r-alt"><h2 class="sec">Alternativas</h2>
       <div class="altl">${ranked.slice(1,3).map((x,i)=>altCard(x,i+2,top3,c)).join('')}</div>
-      ${evoluiBox()}</section><section class="panel" id="r-top"><h2 class="sec">Top 10 e mapa do catálogo</h2>
+      ${evoluiBox()}</section>${maisBox()}<section class="panel" id="r-top"><h2 class="sec">Top 10 e mapa do catálogo</h2>
         <h3 style="margin-bottom:10px">Ranking dos 10 melhores</h3>
         <div class="rank">${(()=>{const list=ranked.slice(0,10);if(curFit&&!list.includes(curFit))list.push(curFit);return list.sort((a,b)=>b.fit-a.fit).map(x=>`<div class="rk${x===w?' win':''}${curFit&&x===curFit?' cur':''}"><span class="pos" style="font-size:14px">${curFit&&x===curFit?'—':ranked.indexOf(x)+1}</span><div class="nm"><i style="width:${x.fit}%"></i><span>${esc(x.r.name)}${curFit&&x===curFit?' (sua)':''}${x.r.br==='d'?' · importada':''}${altsTag(x)}</span><small class="fx fx-${faixa(x,w)[0]}">${faixa(x,w)[1]}</small></div><b>${x.fit}%</b></div>`).join('')})()}</div>
         <p class="note">Encaixe ideal: até 4 pontos da 1ª; entre elas, a diferença é de sensação, não de resultado. Muito boa: até 12 pontos.</p>
