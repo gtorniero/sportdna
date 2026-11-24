@@ -8,6 +8,9 @@ export const page = [
  { find: '<!doctype html><html lang="pt-BR"><head>', replace: '<!doctype html><html lang="en" data-market="__MARKET__"><head>' },
  { find: /<!-- SEO_START -->[\s\S]*?<!-- SEO_END -->/, replace: '<!-- SEO_START -->__SEO__<!-- SEO_END -->' },
 
+ // ---------- ofertas de corda do Mercado Livre: só na versão brasileira (tests/string-affiliates.test.mjs) ----------
+ { find: /<script src="\/racket\/cordas-afiliados\.js\?v=[0-9a-z]+"><\/script>\n?/, replace: '' },
+
  // ---------- números e preços ----------
  { find: "const fmt=n=>n.toLocaleString('pt-BR');", replace: "const fmt=n=>n.toLocaleString('en-US');" },
  { find: "const dec=n=>(+n).toFixed(1).replace('.',',');", replace: 'const dec=n=>(+n).toFixed(1);' },
